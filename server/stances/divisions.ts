@@ -39,7 +39,7 @@ import {
   parseMeaning,
   proposalBlocks,
 } from './divisionPrompt';
-import { verifyMatch, verifyMeaning } from './divisionVerify';
+import { verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
 import { stanceEvidenceRows } from './evidence';
 import { QUOTE_MIN_WORDS } from './extract';
 import * as repo from './repository';
@@ -352,11 +352,14 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   const question = candidates.find((c) => c.id === check.questionId)!;
   const label = (key: string | null) => question.options.find((o) => o.key === key)?.label ?? null;
 
-  // ---- call 3: does the vote state everything the matched answer says? ----
-  const fitAnswer = await call(FIT_SYSTEM_PROMPT, fitUserPrompt({ taMeans: meaning.taMeans ?? '', quote: meaning.quote ?? '', answer: label(check.taOption)! }));
+  // ---- call 3: for each claim in the matched answer, the proposal's own words that state it ----
+  // The whole proposal, not the stored quote: a claim may be stated outside the excerpt chosen for it.
+  const proposalText = proposalBlocks(context).map((b) => `[${b.label}] ${b.text}`).join('\n');
+  const fitAnswer = await call(FIT_SYSTEM_PROMPT, fitUserPrompt({ proposal: proposalText, answer: label(check.taOption)! }));
   if (fitAnswer instanceof Error) return failed({ ...matchBase, ...usage(answer) }, fitAnswer.message);
-  const unstated = parseFit(fitAnswer.content);
-  if (!unstated) return failed({ ...matchBase, ...usage(fitAnswer) }, 'unusable model output');
+  const claims = parseFit(fitAnswer.content);
+  if (!claims) return failed({ ...matchBase, ...usage(fitAnswer) }, 'unusable model output');
+  const unstated = verifyFit(claims, proposalText);
   if (unstated.length > 0) {
     return done({
       ...checked,

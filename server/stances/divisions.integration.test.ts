@@ -44,7 +44,8 @@ type Reply = (user: string) => unknown;
 const meaningReply: Reply = () => ({ procedural: false, division_kind: 'motion', ta_means: 'Build public homes.', quote_block: 'M1', quote: QUOTE, policy_domains: ['housing'], confidence: 0.9 });
 const firstCandidate = (user: string) => Number(user.match(/question_id (\d+)/)![1]);
 const matchReply: Reply = (user) => ({ question_id: firstCandidate(user), ta_option: 'option_a', nil_option: 'option_b', confidence: 0.9, reason: 'stated' });
-const fitReply: Reply = () => ({ unstated: [] });
+// Support copied from MOTION, as the model is asked to do.
+const fitReply: Reply = () => ({ claims: [{ claim: 'build public homes', support: 'build fifty thousand public homes every year' }] });
 
 run('division stances against Postgres', { timeout: 60_000 }, () => {
   let dbmod: typeof import('../db');
@@ -624,18 +625,33 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       expect((await divisions.syncDivisionStances(NOW)).rows).toBe(0);
     });
 
-    it('is no match when the claims check finds something the answer says that the vote does not, and keeps what', async () => {
+    it('is no match when a claim in the answer has no support in the proposal, and keeps which', async () => {
       await addQuestion('housing', '2026-09-25T09:00:00Z');
       const d1 = await addDivision('2026-09-24', 1);
-      const model = stub({ fit: () => ({ unstated: ['accepts that little immediate cash help is available', '  '] }) });
+      const model = stub({
+        fit: () => ({
+          claims: [
+            { claim: 'build public homes', support: 'build fifty thousand public homes every year' },
+            { claim: 'accept that little immediate cash help is available', support: null },
+          ],
+        }),
+      });
       expect(await classify(model.complete)).toMatchObject({ calls: 3, statuses: { no_match: 1, matched: 0 } });
       expect(model.calls).toEqual(['meaning', 'match', 'fit']);
       const [reading] = await readings();
       expect(reading).toMatchObject({ division_id: d1, status: 'no_match', question_id: null, ta_option_key: null, prompt_tokens: 300, completion_tokens: 60 });
-      expect(reading.match_reason).toMatch(/^Refused: the proposal does not state: accepts that little immediate cash help is available\. Model said: stated/);
+      expect(reading.match_reason).toMatch(/^Refused: the proposal does not state: accept that little immediate cash help is available\. Model said: stated/);
       expect((await divisions.syncDivisionStances(NOW)).rows).toBe(0);
       // Not asked again until something changes: the same candidates, no new call.
       expect((await classify(model.complete)).calls).toBe(0);
+    });
+
+    it('is no match when the "support" is not in the proposal: a model cannot vouch for a claim with words it made up', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      await addDivision('2026-09-24', 1);
+      const model = stub({ fit: () => ({ claims: [{ claim: 'build public homes', support: 'the State will build every home itself' }] }) });
+      expect(await classify(model.complete)).toMatchObject({ statuses: { no_match: 1, matched: 0 } });
+      expect((await readings())[0]!.match_reason).toMatch(/^Refused: the proposal does not state: build public homes\./);
     });
 
     it('a failed or unusable claims check is a failed reading that is retried, never a match', async () => {

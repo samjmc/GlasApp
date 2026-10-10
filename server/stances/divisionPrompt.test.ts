@@ -71,30 +71,42 @@ describe('parseMatch', () => {
 });
 
 describe('parseFit', () => {
-  it('reads the claims the vote does not state, trimmed, without blanks, at most five', () => {
-    expect(parseFit(json({ unstated: [' accepts little immediate help ', '', '  '] }))).toEqual(['accepts little immediate help']);
-    expect(parseFit(json({ unstated: [] }))).toEqual([]);
-    expect(parseFit(json({ unstated: ['a', 'b', 'c', 'd', 'e', 'f', 'g'] }))).toHaveLength(5);
+  it('reads each claim with the words offered as its support, trimmed, null when there are none', () => {
+    expect(parseFit(json({ claims: [{ claim: ' remove the wait ', support: ' abolish the mandatory three day wait ' }, { claim: 'accept less help', support: null }, { claim: 'a third', support: '' }] }))).toEqual([
+      { claim: 'remove the wait', support: 'abolish the mandatory three day wait' },
+      { claim: 'accept less help', support: null },
+      { claim: 'a third', support: null },
+    ]);
+    expect(parseFit(json({ claims: [{ claim: 'no support key' }] }))).toEqual([{ claim: 'no support key', support: null }]);
   });
 
-  it('is null for bad JSON or a wrong shape, so an unusable check is never read as "nothing unstated"', () => {
+  it('drops blank claims and keeps at most eight', () => {
+    expect(parseFit(json({ claims: [{ claim: '  ', support: 'x' }, { claim: 'real', support: null }] }))).toEqual([{ claim: 'real', support: null }]);
+    expect(parseFit(json({ claims: Array.from({ length: 12 }, (_, i) => ({ claim: `c${i}`, support: null })) }))).toHaveLength(8);
+  });
+
+  it('is null for bad JSON, a wrong shape, or no claims at all, so an unusable check is never read as "nothing to check"', () => {
     expect(parseFit(null)).toBeNull();
     expect(parseFit('nope')).toBeNull();
     expect(parseFit(json({}))).toBeNull();
-    expect(parseFit(json({ unstated: 'a claim' }))).toBeNull();
-    expect(parseFit(json({ unstated: [1] }))).toBeNull();
+    expect(parseFit(json({ claims: [] }))).toBeNull();
+    expect(parseFit(json({ claims: [{ claim: '  ' }] }))).toBeNull();
+    expect(parseFit(json({ claims: 'a claim' }))).toBeNull();
+    expect(parseFit(json({ claims: [{ claim: 1 }] }))).toBeNull();
   });
 });
 
 describe('the claims check prompt', () => {
-  it('asks only for claims the vote does not state, and a reason is not a claim', () => {
-    expect(FIT_SYSTEM_PROMPT).toMatch(/List every claim that is NOT stated/);
-    expect(FIT_SYSTEM_PROMPT).toMatch(/A reason given for a claim is not itself a claim/);
-    expect(FIT_SYSTEM_PROMPT).toMatch(/an accepted cost the proposal does not mention/);
-    const prompt = fitUserPrompt({ taMeans: 'Cut bills.', quote: 'adopt the plan', answer: 'Invest long term, accepting little cash now' });
-    expect(prompt).toContain('Cut bills.');
-    expect(prompt).toContain('"adopt the plan"');
-    expect(prompt).toContain('"Invest long term, accepting little cash now"');
+  it('asks for the proposal’s own words for each claim, copied exactly, and a reason is not a claim', () => {
+    expect(FIT_SYSTEM_PROMPT).toMatch(/copy EXACTLY, word for word, the words from the proposal's text that state it/);
+    expect(FIT_SYSTEM_PROMPT).toMatch(/never paraphrase, never join separate passages/);
+    expect(FIT_SYSTEM_PROMPT).toMatch(/Use null for "support" when no passage states the claim/);
+    // A purpose clause was once listed as a claim and refused an exact match ("trusting women to decide with their doctors").
+    expect(FIT_SYSTEM_PROMPT).toMatch(/The reason or purpose that goes with a claim \("to \.\.\.", "so that \.\.\.", "trusting \.\.\.", "because \.\.\."\) is not a claim/);
+    expect(FIT_SYSTEM_PROMPT).toMatch(/Fund more bus routes, accepting higher fares for now": two claims/);
+    const prompt = fitUserPrompt({ proposal: '[B1] Bill entitled an Act to abolish the wait.', answer: 'Remove the wait entirely, trusting women' });
+    expect(prompt).toContain('[B1] Bill entitled an Act to abolish the wait.');
+    expect(prompt).toContain('"Remove the wait entirely, trusting women"');
   });
 });
 

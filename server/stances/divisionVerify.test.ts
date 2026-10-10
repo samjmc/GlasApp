@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ProposalBlock, MatchReply, MeaningReply } from './divisionPrompt';
-import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, figuresIn, verifyMatch, verifyMeaning } from './divisionVerify';
+import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, figuresIn, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
 
 const MOTION =
   'That Dáil Éireann calls on the Government to build fifty thousand public homes every year on public land, and to end the use of tax reliefs for investment funds.';
@@ -96,6 +96,43 @@ describe('verifyMeaning', () => {
     // The quote IS in the Q block; a words-stand question still may not be read from it.
     expect(verifyMeaning(reply({ quoteBlock: 'Q' }), [block('Q', MOTION), ...PMM.slice(1)])).toEqual({ status: 'rejected', reason: 'invalid' });
     expect(ALLOWED_BLOCKS).toEqual({ amendment: ['A'], words_stand: ['M'], motion: ['M'], bill_stage: ['B', 'M'], other: ['Q', 'B', 'M'] });
+  });
+});
+
+describe('verifyFit', () => {
+  const PROPOSAL = '[B1] Bill entitled an Act to enact recommendations of the Marie O’Shea report, providing clarity on terminations for medical reasons, removal of the 3 day waiting period, and ending the criminalisation of doctors.';
+
+  it('a claim whose support is really in the proposal is stated, whatever the case, quote marks or spacing', () => {
+    expect(verifyFit([{ claim: 'remove the wait', support: 'removal of the 3 day waiting period' }], PROPOSAL)).toEqual([]);
+    expect(verifyFit([{ claim: 'doctors', support: '  Ending  the CRIMINALISATION of doctors ' }], PROPOSAL)).toEqual([]);
+    expect(verifyFit([{ claim: 'report', support: 'the Marie O\'Shea report' }], PROPOSAL)).toEqual([]);
+  });
+
+  it('a claim with no support, invented support, paraphrased support, or support too short to mean anything is not stated', () => {
+    const unstated = verifyFit(
+      [
+        { claim: 'no support', support: null },
+        { claim: 'invented', support: 'the State will fund every clinic in full' },
+        { claim: 'paraphrased', support: 'abolishing the three day wait' },
+        { claim: 'too short', support: 'doctors' },
+        { claim: 'joined', support: 'removal of the 3 day waiting period and clarity on terminations' },
+        { claim: 'stated', support: 'removal of the 3 day waiting period' },
+      ],
+      PROPOSAL,
+    );
+    expect(unstated).toEqual(['no support', 'invented', 'paraphrased', 'too short', 'joined']);
+  });
+
+  it('every claim must be supported: one unstated claim among stated ones is returned alone', () => {
+    expect(
+      verifyFit(
+        [
+          { claim: 'remove the wait', support: 'removal of the 3 day waiting period' },
+          { claim: 'accept little immediate help', support: null },
+        ],
+        PROPOSAL,
+      ),
+    ).toEqual(['accept little immediate help']);
   });
 });
 
