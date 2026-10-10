@@ -25,6 +25,7 @@
  */
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
+import { AUDIT_UNSCORED_DIMENSIONS } from '@shared/divisionMeaning';
 import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import { shutdown } from '../db';
 import { deleteTdEvidence, recalculateAll } from '../ideology';
@@ -142,7 +143,7 @@ export async function runDivisions(argv: string[], log: (line: string) => void =
     log(`Audit: ${audit.divisions} division(s) checked; the options agree with the lobbies on ${audit.agree} of ${audit.total} (${pct(audit.agree, audit.total)}). Target: 75% or more.`);
     for (const d of IDEOLOGY_DIMENSIONS) {
       const c = audit.byDimension[d];
-      if (c?.total) log(`  ${d}: ${c.agree} of ${c.total} (${pct(c.agree, c.total)})`);
+      if (c?.total) log(`  ${d}: ${c.agree} of ${c.total} (${pct(c.agree, c.total)})${AUDIT_UNSCORED_DIMENSIONS.includes(d) ? ' - not scored (government-vs-opposition confound, see divisions.ts)' : ''}`);
     }
     for (const w of audit.worst) log(`  disagrees: ${w.divisionId} on ${w.disagreements.map((x) => x.dimension).join(', ')}`);
     return;

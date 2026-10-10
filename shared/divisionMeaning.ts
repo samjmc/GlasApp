@@ -3,6 +3,7 @@
  * division can put, the states a division's reading can be in, and why a reading was rejected.
  * The ONE definition, so the table that stores readings builds its CHECKs from these lists.
  */
+import type { IdeologyDimension } from './ideology';
 
 /**
  * amendment    Tá = for the amendment.
@@ -38,3 +39,14 @@ export type DivisionReadingStatus = (typeof DIVISION_READING_STATUSES)[number];
 
 export const DIVISION_REJECT_REASONS = ['invalid', 'quote_not_found', 'unsure', 'ambiguous'] as const;
 export type DivisionRejectReason = (typeof DIVISION_REJECT_REASONS)[number];
+
+/**
+ * Dimensions the audit counts but does not score. The party baselines code the governing parties
+ * as expert-led (Fianna Fáil −4.5, Fine Gael −4) and most of the opposition as less so (Sinn Féin
+ * and Labour 0, Social Democrats −2, Green, PBP, Independent Ireland and Aontú +3 to +5), so on a
+ * Dáil division the Tá − Níl gap on this axis is who is in government, not what the vote was
+ * about. Measured 2026-10-10: on all four checked divisions the opposition voted Tá and Fianna
+ * Fáil and Fine Gael Níl, the options leaned expert-led, and the audit "disagreed" 0 of 4 times.
+ * Revisit if the baselines stop coding government status as governance style.
+ */
+export const AUDIT_UNSCORED_DIMENSIONS: readonly IdeologyDimension[] = ['technocratic'];

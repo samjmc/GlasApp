@@ -16,7 +16,7 @@
  */
 import { createHash } from 'node:crypto';
 import { emptyIdeologyVector, IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
-import { DIVISION_READING_STATUSES, type DivisionKind, type DivisionReadingStatus, type DivisionRejectReason } from '@shared/divisionMeaning';
+import { AUDIT_UNSCORED_DIMENSIONS, DIVISION_READING_STATUSES, type DivisionKind, type DivisionReadingStatus, type DivisionRejectReason } from '@shared/divisionMeaning';
 import type { DivisionReadingRow, NewDivisionReading } from '@shared/schema/stances';
 import { recomputeTdsAndParties, replaceStanceEvidence } from '../ideology';
 import { partyBaseline } from '../ideology/partyBaselines';
@@ -337,9 +337,13 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   if (answer instanceof Error) return failed(matchBase, answer.message);
   const reply = parseMatch(answer.content);
   if (!reply) return failed({ ...matchBase, ...usage(answer) }, 'unusable model output');
-  const check = verifyMatch(reply, candidates);
+  const check = verifyMatch(reply, candidates, `${meaning.quote ?? ''} ${meaning.taMeans ?? ''}`);
   const checked = { ...matchBase, ...usage(answer), attempts: 0, matchConfidence: reply.confidence, matchReason: reply.reason || null, matchPromptVersion: MATCH_PROMPT_VERSION };
-  if (check.status === 'no_match') return done({ ...checked, status: 'no_match' });
+  if (check.status === 'no_match') {
+    // Keep why: a match the model made but the figures check refused is worth a person's eye.
+    const refused = check.overstated ? { matchReason: `Refused: the answer names ${check.overstated.join(', ')}, which the proposal does not. Model said: ${reply.reason}`.slice(0, 500) } : {};
+    return done({ ...checked, ...refused, status: 'no_match' });
+  }
   if (check.status === 'rejected') return done({ ...checked, status: 'rejected', rejectReason: check.reason });
   const question = candidates.find((c) => c.id === check.questionId)!;
   const label = (key: string | null) => question.options.find((o) => o.key === key)?.label ?? null;
@@ -580,7 +584,8 @@ function lobbyMean(votes: AuditVote[]): Record<IdeologyDimension, number> | null
  * the Níl option (none = 0) differ by at least AUDIT_MIN_LEAN and the Tá and Níl lobbies' mean
  * party baselines differ by at least AUDIT_MIN_GAP, sign(Tá − Níl) should match sign(Tá lobby −
  * Níl lobby). The prompts name no party, sponsor or bill source, so this is an independent check.
- * Pure.
+ * AUDIT_UNSCORED_DIMENSIONS are tallied in `byDimension` but left out of `agree`, `total` and
+ * `worst`. Pure.
  */
 export function auditDivisions(readings: AuditReading[], votes: AuditVote[]): DivisionAudit {
   const votesOf = groupBy(votes, (v) => v.divisionId);
@@ -599,18 +604,21 @@ export function auditDivisions(readings: AuditReading[], votes: AuditVote[]): Di
       const direction = r.taVector[d] - nilVector[d];
       const gap = ta[d] - nil[d];
       if (Math.abs(direction) < AUDIT_MIN_LEAN || Math.abs(gap) < AUDIT_MIN_GAP) continue;
-      checked++;
+      const agrees = Math.sign(direction) === Math.sign(gap);
       byDimension[d].total++;
-      if (Math.sign(direction) === Math.sign(gap)) byDimension[d].agree++;
-      else disagreements.push({ dimension: d, direction, gap: Math.round(gap * 100) / 100 });
+      if (agrees) byDimension[d].agree++;
+      if (AUDIT_UNSCORED_DIMENSIONS.includes(d)) continue; // counted above, never in the score or the disagreements
+      checked++;
+      if (!agrees) disagreements.push({ dimension: d, direction, gap: Math.round(gap * 100) / 100 });
     }
     if (checked > 0) divisions++;
     if (disagreements.length > 0) worst.push({ divisionId: r.divisionId, taMeans: r.taMeans, disagreements });
   }
   const gapOf = (w: DivisionAudit['worst'][number]) => w.disagreements.reduce((s, d) => s + Math.abs(d.gap), 0);
   worst.sort((a, b) => b.disagreements.length - a.disagreements.length || gapOf(b) - gapOf(a));
-  const agree = IDEOLOGY_DIMENSIONS.reduce((s, d) => s + byDimension[d].agree, 0);
-  const total = IDEOLOGY_DIMENSIONS.reduce((s, d) => s + byDimension[d].total, 0);
+  const scored = IDEOLOGY_DIMENSIONS.filter((d) => !AUDIT_UNSCORED_DIMENSIONS.includes(d));
+  const agree = scored.reduce((s, d) => s + byDimension[d].agree, 0);
+  const total = scored.reduce((s, d) => s + byDimension[d].total, 0);
   return { divisions, agree, total, byDimension, worst };
 }
 

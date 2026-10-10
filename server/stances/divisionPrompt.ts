@@ -18,7 +18,7 @@ import type { DivisionContext } from '../parliament';
 /** Stored on every reading; bump when the meaning prompt changes what a reading means. */
 export const MEANING_PROMPT_VERSION = 1;
 /** Stored on every match; bump when the match prompt changes. */
-export const MATCH_PROMPT_VERSION = 1;
+export const MATCH_PROMPT_VERSION = 2;
 /** Debate excerpts per prompt. */
 export const SPEECH_CONTEXT_CHARS = 12_000;
 /** PROPOSAL blocks per prompt. */
@@ -232,6 +232,7 @@ You match what a recorded Dáil vote supported to the answer of a daily-vote que
 
 Rules:
 - Choose a question and an answer ONLY when what a Tá vote supported itself states that choice. When no question's answer is clearly stated, use null.
+- An answer must not say more than the proposal does. If it names a figure, a date, a scope or a measure that the proposal's words do not (for example "to €50,000" when the proposal says €35,000), or adds a stated trade-off the proposal does not mention, use null for that question.
 - Never infer an answer from who proposed the motion or how parties voted.
 - Give a Níl answer only when voting against the proposal itself states one of that question's answers; else null. It must differ from the Tá answer.
 - "confidence" (0..1) is how sure you are that the Tá answer is stated.
