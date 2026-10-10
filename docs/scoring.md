@@ -153,13 +153,19 @@ stages, motions, statements): a model finds and quotes items, code checks every 
 word against the transcript, and code gives every point under published rules
 (`server/parliament/debateItems/rules.ts`, `docs/plans/debate-analysis.md`).
 
-| Rule (r1) | Points | Limit |
+| Rule (r2) | Points | Limit |
 |---|---|---|
 | A specific claim (a figure, a named source, a cost, a date) | +1 | 3 per speech |
 | A speaker conceded a point to you | +3 | only from the other side of the House |
-| Questions, promises | shown, no points | |
-| Responses to earlier speakers | not shown, no points | until their links are fixed |
+| A speaker took up your point by name | +2 per distinct speaker per debate | not from your own party; not in the debate's closing speech |
+| Questions, promises, replies you made | shown, no points | |
+| A reply that does not name the member it answers | not shown, no points | |
 | Speaking time, who moved it, the vote | no points | |
+
+"By name" is checked by code, not the model: the reply's sentence must hold the member's surname,
+or an office word ("the Minister", "an tAire") when they spoke in office (`replies.ts`). The other
+side of the House is the government parties, anyone in government office that day, and the
+independents who formally supported the government (`governmentSide.ts`, each with sources).
 
 A TD's figure is points per debate, compared only with TDs in the same role (government office or
 not) against the 75th percentile; below 5 debates there is no figure. Stored in

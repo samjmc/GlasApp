@@ -1,9 +1,41 @@
 {
-  "id": "ffc1521e-8fd6-4734-bae7-a9734b6625d7",
-  "prevId": "e762ad0f-3d44-438b-a320-9927742a32e7",
+  "id": "593c4710-d667-464c-af49-5d217b13f096",
+  "prevId": "ffc1521e-8fd6-4734-bae7-a9734b6625d7",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
+    "politics.political_data_consents": {
+      "name": "political_data_consents",
+      "schema": "politics",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(64)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "policy_version": {
+          "name": "policy_version",
+          "type": "varchar(32)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "granted_at": {
+          "name": "granted_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "politics.users": {
       "name": "users",
       "schema": "politics",

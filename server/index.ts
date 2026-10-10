@@ -3,7 +3,7 @@ import express, { type Request, Response, NextFunction } from "express";
 import helmet from "helmet";
 import pinoHttp from "pino-http";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic } from "./vite";
+import { serveStatic } from "./static";
 import { checkDatabaseConnection } from "./db";
 import { logger } from "./utils/logger";
 
@@ -92,6 +92,12 @@ app.use('/assets', express.static('public/assets'));
     const nodeEnv = process.env.NODE_ENV || 'development';
     if (nodeEnv === "development") {
       logger.info("Setting up Vite development server...");
+      // The specifier is a variable on purpose. esbuild bundles a literal import('./vite')
+      // and hoists that module's external imports (vite, the react plugin, nanoid) to the
+      // top of dist/index.js, so production would load them at startup. They are
+      // devDependencies and are not installed in the production image.
+      const viteModulePath = "./vite";
+      const { setupVite } = (await import(viteModulePath)) as typeof import("./vite");
       await setupVite(app, server);
       logger.info("Vite setup complete");
     } else {
