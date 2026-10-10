@@ -24,15 +24,16 @@ if (!connectionString) {
 const isLocal = /localhost|127\.0\.0\.1/.test(connectionString);
 
 /**
- * Connections this process may hold. A robot run (npm run robots) showed 10 saturating: up to 25
- * requests waiting at 20 users at once. GlasCore allows 60 connections, about 10 of them Supabase's
- * own, and GlasIntelligence shares the rest; through the session pooler this must also stay within
- * the pooler's Pool Size (Supabase → Database → Connection pooling). Raise both together.
+ * Connections this process may hold. Through the session pooler every one is a server connection
+ * from the pooler's Pool Size (Supabase → Database → Connection pooling), which is 15 on GlasCore
+ * (checked 2026-10-10) and SHARED with GlasIntelligence. The default of 10 leaves it 5. A robot run
+ * (npm run robots) showed 10 saturating at 20 users at once: raise the Pool Size first, then this.
  */
 export const DB_POOL_MAX = poolMax(process.env.DB_POOL_MAX);
+export const DEFAULT_DB_POOL_MAX = 10;
 
 export function poolMax(value: string | undefined): number {
-  if (value === undefined || value === '') return 15;
+  if (value === undefined || value === '') return DEFAULT_DB_POOL_MAX;
   const n = Number(value);
   if (!Number.isInteger(n) || n < 1 || n > 50) throw new Error(`DB_POOL_MAX must be a whole number from 1 to 50, not "${value}"`);
   return n;

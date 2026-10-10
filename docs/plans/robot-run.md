@@ -13,7 +13,7 @@
 **Fixed the same day (Sam: "all three"), and re-run:**
 
 - **Votes:** they now count per user (60), plus 600 per address. The 10 robots behind one address saved all 80 of their votes.
-- **Pool:** `DB_POOL_MAX` now defaults to 15. At most 14 requests were waiting (mean 4.6), and the run took 30 s instead of 67 s.
+- **Pool:** `DB_POOL_MAX` is a setting. At 15, at most 14 requests were waiting (mean 4.6), and the run took 30 s instead of 67 s. The default went back to 10 the same day: GlasCore's session pooler holds only 15 connections, shared with GlasIntelligence. Raise that Pool Size in Supabase (an Owner or Admin can), then `DB_POOL_MAX`.
 - **Daily sessions:** opening and completing a session now need consent. Refusers have 0 session rows.
 
 ## Goal
