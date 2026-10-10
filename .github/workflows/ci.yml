@@ -56,6 +56,32 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm run build
 
+  # deploy/compose.yml and docs/deploy.md depend on the production image, which nothing else builds.
+  # It has to build, boot and serve the client with no database behind it (the start-up check is
+  # non-blocking), and stop cleanly when told to.
+  image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build the production image
+        run: docker build -t glasapp:ci --build-arg VITE_SUPABASE_ANON_KEY=ci-placeholder-key .
+      - name: The image starts, answers /health, and serves the client
+        run: |
+          docker run -d --name glasapp-ci -p 5000:5000 \
+            -e DATABASE_URL=postgres://u:p@127.0.0.1:1/x -e SUPABASE_URL=http://localhost:54321 \
+            -e SUPABASE_ANON_KEY=ci-placeholder-key -e SCHEDULER=off glasapp:ci
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:5000/health >/dev/null && break; sleep 2; done
+          curl -fsS http://127.0.0.1:5000/health
+          curl -fsS http://127.0.0.1:5000/ | grep -q 'id="root"'
+          docker exec glasapp-ci node -e "process.exit(process.getuid() === 0 ? 1 : 0)"
+      - name: It stops on SIGTERM without being killed
+        run: |
+          docker stop --time 15 glasapp-ci
+          test "$(docker inspect glasapp-ci --format '{{.State.ExitCode}}')" = 0
+      - if: failure()
+        run: docker logs glasapp-ci || true
+
   migration-guard:
     runs-on: ubuntu-latest
     timeout-minutes: 10

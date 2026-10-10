@@ -1,7 +1,9 @@
 // Glas Politics Service Worker
 // Caching strategy: Network-first with cache fallback for API calls, cache-first for static assets
 
-const CACHE_VERSION = 'glas-politics-v1';
+// v2: v1's data cache held signed-in users' API responses (profile, quiz history). Activating
+// this version deletes every v1 cache, so those copies are removed from existing browsers too.
+const CACHE_VERSION = 'glas-politics-v2';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DATA_CACHE = `${CACHE_VERSION}-data`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
@@ -60,6 +62,11 @@ self.addEventListener('fetch', (event) => {
 
   // API requests - Network first, cache fallback
   if (url.pathname.startsWith('/api/')) {
+    // A request that carries a sign-in token returns that person's data. Never keep a copy: the
+    // cache is shared by everyone who uses this browser, and nothing clears it when they sign
+    // out or erase their account. Without respondWith the browser makes the request as usual.
+    if (request.headers.has('Authorization')) return;
+
     event.respondWith(
       fetch(request)
         .then((response) => {

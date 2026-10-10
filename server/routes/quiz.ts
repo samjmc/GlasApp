@@ -1,16 +1,13 @@
 /**
- * /api/quiz — take the quiz, read your history, ask the quiz assistant.
+ * /api/quiz — take the quiz and read your history.
  * Every response is `{ success, data }` via formatSuccess.
  */
 import { hasPoliticalConsent } from '../account/consent';
 import { requireAuth } from '../auth';
 import { Router } from 'express';
-import type OpenAI from 'openai';
 import { z } from 'zod';
 import { asyncHandler } from '../middleware/errorHandler';
-import { aiRateLimit } from '../middleware/rateLimit';
 import { QuizInputError, quizHistory, submitQuiz } from '../quiz';
-import { callChatCompletion } from '../services/aiService';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
 const router = Router();
@@ -50,41 +47,6 @@ router.get(
   requireAuth,
   asyncHandler(async (req, res) => {
     res.json(formatSuccess(await quizHistory(req.user!.id)));
-  }),
-);
-
-const assistantSchema = z.object({
-  questionText: z.string().max(1000),
-  userQuestion: z.string().min(1).max(1000),
-  conversationHistory: z
-    .array(z.object({ role: z.enum(['user', 'assistant']), content: z.string().max(4000) }))
-    .max(20)
-    .default([]),
-});
-
-const ASSISTANT_PROMPT = (questionText: string) => `You are a neutral assistant helping someone understand one question in an Irish political quiz.
-
-Quiz question: "${questionText}"
-
-- Explain the concepts and terms in the question, and the main arguments on each side.
-- NEVER say which answer to choose, and do not try to move the user's views.
-- Keep it under 150 words, plain and balanced.`;
-
-/** POST /api/quiz/assistant — explain a quiz question. Public, rate-limited. */
-router.post(
-  '/assistant',
-  aiRateLimit,
-  asyncHandler(async (req, res) => {
-    const body = assistantSchema.safeParse(req.body);
-    if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid request', body.error.flatten()));
-    const { questionText, userQuestion, conversationHistory } = body.data;
-    const messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] = [
-      { role: 'system', content: ASSISTANT_PROMPT(questionText) },
-      ...conversationHistory.slice(-10),
-      { role: 'user', content: userQuestion },
-    ];
-    const response = await callChatCompletion({ model: 'gpt-4o', messages, max_tokens: 500, temperature: 0.7 }, { operation: 'quizChat' });
-    res.json(formatSuccess({ answer: response.choices[0]?.message.content ?? "Sorry, I couldn't answer that." }));
   }),
 );
 

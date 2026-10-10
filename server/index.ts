@@ -4,8 +4,20 @@ import helmet from "helmet";
 import pinoHttp from "pino-http";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
-import { checkDatabaseConnection } from "./db";
+import { checkDatabaseConnection, shutdown as closeDatabase } from "./db";
 import { logger } from "./utils/logger";
+
+// Nothing is catching these, and the process is in an unknown state after them. Put them in the
+// structured log (a bare stack trace is easy to miss in a JSON log), then exit so the container
+// restarts. This is what Node does by default; the difference is the log line.
+process.on('unhandledRejection', (reason) => {
+  logger.fatal({ err: reason }, 'Unhandled promise rejection');
+  process.exit(1);
+});
+process.on('uncaughtException', (error) => {
+  logger.fatal({ err: error }, 'Uncaught exception');
+  process.exit(1);
+});
 
 const app = express();
 app.set('trust proxy', 1);
@@ -145,10 +157,12 @@ app.use('/assets', express.static('public/assets'));
     const gracefulShutdown = async (signal: string) => {
       logger.info(`\n${signal} received. Starting graceful shutdown...`);
       
-      // Stop accepting new connections
+      // Stop accepting new connections; once the last request is done, give the database
+      // connections back too, so the pooler does not hold them until they time out.
       if (serverInstance.listening) {
         serverInstance.close(() => {
           logger.info('HTTP server closed');
+          void closeDatabase().finally(() => process.exit(0));
         });
       }
 
