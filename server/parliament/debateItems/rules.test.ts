@@ -1,10 +1,23 @@
 import { describe, expect, it } from 'vitest';
 import type { GovernmentOffices } from './verify';
-import { isGovernmentSide } from '../governmentSide';
-import { MIN_DEBATES, scoreDebates, termFigure, type Participant, type ScoredItem } from './rules';
+import { GOVERNMENT_SUPPORTERS, isGovernmentSide } from '../governmentSide';
+import { MIN_DEBATES, TAKEN_UP_POINTS, replyNoPoints, scoreDebates, termFigure, type Participant, type ScoredItem } from './rules';
 
 const P = (memberCode: string, role: Participant['role'] = 'backbench', debateId = 'd1'): Participant => ({ debateId, memberCode, tdId: null, role, speeches: 2, words: 500 });
-const I = (over: Partial<ScoredItem>): ScoredItem => ({ debateId: 'd1', speechId: 's1', memberCode: 'A', kind: 'specific_claim', targetMemberCode: null, crossesHouse: false, ...over });
+const I = (over: Partial<ScoredItem>): ScoredItem => ({
+  debateId: 'd1',
+  speechId: 's1',
+  memberCode: 'A',
+  kind: 'specific_claim',
+  targetMemberCode: null,
+  crossesHouse: false,
+  namesTarget: false,
+  sameParty: false,
+  closingSpeech: false,
+  ...over,
+});
+/** A reply from `from` to `to` that names its target, scoring unless `over` says otherwise. */
+const R = (from: string, to: string, over: Partial<ScoredItem> = {}) => I({ memberCode: from, kind: 'response', targetMemberCode: to, namesTarget: true, ...over });
 
 describe('scoreDebates', () => {
   it('gives a point per specific claim, at most three per speech', () => {
@@ -33,16 +46,41 @@ describe('scoreDebates', () => {
     expect(by.B).toMatchObject({ concessionsReceived: 0, points: 0 });
   });
 
-  it('counts questions and commitments for no points, ignores responses, and gives every speaker a row', () => {
-    const rows = scoreDebates(
-      [P('A'), P('B', 'office'), P('C')],
-      [I({ kind: 'question' }), I({ memberCode: 'B', kind: 'commitment' }), I({ kind: 'response', targetMemberCode: 'B', crossesHouse: true })],
-    );
+  it('counts questions and commitments for no points, and gives every speaker a row', () => {
+    const rows = scoreDebates([P('A'), P('B', 'office'), P('C')], [I({ kind: 'question' }), I({ memberCode: 'B', kind: 'commitment' })]);
     expect(rows.map((r) => [r.memberCode, r.questions, r.commitments, r.points])).toEqual([
       ['A', 1, 0, 0],
       ['B', 0, 1, 0],
       ['C', 0, 0, 0],
     ]);
+  });
+
+  it('gives two points per distinct speaker who takes up a point by name, each counted once', () => {
+    expect(TAKEN_UP_POINTS).toBe(2);
+    const rows = scoreDebates([P('A'), P('B'), P('C')], [R('B', 'A'), R('B', 'A', { speechId: 's2' }), R('C', 'A')]);
+    const by = Object.fromEntries(rows.map((r) => [r.memberCode, r]));
+    expect(by.A).toMatchObject({ takenUp: 2, takenUpPoints: 4, points: 4, replies: 0 });
+    // Replying earns the replier nothing but the count.
+    expect(by.B).toMatchObject({ replies: 2, takenUp: 0, points: 0 });
+    expect(by.C).toMatchObject({ replies: 1, points: 0 });
+  });
+
+  it('shows a reply from the same party or in the closing speech, for no points', () => {
+    const rows = scoreDebates([P('A'), P('B'), P('C')], [R('B', 'A', { sameParty: true }), R('C', 'A', { closingSpeech: true })]);
+    const by = Object.fromEntries(rows.map((r) => [r.memberCode, r]));
+    expect(by.A).toMatchObject({ takenUp: 0, takenUpPoints: 0, points: 0 });
+    expect([by.B?.replies, by.C?.replies]).toEqual([1, 1]);
+    expect(replyNoPoints({ sameParty: true, closingSpeech: false })).toBe('same_party');
+    expect(replyNoPoints({ sameParty: true, closingSpeech: true })).toBe('closing_speech');
+    expect(replyNoPoints({ sameParty: false, closingSpeech: false })).toBeNull();
+  });
+
+  it('ignores a reply that does not name its target, a reply to oneself, and one to a member who did not speak', () => {
+    const rows = scoreDebates([P('A'), P('B')], [R('B', 'A', { namesTarget: false }), R('A', 'A'), R('B', 'Z')]);
+    const by = Object.fromEntries(rows.map((r) => [r.memberCode, r]));
+    expect(by.A).toMatchObject({ replies: 0, takenUp: 0, points: 0 });
+    // The reply to Z still names Z, so it is shown and counted for B, but Z has no row to score.
+    expect(by.B).toMatchObject({ replies: 1, points: 0 });
   });
 
   it('keeps debates apart', () => {
@@ -94,5 +132,22 @@ describe('isGovernmentSide', () => {
     expect(isGovernmentSide('Independent', 'Indy-Minister', '2025-01-10', offices)).toBe(false);
     expect(isGovernmentSide('Sinn Féin', 'X', '2026-03-01', offices)).toBe(false);
     expect(isGovernmentSide(null, 'X', '2026-03-01', offices)).toBe(false);
+  });
+
+  it('counts a formal supporter on the government side only while they supported it', () => {
+    expect(isGovernmentSide('Independent', 'Michael-Lowry.D.1987-03-10', '2026-03-01', offices)).toBe(true);
+    expect(isGovernmentSide('Independent', 'Michael-Lowry.D.1987-03-10', '2025-01-10', offices)).toBe(false); // before the government formed
+    expect(isGovernmentSide('Independent', 'Danny-Healy-Rae.D.2016-10-03', '2026-04-13', offices)).toBe(true);
+    expect(isGovernmentSide('Independent', 'Danny-Healy-Rae.D.2016-10-03', '2026-04-14', offices)).toBe(false); // voted no confidence
+  });
+
+  it('lists every supporter with a dated range and at least one source', () => {
+    for (const s of GOVERNMENT_SUPPORTERS) {
+      expect(s.memberCode).toMatch(/^[A-Za-zÁÉÍÓÚáéíóú'-]+\.[DS]\.\d{4}-\d{2}-\d{2}$/);
+      expect(s.to === null || s.from <= s.to).toBe(true);
+      expect(s.sources.length).toBeGreaterThan(0);
+      for (const url of s.sources) expect(url).toMatch(/^https:\/\//);
+    }
+    expect(GOVERNMENT_SUPPORTERS).toHaveLength(9);
   });
 });

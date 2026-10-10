@@ -72,6 +72,12 @@ describe('kindOf', () => {
     ['Adjournment of Dáil', 'procedural'],
     ["Minute's Silence in Memory of Garda Kevin Flatley", 'procedural'],
     ['Financial Resolution No.1: Mineral Oil Tax', 'motion'],
+    // Budget 2027 (2026-10-07): no full stop after "No", and a dash instead of a colon.
+    ['Financial Resolution No 6: Excise (Natural Gas Carbon Tax)', 'motion'],
+    ['Financial Resolution No 7: Excise (Solid Fuel Carbon Tax)', 'motion'],
+    ['Financial Resolution No. 4: Excise - Tobacco Products Tax', 'motion'],
+    ['Financial Resolution No. 5 - Excise - Mineral Oil Tax', 'motion'],
+    ['Financial Resolution No. 8 - General', 'motion'],
     ['Budget Statement 2026', 'statements'],
     ['Appointment of Taoiseach and Nomination of Members of Government', 'motion'],
     ['Tithíocht Gaeltachta: Tairiscint [Comhaltaí Príóbháideacha]', 'motion'],

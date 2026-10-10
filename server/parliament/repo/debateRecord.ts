@@ -8,9 +8,11 @@ import { debateParticipation, type NewDebateParticipation } from '@shared/schema
 import type { DebateItemView, DebateRecordParticipant, DebateRecordView, TdDebateRecord } from '@shared/parliamentApi';
 import { db, type Db } from '../../db';
 import { EXTRACTOR_VERSION } from '../debateItems/prompt';
-import { MIN_DEBATES, RULES_VERSION, SHOWN_KINDS, scoreDebates, termFigure, type DebateRole, type Participant, type ScoredItem } from '../debateItems/rules';
+import { namesTarget } from '../debateItems/replies';
+import { MIN_DEBATES, RULES_VERSION, SHOWN_KINDS, replyNoPoints, scoreDebates, termFigure, type DebateRole, type Participant, type ScoredItem } from '../debateItems/rules';
 import type { GovernmentOffices } from '../debateItems/verify';
 import { holdsGovernmentOffice, isGovernmentSide } from '../governmentSide';
+import { INDEPENDENT } from '../metrics';
 import { governmentOffices } from './debateItems';
 import { chunks } from './util';
 
@@ -32,13 +34,27 @@ interface ItemRow {
   target_member: string | null;
   target_name: string | null;
   target_party: string | null;
+  target_role: string | null;
+  quote_start: number;
+  quote_end: number;
+  /** A reply only: its speech's text, to check that it names its target. */
+  speech_text: string | null;
+  /** A reply only: whether it is in the debate's last member speech. */
+  closing: boolean | null;
 }
 
 /** Items of the current extractor version in debates whose run finished, filtered by `where`. */
 async function itemRows(where: ReturnType<typeof sql>, database: Db): Promise<ItemRow[]> {
   const res = await database.execute(sql`
     select s.debate_id, i.speech_id, i.member_code, i.kind, i.claim_type, i.quote, i.addressee, i.due, p.date::text date,
-           t1.name speaker_name, t1.party speaker_party, tp.member_code target_member, t2.name target_name, t2.party target_party
+           t1.name speaker_name, t1.party speaker_party, tp.member_code target_member, t2.name target_name, t2.party target_party,
+           tp.role target_role, i.quote_start, i.quote_end,
+           case when i.kind = 'response' then p.text end speech_text,
+           case when i.kind = 'response' then i.speech_id = (
+             select p2.id from politics.debate_speeches p2 join politics.debate_sections s2 on s2.id = p2.section_id
+             where s2.debate_id = s.debate_id and not p2.is_presiding and p2.member_code is not null
+             order by s2.date desc, coalesce(substring(s2.id from 'dbsect_([0-9]+)$')::int, 0) desc, p2.position desc limit 1
+           ) end closing
     from politics.debate_items i
     join politics.debate_speeches p on p.id = i.speech_id
     join politics.debate_sections s on s.id = p.section_id
@@ -55,7 +71,26 @@ const crosses = (r: ItemRow, offices: GovernmentOffices) =>
   r.target_member !== null &&
   isGovernmentSide(r.speaker_party, r.member_code, r.date, offices) !== isGovernmentSide(r.target_party, r.target_member, r.date, offices);
 
-function view(r: ItemRow, offices: GovernmentOffices): DebateItemView {
+/** What the rules need to know about a reply. Every field is false for any other kind. */
+function replyFacts(r: ItemRow): Pick<ScoredItem, 'namesTarget' | 'sameParty' | 'closingSpeech'> {
+  if (r.kind !== 'response' || r.target_member === null || r.speech_text === null) return { namesTarget: false, sameParty: false, closingSpeech: false };
+  return {
+    namesTarget: namesTarget({
+      speechText: r.speech_text,
+      quoteStart: r.quote_start,
+      quoteEnd: r.quote_end,
+      targetName: r.target_name ?? nameFromCode(r.target_member),
+      targetRole: r.target_role,
+    }),
+    sameParty: r.speaker_party !== null && r.speaker_party === r.target_party && r.speaker_party !== INDEPENDENT,
+    closingSpeech: r.closing === true,
+  };
+}
+
+/** An item as readers see it; null for a reply the rules do not show. */
+function view(r: ItemRow, offices: GovernmentOffices): DebateItemView | null {
+  const reply = replyFacts(r);
+  if (r.kind === 'response' && (!reply.namesTarget || r.target_member === r.member_code)) return null;
   return {
     kind: r.kind as DebateItemView['kind'],
     claimType: (r.claim_type as DebateItemView['claimType']) ?? null,
@@ -63,10 +98,13 @@ function view(r: ItemRow, offices: GovernmentOffices): DebateItemView {
     speaker: r.speaker_name ?? nameFromCode(r.member_code),
     to: r.target_member ? (r.target_name ?? nameFromCode(r.target_member)) : null,
     crossesHouse: r.kind === 'concession' && crosses(r, offices),
+    replyNoPoints: r.kind === 'response' ? replyNoPoints(reply) : null,
     addressee: r.addressee,
     due: r.due,
   };
 }
+
+const views = (rows: ItemRow[], offices: GovernmentOffices) => rows.map((r) => view(r, offices)).filter((v): v is DebateItemView => v !== null);
 
 /**
  * Rebuild every row of debate_participation from the stored items, in one transaction. Only
@@ -101,6 +139,7 @@ export async function rebuildDebateRecord(database: Db = db): Promise<{ debates:
     kind: r.kind as ScoredItem['kind'],
     targetMemberCode: r.target_member,
     crossesHouse: crosses(r, offices),
+    ...replyFacts(r),
   }));
   const rows: NewDebateParticipation[] = scoreDebates(participants, items).map((r) => ({ ...r, rulesVersion: RULES_VERSION }));
   await database.transaction(async (tx) => {
@@ -135,10 +174,13 @@ export async function debateRecord(debateId: string, database: Db = db): Promise
     claimPoints: Number(r.claim_points),
     concessionsReceived: Number(r.concessions_received),
     concessionPoints: Number(r.concession_points),
+    replies: Number(r.replies),
+    takenUp: Number(r.taken_up),
+    takenUpPoints: Number(r.taken_up_points),
     questions: Number(r.questions),
     commitments: Number(r.commitments),
     points: Number(r.points),
-    items: items.filter((i) => i.member_code === r.member_code).map((i) => view(i, offices)),
+    items: views(items.filter((i) => i.member_code === r.member_code), offices),
   }));
   return { debateId, title: debate.title, kind: debate.kind, firstDate: debate.first_date, lastDate: debate.last_date, rulesVersion: RULES_VERSION, participants };
 }
@@ -155,6 +197,7 @@ export async function tdDebateRecord(tdId: number, database: Db = db): Promise<T
     database.execute(sql`
       select role, count(*)::int debates, sum(points)::int points, sum(claims)::int claims, sum(claim_points)::int claim_points,
              sum(concessions_received)::int concessions_received, sum(concession_points)::int concession_points,
+             sum(replies)::int replies, sum(taken_up)::int taken_up, sum(taken_up_points)::int taken_up_points,
              sum(questions)::int questions, sum(commitments)::int commitments
       from politics.debate_participation where member_code = ${code} group by role`),
     database.execute(sql`select member_code, role, count(*)::int debates, sum(points)::int points from politics.debate_participation group by 1, 2`),
@@ -180,7 +223,7 @@ export async function tdDebateRecord(tdId: number, database: Db = db): Promise<T
   const ids = recent.map((r) => r.debate_id);
   const items = ids.length
     ? await itemRows(
-        sql`s.debate_id in (${sql.join(ids.map((id) => sql`${id}`), sql`, `)}) and i.kind in (${shownKinds}) and (i.member_code = ${code} or (i.kind = 'concession' and tp.member_code = ${code}))`,
+        sql`s.debate_id in (${sql.join(ids.map((id) => sql`${id}`), sql`, `)}) and i.kind in (${shownKinds}) and (i.member_code = ${code} or (i.kind in ('concession', 'response') and tp.member_code = ${code}))`,
         database,
       )
     : [];
@@ -198,6 +241,9 @@ export async function tdDebateRecord(tdId: number, database: Db = db): Promise<T
       claimPoints: sum('claim_points'),
       concessionsReceived: sum('concessions_received'),
       concessionPoints: sum('concession_points'),
+      replies: sum('replies'),
+      takenUp: sum('taken_up'),
+      takenUpPoints: sum('taken_up_points'),
       questions: sum('questions'),
       commitments: sum('commitments'),
     },
@@ -207,8 +253,8 @@ export async function tdDebateRecord(tdId: number, database: Db = db): Promise<T
       kind: r.kind,
       date: r.date,
       points: Number(r.points),
-      items: items.filter((i) => i.debate_id === r.debate_id && i.member_code === code).map((i) => view(i, offices)),
-      concededToThem: items.filter((i) => i.debate_id === r.debate_id && i.kind === 'concession' && i.target_member === code).map((i) => view(i, offices)),
+      items: views(items.filter((i) => i.debate_id === r.debate_id && i.member_code === code), offices),
+      toThem: views(items.filter((i) => i.debate_id === r.debate_id && i.member_code !== code && i.target_member === code && (i.kind === 'concession' || i.kind === 'response')), offices),
     })),
   };
 }
