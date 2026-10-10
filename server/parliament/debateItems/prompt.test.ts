@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { debateItemKind } from '@shared/schema/parliament';
-import { PASSES, extractPrompt, parseItems } from './prompt';
+import { EXTRACTOR_VERSION, EXTRACTOR_VERSIONS, PASSES, extractPrompt, parseItems } from './prompt';
 import { labelSpeeches } from './windows';
 
 describe('parseItems', () => {
@@ -51,5 +51,12 @@ describe('extractPrompt', () => {
     expect(asked('facts')).toEqual(['specific_claim', 'question', 'commitment']);
     expect(asked('links')).toEqual(['response', 'concession']);
     expect(Object.values(PASSES).flat().sort()).toEqual([...debateItemKind.enumValues].sort());
+  });
+});
+
+describe('EXTRACTOR_VERSIONS', () => {
+  it('ends with the current version, so the record always prefers the newest read', () => {
+    expect(EXTRACTOR_VERSIONS[EXTRACTOR_VERSIONS.length - 1]).toBe(EXTRACTOR_VERSION);
+    expect(new Set(EXTRACTOR_VERSIONS).size).toBe(EXTRACTOR_VERSIONS.length);
   });
 });

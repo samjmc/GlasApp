@@ -155,4 +155,30 @@ run('debate record (real Postgres)', () => {
     ]);
     expect(await repo.tdDebateRecord(99999)).toBeNull();
   });
+
+  it("keeps a debate's older finished read until the new version reaches it, and never mixes versions", async () => {
+    const { EXTRACTOR_VERSIONS } = await import('../debateItems/prompt');
+    const previous = EXTRACTOR_VERSIONS[EXTRACTOR_VERSIONS.length - 2]!;
+    // UNREAD: the current version's read failed (a stopped run), but the previous version finished.
+    // DEBATE: both finished, so only the current version's items count.
+    await q(
+      `insert into politics.debate_extraction_runs (debate_id, extractor_version, input_hash, status, speeches, words, irish_speeches, calls, prompt_tokens, completion_tokens, accepted)
+       values ($1, $3, 'h', 'done', 2, 8, 0, 1, 1, 1, 1), ($2, $3, 'h', 'done', 3, 40, 0, 1, 1, 1, 1)`,
+      [UNREAD, DEBATE, previous],
+    );
+    for (const [speechId, member, quote] of [[`${UNREAD}/spk_1`, A, 'Words that were never'], [sp(1), A, 'Will the Minister act']]) {
+      await q(
+        `insert into politics.debate_items (speech_id, member_code, kind, claim_type, quote, quote_start, quote_end, extractor_version) values ($1, $2, 'specific_claim', 'figure', $3, 0, 1, $4)`,
+        [speechId, member, quote, previous],
+      );
+    }
+    expect(await repo.rebuildDebateRecord()).toEqual({ debates: 2, rows: 5 });
+    const claimsOf = async (debateId: string) =>
+      (await q('select member_code, claims from politics.debate_participation where debate_id = $1 order by member_code', [debateId])).rows;
+    // UNREAD counts its previous-version claim, not the current version's item from the failed run.
+    expect(await claimsOf(UNREAD)).toEqual([{ member_code: A, claims: 1 }, { member_code: C, claims: 0 }]);
+    expect((await repo.debateRecord(UNREAD))?.participants.find((p) => p.memberCode === A)?.items.map((i) => i.quote)).toEqual(['Words that were never']);
+    // DEBATE still counts only the current version's 4 claims.
+    expect((await claimsOf(DEBATE)).find((r) => r.member_code === A)).toEqual({ member_code: A, claims: 4 });
+  });
 });
