@@ -24,11 +24,22 @@ vi.mock('../auth/supabase', () => ({
       getUser: async (token: string) => {
         if (token === 'admin-token') return { data: { user: { id: 'admin-1', email: 'a@x.ie', app_metadata: { role: 'admin' }, user_metadata: {} } }, error: null };
         if (token === 'user-token') return { data: { user: { id: 'user-1', email: 'u@x.ie', app_metadata: {}, user_metadata: {} } }, error: null };
+        if (token === 'no-consent-token') return { data: { user: { id: 'user-2', email: 'n@x.ie', app_metadata: {}, user_metadata: {} } }, error: null };
         return { data: { user: null }, error: new Error('bad token') };
       },
     },
   },
   supabaseAdmin: {},
+}));
+
+// The real guard reads the database. Here user-2 is someone who never agreed to us keeping their opinions.
+vi.mock('../account/consent', () => ({
+  requirePoliticalConsent: (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    if (req.user?.id === 'user-2') {
+      return res.status(403).json({ success: false, error: { code: 'CONSENT_REQUIRED', message: 'consent needed' } });
+    }
+    next();
+  },
 }));
 
 vi.mock('./repository', () => {
@@ -180,5 +191,12 @@ describe('priorities', () => {
     const ok = await send('/api/pledges/priorities', { method: 'PUT', token: 'user-token', body: { ranking: ['health', 'housing'], userId: 'someone-else' } });
     expect(ok.status).toBe(200);
     expect(state.calls.at(-1)).toEqual({ fn: 'saveRanking', args: ['user-1', ['health', 'housing']] });
+  });
+
+  it('refuses to save a ranking until the user has agreed, and saves nothing', async () => {
+    const res = await send('/api/pledges/priorities', { method: 'PUT', token: 'no-consent-token', body: { ranking: ['health'] } });
+    expect(res.status).toBe(403);
+    expect(await res.json()).toMatchObject({ success: false, error: { code: 'CONSENT_REQUIRED' } });
+    expect(state.calls.some((c) => c.fn === 'saveRanking')).toBe(false);
   });
 });

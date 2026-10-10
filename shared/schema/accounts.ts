@@ -26,6 +26,10 @@ export const users = politics.table(
     phoneCodeExpiresAt: timestamp('phone_code_expires_at', { withTimezone: true }),
     /** Wrong guesses against the current code; it is burned at PHONE_CODE_MAX_ATTEMPTS. */
     phoneCodeAttempts: smallint('phone_code_attempts').notNull().default(0),
+    /** When the person agreed to us processing their political opinions (GDPR Art. 9(2)(a)); null = not given or withdrawn. */
+    politicalConsentAt: timestamp('political_consent_at', { withTimezone: true }),
+    /** The wording they agreed to (shared/consent.ts POLITICAL_CONSENT_VERSION). */
+    politicalConsentVersion: smallint('political_consent_version'),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },

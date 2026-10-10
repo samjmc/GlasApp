@@ -11,6 +11,7 @@ import { OfflineAlert } from "@/components/OfflineAlert";
 import { OfflineIndicator } from "@/components/OfflineIndicator";
 import { PWAInstallButton } from "@/components/PWAInstallButton";
 import CookieConsent from "@/components/CookieConsent";
+import { ConsentProvider } from "@/contexts/ConsentContext";
 import { RegionProvider } from "@/contexts/RegionContext";
 import { useRegion } from "@/hooks/useRegion";
 import { useDailySession } from "@/hooks/useDailySession";
@@ -184,12 +185,14 @@ function App() {
           <AuthProvider>
             <RegionProvider>
               <ToastContextProvider>
-                <OfflineIndicator />
-                <OfflineAlert />
-                <Router />
-                <PWAInstallButton />
-                <CookieConsent />
-                <Toaster />
+                <ConsentProvider>
+                  <OfflineIndicator />
+                  <OfflineAlert />
+                  <Router />
+                  <PWAInstallButton />
+                  <CookieConsent />
+                  <Toaster />
+                </ConsentProvider>
               </ToastContextProvider>
             </RegionProvider>
           </AuthProvider>

@@ -117,12 +117,12 @@ export default function PrivacyPolicyPage() {
               </thead>
               <tbody>
                 <tr>
-                  <td>Provide core platform services (quiz, rankings, profiles)</td>
+                  <td>Provide your account and sign-in</td>
                   <td>Contract Performance (Art. 6(1)(b))</td>
                 </tr>
                 <tr>
-                  <td>Personalized recommendations and insights</td>
-                  <td>Legitimate Interest (Art. 6(1)(f))</td>
+                  <td>Save your quiz answers, votes on daily questions and policy-area rankings, which show your political opinions, to show your results and match you with TDs and parties</td>
+                  <td>Explicit Consent (Art. 6(1)(a) and Art. 9(2)(a))</td>
                 </tr>
                 <tr>
                   <td>Send account notifications and updates</td>
@@ -145,7 +145,11 @@ export default function PrivacyPolicyPage() {
           </div>
 
           <p>
-            Quiz answers of signed-in users may also be analysed in aggregate, without identifying anyone, to check and improve the quiz questions. Results are never published per person.
+            Political opinions are special category data. We save your quiz answers, votes and rankings only after you agree, and we ask the first time you save one. If you do not agree you can still take the quiz and see your result, but we do not keep it. You can withdraw your agreement at any time in your <Link href="/profile">Profile Settings</Link>. Withdrawing deletes your saved quiz results, votes, rankings and the political profile built from them; it does not affect what we did before you withdrew.
+          </p>
+
+          <p>
+            With your agreement, quiz answers may also be analysed in aggregate, without identifying anyone, to check and improve the quiz questions. Results are never published per person.
           </p>
 
           <p className="font-semibold text-foreground">
@@ -250,6 +254,10 @@ export default function PrivacyPolicyPage() {
           <div>
             <p className="font-semibold text-foreground">Right to Data Portability (Art. 20)</p>
             <p>Export your data in JSON format (available in profile settings).</p>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground">Right to Withdraw Consent (Art. 7(3))</p>
+            <p>Withdraw your agreement to us keeping your political opinions at any time in profile settings. It is as easy to withdraw as to give, and withdrawing deletes that data.</p>
           </div>
           <div>
             <p className="font-semibold text-foreground">Right to Object (Art. 21)</p>

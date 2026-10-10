@@ -9,9 +9,11 @@
  *                        POST /questions/:questionId     { optionKey }
  *
  * Identity is always the verified token's user id; no route reads a user id from input.
+ * A vote shows a political opinion, so both vote routes need the user's consent (403 CONSENT_REQUIRED).
  */
 import { Router, type NextFunction, type Request, type RequestHandler, type Response } from 'express';
 import { z } from 'zod';
+import { requirePoliticalConsent } from '../account/consent';
 import { optionalAuth, requireAuth } from '../auth';
 import { publicWriteRateLimit } from '../middleware/rateLimit';
 import { OPTION_KEYS } from '@shared/voting';
@@ -65,6 +67,7 @@ dailySessionRouter.get(
 dailySessionRouter.post(
   '/items/:itemId/vote',
   requireAuth,
+  requirePoliticalConsent,
   publicWriteRateLimit,
   handle(async (req) => {
     const { optionKey } = voteBody.parse(req.body);
@@ -89,6 +92,7 @@ votesRouter.get(
 votesRouter.post(
   '/questions/:questionId',
   requireAuth,
+  requirePoliticalConsent,
   publicWriteRateLimit,
   handle(async (req) => {
     const { optionKey } = voteBody.parse(req.body);

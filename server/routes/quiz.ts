@@ -2,6 +2,7 @@
  * /api/quiz — take the quiz, read your history, ask the quiz assistant.
  * Every response is `{ success, data }` via formatSuccess.
  */
+import { hasPoliticalConsent } from '../account/consent';
 import { requireAuth } from '../auth';
 import { Router } from 'express';
 import type OpenAI from 'openai';
@@ -23,14 +24,19 @@ const submitSchema = z.object({
   seed: z.number().int().min(0).max(0xffffffff).optional(),
 });
 
-/** POST /api/quiz — score answers. Open to anonymous visitors; saved only when signed in. */
+/**
+ * POST /api/quiz — score answers. Open to anonymous visitors; saved only when signed in AND the
+ * user has consented to us keeping their political opinions. Without consent the answers are
+ * scored and returned like an anonymous quiz (`id: null`) and nothing is stored.
+ */
 router.post(
   '/',
   asyncHandler(async (req, res) => {
     const body = submitSchema.safeParse(req.body);
     if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid quiz answers', body.error.flatten()));
     try {
-      res.json(formatSuccess(await submitQuiz(req.user?.id ?? null, body.data.answers, body.data.seed)));
+      const saveFor = req.user && (await hasPoliticalConsent(req.user.id)) ? req.user.id : null;
+      res.json(formatSuccess(await submitQuiz(saveFor, body.data.answers, body.data.seed)));
     } catch (error) {
       if (error instanceof QuizInputError) return res.status(400).json(formatError('VALIDATION_ERROR', error.message));
       throw error;
