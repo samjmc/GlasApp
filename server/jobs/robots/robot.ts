@@ -129,8 +129,9 @@ export async function runRobot(world: World, robot: Robot, articleQuestions = 5)
     return expect(world, robot, what, reply, consents ? [200] : [403]) && reply.status === 200;
   };
 
+  // Opening today's session stores it, so without consent it is refused.
   const session = await call(world, robot, 'GET', '/api/daily-session');
-  if (expect(world, robot, 'daily session', session, [200])) {
+  if (expect(world, robot, 'daily session', session, consents ? [200] : [403]) && session.status === 200) {
     const items: Array<{ sessionItemId: number; questionId: number; hasVoted: boolean }> = session.body?.data?.items ?? [];
     if (items.length === 0) world.recorder.finding(`robot-${robot.n}: the daily session had no items`);
     for (const item of items) {

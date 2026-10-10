@@ -170,6 +170,32 @@ describe('createRateLimit', () => {
     });
   });
 
+  it('keys by user for votes, so many people on one network each get their own allowance', async () => {
+    const { publicWriteRateLimit, networkWriteRateLimit } = await import('./rateLimit');
+    const app = express();
+    app.set('trust proxy', 1);
+    // Stands in for requireAuth: the header names the signed-in user.
+    app.use((req, _res, next) => {
+      const id = req.header('x-user');
+      if (id) (req as express.Request & { user: unknown }).user = { id };
+      next();
+    });
+    app.post('/vote', publicWriteRateLimit, networkWriteRateLimit, (_req, res) => res.json({ ok: true }));
+    await withServer(app, async (base) => {
+      // 70 people behind one address, one vote each: well past the old 60-per-address cliff.
+      const statuses: number[] = [];
+      for (let i = 0; i < 70; i++) {
+        statuses.push((await fetch(`${base}/vote`, { method: 'POST', headers: json({ 'x-forwarded-for': '10.9.9.9', 'x-user': `u${i}` }) })).status);
+      }
+      assert.deepEqual([...new Set(statuses)], [200]);
+      // One person still stops at 60.
+      const mine: number[] = [];
+      for (let i = 0; i < 61; i++) mine.push((await fetch(`${base}/vote`, { method: 'POST', headers: json({ 'x-forwarded-for': '10.8.8.8', 'x-user': 'busy' }) })).status);
+      assert.equal(mine.filter((s) => s === 429).length, 1);
+      assert.equal(mine.at(-1), 429);
+    });
+  });
+
   it('keys buckets per client IP', async () => {
     await withServer(limitedApp(1), async (base) => {
       const first = await fetch(`${base}/x`, { method: 'POST', headers: json({ 'x-forwarded-for': '10.0.0.1' }) });

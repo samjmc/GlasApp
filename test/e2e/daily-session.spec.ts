@@ -114,6 +114,8 @@ class FakeDaily {
     await page.route('**/api/daily-session**', async (route) => {
       const request = route.request();
       const path = new URL(request.url()).pathname;
+      // As the server: nothing about the session is opened or stored without consent.
+      if (!this.consented) return route.fulfill({ status: 403, json: { success: false, error: { code: 'CONSENT_REQUIRED', message: 'consent needed' } } });
       if (request.method() === 'GET' && path === '/api/daily-session') {
         this.gets += 1;
         if (this.delayGetMs > 0) await new Promise((resolve) => setTimeout(resolve, this.delayGetMs));
@@ -239,30 +241,34 @@ test('a full session: intro, three answers, results, streak', async ({ page }) =
   await expect(page.getByText('+1 day locked in')).toBeVisible();
 });
 
-test('the first vote asks for agreement to keep political opinions, and sends nothing until it is given', async ({ page }) => {
+test('without agreement the daily vote asks first, and opens no session until it is given', async ({ page }) => {
   const api = new FakeDaily([item(1), item(2), item(3)], 0);
   api.consented = false;
   await open(page, api);
-  await page.getByRole('button', { name: 'Start', exact: true }).click();
-  await page.getByRole('button', { name: /^Vote on this/ }).click();
-  await page.getByRole('radio', { name: 'State answer' }).click();
-  await page.getByRole('button', { name: 'Save answer' }).click();
+
+  // Opening today's session stores it, so nothing is asked of the session routes yet.
+  await expect(page.getByRole('heading', { name: 'Agree to start your daily vote' })).toBeVisible();
+  expect(api.gets).toBe(0);
 
   const dialog = page.getByRole('dialog', { name: 'Can we keep your political opinions?' });
+  await page.getByRole('button', { name: 'Read and agree' }).click();
   await expect(dialog).toBeVisible();
-  expect(api.votes).toHaveLength(0);
 
-  // Saying no sends nothing and leaves the chosen answer on screen.
+  // Saying no stays here and sends nothing.
   await dialog.getByRole('button', { name: 'Not now' }).click();
   await expect(dialog).toBeHidden();
-  expect(api.votes).toHaveLength(0);
-  await expect(page.getByRole('radio', { name: 'State answer' })).toHaveAttribute('aria-checked', 'true');
+  await expect(page.getByRole('heading', { name: 'Agree to start your daily vote' })).toBeVisible();
+  expect(api.gets).toBe(0);
+  expect(api.consentPuts).toBe(0);
 
-  // Saying yes records it, and then the vote goes through.
-  await page.getByRole('button', { name: 'Save answer' }).click();
+  // Saying yes records it, the session opens, and the first vote goes through without asking again.
+  await page.getByRole('button', { name: 'Read and agree' }).click();
   await dialog.getByRole('button', { name: 'I agree' }).click();
-  await expect(page.getByRole('heading', { name: 'Headline 2' })).toBeVisible();
+  await page.getByRole('button', { name: 'Start', exact: true }).click();
   expect(api.consentPuts).toBe(1);
+  expect(api.gets).toBeGreaterThan(0);
+  await answerCurrent(page);
+  await expect(page.getByRole('heading', { name: 'Headline 2' })).toBeVisible();
   expect(api.votes).toHaveLength(1);
 });
 

@@ -10,12 +10,14 @@
  *
  * Identity is always the verified token's user id; no route reads a user id from input.
  * A vote shows a political opinion, so both vote routes need the user's consent (403 CONSENT_REQUIRED).
+ * So do opening and finishing the daily session: the session row stores the user's profile and
+ * area, and account erasure treats it as political data (server/account/deleteUserData.ts).
  */
 import { Router, type NextFunction, type Request, type RequestHandler, type Response } from 'express';
 import { z } from 'zod';
 import { requirePoliticalConsent } from '../account/consent';
 import { optionalAuth, requireAuth } from '../auth';
-import { publicWriteRateLimit } from '../middleware/rateLimit';
+import { networkWriteRateLimit, publicWriteRateLimit } from '../middleware/rateLimit';
 import { OPTION_KEYS } from '@shared/voting';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 import * as service from './service';
@@ -53,6 +55,7 @@ export const dailySessionRouter = Router();
 dailySessionRouter.get(
   '/',
   requireAuth,
+  requirePoliticalConsent,
   handle(async (req) => {
     const user = req.user!;
     // Location is a self-edited preference, so it lives in user_metadata.
@@ -69,6 +72,7 @@ dailySessionRouter.post(
   requireAuth,
   requirePoliticalConsent,
   publicWriteRateLimit,
+  networkWriteRateLimit,
   handle(async (req) => {
     const { optionKey } = voteBody.parse(req.body);
     return service.recordSessionVote(req.user!.id, idParam.parse(req.params.itemId), optionKey);
@@ -78,6 +82,7 @@ dailySessionRouter.post(
 dailySessionRouter.post(
   '/complete',
   requireAuth,
+  requirePoliticalConsent,
   handle(async (req) => service.completeSession(req.user!.id)),
 );
 
@@ -94,6 +99,7 @@ votesRouter.post(
   requireAuth,
   requirePoliticalConsent,
   publicWriteRateLimit,
+  networkWriteRateLimit,
   handle(async (req) => {
     const { optionKey } = voteBody.parse(req.body);
     return service.castArticleVote(req.user!.id, idParam.parse(req.params.questionId), optionKey);

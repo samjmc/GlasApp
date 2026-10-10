@@ -4,8 +4,8 @@ import { logger } from '../utils/logger';
 /**
  * Minimal in-process fixed-window rate limiter.
  *
- * Keyed by client IP (`req.ip`; `trust proxy` is set in server/index.ts so this
- * is the real client behind the Replit proxy). Only counts requests whose method
+ * Keyed by client IP by default (`req.ip`; `trust proxy` is set in server/index.ts so this
+ * is the real client behind the proxy), or by `key`. Only counts requests whose method
  * is in `methods` (default: everything except GET/HEAD/OPTIONS), so a limiter
  * mounted on a router that also serves public reads leaves the reads alone.
  *
@@ -23,7 +23,11 @@ export interface RateLimitOptions {
   name: string;
   /** HTTP methods that count. Default: every method except GET/HEAD/OPTIONS. */
   methods?: string[];
+  /** What a request is counted against. Default: the client IP. */
+  key?: (req: Request) => string;
 }
+
+const clientIp = (req: Request) => req.ip || req.socket?.remoteAddress || 'unknown';
 
 interface Bucket {
   count: number;
@@ -53,7 +57,7 @@ export function createRateLimit(options: RateLimitOptions): RequestHandler {
     if (!counts(req.method)) return next();
 
     const now = Date.now();
-    const key = req.ip || req.socket?.remoteAddress || 'unknown';
+    const key = (options.key ?? clientIp)(req);
     let bucket = buckets.get(key);
 
     if (!bucket || bucket.resetAt <= now) {
@@ -70,7 +74,7 @@ export function createRateLimit(options: RateLimitOptions): RequestHandler {
       const retryAfterSeconds = Math.max(1, Math.ceil((bucket.resetAt - now) / 1000));
       res.setHeader('Retry-After', String(retryAfterSeconds));
       logger.warn(
-        { limiter: name, route: `${req.method} ${req.path}`, ip: key, count: bucket.count, max },
+        { limiter: name, route: `${req.method} ${req.path}`, key, count: bucket.count, max },
         'Rate limit exceeded'
       );
       res.status(429).json({
@@ -93,9 +97,21 @@ export const aiRateLimit = createRateLimit({ windowMs: FIFTEEN_MINUTES, max: 30,
 /** Requests that can send a paid text message: 10 per IP per hour, on top of the per-user resend wait. */
 export const smsRateLimit = createRateLimit({ windowMs: 60 * 60 * 1000, max: 10, name: 'sms' });
 
-/** Anonymous public writes (e.g. TD ratings): 60 per IP per 15 minutes. */
+/**
+ * Votes: 60 per signed-in user per 15 minutes (per IP for a caller without a user). Per user, not
+ * per IP: a robot run (npm run robots) showed 10 people on one network could save only 60 votes
+ * between them, so an office, a school or a family would lose votes. Mount after requireAuth.
+ */
 export const publicWriteRateLimit = createRateLimit({
   windowMs: FIFTEEN_MINUTES,
   max: 60,
   name: 'public-write',
+  key: (req) => (req.user ? `user:${req.user.id}` : clientIp(req)),
+});
+
+/** The same writes per network: 600 per IP per 15 minutes, so many accounts on one address cannot flood. */
+export const networkWriteRateLimit = createRateLimit({
+  windowMs: FIFTEEN_MINUTES,
+  max: 600,
+  name: 'network-write',
 });
