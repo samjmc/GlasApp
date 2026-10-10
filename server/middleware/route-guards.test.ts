@@ -230,16 +230,6 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
     assert.equal((src.match(/router\.(post|put|patch|delete)\(/g) ?? []).length, 3);
   });
 
-  it('LLM mounts are rate limited', () => {
-    // /api/personalized-insights and /api/ratings were also limited here. The scoring
-    // rebuild deleted both routers, so the limiter has nothing left to protect on them.
-    const src = read('server/routes.ts');
-    for (const mount of ['/api/enhanced-profile']) {
-      const re = new RegExp(`app\\.use\\("${mount.replace(/\//g, '\\/')}",\\s*aiRateLimit,`);
-      assert.match(src, re, `${mount} is not behind aiRateLimit`);
-    }
-  });
-
   it('the unmounted fake-login router is gone', () => {
     assert.equal(fs.existsSync(path.join(REPO_ROOT, 'server/routes/session-auth/index.ts')), false);
   });

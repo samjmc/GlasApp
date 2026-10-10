@@ -1,11 +1,9 @@
 import { optionalAuth, requireAuth, requireJob } from './auth';
-import { aiRateLimit } from "./middleware/rateLimit";
 import { apiNotFound } from "./middleware/apiNotFound";
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { regionMiddleware } from "./middleware/regionMiddleware";
 import { registerAuthRoutes } from "./routes/auth";
-import aiAnalysisRoutes from "./routes/ai/analysis";
 import profileRoutes from "./routes/profileRoutes";
 import quizRoutes from "./routes/quiz";
 import ideologyRoutes from "./routes/ideology";
@@ -38,9 +36,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // The signed-in user's own profile. Accounts themselves live in Supabase Auth.
   app.use("/api/profile", profileRoutes);
-  
-  // Quiz analysis. LLM-backed and public by design; the limiter caps per-IP cost.
-  app.use("/api/enhanced-profile", aiRateLimit, aiAnalysisRoutes);
   
   // Party pledges and the evidence that decides their status
   app.use("/api/pledges", pledgesRouter);

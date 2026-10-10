@@ -49,8 +49,6 @@ test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem('cookie_consent', JSON.stringify({ essential: true, analytics: false, functional: false }));
   });
-  // The results page asks two LLM routes for write-ups. Never call a model from a test.
-  await page.route('**/api/enhanced-profile/**', (route) => route.fulfill({ json: { success: true, data: {} } }));
 });
 
 test('anonymous quiz: answers, scores and party matches agree with the API', async ({ page, request }) => {
