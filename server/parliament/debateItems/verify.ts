@@ -5,9 +5,10 @@
  * 2. The quote is 3–40 words, with no ellipsis, else `invalid`; and it is in that speech after
  *    normalising both (fadas, quote marks, dashes, case, spaces), else `quote_not_found`.
  * 3. A response or concession points to an EARLIER speech in the window, by ANOTHER member, else
- *    `bad_target`; a response's target quote is in that speech, else `target_quote_not_found`.
- * 4. A question has a question mark, else `not_a_question`; and names an office or someone who
- *    speaks in the window, else `unknown_addressee`.
+ *    `bad_target`. A response's target quote is kept when it is found in that speech (v3: it no
+ *    longer rejects the response, since only the reply's own words are shown).
+ * 4. A question's sentence ends with a question mark, else `not_a_question`; and names an office
+ *    or someone who speaks in the window, else `unknown_addressee`.
  * 5. A commitment is made by someone in government office that day, else `not_office_holder`.
  * 6. The same kind and quote twice in one speech is `duplicate`.
  * 7. Claims past MAX_CLAIMS_PER_SPEECH in one speech are `over_limit` (the model does not always
@@ -16,6 +17,7 @@
 import type { DebateClaimType, DebateItemKind } from '@shared/schema/parliament';
 import { normalise } from '../../stances/verify';
 import { MAX_CLAIMS_PER_SPEECH, QUOTE_MAX_WORDS, QUOTE_MIN_WORDS, type RawItem } from './prompt';
+import { sentenceAround } from './replies';
 import { isIrish, type DebateWindow, type LabelledSpeech } from './windows';
 
 export const REJECT_REASONS = [
@@ -23,7 +25,6 @@ export const REJECT_REASONS = [
   'context_speech',
   'quote_not_found',
   'bad_target',
-  'target_quote_not_found',
   'not_a_question',
   'unknown_addressee',
   'not_office_holder',
@@ -136,16 +137,16 @@ export function verifyItems(raw: RawItem[], window: DebateWindow, offices: Gover
         reject('bad_target');
         continue;
       }
+      // v3: the passage pointed to is kept when it is found and dropped when not. It is never shown
+      // (rules r2 show the reply's own words, which replies.ts checks name the target), so a
+      // mis-copied passage no longer costs a real reply.
       if (item.kind === 'response') {
         const t = item.targetQuote ? findQuote(target.text, item.targetQuote) : null;
-        if (!t) {
-          reject('target_quote_not_found');
-          continue;
-        }
-        targetQuote = target.text.slice(t.start, t.end);
+        targetQuote = t ? target.text.slice(t.start, t.end) : null;
       }
     }
-    if (item.kind === 'question' && !speech.text.slice(at.start, at.end + 2).includes('?')) {
+    // The question mark ends the sentence, which often runs on past the quote.
+    if (item.kind === 'question' && !sentenceAround(speech.text, at.start, at.end).includes('?')) {
       reject('not_a_question');
       continue;
     }

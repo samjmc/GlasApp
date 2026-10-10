@@ -341,3 +341,33 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   Lowry, Toole, Heneghan and Danny Healy-Rae were not in Opposition. Both Healy-Raes voted against
   the government on 2026-04-14 and count as opposition from that day. Mattie McGrath and Carol
   Nolan voted for the Taoiseach but gave no formal support, so they are not listed.
+
+## As built: the blind check and extractor v3 (2026-10-10)
+
+- **The check.** 20 random speeches from the argued debates (bill stages, motions, statements;
+  3 in Irish, 5 by ministers; 8,818 words) were marked blind by **two independent Claude agents**,
+  each seeing only the speeches and the kind definitions, never the extractor's output. Sam chose
+  this over marking himself. Code compared the marks: an item matches when kind and target agree
+  and the quotes overlap.
+- **The two markers agree 88–91%** (claims 92–96%, questions 100%, replies 75–86%, concessions
+  25–50%), so their shared marks are a fair reference.
+- **v2 against the items both markers found**: claims 86–88% right (precision) and 63–74% found
+  (recall: two runs of the same code gave 74% and 63%, so ±10 points is run-to-run noise on 20
+  speeches); questions 2–3 of 4 found; promises 1–2 of 6; replies 0 of 6; concessions 0 of 1.
+  Claims meet the plan's gate within that noise; the other kinds were precise but missed most items.
+- **Part 2, the 12 replies rules r2 keep**: 9 and 10 of 12 judged real take-ups by the two markers
+  (the rest a courtesy, a tribute or a general echo): about 80% precision.
+- **Why the misses**: replies were rarely listed at all, and one mis-copied earlier passage
+  rejected a real reply; a quote stopping before its sentence's "?" rejected real questions; and
+  the v2 commitment wording dropped "I will continue …" and "I will keep … under review".
+- **What did not work**, measured on the same local copy, so it is not tried again: one call
+  asking for every reply found fewer claims (22 of the markers' shared claims, against 29 for v2);
+  a stricter "named source" (names on their own are not claims) showed no gain beyond the
+  run-to-run noise, so v2's claim wording is kept.
+- **Extractor v3**: each window is read in **two passes** (facts: claims, questions, commitments;
+  links: replies, concessions) with v2's claim and question wording; a commitment includes
+  continuing or reviewing something; a question's sentence, not its quote, must end with "?"; a
+  mis-copied earlier passage no longer rejects a reply (r2 never shows it). On the same 18 debates
+  as v2: claims 1,459 against 1,514 (−4%), replies 659 against 140, commitments 94 against 74,
+  concessions 34 against 26, questions 175 against 180; claims and shown replies equally precise.
+  Cost 1.65 times v2's (two calls per window share the input).
