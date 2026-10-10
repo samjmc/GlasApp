@@ -15,12 +15,26 @@ describe('parseItems', () => {
     expect(out).toEqual({
       malformed: 0,
       items: [
-        { speech: 's2', kind: 'specific_claim', claimType: 'figure', quote: 'we hired 2,000 nurses', targetSpeech: null, targetQuote: null, addressee: null, due: null },
+        { speech: 's2', kind: 'specific_claim', claimType: 'figure', quote: 'we hired 2,000 nurses', targetSpeech: null, targetQuote: null, addressee: null, due: null, commitmentType: null },
         // A claim type on anything but a claim is dropped; a blank field is null.
-        { speech: 's3', kind: 'question', claimType: null, quote: 'Will the Minister act?', targetSpeech: null, targetQuote: null, addressee: 'the Minister', due: null },
-        { speech: 's3', kind: 'commitment', claimType: null, quote: 'I will publish the plan', targetSpeech: null, targetQuote: null, addressee: null, due: null },
+        { speech: 's3', kind: 'question', claimType: null, quote: 'Will the Minister act?', targetSpeech: null, targetQuote: null, addressee: 'the Minister', due: null, commitmentType: null },
+        { speech: 's3', kind: 'commitment', claimType: null, quote: 'I will publish the plan', targetSpeech: null, targetQuote: null, addressee: null, due: null, commitmentType: null },
       ],
     });
+  });
+
+  it('reads a commitment type on a commitment only, and treats an unknown type as none', () => {
+    const out = parseItems({
+      items: [
+        { speech: 's2', kind: 'commitment', quote: 'I will publish the plan', commitment_type: 'action' },
+        { speech: 's2', kind: 'commitment', quote: 'I will revert to the Deputy', commitment_type: 'follow_up' },
+        { speech: 's2', kind: 'commitment', quote: 'we will do all we can', commitment_type: 'general' },
+        { speech: 's2', kind: 'commitment', quote: 'I will look at it', commitment_type: 'Action!' },
+        { speech: 's2', kind: 'specific_claim', claim_type: 'figure', quote: 'we hired 2,000 nurses', commitment_type: 'action' },
+      ],
+    });
+    expect(out?.malformed).toBe(0);
+    expect(out?.items.map((i) => i.commitmentType)).toEqual(['action', 'follow_up', 'general', null, null]);
   });
 
   it('counts entries of the wrong shape, and rejects a reply that is not { items: [...] }', () => {

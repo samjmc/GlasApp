@@ -144,6 +144,14 @@ export type DebateItemKind = (typeof debateItemKind.enumValues)[number];
 export const debateClaimType = politics.enum('debate_claim_type', ['figure', 'named_source', 'cost', 'date']);
 export type DebateClaimType = (typeof debateClaimType.enumValues)[number];
 
+/**
+ * A commitment: a specific, checkable thing will be done (`action`); someone will reply, revert or
+ * meet (`follow_up`); or a general undertaking with nothing specific to check (`general`: "I will
+ * work as hard as possible", "we will continue to progress it"). Only `action` scores.
+ */
+export const commitmentType = politics.enum('commitment_type', ['action', 'follow_up', 'general']);
+export type CommitmentType = (typeof commitmentType.enumValues)[number];
+
 export const debateItems = politics.table(
   'debate_items',
   {
@@ -171,6 +179,8 @@ export const debateItems = politics.table(
     addressee: text('addressee'),
     /** A commitment: the time it gives, as said. */
     due: text('due'),
+    /** A commitment read from a question session (extractor q1); NULL for every debate item. */
+    commitmentType: commitmentType('commitment_type'),
     extractorVersion: varchar('extractor_version', { length: 20 }).notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
@@ -659,6 +669,81 @@ export const questionCounts = politics.table(
     n: integer('n').notNull(),
   },
   (t) => [primaryKey({ columns: [t.memberCode, t.month, t.department, t.questionType] }), index('question_counts_td_idx').on(t.tdId)],
+);
+
+// ---------------------------------------------------------------------------
+// Question sessions (docs/plans/question-sessions.md): who asked each oral PQ, the exchanges a
+// session splits into, and the record built from what ministers committed to in them.
+// ---------------------------------------------------------------------------
+
+/** Who asked each oral PQ, and the Official Report section it was answered in. From /questions. */
+export const questionAskers = politics.table(
+  'question_askers',
+  {
+    /** debate_sections.id: "dail-<date>-<debateSectionId>". Not a foreign key: days are re-read. */
+    sectionId: varchar('section_id', { length: 80 }).notNull(),
+    questionNumber: integer('question_number').notNull(),
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    date: date('date').notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.sectionId, t.questionNumber] }), index('question_askers_member_idx').on(t.memberCode), index('question_askers_date_idx').on(t.date)],
+);
+
+/**
+ * How an exchange was asked: an oral PQ (askers from /questions), a Topical Issue, Leaders'
+ * Questions, or a rapid session (Questions on Policy or Legislation, Promised Legislation).
+ */
+export const questionFormat = politics.enum('question_format', ['oral_pq', 'topical_issue', 'leaders_questions', 'rapid']);
+export type QuestionFormat = (typeof questionFormat.enumValues)[number];
+
+/**
+ * One asker's question and the answers to it: a span of one section's speeches. Derived from the
+ * speeches, the PQ askers and the offices, and rebuilt in full by every sync.
+ */
+export const questionExchanges = politics.table(
+  'question_exchanges',
+  {
+    /** "<section id>#<n>", n from 1 in record order. */
+    id: varchar('id', { length: 100 }).primaryKey(),
+    sectionId: varchar('section_id', { length: 80 }).notNull(),
+    format: questionFormat('format').notNull(),
+    date: date('date').notNull(),
+    /** Member codes of whoever asked; several for questions taken together. */
+    askers: jsonb('askers').$type<string[]>().notNull(),
+    /** debate_speeches.position of the first and last speech in the exchange. */
+    fromPosition: integer('from_position').notNull(),
+    toPosition: integer('to_position').notNull(),
+  },
+  (t) => [index('question_exchanges_section_idx').on(t.sectionId)],
+);
+
+/**
+ * Each member's part in each question exchange that has been read, and the points the
+ * published rules give it (server/parliament/questionItems/rules.ts). Derived like
+ * debate_participation; not part of the TD score.
+ */
+export const questionParticipation = politics.table(
+  'question_participation',
+  {
+    exchangeId: varchar('exchange_id', { length: 100 }).notNull(),
+    memberCode: varchar('member_code', { length: 120 }).notNull(),
+    tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
+    format: questionFormat('format').notNull(),
+    role: debateRole('role').notNull(),
+    asked: boolean('asked').notNull(),
+    /** An asker: `action` commitments a minister made in the exchange (scored once, across the House). */
+    secured: integer('secured').notNull(),
+    /** An asker: promises to reply or revert (shown, no points). */
+    followUps: integer('follow_ups').notNull(),
+    /** An office holder who answered in the exchange. */
+    answered: boolean('answered').notNull(),
+    /** An answerer: specific claims and `action` commitments in their answers (shown, never ranked). */
+    answerClaims: integer('answer_claims').notNull(),
+    answerCommitments: integer('answer_commitments').notNull(),
+    points: integer('points').notNull(),
+    rulesVersion: varchar('rules_version', { length: 20 }).notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.exchangeId, t.memberCode] }), index('question_participation_member_idx').on(t.memberCode), index('question_participation_td_idx').on(t.tdId)],
 );
 
 // ---------------------------------------------------------------------------

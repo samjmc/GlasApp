@@ -12,4 +12,5 @@ export { debateScores } from './metrics';
 export * as repository from './repository';
 export * as leaveWatch from './leaveWatch';
 export { extractDebates } from './debateItems/run';
+export { extractQuestions } from './questionItems/run';
 export { oireachtasVoteUrl, type DivisionContext, type DivisionRef, type DivisionVoteRecord } from './repo/divisions';

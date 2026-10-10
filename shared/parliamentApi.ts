@@ -377,6 +377,54 @@ export interface TdDebateRecord {
   recent: Array<{ debateId: string; title: string; kind: string; date: string; points: number; items: DebateItemView[]; toThem: DebateItemView[] }>;
 }
 
+// ---------------------------------------------------------------------------
+// Question record (docs/plans/question-sessions.md): what ministers committed to in reply to a
+// member's question. Code gives every point; not part of the TD score.
+// ---------------------------------------------------------------------------
+export type QuestionFormatName = 'oral_pq' | 'topical_issue' | 'leaders_questions' | 'rapid';
+
+export interface QuestionCommitmentView {
+  quote: string;
+  minister: string;
+  /** `action`: a specific, checkable thing will be done (scores); `follow_up` (a reply, a meeting) and `general` (nothing specific) are shown only. */
+  type: 'action' | 'follow_up' | 'general';
+  due: string | null;
+}
+
+/** GET /api/parliament/tds/:id/question-record. NULL data when the TD took part in no exchange read yet. */
+export interface TdQuestionRecord {
+  rulesVersion: string;
+  /** Whether the TD mostly answered (government office) or asked. */
+  role: 'office' | 'backbench';
+  /** Per format, never pooled; `perTen` only for oral PQs and Topical Issues, from enough exchanges. */
+  formats: Array<{
+    format: QuestionFormatName;
+    asked: number;
+    securedExchanges: number;
+    points: number;
+    followUps: number;
+    perTen: number | null;
+    cohortP75: number | null;
+    cohortSize: number;
+  }>;
+  /** An office holder's answers: shown, never scored or ranked. */
+  answers: { answered: number; withClaim: number; withCommitment: number } | null;
+  /** Exchanges they asked where a minister committed to something, newest first. */
+  recent: Array<{ exchangeId: string; sectionId: string; date: string; title: string; format: QuestionFormatName; points: number; commitments: QuestionCommitmentView[] }>;
+}
+
+/** GET /api/parliament/question-records/:sectionId. NULL data when no exchange of it has been read. */
+export interface QuestionRecordView {
+  sectionId: string;
+  rulesVersion: string;
+  format: QuestionFormatName;
+  exchanges: Array<{
+    exchangeId: string;
+    askers: Array<{ memberCode: string; tdId: number | null; name: string; points: number }>;
+    commitments: QuestionCommitmentView[];
+  }>;
+}
+
 export const LEADERBOARD_METRICS = ['attendance', 'participation', 'questions', 'committees'] as const;
 export type LeaderboardMetric = (typeof LEADERBOARD_METRICS)[number];
 

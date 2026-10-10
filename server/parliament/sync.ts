@@ -28,6 +28,7 @@ import { fetchGenders } from './sources/wikidata';
 import { attendancePct, committeeAttendancePct } from './metrics';
 import {
   countQuestions,
+  questionAskerRows,
   parseBill,
   parseDivision,
   parseRollCall,
@@ -63,7 +64,17 @@ export interface SyncOptions {
   log?: (line: string) => void;
 }
 
-export type SyncFeed = 'gender' | 'divisions' | 'debates' | 'committees' | 'bills' | 'debate-groups' | 'questions' | 'interests' | 'allowances';
+export type SyncFeed =
+  | 'gender'
+  | 'divisions'
+  | 'debates'
+  | 'committees'
+  | 'bills'
+  | 'debate-groups'
+  | 'questions'
+  | 'question-exchanges'
+  | 'interests'
+  | 'allowances';
 
 /** `failed*`: units that failed in THIS run (the stored map has every open failure). */
 export interface SyncSummary {
@@ -362,8 +373,10 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     questions.failedMonths = await ingestUnits('Questions', months, questionFailures, async (month) => {
       const from = month < dailStart ? dailStart : month;
       const end = monthEnd(month);
-      const raws = await client.questions(from, end > today ? today : end);
+      const to = end > today ? today : end;
+      const raws = await client.questions(from, to);
       await repo.replaceQuestionMonths([month], countQuestions(raws), tdIds);
+      await repo.replaceQuestionAskers(from, to, questionAskerRows(raws));
       questions.questions += raws.length;
     }, log);
     const through = resumePoint(options.since, state.throughDate, dailStart, today);
@@ -375,6 +388,14 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     );
     questionsThrough = through ?? state.throughDate;
     log(`Questions: ${questions.questions} in ${months.length} months.`);
+  });
+
+  // 6b. Question sessions, after the debates are grouped and the PQ askers stored: the exchanges,
+  //     then the question record from items already read (no model calls).
+  await feed('question-exchanges', async () => {
+    const x = await repo.rebuildQuestionExchanges();
+    const record = await repo.rebuildQuestionRecord();
+    log(`Question exchanges: ${x.exchanges} from ${x.sections} sections; question record: ${record.rows} rows.`);
   });
 
   // 7. Link and count. Other writers (the scoring cron) touch the same rows, so the

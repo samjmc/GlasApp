@@ -20,6 +20,7 @@ import { DivisionBar } from "@/components/pulse/VoteChip";
 import { Segmented } from "@/components/pulse/Segmented";
 import { EmptyState } from "@/components/pulse/EmptyState";
 import { DebateRecordPanel } from "@/components/DebateRecord";
+import { QuestionRecordPanel } from "@/components/QuestionRecord";
 import type {
   ParliamentStatus,
   DivisionSummary,
@@ -514,6 +515,7 @@ function DebatesSection() {
                         <>
                           <DebateSpeakers detail={detail} />
                           <DebateRecordPanel debateId={detail.debateId} />
+                          <QuestionRecordPanel sectionId={detail.id} />
                         </>
                       ) : detailError ? (
                         <LoadError title="Could not load this debate" onRetry={() => refetchDetail()} pending={detailFetching} />

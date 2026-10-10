@@ -172,3 +172,49 @@ One additive migration (the next free number, 0023 today): `question_askers`, `q
 - Q4: rules from array literals: across the House only, one per asker per exchange, `follow_up`
   never scores, kinds never pooled.
 - Integration on Docker Postgres with a fake model, as for the debate record.
+
+## As built (2026-10-10): option 1, commitments secured
+
+Sam chose option 1. Built as planned, with these differences and measurements.
+
+- **Q0** `parse.ts` `questionAskerRows` keeps (section, question number, asker) for every oral PQ
+  in `politics.question_askers`, written by the questions feed for the months it reads. A full
+  backfill needs one sync with `--since 2024-11-29` (3,831 askers on the local copy).
+- **Q1** `questionItems/exchanges.ts`, pure and tested from real speaker orders, and
+  `politics.question_exchanges`, rebuilt in a new sync step, `question-exchanges`, after the
+  questions feed. **Added after measuring**: a new exchange also needs a question of at least
+  `MIN_QUESTION_WORDS` (40) words. Without it the disorderly sitting of 2025-03-25 (dozens of
+  3- to 10-word interjections, each answered in a line) was 70 exchanges; with it, 8. Leaders'
+  Questions now split into 4 exchanges on 147 of 168 days, the usual four slots. All formats on the
+  local copy: 2,257 oral PQ exchanges (1.65 askers each), 742 Topical Issues, 660 Leaders'
+  Questions, 1,914 rapid.
+- **Q2** the debate runner became `extractUnits(config)`; `DEBATE_EXTRACTION` passes today's values
+  (its tests pass untouched) and `QUESTION_EXTRACTION` reads one window per exchange, no context.
+  Runs share `debate_extraction_runs`, keyed by exchange id under version `q1`, which the debate
+  record never reads (tested). Job `npm run questions:items`; nightly behind `QUESTION_ITEMS=on`.
+- **`commitment_type` has three values, not two.** The first 100-exchange pilot with
+  `action`/`follow_up` called about half of all undertakings actions, most of them general ("I will
+  work as hard as is humanely possible", "we will continue to progress it"), so 3 oral PQs in 4
+  looked like a commitment secured. `general` was added (shown, no points) and `action` made
+  strict: a specific thing someone could later check was done.
+- **The check (Q3)**, run by two independent Claude markers on 30 random pilot exchanges marked
+  blind, plus 50 of the extractor's commitments from the other 70 judged one by one:
+  - markers agree on 97 commitments (B against A: 85% precision, 97% recall);
+  - the extractor finds commitments 93% right (57 of 61) but only 58% of the shared ones; the
+    misses are mostly scheduled deliveries in prepared answers ("292 additional beds by 2028"),
+    which the prompt leaves out as descriptions of existing plans, and which both markers called
+    hard calls;
+  - on commitments all three found, action or not agrees 95% (53 of 56);
+  - **what scores, a specific commitment in the exchange or not: precision 91%, recall 67%** on
+    the 24 exchanges the markers agree on (just under the 70% recall target);
+  - part 2: 7 of the 10 "actions" both markers agreed on were actions; the misreadings were a
+    refusal ("I do not intend to … publish") and offers to circulate figures or analyse proposals,
+    now named in the prompt; a pilot re-run confirmed all three read correctly.
+- **Cost**: the pilot read 100 exchanges for $0.11; the whole term (5,573 exchanges, 5.9 M words)
+  projects to about **$5 off-peak, $10 peak**, more than the plan's $3–3.50 because answers are
+  dense in claims.
+- **Q4** `questionItems/rules.ts` (rules q1) and `politics.question_participation` (migration 0024
+  with the three tables and the `commitment_type` column), rebuilt after every read and every sync.
+- **Q5** a "Question record" card under the debate record on the TD profile, and a panel under
+  each question section on the Dáil record page; routes `GET /api/parliament/tds/:id/question-record`
+  and `GET /api/parliament/question-records/:sectionId`.

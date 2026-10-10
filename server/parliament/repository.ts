@@ -57,6 +57,7 @@ export * from './repo/divisions';
 export * from './repo/debates';
 export * from './repo/debateItems';
 export * from './repo/debateRecord';
+export * from './repo/questionRecord';
 
 /** The byParty group for voters who are not in `tds`. */
 export const NOT_IN_ROSTER = 'Not in current roster';

@@ -498,13 +498,43 @@ export function parseBill(raw: RawBill): ParsedBill | null {
 }
 
 // ---------------------------------------------------------------------------
-// Questions (/questions): counted, not stored.
+// Questions (/questions): counted; for oral PQs, who asked in which section is also kept.
 // ---------------------------------------------------------------------------
 export interface RawQuestion {
   date?: string | null;
   questionType?: string | null;
+  questionNumber?: number | null;
   by?: { memberCode?: string | null } | null;
   to?: { showAs?: string | null } | null;
+  /** The Official Report section an oral PQ was answered in ("dbsect_14"); none for a written one. */
+  debateSection?: { debateSectionId?: string | null } | null;
+}
+
+export interface QuestionAskerRow {
+  sectionId: string;
+  questionNumber: number;
+  memberCode: string;
+  date: string;
+}
+
+/**
+ * Pure: who asked each oral PQ answered in the Dáil, keyed by its debate section
+ * ("dail-<date>-<debateSectionId>", the same id as debate_sections). Questions taken together
+ * share a section, so a section can have several askers. Written questions and any question
+ * missing a field are skipped.
+ */
+export function questionAskerRows(raws: RawQuestion[]): QuestionAskerRow[] {
+  const rows = new Map<string, QuestionAskerRow>();
+  for (const q of raws) {
+    const day = isoDay(q.date);
+    const code = q.by?.memberCode?.normalize('NFC');
+    const section = q.debateSection?.debateSectionId?.trim();
+    const n = q.questionNumber;
+    if (q.questionType !== 'oral' || !day || !code || !section || typeof n !== 'number') continue;
+    const sectionId = `dail-${day}-${section}`;
+    rows.set(`${sectionId}\u0000${n}`, { sectionId, questionNumber: n, memberCode: code, date: day });
+  }
+  return Array.from(rows.values());
 }
 
 export interface QuestionCountRow {
