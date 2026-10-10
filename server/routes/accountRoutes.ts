@@ -5,7 +5,9 @@ import { z } from 'zod';
 import { POLITICAL_CONSENT_VERSION } from '@shared/consent';
 import { grantPoliticalConsent, withdrawPoliticalConsent } from '../account/consent';
 import { deleteUserData } from '../account/deleteUserData';
+import { exportUserData } from '../account/exportUserData';
 import { removeProfileImages } from '../account/profileImages';
+import { exportRateLimit } from '../middleware/rateLimit';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 import { requestLogger } from '../utils/logger';
 
@@ -40,6 +42,21 @@ router.delete('/', requireAuth, async (req, res) => {
   }
 
   return res.json(formatSuccess({ deleted }));
+});
+
+/**
+ * GET /api/account/export — a copy of everything GlasApp holds about the caller (GDPR Art. 15 and
+ * 20), as the `{ success, data }` envelope; the page saves `data` as a JSON file. Never cached.
+ */
+router.get('/export', requireAuth, exportRateLimit, async (req, res) => {
+  try {
+    const data = await exportUserData(req.user!.id, { email: req.user!.email });
+    res.setHeader('Cache-Control', 'no-store');
+    return res.json(formatSuccess(data));
+  } catch (error) {
+    requestLogger(req).error({ err: error }, 'Data export failed');
+    return res.status(500).json(formatError('INTERNAL_ERROR', 'Could not prepare your data. Please try again.'));
+  }
 });
 
 /**

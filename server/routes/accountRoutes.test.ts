@@ -1,6 +1,7 @@
 /**
  * DELETE /api/account: data first, sign-in second, and a data failure keeps the sign-in.
  * PUT/DELETE /api/account/consent/political: the Art. 9 consent record.
+ * GET /api/account/export: a copy of the caller's data.
  */
 import type { AddressInfo } from 'node:net';
 import express from 'express';
@@ -16,7 +17,7 @@ const calls = vi.hoisted(() => ({ order: [] as string[], dataFails: false, authF
 vi.mock('../auth', () => ({
   requireAuth: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (req.headers.authorization !== 'Bearer ok') return res.status(401).json({ success: false });
-    (req as unknown as { user: { id: string } }).user = { id: 'user-1' };
+    (req as unknown as { user: { id: string; email: string } }).user = { id: 'user-1', email: 'u@example.ie' };
     next();
   },
 }));
@@ -46,6 +47,14 @@ vi.mock('../account/consent', () => ({
   }),
 }));
 
+vi.mock('../account/exportUserData', () => ({
+  exportUserData: vi.fn(async (id: string, identity: { email: string | null }) => {
+    calls.order.push(`export:${id}:${identity.email}`);
+    if (calls.dataFails) throw new Error('db down');
+    return { format: 1, exportedAt: '2026-10-10T12:00:00.000Z', account: { id, email: identity.email }, quizResults: [], votes: [] };
+  }),
+}));
+
 vi.mock('../account/profileImages', () => ({
   removeProfileImages: vi.fn(async (id: string) => {
     calls.order.push(`images:${id}`);
@@ -66,7 +75,7 @@ async function send(method: string, path: string, auth?: string, body?: unknown)
       headers: { ...(auth ? { authorization: auth } : {}), ...(body === undefined ? {} : { 'content-type': 'application/json' }) },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
-    return { status: res.status, body: await res.json() };
+    return { status: res.status, body: await res.json(), headers: res.headers };
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
   }
@@ -110,6 +119,30 @@ describe('DELETE /api/account', () => {
   it('needs a signed-in caller', async () => {
     expect((await del()).status).toBe(401);
     expect(calls.order).toEqual([]);
+  });
+});
+
+describe('GET /api/account/export', () => {
+  const PATH = '/api/account/export';
+
+  it("returns the caller's data in the envelope, for the caller's own id and email, and is never cached", async () => {
+    const { status, body, headers } = await send('GET', PATH, 'Bearer ok');
+    expect(status).toBe(200);
+    expect(headers.get('cache-control')).toBe('no-store');
+    expect(calls.order).toEqual(['export:user-1:u@example.ie']);
+    expect(body).toEqual({ success: true, data: expect.objectContaining({ format: 1, account: { id: 'user-1', email: 'u@example.ie' } }) });
+  });
+
+  it('needs a signed-in caller and reads nothing without one', async () => {
+    expect((await send('GET', PATH)).status).toBe(401);
+    expect(calls.order).toEqual([]);
+  });
+
+  it('answers 500, not an empty file, when the database fails', async () => {
+    calls.dataFails = true;
+    const { status, body } = await send('GET', PATH, 'Bearer ok');
+    expect(status).toBe(500);
+    expect(body).toMatchObject({ success: false, error: { code: 'INTERNAL_ERROR' } });
   });
 });
 

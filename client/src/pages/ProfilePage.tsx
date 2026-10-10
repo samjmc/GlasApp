@@ -6,7 +6,8 @@ import { useTheme, type ThemeChoice } from '@/contexts/ThemeContext';
 import { useRegion } from '@/hooks/useRegion';
 import { REGION_LIST } from '@shared/region-config';
 import { useQuery } from '@tanstack/react-query';
-import { apiUpload } from '@/lib/queryClient';
+import { apiRequest, apiUpload } from '@/lib/queryClient';
+import { downloadJson } from '@/lib/downloadJson';
 import { supabase } from '@/lib/supabase';
 import { fetchMyQuizResults } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
@@ -62,6 +63,20 @@ const ProfilePage = () => {
   const [isSavingProfile, setIsSavingProfile] = useState(false);
   const { granted: consentGranted, grant: grantConsent, withdraw: withdrawConsent } = usePoliticalConsent();
   const [isChangingConsent, setIsChangingConsent] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
+
+  const handleExport = async () => {
+    setIsExporting(true);
+    try {
+      const { data } = await apiRequest<{ success: true; data: unknown }>({ method: 'GET', path: '/api/account/export' });
+      downloadJson(`glas-politics-data-${new Date().toISOString().slice(0, 10)}.json`, data);
+      toast({ title: 'Your data is ready', description: 'The file was saved to your device.' });
+    } catch {
+      toast({ title: 'Could not prepare your data', description: 'Please try again in a moment.', variant: 'destructive' });
+    } finally {
+      setIsExporting(false);
+    }
+  };
 
   const changeConsent = async (change: 'grant' | 'withdraw') => {
     setIsChangingConsent(true);
@@ -459,6 +474,21 @@ const ProfilePage = () => {
             </CardFooter>
           </Card>
 
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl sm:text-2xl">Your data</CardTitle>
+              <CardDescription>
+                A copy of everything Glas Politics holds about you: your profile, quiz results, votes, rankings and daily sessions, as one JSON file.
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="justify-end">
+              <Button variant="secondary" onClick={handleExport} disabled={isExporting} aria-busy={isExporting}>
+                {isExporting && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                {isExporting ? 'Preparing…' : 'Download my data'}
+              </Button>
+            </CardFooter>
+          </Card>
+
           <Card className="border-warn/50">
             <CardHeader>
               <CardTitle className="text-warn">Delete account &amp; data</CardTitle>
@@ -479,7 +509,7 @@ const ProfilePage = () => {
             </CardContent>
             <CardFooter className="flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
               <div className="text-sm text-muted-foreground">
-                Need a copy of your data first? Contact{' '}
+                Need a copy of your data first? Use “Download my data” above, or contact{' '}
                 <a href="mailto:privacy@glaspolitics.ie" className="text-primary underline">
                   privacy@glaspolitics.ie
                 </a>
