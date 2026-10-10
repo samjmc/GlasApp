@@ -15,8 +15,11 @@
  * call an LLM, and they refuse to run without one:
  *
  *   npm run stances -- --divisions --dry-run [--limit 20] [--window D]   model: read, print, write nothing
- *   npm run stances -- --divisions [--limit N]                           model: readings → division_readings
- *   npm run stances -- --divisions --reclassify [--limit N]              model: … and re-read stale, re-match matched
+ *   npm run stances -- --divisions [--limit N] [--window D]              model: readings → division_readings
+ *   npm run stances -- --divisions --reclassify [--limit N] [--window D] model: … and re-read stale, re-match matched
+ *
+ * --window D is how many days either side of a vote a daily-vote question may be dated and still
+ * count as a candidate (default 60, MATCH_WINDOW_DAYS). The nightly run never passes it.
  *   npm run stances -- --divisions --audit                               the matches vs the lobbies; every match listed
  *   npm run stances -- --divisions --sync                                readings → td_stances (PUBLIC), evidence, profiles
  */
@@ -43,7 +46,7 @@ import { oireachtasVoteUrl } from '../parliament';
 
 const DEFAULT_DAYS = 180;
 const USAGE =
-  'Usage: npm run stances -- --rebuild [--days 180] [--dry-run] | --divisions [--dry-run [--window D]] [--reclassify] [--limit N] | --divisions --audit | --divisions --sync';
+  'Usage: npm run stances -- --rebuild [--days 180] [--dry-run] | --divisions [--dry-run] [--window D] [--reclassify] [--limit N] | --divisions --audit | --divisions --sync';
 
 export function parseArgs(argv: string[]): { days: number; dryRun: boolean } {
   if (!argv.includes('--rebuild')) throw new Error(USAGE);
@@ -97,7 +100,6 @@ export function parseDivisionArgs(argv: string[]): DivisionArgs {
     return { mode: 'sync' };
   }
   const dryRun = has('--dry-run');
-  if (!dryRun) only(['--window'], '--dry-run');
   return { mode: 'classify', dryRun, reclassify: has('--reclassify'), limit: count('--limit') ?? (dryRun ? DRY_RUN_LIMIT : null), windowDays: count('--window') };
 }
 

@@ -72,6 +72,7 @@ describe('npm run stances -- --divisions: arguments', () => {
     // A dry run defaults to 20 divisions, so a forgotten --limit cannot spend a whole backfill.
     expect(parseDivisionArgs(['--divisions', '--dry-run'])).toEqual({ mode: 'classify', dryRun: true, reclassify: false, limit: 20, windowDays: null });
     expect(parseDivisionArgs(['--divisions', '--dry-run', '--limit', '5', '--window', '365'])).toEqual({ mode: 'classify', dryRun: true, reclassify: false, limit: 5, windowDays: 365 });
+    expect(parseDivisionArgs(['--divisions', '--window', '365'])).toEqual({ mode: 'classify', dryRun: false, reclassify: false, limit: null, windowDays: 365 });
     expect(parseDivisionArgs(['--divisions', '--reclassify', '--limit', '40'])).toEqual({ mode: 'classify', dryRun: false, reclassify: true, limit: 40, windowDays: null });
     expect(parseDivisionArgs(['--divisions', '--audit'])).toEqual({ mode: 'audit' });
     expect(parseDivisionArgs(['--divisions', '--sync'])).toEqual({ mode: 'sync' });
@@ -85,7 +86,12 @@ describe('npm run stances -- --divisions: arguments', () => {
   });
 
   it('keeps each flag to its mode', () => {
-    expect(() => parseDivisionArgs(['--divisions', '--window', '365'])).toThrow(/--window goes only with --dry-run/);
+    // The window changes which questions a division is matched to, so it goes with reading, never with audit or sync.
+    expect(() => parseDivisionArgs(['--divisions', '--audit', '--window', '365'])).toThrow(/--window goes only with reading divisions/);
+    expect(() => parseDivisionArgs(['--divisions', '--sync', '--window', '365'])).toThrow(/--window goes only with reading divisions/);
+    for (const bad of ['0', '-5', '1.5', 'abc']) {
+      expect(() => parseDivisionArgs(['--divisions', '--window', bad])).toThrow(/--window needs a positive whole number/);
+    }
     expect(() => parseDivisionArgs(['--divisions', '--audit', '--sync'])).toThrow(/one of/);
     expect(() => parseDivisionArgs(['--divisions', '--sync', '--limit', '5'])).toThrow(/only with/);
     expect(() => parseDivisionArgs(['--divisions', '--audit', '--dry-run'])).toThrow(/only with/);
@@ -135,6 +141,12 @@ describe('npm run stances -- --divisions: what each mode runs', () => {
   it('--divisions reads and stores, but writes no stance', async () => {
     await runDivisions(['--divisions', '--reclassify'], log);
     expect(stances.classifyDivisions).toHaveBeenCalledWith({ limit: null, dryRun: false, reclassify: true, windowDays: undefined });
+    expect(stances.syncDivisionStances).not.toHaveBeenCalled();
+  });
+
+  it('--divisions --window passes the window to a real run', async () => {
+    await runDivisions(['--divisions', '--window', '365'], log);
+    expect(stances.classifyDivisions).toHaveBeenCalledWith({ limit: null, dryRun: false, reclassify: false, windowDays: 365 });
     expect(stances.syncDivisionStances).not.toHaveBeenCalled();
   });
 
