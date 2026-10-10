@@ -67,7 +67,8 @@ export default function PrivacyPolicyPage() {
           <li>Political quiz responses and results</li>
           <li>Political dimension scores (economic, social, environmental, etc.)</li>
           <li>Party matching preferences</li>
-          <li>Saved TD (Teachta Dála) rankings and ratings</li>
+          <li>Your answers to daily and article policy questions</li>
+          <li>Your ranking of the policy areas that matter most to you</li>
           <li>Personal political profile history</li>
         </ul>
 
