@@ -22,7 +22,6 @@ const GUARDS = ['requireAuth', 'requireAdmin', 'requireJob', 'optionalAuth'];
  */
 const PUBLIC_WRITES: Array<{ file: string; path: string; why: string }> = [
   { file: 'quiz.ts', path: '/', why: 'anonymous visitors can take the quiz; saved only for a signed-in user' },
-  { file: 'quiz.ts', path: '/assistant', why: 'public quiz assistant; rate limited' },
   { file: 'ideology.ts', path: '/matches', why: 'POST only because the position is a body; it computes and writes nothing' },
   { file: 'ai/analysis.ts', path: '/complete-analysis', why: 'public quiz analysis; rate limited' },
   { file: 'ai/analysis.ts', path: '/context-analysis', why: 'public quiz analysis; rate limited' },
