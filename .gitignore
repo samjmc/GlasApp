@@ -12,6 +12,9 @@ vite.config.ts.*
 .env.production
 .env.test
 
+# Deploy: the operator's real variables (deploy/glasapp.env.example is the committed template)
+deploy/glasapp.env
+
 # Backup files
 *.bak
 *.old

@@ -243,29 +243,16 @@ npm run start            # Run production server
 
 ## 🌐 Deployment
 
-### Recommended Platforms
+GlasApp ships as one Docker image (`Dockerfile`) with a Compose file and an optional Caddy
+HTTPS proxy in `deploy/`. Run a single instance only: rate limits, caches and locks live in
+process memory, so it does not run on serverless platforms.
 
-- **Vercel** (easiest) - Zero config deployment
-- **Railway** - Full-stack deployment
-- **Fly.io** - Global edge deployment
-- **Render** - Free tier available
+The full runbook is [docs/deploy.md](docs/deploy.md): build, first boot with
+`SCHEDULER=off`, environment variable names, Supabase settings, manual migrations, and
+when to turn the crons on.
 
-### Environment Variables
-
-Make sure to set all required environment variables in your deployment platform:
-- Copy from `.env`
-- Set `NODE_ENV=production`
-- Use production API keys
-- Enable HTTPS
-
-### Build Command
 ```bash
-npm run build
-```
-
-### Start Command
-```bash
-npm start
+docker compose --env-file deploy/glasapp.env -f deploy/compose.yml up -d --build
 ```
 
 ---

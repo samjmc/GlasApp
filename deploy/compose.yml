@@ -1,0 +1,65 @@
+# GlasApp on one Docker host. See docs/deploy.md.
+#
+#   docker compose --env-file deploy/glasapp.env -f deploy/compose.yml up -d --build
+#   docker compose --env-file deploy/glasapp.env -f deploy/compose.yml --profile proxy up -d --build
+#
+# deploy/glasapp.env is created by the operator (copy deploy/glasapp.env.example) and is
+# git-ignored. Always pass it with --env-file as well: compose reads it for the ${...}
+# values below (build arguments, SCHEDULER, SITE_DOMAIN), and `env_file` hands the same
+# variables to the container.
+#
+# Run ONE instance only. Rate limits, caches and locks live in process memory.
+
+services:
+  app:
+    image: glasapp:latest
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      args:
+        # Baked into the client bundle at build time. The anon key is public by design.
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:-}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:?set VITE_SUPABASE_ANON_KEY in deploy/glasapp.env}
+    env_file: ./glasapp.env
+    environment:
+      # Crons stay off until the first boot has been checked. Set SCHEDULER=on in
+      # deploy/glasapp.env to turn them on (docs/deploy.md, "Turning the crons on").
+      SCHEDULER: ${SCHEDULER:-off}
+    init: true
+    restart: unless-stopped
+    # Loopback only: reach it from the host, or through the proxy profile below.
+    ports:
+      - "127.0.0.1:5000:5000"
+    volumes:
+      # Profile pictures. The app also serves public/assets from the image.
+      - uploads:/app/public/uploads
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:5000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 30s
+      timeout: 5s
+      start_period: 40s
+      retries: 3
+
+  # HTTPS in front of the app. Off unless you pass --profile proxy.
+  # One proxy only: the app trusts exactly one hop of X-Forwarded-For.
+  caddy:
+    profiles: ["proxy"]
+    image: caddy:2
+    restart: unless-stopped
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:-glas.example.com}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      app:
+        condition: service_healthy
+
+volumes:
+  uploads:
+  caddy_data:
+  caddy_config:
