@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ProposalBlock, MatchReply, MeaningReply } from './divisionPrompt';
-import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, verifyMatch, verifyMeaning } from './divisionVerify';
+import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, figuresIn, verifyMatch, verifyMeaning } from './divisionVerify';
 
 const MOTION =
   'That Dáil Éireann calls on the Government to build fifty thousand public homes every year on public land, and to end the use of tax reliefs for investment funds.';
@@ -99,30 +99,58 @@ describe('verifyMeaning', () => {
   });
 });
 
+describe('figuresIn', () => {
+  it('reads each number without its thousands separators, and none from words', () => {
+    expect(figuresIn('raise the relief to €50,000 from €30,000')).toEqual(['50000', '30000']);
+    expect(figuresIn('from 5 per cent to 10 per cent, 1.5 million homes by 2030.')).toEqual(['5', '10', '1.5', '2030']);
+    expect(figuresIn('build fifty thousand homes')).toEqual([]);
+  });
+});
+
 describe('verifyMatch', () => {
   const candidates = [
     { id: 7, options: [{ key: 'option_a' }, { key: 'option_b' }, { key: 'option_c' }] },
     { id: 9, options: [{ key: 'option_a' }, { key: 'option_b' }] },
   ];
   const match = (over: Partial<MatchReply> = {}): MatchReply => ({ questionId: 7, taOption: 'option_a', nilOption: 'option_b', confidence: 0.8, reason: 'r', ...over });
+  const PROPOSAL = 'Financial Resolution No. 1 raises the maximum relief from €30,000 to €35,000. A Tá vote supported raising the relief.';
 
   it('a candidate that was sent, with its own keys, at 0.7 or more, is a match', () => {
-    expect(verifyMatch(match(), candidates)).toEqual({ status: 'matched', questionId: 7, taOption: 'option_a', nilOption: 'option_b', confidence: 0.8, reason: 'r' });
-    expect(verifyMatch(match({ nilOption: null, confidence: MIN_MATCH_CONFIDENCE }), candidates)).toMatchObject({ status: 'matched', nilOption: null });
+    expect(verifyMatch(match(), candidates, PROPOSAL)).toEqual({ status: 'matched', questionId: 7, taOption: 'option_a', nilOption: 'option_b', confidence: 0.8, reason: 'r' });
+    expect(verifyMatch(match({ nilOption: null, confidence: MIN_MATCH_CONFIDENCE }), candidates, PROPOSAL)).toMatchObject({ status: 'matched', nilOption: null });
   });
 
   it('no question, or below 0.7, is no_match', () => {
-    expect(verifyMatch(match({ questionId: null, taOption: null, nilOption: null }), candidates)).toEqual({ status: 'no_match' });
-    expect(verifyMatch(match({ confidence: 0.69 }), candidates)).toEqual({ status: 'no_match' });
+    expect(verifyMatch(match({ questionId: null, taOption: null, nilOption: null }), candidates, PROPOSAL)).toEqual({ status: 'no_match' });
+    expect(verifyMatch(match({ confidence: 0.69 }), candidates, PROPOSAL)).toEqual({ status: 'no_match' });
   });
 
   it('a question not sent, an unknown key, Tá = Níl, or Níl without Tá rejects the whole match', () => {
     const invalid = { status: 'rejected', reason: 'invalid' };
-    expect(verifyMatch(match({ questionId: 8 }), candidates)).toEqual(invalid);
-    expect(verifyMatch(match({ taOption: 'option_z' }), candidates)).toEqual(invalid);
-    expect(verifyMatch(match({ questionId: 9, taOption: 'option_c', nilOption: null }), candidates)).toEqual(invalid);
-    expect(verifyMatch(match({ nilOption: 'option_z' }), candidates)).toEqual(invalid);
-    expect(verifyMatch(match({ nilOption: 'option_a' }), candidates)).toEqual(invalid);
-    expect(verifyMatch(match({ taOption: null }), candidates)).toEqual(invalid);
+    expect(verifyMatch(match({ questionId: 8 }), candidates, PROPOSAL)).toEqual(invalid);
+    expect(verifyMatch(match({ taOption: 'option_z' }), candidates, PROPOSAL)).toEqual(invalid);
+    expect(verifyMatch(match({ questionId: 9, taOption: 'option_c', nilOption: null }), candidates, PROPOSAL)).toEqual(invalid);
+    expect(verifyMatch(match({ nilOption: 'option_z' }), candidates, PROPOSAL)).toEqual(invalid);
+    expect(verifyMatch(match({ nilOption: 'option_a' }), candidates, PROPOSAL)).toEqual(invalid);
+    expect(verifyMatch(match({ taOption: null }), candidates, PROPOSAL)).toEqual(invalid);
+  });
+
+  describe('an answer may not name a figure the vote does not', () => {
+    const labelled = (label: string) => [{ id: 7, options: [{ key: 'option_a', label }, { key: 'option_b', label: 'Leave the relief as it is' }] }];
+
+    it('refuses "€50,000" when the proposal says €35,000, and lists the figure', () => {
+      const answer = labelled('Raise the Help to Buy tax refund threshold to €50,000 to boost first-time buyers.');
+      expect(verifyMatch(match({ nilOption: null }), answer, PROPOSAL)).toEqual({ status: 'no_match', overstated: ['50000'] });
+    });
+
+    it('accepts a figure the proposal does name, however it is written', () => {
+      expect(verifyMatch(match({ nilOption: null }), labelled('Raise the relief to €35,000.'), PROPOSAL)).toMatchObject({ status: 'matched' });
+      expect(verifyMatch(match({ nilOption: null }), labelled('Raise the relief to 35000 euro.'), PROPOSAL)).toMatchObject({ status: 'matched' });
+    });
+
+    it('checks the Tá answer only, and an answer with no figure is never refused', () => {
+      const answer = [{ id: 7, options: [{ key: 'option_a', label: 'Raise the relief.' }, { key: 'option_b', label: 'Keep it at €99,999' }] }];
+      expect(verifyMatch(match(), answer, PROPOSAL)).toMatchObject({ status: 'matched' });
+    });
   });
 });

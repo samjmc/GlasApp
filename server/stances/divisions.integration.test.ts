@@ -53,6 +53,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
   let stancesRepo: typeof import('./repository');
   let voting: typeof import('../voting/service');
   let MEANING_SYSTEM_PROMPT: string;
+  let MATCH_PROMPT_VERSION: number;
   let nextArticle = 5000;
   let nextSection = 1;
 
@@ -159,7 +160,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
     ideologyRepo = await import('../ideology/repository');
     stancesRepo = await import('./repository');
     voting = await import('../voting/service');
-    MEANING_SYSTEM_PROMPT = (await import('./divisionPrompt')).MEANING_SYSTEM_PROMPT;
+    ({ MEANING_SYSTEM_PROMPT, MATCH_PROMPT_VERSION } = await import('./divisionPrompt'));
   }, 60_000);
 
   beforeEach(async () => {
@@ -244,7 +245,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
           completion_tokens: 40,
           attempts: 0,
           meaning_prompt_version: 1,
-          match_prompt_version: 1,
+          match_prompt_version: MATCH_PROMPT_VERSION,
         }),
       ]);
 
@@ -603,6 +604,29 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
     });
   });
 
+  describe('an answer that says more than the vote', () => {
+    it('is no match when it names a figure the proposal does not, and the reading keeps why', async () => {
+      const question = await addQuestion('housing', '2026-09-25T09:00:00Z');
+      // The vote's words and meaning name no figure; this answer names one.
+      await q("update politics.policy_question_options set label = 'Build 100,000 public homes a year' where question_id = $1 and option_key = 'option_a'", [question]);
+      const d1 = await addDivision('2026-09-24', 1);
+      const model = stub();
+      expect(await classify(model.complete)).toMatchObject({ calls: 2, statuses: { no_match: 1, matched: 0 } });
+      expect(model.calls).toEqual(['meaning', 'match']);
+      const [reading] = await readings();
+      expect(reading).toMatchObject({ division_id: d1, status: 'no_match', question_id: null, ta_option_key: null });
+      expect(reading.match_reason).toMatch(/^Refused: the answer names 100000, which the proposal does not\. Model said: stated/);
+      // Nothing to publish from it.
+      expect((await divisions.syncDivisionStances(NOW)).rows).toBe(0);
+    });
+
+    it('still matches when the answer names no figure', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      await addDivision('2026-09-24', 1);
+      expect(await classify(stub().complete)).toMatchObject({ statuses: { matched: 1 } });
+    });
+  });
+
   describe('the audit', () => {
     const zero = { economic: 0, social: 0, cultural: 0, authority: 0, environmental: 0, welfare: 0, globalism: 0, technocratic: 0 };
     const votesOf = (divisionId: string) => [
@@ -627,6 +651,17 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       expect(audit.byDimension.social).toEqual({ agree: 0, total: 0 });
       expect(audit).toMatchObject({ divisions: 2, agree: 2, total: 4 });
       expect(audit.worst.map((w) => [w.divisionId, w.disagreements.map((d) => d.dimension)])).toEqual([['disagrees', ['economic', 'welfare']]]);
+    });
+
+    it('counts an unscored dimension but leaves it out of the score and the disagreements', () => {
+      // SF technocratic 0, FG −4: the Tá lobby is 4 more populist. An expert-led Tá option "disagrees" there, and is not held against the match.
+      const audit = divisions.auditDivisions(
+        [{ divisionId: 'gov-vs-opposition', taMeans: null, taVector: { ...zero, economic: -2, technocratic: -1 }, nilVector: { ...zero, economic: 2 } }],
+        votesOf('gov-vs-opposition'),
+      );
+      expect(audit.byDimension.technocratic).toEqual({ agree: 0, total: 1 });
+      expect(audit.byDimension.economic).toEqual({ agree: 1, total: 1 });
+      expect(audit).toMatchObject({ divisions: 1, agree: 1, total: 1, worst: [] });
     });
 
     it('lists every matched division for review, with its question, options and link', async () => {

@@ -69,8 +69,17 @@ export function verifyMeaning(reply: MeaningReply, blocks: ProposalBlock[]): Mea
   return { status: 'ok', block: named.label, quote: named.text.slice(start, end), domains: kept };
 }
 
+/**
+ * The numbers in a text, with thousands separators removed ("€50,000" → "50000", "5 per cent" →
+ * "5"). A figure is the one thing a code check can compare exactly: an answer that names a figure
+ * the vote does not name says more than the vote did.
+ */
+export function figuresIn(text: string): string[] {
+  return (text.match(/\d[\d,.]*\d|\d/g) ?? []).map((n) => n.replace(/,/g, ''));
+}
+
 export type MatchCheck =
-  | { status: 'no_match' }
+  | { status: 'no_match'; overstated?: string[] }
   | { status: 'rejected'; reason: 'invalid' }
   | { status: 'matched'; questionId: number; taOption: string; nilOption: string | null; confidence: number; reason: string };
 
@@ -78,8 +87,16 @@ export type MatchCheck =
  * The match reply against the candidates that were SENT. Any wrong id or key rejects the whole
  * match (a wrong key would publish a TD's vote as something it was not); no question, or low
  * confidence, is no match.
+ *
+ * `proposal` is everything the vote is known to state: the verified quote and what a Tá vote
+ * supported. The Tá answer may not name a figure that is not in it (a vote to raise relief to
+ * €35,000 does not state "raise it to €50,000"); that is no match, with the figures listed.
  */
-export function verifyMatch(reply: MatchReply, candidates: Array<{ id: number; options: Array<{ key: string }> }>): MatchCheck {
+export function verifyMatch(
+  reply: MatchReply,
+  candidates: Array<{ id: number; options: Array<{ key: string; label?: string }> }>,
+  proposal: string,
+): MatchCheck {
   if (reply.questionId === null) return { status: 'no_match' };
   const question = candidates.find((c) => c.id === reply.questionId);
   if (!question) return { status: 'rejected', reason: 'invalid' };
@@ -87,5 +104,8 @@ export function verifyMatch(reply: MatchReply, candidates: Array<{ id: number; o
   if (!isKey(reply.taOption)) return { status: 'rejected', reason: 'invalid' };
   if (reply.nilOption !== null && (!isKey(reply.nilOption) || reply.nilOption === reply.taOption)) return { status: 'rejected', reason: 'invalid' };
   if (reply.confidence < MIN_MATCH_CONFIDENCE) return { status: 'no_match' };
+  const stated = new Set(figuresIn(proposal));
+  const overstated = figuresIn(question.options.find((o) => o.key === reply.taOption)?.label ?? '').filter((n) => !stated.has(n));
+  if (overstated.length > 0) return { status: 'no_match', overstated };
   return { status: 'matched', questionId: question.id, taOption: reply.taOption!, nilOption: reply.nilOption, confidence: reply.confidence, reason: reply.reason };
 }
