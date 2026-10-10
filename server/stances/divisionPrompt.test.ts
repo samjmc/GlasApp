@@ -5,11 +5,14 @@ import { DIVISION_KINDS } from '@shared/divisionMeaning';
 import type { DivisionContext } from '../parliament';
 import { parseTranscript } from '../parliament/parse';
 import {
+  FIT_SYSTEM_PROMPT,
   MATCH_SYSTEM_PROMPT,
   MEANING_SYSTEM_PROMPT,
   MOVED_TEXT_CHARS,
   divisionUserPrompt,
+  fitUserPrompt,
   matchUserPrompt,
+  parseFit,
   parseMatch,
   parseMeaning,
   proposalBlocks,
@@ -64,6 +67,34 @@ describe('parseMatch', () => {
     expect(parseMatch('nope')).toBeNull();
     expect(parseMatch(json({ question_id: '3', ta_option: 'option_a' }))).toBeNull();
     expect(parseMatch(json({ ta_option: 'option_a' }))).toBeNull();
+  });
+});
+
+describe('parseFit', () => {
+  it('reads the claims the vote does not state, trimmed, without blanks, at most five', () => {
+    expect(parseFit(json({ unstated: [' accepts little immediate help ', '', '  '] }))).toEqual(['accepts little immediate help']);
+    expect(parseFit(json({ unstated: [] }))).toEqual([]);
+    expect(parseFit(json({ unstated: ['a', 'b', 'c', 'd', 'e', 'f', 'g'] }))).toHaveLength(5);
+  });
+
+  it('is null for bad JSON or a wrong shape, so an unusable check is never read as "nothing unstated"', () => {
+    expect(parseFit(null)).toBeNull();
+    expect(parseFit('nope')).toBeNull();
+    expect(parseFit(json({}))).toBeNull();
+    expect(parseFit(json({ unstated: 'a claim' }))).toBeNull();
+    expect(parseFit(json({ unstated: [1] }))).toBeNull();
+  });
+});
+
+describe('the claims check prompt', () => {
+  it('asks only for claims the vote does not state, and a reason is not a claim', () => {
+    expect(FIT_SYSTEM_PROMPT).toMatch(/List every claim that is NOT stated/);
+    expect(FIT_SYSTEM_PROMPT).toMatch(/A reason given for a claim is not itself a claim/);
+    expect(FIT_SYSTEM_PROMPT).toMatch(/an accepted cost the proposal does not mention/);
+    const prompt = fitUserPrompt({ taMeans: 'Cut bills.', quote: 'adopt the plan', answer: 'Invest long term, accepting little cash now' });
+    expect(prompt).toContain('Cut bills.');
+    expect(prompt).toContain('"adopt the plan"');
+    expect(prompt).toContain('"Invest long term, accepting little cash now"');
   });
 });
 

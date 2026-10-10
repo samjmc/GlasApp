@@ -18,7 +18,7 @@ import type { DivisionContext } from '../parliament';
 /** Stored on every reading; bump when the meaning prompt changes what a reading means. */
 export const MEANING_PROMPT_VERSION = 1;
 /** Stored on every match; bump when the match prompt changes. */
-export const MATCH_PROMPT_VERSION = 2;
+export const MATCH_PROMPT_VERSION = 3;
 /** Debate excerpts per prompt. */
 export const SPEECH_CONTEXT_CHARS = 12_000;
 /** PROPOSAL blocks per prompt. */
@@ -280,6 +280,45 @@ export function parseMatch(content: string | null): MatchReply | null {
     confidence: unit(v.confidence),
     reason: (v.reason ?? '').trim(),
   };
+}
+
+// ---------------------------------------------------------------------------
+// Call 3: does the vote state everything the matched answer says?
+// ---------------------------------------------------------------------------
+
+/**
+ * A separate, narrow question put after a match: the match call is asked to pick an answer, and
+ * said "no more than the proposal states" in its rules but still picked answers that carried a
+ * clause the vote never stated ("accepting that little immediate cash help is available now").
+ * Here the model only lists what the answer claims that the vote does not state.
+ */
+export const FIT_SYSTEM_PROMPT = `
+You check whether a recorded Dáil vote states everything that a daily-vote answer says. You never infer or guess. Respond ONLY with valid JSON.
+
+You are given what a Tá vote supported, the proposal's own words, and one answer to a question.
+- Split the answer into its claims: each thing it would have the State do, each figure, date or scope it names, and each cost or trade-off it accepts. A reason given for a claim is not itself a claim.
+- A claim is stated only when the proposal's words, or what a Tá vote supported, say it in the same strength and scope. A claim that goes further (a bigger figure, a wider scope, a stronger measure, an accepted cost the proposal does not mention) is not stated.
+- List every claim that is NOT stated.
+
+Return strict JSON: { "unstated": ["the claim, in a few words"] }
+Use an empty list when the vote states every claim.
+`.trim();
+
+export function fitUserPrompt(input: { taMeans: string; quote: string; answer: string }): string {
+  return [
+    `What a Tá vote supported: ${input.taMeans}`,
+    `The proposal's words: ${JSON.stringify(input.quote)}`,
+    `The answer: ${JSON.stringify(input.answer)}`,
+  ].join('\n');
+}
+
+const fitSchema = z.object({ unstated: z.array(z.string()) });
+
+/** The model's JSON → the claims the vote does not state. Null on bad JSON or a wrong shape. */
+export function parseFit(content: string | null): string[] | null {
+  const parsed = fitSchema.safeParse(parseJson(content));
+  if (!parsed.success) return null;
+  return parsed.data.unstated.map((claim) => claim.trim()).filter(Boolean).slice(0, 5);
 }
 
 // ---------------------------------------------------------------------------

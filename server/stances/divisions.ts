@@ -3,8 +3,9 @@
  *
  *   classifyDivisions     model calls → division_readings. Call 1 says what a Tá vote supported,
  *                         with a quote checked against the proposal; call 2 picks the option of
- *                         an existing daily-vote question it states, or none. Never touches
- *                         td_stances or evidence.
+ *                         an existing daily-vote question it states, or none; call 3 (only after a
+ *                         match) lists what that option says that the vote does not, and any such
+ *                         claim refuses the match. Never touches td_stances or evidence.
  *   syncDivisionStances   readings × roll call → td_stances rows (quote kind 'division'), then
  *                         the whole `stance` evidence set rebuilt from td_stances, then every TD
  *                         and party profile. No model calls.
@@ -25,12 +26,15 @@ import { callChatCompletion, isLLMConfigured } from '../services/aiService';
 import { candidateQuestions, questionsWithPositions, type QuestionPositions } from '../voting';
 import { divisionStanceRows } from './discipline';
 import {
+  FIT_SYSTEM_PROMPT,
   MATCH_PROMPT_VERSION,
   MATCH_SYSTEM_PROMPT,
   MEANING_PROMPT_VERSION,
   MEANING_SYSTEM_PROMPT,
   divisionUserPrompt,
+  fitUserPrompt,
   matchUserPrompt,
+  parseFit,
   parseMatch,
   parseMeaning,
   proposalBlocks,
@@ -290,8 +294,8 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
     if (wordCount(blocks.map((b) => b.text).join(' ')) < QUOTE_MIN_WORDS) {
       return done(young ? { ...base, status: 'no_context' } : { ...base, status: 'rejected', rejectReason: 'quote_not_found' });
     }
-    // Call 1 may lead to call 2: start only with room for both.
-    if (deps.callsLeft < 2) return null;
+    // Call 1 may lead to calls 2 and 3: start only with room for all three.
+    if (deps.callsLeft < 3) return null;
 
     // ---- call 1: the meaning ----
     const answer = await call(MEANING_SYSTEM_PROMPT, divisionUserPrompt(context, blocks));
@@ -328,7 +332,7 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
     if (candidates.length === 0 || (previous?.status === 'no_match' && same)) return null;
   }
   if (candidates.length === 0) return done({ ...base, ...meaning, status: 'no_candidates', candidateIds: [] });
-  if (result.calls === 0 && deps.callsLeft < 1) return null;
+  if (result.calls === 0 && deps.callsLeft < 2) return null; // the match, and the claims check if it matches
   const answer = await call(
     MATCH_SYSTEM_PROMPT,
     matchUserPrompt({ taMeans: meaning.taMeans ?? '', quote: meaning.quote ?? '', divisionKind: meaning.divisionKind as DivisionKind }, candidates),
@@ -347,8 +351,22 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   if (check.status === 'rejected') return done({ ...checked, status: 'rejected', rejectReason: check.reason });
   const question = candidates.find((c) => c.id === check.questionId)!;
   const label = (key: string | null) => question.options.find((o) => o.key === key)?.label ?? null;
+
+  // ---- call 3: does the vote state everything the matched answer says? ----
+  const fitAnswer = await call(FIT_SYSTEM_PROMPT, fitUserPrompt({ taMeans: meaning.taMeans ?? '', quote: meaning.quote ?? '', answer: label(check.taOption)! }));
+  if (fitAnswer instanceof Error) return failed({ ...matchBase, ...usage(answer) }, fitAnswer.message);
+  const unstated = parseFit(fitAnswer.content);
+  if (!unstated) return failed({ ...matchBase, ...usage(fitAnswer) }, 'unusable model output');
+  if (unstated.length > 0) {
+    return done({
+      ...checked,
+      ...usage(fitAnswer),
+      matchReason: `Refused: the proposal does not state: ${unstated.join('; ')}. Model said: ${reply.reason}`.slice(0, 500),
+      status: 'no_match',
+    });
+  }
   result.reading.match = { questionId: question.id, question: question.question, ta: label(check.taOption)!, nil: label(check.nilOption), confidence: check.confidence };
-  return done({ ...checked, status: 'matched', questionId: check.questionId, taOptionKey: check.taOption, nilOptionKey: check.nilOption });
+  return done({ ...checked, ...usage(fitAnswer), status: 'matched', questionId: check.questionId, taOptionKey: check.taOption, nilOptionKey: check.nilOption });
 }
 
 export interface ClassifyOptions {

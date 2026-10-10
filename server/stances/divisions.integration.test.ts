@@ -44,6 +44,7 @@ type Reply = (user: string) => unknown;
 const meaningReply: Reply = () => ({ procedural: false, division_kind: 'motion', ta_means: 'Build public homes.', quote_block: 'M1', quote: QUOTE, policy_domains: ['housing'], confidence: 0.9 });
 const firstCandidate = (user: string) => Number(user.match(/question_id (\d+)/)![1]);
 const matchReply: Reply = (user) => ({ question_id: firstCandidate(user), ta_option: 'option_a', nil_option: 'option_b', confidence: 0.9, reason: 'stated' });
+const fitReply: Reply = () => ({ unstated: [] });
 
 run('division stances against Postgres', { timeout: 60_000 }, () => {
   let dbmod: typeof import('../db');
@@ -53,6 +54,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
   let stancesRepo: typeof import('./repository');
   let voting: typeof import('../voting/service');
   let MEANING_SYSTEM_PROMPT: string;
+  let FIT_SYSTEM_PROMPT: string;
   let MATCH_PROMPT_VERSION: number;
   let nextArticle = 5000;
   let nextSection = 1;
@@ -61,12 +63,12 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
     dbmod.pool.query<T>(text, params).then((r) => r.rows);
 
   /** A stub model; `calls` records which call each was. */
-  function stub(o: { meaning?: Reply; match?: Reply } = {}) {
-    const calls: Array<'meaning' | 'match'> = [];
+  function stub(o: { meaning?: Reply; match?: Reply; fit?: Reply } = {}) {
+    const calls: Array<'meaning' | 'match' | 'fit'> = [];
     const complete: DivisionCompletion = async (system, user) => {
-      const kind = system === MEANING_SYSTEM_PROMPT ? 'meaning' : 'match';
+      const kind = system === MEANING_SYSTEM_PROMPT ? 'meaning' : system === FIT_SYSTEM_PROMPT ? 'fit' : 'match';
       calls.push(kind);
-      const reply = (kind === 'meaning' ? (o.meaning ?? meaningReply) : (o.match ?? matchReply))(user);
+      const reply = (kind === 'meaning' ? (o.meaning ?? meaningReply) : kind === 'fit' ? (o.fit ?? fitReply) : (o.match ?? matchReply))(user);
       return { content: typeof reply === 'string' ? reply : JSON.stringify(reply), model: 'stub-model', promptTokens: 100, completionTokens: 20 };
     };
     return { complete, calls };
@@ -160,7 +162,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
     ideologyRepo = await import('../ideology/repository');
     stancesRepo = await import('./repository');
     voting = await import('../voting/service');
-    ({ MEANING_SYSTEM_PROMPT, MATCH_PROMPT_VERSION } = await import('./divisionPrompt'));
+    ({ MEANING_SYSTEM_PROMPT, FIT_SYSTEM_PROMPT, MATCH_PROMPT_VERSION } = await import('./divisionPrompt'));
   }, 60_000);
 
   beforeEach(async () => {
@@ -226,8 +228,8 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       const d1 = await addDivision('2026-09-24', 1);
       const model = stub();
       const first = await classify(model.complete);
-      expect(first).toMatchObject({ pending: 1, read: 1, calls: 2, promptTokens: 200, completionTokens: 40, statuses: { matched: 1 } });
-      expect(model.calls).toEqual(['meaning', 'match']);
+      expect(first).toMatchObject({ pending: 1, read: 1, calls: 3, promptTokens: 300, completionTokens: 60, statuses: { matched: 1 } });
+      expect(model.calls).toEqual(['meaning', 'match', 'fit']);
       expect(await readings()).toEqual([
         expect.objectContaining({
           division_id: d1,
@@ -241,8 +243,8 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
           nil_option_key: 'option_b',
           candidate_ids: [question],
           model: 'stub-model',
-          prompt_tokens: 200,
-          completion_tokens: 40,
+          prompt_tokens: 300,
+          completion_tokens: 60,
           attempts: 0,
           meaning_prompt_version: 1,
           match_prompt_version: MATCH_PROMPT_VERSION,
@@ -253,13 +255,13 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       await addQuestion('housing', '2026-09-24T09:00:00Z');
       expect((await classify(model.complete)).calls).toBe(0);
       await nightly(model.complete, true, later(2));
-      expect(model.calls).toHaveLength(2);
+      expect(model.calls).toHaveLength(3);
 
-      // --reclassify re-matches it (call 2 only); an old meaning prompt version is read again whole.
-      expect(await classify(model.complete, { reclassify: true })).toMatchObject({ calls: 1 });
-      await q('update politics.division_readings set meaning_prompt_version = 0');
+      // --reclassify re-matches it (calls 2 and 3 only); an old meaning prompt version is read again whole.
       expect(await classify(model.complete, { reclassify: true })).toMatchObject({ calls: 2 });
-      expect(model.calls).toEqual(['meaning', 'match', 'match', 'meaning', 'match']);
+      await q('update politics.division_readings set meaning_prompt_version = 0');
+      expect(await classify(model.complete, { reclassify: true })).toMatchObject({ calls: 3 });
+      expect(model.calls).toEqual(['meaning', 'match', 'fit', 'match', 'fit', 'meaning', 'match', 'fit']);
     });
 
     it('no question in the window: no call at all, and none once the window has closed', async () => {
@@ -281,8 +283,8 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       expect((await classify(model.complete)).calls).toBe(0);
 
       const housing = await addQuestion('housing', '2026-09-26T09:00:00Z');
-      expect(await classify(model.complete)).toMatchObject({ calls: 1, statuses: { matched: 1 } });
-      expect(model.calls).toEqual(['meaning', 'match']);
+      expect(await classify(model.complete)).toMatchObject({ calls: 2, statuses: { matched: 1 } });
+      expect(model.calls).toEqual(['meaning', 'match', 'fit']);
       expect((await readings())[0]).toMatchObject({ question_id: housing });
     });
 
@@ -349,7 +351,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       await addDivision('2026-09-23', 3);
       const model = stub();
       const dry = await classify(model.complete, { dryRun: true, limit: 2 });
-      expect(dry).toMatchObject({ read: 2, calls: 4 });
+      expect(dry).toMatchObject({ read: 2, calls: 6 });
       expect(dry.readings.map((r) => r.divisionId)).toEqual(['dail-34-2026-09-24-vote_1', 'dail-34-2026-09-23-vote_3']);
       expect(dry.readings[0]).toMatchObject({ status: 'matched', blocks: ['Q', 'M1'], quoteBlock: 'M1', match: { ta: 'Build public homes', nil: 'Leave it to the market' } });
       expect(await readings()).toEqual([]);
@@ -567,11 +569,13 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       const model = stub();
       const lines: string[] = [];
       const result = await divisions.runDivisionStances({ mode: 'nightly', complete: model.complete, llmConfigured: true, now: NOW, log: (l) => lines.push(l) });
-      expect(model.calls).toHaveLength(divisions.NIGHTLY_LIMIT);
-      expect(result.classify).toMatchObject({ pending: 12, read: 10, calls: 20 });
-      expect(result.sync.rows).toBe(10);
+      // A matched division takes 3 calls (meaning, match, claims check) and starts only with room for all three.
+      const read = Math.floor(divisions.NIGHTLY_LIMIT / 3);
+      expect(model.calls).toHaveLength(read * 3);
+      expect(result.classify).toMatchObject({ pending: 12, read, calls: read * 3 });
+      expect(result.sync.rows).toBe(read);
       expect(lines).toHaveLength(1);
-      expect(lines[0]).toMatch(/^\[division-stances\] .*20 model call\(s\), 2000 prompt \+ 400 completion tokens/);
+      expect(lines[0]).toMatch(new RegExp(`^\\[division-stances\\] .*${read * 3} model call\\(s\\), ${read * 300} prompt \\+ ${read * 60} completion tokens`));
     });
 
     it('with no LLM configured it reads nothing and still syncs', async () => {
@@ -620,7 +624,33 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       expect((await divisions.syncDivisionStances(NOW)).rows).toBe(0);
     });
 
-    it('still matches when the answer names no figure', async () => {
+    it('is no match when the claims check finds something the answer says that the vote does not, and keeps what', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      const d1 = await addDivision('2026-09-24', 1);
+      const model = stub({ fit: () => ({ unstated: ['accepts that little immediate cash help is available', '  '] }) });
+      expect(await classify(model.complete)).toMatchObject({ calls: 3, statuses: { no_match: 1, matched: 0 } });
+      expect(model.calls).toEqual(['meaning', 'match', 'fit']);
+      const [reading] = await readings();
+      expect(reading).toMatchObject({ division_id: d1, status: 'no_match', question_id: null, ta_option_key: null, prompt_tokens: 300, completion_tokens: 60 });
+      expect(reading.match_reason).toMatch(/^Refused: the proposal does not state: accepts that little immediate cash help is available\. Model said: stated/);
+      expect((await divisions.syncDivisionStances(NOW)).rows).toBe(0);
+      // Not asked again until something changes: the same candidates, no new call.
+      expect((await classify(model.complete)).calls).toBe(0);
+    });
+
+    it('a failed or unusable claims check is a failed reading that is retried, never a match', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      await addDivision('2026-09-24', 1);
+      const broken = stub({ fit: () => 'not json' });
+      expect(await classify(broken.complete)).toMatchObject({ calls: 3, statuses: { failed: 1, matched: 0 } });
+      expect((await readings())[0]).toMatchObject({ status: 'failed', attempts: 1 });
+      // The retry repeats only the match and the check, and a good answer matches.
+      const good = stub();
+      expect(await classify(good.complete)).toMatchObject({ calls: 2, statuses: { matched: 1 } });
+      expect(good.calls).toEqual(['match', 'fit']);
+    });
+
+    it('still matches when the answer names no figure and the vote states every claim', async () => {
       await addQuestion('housing', '2026-09-25T09:00:00Z');
       await addDivision('2026-09-24', 1);
       expect(await classify(stub().complete)).toMatchObject({ statuses: { matched: 1 } });
