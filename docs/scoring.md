@@ -172,6 +172,25 @@ not) against the 75th percentile; below 5 debates there is no figure. Stored in
 `politics.debate_participation`, rebuilt from stored items after every read and every sync, with
 no model calls.
 
+## Question record
+
+Also **not part of the score**. It shows what ministers committed to in reply to a member's
+question at oral PQs, Topical Issues and Leaders' Questions (`docs/plans/question-sessions.md`):
+a model finds and quotes commitments and labels each `action` (a specific thing someone could
+later check was done), `follow_up` (a reply, a letter, a meeting) or `general` (nothing specific
+to check); code checks every quote and gives every point (`server/parliament/questionItems/rules.ts`).
+
+| Rule (q1) | Points | Limit |
+|---|---|---|
+| A minister commits to a specific action in reply to your question | +2 for each asker | once per exchange; only from the other side of the House |
+| Follow-ups and general undertakings | shown, no points | |
+| Claims and commitments in a minister's answers | shown, never scored or ranked | |
+
+A TD's figure is per format, never pooled: exchanges with a specific commitment per 10 asked, for
+oral PQs and Topical Issues, against the 75th percentile of backbenchers with at least 10 of that
+format. Whether a question was answered is never judged. Stored in
+`politics.question_participation`, rebuilt from stored items after every read and every sync.
+
 ## Getting a TD table
 
 `npm run sync-tds` upserts the current Dáil roster by member code (falling back to name), and

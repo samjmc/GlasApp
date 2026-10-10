@@ -6,6 +6,7 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   countQuestions,
+  questionAskerRows,
   countWords,
   isoDay,
   isPresidingRole,
@@ -373,6 +374,34 @@ describe('countQuestions', () => {
       ]),
     );
     expect(rows).toHaveLength(3);
+  });
+});
+
+describe('questionAskerRows', () => {
+  const { results } = JSON.parse(fixture('questions-page.json')) as { results: Array<{ question: RawQuestion }> };
+
+  it('keeps who asked each oral PQ in which section, several askers for questions taken together', () => {
+    const questions = results.map((r) => r.question);
+    const rows = questionAskerRows(questions);
+    const section = rows.filter((r) => r.sectionId === 'dail-2025-06-24-dbsect_14');
+    const inFixture = questions.filter((q) => q.questionType === 'oral' && q.debateSection?.debateSectionId === 'dbsect_14' && isoDay(q.date) === '2025-06-24');
+    expect(inFixture.length).toBeGreaterThan(1);
+    expect(section).toHaveLength(inFixture.length);
+    expect(section).toContainEqual({ sectionId: 'dail-2025-06-24-dbsect_14', questionNumber: 1, memberCode: 'Ivana-Bacik.S.2007-07-23', date: '2025-06-24' });
+  });
+
+  it('skips written questions and any question missing its section, number or asker', () => {
+    const base = { date: '2026-01-02', questionType: 'oral', questionNumber: 3, by: { memberCode: 'A' }, debateSection: { debateSectionId: 'dbsect_7' } };
+    expect(
+      questionAskerRows([
+        base,
+        { ...base, questionType: 'written', questionNumber: 4 },
+        { ...base, questionNumber: 5, debateSection: null },
+        { ...base, questionNumber: null },
+        { ...base, questionNumber: 6, by: {} },
+        { ...base }, // the same PQ twice: kept once
+      ]),
+    ).toEqual([{ sectionId: 'dail-2026-01-02-dbsect_7', questionNumber: 3, memberCode: 'A', date: '2026-01-02' }]);
   });
 });
 

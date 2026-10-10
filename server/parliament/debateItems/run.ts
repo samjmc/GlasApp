@@ -14,9 +14,9 @@ import { debateItemKind, type DebateItemKind } from '@shared/schema/parliament';
 import { callChatCompletion } from '../../services/aiService';
 import * as repo from '../repository';
 import type { ArguedDebate } from '../repo/debateItems';
-import { EXTRACT_SYSTEM, EXTRACTOR_VERSION, PASS_NAMES, PASSES, extractPrompt, parseItems } from './prompt';
+import { EXTRACT_SYSTEM, EXTRACTOR_VERSION, PASSES, extractPrompt, parseItems } from './prompt';
 import { emptyRejections, REJECT_REASONS, verifyItems, type Rejections, type VerifiedItem } from './verify';
-import { buildWindows, isIrish, labelSpeeches, splitWindow } from './windows';
+import { buildWindows, isIrish, labelSpeeches, splitWindow, type DebateSpeech, type DebateWindow, type LabelledSpeech } from './windows';
 
 /** The model asked for; a configured provider (DeepSeek) replaces it, so the answer's own model is stored. */
 const ITEM_MODEL = 'gpt-4o-mini';
@@ -186,10 +186,49 @@ export const costOf = (promptTokens: number, completionTokens: number) => ({
   peak: (promptTokens * PRICES.peak.input + completionTokens * PRICES.peak.output) / 1e6,
 });
 
-export async function extractDebates(options: ExtractOptions = {}): Promise<ExtractSummary> {
+/** Something read as a whole: an argued debate, or a question exchange. */
+export interface ExtractUnit {
+  id: string;
+  kind: string;
+  title: string;
+}
+
+/**
+ * What one extractor reads and how. The debate record and the question record share the runner
+ * (windows, passes, checks, cut-off splitting, storage) and differ only here. Runs are stored per
+ * unit id and version in debate_extraction_runs, so each version keeps its own.
+ */
+export interface ExtractConfig<U extends ExtractUnit> {
+  version: string;
+  units(): Promise<U[]>;
+  speechesOf(unit: U): Promise<DebateSpeech[]>;
+  windowsOf(speeches: LabelledSpeech[]): DebateWindow[];
+  /** pass name → the kinds that pass lists; every window is read once per pass. */
+  passes: Readonly<Record<string, readonly DebateItemKind[]>>;
+  prompt(title: string, window: DebateWindow, pass: string): string;
+  /** A fixed, repeatable sample of `n` units for a pilot. */
+  sample(units: U[], n: number): U[];
+  /** Rebuild the record from stored items after a run (no model calls). */
+  rebuild(): Promise<{ rows: number }>;
+}
+
+export const DEBATE_EXTRACTION: ExtractConfig<ArguedDebate> = {
+  version: EXTRACTOR_VERSION,
+  units: () => repo.arguedDebates(),
+  speechesOf: (debate) => repo.debateSpeechesOf(debate.id),
+  windowsOf: (speeches) => buildWindows(speeches),
+  passes: PASSES,
+  prompt: (title, window, pass) => extractPrompt(title, window, pass as keyof typeof PASSES),
+  sample: pilotSample,
+  rebuild: () => repo.rebuildDebateRecord(),
+};
+
+export const extractDebates = (options: ExtractOptions = {}): Promise<ExtractSummary> => extractUnits(DEBATE_EXTRACTION, options);
+
+export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<U>, options: ExtractOptions = {}): Promise<ExtractSummary> {
   const { debateIds, pilot = null, limit = null, force = false, dryRun = false, concurrency = 2, complete = itemCompletion, log = () => {} } = options;
-  const [all, runs, offices] = await Promise.all([repo.arguedDebates(), repo.extractionRunsFor(EXTRACTOR_VERSION), repo.governmentOffices()]);
-  let chosen = debateIds ? all.filter((d) => debateIds.includes(d.id)) : pilot ? pilotSample(all, pilot) : all;
+  const [all, runs, offices] = await Promise.all([config.units(), repo.extractionRunsFor(config.version), repo.governmentOffices()]);
+  let chosen = debateIds ? all.filter((d) => debateIds.includes(d.id)) : pilot ? config.sample(all, pilot) : all;
   // A limit takes debates this version has not finished, so a daily run reads what is new rather
   // than re-hashing old debates. (A run without a limit also catches a corrected old debate.)
   if (limit !== null) chosen = chosen.filter((d) => force || runs.get(d.id)?.status !== 'done').slice(0, limit);
@@ -215,8 +254,8 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
     results: [],
   };
 
-  const readOne = async (debate: ArguedDebate) => {
-    const speeches = labelSpeeches(await repo.debateSpeechesOf(debate.id));
+  const readOne = async (debate: U) => {
+    const speeches = labelSpeeches(await config.speechesOf(debate));
     // Ids and full text: a corrected word changes the hash, so its quote offsets are never stale.
     const inputHash = hashOf(speeches.map((s) => `${s.id}\u0000${s.text}`));
     const prior = runs.get(debate.id);
@@ -241,14 +280,15 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
     const items: VerifiedItem[] = [];
     const rejected = emptyRejections();
     let model: string | null = null;
-    // Every window is read once per pass (prompt.ts PASSES); a cut-off reply splits only its own pass.
-    const queue = buildWindows(speeches).flatMap((window) => PASS_NAMES.map((pass) => ({ window, pass })));
+    // Every window is read once per pass (config.passes); a cut-off reply splits only its own pass.
+    const passNames = Object.keys(config.passes);
+    const queue = config.windowsOf(speeches).flatMap((window) => passNames.map((pass) => ({ window, pass })));
     while (queue.length > 0) {
       const { window, pass } = queue.shift()!;
       result.calls++;
       let answer: ItemAnswer;
       try {
-        answer = await complete(EXTRACT_SYSTEM, extractPrompt(debate.title, window, pass));
+        answer = await complete(EXTRACT_SYSTEM, config.prompt(debate.title, window, pass));
       } catch (error) {
         result.error = error instanceof Error ? error.message : String(error);
         if ((error as { status?: number }).status === OUT_OF_CREDIT) summary.stopped = `the model provider has no credit left (${result.error})`;
@@ -271,7 +311,7 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
       }
       summary.malformed += parsed.malformed;
       // A kind from the other pass is dropped, so no item is listed twice.
-      const kinds: readonly DebateItemKind[] = PASSES[pass];
+      const kinds = config.passes[pass]!;
       const checked = verifyItems(parsed.items.filter((i) => kinds.includes(i.kind)), window, offices);
       items.push(...checked.accepted);
       for (const reason of REJECT_REASONS) {
@@ -304,7 +344,7 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
     await repo.saveExtraction(
       {
         debateId: debate.id,
-        extractorVersion: EXTRACTOR_VERSION,
+        extractorVersion: config.version,
         inputHash,
         status: result.error ? 'failed' : 'done',
         speeches: result.speeches,
@@ -319,7 +359,7 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
         error: result.error,
       },
       speeches.map((s) => s.id),
-      result.error ? null : items.map((i) => ({ ...i, extractorVersion: EXTRACTOR_VERSION })),
+      result.error ? null : items.map((i) => ({ ...i, extractorVersion: config.version })),
     );
   };
 
@@ -334,7 +374,7 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
   if (!dryRun) {
     summary.orphansRemoved = await repo.deleteOrphanItems();
     // Points come from the stored items by the published rules: rebuilt whenever items change.
-    summary.recordRows = (await repo.rebuildDebateRecord()).rows;
+    summary.recordRows = (await config.rebuild()).rows;
   }
   return summary;
 }

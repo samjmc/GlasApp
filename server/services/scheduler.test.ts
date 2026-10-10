@@ -12,12 +12,13 @@ vi.mock('../parliament', () => ({
   runSync: vi.fn(async () => ({ divisions: { ingested: 0 }, debates: { days: 0, failedDays: [] }, failedFeeds: [] })),
   leaveWatch: { runLeaveWatch: vi.fn() },
   extractDebates: vi.fn(async () => ({ done: 0, failed: 0, stopped: null })),
+  extractQuestions: vi.fn(async () => ({ done: 0, failed: 0, stopped: null })),
 }));
 vi.mock('../stances', () => ({ runDivisionStances: vi.fn(async () => ({})) }));
 
 const { initScheduler } = await import('./scheduler');
 const { runDivisionStances } = await import('../stances');
-const { runSync, extractDebates } = await import('../parliament');
+const { runSync, extractDebates, extractQuestions } = await import('../parliament');
 
 const FLAG = 'DIVISION_STANCES';
 const before = process.env[FLAG];
@@ -77,6 +78,29 @@ describe('the 04:45 parliament run', () => {
     } finally {
       if (before === undefined) delete process.env.DEBATE_ITEMS;
       else process.env.DEBATE_ITEMS = before;
+    }
+  });
+
+  it('reads new question exchanges only when QUESTION_ITEMS is exactly "on", after the sync', async () => {
+    const before = process.env.QUESTION_ITEMS;
+    try {
+      for (const value of [undefined, 'off', 'ON']) {
+        if (value === undefined) delete process.env.QUESTION_ITEMS;
+        else process.env.QUESTION_ITEMS = value;
+        await nightly.run();
+      }
+      expect(extractQuestions).not.toHaveBeenCalled();
+
+      process.env.QUESTION_ITEMS = 'on';
+      await nightly.run();
+      expect(extractQuestions).toHaveBeenCalledWith({ limit: 100 });
+      expect(vi.mocked(runSync).mock.invocationCallOrder.at(-1)!).toBeLessThan(vi.mocked(extractQuestions).mock.invocationCallOrder[0]);
+
+      vi.mocked(extractQuestions).mockRejectedValueOnce(new Error('402 Insufficient Balance'));
+      await expect(nightly.run()).resolves.toBeUndefined();
+    } finally {
+      if (before === undefined) delete process.env.QUESTION_ITEMS;
+      else process.env.QUESTION_ITEMS = before;
     }
   });
 });

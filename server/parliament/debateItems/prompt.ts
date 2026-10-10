@@ -3,7 +3,7 @@
  * with a quote copied from the speech. It judges nothing; verify.ts checks every quote.
  */
 import { z } from 'zod';
-import { debateClaimType, debateItemKind, type DebateClaimType, type DebateItemKind } from '@shared/schema/parliament';
+import { commitmentType, debateClaimType, debateItemKind, type CommitmentType, type DebateClaimType, type DebateItemKind } from '@shared/schema/parliament';
 import type { DebateWindow, LabelledSpeech } from './windows';
 
 /** Bump when the prompt, the kinds or the checks change: a new version re-reads every debate. */
@@ -35,15 +35,21 @@ export interface RawItem {
   targetQuote: string | null;
   addressee: string | null;
   due: string | null;
+  /** A commitment read from a question session; null otherwise (debate prompts do not ask for it). */
+  commitmentType: CommitmentType | null;
 }
 
 export const EXTRACT_SYSTEM =
   'You list what speeches in an Irish parliamentary debate contain, as items of fixed kinds, each with an exact quote. ' +
   'You never judge quality, truth, tone or who is right, and you never translate. Respond ONLY with valid JSON.';
 
-const speechBlock = (s: LabelledSpeech, mark: 'context' | 'extract') => `[${s.label}] (${mark}) ${s.speaker}:\n${s.text}`;
+export const speechBlock = (s: LabelledSpeech, mark: 'context' | 'extract') => `[${s.label}] (${mark}) ${s.speaker}:\n${s.text}`;
 
-const KIND_DEFINITIONS: Record<DebateItemKind, string> = {
+/** The quote rules every prompt states, so verify.ts and the model agree. */
+export const QUOTE_RULE = `"quote" is ${QUOTE_MIN_WORDS} to ${QUOTE_MAX_WORDS} words copied EXACTLY from that speech: one continuous passage,
+  no ellipsis, no changes, in the language spoken. Never translate Irish.`;
+
+export const KIND_DEFINITIONS: Record<DebateItemKind, string> = {
   // v2's wording, kept: a stricter "named source" (names on their own are not claims) showed no gain
   // beyond run-to-run noise in the blind check (2026-10-10).
   specific_claim: `- "specific_claim": the speaker states a specific fact someone could check. "claim_type" is one of:
@@ -74,7 +80,6 @@ export const PASSES = {
   links: ['response', 'concession'],
 } as const satisfies Record<string, readonly DebateItemKind[]>;
 export type ExtractPass = keyof typeof PASSES;
-export const PASS_NAMES = Object.keys(PASSES) as ExtractPass[];
 
 export function extractPrompt(title: string, window: DebateWindow, pass: ExtractPass): string {
   const blocks = [...window.context.map((s) => speechBlock(s, 'context')), ...window.speeches.map((s) => speechBlock(s, 'extract'))];
@@ -88,8 +93,7 @@ ${kinds.map((k) => KIND_DEFINITIONS[k]).join('\n')}
 
 Rules:
 - Only list items in speeches marked (extract). Speeches marked (context) may only be a "target_speech".
-- "quote" is ${QUOTE_MIN_WORDS} to ${QUOTE_MAX_WORDS} words copied EXACTLY from that speech: one continuous passage,
-  no ellipsis, no changes, in the language spoken. Never translate Irish.
+- ${QUOTE_RULE}
 - Do not rate, praise or criticise anyone, and do not decide who is right. An empty list is a normal answer.
 
 Return strict JSON:
@@ -115,7 +119,9 @@ const itemSchema = z.object({
   target_quote: optionalText,
   addressee: optionalText,
   due: optionalText,
+  commitment_type: optionalText,
 });
+const COMMITMENT_TYPES: readonly string[] = commitmentType.enumValues;
 
 /**
  * Parse the model's reply. Null when it is not `{ items: [...] }`; an entry of the wrong shape
@@ -142,6 +148,8 @@ export function parseItems(raw: unknown): { items: RawItem[]; malformed: number 
       targetQuote: p.target_quote,
       addressee: p.addressee,
       due: p.due,
+      // An unknown type is no type: the commitment is kept and simply not scored as an action.
+      commitmentType: p.kind === 'commitment' && p.commitment_type && COMMITMENT_TYPES.includes(p.commitment_type) ? (p.commitment_type as CommitmentType) : null,
     });
   }
   return { items, malformed };

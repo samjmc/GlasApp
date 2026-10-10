@@ -1,11 +1,13 @@
 import cron from "node-cron";
 import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
-import { extractDebates, leaveWatch, runSync as runParliamentSync } from "../parliament";
+import { extractDebates, extractQuestions, leaveWatch, runSync as runParliamentSync } from "../parliament";
 import { runDivisionStances } from "../stances";
 
 /** Debates read for items per night when DEBATE_ITEMS=on: about a sitting week's worth. */
 const NIGHTLY_DEBATES = 30;
+/** Question exchanges read per night when QUESTION_ITEMS=on: about a sitting week's worth (cents). */
+const NIGHTLY_EXCHANGES = 100;
 
 /** Initialize and start the scheduled jobs. */
 export function initScheduler() {
@@ -86,6 +88,15 @@ export function initScheduler() {
         console.log(`[Scheduler] Debate items: ${s.done} read, ${s.failed} failed${s.stopped ? `, stopped: ${s.stopped}` : ''}.`);
       } catch (error) {
         console.error("[Scheduler] Debate items failed:", error instanceof Error ? error.message : error);
+      }
+    }
+    // Question exchanges (docs/plans/question-sessions.md), behind their own flag for the same reason.
+    if (process.env.QUESTION_ITEMS === "on") {
+      try {
+        const s = await extractQuestions({ limit: NIGHTLY_EXCHANGES });
+        console.log(`[Scheduler] Question items: ${s.done} read, ${s.failed} failed${s.stopped ? `, stopped: ${s.stopped}` : ''}.`);
+      } catch (error) {
+        console.error("[Scheduler] Question items failed:", error instanceof Error ? error.message : error);
       }
     }
   }, { timezone: "Europe/Dublin" });

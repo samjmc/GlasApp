@@ -14,7 +14,7 @@
  * 7. Claims past MAX_CLAIMS_PER_SPEECH in one speech are `over_limit` (the model does not always
  *    keep to it: 13 in one speech in the pilot).
  */
-import type { DebateClaimType, DebateItemKind } from '@shared/schema/parliament';
+import type { CommitmentType, DebateClaimType, DebateItemKind } from '@shared/schema/parliament';
 import { normalise } from '../../stances/verify';
 import { MAX_CLAIMS_PER_SPEECH, QUOTE_MAX_WORDS, QUOTE_MIN_WORDS, type RawItem } from './prompt';
 import { sentenceAround } from './replies';
@@ -48,6 +48,7 @@ export interface VerifiedItem {
   targetQuote: string | null;
   addressee: string | null;
   due: string | null;
+  commitmentType: CommitmentType | null;
 }
 
 /** member code → the periods they held cabinet or Minister of State office. */
@@ -185,6 +186,7 @@ export function verifyItems(raw: RawItem[], window: DebateWindow, offices: Gover
       targetQuote,
       addressee: item.kind === 'question' ? item.addressee : null,
       due: item.kind === 'commitment' ? item.due : null,
+      commitmentType: item.kind === 'commitment' ? (item.commitmentType ?? null) : null,
     });
   }
   return { accepted, rejected };

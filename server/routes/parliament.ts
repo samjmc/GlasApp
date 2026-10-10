@@ -135,6 +135,26 @@ router.get(
   }),
 );
 
+// The question record: what ministers committed to in reply (server/parliament/questionItems/rules.ts).
+// NULL data (not 404) when no exchange of that TD or section has been read yet.
+router.get(
+  '/tds/:id/question-record',
+  asyncHandler(async (req, res) => {
+    const id = idParam.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'TD id must be a positive integer');
+    res.json(formatSuccess(await repo.tdQuestionRecord(id.data)));
+  }),
+);
+
+router.get(
+  '/question-records/:id',
+  asyncHandler(async (req, res) => {
+    const id = recordId.safeParse(req.params.id);
+    if (!id.success) return badRequest(res, 'Invalid section id');
+    res.json(formatSuccess(await repo.questionRecord(id.data)));
+  }),
+);
+
 router.get(
   '/bills',
   asyncHandler(async (req, res) => {

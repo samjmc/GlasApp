@@ -2,12 +2,20 @@
  * Parliamentary question counts per TD, month, department and type. One source for both
  * the totals the scoring pillar reads and the "question focus" a profile shows.
  */
-import { eq, inArray, sql } from 'drizzle-orm';
-import { questionCounts } from '@shared/schema/parliament';
+import { and, eq, gte, inArray, lte, sql } from 'drizzle-orm';
+import { questionAskers, questionCounts } from '@shared/schema/parliament';
 import type { TdQuestionTopic } from '@shared/parliamentApi';
 import { db, type Db } from '../../db';
-import type { QuestionCountRow } from '../parse';
+import type { QuestionAskerRow, QuestionCountRow } from '../parse';
 import { chunks } from './util';
+
+/** Replace who asked the oral PQs answered from `from` to `to` (YYYY-MM-DD) with `rows`. */
+export async function replaceQuestionAskers(from: string, to: string, rows: QuestionAskerRow[], database: Db = db): Promise<void> {
+  await database.transaction(async (tx) => {
+    await tx.delete(questionAskers).where(and(gte(questionAskers.date, from), lte(questionAskers.date, to)));
+    for (const batch of chunks(rows)) await tx.insert(questionAskers).values(batch).onConflictDoNothing();
+  });
+}
 
 /** Replace the counts for these months (first-of-month dates) with `rows`. */
 export async function replaceQuestionMonths(months: string[], rows: QuestionCountRow[], tdIds: Map<string, number>, database: Db = db): Promise<void> {
