@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePoliticalConsent } from "@/contexts/ConsentContext";
 import {
   useCompleteDailySession,
   useDailySession,
@@ -103,6 +104,7 @@ export default function DailySessionPage() {
   const sessionQuery = useDailySession(isAuthenticated);
   const voteMutation = useDailySessionVote();
   const completeMutation = useCompleteDailySession();
+  const { ensure: ensureConsent } = usePoliticalConsent();
   const { toast } = useToast();
 
   const session = sessionQuery.data as unknown as DailySessionState | undefined;
@@ -236,6 +238,11 @@ export default function DailySessionPage() {
     if (!currentItem || pendingOption === null || advancingRef.current) return;
     advancingRef.current = true;
     const optionKey = pendingOption;
+    // A vote shows a political opinion: the user agrees to us keeping it before the first one is saved.
+    if (!(await ensureConsent())) {
+      advancingRef.current = false;
+      return;
+    }
     setIsAdvancing(true);
     play("advance");
 

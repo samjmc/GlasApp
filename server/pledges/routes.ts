@@ -6,6 +6,7 @@
  *                                    priorities when they have ranked, else everyone's
  *   GET    /priorities               everyone's combined priorities, and the caller's own
  *   PUT    /priorities               { ranking: [category, ...] }, most important first
+ *                                    (a ranking shows political opinions: needs the caller's consent)
  *   GET    /:id                      one pledge with its evidence
  *   POST   /                         create             (admin)
  *   PATCH  /:id                      edit / set status  (admin)
@@ -18,6 +19,7 @@
  */
 import { Router, type Request, type RequestHandler, type Response } from 'express';
 import { z } from 'zod';
+import { requirePoliticalConsent } from '../account/consent';
 import { logAdminAction, optionalAuth, requireAdmin, requireAuth } from '../auth';
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES, type PledgeCategory } from '@shared/pledges';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
@@ -145,6 +147,7 @@ pledgesRouter.get(
 pledgesRouter.put(
   '/priorities',
   requireAuth,
+  requirePoliticalConsent,
   handle(async (req) => {
     const { ranking } = rankingBody.parse(req.body);
     await repo.saveRanking(req.user!.id, ranking as PledgeCategory[]);

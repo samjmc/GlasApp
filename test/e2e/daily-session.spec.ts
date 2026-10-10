@@ -9,6 +9,7 @@
  * by server/voting/voting.integration.test.ts against Postgres.
  */
 import { expect, test, type Page } from '@playwright/test';
+import { POLITICAL_CONSENT_VERSION } from '@shared/consent';
 import type { DailySessionCompletion, DailySessionItem, DailySessionState } from '@shared/voting';
 
 const SESSION_ID = 7;
@@ -45,6 +46,9 @@ class FakeDaily {
   completeCalls = 0;
   readonly votes: Array<{ itemId: number; option: string }> = [];
   status: 'pending' | 'completed' = 'pending';
+  /** Whether the user has agreed to us keeping their political opinions (GET /api/profile/me says so). */
+  consented = true;
+  consentPuts = 0;
 
   constructor(
     public items: DailySessionItem[],
@@ -88,6 +92,24 @@ class FakeDaily {
   async install(page: Page) {
     const ok = (data: unknown) => ({ json: { success: true, data } });
     const fail = (status: number, message: string) => ({ status, json: { success: false, error: { code: 'ERROR', message } } });
+
+    // The page asks the profile whether the user has agreed to us keeping their opinions before it saves a vote.
+    await page.route('**/api/profile/me', (route) =>
+      route.fulfill(
+        ok({
+          isAdmin: false,
+          user: this.consented
+            ? { politicalConsentAt: new Date().toISOString(), politicalConsentVersion: POLITICAL_CONSENT_VERSION }
+            : { politicalConsentAt: null, politicalConsentVersion: null },
+        }),
+      ),
+    );
+    await page.route('**/api/account/consent/political', (route) => {
+      if (route.request().method() !== 'PUT') return route.fallback();
+      this.consentPuts += 1;
+      this.consented = true;
+      return route.fulfill(ok({ version: POLITICAL_CONSENT_VERSION }));
+    });
 
     await page.route('**/api/daily-session**', async (route) => {
       const request = route.request();
@@ -215,6 +237,33 @@ test('a full session: intro, three answers, results, streak', async ({ page }) =
   await expect(page.getByRole('heading', { name: 'Streak boosted' })).toBeVisible();
   await expect(page.getByText('4 days', { exact: true })).toBeVisible();
   await expect(page.getByText('+1 day locked in')).toBeVisible();
+});
+
+test('the first vote asks for agreement to keep political opinions, and sends nothing until it is given', async ({ page }) => {
+  const api = new FakeDaily([item(1), item(2), item(3)], 0);
+  api.consented = false;
+  await open(page, api);
+  await page.getByRole('button', { name: 'Start', exact: true }).click();
+  await page.getByRole('button', { name: /^Vote on this/ }).click();
+  await page.getByRole('radio', { name: 'State answer' }).click();
+  await page.getByRole('button', { name: 'Save answer' }).click();
+
+  const dialog = page.getByRole('dialog', { name: 'Can we keep your political opinions?' });
+  await expect(dialog).toBeVisible();
+  expect(api.votes).toHaveLength(0);
+
+  // Saying no sends nothing and leaves the chosen answer on screen.
+  await dialog.getByRole('button', { name: 'Not now' }).click();
+  await expect(dialog).toBeHidden();
+  expect(api.votes).toHaveLength(0);
+  await expect(page.getByRole('radio', { name: 'State answer' })).toHaveAttribute('aria-checked', 'true');
+
+  // Saying yes records it, and then the vote goes through.
+  await page.getByRole('button', { name: 'Save answer' }).click();
+  await dialog.getByRole('button', { name: 'I agree' }).click();
+  await expect(page.getByRole('heading', { name: 'Headline 2' })).toBeVisible();
+  expect(api.consentPuts).toBe(1);
+  expect(api.votes).toHaveLength(1);
 });
 
 test('closing the session and coming back resumes at the next question', async ({ page }) => {

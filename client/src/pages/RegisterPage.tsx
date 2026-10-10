@@ -3,7 +3,7 @@ import { useLocation } from 'wouter';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Mail, KeyRound, ChevronLeft, ShieldCheck, ArrowUp, Loader2 } from 'lucide-react';
+import { Mail, KeyRound, ChevronLeft, ShieldCheck, Loader2 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { signUpWithEmail } from '@/lib/supabase';
@@ -12,7 +12,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Checkbox } from '@/components/ui/checkbox';
 
 const registerSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email address' }),
@@ -34,7 +33,6 @@ const RegisterPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showEmailSignup, setShowEmailSignup] = useState(false);
-  const [hasConsented, setHasConsented] = useState(false);
   const [showMagicLink, setShowMagicLink] = useState(false);
   const [magicLinkEmail, setMagicLinkEmail] = useState('');
   const [magicLinkSent, setMagicLinkSent] = useState(false);
@@ -47,12 +45,7 @@ const RegisterPage = () => {
     resolver: zodResolver(registerSchema)
   });
 
-  // The consent checkbox gates every sign-up path — Google, magic link, and email/password.
   const handleGoogleSignup = async () => {
-    if (!hasConsented) {
-      setError('You must consent to data collection before signing up.');
-      return;
-    }
     setIsLoading(true);
     setError(null);
     try {
@@ -64,10 +57,6 @@ const RegisterPage = () => {
   };
 
   const handleMagicLinkSignup = async () => {
-    if (!hasConsented) {
-      setError('You must consent to data collection before signing up.');
-      return;
-    }
     if (!magicLinkEmail || !magicLinkEmail.includes('@')) {
       setError('Please enter a valid email address');
       return;
@@ -94,10 +83,6 @@ const RegisterPage = () => {
   };
 
   const onSubmit = async (data: RegisterFormValues) => {
-    if (!hasConsented) {
-      setError('You must consent to data collection before signing up.');
-      return;
-    }
     setIsLoading(true);
     setError(null);
 
@@ -143,29 +128,13 @@ const RegisterPage = () => {
         <div className="mb-4 flex flex-col gap-2 rounded-xl bg-elevated p-4">
           <span className="flex items-center gap-2 text-sm font-bold">
             <ShieldCheck className="h-5 w-5 text-primary" aria-hidden="true" />
-            Before you continue
+            Your opinions are yours
           </span>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            Glas Politics collects the political opinions you share so we can generate personalised insights.
-            You can delete your account and all associated data at any time from the settings page.
+            We save your quiz answers, votes and rankings only after you agree, and we ask the first time you save one.
+            You can withdraw, or delete your account and all your data, at any time from the settings page.
           </p>
         </div>
-
-        <label
-          htmlFor="consent-checkbox"
-          className={`mb-5 flex cursor-pointer items-start gap-3 rounded-xl border bg-card p-4 transition-colors ${hasConsented ? 'border-primary' : 'border-border'}`}
-        >
-          <Checkbox
-            id="consent-checkbox"
-            checked={hasConsented}
-            onCheckedChange={value => setHasConsented(!!value)}
-            className="mt-0.5"
-          />
-          <span className="text-sm font-normal leading-relaxed">
-            I consent to Glas Politics collecting and processing my political opinions for personalised insights.
-            I understand I can withdraw my consent and request deletion of my data at any time.
-          </span>
-        </label>
 
         {magicLinkSent ? (
           <div role="status" className="flex flex-col items-center gap-4 rounded-2xl border border-border bg-card p-6 text-center">
@@ -209,7 +178,7 @@ const RegisterPage = () => {
               type="button"
               className="h-12 w-full gap-2"
               onClick={handleMagicLinkSignup}
-              disabled={isLoading || !hasConsented || !magicLinkEmail.includes('@')}
+              disabled={isLoading || !magicLinkEmail.includes('@')}
             >
               {isLoading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
               {isLoading ? 'Sending…' : 'Send sign-up link'}
@@ -225,7 +194,7 @@ const RegisterPage = () => {
               variant="outline"
               className="h-12 w-full gap-3"
               onClick={handleGoogleSignup}
-              disabled={isLoading || !hasConsented}
+              disabled={isLoading}
             >
               {isLoading ? (
                 <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
@@ -245,7 +214,7 @@ const RegisterPage = () => {
               variant="outline"
               className="h-12 w-full gap-3"
               onClick={() => setShowMagicLink(true)}
-              disabled={isLoading || !hasConsented}
+              disabled={isLoading}
             >
               <Mail className="h-5 w-5" aria-hidden="true" />
               Email me a sign-up link
@@ -262,18 +231,10 @@ const RegisterPage = () => {
               variant="outline"
               className="h-12 w-full gap-3"
               onClick={() => setShowEmailSignup(true)}
-              disabled={!hasConsented}
             >
               <KeyRound className="h-5 w-5" aria-hidden="true" />
               Sign up with email
             </Button>
-
-            {!hasConsented && (
-              <p className="flex items-center justify-center gap-2 text-sm font-semibold text-muted-foreground">
-                <ArrowUp className="h-[18px] w-[18px]" aria-hidden="true" />
-                Tick the box above to continue
-              </p>
-            )}
           </div>
         ) : (
           <div className="flex flex-col gap-4">
@@ -308,7 +269,7 @@ const RegisterPage = () => {
                 {errors.confirmPassword && <p className="text-sm font-semibold text-warn">{errors.confirmPassword.message}</p>}
               </div>
 
-              <Button type="submit" className="h-12 w-full gap-2" disabled={isLoading || !hasConsented}>
+              <Button type="submit" className="h-12 w-full gap-2" disabled={isLoading}>
                 {isLoading && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
                 {isLoading ? 'Creating account…' : 'Create account'}
               </Button>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "wouter";
 import { ChevronDown, Loader2, Vote } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePoliticalConsent } from "@/contexts/ConsentContext";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVoteControl";
@@ -35,6 +36,7 @@ const messageOf = (error: unknown) => (error instanceof Error ? error.message : 
 /** The policy question under a news article: answer it in one tap, then see how others answered. */
 export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProps) {
   const { isAuthenticated } = useAuth();
+  const { ensure: ensureConsent } = usePoliticalConsent();
   const { toast } = useToast();
   const [, navigate] = useLocation();
 
@@ -72,6 +74,8 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
       return;
     }
     if (optionKey === myVote) return;
+    // A vote shows a political opinion: the user agrees to us keeping it before the first one is saved.
+    if (!(await ensureConsent())) return;
 
     setIsSubmitting(true);
     setError(null);

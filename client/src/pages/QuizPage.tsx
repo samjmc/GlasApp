@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import LoadingScreen from '@/components/LoadingScreen';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { cn } from '@/lib/utils';
+import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { submitQuiz } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 import { loadDeviceSeed, loadDraft, loadStoredQuiz, storeDeviceSeed, storeDraft, storeQuiz } from '@/lib/quizStorage';
@@ -177,6 +178,7 @@ const QuizPage: React.FC = () => {
   const [, setLocation] = useLocation();
   const queryClient = useQueryClient();
   const { toast } = useToast();
+  const { ensure: ensureConsent } = usePoliticalConsent();
 
   // A draft keeps its seed, so a reload shows the same questions in the same answer order.
   const [initial] = useState(() => loadDraft() ?? { seed: attemptSeed(), answers: {} });
@@ -260,6 +262,9 @@ const QuizPage: React.FC = () => {
 
     setIsSubmitting(true);
     try {
+      // A saved quiz shows political opinions: ask before it is saved. Saying no still scores the
+      // quiz; the server just does not keep it (result.id stays null).
+      await ensureConsent();
       const result = await submitQuiz(responses, seed);
       storeQuiz(result, responses, seed);
       storeDraft(null);

@@ -6,6 +6,7 @@ import { ArrowDown, ArrowUp, Loader2 } from "lucide-react";
 import { Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePoliticalConsent } from "@/contexts/ConsentContext";
 import { PLEDGE_CATEGORIES } from "@shared/pledges";
 import { CATEGORY_LABELS, pledgesApi, type PledgeCategory } from "@/services/pledgesApi";
 
@@ -18,6 +19,7 @@ const RANKABLE = PLEDGE_CATEGORIES.filter((c) => c !== "other");
  */
 export function PledgePriorities() {
   const { isAuthenticated } = useAuth();
+  const { ensure: ensureConsent } = usePoliticalConsent();
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const priorities = useQuery({ queryKey: ["/api/pledges/priorities"], queryFn: pledgesApi.priorities });
@@ -88,7 +90,14 @@ export function PledgePriorities() {
           ))}
         </ol>
         {isAuthenticated ? (
-          <Button onClick={() => save.mutate()} disabled={save.isPending} aria-busy={save.isPending}>
+          <Button
+            onClick={async () => {
+              // A ranking shows political opinions: the user agrees to us keeping it before it is saved.
+              if (await ensureConsent()) save.mutate();
+            }}
+            disabled={save.isPending}
+            aria-busy={save.isPending}
+          >
             {save.isPending && <Loader2 className="animate-spin" aria-hidden="true" />}
             {save.isPending ? "Saving…" : "Save my ranking"}
           </Button>

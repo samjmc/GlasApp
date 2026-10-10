@@ -23,6 +23,7 @@ import PoliticalOpinionChangeTracker from '@/components/PoliticalOpinionChangeTr
 import { PageHeader } from '@/components/PageHeader';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { useAuth } from '@/contexts/AuthContext';
+import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { fetchMyQuizResults, submitQuiz, type DimensionWeights } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 import { clearStoredQuiz, loadStoredQuiz, loadWeights, storeQuiz } from '@/lib/quizStorage';
@@ -43,6 +44,7 @@ const QuizResultsPage: React.FC = () => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const { user, isAuthenticated } = useAuth();
+  const { ensure: ensureConsent } = usePoliticalConsent();
 
   const [stored, setStored] = useState(loadStoredQuiz);
   const [weights, setWeights] = useState<DimensionWeights>(loadWeights);
@@ -68,23 +70,27 @@ const QuizResultsPage: React.FC = () => {
     if (saveAttemptedRef.current) return;
     saveAttemptedRef.current = true;
 
-    savingAnswers ??= submitQuiz(stored.answers, stored.seed);
-    savingAnswers
-      .then(async (saved) => {
-        storeQuiz(saved, stored.answers, stored.seed);
-        setStored({ result: saved, answers: stored.answers, seed: stored.seed });
-        await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
-        await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
-        toast({ title: "Result saved", description: "Your quiz result is saved to your profile." });
-      })
-      .catch((error) => {
-        console.error("Error saving quiz result:", error);
-        toast({ title: "Save failed", description: "We couldn't save your result to your profile.", variant: "destructive" });
-      })
-      .finally(() => {
-        savingAnswers = null;
-      });
-  }, [isAuthenticated, stored, queryClient, toast]);
+    // Saving shows political opinions: needs the user's consent. Someone who just said no on the quiz page is not asked again.
+    void ensureConsent({ respectDecline: true }).then((agreed) => {
+      if (!agreed) return;
+      savingAnswers ??= submitQuiz(stored.answers, stored.seed);
+      return savingAnswers
+        .then(async (saved) => {
+          storeQuiz(saved, stored.answers, stored.seed);
+          setStored({ result: saved, answers: stored.answers, seed: stored.seed });
+          await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
+          await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
+          toast({ title: "Result saved", description: "Your quiz result is saved to your profile." });
+        })
+        .catch((error) => {
+          console.error("Error saving quiz result:", error);
+          toast({ title: "Save failed", description: "We couldn't save your result to your profile.", variant: "destructive" });
+        })
+        .finally(() => {
+          savingAnswers = null;
+        });
+    });
+  }, [isAuthenticated, stored, queryClient, toast, ensureConsent]);
 
   const result: QuizResult | null = stored?.result ?? history?.[0] ?? null;
 

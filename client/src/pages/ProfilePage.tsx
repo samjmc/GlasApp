@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
+import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { useTheme, type ThemeChoice } from '@/contexts/ThemeContext';
 import { useRegion } from '@/hooks/useRegion';
 import { REGION_LIST } from '@shared/region-config';
@@ -59,6 +60,23 @@ const ProfilePage = () => {
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
   const [isSavingProfile, setIsSavingProfile] = useState(false);
+  const { granted: consentGranted, grant: grantConsent, withdraw: withdrawConsent } = usePoliticalConsent();
+  const [isChangingConsent, setIsChangingConsent] = useState(false);
+
+  const changeConsent = async (change: 'grant' | 'withdraw') => {
+    setIsChangingConsent(true);
+    try {
+      await (change === 'grant' ? grantConsent() : withdrawConsent());
+      toast({
+        title: change === 'grant' ? 'Thank you' : 'Withdrawn',
+        description: change === 'grant' ? 'We can now save your quiz results, votes and rankings.' : 'Your saved political opinions were deleted.',
+      });
+    } catch {
+      toast({ title: 'Could not save your choice', description: 'Please try again.', variant: 'destructive' });
+    } finally {
+      setIsChangingConsent(false);
+    }
+  };
 
   // Fetch the signed-in user's saved quiz results (newest first)
   const { data: quizResults, isLoading: quizResultsLoading } = useQuery({
@@ -392,6 +410,52 @@ const ProfilePage = () => {
               <Button variant="secondary" onClick={handleLogout}>
                 Sign out
               </Button>
+            </CardFooter>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-xl sm:text-2xl">Your political opinions</CardTitle>
+              <CardDescription>
+                Your quiz answers, votes and policy rankings show your political opinions. We keep them only with your agreement.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground" role="status">
+                {consentGranted
+                  ? 'You agreed to us keeping them. You can withdraw at any time.'
+                  : 'You have not agreed. You can still take the quiz and see your result, but we do not save it.'}
+              </p>
+            </CardContent>
+            <CardFooter className="justify-end">
+              {consentGranted ? (
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button variant="secondary" disabled={isChangingConsent}>
+                      {isChangingConsent && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                      Withdraw my agreement
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Withdraw your agreement?</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        We will delete your saved quiz results, your votes, your policy rankings and the political profile built from them.
+                        Your account stays. This cannot be undone.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogAction onClick={() => changeConsent('withdraw')}>Withdraw and delete</AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              ) : (
+                <Button onClick={() => changeConsent('grant')} disabled={isChangingConsent}>
+                  {isChangingConsent && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                  I agree
+                </Button>
+              )}
             </CardFooter>
           </Card>
 

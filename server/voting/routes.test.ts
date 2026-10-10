@@ -28,6 +28,16 @@ vi.mock('../middleware/rateLimit', () => ({
   publicWriteRateLimit: (_req: unknown, _res: unknown, next: () => void) => next(),
 }));
 
+// The real guard reads the database; the header `x-test-no-consent` stands for "this user never agreed".
+vi.mock('../account/consent', () => ({
+  requirePoliticalConsent: (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    if (req.header('x-test-no-consent')) {
+      return res.status(403).json({ success: false, error: { code: 'CONSENT_REQUIRED', message: 'consent needed' } });
+    }
+    next();
+  },
+}));
+
 vi.mock('./service', async () => {
   class VotingError extends Error {
     constructor(
@@ -80,7 +90,7 @@ afterEach(async () => {
   await new Promise<void>((resolve) => server.close(() => resolve()));
 });
 
-const send = (path: string, init: { method?: string; body?: unknown; user?: string; county?: string } = {}) =>
+const send = (path: string, init: { method?: string; body?: unknown; user?: string; county?: string; noConsent?: boolean } = {}) =>
   fetch(base + path, {
     method: init.method ?? 'GET',
     headers: {
@@ -88,6 +98,7 @@ const send = (path: string, init: { method?: string; body?: unknown; user?: stri
       connection: 'close',
       ...(init.user ? { 'x-test-user': init.user } : {}),
       ...(init.county ? { 'x-test-county': init.county } : {}),
+      ...(init.noConsent ? { 'x-test-no-consent': '1' } : {}),
     },
     body: init.body === undefined ? undefined : JSON.stringify(init.body),
   });
@@ -111,6 +122,18 @@ describe('voting routes', () => {
     });
     expect(res.status).toBe(200);
     expect(calls.list.at(-1)).toEqual({ fn: 'recordSessionVote', args: ['u1', 5, 'option_a'] });
+  });
+
+  it('refuses both vote routes with 403 CONSENT_REQUIRED until the user has agreed, and saves nothing', async () => {
+    for (const path of ['/api/daily-session/items/5/vote', '/api/votes/questions/3']) {
+      const res = await send(path, { method: 'POST', user: 'u1', noConsent: true, body: { optionKey: 'option_a' } });
+      expect(res.status, path).toBe(403);
+      expect(await res.json(), path).toMatchObject({ success: false, error: { code: 'CONSENT_REQUIRED' } });
+    }
+    expect(calls.list).toEqual([]);
+    // Reading is not gated: today's questions and an article's tally need no consent.
+    expect((await send('/api/daily-session', { user: 'u1', noConsent: true })).status).toBe(200);
+    expect((await send('/api/votes/articles/9', { noConsent: true })).status).toBe(200);
   });
 
   it('rejects an option key outside option_a..option_d and a non-numeric id with 400', async () => {

@@ -24,6 +24,11 @@ vi.mock('../middleware/rateLimit', () => ({
   aiRateLimit: (_req: unknown, _res: unknown, next: () => void) => next(),
 }));
 
+// The real check reads the database; `no-consent` is a signed-in user who never agreed.
+vi.mock('../account/consent', () => ({
+  hasPoliticalConsent: vi.fn(async (userId: string) => userId !== 'no-consent'),
+}));
+
 vi.mock('../services/aiService', () => ({
   callChatCompletion: vi.fn(async () => ({ choices: [{ message: { content: 'It means X.' } }] })),
 }));
@@ -148,6 +153,13 @@ describe('POST /api/quiz', () => {
   it('attributes the result to the token user, never to a body field', async () => {
     await post('/api/quiz', { answers, userId: 'someone-else' }, 'user-1');
     expect(calls.list[0]!.args[0]).toBe('user-1');
+  });
+
+  it('scores but does not save for a signed-in user who has not agreed to us keeping their opinions', async () => {
+    const res = await post('/api/quiz', { answers }, 'no-consent');
+    expect(res.status).toBe(200);
+    expect(await res.json()).toMatchObject({ success: true, data: { id: null } });
+    expect(calls.list[0]!.args[0]).toBeNull();
   });
 
   it('returns 400 for a malformed body and for answers the bank rejects', async () => {
