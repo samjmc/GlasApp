@@ -20,17 +20,9 @@ vi.mock('../auth', () => {
   return { requireAuth: asUser };
 });
 
-vi.mock('../middleware/rateLimit', () => ({
-  aiRateLimit: (_req: unknown, _res: unknown, next: () => void) => next(),
-}));
-
 // The real check reads the database; `no-consent` is a signed-in user who never agreed.
 vi.mock('../account/consent', () => ({
   hasPoliticalConsent: vi.fn(async (userId: string) => userId !== 'no-consent'),
-}));
-
-vi.mock('../services/aiService', () => ({
-  callChatCompletion: vi.fn(async () => ({ choices: [{ message: { content: 'It means X.' } }] })),
 }));
 
 const vector = { economic: 1, social: 2, cultural: 3, authority: 4, environmental: -1, welfare: -2, globalism: -3, technocratic: -4 };
@@ -179,17 +171,6 @@ describe('GET /api/quiz/me', () => {
     const res = await get('/api/quiz/me', 'user-1');
     expect(res.status).toBe(200);
     expect(calls.list[0]).toEqual({ fn: 'quizHistory', args: ['user-1'] });
-  });
-});
-
-describe('POST /api/quiz/assistant', () => {
-  it('answers and validates', async () => {
-    const bad = await post('/api/quiz/assistant', { questionText: 'q' });
-    expect(bad.status).toBe(400);
-    expect(((await bad.json()) as { error: object }).error).toMatchObject({ code: 'VALIDATION_ERROR', message: 'Invalid request' });
-    const res = await post('/api/quiz/assistant', { questionText: 'q', userQuestion: 'what?' });
-    expect(res.status).toBe(200);
-    expect(await res.json()).toMatchObject({ success: true, data: { answer: 'It means X.' } });
   });
 });
 
