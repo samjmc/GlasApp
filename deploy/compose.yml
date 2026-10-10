@@ -27,6 +27,13 @@ services:
       SCHEDULER: ${SCHEDULER:-off}
     init: true
     restart: unless-stopped
+    # Request logs hold visitors' IP addresses and user agents. Keep about a week at most (5 files
+    # of 10 MB), not forever: the privacy policy promises IP addresses do not outlive 90 days.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
     # Loopback only: reach it from the host, or through the proxy profile below.
     ports:
       - "127.0.0.1:5000:5000"
