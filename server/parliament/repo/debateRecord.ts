@@ -7,7 +7,7 @@ import { sql } from 'drizzle-orm';
 import { debateParticipation, type NewDebateParticipation } from '@shared/schema/parliament';
 import type { DebateItemView, DebateRecordParticipant, DebateRecordView, TdDebateRecord } from '@shared/parliamentApi';
 import { db, type Db } from '../../db';
-import { EXTRACTOR_VERSION } from '../debateItems/prompt';
+import { EXTRACTOR_VERSIONS } from '../debateItems/prompt';
 import { namesTarget } from '../debateItems/replies';
 import { MIN_DEBATES, RULES_VERSION, SHOWN_KINDS, replyNoPoints, scoreDebates, termFigure, type DebateRole, type Participant, type ScoredItem } from '../debateItems/rules';
 import type { GovernmentOffices } from '../debateItems/verify';
@@ -43,7 +43,18 @@ interface ItemRow {
   closing: boolean | null;
 }
 
-/** Items of the current extractor version in debates whose run finished, filtered by `where`. */
+/**
+ * Each debate's newest finished read among EXTRACTOR_VERSIONS: (debate_id, extractor_version).
+ * A debate read by v3 uses v3's items; one a stopped v3 run never reached keeps v2's.
+ */
+const chosenRuns = sql`(
+  select distinct on (debate_id) debate_id, extractor_version
+  from politics.debate_extraction_runs
+  where status = 'done' and extractor_version in (${sql.join(EXTRACTOR_VERSIONS.map((v) => sql`${v}`), sql`, `)})
+  order by debate_id, case extractor_version ${sql.join(EXTRACTOR_VERSIONS.map((v, i) => sql`when ${v} then ${sql.raw(String(i))}`), sql` `)} end desc
+)`;
+
+/** Items of each debate's newest finished read (`chosenRuns`), filtered by `where`. */
 async function itemRows(where: ReturnType<typeof sql>, database: Db): Promise<ItemRow[]> {
   const res = await database.execute(sql`
     select s.debate_id, i.speech_id, i.member_code, i.kind, i.claim_type, i.quote, i.addressee, i.due, p.date::text date,
@@ -58,11 +69,11 @@ async function itemRows(where: ReturnType<typeof sql>, database: Db): Promise<It
     from politics.debate_items i
     join politics.debate_speeches p on p.id = i.speech_id
     join politics.debate_sections s on s.id = p.section_id
-    join politics.debate_extraction_runs r on r.debate_id = s.debate_id and r.extractor_version = i.extractor_version and r.status = 'done'
+    join ${chosenRuns} r on r.debate_id = s.debate_id and r.extractor_version = i.extractor_version
     left join politics.debate_speeches tp on tp.id = i.target_speech_id
     left join politics.tds t1 on t1.member_code = i.member_code
     left join politics.tds t2 on t2.member_code = tp.member_code
-    where i.extractor_version = ${EXTRACTOR_VERSION} and ${where}
+    where ${where}
     order by p.date, s.id, p.position, i.quote_start`);
   return res.rows as unknown as ItemRow[];
 }
@@ -108,19 +119,18 @@ const views = (rows: ItemRow[], offices: GovernmentOffices) => rows.map((r) => v
 
 /**
  * Rebuild every row of debate_participation from the stored items, in one transaction. Only
- * debates whose run for the current extractor version finished are included: a debate not read
- * yet has no row, rather than a row of zeros.
+ * debates with a finished read (`chosenRuns`) are included: a debate not read yet has no row,
+ * rather than a row of zeros.
  */
 export async function rebuildDebateRecord(database: Db = db): Promise<{ debates: number; rows: number }> {
   const offices = await governmentOffices(database);
   const res = await database.execute(sql`
     select s.debate_id, p.member_code, max(t.id) td_id, d.first_date::text first_date, count(*)::int speeches, sum(p.word_count)::int words
-    from politics.debate_extraction_runs r
+    from ${chosenRuns} r
     join politics.debates d on d.id = r.debate_id
     join politics.debate_sections s on s.debate_id = d.id
     join politics.debate_speeches p on p.section_id = s.id and not p.is_presiding and p.member_code is not null
     left join politics.tds t on t.member_code = p.member_code
-    where r.extractor_version = ${EXTRACTOR_VERSION} and r.status = 'done'
     group by s.debate_id, p.member_code, d.first_date`);
   const participants: Participant[] = (res.rows as Array<{ debate_id: string; member_code: string; td_id: number | null; first_date: string; speeches: number; words: number }>).map(
     (r) => ({

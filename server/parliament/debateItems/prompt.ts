@@ -14,6 +14,12 @@ import type { DebateWindow, LabelledSpeech } from './windows';
 // two passes (PASSES); every reference to what an earlier speaker said is a response; a commitment
 // includes continuing or reviewing something; the question mark may end the quote's sentence.
 export const EXTRACTOR_VERSION = 'v3';
+/**
+ * Every version the debate record may read, oldest first; EXTRACTOR_VERSION is the last. The record
+ * takes each debate's newest finished read among them, so a read of a new version that stops part
+ * way (out of credit, 2026-10-10: 149 of 454) never shrinks the record to the debates read so far.
+ */
+export const EXTRACTOR_VERSIONS = ['v2', 'v3'] as const;
 export const QUOTE_MIN_WORDS = 3;
 export const QUOTE_MAX_WORDS = 40;
 /** The prompt asks for at most this many claims per speech, the most specific first. */
