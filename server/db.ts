@@ -29,8 +29,8 @@ const isLocal = /localhost|127\.0\.0\.1/.test(connectionString);
  * (checked 2026-10-10) and SHARED with GlasIntelligence. The default of 10 leaves it 5. A robot run
  * (npm run robots) showed 10 saturating at 20 users at once: raise the Pool Size first, then this.
  */
-export const DB_POOL_MAX = poolMax(process.env.DB_POOL_MAX);
 export const DEFAULT_DB_POOL_MAX = 10;
+export const DB_POOL_MAX = poolMax(process.env.DB_POOL_MAX);
 
 export function poolMax(value: string | undefined): number {
   if (value === undefined || value === '') return DEFAULT_DB_POOL_MAX;
