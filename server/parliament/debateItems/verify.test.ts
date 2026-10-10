@@ -91,7 +91,6 @@ describe('verifyItems', () => {
         item({ kind: 'response', claimType: null, quote: 'the list is too long', targetSpeech: 's3', targetQuote: 'Will the Minister tell us' }), // later speech
         item({ speech: 's3', kind: 'concession', claimType: null, quote: 'Will the Minister tell us when', targetSpeech: 's1' }), // own speech
         item({ kind: 'concession', claimType: null, quote: 'the list is too long', targetSpeech: null }), // no target
-        item({ kind: 'response', claimType: null, quote: 'the list is too long', targetSpeech: 's1', targetQuote: 'the list is 900,000' }),
         item({ speech: 's3', kind: 'question', claimType: null, quote: 'Will the Minister tell us when the new hospital will open?', addressee: 'Bob' }),
         item({ speech: 's3', kind: 'question', claimType: null, quote: 'Will the Minister tell us when the new hospital will open?', addressee: null }),
         item({ kind: 'question', claimType: null, quote: 'The Deputy is right that the list is too long', addressee: 'the Deputy' }), // no question mark
@@ -108,7 +107,6 @@ describe('verifyItems', () => {
       context_speech: { en: 1, ga: 0 },
       quote_not_found: { en: 1, ga: 1 },
       bad_target: { en: 3, ga: 0 },
-      target_quote_not_found: { en: 1, ga: 0 },
       not_a_question: { en: 1, ga: 0 },
       unknown_addressee: { en: 2, ga: 0 },
       not_office_holder: { en: 1, ga: 0 },
@@ -131,9 +129,23 @@ describe('verifyItems', () => {
 
     const inIrish = verifyItems([item({ speech: 's1', kind: 'question', claimType: null, quote: 'An dtabharfaidh an tAire freagra ar an gceist seo?', addressee: 'an tAire' })], { context: [], speeches: [irish] }, offices);
     expect(inIrish.accepted).toHaveLength(1);
-    // Stopping well short of the question mark is not a question; counted as Irish.
+    // v3: a quote that stops well short of the question mark is still a question when its sentence
+    // ends with one (the blind check found v2 dropping real questions this way).
     const short = verifyItems([item({ speech: 's1', kind: 'question', claimType: null, quote: 'An dtabharfaidh an tAire freagra', addressee: 'an tAire' })], { context: [], speeches: [irish] }, offices);
-    expect(short.rejected.not_a_question).toEqual({ en: 0, ga: 1 });
+    expect(short.accepted).toHaveLength(1);
+    // A sentence that ends in a full stop is not a question, wherever the quote sits.
+    const stated = labelSpeeches([{ id: 'x/2', memberCode: 'C', speaker: 'Aengus Ó Snodaigh', date: DATE, text: 'Tabharfaidh an tAire freagra ar an gceist seo. Cad eile?', wordCount: 10 }])[0];
+    const notQ = verifyItems([item({ speech: 's1', kind: 'question', claimType: null, quote: 'Tabharfaidh an tAire freagra', addressee: 'an tAire' })], { context: [], speeches: [stated] }, offices);
+    expect(notQ.rejected.not_a_question).toEqual({ en: 0, ga: 1 });
+  });
+
+  it('keeps a response whose target passage was mis-copied, without that passage', () => {
+    const { accepted } = verifyItems(
+      [item({ kind: 'response', claimType: null, quote: 'the list is too long', targetSpeech: 's1', targetQuote: 'the list is 900,000' })],
+      window,
+      offices,
+    );
+    expect(accepted.map((a) => [a.kind, a.targetSpeechId, a.targetQuote])).toEqual([['response', 'sect/spk_1', null]]);
   });
 
   it('keeps at most MAX_CLAIMS_PER_SPEECH claims in one speech, whatever the model sends', () => {

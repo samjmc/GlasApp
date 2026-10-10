@@ -88,17 +88,19 @@ run('debate items (real Postgres)', () => {
   it('stores the items code accepted, and the run with its tokens and rejections', async () => {
     const complete = fake();
     const s = await items.extractDebates({ complete });
-    expect(complete.calls).toBe(1);
-    expect(s).toMatchObject({ debates: 1, done: 1, failed: 0, skipped: 0, calls: 1, promptTokens: 1000, completionTokens: 200 });
+    // Two passes over the one window (facts, then links). The fake answers both with every kind;
+    // each pass keeps only its own, so nothing is stored twice.
+    expect(complete.calls).toBe(2);
+    expect(s).toMatchObject({ debates: 1, done: 1, failed: 0, skipped: 0, calls: 2, promptTokens: 2000, completionTokens: 400 });
     expect(s.acceptedByKind).toMatchObject({ specific_claim: 1, concession: 1, commitment: 1 });
     expect(s.rejected.quote_not_found).toEqual({ en: 1, ga: 0 });
     expect(await stored()).toEqual([
       { speech_id: SPEECHES[1].id, member_code: B, kind: 'specific_claim', claim_type: 'figure', quote: 'We have hired 2,000 nurses', target_speech_id: null, due: null },
-      { speech_id: SPEECHES[1].id, member_code: B, kind: 'concession', claim_type: null, quote: 'The Deputy is right that the list is too long', target_speech_id: SPEECHES[0].id, due: null },
       { speech_id: SPEECHES[1].id, member_code: B, kind: 'commitment', claim_type: null, quote: 'I will publish the plan', target_speech_id: null, due: 'by the end of the year' },
+      { speech_id: SPEECHES[1].id, member_code: B, kind: 'concession', claim_type: null, quote: 'The Deputy is right that the list is too long', target_speech_id: SPEECHES[0].id, due: null },
     ]);
     const { rows } = await q('select status, calls, accepted, rejected, model, speeches, words from politics.debate_extraction_runs');
-    expect(rows).toEqual([{ status: 'done', calls: 1, accepted: 3, rejected: { quote_not_found: { en: 1, ga: 0 } }, model: 'fake-model', speeches: 2, words: 41 }]);
+    expect(rows).toEqual([{ status: 'done', calls: 2, accepted: 3, rejected: { quote_not_found: { en: 1, ga: 0 } }, model: 'fake-model', speeches: 2, words: 41 }]);
   });
 
   it('reads a debate once per version: a second run makes no call', async () => {
@@ -127,7 +129,7 @@ run('debate items (real Postgres)', () => {
     await q("update politics.debate_speeches set text = text || ' Thank you.' where id = $1", [SPEECHES[1].id]);
     const complete = fake({ items: [REPLY.items[0]] });
     const s = await items.extractDebates({ complete });
-    expect(complete.calls).toBe(1);
+    expect(complete.calls).toBe(2);
     expect(s).toMatchObject({ done: 1, skipped: 0 });
     expect((await stored()).map((r) => r.kind)).toEqual(['specific_claim']);
   });
@@ -165,15 +167,16 @@ run('debate items (real Postgres)', () => {
     expect((await q('select status, error from politics.debate_extraction_runs')).rows).toEqual([{ status: 'failed', error: 'model output cut off at the token limit' }]);
     expect(await stored()).toHaveLength(3);
 
-    // Cut off once: both halves are read, and the items are the same as from one window.
+    // Cut off once (the first pass): its two halves are read, then the second pass whole, and the
+    // items are the same as from one window.
     calls = 0;
     const firstCut: ItemCompletion = async () =>
       calls++ === 0 ? cut : { content: JSON.stringify(REPLY), model: 'fake-model', promptTokens: 1000, completionTokens: 200 };
     const s = await items.extractDebates({ complete: firstCut });
-    expect(calls).toBe(3);
-    expect(s).toMatchObject({ done: 1, failed: 0, calls: 3 });
+    expect(calls).toBe(4);
+    expect(s).toMatchObject({ done: 1, failed: 0, calls: 4 });
     expect(s.acceptedByKind).toMatchObject({ specific_claim: 1, concession: 1, commitment: 1 });
-    expect((await stored()).map((r) => r.kind)).toEqual(['specific_claim', 'concession', 'commitment']);
+    expect((await stored()).map((r) => r.kind)).toEqual(['specific_claim', 'commitment', 'concession']);
   });
 
   it('writes nothing on a dry run', async () => {

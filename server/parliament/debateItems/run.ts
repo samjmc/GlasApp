@@ -14,7 +14,7 @@ import { debateItemKind, type DebateItemKind } from '@shared/schema/parliament';
 import { callChatCompletion } from '../../services/aiService';
 import * as repo from '../repository';
 import type { ArguedDebate } from '../repo/debateItems';
-import { EXTRACT_SYSTEM, EXTRACTOR_VERSION, extractPrompt, parseItems } from './prompt';
+import { EXTRACT_SYSTEM, EXTRACTOR_VERSION, PASS_NAMES, PASSES, extractPrompt, parseItems } from './prompt';
 import { emptyRejections, REJECT_REASONS, verifyItems, type Rejections, type VerifiedItem } from './verify';
 import { buildWindows, isIrish, labelSpeeches, splitWindow } from './windows';
 
@@ -241,13 +241,14 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
     const items: VerifiedItem[] = [];
     const rejected = emptyRejections();
     let model: string | null = null;
-    const windows = buildWindows(speeches);
-    while (windows.length > 0) {
-      const window = windows.shift()!;
+    // Every window is read once per pass (prompt.ts PASSES); a cut-off reply splits only its own pass.
+    const queue = buildWindows(speeches).flatMap((window) => PASS_NAMES.map((pass) => ({ window, pass })));
+    while (queue.length > 0) {
+      const { window, pass } = queue.shift()!;
       result.calls++;
       let answer: ItemAnswer;
       try {
-        answer = await complete(EXTRACT_SYSTEM, extractPrompt(debate.title, window));
+        answer = await complete(EXTRACT_SYSTEM, extractPrompt(debate.title, window, pass));
       } catch (error) {
         result.error = error instanceof Error ? error.message : String(error);
         if ((error as { status?: number }).status === OUT_OF_CREDIT) summary.stopped = `the model provider has no credit left (${result.error})`;
@@ -262,14 +263,16 @@ export async function extractDebates(options: ExtractOptions = {}): Promise<Extr
         // asked, so read the window again in two halves (3 debates of 445 on 2026-10-04).
         const halves = answer.truncated ? splitWindow(window) : null;
         if (halves) {
-          windows.unshift(...halves);
+          queue.unshift(...halves.map((half) => ({ window: half, pass })));
           continue;
         }
         result.error = answer.truncated ? 'model output cut off at the token limit' : 'unusable model output';
         break;
       }
       summary.malformed += parsed.malformed;
-      const checked = verifyItems(parsed.items, window, offices);
+      // A kind from the other pass is dropped, so no item is listed twice.
+      const kinds: readonly DebateItemKind[] = PASSES[pass];
+      const checked = verifyItems(parsed.items.filter((i) => kinds.includes(i.kind)), window, offices);
       items.push(...checked.accepted);
       for (const reason of REJECT_REASONS) {
         rejected[reason].en += checked.rejected[reason].en;
