@@ -8,7 +8,7 @@
  */
 import type { DivisionKind, DivisionRejectReason } from '@shared/divisionMeaning';
 import { POLICY_DOMAINS, type PolicyDomain } from '../constants/policyTopics';
-import type { BlockKind, MatchReply, MeaningReply, ProposalBlock } from './divisionPrompt';
+import type { BlockKind, FitClaim, MatchReply, MeaningReply, ProposalBlock } from './divisionPrompt';
 import { QUOTE_MAX_WORDS, QUOTE_MIN_WORDS } from './extract';
 import { normalise } from './verify';
 
@@ -76,6 +76,27 @@ export function verifyMeaning(reply: MeaningReply, blocks: ProposalBlock[]): Mea
  */
 export function figuresIn(text: string): string[] {
   return (text.match(/\d[\d,.]*\d|\d/g) ?? []).map((n) => n.replace(/,/g, ''));
+}
+
+/** Below this many words a "supporting passage" proves nothing: "the wait" is in every proposal about waits. */
+export const MIN_SUPPORT_WORDS = 3;
+
+/**
+ * The claims of a matched answer against the proposal's text. A claim is stated only when the
+ * words the model gave as support really are in the proposal (case, fadas, quote marks and
+ * spacing aside) and are long enough to mean something. Returns the claims that are NOT stated.
+ * A claim the model could not support (`support: null`) or whose support is invented or
+ * paraphrased is not stated.
+ */
+export function verifyFit(claims: FitClaim[], proposal: string): string[] {
+  const text = normalise(proposal).text;
+  return claims
+    .filter((c) => {
+      const support = c.support === null ? '' : normalise(c.support).text.replace(/^['" ]+|['" ]+$/g, '');
+      const words = support ? support.split(' ').length : 0;
+      return words < MIN_SUPPORT_WORDS || !text.includes(support);
+    })
+    .map((c) => c.claim);
 }
 
 export type MatchCheck =

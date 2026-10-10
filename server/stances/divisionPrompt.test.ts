@@ -5,11 +5,14 @@ import { DIVISION_KINDS } from '@shared/divisionMeaning';
 import type { DivisionContext } from '../parliament';
 import { parseTranscript } from '../parliament/parse';
 import {
+  FIT_SYSTEM_PROMPT,
   MATCH_SYSTEM_PROMPT,
   MEANING_SYSTEM_PROMPT,
   MOVED_TEXT_CHARS,
   divisionUserPrompt,
+  fitUserPrompt,
   matchUserPrompt,
+  parseFit,
   parseMatch,
   parseMeaning,
   proposalBlocks,
@@ -64,6 +67,46 @@ describe('parseMatch', () => {
     expect(parseMatch('nope')).toBeNull();
     expect(parseMatch(json({ question_id: '3', ta_option: 'option_a' }))).toBeNull();
     expect(parseMatch(json({ ta_option: 'option_a' }))).toBeNull();
+  });
+});
+
+describe('parseFit', () => {
+  it('reads each claim with the words offered as its support, trimmed, null when there are none', () => {
+    expect(parseFit(json({ claims: [{ claim: ' remove the wait ', support: ' abolish the mandatory three day wait ' }, { claim: 'accept less help', support: null }, { claim: 'a third', support: '' }] }))).toEqual([
+      { claim: 'remove the wait', support: 'abolish the mandatory three day wait' },
+      { claim: 'accept less help', support: null },
+      { claim: 'a third', support: null },
+    ]);
+    expect(parseFit(json({ claims: [{ claim: 'no support key' }] }))).toEqual([{ claim: 'no support key', support: null }]);
+  });
+
+  it('drops blank claims and keeps at most eight', () => {
+    expect(parseFit(json({ claims: [{ claim: '  ', support: 'x' }, { claim: 'real', support: null }] }))).toEqual([{ claim: 'real', support: null }]);
+    expect(parseFit(json({ claims: Array.from({ length: 12 }, (_, i) => ({ claim: `c${i}`, support: null })) }))).toHaveLength(8);
+  });
+
+  it('is null for bad JSON, a wrong shape, or no claims at all, so an unusable check is never read as "nothing to check"', () => {
+    expect(parseFit(null)).toBeNull();
+    expect(parseFit('nope')).toBeNull();
+    expect(parseFit(json({}))).toBeNull();
+    expect(parseFit(json({ claims: [] }))).toBeNull();
+    expect(parseFit(json({ claims: [{ claim: '  ' }] }))).toBeNull();
+    expect(parseFit(json({ claims: 'a claim' }))).toBeNull();
+    expect(parseFit(json({ claims: [{ claim: 1 }] }))).toBeNull();
+  });
+});
+
+describe('the claims check prompt', () => {
+  it('asks for the proposal’s own words for each claim, copied exactly, and a reason is not a claim', () => {
+    expect(FIT_SYSTEM_PROMPT).toMatch(/copy EXACTLY, word for word, the words from the proposal's text that state it/);
+    expect(FIT_SYSTEM_PROMPT).toMatch(/never paraphrase, never join separate passages/);
+    expect(FIT_SYSTEM_PROMPT).toMatch(/Use null for "support" when no passage states the claim/);
+    // A purpose clause was once listed as a claim and refused an exact match ("trusting women to decide with their doctors").
+    expect(FIT_SYSTEM_PROMPT).toMatch(/The reason or purpose that goes with a claim \("to \.\.\.", "so that \.\.\.", "trusting \.\.\.", "because \.\.\."\) is not a claim/);
+    expect(FIT_SYSTEM_PROMPT).toMatch(/Fund more bus routes, accepting higher fares for now": two claims/);
+    const prompt = fitUserPrompt({ proposal: '[B1] Bill entitled an Act to abolish the wait.', answer: 'Remove the wait entirely, trusting women' });
+    expect(prompt).toContain('[B1] Bill entitled an Act to abolish the wait.');
+    expect(prompt).toContain('"Remove the wait entirely, trusting women"');
   });
 });
 
