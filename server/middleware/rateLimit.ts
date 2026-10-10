@@ -109,6 +109,14 @@ export const publicWriteRateLimit = createRateLimit({
   key: (req) => (req.user ? `user:${req.user.id}` : clientIp(req)),
 });
 
+/** A full copy of one account's data: 10 per signed-in user per hour. Mount after requireAuth. */
+export const exportRateLimit = createRateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 10,
+  name: 'export',
+  key: (req) => (req.user ? `user:${req.user.id}` : clientIp(req)),
+});
+
 /** The same writes per network: 600 per IP per 15 minutes, so many accounts on one address cannot flood. */
 export const networkWriteRateLimit = createRateLimit({
   windowMs: FIFTEEN_MINUTES,
