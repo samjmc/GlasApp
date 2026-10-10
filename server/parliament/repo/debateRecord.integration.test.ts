@@ -55,6 +55,9 @@ run('debate record (real Postgres)', () => {
       [sp(3), C, 'I agree with the Minister of State on this point entirely.'],
       [`${UNREAD}/spk_1`, A, 'Words that were never read for items.'],
       [`${UNREAD}/spk_2`, C, 'Nor these.'],
+      [sp(4), A, 'As Deputy Min said, the plan matters. More words here.'],
+      // The debate's last speech: the minister's closing reply.
+      [sp(5), B, 'Deputy Opp raised the waiting lists. That is fair.'],
     ];
     for (const [i, [id, member, text]] of speeches.entries()) {
       await q('insert into politics.debate_speeches (id, section_id, date, position, member_code, text, word_count) values ($1, $2, $3, $4, $5, $6, $7)', [
@@ -78,7 +81,9 @@ run('debate record (real Postgres)', () => {
     await item(sp(2), B, 'concession', 'The Deputy is right about the waiting lists', { target: sp(1) }); // government to opposition: scores for A
     await item(sp(2), B, 'commitment', 'I will publish the plan this year', { due: 'this year' });
     await item(sp(3), C, 'concession', 'I agree with the Minister of State on this point', { target: sp(2) }); // independent (no office) to government: scores for B
-    await item(sp(3), C, 'response', 'I agree with the Minister of State', { target: sp(2) }); // responses: never shown, never scored
+    await item(sp(3), C, 'response', 'I agree with the Minister of State', { target: sp(2) }); // names nobody (Bob spoke in no role): hidden
+    await item(sp(4), A, 'response', 'As Deputy Min said', { target: sp(2) }); // names Bob, another party: scores for B
+    await item(sp(5), B, 'response', 'Deputy Opp raised the waiting lists', { target: sp(1) }); // the closing speech: shown, no points
     await item(sp(1), A, 'specific_claim', 'An item from an older version', { claimType: 'figure', version: 'v0' });
     await item(`${UNREAD}/spk_1`, A, 'specific_claim', 'Words that were never read', { claimType: 'figure' });
 
@@ -96,31 +101,35 @@ run('debate record (real Postgres)', () => {
   it('rebuilds points from the stored items, only for debates whose read finished', async () => {
     expect(await repo.rebuildDebateRecord()).toEqual({ debates: 1, rows: 3 });
     const { rows } = await q(
-      'select member_code, role, claims, claim_points, concessions_received, concession_points, questions, commitments, points from politics.debate_participation order by member_code',
+      `select member_code, role, claims, claim_points, concessions_received, concession_points, replies, taken_up, taken_up_points, questions, commitments, points
+       from politics.debate_participation order by member_code`,
     );
     expect(rows).toEqual([
-      { member_code: A, role: 'backbench', claims: 4, claim_points: 3, concessions_received: 1, concession_points: 3, questions: 1, commitments: 0, points: 6 },
-      { member_code: B, role: 'office', claims: 0, claim_points: 0, concessions_received: 1, concession_points: 3, questions: 0, commitments: 1, points: 3 },
-      { member_code: C, role: 'backbench', claims: 0, claim_points: 0, concessions_received: 0, concession_points: 0, questions: 0, commitments: 0, points: 0 },
+      { member_code: A, role: 'backbench', claims: 4, claim_points: 3, concessions_received: 1, concession_points: 3, replies: 1, taken_up: 0, taken_up_points: 0, questions: 1, commitments: 0, points: 6 },
+      { member_code: B, role: 'office', claims: 0, claim_points: 0, concessions_received: 1, concession_points: 3, replies: 1, taken_up: 1, taken_up_points: 2, questions: 0, commitments: 1, points: 5 },
+      { member_code: C, role: 'backbench', claims: 0, claim_points: 0, concessions_received: 0, concession_points: 0, replies: 0, taken_up: 0, taken_up_points: 0, questions: 0, commitments: 0, points: 0 },
     ]);
     // Rebuilding again gives the same rows.
     expect(await repo.rebuildDebateRecord()).toEqual({ debates: 1, rows: 3 });
   });
 
-  it('shows one debate: most points first, with what each member said, and never a response', async () => {
+  it('shows one debate: most points first, with what each member said, and only replies that name their target', async () => {
     const view = await repo.debateRecord(DEBATE);
-    expect(view).toMatchObject({ debateId: DEBATE, title: 'Health: Motion', kind: 'motion', rulesVersion: 'r1' });
+    expect(view).toMatchObject({ debateId: DEBATE, title: 'Health: Motion', kind: 'motion', rulesVersion: 'r2' });
     expect(view!.participants.map((p) => [p.name, p.points, p.items.map((i) => i.kind)])).toEqual([
-      ['Ann Opp', 6, ['specific_claim', 'specific_claim', 'specific_claim', 'specific_claim', 'question']],
-      ['Bob Min', 3, ['concession', 'commitment']],
+      ['Ann Opp', 6, ['specific_claim', 'specific_claim', 'specific_claim', 'specific_claim', 'question', 'response']],
+      ['Bob Min', 5, ['concession', 'commitment', 'response']],
       ['Cat Ind', 0, ['concession']],
     ]);
     expect(view!.participants[1].items[0]).toMatchObject({ kind: 'concession', speaker: 'Bob Min', to: 'Ann Opp', crossesHouse: true });
+    expect(view!.participants[0].items[5]).toMatchObject({ kind: 'response', quote: 'As Deputy Min said', to: 'Bob Min', replyNoPoints: null });
+    expect(view!.participants[1].items[2]).toMatchObject({ kind: 'response', to: 'Ann Opp', replyNoPoints: 'closing_speech' });
+    expect(view!.participants[1]).toMatchObject({ takenUp: 1, takenUpPoints: 2, replies: 1 });
     expect(await repo.debateRecord(UNREAD)).toBeNull();
     expect(await repo.debateRecord('dail-2099-01-01-dbsect_1')).toBeNull();
   });
 
-  it("shows a TD's record: role, totals, recent debates, and what was conceded to them", async () => {
+  it("shows a TD's record: role, totals, recent debates, and the concessions and replies made to them", async () => {
     const a = await repo.tdDebateRecord(await tdIdOf(A));
     expect(a).toMatchObject({
       role: 'backbench',
@@ -128,12 +137,22 @@ run('debate record (real Postgres)', () => {
       points: 6,
       pointsPerDebate: null, // one debate is below the minimum
       cohortSize: 0,
-      totals: { claims: 4, claimPoints: 3, concessionsReceived: 1, concessionPoints: 3, questions: 1, commitments: 0 },
+      totals: { claims: 4, claimPoints: 3, concessionsReceived: 1, concessionPoints: 3, replies: 1, takenUp: 0, takenUpPoints: 0, questions: 1, commitments: 0 },
     });
     expect(a!.recent).toHaveLength(1);
-    expect(a!.recent[0].items).toHaveLength(5);
-    expect(a!.recent[0].concededToThem.map((i) => [i.speaker, i.quote, i.crossesHouse])).toEqual([['Bob Min', 'The Deputy is right about the waiting lists', true]]);
-    expect((await repo.tdDebateRecord(await tdIdOf(B)))?.role).toBe('office');
+    expect(a!.recent[0].items).toHaveLength(6);
+    expect(a!.recent[0].toThem.map((i) => [i.kind, i.speaker, i.quote])).toEqual([
+      ['concession', 'Bob Min', 'The Deputy is right about the waiting lists'],
+      ['response', 'Bob Min', 'Deputy Opp raised the waiting lists'],
+    ]);
+    const b = await repo.tdDebateRecord(await tdIdOf(B));
+    expect(b?.role).toBe('office');
+    expect(b?.totals).toMatchObject({ takenUp: 1, takenUpPoints: 2 });
+    // The reply that names nobody is not shown to the member it was linked to either.
+    expect(b!.recent[0].toThem.map((i) => [i.kind, i.speaker])).toEqual([
+      ['concession', 'Cat Ind'],
+      ['response', 'Ann Opp'],
+    ]);
     expect(await repo.tdDebateRecord(99999)).toBeNull();
   });
 });

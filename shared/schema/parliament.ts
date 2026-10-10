@@ -199,6 +199,11 @@ export const debateParticipation = politics.table(
     /** Concessions made TO this member; only those across the House score. */
     concessionsReceived: integer('concessions_received').notNull(),
     concessionPoints: integer('concession_points').notNull(),
+    /** Replies this member made that name their target (rules r2). */
+    replies: integer('replies').notNull().default(0),
+    /** Distinct speakers whose reply to this member scores: another party, not the closing speech. */
+    takenUp: integer('taken_up').notNull().default(0),
+    takenUpPoints: integer('taken_up_points').notNull().default(0),
     questions: integer('questions').notNull(),
     commitments: integer('commitments').notNull(),
     points: integer('points').notNull(),

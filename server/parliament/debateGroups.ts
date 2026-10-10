@@ -59,8 +59,9 @@ const HEADING_KINDS: Array<[RegExp, DebateKind]> = [
   [/^(Priority Questions|Other Questions|Questions|Questions on Policy or Legislation|Questions on Promised Legislation|Other Members' Questions)$/i, 'questions'],
   [/^Topical Issue Debate$/i, 'topical_issue'],
   [/^(Nomination of Taoiseach|Appointment of Taoiseach and Nomination of Members of Government)$/i, 'motion'],
-  // The Budget: "Financial Resolutions 2025", "Financial Resolution No. 1: Mineral Oil Tax".
-  [/^Financial Resolutions?( No\.\s?\d+)?( \d{4})?(: .+)?$/i, 'motion'],
+  // The Budget: "Financial Resolutions 2025", "Financial Resolution No. 1: Mineral Oil Tax",
+  // and in 2026 also "No 6: …" and "No. 8 - General".
+  [/^Financial Resolutions?( No\.?\s?\d+)?( \d{4})?((: | - ).+)?$/i, 'motion'],
   [/^Budget Statement \d{4}$/i, 'statements'],
   [
     /^(Order of Business|Business of Dáil|Topical Issue Matters|Messages? from (the )?(Seanad|Select Committees?|Standing Business Committee of Dáil Éireann)|(Revised )?Estimates for Public Services \d{4}|Visit of .+ Delegation|Address by .+|Adjournment of Dáil|Minute's Silence .+|Tributes to .+|Introduction of New Members|Personal (Apology|Explanation) by Member|Resignation of Member|Election of President|Selection of Candidate and Election of (Ceann|Leas-Cheann) Comhairle|Appointment of Ministers and Ministers of State)$/i,
@@ -92,6 +93,8 @@ export function kindOf(title: string): DebateKind {
     const suffix = title.slice(colon + 2).replace(PRIVATE_MEMBERS, '').trim();
     for (const [pattern, kind] of SUFFIX_KINDS) if (pattern.test(suffix)) return kind;
   }
+  // An English heading with " - " in it ("Financial Resolution No. 8 - General") is not bilingual.
+  if (parts.length > 1) for (const [pattern, kind] of HEADING_KINDS) if (pattern.test(title)) return kind;
   return 'other';
 }
 
