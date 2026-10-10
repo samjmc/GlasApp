@@ -313,3 +313,31 @@ Points come only from kinds that passed the gate. Version 1 starts small:
 - **Three debates failed and failed again on retry**: a window's reply stopped at the 8,192-token
   output limit, so its JSON was cut off, the same every time at temperature 0. Fixed in #124: a
   cut-off reply is read again as two halves of its window. The 3 debates were then read.
+
+## As built: rules r2, replies (2026-10-10)
+
+- **Why replies were hidden.** In Sam's check about 3 in 8 replies were linked wrongly, in two
+  ways: the wrong member ("I have to commend Deputy Coppinger", linked to George Lawlor), or the
+  right member but the wrong earlier passage as the "point taken up".
+- **The fix is code, with no new model calls and no re-read** (`debateItems/replies.ts`). A reply
+  is shown and scored only when the sentence it sits in names the member it is linked to: their
+  surname ("Deputy Boyd Barrett", "an Teachta Ó Snodaigh"), or, when they spoke in office, an
+  office word ("the Minister", "an tAire"). The record shows the reply's own words, which name the
+  point ("Deputy Cullinane referred to the industry"), never the passage the model picked.
+- **Measured on GlasCore's 2,232 stored replies**: 1,223 name their target and are kept (826 by
+  surname, 397 by office word); 1,009 are dropped. Read by hand: about 9 in 10 kept replies are
+  right (by surname about 94%, by office word about 80%: "I would like the Minister to …" names
+  the minister without taking up their point). Dropped ones are mostly vague ("No, that is not
+  true"), the wrong member, or "he said" with no name: precision first, as the plan asks.
+- **Rule**: +2 per distinct speaker per debate who takes up your point by name. Not from your own
+  party (198 kept replies are "as my colleague Deputy X said": shown, no points; independents are
+  never the same party), and not in the debate's closing speech, where the minister or mover names
+  everyone who spoke. Replies you make are counted and shown, for no points. Migration
+  `0022_debate_replies` adds `replies`, `taken_up` and `taken_up_points` to `debate_participation`.
+- **Government supporters.** The known limit "independents who support the government without
+  office count as opposition" is closed: `GOVERNMENT_SUPPORTERS` lists the 9 independents who
+  formally supported the 35th government (the Regional Independent Group's deal of 2025-01-14 and
+  the Healy-Rae brothers), each with public sources. The Ceann Comhairle ruled on 2025-02-03 that
+  Lowry, Toole, Heneghan and Danny Healy-Rae were not in Opposition. Both Healy-Raes voted against
+  the government on 2026-04-14 and count as opposition from that day. Mattie McGrath and Carol
+  Nolan voted for the Taoiseach but gave no formal support, so they are not listed.

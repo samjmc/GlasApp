@@ -292,20 +292,22 @@ export interface DebateSectionDetail extends DebateSectionSummary {
 // Debate record (docs/plans/debate-analysis.md, Steps 4–5). Code gives every point from the
 // published rules; the model only found and quoted the items. Not part of the TD score.
 // ---------------------------------------------------------------------------
-export type DebateItemShown = 'specific_claim' | 'concession' | 'question' | 'commitment';
+export type DebateItemShown = 'specific_claim' | 'concession' | 'response' | 'question' | 'commitment';
 
 export interface DebateItemView {
   kind: DebateItemShown;
   /** A specific claim: what makes it specific. */
   claimType: 'figure' | 'named_source' | 'cost' | 'date' | null;
-  /** The words as spoken. */
+  /** The words as spoken. For a reply, the reply's own words (they name the point taken up). */
   quote: string;
   /** Who said it. */
   speaker: string;
-  /** A concession: who it was made to. */
+  /** A concession or a reply: who it was made to. */
   to: string | null;
   /** A concession: whether it crosses the House, so scores. */
   crossesHouse: boolean;
+  /** A reply: why it scores nothing (same party, or the closing speech), or null when it scores. */
+  replyNoPoints: 'same_party' | 'closing_speech' | null;
   /** A question: who it was put to, as said. */
   addressee: string | null;
   /** A commitment: the time given, as said. */
@@ -324,10 +326,14 @@ export interface DebateRecordParticipant {
   claimPoints: number;
   concessionsReceived: number;
   concessionPoints: number;
+  replies: number;
+  /** Distinct speakers from another party who took up this member's point by name. */
+  takenUp: number;
+  takenUpPoints: number;
   questions: number;
   commitments: number;
   points: number;
-  /** What this member said (claims, questions, commitments, concessions they made). */
+  /** What this member said (claims, questions, commitments, concessions and replies they made). */
   items: DebateItemView[];
 }
 
@@ -356,9 +362,19 @@ export interface TdDebateRecord {
   cohortP75: number | null;
   cohortSize: number;
   minDebates: number;
-  totals: { claims: number; claimPoints: number; concessionsReceived: number; concessionPoints: number; questions: number; commitments: number };
-  /** The TD's most recent debates read, newest first, with what they said and what was conceded to them. */
-  recent: Array<{ debateId: string; title: string; kind: string; date: string; points: number; items: DebateItemView[]; concededToThem: DebateItemView[] }>;
+  totals: {
+    claims: number;
+    claimPoints: number;
+    concessionsReceived: number;
+    concessionPoints: number;
+    replies: number;
+    takenUp: number;
+    takenUpPoints: number;
+    questions: number;
+    commitments: number;
+  };
+  /** The TD's most recent debates read, newest first: what they said, and the concessions and replies made to them. */
+  recent: Array<{ debateId: string; title: string; kind: string; date: string; points: number; items: DebateItemView[]; toThem: DebateItemView[] }>;
 }
 
 export const LEADERBOARD_METRICS = ['attendance', 'participation', 'questions', 'committees'] as const;
