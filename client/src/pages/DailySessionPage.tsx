@@ -101,10 +101,11 @@ export default function DailySessionPage() {
   // Which session state the screen was last matched to. See the sync effect below.
   const syncedTo = useRef<string | null>(null);
 
-  const sessionQuery = useDailySession(isAuthenticated);
+  const { granted: consented, known: consentKnown, ensure: ensureConsent } = usePoliticalConsent();
+  // Opening today's session stores it, so it waits for the user's agreement (server/voting/routes.ts).
+  const sessionQuery = useDailySession(isAuthenticated && consented);
   const voteMutation = useDailySessionVote();
   const completeMutation = useCompleteDailySession();
-  const { ensure: ensureConsent } = usePoliticalConsent();
   const { toast } = useToast();
 
   const session = sessionQuery.data as unknown as DailySessionState | undefined;
@@ -385,6 +386,21 @@ export default function DailySessionPage() {
           <p className="text-muted-foreground">Three quick stances a day keep your profile and TD matches up to date.</p>
           <Button asChild size="lg">
             <Link href="/login">Sign in</Link>
+          </Button>
+        </div>
+      </Shell>
+    );
+  }
+
+  if (consentKnown && !consented) {
+    return (
+      <Shell>
+        <TopBar left={<CloseLink />} title="Daily vote" />
+        <div className="flex flex-1 flex-col justify-center gap-4 text-center">
+          <h1 className="font-display text-3xl font-extrabold tracking-tight">Agree to start your daily vote</h1>
+          <p className="text-muted-foreground">Your daily votes show your political opinions, so we keep them only if you agree.</p>
+          <Button size="lg" onClick={() => void ensureConsent()}>
+            Read and agree
           </Button>
         </div>
       </Shell>

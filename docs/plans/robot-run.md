@@ -10,6 +10,12 @@
 - **GlasCore:** it holds 0 TD evidence rows, so matches are party priors only.
 - **Item analysis:** it ran on 330 stored quizzes, with no section short of data.
 
+**Fixed the same day (Sam: "all three"), and re-run:**
+
+- **Votes:** they now count per user (60), plus 600 per address. The 10 robots behind one address saved all 80 of their votes.
+- **Pool:** `DB_POOL_MAX` now defaults to 15. At most 14 requests were waiting (mean 4.6), and the run took 30 s instead of 67 s.
+- **Daily sessions:** opening and completing a session now need consent. Refusers have 0 session rows.
+
 ## Goal
 
 Prove that the whole app works for many users at once, and find bugs, slow routes and rate-limit cliffs before real users do.

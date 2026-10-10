@@ -18,6 +18,8 @@ interface EnsureOptions {
 interface ConsentValue {
   /** The signed-in user has agreed to the current wording. False while unknown and when signed out. */
   granted: boolean;
+  /** The answer is known: signed out, or the profile has loaded (or failed to). False while it loads. */
+  known: boolean;
   /**
    * Call before saving anything that shows a political opinion. Resolves true when saving is allowed
    * (the user agreed now or before, or is signed out and nothing is saved) and false when they said no.
@@ -48,6 +50,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const declined = useRef(false);
 
   const granted = isAuthenticated && hasPoliticalConsent(profile.data?.data?.user);
+  const known = !isAuthenticated || profile.isSuccess || profile.isError;
   const grantedRef = useRef(granted);
   grantedRef.current = granted;
   const userId = user?.id;
@@ -108,7 +111,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const value = useMemo(() => ({ granted, ensure, grant, withdraw }), [granted, ensure, grant, withdraw]);
+  const value = useMemo(() => ({ granted, known, ensure, grant, withdraw }), [granted, known, ensure, grant, withdraw]);
 
   return (
     <ConsentContext.Provider value={value}>

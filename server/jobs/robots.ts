@@ -191,7 +191,7 @@ async function main(): Promise<void> {
       counts,
       poolWaiting,
       probe,
-      refuserSessions: counts.refuser.sessions,
+      poolMax: (await import('../db')).DB_POOL_MAX,
       analysisFile,
     }),
   );

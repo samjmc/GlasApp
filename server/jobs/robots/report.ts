@@ -35,7 +35,7 @@ export function checks(c: Record<RobotKind, KindCounts>, fiveHundreds: number): 
   const w = c.withdrawer;
   const a = c.anonymous;
   return [
-    { name: 'Refusers stored no opinion', pass: none(r, opinions).length === 0, detail: describe(r, opinions) },
+    { name: 'Refusers stored no opinion and no daily session', pass: none(r, [...opinions, 'sessions']).length === 0, detail: describe(r, [...opinions, 'sessions']) },
     {
       name: 'Withdrawers have no political data left, and still have an account without consent',
       pass: none(w, [...opinions, 'sessions', 'consented']).length === 0 && w.users === w.robots,
@@ -67,8 +67,8 @@ export interface ReportInput {
   counts: Record<RobotKind, KindCounts>;
   poolWaiting: number[];
   probe: { robots: number; votes: number; rateLimited: number };
-  /** Daily-session rows refusers got: reported, not a pass/fail (see the plan). */
-  refuserSessions: number;
+  /** The server's database pool size (server/db.ts DB_POOL_MAX). */
+  poolMax: number;
   analysisFile: string;
 }
 
@@ -92,8 +92,7 @@ export function renderRobotReport(input: ReportInput): string {
     '',
     '## Findings',
     '',
-    `- Refusers got ${input.refuserSessions} daily_sessions row(s): GET /api/daily-session creates one without consent. It holds no opinion, but account erasure treats the table as political data.`,
-    `- Rate-limit probe: ${input.probe.robots} robots behind ONE address got ${input.probe.votes} votes saved and ${input.probe.rateLimited} refused with 429 (60 writes per address per 15 minutes).`,
+    `- Rate-limit probe: ${input.probe.robots} robots behind ONE address got ${input.probe.votes} votes saved and ${input.probe.rateLimited} refused with 429 (60 votes per user and 600 per address, per 15 minutes).`,
     ...(input.recorder.findings.length
       ? summariseFindings(input.recorder.findings)
       : ['- Every response was one the journey expected.']),
@@ -110,7 +109,7 @@ export function renderRobotReport(input: ReportInput): string {
         return `| ${route} | ${ms.length} | ${percentile(ms, 50).toFixed(0)} | ${percentile(ms, 95).toFixed(0)} | ${ms.at(-1)!.toFixed(0)} | ${statuses} |`;
       }),
     '',
-    `Database pool (10 connections): requests waiting, sampled every 250 ms: max ${waiting.length ? Math.max(...waiting) : 0}, mean ${waiting.length ? (waiting.reduce((s, x) => s + x, 0) / waiting.length).toFixed(1) : '0'}.`,
+    `Database pool (${input.poolMax} connections): requests waiting, sampled every 250 ms: max ${waiting.length ? Math.max(...waiting) : 0}, mean ${waiting.length ? (waiting.reduce((s, x) => s + x, 0) / waiting.length).toFixed(1) : '0'}.`,
     '',
     'Latency is one laptop and a local Postgres. In production each signed-in request also calls Supabase two or three times, which is not in these numbers.',
     '',

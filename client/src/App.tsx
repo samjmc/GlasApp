@@ -11,7 +11,7 @@ import { OfflineAlert } from "@/components/OfflineAlert";
 import { OfflineIndicator } from "@/components/OfflineIndicator";
 import { PWAInstallButton } from "@/components/PWAInstallButton";
 import CookieConsent from "@/components/CookieConsent";
-import { ConsentProvider } from "@/contexts/ConsentContext";
+import { ConsentProvider, usePoliticalConsent } from "@/contexts/ConsentContext";
 import { RegionProvider } from "@/contexts/RegionContext";
 import { useRegion } from "@/hooks/useRegion";
 import { useDailySession } from "@/hooks/useDailySession";
@@ -140,7 +140,9 @@ const REGION_EXEMPT = [
 function Router() {
   const { isAuthenticated, isLoading } = useAuth();
   const [location, navigate] = useLocation();
-  const { data: dailySession, isLoading: dailyLoading } = useDailySession(isAuthenticated);
+  // Opening today's session stores it, so it is loaded (and forced) only for a user who has agreed.
+  const { granted: consented } = usePoliticalConsent();
+  const { data: dailySession, isLoading: dailyLoading } = useDailySession(isAuthenticated && consented);
   const { status: regionStatus, region } = useRegion();
 
   // A signed-in user with an unfinished session lands in it once a day. Closing it (X) keeps it

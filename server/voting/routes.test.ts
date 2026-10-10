@@ -26,6 +26,7 @@ vi.mock('../auth', () => {
 
 vi.mock('../middleware/rateLimit', () => ({
   publicWriteRateLimit: (_req: unknown, _res: unknown, next: () => void) => next(),
+  networkWriteRateLimit: (_req: unknown, _res: unknown, next: () => void) => next(),
 }));
 
 // The real guard reads the database; the header `x-test-no-consent` stands for "this user never agreed".
@@ -124,15 +125,21 @@ describe('voting routes', () => {
     expect(calls.list.at(-1)).toEqual({ fn: 'recordSessionVote', args: ['u1', 5, 'option_a'] });
   });
 
-  it('refuses both vote routes with 403 CONSENT_REQUIRED until the user has agreed, and saves nothing', async () => {
-    for (const path of ['/api/daily-session/items/5/vote', '/api/votes/questions/3']) {
-      const res = await send(path, { method: 'POST', user: 'u1', noConsent: true, body: { optionKey: 'option_a' } });
+  it('refuses every route that stores something with 403 CONSENT_REQUIRED until the user has agreed, and saves nothing', async () => {
+    const vote = { method: 'POST', user: 'u1', noConsent: true, body: { optionKey: 'option_a' } };
+    // Opening today's session stores it, so it is gated too (a robot run found refusers got a row).
+    for (const [path, init] of [
+      ['/api/daily-session', { user: 'u1', noConsent: true }],
+      ['/api/daily-session/items/5/vote', vote],
+      ['/api/daily-session/complete', { method: 'POST', user: 'u1', noConsent: true }],
+      ['/api/votes/questions/3', vote],
+    ] as const) {
+      const res = await send(path, init);
       expect(res.status, path).toBe(403);
       expect(await res.json(), path).toMatchObject({ success: false, error: { code: 'CONSENT_REQUIRED' } });
     }
     expect(calls.list).toEqual([]);
-    // Reading is not gated: today's questions and an article's tally need no consent.
-    expect((await send('/api/daily-session', { user: 'u1', noConsent: true })).status).toBe(200);
+    // An article's question and tally store nothing, so they need no consent.
     expect((await send('/api/votes/articles/9', { noConsent: true })).status).toBe(200);
   });
 
