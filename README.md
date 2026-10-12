@@ -56,6 +56,8 @@ Do not use `npm run db:push`: migrations are generated, reviewed and applied wit
 - `npm test` runs without a database. The integration suites need a disposable Postgres in
   `TEST_DATABASE_URL` and are skipped without it. CI runs them against a real Postgres and fails
   if any is skipped. Never point `TEST_DATABASE_URL` at GlasCore.
+- Tests run in Node. A React component test (`*.test.tsx`, Testing Library) starts with
+  `// @vitest-environment jsdom`; `client/src/contexts/AuthContext.test.tsx` is an example.
 - `npm run test:e2e` needs the same variable, plus `npx playwright install chromium` once. It builds
   the app, creates a throwaway `<db>_e2e` database and starts the built server on it.
 - CI (`.github/workflows/ci.yml`) has six jobs: `typecheck`, `test`, `build`, `e2e`,
