@@ -87,4 +87,13 @@ export const queryKeys = {
   globalSearch: {
     data: (regionCode: string) => ["global-search-data", regionCode] as const,
   },
+  pledges: {
+    /** GET /api/pledges/priorities: `mine` is the caller's ranking, so it is scoped by user. */
+    priorities: (userId: string | undefined) => ["/api/pledges/priorities", userId] as const,
+    /** GET /api/pledges/parties: the delivery rate is weighted by the caller's ranking, so scoped by user. */
+    parties: (userId: string | undefined) => ["/api/pledges/parties", userId] as const,
+  },
+  /** GET /api/daily-session: the signed-in user's own session. */
+  dailySession: (regionCode: string | null, userId: string | undefined) =>
+    ["daily-session-state", regionCode, userId] as const,
 };

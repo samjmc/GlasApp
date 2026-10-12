@@ -16,6 +16,8 @@ import {
   type Pledge,
   type PledgeStatus,
 } from "@/services/pledgesApi";
+import { useAuth } from "@/contexts/AuthContext";
+import { queryKeys } from "@/lib/queryKeys";
 import { PledgePriorities } from "./PledgePriorities";
 
 const STATUS_VARIANT: Record<PledgeStatus, BadgeProps["variant"]> = {
@@ -108,7 +110,8 @@ function PledgeRow({ pledge }: { pledge: Pledge }) {
  */
 export function PartyPledgesPanel({ party }: { party: string }) {
   const pledges = useQuery({ queryKey: ["/api/pledges", "party", party], queryFn: () => pledgesApi.list(party) });
-  const summaries = useQuery({ queryKey: ["/api/pledges/parties"], queryFn: pledgesApi.parties });
+  const { user } = useAuth();
+  const summaries = useQuery({ queryKey: queryKeys.pledges.parties(user?.id), queryFn: pledgesApi.parties });
   const summary = summaries.data?.find((s) => s.party.toLowerCase() === party.toLowerCase());
 
   if (pledges.isLoading) {
