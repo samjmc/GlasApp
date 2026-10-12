@@ -5,6 +5,7 @@
  *   npm run news:tds
  *   npm run news:tds -- --article 123    one article, bypassing triage
  */
+import 'dotenv/config';
 import { processArticleById, runTdPipeline } from '../news/tdPipeline';
 import type { StanceStats } from '../stances';
 import { shutdown } from '../db';

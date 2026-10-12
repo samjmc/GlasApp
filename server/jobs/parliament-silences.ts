@@ -7,6 +7,7 @@
  *   npm run parliament:silences               runs of 8+ sitting days
  *   npm run parliament:silences -- --min 12
  */
+import 'dotenv/config';
 import { shutdown } from '../db';
 import { repository } from '../parliament';
 

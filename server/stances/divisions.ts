@@ -25,7 +25,7 @@ import type { DivisionReadingRow, NewDivisionReading } from '@shared/schema/stan
 import { recomputeTdsAndParties, replaceStanceEvidence } from '../ideology';
 import { partyBaseline } from '../ideology/partyBaselines';
 import { oireachtasVoteUrl, repository as parliament, type DivisionContext, type DivisionRef, type DivisionVoteRecord } from '../parliament';
-import { callChatCompletion, isLLMConfigured } from '../services/aiService';
+import { callChatCompletion, isLLMConfigured, OutOfCreditError } from '../services/aiService';
 import { candidateQuestions, questionsWithPositions, type QuestionPositions } from '../voting';
 import { divisionStanceRows } from './discipline';
 import {
@@ -47,8 +47,6 @@ import { stanceEvidenceRows } from './evidence';
 import { QUOTE_MIN_WORDS } from './extract';
 import * as repo from './repository';
 
-/** The model asked for; a configured provider (DeepSeek) replaces it, so the answer's own model is stored. */
-const DIVISION_MODEL = 'gpt-4o-mini';
 /** Model calls per nightly run. */
 export const NIGHTLY_LIMIT = 20;
 /** A failed reading is retried until this many calls in a row have failed. */
@@ -75,13 +73,16 @@ export interface DivisionAnswer {
   completionTokens: number | null;
 }
 
-/** One model call. Throws on failure, which records the reading as `failed`. */
+/**
+ * One model call. Throws on failure, which records the reading as `failed`; an OutOfCreditError
+ * instead stops the run and records nothing for that division.
+ */
 export type DivisionCompletion = (system: string, user: string) => Promise<DivisionAnswer>;
 
+/** The answer's own model is stored, whichever the provider chose. */
 export const divisionCompletion: DivisionCompletion = async (system, user) => {
   const response = await callChatCompletion(
     {
-      model: DIVISION_MODEL,
       temperature: 0,
       response_format: { type: 'json_object' },
       messages: [
@@ -280,6 +281,7 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
       result.completionTokens += answer.completionTokens ?? 0;
       return answer;
     } catch (error) {
+      if (error instanceof OutOfCreditError) throw error;
       return error instanceof Error ? error : new Error(message(error));
     }
   };
@@ -416,6 +418,8 @@ export interface ClassifySummary {
   completionTokens: number;
   /** Divisions read with a model call, in the order read. */
   readings: DivisionReading[];
+  /** Why the run stopped early (the provider is out of credit), if it did. */
+  stopped: string | null;
 }
 
 /**
@@ -442,12 +446,20 @@ export async function classifyDivisions(options: ClassifyOptions = {}): Promise<
     promptTokens: 0,
     completionTokens: 0,
     readings: [],
+    stopped: null,
   };
   for (const w of work) {
     if (limit !== null && summary.read >= limit) break;
     const callsLeft = maxCalls === null ? Number.POSITIVE_INFINITY : maxCalls - summary.calls;
     if (callsLeft <= 0) break;
-    const result = await readDivision(w.ref, w.row, w.stage, { complete, now, windowDays, callsLeft });
+    let result: ReadResult | null;
+    try {
+      result = await readDivision(w.ref, w.row, w.stage, { complete, now, windowDays, callsLeft });
+    } catch (error) {
+      if (!(error instanceof OutOfCreditError)) throw error;
+      summary.stopped = `the model provider has no credit left (${error.message})`;
+      break;
+    }
     if (!result) continue;
     // Calls are counted even when there is nothing to write, so the budget and the log tell the truth.
     if (result.calls > 0) {
@@ -563,7 +575,8 @@ export async function runDivisionStances(options: {
     const sync = await syncDivisionStances(now);
     const read = classify
       ? `read ${classify.read} of ${classify.pending} division(s) needing work (${DIVISION_READING_STATUSES.map((s) => `${s} ${classify.statuses[s]}`).join(', ')}), ` +
-        `${classify.calls} model call(s), ${classify.promptTokens} prompt + ${classify.completionTokens} completion tokens`
+        `${classify.calls} model call(s), ${classify.promptTokens} prompt + ${classify.completionTokens} completion tokens` +
+        (classify.stopped ? `, stopped: ${classify.stopped}` : '')
       : 'no LLM configured, nothing read';
     log(
       `[division-stances] ${read}; ${sync.rows} vote stance(s) from ${sync.divisions} matched division(s)${sync.skipped ? `, ${sync.skipped} skipped (no link)` : ''}; ` +
