@@ -26,6 +26,7 @@ import {
   uniqueIndex,
   varchar,
 } from 'drizzle-orm/pg-core';
+import { users } from './accounts';
 import { politics } from './politics';
 import type { DailySessionCompletion } from '../voting';
 
@@ -112,7 +113,9 @@ export const dailySessions = politics.table(
   {
     id: serial('id').primaryKey(),
     /** auth.users id. */
-    userId: varchar('user_id', { length: 255 }).notNull(),
+    userId: varchar('user_id', { length: 255 })
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
     sessionDate: date('session_date', { mode: 'string' }).notNull(),
     status: varchar('status', { length: 12 }).notNull().default('pending'),
     county: varchar('county', { length: 60 }),
@@ -165,7 +168,9 @@ export const policyVotes = politics.table(
   {
     id: serial('id').primaryKey(),
     /** auth.users id. */
-    userId: varchar('user_id', { length: 255 }).notNull(),
+    userId: varchar('user_id', { length: 255 })
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
     questionId: integer('question_id').notNull(),
     optionKey: varchar('option_key', { length: 12 }).notNull(),
     source: varchar('source', { length: 20 }).notNull(),

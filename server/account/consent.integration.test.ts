@@ -33,6 +33,8 @@ run('political consent against Postgres', () => {
 
   /** One row of every kind of political data, plus a profile with a name. */
   async function seedPoliticalData(userId: string) {
+    // First: the political tables reference politics.users (migration 0027).
+    await q("insert into politics.users (id, first_name) values ($1, 'Test') on conflict (id) do nothing", [userId]);
     const session = await q("insert into politics.daily_sessions (user_id, session_date) values ($1, '2026-09-25') returning id", [userId]);
     const item = await q('insert into politics.daily_session_items (session_id, question_id, position) values ($1, $2, 0) returning id', [
       session.rows[0].id,
@@ -45,7 +47,6 @@ run('political consent against Postgres', () => {
     await q("insert into politics.pledge_category_priorities (user_id, category, rank) values ($1, 'housing', 1)", [userId]);
     await q(`insert into politics.quiz_results (user_id, answers, ${VECTOR}, ideology, description) values ($1, '[]', ${ZEROS}, 'Centrist', 'x')`, [userId]);
     await q(`insert into politics.ideology_profiles (subject_kind, subject_id, ${VECTOR}, total_weight, evidence_count) values ('user', $1, ${ZEROS}, 1, 1)`, [userId]);
-    await q("insert into politics.users (id, first_name) values ($1, 'Test') on conflict (id) do nothing", [userId]);
   }
 
   async function politicalRowsOf(userId: string): Promise<number> {
