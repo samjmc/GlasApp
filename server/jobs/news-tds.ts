@@ -2,12 +2,15 @@
  * Link new articles to the TDs they name, record the stances they verifiably stated, and make
  * daily-vote questions. Scores nobody.
  *
- *   npm run news:tds
- *   npm run news:tds -- --article 123    one article, bypassing triage
+ *   npm run news:tds -- --yes
+ *   npm run news:tds -- --article 123 --yes    one article, bypassing triage
+ *
+ * --yes: needed for a database not on this machine.
  */
 import { processArticleById, runTdPipeline } from '../news/tdPipeline';
 import type { StanceStats } from '../stances';
 import { shutdown } from '../db';
+import { approveWrite } from './liveDbGuard';
 
 const stanceLine = (s: StanceStats) =>
   `Stances: ${s.extracted} extracted, ${s.accepted} accepted, ${s.mapped} matched to an answer; rejected ` +
@@ -19,6 +22,7 @@ const stanceLine = (s: StanceStats) =>
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const articleFlag = args.indexOf('--article');
+  approveWrite('news:tds');
 
   if (articleFlag >= 0) {
     const id = Number(args[articleFlag + 1]);

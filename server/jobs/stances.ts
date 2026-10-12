@@ -22,6 +22,10 @@
  * count as a candidate (default 60, MATCH_WINDOW_DAYS). The nightly run never passes it.
  *   npm run stances -- --divisions --audit                               the matches vs the lobbies; every match listed
  *   npm run stances -- --divisions --sync                                readings → td_stances (PUBLIC), evidence, profiles
+ *
+ * Every mode that writes (all but --dry-run and --audit) also needs --yes for a database not on
+ * this machine (liveDbGuard.ts). --sync stays the step that makes stances public; --yes only says
+ * which database.
  */
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -44,6 +48,7 @@ import {
 } from '../stances';
 import { completeJson, questionForArticle } from '../voting';
 import { oireachtasVoteUrl } from '../parliament';
+import { approveWrite } from './liveDbGuard';
 
 const DEFAULT_DAYS = 180;
 const USAGE =
@@ -63,7 +68,7 @@ export function parseArgs(argv: string[]): { days: number; dryRun: boolean } {
 
 /** A dry run reads this many divisions unless told otherwise (≈ $0.03; see 01c §10). */
 export const DRY_RUN_LIMIT = 20;
-const DIVISION_FLAGS = ['--divisions', '--dry-run', '--reclassify', '--limit', '--window', '--audit', '--sync'];
+const DIVISION_FLAGS = ['--divisions', '--dry-run', '--reclassify', '--limit', '--window', '--audit', '--sync', '--yes'];
 const VALUE_FLAGS = ['--limit', '--window'];
 
 export type DivisionArgs =
@@ -163,8 +168,13 @@ export async function runDivisions(argv: string[], log: (line: string) => void =
 
 async function main(): Promise<void> {
   // The division modes first: they check for a model themselves, and need none for --sync or --audit.
-  if (process.argv.includes('--divisions')) return runDivisions(process.argv.slice(2));
+  if (process.argv.includes('--divisions')) {
+    const args = parseDivisionArgs(process.argv.slice(2));
+    if (args.mode !== 'audit') approveWrite('stances', args.mode === 'classify' && args.dryRun);
+    return runDivisions(process.argv.slice(2));
+  }
   const { days, dryRun } = parseArgs(process.argv.slice(2));
+  approveWrite('stances', dryRun);
   // Checked before the purge: without a model, step 2 records nothing and step 1 has already run.
   if (!isLLMConfigured()) throw new Error('No LLM key is configured, so no stance can be extracted. Nothing was changed.');
   if (!isJevConfigured()) throw new Error('JEV_API_KEY or CLOUDFLARE_ACCOUNT_ID is not set, so no stance can pass the position check. Nothing was changed.');

@@ -169,7 +169,7 @@ One model for users, TDs and parties. Full design: `docs/architecture/ideology-m
 3. A user's profile = their latest quiz plus every policy vote (`server/voting`).
    A TD's profile = party baseline plus stance evidence from articles (and later debates) in
    `politics.td_ideology_evidence`. A party = the mean of its TDs. All live in
-   `politics.ideology_profiles` and rebuild with `npm run ideology -- --recalculate`.
+   `politics.ideology_profiles` and rebuild with `npm run ideology -- --recalculate --yes`.
 4. Matches (`/api/ideology/me/matches`, public `POST /api/ideology/matches`) use one alignment formula.
 
 ## 🗺️ Feature Modules

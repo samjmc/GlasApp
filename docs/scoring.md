@@ -128,6 +128,12 @@ recalculateAll()                         recalculate.ts
 Also run by `npm run scores:recalculate` and `POST /api/scores/recalculate` (admin).
 `npm run td-scoring -- --recalculate` is an alias kept for one release.
 
+Every job in `server/jobs/` that writes, run by hand, first prints the host and database it
+writes to. If that database is not on this machine, the job stops (exit code 2) unless it was
+given `--yes`, for example `npm run scores:recalculate -- --yes`. A `--dry-run` needs no `--yes`.
+The scheduler and the admin routes call the same functions without this step
+(`server/jobs/liveDbGuard.ts`).
+
 ## News
 
 News is **not part of the score**. The news → TD pipeline (`server/news/tdPipeline.ts`,
@@ -144,7 +150,7 @@ only records facts and makes questions:
 
 Each event is processed once: ingest links same-event copies to the first report
 (`server/news/events.ts`, `news_articles.duplicate_of`), and only that canonical is claimed. A
-manual run on a duplicate's id (`npm run news:tds -- --article <id>`) processes its canonical.
+manual run on a duplicate's id (`npm run news:tds -- --article <id> --yes`) processes its canonical.
 
 ## Debate record
 

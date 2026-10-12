@@ -9,7 +9,9 @@
 import { repository as repo } from '../parliament';
 import { extractQuestions } from '../parliament/questionItems/run';
 import { runItemsJob } from './itemsJob';
+import { approveWrite } from './liveDbGuard';
 
+approveWrite('questions:items', process.argv.includes('--dry-run'));
 runItemsJob({
   units: 'question exchanges',
   extract: extractQuestions,
