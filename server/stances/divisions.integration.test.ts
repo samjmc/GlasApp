@@ -16,6 +16,7 @@ import pkg from 'pg';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
 import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
+import { AIError } from '../services/aiService';
 import type { DivisionCompletion } from './divisions';
 
 const divisionsUrl = testDatabaseUrl('divisions');
@@ -728,7 +729,9 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
 
       const nonsense = stub({ match: () => ({ question_id: 999_999, ta_option: 'option_a', confidence: 0.9, reason: 'x' }) });
       const failed = await classify(nonsense.complete, { reclassify: true, now: later(3) });
-      expect(failed).toMatchObject({ calls: 1, statuses: { matched: 1, rejected: 0 } });
+      // A kept row is not a new reading: its status is not counted, and the reading says what went wrong.
+      expect(failed).toMatchObject({ calls: 1, statuses: { matched: 0, rejected: 0 } });
+      expect(failed.readings[0]).toMatchObject({ status: 'failed', error: 'the model named a question or answer that was not offered' });
       const after = (await readings())[0];
       expect(after).toMatchObject({ status: 'matched', question_id: question, ta_option_key: 'option_a', quote: matched!.quote });
       expect(new Date(after!.match_checked_at as Date).toISOString()).toBe(later(3).toISOString());
@@ -737,6 +740,104 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       await addDivision('2026-09-23', 2);
       await classify(nonsense.complete);
       expect((await readings()).find((r) => r.division_id === 'dail-34-2026-09-23-vote_2')).toMatchObject({ status: 'rejected', reject_reason: 'invalid' });
+    });
+
+    it('a STALE matched division (its record changed) re-read with a narrower window, or with no record to read, keeps its match', async () => {
+      const question = await addQuestion('housing', '2026-06-01T09:00:00Z'); // 115 days before the vote
+      const d1 = await addDivision('2026-09-24', 1);
+      await classify(stub().complete, { windowDays: 365 });
+      expect((await readings())[0]).toMatchObject({ status: 'matched', question_id: question });
+
+      // A corrected tally changes the input hash: the reading is stale, so --reclassify re-reads it from call 1.
+      await q('update politics.divisions set ta_count = ta_count + 1 where id = $1', [d1]);
+      // At the default 60 days no question is in the window. It used to be written over as no_candidates.
+      const again = await classify(stub().complete, { reclassify: true });
+      expect(again).toMatchObject({ calls: 3, statuses: { matched: 1, no_candidates: 0 } });
+      expect((await readings())[0]).toMatchObject({ status: 'matched', question_id: question });
+
+      // The debate record gone (re-grouped by a sync): nothing to read it from now, which is not a verdict.
+      await q('update politics.divisions set ta_count = ta_count + 1 where id = $1', [d1]);
+      await q('delete from politics.debate_speeches');
+      const none = await classify(stub().complete, { reclassify: true });
+      expect(none).toMatchObject({ calls: 0, statuses: { no_context: 0, rejected: 0 } });
+      expect((await readings())[0]).toMatchObject({ status: 'matched', question_id: question });
+    });
+
+    it('a matched reading made before the amendment guard is rejected when it is next re-read, not left public', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      const d1 = await addDivision('2026-09-24', 1, { subject: 'Amendment put' });
+      const [{ debate_section_id: section }] = await q<{ debate_section_id: string }>('select debate_section_id from politics.divisions where id = $1', [d1]);
+      const AMENDMENT = 'To delete all words after "That Dáil Éireann" and substitute: calls on the Government to build fifty thousand public homes every year on public land.';
+      await q('insert into politics.debate_speeches (id, section_id, date, position, text, word_count) values ($1, $2, $3, 1, $4, 20)', [
+        `${section}/spk_2`,
+        section,
+        '2026-09-24',
+        `I move amendment No. 1:\n\n${AMENDMENT}`,
+      ]);
+      const asAmendment = stub({ meaning: () => ({ ...(meaningReply('') as object), division_kind: 'amendment', quote_block: 'A1', quote: 'calls on the Government to build fifty thousand public homes every year' }) });
+      expect(await classify(asAmendment.complete)).toMatchObject({ statuses: { matched: 1 } });
+
+      // The same division as an older version of the code would have stored it: read as the original motion.
+      await q("update politics.division_readings set division_kind = 'motion', quote_block = 'M1'");
+      const again = await classify(stub().complete, { reclassify: true });
+      expect(again).toMatchObject({ calls: 0, statuses: { rejected: 1, matched: 0 } });
+      expect((await readings())[0]).toMatchObject({ status: 'rejected', reject_reason: 'ambiguous', question_id: null });
+    });
+
+    it('a provider that REFUSES one prompt (a 400) is a failed attempt, so it cannot hold the front of the queue; an outage is not', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      await addDivision('2026-09-24', 1);
+      const refuse: DivisionCompletion = async () => {
+        throw new AIError('content refused', { operation: 'division-stances', attempts: 1, elapsedMs: 5, status: 400 });
+      };
+      for (let i = 0; i < 4; i++) await classify(refuse);
+      expect(await readings()).toEqual([expect.objectContaining({ status: 'failed', attempts: 3 })]);
+
+      // A 503 is an outage: nothing written, nothing counted.
+      await addDivision('2026-09-23', 2);
+      const busy: DivisionCompletion = async () => {
+        throw new AIError('overloaded', { operation: 'division-stances', attempts: 2, elapsedMs: 5, status: 503 });
+      };
+      const s = await classify(busy);
+      expect(s).toMatchObject({ calls: 1, statuses: { failed: 0 } });
+      expect((await readings()).map((r) => r.division_id)).toEqual(['dail-34-2026-09-24-vote_1']);
+    });
+
+    it('an outage on call 2 keeps the meaning call 1 paid for, uses no attempt, and the retry makes calls 2 and 3 only', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      await addDivision('2026-09-24', 1);
+      const calls: string[] = [];
+      const good = stub();
+      const matchDown: DivisionCompletion = async (system, user) => {
+        if (system === MEANING_SYSTEM_PROMPT) return good.complete(system, user);
+        calls.push('match');
+        throw new Error('socket hang up');
+      };
+      const first = await classify(matchDown);
+      expect(first).toMatchObject({ calls: 2, statuses: { failed: 1 } });
+      expect((await readings())[0]).toMatchObject({ status: 'failed', attempts: 0, quote: QUOTE, ta_means: 'Build public homes.' });
+
+      const retry = stub();
+      expect(await classify(retry.complete)).toMatchObject({ calls: 2, statuses: { matched: 1 } });
+      expect(retry.calls).toEqual(['match', 'fit']);
+    });
+
+    it('the outage breaker counts divisions where nothing was answered: an answer in between starts the count again', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      for (let i = 0; i < 5; i++) await addDivision(`2026-09-2${i}`, i + 1);
+      const good = stub();
+      let meaningCalls = 0;
+      // Divisions are read newest first: 1 down, 2 down, 3 answers, 4 down, 5 down. Never three in a row.
+      const flaky: DivisionCompletion = async (system, user) => {
+        if (system === MEANING_SYSTEM_PROMPT) {
+          meaningCalls++;
+          if (meaningCalls !== 3) throw new Error('timeout');
+        }
+        return good.complete(system, user);
+      };
+      const run = await classify(flaky);
+      expect(run).toMatchObject({ stopped: null, statuses: { matched: 1 } });
+      expect(meaningCalls).toBe(5);
     });
 
     it('--reclassify retries a failed reading that has used up its attempts; a plain run does not', async () => {

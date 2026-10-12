@@ -31,10 +31,14 @@ export const ALLOWED_BLOCKS: Partial<Record<DivisionKind, BlockKind[]>> = {
 const ONE_TEXT: DivisionKind[] = ['amendment', 'words_stand', 'motion'];
 /** The other kinds read from more than one kind of block (a bill's title and the motion to read it), but not from two of the same kind. */
 const ONE_OF_EACH: DivisionKind[] = ['bill_stage', 'other'];
-/** The question as recorded names an amendment ("Amendment put", "That amendment No. 4 be made"). */
-const NAMES_AMENDMENT = /\bamendments?\b/i;
+/**
+ * The question as recorded IS an amendment put ("Amendment put", "That amendment No. 4 be made", with or
+ * without a leading "Question put:" and quote marks). Anchored at the start: a bill's own title can hold
+ * the word ("Finance (Amendment) Bill") and "as amended" is a different question.
+ */
+const NAMES_AMENDMENT = /^(?:question put\s*:?\s*)?["“'‘]?\s*(?:that\s+)?(?:the\s+)?amendments?\b/i;
 /** A reading that treats such a question as one of these is reading the wrong text: the Tá voters backed the amendment. */
-const NOT_AN_AMENDMENT: DivisionKind[] = ['motion', 'bill_stage', 'other'];
+const NOT_AN_AMENDMENT: DivisionKind[] = ['motion', 'words_stand', 'bill_stage', 'other'];
 const ELLIPSIS = /\.\.\.|…/;
 
 export type MeaningCheck =
@@ -43,6 +47,22 @@ export type MeaningCheck =
   | { status: 'ok'; block: string; quote: string; domains: PolicyDomain[] };
 
 const rejected = (reason: DivisionRejectReason): MeaningCheck => ({ status: 'rejected', reason });
+
+/**
+ * Whether a reading of this kind can be tied to ONE text of the proposal, from EVERY block there is (not
+ * only those that fitted the prompt): null when it can, 'ambiguous' when the recorded question names an
+ * amendment and the reading is of something else, or the kind's allowed blocks hold more than one text.
+ * A stored meaning is checked with this again whenever it is re-used, so a reading made before a check was
+ * added cannot go on being matched, or stay public, against it.
+ */
+export function kindConflict(kind: DivisionKind, every: ProposalBlock[]): DivisionRejectReason | null {
+  const allowed = ALLOWED_BLOCKS[kind] ?? [];
+  const recorded = every.find((b) => b.kind === 'Q')?.text ?? '';
+  if (NAMES_AMENDMENT.test(recorded) && NOT_AN_AMENDMENT.includes(kind)) return 'ambiguous';
+  if (ONE_TEXT.includes(kind) && every.filter((b) => allowed.includes(b.kind)).length > 1) return 'ambiguous';
+  if (ONE_OF_EACH.includes(kind) && allowed.some((k) => every.filter((b) => b.kind === k).length > 1)) return 'ambiguous';
+  return null;
+}
 
 /**
  * The meaning reply against exactly the blocks that were sent. In order, the first failure
@@ -72,10 +92,8 @@ export function verifyMeaning(reply: MeaningReply, blocks: ProposalBlock[], ever
   const allowed = ALLOWED_BLOCKS[reply.divisionKind] ?? [];
   const named = blocks.find((b) => b.label === reply.quoteBlock);
   if (!named || !allowed.includes(named.kind)) return rejected('invalid');
-  const recorded = every.find((b) => b.kind === 'Q')?.text ?? '';
-  if (NAMES_AMENDMENT.test(recorded) && NOT_AN_AMENDMENT.includes(reply.divisionKind)) return rejected('ambiguous');
-  if (ONE_TEXT.includes(reply.divisionKind) && every.filter((b) => allowed.includes(b.kind)).length > 1) return rejected('ambiguous');
-  if (ONE_OF_EACH.includes(reply.divisionKind) && allowed.some((kind) => every.filter((b) => b.kind === kind).length > 1)) return rejected('ambiguous');
+  const conflict = kindConflict(reply.divisionKind, every);
+  if (conflict) return rejected(conflict);
 
   const text = normalise(named.text);
   const at = text.text.indexOf(quote);

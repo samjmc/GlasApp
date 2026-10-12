@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ProposalBlock, MatchReply, MeaningReply } from './divisionPrompt';
-import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, MIN_SUPPORT_WORDS, figuresIn, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
+import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, MIN_SUPPORT_WORDS, figuresIn, kindConflict, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
 
 const MOTION =
   'That Dáil Éireann calls on the Government to build fifty thousand public homes every year on public land, and to end the use of tax reliefs for investment funds.';
@@ -115,6 +115,24 @@ describe('verifyMeaning: what the recorded question and the blocks that were cut
     expect(verifyMeaning(amendment, amendmentPut)).toMatchObject({ status: 'ok', block: 'A1' });
     // "Question put" names no amendment: the same motion reading is fine.
     expect(verifyMeaning(motion, PMM)).toMatchObject({ status: 'ok', block: 'M1' });
+  });
+
+  it('only a question that IS an amendment put counts: a bill title with the word in it, or "as amended", does not', () => {
+    const TITLE = 'An Act to provide for the payment of a bonus to carers and for related matters of public policy.';
+    const bill = reply({ divisionKind: 'bill_stage', quoteBlock: 'B1', quote: 'provide for the payment of a bonus to carers and for related matters' });
+    const withQ = (q: string) => [block('Q', q), block('B1', TITLE)];
+    expect(verifyMeaning(bill, withQ('Finance (Local Property Tax) (Amendment) Bill 2025')).status).toBe('ok');
+    expect(verifyMeaning(bill, withQ('Question put: "That the Bill do now pass."')).status).toBe('ok');
+    expect(verifyMeaning(bill, withQ('That the motion, as amended, be agreed to.')).status).toBe('ok');
+    for (const q of ['Amendment put', 'Amendments put', 'That amendment No. 4 be made', 'Question put: "That the amendment be made."', '"Amendment put']) {
+      expect(verifyMeaning(bill, withQ(q)), q).toEqual({ status: 'rejected', reason: 'ambiguous' });
+    }
+    expect(kindConflict('motion', withQ('Amendment put'))).toBe('ambiguous');
+    expect(kindConflict('amendment', [block('Q', 'Amendment put'), block('A1', 'I move amendment No. 1: to insert a cap on every rent in the State.')])).toBeNull();
+  });
+
+  it('a words-stand reading is not for an "Amendment put" either: the Tá voters backed the amendment', () => {
+    expect(verifyMeaning(reply({ divisionKind: 'words_stand' }), amendmentPut)).toEqual({ status: 'rejected', reason: 'ambiguous' });
   });
 
   it('counts the blocks that did not fit the prompt: a second motion that was cut is still a second motion', () => {
