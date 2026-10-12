@@ -351,18 +351,33 @@ const BY_DATE = sql`a.published_at desc, a.id desc`;
  */
 const VISIBLE = sql`coalesce(a.relevance_score, 100) >= ${RELEVANCE_FLOOR} and a.status <> 'duplicate'`;
 
+/**
+ * A feed total counts at most this many rows, or one row past the requested page when that is
+ * further. An exact count walks every visible article on every request. Below the cap the total
+ * is exact; at the cap "has more" (offset + limit < total) is still exact, because the cap is
+ * always past the end of the page.
+ */
+export const FEED_COUNT_CAP = 1000;
+
+async function feedRows(where: SQL, orderBy: SQL, limit: number, offset: number, database: Db): Promise<FeedRow[]> {
+  return (await database.execute<RawFeedRow>(feedSelect(where, orderBy, limit, offset))).rows.map(toFeedRow);
+}
+
 async function page(filter: SQL, orderBy: SQL, limit: number, offset: number, database: Db) {
   const where = sql`${VISIBLE} and ${filter}`;
+  const cap = Math.max(FEED_COUNT_CAP, offset + limit + 1);
   const [rows, count] = await Promise.all([
-    database.execute<RawFeedRow>(feedSelect(where, orderBy, limit, offset)),
-    database.execute<{ n: number }>(sql`select count(*)::int as n from politics.news_articles a where ${where}`),
+    feedRows(where, orderBy, limit, offset, database),
+    database.execute<{ n: number }>(
+      sql`select count(*)::int as n from (select 1 from politics.news_articles a where ${where} limit ${cap}) x`,
+    ),
   ]);
-  return { rows: rows.rows.map(toFeedRow), total: Number(count.rows[0]?.n ?? 0) };
+  return { rows, total: Number(count.rows[0]?.n ?? 0) };
 }
 
 /**
  * One feed page. `today` is the most important articles since local midnight, falling back to
- * the last `fallbackDays` when nothing was published today.
+ * the last `fallbackDays` when nothing was published today. `total` is capped (FEED_COUNT_CAP).
  */
 export async function feedPage(
   query: FeedQuery,
@@ -384,12 +399,16 @@ export async function feedPage(
   );
 }
 
-/** Newest articles that name the TD. */
+/**
+ * Newest articles that name the TD, starting from that TD's article_tds rows. The TD is a join,
+ * not a scalar subquery: with a subquery the planner cannot see the id and walks every article
+ * by date instead. No total is needed, so none is counted.
+ */
 export async function feedForTd(name: string, limit: number, database: Db = db): Promise<FeedRow[]> {
-  const where = sql`exists (
-    select 1 from politics.article_tds v join politics.tds t on t.id = v.td_id
-     where v.article_id = a.id and lower(t.name) = lower(${name.trim()}))`;
-  return (await page(where, BY_DATE, limit, 0, database)).rows;
+  const where = sql`${VISIBLE} and a.id in (
+    select v.article_id from politics.article_tds v join politics.tds t on t.id = v.td_id
+     where lower(t.name) = lower(${name.trim()}))`;
+  return feedRows(where, BY_DATE, limit, 0, database);
 }
 
 /** Visible articles stored in the last `hours` that still have no picture, newest first. */
