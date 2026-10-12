@@ -9,6 +9,7 @@ import { useLocation } from "wouter";
 import { Building2, Loader2, MapPin, Search, X } from "lucide-react";
 import { useRegion } from "@/hooks/useRegion";
 import { queryKeys } from "@/lib/queryKeys";
+import { apiCall } from "@/lib/api";
 import { formatScore, scoreTone, TONE_TEXT } from "@/lib/score";
 import { PartyDot, TDAvatar } from "@/components/pulse/Party";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -51,14 +52,8 @@ const GROUPS: { type: ResultType; label: string; base: string }[] = [
 
 /** Fetch one scores endpoint and return its unwrapped `data`, or `[]` if it fails. */
 async function fetchScoresList<T>(path: string): Promise<T[]> {
-  try {
-    const res = await fetch(path);
-    if (!res.ok) return [];
-    const json = await res.json();
-    return Array.isArray(json?.data) ? (json.data as T[]) : [];
-  } catch {
-    return [];
-  }
+  const data = await apiCall<T[]>("GET", path).catch(() => null);
+  return Array.isArray(data) ? data : [];
 }
 
 const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");

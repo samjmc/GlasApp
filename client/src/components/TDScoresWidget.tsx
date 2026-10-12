@@ -7,6 +7,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'wouter';
 import { Info, Trophy } from 'lucide-react';
 import { queryKeys } from '@/lib/queryKeys';
+import { apiCall } from '@/lib/api';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { TDAvatar } from '@/components/pulse/Party';
 import { EmptyState } from '@/components/pulse/EmptyState';
@@ -23,12 +24,7 @@ import { TDQuickInfoModal } from './TDQuickInfoModal';
 export function useScoresWidget() {
   return useQuery<ScoresWidget>({
     queryKey: queryKeys.td.scoresWidget(),
-    queryFn: async () => {
-      const res = await fetch('/api/scores/widget');
-      if (!res.ok) throw new Error('Failed to fetch');
-      const json = await res.json();
-      return json.data as ScoresWidget;
-    },
+    queryFn: () => apiCall<ScoresWidget>('GET', '/api/scores/widget'),
     staleTime: 60000,
   });
 }

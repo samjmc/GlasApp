@@ -2,6 +2,7 @@ import React, { createContext, useContext, ReactNode, useEffect, useRef, useStat
 import { useQueryClient } from '@tanstack/react-query';
 import { supabase, type User } from '@/lib/supabase';
 import { shouldClearCache } from '@/lib/authCache';
+import { apiCall } from '@/lib/api';
 
 interface AuthUser {
   id: string;
@@ -166,19 +167,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         throw new Error('You need to be signed in to delete your account.');
       }
 
-      const response = await fetch('/api/account', {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-
-      const result = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        const message = result?.error?.message || 'Failed to delete account. Please try again.';
-        throw new Error(message);
-      }
+      await apiCall('DELETE', '/api/account');
 
       await supabase.auth.signOut();
       setUser(null);
