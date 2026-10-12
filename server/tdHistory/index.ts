@@ -18,7 +18,7 @@ export { fetchSitelinks } from '../parliament/sources/wikidata';
 
 export type Outcome =
   | { kind: 'saved'; passages: number; rejected: Record<PassageReject, number>; row: HistoryRow }
-  | { kind: 'unchanged' | 'missing' | 'disambiguation' | 'no_summary' | 'model_failed' };
+  | { kind: 'unchanged' | 'missing' | 'disambiguation' | 'no_summary' | 'model_failed' | 'suppressed' };
 
 export interface ResearchDeps {
   complete: CompleteJson;
@@ -29,6 +29,8 @@ export interface ResearchDeps {
   /** The revision already stored for this TD; equal means skip. */
   storedRevision?: number;
   force?: boolean;
+  /** Save even if the TD's background was taken down, and lift the takedown (`--force --td <id>`). */
+  restore?: boolean;
   /** Write nothing; still return what would be saved. */
   dryRun?: boolean;
   /** Called between the two Wikipedia requests, to keep to 1 request a second. */
@@ -61,7 +63,8 @@ export async function researchTd(td: HistoryTd, title: string, deps: ResearchDep
     retrievedAt: now,
     model: deps.model,
   };
-  if (!deps.dryRun) await saveHistory(row);
+  // Taken down while this run was working on it: the takedown wins.
+  if (!deps.dryRun && !(await saveHistory(row, { restore: deps.restore }))) return { kind: 'suppressed' };
   return { kind: 'saved', passages: accepted.length, rejected, row };
 }
 

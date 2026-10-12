@@ -11,11 +11,17 @@ const { parseArgs } = await import('./td-history');
 
 describe('npm run td-history', () => {
   it('defaults to every TD, writing', () => {
-    expect(parseArgs([])).toEqual({ td: null, limit: null, dryRun: false, force: false, remove: false });
+    expect(parseArgs([])).toEqual({ td: null, limit: null, dryRun: false, force: false, remove: false, reason: null });
   });
 
   it('reads --td, --limit, --dry-run and --force', () => {
-    expect(parseArgs(['--td', '5', '--limit', '3', '--dry-run', '--force'])).toEqual({ td: 5, limit: 3, dryRun: true, force: true, remove: false });
+    expect(parseArgs(['--td', '5', '--limit', '3', '--dry-run', '--force'])).toEqual({ td: 5, limit: 3, dryRun: true, force: true, remove: false, reason: null });
+  });
+
+  it('reads --reason with --delete only, and only with some text', () => {
+    expect(parseArgs(['--delete', '--td', '7', '--reason', ' complaint 2026-10 '])).toMatchObject({ remove: true, td: 7, reason: 'complaint 2026-10' });
+    expect(() => parseArgs(['--td', '7', '--reason', 'x'])).toThrow(/--reason goes with --delete/);
+    expect(() => parseArgs(['--delete', '--td', '7', '--reason'])).toThrow(/--reason goes with --delete/);
   });
 
   it('rejects a bad number, an unknown flag, and --delete without --td', () => {
