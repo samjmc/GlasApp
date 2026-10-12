@@ -117,6 +117,7 @@ npm install
 # Set up environment variables
 cp .env.example .env
 # Edit .env with the GlasCore connection string and keys
+# Keep SCHEDULER=off (already set in .env.example) so local runs do not start the crons
 
 # Apply the database migrations (creates the `politics` schema)
 npm run db:migrate
