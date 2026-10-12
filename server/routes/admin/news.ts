@@ -29,7 +29,7 @@ router.post(
     const result = await addUrl(body.data.url, { force: body.data.force });
     if (!result.ok) {
       if (result.reason === 'same event') return res.status(409).json(formatError('OPERATION_FAILED', `Same event as article #${result.of}`));
-      const status = result.reason === 'already stored' ? 409 : 422;
+      const status = result.reason === 'already stored' ? 409 : result.reason === 'event check failed' ? 503 : 422;
       return res.status(status).json(formatError('OPERATION_FAILED', result.reason));
     }
     res.status(201).json(formatSuccess({ id: result.id }));

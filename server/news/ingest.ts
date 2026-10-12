@@ -9,11 +9,16 @@
  *
  * The TD pipeline picks visible `pending` rows up later through server/news/articleSource.ts.
  * Duplicates are stored as `duplicate` with `duplicate_of`, so they are never shown or processed.
+ *
+ * Fails closed: an item the model could not rank, or check for a same-event match, is not stored
+ * (nor are its copies). Its URL stays unknown, so the next run, two hours later, tries it again;
+ * an item older than MAX_ITEM_AGE_HOURS is no longer taken from the feed, which caps the retries.
  */
 import { fetchPage, type PageMeta } from './content';
 import { dedupe } from './dedupe';
 import { EVENT_CANDIDATE_LIMIT, EVENT_WINDOW_HOURS, assignCanonicals, matchEvents, type Link } from './events';
 import { candidateOrder, firstLoading, needsPageImage, type ImageCandidate } from './images';
+import { mapLimit } from './mapLimit';
 import { MAX_ITEM_AGE_HOURS, canonicalUrl, cutSummary, normalizeItem, type NewArticle } from './normalize';
 import { RELEVANCE_FLOOR, scoreRelevance, type Relevance } from './relevance';
 import * as repo from './repository';
@@ -33,30 +38,20 @@ export interface IngestStats {
   knownUrls: number;
   /** Stored as a duplicate of an earlier article about the same event. */
   duplicates: number;
-  /** Event-match calls that failed; their items were stored as their own canonicals. */
+  /** Event-match calls that failed. */
   eventMatchFailed: number;
   ranked: number;
+  /** Items the model gave no score for. */
   unranked: number;
   belowFloor: number;
+  /** Not stored this run, so the next run tries them again: unranked, not checked for a same-event match, or a copy of one. */
+  heldBack: number;
+  /** The provider ran out of credit during this run. */
+  outOfCredit: boolean;
   inserted: number;
   withImage: number;
   imagesBackfilled: number;
   feeds: Array<{ source: string; items: number; error?: string }>;
-}
-
-/** Run `fn` over `items`, at most `limit` at a time, keeping order. */
-async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
-  const out = new Array<R>(items.length);
-  let next = 0;
-  await Promise.all(
-    Array.from({ length: Math.min(limit, items.length) }, async () => {
-      while (next < items.length) {
-        const i = next++;
-        out[i] = await fn(items[i]);
-      }
-    }),
-  );
-  return out;
 }
 
 async function pageOrNull(url: string): Promise<PageMeta | null> {
@@ -137,7 +132,7 @@ export function ingest(now = new Date()): Promise<IngestStats> {
 async function runIngest(now: Date): Promise<IngestStats> {
   const sourceIds = await repo.syncSources(NEWS_SOURCES);
   const stats: IngestStats = {
-    fetched: 0, rejected: 0, knownUrls: 0, duplicates: 0, eventMatchFailed: 0, ranked: 0, unranked: 0, belowFloor: 0, inserted: 0, withImage: 0, imagesBackfilled: 0, feeds: [],
+    fetched: 0, rejected: 0, knownUrls: 0, duplicates: 0, eventMatchFailed: 0, ranked: 0, unranked: 0, belowFloor: 0, heldBack: 0, outOfCredit: false, inserted: 0, withImage: 0, imagesBackfilled: 0, feeds: [],
   };
 
   const candidates = await fetchAll(NEWS_SOURCES, now, stats);
@@ -147,27 +142,36 @@ async function runIngest(now: Date): Promise<IngestStats> {
   stats.knownUrls = knownUrls;
 
   const byName = new Map(NEWS_SOURCES.map((s) => [s.slug, s.name]));
-  const { results } = await scoreRelevance(fresh.map((a) => ({ title: a.title, summary: a.summary, source: byName.get(a.sourceSlug) ?? a.sourceSlug })));
+  const relevance = await scoreRelevance(fresh.map((a) => ({ title: a.title, summary: a.summary, source: byName.get(a.sourceSlug) ?? a.sourceSlug })));
+  const { results } = relevance;
+  stats.outOfCredit = relevance.outOfCredit;
   stats.ranked = results.filter((r) => r !== null).length;
   stats.unranked = results.length - stats.ranked;
   stats.belowFloor = results.filter((r) => r !== null && r.score < RELEVANCE_FLOOR).length;
   const below = (i: number) => results[i] !== null && results[i]!.score < RELEVANCE_FLOOR;
+  const held = new Set(results.flatMap((r, i) => (r === null ? [i] : [])));
 
   // Title copies are linked already; every other item someone would see goes to the event match.
   const titleLinked = new Set(titleLinks.map((l) => l.index));
   const eventItems = fresh
     .map((a, index) => ({ index, title: a.title, summary: results[index]?.summary ?? null }))
-    .filter(({ index }) => !titleLinked.has(index) && !below(index));
+    .filter(({ index }) => !titleLinked.has(index) && !below(index) && !held.has(index));
   let eventLinks: Array<{ index: number; of: Link }> = [];
   if (eventItems.length > 0) {
     const match = await matchEvents(eventItems, await repo.eventCandidates(now, EVENT_WINDOW_HOURS, EVENT_CANDIDATE_LIMIT));
     eventLinks = match.links;
     stats.eventMatchFailed = match.failedCalls;
+    for (const index of match.unchecked) held.add(index);
   }
   const canonicalOf = assignCanonicals(fresh, titleLinks.concat(eventLinks));
+  // A copy waits with its canonical: stored alone it would show the event twice.
+  canonicalOf.forEach((of, i) => {
+    if (of !== null && 'run' in of && held.has(of.run)) held.add(i);
+  });
+  stats.heldBack = held.size;
 
   // Pictures only for articles someone will see.
-  const visible = fresh.filter((_, i) => canonicalOf[i] === null && !below(i));
+  const visible = fresh.filter((_, i) => canonicalOf[i] === null && !below(i) && !held.has(i));
   const resolved = await mapLimit(visible, PAGE_CONCURRENCY, resolveImage);
   visible.forEach((a, i) => {
     a.imageUrl = resolved[i].imageUrl;
@@ -177,11 +181,11 @@ async function runIngest(now: Date): Promise<IngestStats> {
   stats.withImage = visible.filter((a) => a.imageUrl).length;
 
   const rows = fresh.map((a, i) => toRow(a, sourceIds, results[i]));
-  const inserted = await repo.insertArticles(rows.filter((_, i) => canonicalOf[i] === null));
+  const inserted = await repo.insertArticles(rows.filter((_, i) => canonicalOf[i] === null && !held.has(i)));
   const idByUrl = new Map(inserted.map((r) => [r.url, r.id]));
   const copies: NewNewsArticle[] = rows.flatMap((row, i) => {
     const of = canonicalOf[i];
-    if (of === null) return [];
+    if (of === null || held.has(i)) return [];
     const duplicateOf = 'stored' in of ? of.stored : idByUrl.get(fresh[of.run].url);
     // Undefined only when the canonical lost a URL race to another writer: this copy stands alone.
     return [duplicateOf === undefined ? row : { ...row, status: 'duplicate' as const, duplicateOf }];
@@ -209,14 +213,14 @@ export async function backfillImages(): Promise<number> {
 
 export type AddUrlResult =
   | { ok: true; id: number }
-  | { ok: false; reason: 'invalid url' | 'already stored' | 'no title' }
+  | { ok: false; reason: 'invalid url' | 'already stored' | 'no title' | 'event check failed' }
   | { ok: false; reason: 'same event'; of: number };
 
 /**
  * Store one article an admin pasted in. It is ranked for its category and summary, but never
  * hidden by the floor: a human decided it matters. The source is the configured publisher for
  * that host, or `manual`. An article about an event already shown is refused unless `force`,
- * and a forced add is its own canonical.
+ * and a forced add is its own canonical. When the same-event check cannot run, it is refused too.
  */
 export async function addUrl(rawUrl: string, { force = false }: { force?: boolean } = {}, now = new Date()): Promise<AddUrlResult> {
   const url = canonicalUrl(rawUrl);
@@ -243,7 +247,8 @@ export async function addUrl(rawUrl: string, { force = false }: { force?: boolea
   const relevance = results[0] ? { ...results[0], score: Math.max(results[0].score, RELEVANCE_FLOOR) } : null;
   if (!force) {
     const candidates = await repo.eventCandidates(now, EVENT_WINDOW_HOURS, EVENT_CANDIDATE_LIMIT);
-    const { links } = await matchEvents([{ index: 0, title: article.title, summary: relevance?.summary ?? null }], candidates);
+    const { links, unchecked } = await matchEvents([{ index: 0, title: article.title, summary: relevance?.summary ?? null }], candidates);
+    if (unchecked.length > 0) return { ok: false, reason: 'event check failed' };
     const of = links[0]?.of;
     if (of && 'stored' in of) return { ok: false, reason: 'same event', of: of.stored };
   }

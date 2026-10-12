@@ -5,10 +5,12 @@
  * The rubric, the floor and "store below-floor items but never show them" follow the RWA
  * portal's sector-news pass (lib/news/score-news-articles.ts), rewritten for politics. Items
  * below the floor are still stored, so the next run recognises their URL and does not pay to
- * score them again.
+ * score them again. An item that could not be scored is not stored at all (ingest.ts), so the
+ * next run scores it again.
  */
 import { isNewsCategory, type NewsCategory } from '@shared/news';
-import { callChatCompletion, isLLMConfigured } from '../services/aiService';
+import { callChatCompletion, isLLMConfigured, MAX_CONCURRENT_CALLS, OutOfCreditError } from '../services/aiService';
+import { mapLimit } from './mapLimit';
 
 export const RELEVANCE_BATCH_SIZE = 20;
 /**
@@ -67,10 +69,7 @@ function capWords(text: string, max: number): string {
   return words.length <= max ? words.join(' ') : `${words.slice(0, max).join(' ')}…`;
 }
 
-/**
- * Parse the reply. An item the model skipped or mangled gets `null`, meaning "not scored":
- * the caller keeps it visible (fail open), because an outage should not empty the feed.
- */
+/** Parse the reply. An item the model skipped or mangled gets `null`, meaning "not scored". */
 export function parseRelevance(reply: string, count: number): Array<Relevance | null> {
   const out: Array<Relevance | null> = Array.from({ length: count }, () => null);
   let parsed: unknown;
@@ -94,36 +93,45 @@ export function parseRelevance(reply: string, count: number): Array<Relevance | 
   return out;
 }
 
-/** Score every item. A failed batch yields nulls for its items; other batches still count. */
-export async function scoreRelevance(items: RelevanceInput[]): Promise<{ results: Array<Relevance | null>; failedBatches: number }> {
-  if (items.length === 0) return { results: [], failedBatches: 0 };
+/**
+ * Score every item. A failed batch yields nulls for its items; other batches still count. Batches
+ * run a few at a time; after an OutOfCreditError no further batch is sent (its items are null too).
+ */
+export async function scoreRelevance(
+  items: RelevanceInput[],
+): Promise<{ results: Array<Relevance | null>; failedBatches: number; outOfCredit: boolean }> {
+  if (items.length === 0) return { results: [], failedBatches: 0, outOfCredit: false };
   if (!isLLMConfigured()) throw new Error('No LLM configured (LLM_API_KEY or OPENAI_API_KEY): news cannot be ranked');
 
   const batches: RelevanceInput[][] = [];
   for (let i = 0; i < items.length; i += RELEVANCE_BATCH_SIZE) batches.push(items.slice(i, i + RELEVANCE_BATCH_SIZE));
 
   let failedBatches = 0;
-  const scored = await Promise.all(
-    batches.map(async (batch) => {
-      try {
-        const completion = await callChatCompletion(
-          {
-            temperature: 0,
-            response_format: { type: 'json_object' },
-            messages: [
-              { role: 'system', content: SYSTEM },
-              { role: 'user', content: buildPrompt(batch) },
-            ],
-          },
-          { operation: 'news.relevance', timeoutMs: 60_000 },
-        );
-        return parseRelevance(completion.choices[0]?.message?.content ?? '', batch.length);
-      } catch (error) {
-        failedBatches++;
-        console.error('news.relevance batch failed:', error instanceof Error ? error.message : error);
-        return batch.map(() => null);
-      }
-    }),
-  );
-  return { results: scored.flat(), failedBatches };
+  let outOfCredit = false;
+  const scored = await mapLimit(batches, MAX_CONCURRENT_CALLS, async (batch) => {
+    if (outOfCredit) {
+      failedBatches++;
+      return batch.map(() => null);
+    }
+    try {
+      const completion = await callChatCompletion(
+        {
+          temperature: 0,
+          response_format: { type: 'json_object' },
+          messages: [
+            { role: 'system', content: SYSTEM },
+            { role: 'user', content: buildPrompt(batch) },
+          ],
+        },
+        { operation: 'news.relevance', timeoutMs: 60_000 },
+      );
+      return parseRelevance(completion.choices[0]?.message?.content ?? '', batch.length);
+    } catch (error) {
+      failedBatches++;
+      if (error instanceof OutOfCreditError) outOfCredit = true;
+      console.error('news.relevance batch failed:', error instanceof Error ? error.message : error);
+      return batch.map(() => null);
+    }
+  });
+  return { results: scored.flat(), failedBatches, outOfCredit };
 }

@@ -38,6 +38,8 @@ const state = vi.hoisted(() => ({
   /** Answers each news.events call from its prompt; an Error makes the call throw. */
   events: null as ((prompt: string) => object) | Error | null,
   eventPrompts: [] as string[],
+  /** Makes every news.relevance call throw. */
+  relevance: null as Error | null,
 }));
 
 vi.mock('./rss', () => ({
@@ -49,12 +51,14 @@ vi.mock('./rss', () => ({
 vi.mock('./content', () => ({ fetchPage: vi.fn(async () => state.page) }));
 vi.mock('./images', async (importOriginal) => ({ ...(await importOriginal<typeof import('./images')>()), firstLoading: vi.fn(async () => null) }));
 vi.mock('../auth', () => ({ requireJob: (_req: unknown, _res: unknown, next: () => void) => next() }));
-vi.mock('../services/aiService', () => ({
+vi.mock('../services/aiService', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../services/aiService')>()),
   isLLMConfigured: () => true,
   callChatCompletion: vi.fn(async (params: { messages: Array<{ content: string }> }, options: { operation: string }) => {
     const prompt = params.messages[1].content;
     let reply: object;
     if (options.operation === 'news.relevance') {
+      if (state.relevance) throw state.relevance;
       // One line per item: [i] (source) "title" — standfirst
       reply = { items: prompt.split('\n').map((line, i) => ({ i, relevance: 90, category: 'oireachtas', summary: `Summary of ${/"(.*)"/.exec(line)![1]}.` })) };
     } else if (options.operation === 'news.events') {
@@ -125,6 +129,7 @@ run('ingest against Postgres', () => {
     state.page = EMPTY_PAGE;
     state.events = null;
     state.eventPrompts = [];
+    state.relevance = null;
   });
 
   it('a report from another outlet 47h after the first is stored as its duplicate, never shown or claimed', async () => {
@@ -177,16 +182,30 @@ run('ingest against Postgres', () => {
     expect(all.find((r) => r.url === 'https://www.rte.ie/news/later')).toMatchObject({ status: 'duplicate', duplicate_of: earlier.id });
   });
 
-  it('fails open: when the event call throws, every item is its own canonical', async () => {
+  it('fails closed: when the event call throws, neither item is stored, and the next run stores them linked', async () => {
     const now = new Date();
     state.feeds.set('rte', [item('rte', 'https://www.rte.ie/news/a', 'Minister confirms hospital funding', new Date(now.getTime() - HOUR))]);
     state.feeds.set('the-journal', [item('the-journal', 'https://www.thejournal.ie/b', 'Cabinet signs off new hospital money', new Date(now.getTime() - 2 * HOUR))]);
     state.events = new Error('provider down');
-    expect(await ingest.ingest(now)).toMatchObject({ inserted: 2, duplicates: 0, eventMatchFailed: 1 });
-    expect((await rows()).map((r) => [r.status, r.duplicate_of])).toEqual([
-      ['pending', null],
-      ['pending', null],
-    ]);
+    expect(await ingest.ingest(now)).toMatchObject({ inserted: 0, heldBack: 2, eventMatchFailed: 1 });
+    expect(await rows()).toEqual([]);
+
+    state.events = () => ({ items: [{ i: 0, event: null, same_as: null }, { i: 1, event: null, same_as: 0 }] });
+    expect(await ingest.ingest(now)).toMatchObject({ inserted: 2, duplicates: 1, heldBack: 0 });
+    expect((await rows()).map((r) => r.status).sort()).toEqual(['duplicate', 'pending']);
+  });
+
+  it('fails closed: an item the model could not rank is not stored, never shown unranked, and is ranked next run', async () => {
+    const now = new Date();
+    state.feeds.set('rte', [item('rte', 'https://www.rte.ie/news/c', 'Minister confirms hospital funding', new Date(now.getTime() - HOUR))]);
+    state.relevance = new Error('provider down');
+    expect(await ingest.ingest(now)).toMatchObject({ unranked: 1, heldBack: 1, inserted: 0 });
+    expect(await rows()).toEqual([]);
+
+    state.relevance = null;
+    expect(await ingest.ingest(now)).toMatchObject({ ranked: 1, inserted: 1, heldBack: 0 });
+    const { rows: stored } = await dbmod.pool.query('select relevance_score from politics.news_articles');
+    expect(stored).toEqual([{ relevance_score: 90 }]);
   });
 
   it('runs one ingest at a time: a second call joins the run in flight', async () => {

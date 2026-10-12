@@ -12,7 +12,7 @@ import type { CompleteJson, QuestionPositions } from '../voting';
 import { stanceEvidenceWeight } from './evidence';
 import { extractStances, extractionText, type CandidateTd, type StanceArticle } from './extract';
 import { mapStances } from './map';
-import { POSITION_THRESHOLD, type PositionCheck } from './position';
+import { isJevConfigured, POSITION_THRESHOLD, type PositionCheck } from './position';
 import { saveStances } from './repository';
 import { REJECT_REASONS, verifyStances } from './verify';
 
@@ -51,7 +51,11 @@ export interface RecordDeps {
   dryRun?: boolean;
 }
 
-/** Returns how many stances were accepted. */
+/**
+ * Returns how many stances were accepted. Throws, writing nothing, when the extraction gave no
+ * usable answer or Jev (configured) gave none for a quote: the caller marks the article failed
+ * and it is read again later, rather than stored as if it had no stances.
+ */
 export async function recordStances(
   article: StanceArticle & { id: number },
   candidates: CandidateTd[],
@@ -59,9 +63,8 @@ export async function recordStances(
   deps: RecordDeps,
 ): Promise<number> {
   if (candidates.length === 0) return 0;
-  const raw = await extractStances(article, candidates, deps.complete);
-  if (raw === null) console.warn(`[stances] extraction for article ${article.id} returned nothing usable`);
-  const extracted = raw ?? [];
+  const extracted = await extractStances(article, candidates, deps.complete);
+  if (extracted === null) throw new Error(`stance extraction for article ${article.id} returned nothing usable`);
   stats.extracted += extracted.length;
 
   // Verify against exactly the text the model was sent.
@@ -69,13 +72,17 @@ export async function recordStances(
   for (const reason of REJECT_REASONS) stats.rejected[reason] += verified.rejected[reason];
 
   const accepted: typeof verified.accepted = [];
+  let unchecked = 0;
   for (const stance of verified.accepted) {
     const td = candidates.find((candidate) => candidate.id === stance.tdId)!;
     const p = await deps.position({ td, headline: article.title, quote: stance.quote });
-    if (p === null) stats.rejected.unchecked++;
+    if (p === null) unchecked++;
     else if (p < POSITION_THRESHOLD) stats.rejected.not_position++;
     else accepted.push(stance);
   }
+  stats.rejected.unchecked += unchecked;
+  // Without Jev configured every stance is held back by design; with it, no answer is an outage.
+  if (unchecked > 0 && isJevConfigured()) throw new Error(`Jev gave no answer for ${unchecked} quote(s) of article ${article.id}`);
   stats.accepted += accepted.length;
   if (accepted.length === 0) return 0;
 
