@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { communityWeights, rankingsByUser, summariseParty, weightsFromRanking } from './score';
+import { summariseParty, weightsFromRanking } from './score';
 
 describe('weightsFromRanking', () => {
   it('gives n points to the first of n categories and 1 to the last, normalised to 1', () => {
@@ -12,31 +12,6 @@ describe('weightsFromRanking', () => {
 
   it('is empty for an empty ranking', () => {
     expect(weightsFromRanking([])).toEqual({});
-  });
-});
-
-describe('rankingsByUser', () => {
-  it('orders each user’s rows by rank regardless of input order', () => {
-    const map = rankingsByUser([
-      { userId: 'a', category: 'health', rank: 2 },
-      { userId: 'b', category: 'climate', rank: 1 },
-      { userId: 'a', category: 'housing', rank: 1 },
-    ]);
-    expect(map.get('a')).toEqual(['housing', 'health']);
-    expect(map.get('b')).toEqual(['climate']);
-  });
-});
-
-describe('communityWeights', () => {
-  it('averages each user’s weights, so a longer ranking does not count for more', () => {
-    const w = communityWeights([['housing'], ['health', 'housing']]);
-    // user 1: housing 1. user 2: health 2/3, housing 1/3. Mean: housing 2/3, health 1/3.
-    expect(w.housing).toBeCloseTo(2 / 3);
-    expect(w.health).toBeCloseTo(1 / 3);
-  });
-
-  it('is empty with no rankings', () => {
-    expect(communityWeights([])).toEqual({});
   });
 });
 

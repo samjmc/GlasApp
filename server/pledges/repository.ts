@@ -14,7 +14,7 @@ import {
   type PledgeRow,
 } from '@shared/schema/pledges';
 import { divisions } from '@shared/schema/parliament';
-import type { Pledge, PledgeCategory, PledgeEvidence, PledgeStatus, EvidenceKind } from '@shared/pledges';
+import type { CategoryWeights, Pledge, PledgeCategory, PledgeEvidence, PledgeStatus, EvidenceKind } from '@shared/pledges';
 
 const toPledge = (row: PledgeRow, evidenceCount: number): Pledge => ({
   id: row.id,
@@ -128,15 +128,29 @@ export async function deleteEvidence(id: number, database: Db = db): Promise<boo
 // Priorities
 // ---------------------------------------------------------------------------
 
-export async function allPriorityRows(database: Db = db) {
-  const rows = await database
-    .select({
-      userId: pledgeCategoryPriorities.userId,
-      category: pledgeCategoryPriorities.category,
-      rank: pledgeCategoryPriorities.rank,
-    })
-    .from(pledgeCategoryPriorities);
-  return rows.map((r) => ({ ...r, category: r.category as PledgeCategory }));
+/**
+ * Everyone's rankings combined, aggregated in SQL: one row per ranked category. Each user's
+ * ranking is a Borda count (with n categories, place p gets (n - p + 1) / (n(n+1)/2), so one
+ * user's weights sum to 1), and the community weight is the mean over every user who ranked,
+ * so a longer ranking does not count for more. Categories nobody ranked are absent.
+ * `rankers` is how many users have a ranking.
+ */
+export async function communityPriorities(database: Db = db): Promise<{ weights: CategoryWeights; rankers: number }> {
+  const { rows } = await database.execute<{ category: string; weight: number; rankers: number }>(sql`
+    with placed as (
+      select category,
+             count(*) over (partition by user_id) as n,
+             row_number() over (partition by user_id order by rank) as place
+        from politics.pledge_category_priorities),
+    rankers as (select count(distinct user_id)::int as n from politics.pledge_category_priorities)
+    select p.category,
+           sum((p.n - p.place + 1)::float8 / (p.n * (p.n + 1) / 2)::float8) / r.n as weight,
+           r.n as rankers
+      from placed p cross join rankers r
+     group by p.category, r.n`);
+  const weights: CategoryWeights = {};
+  for (const row of rows) weights[row.category as PledgeCategory] = Number(row.weight);
+  return { weights, rankers: Number(rows[0]?.rankers ?? 0) };
 }
 
 export async function userRanking(userId: string, database: Db = db): Promise<PledgeCategory[] | null> {
