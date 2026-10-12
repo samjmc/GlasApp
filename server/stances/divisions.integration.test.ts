@@ -1,7 +1,7 @@
 /**
  * Dáil divisions as fixed-option stances against a real Postgres (01c): the schema, the reading
  * cache with its candidate window and re-checks, the sync into td_stances, the rebuild of all
- * `stance` evidence, the lock, the nightly run and its guard, and what the TD page and a user's
+ * `stance` evidence, the lock, the nightly run and its guard, and what s's
  * matches show. Every model call is a stub; nothing here reaches a model.
  *
  * Skipped unless TEST_DATABASE_URL is set. Uses its OWN database, `<db>_divisions`.
@@ -243,7 +243,8 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
           policy_domain: 'housing',
           question_id: question,
           ta_option_key: 'option_a',
-          nil_option_key: 'option_b',
+          // A vote against a proposal states no answer: even when the model offers one (matchReply does), none is stored.
+          nil_option_key: null,
           candidate_ids: [question],
           model: 'stub-model',
           prompt_tokens: 300,
@@ -356,7 +357,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       const dry = await classify(model.complete, { dryRun: true, limit: 2 });
       expect(dry).toMatchObject({ read: 2, calls: 6 });
       expect(dry.readings.map((r) => r.divisionId)).toEqual(['dail-34-2026-09-24-vote_1', 'dail-34-2026-09-23-vote_3']);
-      expect(dry.readings[0]).toMatchObject({ status: 'matched', blocks: ['Q', 'M1'], quoteBlock: 'M1', match: { ta: 'Build public homes', nil: 'Leave it to the market' } });
+      expect(dry.readings[0]).toMatchObject({ status: 'matched', blocks: ['Q', 'M1'], quoteBlock: 'M1', match: { ta: 'Build public homes' } });
       expect(await readings()).toEqual([]);
 
       await classify(model.complete);
@@ -371,22 +372,18 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       const { peers, rebel, independent, rdr, green, d1 } = await seedLobbies();
       await classify(stub().complete);
       const summary = await divisions.syncDivisionStances(NOW);
-      expect(summary).toMatchObject({ divisions: 1, rows: 9, skipped: 0, evidence: 3 });
+      // Only Tá votes are stances (a vote against states no answer): 5 SF peers, the Green, and '100% RDR'.
+      expect(summary).toMatchObject({ divisions: 1, rows: 7, skipped: 0, evidence: 1 });
 
       const rows = await stances();
       const by = new Map(rows.map((r) => [r.td_id, [r.division_vote, r.option_key, r.discipline]]));
       for (const id of peers) expect(by.get(id)).toEqual(['ta', 'option_a', 'whip']);
       expect(by.get(green)).toEqual(['ta', 'option_a', 'whip']);
-      expect(by.get(rebel)).toEqual(['nil', 'option_b', 'rebel']);
-      expect(by.get(independent)).toEqual(['nil', 'option_b', 'free']);
+      expect([by.has(rebel), by.has(independent)]).toEqual([false, false]); // both voted Níl
       expect(by.get(rdr)).toEqual(['ta', 'option_a', 'free']);
       expect(rows.every((r) => r.division_id === d1 && r.quote_kind === 'division')).toBe(true);
 
-      expect((await evidence()).map((r) => [r.td_id, r.economic, Math.round(r.weight * 100) / 100])).toEqual([
-        [rebel, 10, 0.9],
-        [independent, 10, 0.6],
-        [rdr, -10, 0.6],
-      ]);
+      expect((await evidence()).map((r) => [r.td_id, r.economic, Math.round(r.weight * 100) / 100])).toEqual([[rdr, -10, 0.6]]);
     });
 
     it('replaces the rows on each sync; a deleted division takes its reading, rows and evidence; a re-match moves the slot', async () => {
@@ -397,7 +394,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       await divisions.syncDivisionStances(NOW);
       expect((await stances()).find((r) => r.td_id === rebel)).toMatchObject({ division_vote: 'ta', discipline: 'whip' });
       expect((await evidence()).map((r) => r.td_id)).not.toContain(rebel);
-      expect(await stances()).toHaveLength(9);
+      expect(await stances()).toHaveLength(8); // rebel now votes Tá with the party: a whipped stance, no evidence
 
       const other = await addQuestion('housing', '2026-09-24T12:00:00Z'); // nearer the vote: first candidate
       await classify(stub().complete, { reclassify: true });
@@ -519,7 +516,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
         expect(await stances()).toEqual([]);
         await other.query('select pg_advisory_unlock($1::bigint)', [ideologyRepo.STANCE_SYNC_LOCK]);
         await Promise.all([sync, rebuild]);
-        expect(await stances()).toHaveLength(9);
+        expect(await stances()).toHaveLength(7);
       } finally {
         await other.end();
       }
@@ -536,9 +533,9 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       expect((await ideologyRepo.listProfiles('td')).map(key).sort()).toEqual(before);
     });
 
-    it('the TD page and a user’s matches show the vote: the option, Tá or Níl, the oireachtas.ie link', async () => {
+    it('s’s matches show the vote: the option, Tá or Níl, the oireachtas.ie link', async () => {
       const { stancesRouter } = await import('./routes');
-      const { independent, question, d1 } = await seedLobbies();
+      const { rdr, question, d1 } = await seedLobbies();
       await classify(stub().complete);
       await divisions.syncDivisionStances(NOW);
       const app = express();
@@ -549,17 +546,17 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       try {
         const address = server.address();
         const port = typeof address === 'object' && address ? address.port : 0;
-        const body = (await (await fetch(`http://127.0.0.1:${port}/api/stances/td/${independent}`, { headers: { connection: 'close' } })).json()) as {
+        const body = (await (await fetch(`http://127.0.0.1:${port}/api/stances/td/${rdr}`, { headers: { connection: 'close' } })).json()) as {
           data: import('@shared/stancesApi').TdStances;
         };
-        expect(body.data.domains[0]!.stances[0]).toMatchObject({ quoteKind: 'division', divisionVote: 'nil', optionText: 'Leave it to the market', quote: QUOTE, outlet: 'Dáil Éireann', saidCount: 1, changedPosition: false });
+        expect(body.data.domains[0]!.stances[0]).toMatchObject({ quoteKind: 'division', divisionVote: 'ta', optionText: 'Build public homes', quote: QUOTE, outlet: 'Dáil Éireann', saidCount: 1, changedPosition: false });
       } finally {
         server.closeAllConnections?.();
         await new Promise<void>((resolve) => server.close(() => resolve()));
       }
-      await voting.castVote({ userId: 'user-m', questionId: question, optionKey: 'option_b', source: 'article' });
-      const td = (await ideology.userMatches('user-m', {}, { tdId: independent }))!.tds.find((t) => t.tdId === independent)!;
-      expect(td.issues!.items[0]).toMatchObject({ theirs: 'Leave it to the market', agrees: true, quoteKind: 'division', divisionVote: 'nil', url: `https://www.oireachtas.ie/en/debates/vote/dail/34/2026-09-24/1/` });
+      await voting.castVote({ userId: 'user-m', questionId: question, optionKey: 'option_a', source: 'article' });
+      const td = (await ideology.userMatches('user-m', {}, { tdId: rdr }))!.tds.find((t) => t.tdId === rdr)!;
+      expect(td.issues!.items[0]).toMatchObject({ theirs: 'Build public homes', agrees: true, quoteKind: 'division', divisionVote: 'ta', url: `https://www.oireachtas.ie/en/debates/vote/dail/34/2026-09-24/1/` });
       expect(d1).toBe('dail-34-2026-09-24-vote_1');
     });
   });
@@ -588,7 +585,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       const result = await nightly(model.complete, false);
       expect(model.calls).toEqual([]);
       expect(result.classify).toBeNull();
-      expect(await stances()).toHaveLength(9);
+      expect(await stances()).toHaveLength(7);
     });
 
     it('refuses a second run while one is in flight', async () => {
@@ -675,6 +672,62 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
     });
   });
 
+  describe('a read that goes wrong, or reads the wrong text', () => {
+    it('a failed re-match of a matched division keeps the match and its stances, and the calls are counted', async () => {
+      await seedLobbies();
+      await classify(stub().complete);
+      await divisions.syncDivisionStances(NOW);
+      const before = (await stances()).length;
+      const summary = await classify(stub({ fit: () => 'not json' }).complete, { reclassify: true });
+      expect(summary).toMatchObject({ read: 1, calls: 2, statuses: { failed: 0 } });
+      expect(await readings()).toEqual([expect.objectContaining({ status: 'matched', ta_option_key: 'option_a' })]);
+      await divisions.syncDivisionStances(NOW);
+      expect(await stances()).toHaveLength(before);
+    });
+
+    it('--reclassify retries a failed reading that has used up its attempts; a plain run does not', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      await addDivision('2026-09-24', 1);
+      for (let i = 0; i < 3; i++) await classify(stub({ meaning: () => 'not json' }).complete);
+      expect((await readings())[0]).toMatchObject({ status: 'failed', attempts: 3 });
+      expect(await classify(stub().complete)).toMatchObject({ calls: 0 });
+      expect(await classify(stub().complete, { reclassify: true })).toMatchObject({ calls: 3, statuses: { matched: 1 } });
+    });
+
+    it('a re-check that reads the meaning but finds no question in its domain keeps the meaning and counts the call', async () => {
+      const d1 = await addDivision('2026-09-24', 1); // no question yet: nothing to read
+      expect(await classify(stub().complete)).toMatchObject({ calls: 0, statuses: { no_candidates: 1 } });
+      await addQuestion('health', '2026-09-25T09:00:00Z'); // a question arrives, but not about housing
+      expect(await classify(stub().complete)).toMatchObject({ read: 1, calls: 1, statuses: { no_candidates: 1 } });
+      expect((await readings())[0]).toMatchObject({ division_id: d1, status: 'no_candidates', quote: QUOTE });
+      expect((await classify(stub().complete)).calls).toBe(0); // and it is not read again
+    });
+
+    it('a blank Tá meaning is rejected, not written: the database refuses a matched row without one', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      await addDivision('2026-09-24', 1);
+      const model = stub({ meaning: () => ({ ...(meaningReply('') as object), ta_means: '' }) });
+      expect(await classify(model.complete)).toMatchObject({ statuses: { rejected: 1 } });
+      expect((await readings())[0]).toMatchObject({ status: 'rejected', reject_reason: 'invalid' });
+    });
+
+    it('support for a claim must come from the blocks this kind of question may be read from, not from the countermotion', async () => {
+      await addQuestion('housing', '2026-09-25T09:00:00Z');
+      const d1 = await addDivision('2026-09-24', 1);
+      // The motion is M1; the Government's countermotion is moved as an amendment in the same debate.
+      const [{ debate_section_id: section }] = await q<{ debate_section_id: string }>('select debate_section_id from politics.divisions where id = $1', [d1]);
+      await q('insert into politics.debate_speeches (id, section_id, date, position, text, word_count) values ($1, $2, $3, 1, $4, 20)', [
+        `${section}/spk_2`,
+        section,
+        '2026-09-24',
+        'I move amendment No. 1:\n\nnotes the Housing for All plan and its targets for social housing delivery.',
+      ]);
+      const model = stub({ fit: () => ({ claims: [{ claim: 'back the plan', support: 'the Housing for All plan and its targets' }] }) });
+      expect(await classify(model.complete)).toMatchObject({ statuses: { no_match: 1, matched: 0 } });
+      expect((await readings())[0]!.match_reason).toMatch(/^Refused: the proposal does not state: back the plan/);
+    });
+  });
+
   describe('the audit', () => {
     const zero = { economic: 0, social: 0, cultural: 0, authority: 0, environmental: 0, welfare: 0, globalism: 0, technocratic: 0 };
     const votesOf = (divisionId: string) => [
@@ -717,7 +770,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
       await classify(stub().complete);
       const { matched, audit } = await divisions.runDivisionAudit();
       expect(matched).toEqual([
-        expect.objectContaining({ divisionId: 'dail-34-2026-09-24-vote_1', quote: QUOTE, ta: 'Build public homes', nil: 'Leave it to the market', url: 'https://www.oireachtas.ie/en/debates/vote/dail/34/2026-09-24/1/' }),
+        expect.objectContaining({ divisionId: 'dail-34-2026-09-24-vote_1', quote: QUOTE, ta: 'Build public homes', nil: null, url: 'https://www.oireachtas.ie/en/debates/vote/dail/34/2026-09-24/1/' }),
       ]);
       // Both lobbies here are mostly Sinn Féin, so no axis's baselines differ by AUDIT_MIN_GAP: nothing to score.
       expect(audit).toMatchObject({ divisions: 0, total: 0 });

@@ -18,7 +18,7 @@ vi.mock('../auth', () => ({
   requireAuth: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (req.headers.authorization !== 'Bearer ok') return res.status(401).json({ success: false });
     (req as unknown as { user: { id: string; email: string; userMetadata: Record<string, unknown> } }).user = {
-      id: 'user-1',
+      id: req.headers['x-test-user'] ?? 'user-1',
       email: 'u@example.ie',
       userMetadata: { county: 'Cork' },
     };
@@ -67,7 +67,7 @@ vi.mock('../account/profileImages', () => ({
 
 const router = (await import('./accountRoutes')).default;
 
-async function send(method: string, path: string, auth?: string, body?: unknown) {
+async function send(method: string, path: string, auth?: string, body?: unknown, headers: Record<string, string> = {}) {
   const app = express();
   app.use(express.json());
   app.use('/api/account', router);
@@ -76,7 +76,7 @@ async function send(method: string, path: string, auth?: string, body?: unknown)
   try {
     const res = await fetch(`http://127.0.0.1:${(server.address() as AddressInfo).port}${path}`, {
       method,
-      headers: { ...(auth ? { authorization: auth } : {}), ...(body === undefined ? {} : { 'content-type': 'application/json' }) },
+      headers: { ...(auth ? { authorization: auth } : {}), ...(body === undefined ? {} : { 'content-type': 'application/json' }), ...headers },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     return { status: res.status, body: await res.json(), headers: res.headers };
@@ -140,6 +140,14 @@ describe('GET /api/account/export', () => {
   it('needs a signed-in caller and reads nothing without one', async () => {
     expect((await send('GET', PATH)).status).toBe(401);
     expect(calls.order).toEqual([]);
+  });
+
+  it('allows 10 an hour per signed-in user: the GET it guards is counted, and another user is not affected', async () => {
+    const statuses: number[] = [];
+    for (let i = 0; i < 11; i++) statuses.push((await send('GET', PATH, 'Bearer ok', undefined, { 'x-test-user': 'busy-exporter' })).status);
+    expect(statuses.slice(0, 10).every((s) => s === 200)).toBe(true);
+    expect(statuses[10]).toBe(429);
+    expect((await send('GET', PATH, 'Bearer ok', undefined, { 'x-test-user': 'someone-else' })).status).toBe(200);
   });
 
   it('answers 500, not an empty file, when the database fails', async () => {

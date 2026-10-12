@@ -75,6 +75,11 @@ const QuizResultsPage: React.FC = () => {
       savingAnswers ??= submitQuiz(stored.answers, stored.seed);
       return savingAnswers
         .then(async (saved) => {
+          // The server scores but keeps nothing for someone who has not agreed (consent withdrawn in another tab, or new wording).
+          if (saved.id === null) {
+            toast({ title: "Not saved", description: "We did not save this result because you have not agreed to us keeping your opinions. You can agree on your profile page." });
+            return;
+          }
           storeQuiz(saved, stored.answers, stored.seed);
           setStored({ result: saved, answers: stored.answers, seed: stored.seed });
           await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
