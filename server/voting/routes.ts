@@ -16,6 +16,7 @@
 import { Router, type NextFunction, type Request, type RequestHandler, type Response } from 'express';
 import { z } from 'zod';
 import { requirePoliticalConsent } from '../account/consent';
+import { ConsentRequiredError, sendConsentRequired } from '../account/consentError';
 import { optionalAuth, requireAuth } from '../auth';
 import { networkWriteRateLimit, publicWriteRateLimit } from '../middleware/rateLimit';
 import { OPTION_KEYS } from '@shared/voting';
@@ -37,6 +38,9 @@ const handle =
     } catch (error) {
       if (error instanceof service.VotingError) {
         res.status(error.status).json(formatError(ERROR_CODES[error.status], error.message));
+      } else if (error instanceof ConsentRequiredError) {
+        // Consent was withdrawn after requirePoliticalConsent let the request through.
+        sendConsentRequired(res);
       } else if (error instanceof z.ZodError) {
         res.status(400).json(formatError('VALIDATION_ERROR', error.issues[0]?.message ?? 'Invalid request'));
       } else {

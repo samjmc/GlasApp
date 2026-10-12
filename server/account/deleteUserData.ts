@@ -20,10 +20,13 @@ export type PoliticalDataCounts = Record<
 export type DeletedCounts = PoliticalDataCounts & Record<'profile', number>;
 
 /** The transaction handle drizzle passes to a `db.transaction` callback. */
-type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
+export type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
 
 /** Deletes the rows that show a user's political opinions, inside the caller's transaction. */
 export async function erasePoliticalData(tx: Tx, userId: string): Promise<PoliticalDataCounts> {
+  // Lock the users row before deleting: a political write in flight holds it FOR SHARE
+  // (consent.ts withPoliticalConsent), so this waits for it to commit and then erases its rows too.
+  await tx.select({ id: users.id }).from(users).where(eq(users.id, userId)).for('update');
   const count = async (rows: Promise<unknown[]>) => (await rows).length;
   return {
     policyVotes: await count(tx.delete(policyVotes).where(eq(policyVotes.userId, userId)).returning({ id: policyVotes.id })),

@@ -20,6 +20,7 @@
 import { Router, type Request, type RequestHandler, type Response } from 'express';
 import { z } from 'zod';
 import { requirePoliticalConsent } from '../account/consent';
+import { ConsentRequiredError, sendConsentRequired } from '../account/consentError';
 import { logAdminAction, optionalAuth, requireAdmin, requireAuth } from '../auth';
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES, type PledgeCategory } from '@shared/pledges';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
@@ -82,6 +83,7 @@ const handle =
       if (!res.headersSent) res.json(formatSuccess(data));
     } catch (error) {
       if (error instanceof HttpError) res.status(error.status).json(formatError(CODES[error.status], error.message));
+      else if (error instanceof ConsentRequiredError) sendConsentRequired(res);
       else if (error instanceof z.ZodError)
         res.status(400).json(formatError('VALIDATION_ERROR', error.issues[0]?.message ?? 'Invalid request'));
       else {

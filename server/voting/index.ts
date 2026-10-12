@@ -15,6 +15,7 @@
 export { completeJson, generateQuestionForArticle, getQuestionsForArticles, QUESTION_MODEL, type CompleteJson } from './service';
 export type { OptionVector, QuestionArticle } from './questions';
 
+import type { Db } from '../db';
 import type { OptionVector } from './questions';
 import {
   questionsByIds,
@@ -27,8 +28,8 @@ import {
 } from './repository';
 
 /** Every option this user has chosen, oldest first, with its position on the eight axes. */
-export function listUserVoteVectors(userId: string, since?: Date): Promise<UserVoteVector[]> {
-  return userVoteVectors(userId, since);
+export function listUserVoteVectors(userId: string, since?: Date, database?: Pick<Db, 'select'>): Promise<UserVoteVector[]> {
+  return userVoteVectors(userId, since, database);
 }
 export type { UserVoteVector };
 
