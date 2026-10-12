@@ -168,9 +168,9 @@ function Review({ alert }: { alert: LeaveAlertView }) {
         }}
       >
         <div>
-          <Label>Reason</Label>
+          <Label htmlFor={`reason-${alert.id}`}>Reason</Label>
           <Select value={reason} onValueChange={(v) => setReason(v as AbsenceKind)}>
-            <SelectTrigger>
+            <SelectTrigger id={`reason-${alert.id}`}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>

@@ -14,11 +14,10 @@ import { runTdPipeline } from '../../news/tdPipeline.js';
 
 const router = Router();
 
-function pipelineOptions(body: { batchSize?: number; topPercentile?: number; minImportance?: number }) {
+function pipelineOptions(body: { batchSize?: number; topPercentile?: number }) {
   return {
     batchSize: body.batchSize || 50,
     topPercentile: body.topPercentile || 25,
-    minImportanceScore: body.minImportance || 40,
   };
 }
 

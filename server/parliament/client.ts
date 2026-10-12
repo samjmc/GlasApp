@@ -44,9 +44,11 @@ export interface RosterMember {
   committees: RosterCommittee[];
 }
 
-/** A member whose seat in the current Dáil has ended: kept for the offices they held in it. */
+/** A member whose seat in the current Dáil has ended: kept for the offices they held in it, and their name for the disclosure files. */
 export interface FormerMember {
   memberCode: string;
+  fullName: string;
+  constituency: string | null;
   officeHistory: RosterOffice[];
 }
 
@@ -121,26 +123,27 @@ export class OireachtasClient {
     return (await (await this.request(`${BASE_URL}${path}?${qs}`)).json()) as T;
   }
 
-  private dailMembers?: Promise<RawMember[]>;
-
-  /** Every member of the current Dáil, fetched once per client (a sync makes its own client). */
-  private members(): Promise<RawMember[]> {
-    this.dailMembers ??= this.get<{ results?: Array<{ member: RawMember }> }>('/members', {
+  /** Every member of this Dáil, past and present: one request, shared by roster() and formerMembers(). */
+  private members?: Promise<RawMember[]>;
+  private allMembers(): Promise<RawMember[]> {
+    this.members ??= this.get<{ results?: Array<{ member: RawMember }> }>('/members', {
       chamber: 'dail',
       house_no: CURRENT_DAIL,
       limit: 500,
     }).then((body) => (body.results ?? []).map((r) => r.member));
-    return this.dailMembers;
+    // A failed request is not kept: the next call asks again.
+    this.members.catch(() => (this.members = undefined));
+    return this.members;
   }
 
   /** Every member of the current Dáil whose seat has not ended. */
   async roster(): Promise<RosterMember[]> {
-    return (await this.members()).map(toRosterMember).filter((m): m is RosterMember => m !== null);
+    return (await this.allMembers()).map(toRosterMember).filter((m): m is RosterMember => m !== null);
   }
 
   /** Every member whose seat in the current Dáil has ended, with the offices they held in it. */
   async formerMembers(): Promise<FormerMember[]> {
-    return (await this.members()).map(toFormerMember).filter((m): m is FormerMember => m !== null);
+    return (await this.allMembers()).map(toFormerMember).filter((m): m is FormerMember => m !== null);
   }
 
   /** Every Dáil division held from `from` to `to` inclusive (YYYY-MM-DD). */
@@ -391,5 +394,10 @@ function officeHistoryOf(seat: RawSeat): RosterOffice[] {
 export function toFormerMember(member: RawMember): FormerMember | null {
   const seats = (member.memberships ?? []).map((m) => m.membership).filter((m) => m.house?.houseCode === 'dail' && m.house?.houseNo === String(CURRENT_DAIL));
   if (!member.memberCode || seats.length === 0 || seats.some((s) => !s.dateRange?.end)) return null;
-  return { memberCode: member.memberCode, officeHistory: seats.flatMap(officeHistoryOf) };
+  return {
+    memberCode: member.memberCode,
+    fullName: (member.fullName ?? '').trim(),
+    constituency: seats[seats.length - 1]!.represents?.[0]?.represent?.showAs ?? null,
+    officeHistory: seats.flatMap(officeHistoryOf),
+  };
 }

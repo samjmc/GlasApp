@@ -53,8 +53,8 @@ In the Supabase dashboard (Authentication):
    table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
    (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown), 0026
-   (row level security on the politics tables), 0027 (user id foreign keys) and 0028 (the question record's
-   government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
+   (row level security on the politics tables), 0027 (user id foreign keys), 0028 (extraction failure counts)
+   and 0029 (the question record's government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
    table before you migrate.
 9. **Political data saved before consent existed.** Votes, rankings, pledge priorities and quiz results
    from people with no recorded consent (or consent to an older text) have no lawful basis under Article 9.

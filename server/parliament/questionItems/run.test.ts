@@ -4,6 +4,7 @@ import { questionSample } from './run';
 
 // Hoisted above the imports: the sample is pure (sampleByShare), so no database or model is needed.
 vi.mock('../repository', () => ({}));
+vi.mock('../../services/jobLock', () => ({ withJobLock: vi.fn() }));
 vi.mock('../debateItems/run', async (importOriginal) => ({ ...(await importOriginal<typeof import('../debateItems/run')>()), extractUnits: vi.fn() }));
 
 describe('questionSample', () => {

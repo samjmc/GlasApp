@@ -1,5 +1,5 @@
 {
-  "id": "1c38e696-9841-40c1-aa60-6ff818bc2688",
+  "id": "451bb3ef-45dc-4a0e-bde8-176f194b65a7",
   "prevId": "714cada4-6889-4fe5-b671-aad59b17e1b7",
   "version": "7",
   "dialect": "postgresql",
@@ -1270,6 +1270,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "failures": {
+          "name": "failures",
+          "type": "smallint",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
         },
         "ran_at": {
           "name": "ran_at",
@@ -2578,13 +2585,6 @@
           "typeSchema": "politics",
           "primaryKey": false,
           "notNull": true
-        },
-        "government_side": {
-          "name": "government_side",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
         },
         "asked": {
           "name": "asked",

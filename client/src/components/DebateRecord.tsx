@@ -16,16 +16,15 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { PartyLabel } from '@/components/pulse/Party';
 import { RetryButton } from '@/components/data/RetryButton';
-import { apiClient } from '@/lib/queryClient';
+import { apiCall } from '@/lib/api';
 import { formatIsoDate } from '@/lib/isoDate';
 import { queryKeys } from '@/lib/queryKeys';
 import { itemLabel } from '@/lib/recordCopy';
 import { cn } from '@/lib/utils';
 import type { DebateItemView, DebateRecordParticipant, DebateRecordView, TdDebateRecord } from '@shared/parliamentApi';
 
-type Envelope<T> = { success: true; data: T };
-/** GET one of the record routes, unwrapped. QuestionRecord.tsx shares it. */
-export const get = <T,>(path: string) => apiClient.get<Envelope<T>>(path).then((r) => r.data);
+/** GET one of the record routes. QuestionRecord.tsx shares it. */
+export const get = <T,>(path: string) => apiCall<T>('GET', path);
 
 const KIND_ORDER: Record<DebateItemView['kind'], number> = { specific_claim: 0, concession: 1, response: 2, question: 3, commitment: 4 };
 

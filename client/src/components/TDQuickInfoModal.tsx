@@ -13,6 +13,7 @@ import { PartyLabel } from '@/components/pulse/Party';
 import { StatTile } from '@/components/pulse/Stat';
 import { RetryButton } from '@/components/data/RetryButton';
 import { queryKeys } from '@/lib/queryKeys';
+import { apiCall } from '@/lib/api';
 import type { TdSummary } from '@shared/scoresApi';
 
 interface TDQuickInfoModalProps {
@@ -25,12 +26,7 @@ interface TDQuickInfoModalProps {
 export function TDQuickInfoModal({ tdId, isOpen, onClose }: TDQuickInfoModalProps) {
   const { data, isLoading, isError, refetch, isFetching } = useQuery<TdSummary>({
     queryKey: queryKeys.td.quickInfo(tdId),
-    queryFn: async () => {
-      const res = await fetch(`/api/scores/td/${tdId}/summary`);
-      if (!res.ok) throw new Error('Failed to fetch TD info');
-      const json = await res.json();
-      return json.data as TdSummary;
-    },
+    queryFn: () => apiCall<TdSummary>('GET', `/api/scores/td/${tdId}/summary`),
     enabled: isOpen && !!tdId,
   });
 

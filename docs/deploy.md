@@ -6,8 +6,9 @@ port 5000. The files for this are `Dockerfile`, `deploy/compose.yml`, `deploy/Ca
 
 Rules that do not bend:
 
-- **One instance only.** Rate limits, the cache (unless `REDIS_URL` is set) and the
-  parliament-sync lock live in process memory. A second copy would not share them.
+- **One instance only.** Rate limits and the cache (unless `REDIS_URL` is set) live in process
+  memory. A second copy would not share them. (The job locks do not: each job takes a Postgres
+  advisory lock, so a job started from the command line never runs alongside the server's cron.)
 - **Migrations are manual** and never run at boot (see "Migrations").
 - **One proxy only** in front of the app (see "HTTPS").
 

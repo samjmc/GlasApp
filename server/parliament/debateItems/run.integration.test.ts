@@ -9,7 +9,8 @@
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../../testing/migrations';
-import { OutOfCreditError } from '../../services/aiService';
+import { AIError, OutOfCreditError } from '../../services/aiService';
+import { EXTRACTOR_VERSION } from './prompt';
 import type { ItemAnswer, ItemCompletion } from './run';
 
 const url = testDatabaseUrl('debateitems');
@@ -151,16 +152,16 @@ run('debate items (real Postgres)', () => {
   it('with a limit, retries a failed re-read only when the failure may not recur, and never re-pays for a recount', async () => {
     const grow = () => q("update politics.debate_speeches set text = text || ' Two words.', word_count = word_count + 2 where id = $1", [SPEECHES[1].id]);
     const unusable: ItemCompletion = async () => ({ content: 'not json', model: 'fake-model', promptTokens: 10, completionTokens: 1 });
-    const thrown: ItemCompletion = async () => {
-      throw new Error('socket hang up');
+    const outage: ItemCompletion = async () => {
+      throw new AIError('503', { operation: 'debate-items', attempts: 3, elapsedMs: 0, status: 503 });
     };
     // An unusable reply recurs at temperature 0: the next limited run does not pay for it again.
     await grow();
     expect(await items.extractDebates({ complete: unusable, limit: 10 })).toMatchObject({ failed: 1 });
     expect(await items.extractDebates({ complete: fake(), limit: 10 })).toMatchObject({ debates: 0 });
-    // A thrown call may work tomorrow: the next limited run tries again.
+    // A model outage may be over tomorrow: the next limited run tries again.
     await grow();
-    expect(await items.extractDebates({ complete: thrown, limit: 10 })).toMatchObject({ failed: 1 });
+    expect(await items.extractDebates({ complete: outage, limit: 10 })).toMatchObject({ failed: 1 });
     expect(await items.extractDebates({ complete: fake({ items: [REPLY.items[0]] }), limit: 10 })).toMatchObject({ debates: 1, done: 1 });
     // The same text counted differently is hashed once, then left alone.
     await q('update politics.debate_speeches set word_count = word_count + 1 where id = $1', [SPEECHES[1].id]);
@@ -246,11 +247,14 @@ run('debate items (real Postgres)', () => {
       calls++;
       throw new OutOfCreditError('402 Insufficient Balance', { operation: 'debate-items', attempts: 1, elapsedMs: 0, status: 402 });
     };
+    const runsBefore = (await q('select debate_id, status, failures, ran_at from politics.debate_extraction_runs order by debate_id')).rows;
     const s = await items.extractDebates({ complete: noCredit, concurrency: 1 });
     expect(calls).toBe(1);
-    expect(s).toMatchObject({ debates: 2, failed: 1, done: 0 });
+    // Not the debate's fault: not failed, and nothing stored for it or the one not started.
+    expect(s).toMatchObject({ debates: 2, failed: 0, done: 0 });
     expect(s.stopped).toContain('no credit');
     expect(s.results).toHaveLength(1);
+    expect((await q('select debate_id, status, failures, ran_at from politics.debate_extraction_runs order by debate_id')).rows).toEqual(runsBefore);
 
     // With credit again, both are read.
     expect(await items.extractDebates({ complete: fake() })).toMatchObject({ done: 2 });
@@ -266,14 +270,26 @@ run('debate items (real Postgres)', () => {
     expect((await stored()).filter((r) => r.kind === 'concession')).toHaveLength(1);
   });
 
-  it('stores a failed run for a debate never read before', async () => {
-    const third = `dail-${DAY}-dbsect_12`;
-    await q("insert into politics.debates (id, kind, title, first_date, last_date, section_count) values ($1, 'statements', 'Energy: Statements', $2, $2, 1)", [third, DAY]);
-    await q("insert into politics.debate_sections (id, date, title, speech_count, debate_id) values ($1, $2, 'Energy: Statements', 2, $1)", [third, DAY]);
+  it('a run that reads nothing new rebuilds no record; one that reads something does', async () => {
+    let rebuilds = 0;
+    const config = { ...items.DEBATE_EXTRACTION, rebuild: async () => (rebuilds++, { rows: 7 }) };
+    await items.extractDebates({ complete: fake() }); // everything read
+    rebuilds = 0;
+    const idle = await items.extractUnits(config, { complete: fake() });
+    expect(idle).toMatchObject({ done: 0, orphansRemoved: 0, recordRows: 0 });
+    expect(rebuilds).toBe(0);
+    expect(await items.extractUnits(config, { complete: fake(), debateIds: [`dail-${DAY}-dbsect_9`], force: true })).toMatchObject({ done: 1, recordRows: 7 });
+    expect(rebuilds).toBe(1);
+  });
+
+  /** A new argued debate with the two test speeches, never read. */
+  const addDebate = async (id: string, title: string) => {
+    await q("insert into politics.debates (id, kind, title, first_date, last_date, section_count) values ($1, 'motion', $2, $3, $3, 1)", [id, title, DAY]);
+    await q('insert into politics.debate_sections (id, date, title, speech_count, debate_id) values ($1, $2, $3, 2, $1)', [id, DAY, title]);
     for (const [i, s] of SPEECHES.entries()) {
       await q('insert into politics.debate_speeches (id, section_id, date, position, member_code, text, word_count) values ($1, $2, $3, $4, $5, $6, $7)', [
-        `${third}/spk_${i + 1}`,
-        third,
+        `${id}/spk_${i + 1}`,
+        id,
         DAY,
         i,
         s.member,
@@ -281,32 +297,49 @@ run('debate items (real Postgres)', () => {
         s.text.split(' ').length,
       ]);
     }
-    const broken: ItemCompletion = async () => {
-      throw new Error('model down');
-    };
-    expect(await items.extractDebates({ complete: broken, debateIds: [third] })).toMatchObject({ failed: 1 });
-    expect((await q('select status, error from politics.debate_extraction_runs where debate_id = $1', [third])).rows).toEqual([{ status: 'failed', error: 'model down' }]);
-    // A thrown first read is tried again by the next limited run; one that fails the same way is not.
+  };
+
+  it('leaves a debate never read alone after MAX_FAILED_RUNS unusable replies on the same speeches, until they change or --force', async () => {
+    const fresh = `dail-${DAY}-dbsect_12`;
+    await addDebate(fresh, 'Energy: Motion');
     const unusable: ItemCompletion = async () => ({ content: 'not json', model: 'fake-model', promptTokens: 10, completionTokens: 1 });
-    expect(await items.extractDebates({ complete: unusable, limit: 10 })).toMatchObject({ debates: 1, failed: 1 });
-    expect(await items.extractDebates({ complete: unusable, limit: 10 })).toMatchObject({ debates: 0 });
+    for (let run = 1; run <= items.MAX_FAILED_RUNS; run++) expect(await items.extractDebates({ complete: unusable, debateIds: [fresh] })).toMatchObject({ failed: 1 });
+    const failures = async () => (await q('select status, failures from politics.debate_extraction_runs where debate_id = $1', [fresh])).rows[0];
+    expect(await failures()).toEqual({ status: 'failed', failures: items.MAX_FAILED_RUNS });
+
+    const complete = fake();
+    expect(await items.extractDebates({ complete, debateIds: [fresh] })).toMatchObject({ capped: 1, failed: 0, done: 0 });
+    expect(complete.calls).toBe(0);
+    // Nor does the nightly pick spend its budget on it.
+    expect(await items.extractDebates({ complete, limit: 30 })).toMatchObject({ debates: 0 });
+
+    // A model outage is not the debate's fault and never counts toward the cap.
+    const down: ItemCompletion = async () => {
+      throw new AIError('503', { operation: 'debate-items', attempts: 3, elapsedMs: 0, status: 503 });
+    };
+    expect(await items.extractDebates({ complete: down, debateIds: [fresh], force: true })).toMatchObject({ failed: 1 });
+    expect((await failures()).failures).toBe(items.MAX_FAILED_RUNS);
+
+    expect(await items.extractDebates({ complete, debateIds: [fresh], force: true })).toMatchObject({ done: 1 });
+    expect((await failures()).failures).toBe(0);
   });
 
-  it('runs one extractor run at a time: a second stops at once while the first holds the lock', async () => {
-    const { EXTRACTOR_LOCK } = await import('../repo/util');
-    const { EXTRACTOR_VERSION } = await import('./prompt');
+  it('the nightly pick reads never-read debates before failed ones', async () => {
+    const third = `dail-${DAY}-dbsect_11`;
+    await addDebate(third, 'Transport: Motion');
+    await q("update politics.debate_extraction_runs set status = 'failed', failures = 1 where debate_id = $1", [SECTION]);
+    const s = await items.extractDebates({ complete: fake(), limit: 1 });
+    expect(s.results.map((r) => r.id)).toEqual([third]);
+  });
+
+  it('one run per extractor across processes: a second one is refused while the lock is held', async () => {
     const other = await dbmod.pool.connect();
     try {
-      await other.query('select pg_advisory_lock($1, hashtext($2))', [EXTRACTOR_LOCK, EXTRACTOR_VERSION]);
-      const complete = fake();
-      const s = await items.extractDebates({ complete, force: true });
-      expect(s).toMatchObject({ debates: 0, done: 0 });
-      expect(s.stopped).toContain('in progress');
-      expect(complete.calls).toBe(0);
+      await other.query('select pg_advisory_lock(hashtext($1)::bigint)', [`glasapp:job:items:${EXTRACTOR_VERSION}`]);
+      await expect(items.extractDebates({ complete: fake() })).rejects.toMatchObject({ name: 'JobAlreadyRunning' });
     } finally {
-      await other.query('select pg_advisory_unlock($1, hashtext($2))', [EXTRACTOR_LOCK, EXTRACTOR_VERSION]);
+      await other.query('select pg_advisory_unlock_all()');
       other.release();
     }
-    expect((await items.extractDebates({ complete: fake(), limit: 1 })).stopped).toBeNull();
   });
 });

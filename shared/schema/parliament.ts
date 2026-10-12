@@ -245,6 +245,11 @@ export const debateExtractionRuns = politics.table(
     rejected: jsonb('rejected').$type<Record<string, { en: number; ga: number }>>().notNull().default({}),
     model: varchar('model', { length: 60 }),
     error: text('error'),
+    /**
+     * Failed runs in a row on the same speeches (`input_hash`), not counting a model outage. At
+     * MAX_FAILED_RUNS the unit is not read again until its speeches change or `--force`.
+     */
+    failures: smallint('failures').notNull().default(0),
     ranAt: timestamp('ran_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [primaryKey({ columns: [t.debateId, t.extractorVersion] })],

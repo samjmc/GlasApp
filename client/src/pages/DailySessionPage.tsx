@@ -21,12 +21,10 @@ import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVote
 import { dismissDailyForToday } from "@/lib/dailyDismissal";
 import { afterVote, dimensionLabel, firstUnansweredIndex } from "@/lib/dailySessionFlow";
 import { cn } from "@/lib/utils";
+import { isApiError } from "@/lib/api";
 
 type Step = "prompt" | "vote" | "payoff" | "streakShare";
 type VoteSubStep = "preview" | "question";
-
-/** A vote the server refused because the day moved on or the session is already finished. */
-const SESSION_MOVED_ON = /session has ended|already complete/i;
 
 /**
  * Sessions finished during this page load. Only those are news ("Streak boosted"); coming back to
@@ -259,8 +257,8 @@ export default function DailySessionPage() {
           });
           break;
         } catch (mutationError: unknown) {
-          const message = (mutationError as { message?: string } | null)?.message || "";
-          const shouldRetry = attempt === 0 && message.toLowerCase().includes("failed to fetch");
+          // Status 0: no answer arrived (a dropped connection), so the vote may not have been sent.
+          const shouldRetry = attempt === 0 && isApiError(mutationError, 0);
           if (!shouldRetry) throw mutationError;
           await new Promise((resolve) => setTimeout(resolve, 250));
           attempt += 1;
@@ -274,7 +272,8 @@ export default function DailySessionPage() {
       advancingRef.current = false;
       setIsAdvancing(false);
       const message = (error as { message?: string } | null)?.message || "";
-      if (SESSION_MOVED_ON.test(message)) {
+      // 409: the session has ended or is already complete.
+      if (isApiError(error, 409)) {
         // Midnight passed (or another tab finished it): load whatever session is current.
         toast({ title: "A new day has started", description: "Loading today's questions." });
         setPendingOption(null);

@@ -139,6 +139,31 @@ run('news repository against Postgres', () => {
     expect(rows).toEqual([{ status: 'failed', attempts: repo.MAX_ATTEMPTS }]);
   });
 
+  it('a failed article (a model outage) is claimed again until MAX_ATTEMPTS claims, then left failed', async () => {
+    const [{ id }] = await repo.insertArticles([row('https://rte.ie/outage', 1)]);
+    const fail = () => repo.markOutcome(id, { status: 'failed', importanceScore: 70, importanceReasoning: null, skipReason: null, errorMessage: 'AIError: 503' });
+    for (let attempt = 1; attempt <= repo.MAX_ATTEMPTS; attempt++) {
+      expect((await repo.claimForPipeline(1)).map((c) => c.id)).toEqual([id]);
+      await fail();
+    }
+    expect(await repo.claimForPipeline(1)).toEqual([]);
+    const { rows } = await dbmod.pool.query('select status, attempts from politics.news_articles');
+    expect(rows).toEqual([{ status: 'failed', attempts: repo.MAX_ATTEMPTS }]);
+  });
+
+  it('releaseClaim hands a claimed row back as pending without counting the claim; it never touches an unclaimed row', async () => {
+    const [{ id }] = await repo.insertArticles([{ ...row('https://rte.ie/released', 1), relevanceScore: 81 }]);
+    const [claimed] = await repo.claimForPipeline(1);
+    expect(claimed).toMatchObject({ id, relevanceScore: 81 });
+    await repo.releaseClaim(id);
+    const { rows } = await dbmod.pool.query('select status, attempts, claimed_at from politics.news_articles');
+    expect(rows).toEqual([{ status: 'pending', attempts: 0, claimed_at: null }]);
+
+    await repo.markOutcome(id, { status: 'scored', importanceScore: 81, importanceReasoning: null, skipReason: null, errorMessage: null });
+    await repo.releaseClaim(id);
+    expect((await dbmod.pool.query('select status from politics.news_articles')).rows).toEqual([{ status: 'scored' }]);
+  });
+
   it('feed pages by offset, reports the real total, and ranks the most important articles first', async () => {
     const ids = (await repo.insertArticles(Array.from({ length: 12 }, (_, i) => row(`https://rte.ie/${i}`, i)))).map((r) => r.id);
     const { rows: [td] } = await dbmod.pool.query(`insert into politics.tds (name, party) values ('Mary Lou McDonald', 'Sinn Féin') returning id`);

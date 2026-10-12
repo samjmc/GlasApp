@@ -11,10 +11,10 @@ import {
   type NewDebateExtractionRun,
   type NewDebateItem,
 } from '@shared/schema/parliament';
-import { db, pool, type Db } from '../../db';
+import { db, type Db } from '../../db';
 import type { GovernmentOffices } from '../debateItems/verify';
 import type { DebateSpeech } from '../debateItems/windows';
-import { EXTRACTOR_LOCK, chunks, nameFromCode, type Reader } from './util';
+import { chunks, nameFromCode, type Reader } from './util';
 
 export interface ArguedDebate {
   id: string;
@@ -63,31 +63,18 @@ export function toSpeech(r: SpeechRow): DebateSpeech {
 }
 
 /** debate id → its run for this extractor version. */
-export async function extractionRunsFor(version: string, database: Db = db): Promise<Map<string, { inputHash: string; status: string; words: number }>> {
+export async function extractionRunsFor(version: string, database: Db = db): Promise<Map<string, { inputHash: string; status: string; failures: number; words: number }>> {
   const rows = await database
-    .select({ debateId: debateExtractionRuns.debateId, inputHash: debateExtractionRuns.inputHash, status: debateExtractionRuns.status, words: debateExtractionRuns.words })
+    .select({
+      debateId: debateExtractionRuns.debateId,
+      inputHash: debateExtractionRuns.inputHash,
+      status: debateExtractionRuns.status,
+      failures: debateExtractionRuns.failures,
+      words: debateExtractionRuns.words,
+    })
     .from(debateExtractionRuns)
     .where(eq(debateExtractionRuns.extractorVersion, version));
-  return new Map(rows.map((r) => [r.debateId, { inputHash: r.inputHash, status: r.status, words: r.words }]));
-}
-
-/**
- * Run `fn` holding this extractor version's lock on a connection of its own, or return null at
- * once when another process holds it. The lock goes with the connection if the process dies.
- */
-export async function withExtractorLock<T>(version: string, fn: () => Promise<T>): Promise<T | null> {
-  const client = await pool.connect();
-  try {
-    const { rows } = await client.query<{ ok: boolean }>('select pg_try_advisory_lock($1, hashtext($2)) ok', [EXTRACTOR_LOCK, version]);
-    if (!rows[0]!.ok) return null;
-    try {
-      return await fn();
-    } finally {
-      await client.query('select pg_advisory_unlock($1, hashtext($2))', [EXTRACTOR_LOCK, version]);
-    }
-  } finally {
-    client.release();
-  }
+  return new Map(rows.map((r) => [r.debateId, { inputHash: r.inputHash, status: r.status, failures: r.failures, words: r.words }]));
 }
 
 /** A unit read again with the same text but a new word count: store the count `--limit` compares. */

@@ -1,30 +1,41 @@
 import { describe, expect, it, vi } from 'vitest';
 
-vi.mock('../db', () => ({ shutdown: vi.fn() }));
-vi.mock('../services/aiService', () => ({ isLLMConfigured: () => true }));
-vi.mock('../parliament/debateItems/run', () => ({ costOf: vi.fn() }));
-vi.mock('../parliament/debateItems/verify', () => ({ REJECT_REASONS: [] }));
+// itemsJob reaches the database only through the runner it is given; nothing here connects.
+vi.mock('../db', () => ({ db: {}, pool: {}, shutdown: vi.fn() }));
+const { MAX_CONCURRENCY, itemsOptions } = await import('./itemsJob');
 
-const { parseArgs } = await import('./itemsJob');
-
-describe('the items jobs’ flags', () => {
-  it('reads one scope and the switches', () => {
-    expect(parseArgs(['--limit', '20', '--dry-run'])).toMatchObject({ limit: 20, pilot: null, debateIds: undefined, dryRun: true, force: false, concurrency: 2 });
-    expect(parseArgs(['--all', '--force', '--concurrency', '6'])).toMatchObject({ limit: null, pilot: null, debateIds: undefined, force: true, concurrency: 6 });
-    expect(parseArgs(['--pilot', '5'])).toMatchObject({ pilot: 5 });
-    // Every id after --debate, not only the first.
-    expect(parseArgs(['--debate', 'a', 'b', '--dry-run'])).toMatchObject({ debateIds: ['a', 'b'], dryRun: true });
+describe('npm run debates:items / questions:items flags', () => {
+  it('refuses a bare command, which would read every unit', () => {
+    expect(() => itemsOptions([])).toThrow(/--limit N, --pilot N, --debate <id>, or --all --yes/);
+    expect(() => itemsOptions(['--all'])).toThrow(/--all --yes/);
+    expect(() => itemsOptions(['--dry-run', '--force'])).toThrow(/--all --yes/);
   });
 
-  it('refuses a mistyped or empty flag rather than reading every unit', () => {
-    for (const argv of [['--dry-run=true'], ['--dryrun', '--all'], ['--limit=20'], ['--limit'], ['--limit', '0'], ['--limit', 'x'], ['--debate'], ['--debate', '--all'], ['--all', '--concurrency', '-1']]) {
-      expect(() => parseArgs(argv), argv.join(' ')).toThrow();
-    }
+  it('runs with a limit, a pilot, named units, or --all --yes', () => {
+    expect(itemsOptions(['--limit', '30'])).toMatchObject({ limit: 30, pilot: null, debateIds: undefined, concurrency: 2 });
+    expect(itemsOptions(['--pilot', '50'])).toMatchObject({ pilot: 50 });
+    expect(itemsOptions(['--debate', 'a', '--debate', 'b'])).toMatchObject({ debateIds: ['a', 'b'] });
+    expect(itemsOptions(['--all', '--yes', '--force', '--dry-run'])).toEqual({
+      debateIds: undefined,
+      pilot: null,
+      limit: null,
+      concurrency: 2,
+      force: true,
+      dryRun: true,
+    });
   });
 
-  it('needs exactly one scope', () => {
-    for (const argv of [[], ['--dry-run'], ['--force'], ['--all', '--limit', '5'], ['--debate', 'x', '--pilot', '5']]) {
-      expect(() => parseArgs(argv), argv.join(' ')).toThrow(/one of --all/);
+  it(`caps --concurrency at ${MAX_CONCURRENCY}`, () => {
+    expect(itemsOptions(['--limit', '5', '--concurrency', String(MAX_CONCURRENCY)]).concurrency).toBe(MAX_CONCURRENCY);
+    expect(() => itemsOptions(['--limit', '5', '--concurrency', String(MAX_CONCURRENCY + 1)])).toThrow(/at most/);
+  });
+
+  it('refuses a mistyped flag, a flag with no value and two scopes, rather than run something else', () => {
+    // Each would otherwise read, and write, more than asked: --dryrun is no dry run.
+    for (const argv of [['--dryrun', '--limit', '5'], ['--limit=20'], ['--limit', '5', '--pilot'], ['--limit', '0'], ['--debate'], ['--debate', 'x', '--pilot', '5'], ['--all', '--yes', '--limit', '5']]) {
+      expect(() => itemsOptions(argv), argv.join(' ')).toThrow();
     }
+    // Every id after --debate, as well as --debate repeated.
+    expect(itemsOptions(['--debate', 'a', 'b', '--dry-run'])).toMatchObject({ debateIds: ['a', 'b'], dryRun: true });
   });
 });

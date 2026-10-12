@@ -6,7 +6,7 @@ import { useTheme, type ThemeChoice } from '@/contexts/ThemeContext';
 import { useRegion } from '@/hooks/useRegion';
 import { REGION_LIST } from '@shared/region-config';
 import { useQuery } from '@tanstack/react-query';
-import { apiRequest, apiUpload } from '@/lib/queryClient';
+import { apiCall } from '@/lib/api';
 import { downloadJson } from '@/lib/downloadJson';
 import { supabase } from '@/lib/supabase';
 import { fetchMyQuizResults } from '@/lib/ideologyApi';
@@ -68,7 +68,7 @@ const ProfilePage = () => {
   const handleExport = async () => {
     setIsExporting(true);
     try {
-      const { data } = await apiRequest<{ success: true; data: unknown }>({ method: 'GET', path: '/api/account/export' });
+      const data = await apiCall<unknown>('GET', '/api/account/export');
       downloadJson(`glas-politics-data-${new Date().toISOString().slice(0, 10)}.json`, data);
       toast({ title: 'Your data is ready', description: 'The file was saved to your device.' });
     } catch {
@@ -148,21 +148,17 @@ const ProfilePage = () => {
       const formData = new FormData();
       formData.append('profileImage', file);
 
-      const result = await apiUpload('/api/profile/image', formData);
+      const { imageUrl } = await apiCall<{ imageUrl: string }>('POST', '/api/profile/image', formData);
 
-      if (result.success) {
-        // The avatar is read from the sign-in's metadata, so point it at the new file.
-        const { error } = await supabase.auth.updateUser({ data: { glas_avatar_url: result.data.imageUrl } });
-        if (error) throw error;
-        toast({
-          title: "Profile picture updated",
-          description: "Your profile picture has been successfully updated"
-        });
-        // Refresh user data to show new image
-        window.location.reload();
-      } else {
-        throw new Error(result.message || 'Upload failed');
-      }
+      // The avatar is read from the sign-in's metadata, so point it at the new file.
+      const { error } = await supabase.auth.updateUser({ data: { glas_avatar_url: imageUrl } });
+      if (error) throw error;
+      toast({
+        title: "Profile picture updated",
+        description: "Your profile picture has been successfully updated"
+      });
+      // Refresh user data to show new image
+      window.location.reload();
     } catch (error) {
       toast({
         title: "Upload failed",
@@ -309,14 +305,15 @@ const ProfilePage = () => {
                 </Avatar>
                 {isEditing && (
                   <label
-                    aria-label="Change photo"
-                    className="absolute -bottom-1 -right-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-card bg-elevated text-foreground transition-colors hover:bg-accent"
+                    className="absolute -bottom-1 -right-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-card bg-elevated text-foreground transition-colors hover:bg-accent focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background"
                   >
                     <Camera className="h-4 w-4" aria-hidden="true" />
+                    {/* sr-only, not hidden: display:none would take it out of the tab order. */}
                     <input
                       type="file"
                       accept="image/*"
-                      className="hidden"
+                      aria-label="Change photo"
+                      className="sr-only"
                       onChange={handleProfileImageUpload}
                     />
                   </label>

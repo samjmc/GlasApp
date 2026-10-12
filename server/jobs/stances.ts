@@ -30,7 +30,7 @@ import { AUDIT_UNSCORED_DIMENSIONS } from '@shared/divisionMeaning';
 import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import { shutdown } from '../db';
 import { deleteTdEvidence, recalculateAll } from '../ideology';
-import { isLLMConfigured } from '../services/aiService';
+import { completeJson, isLLMConfigured, OutOfCreditError } from '../services/aiService';
 import {
   classifyDivisions,
   emptyStanceStats,
@@ -43,7 +43,7 @@ import {
   toCandidate,
   type DivisionReading,
 } from '../stances';
-import { completeJson, questionForArticle } from '../voting';
+import { questionForArticle } from '../voting';
 import { oireachtasVoteUrl } from '../parliament';
 
 const DEFAULT_DAYS = 180;
@@ -175,6 +175,7 @@ async function main(): Promise<void> {
   const purged = await deleteTdEvidence('article', dryRun);
   const stats = emptyStanceStats();
   let failed = 0;
+  let stopped: string | null = null;
   for (const article of articles) {
     try {
       await recordStances({ id: article.id, title: article.title, content: article.content }, article.tds.map(toCandidate), stats, {
@@ -184,10 +185,15 @@ async function main(): Promise<void> {
         dryRun,
       });
     } catch (error) {
+      if (error instanceof OutOfCreditError) {
+        stopped = `the model provider has no credit left (${error.message}); ${articles.length - articles.indexOf(article)} article(s) not read`;
+        break;
+      }
       failed++;
       console.warn(`[stances] article ${article.id} failed:`, error instanceof Error ? error.message : error);
     }
   }
+  if (stopped) console.warn(`Stopped early: ${stopped}.`);
 
   const prefix = dryRun ? '[dry run, nothing written] ' : '';
   console.log(`${prefix}${dryRun ? 'Would delete' : 'Deleted'} ${purged} article evidence row(s).`);

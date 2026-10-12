@@ -3,76 +3,97 @@
  * question-items.ts): the same flags, and the same report of tokens, cost at DeepSeek's list
  * prices, what code rejected by language, and what reading every unit would cost at that rate.
  *
- * Exactly one of:
- *   --all             every unit not read yet, or whose speeches changed
- *   --limit N         the first N not read yet, or whose word count changed since their read
  *   --pilot N         a fixed sample of N units
  *   --debate <id> …   these units (debate or exchange ids)
- * and any of:
+ *   --limit N         the first N not read yet (never-read first), or changed since their read
+ *   --all --yes       every unit (after an EXTRACTOR_VERSION bump, the whole term: dollars, not cents)
  *   --dry-run         make the calls, write nothing
  *   --force           read again even when this version already read the same speeches
- *   --concurrency N   units read at once (default 2: DeepSeek caps concurrent calls per account,
- *                     by balance, and other apps share the key)
+ *   --concurrency N   units read at once, 1 to MAX_CONCURRENCY (default 2: DeepSeek caps
+ *                     concurrent calls per account, by balance, and other apps share the key)
  *
- * The process exits 1 when a unit failed or the run stopped early, so a chained command stops too.
+ * Exactly one of --pilot, --debate, --limit or --all is required, so a bare command never reads
+ * everything, and an unknown flag stops the job. It exits 1 when a unit failed or the run stopped
+ * early, so a chained command stops too.
  */
 import { shutdown } from '../db';
 import { costOf, type ExtractOptions, type ExtractSummary } from '../parliament/debateItems/run';
 import { REJECT_REASONS } from '../parliament/debateItems/verify';
 import { isLLMConfigured } from '../services/aiService';
 
-const USAGE = 'Use one of --all, --limit N, --pilot N or --debate <id> …, with any of --dry-run, --force, --concurrency N.';
-const FLAGS = ['--all', '--limit', '--pilot', '--debate', '--dry-run', '--force', '--concurrency'];
-const VALUE_FLAGS = ['--limit', '--pilot', '--concurrency'];
+const FLAGS = ['--pilot', '--debate', '--limit', '--all', '--yes', '--dry-run', '--force', '--concurrency'];
+const VALUE_FLAGS = ['--pilot', '--limit', '--concurrency'];
 
-/** Every flag is checked: a mistyped one must not fall through to a paid run of every unit. */
-export function parseArgs(argv: string[]): Omit<ExtractOptions, 'complete' | 'log'> {
+/** A flag's whole-number value; a flag given with no value is an error, not "not given". */
+function argNumber(argv: string[], flag: string): number | null {
+  const i = argv.indexOf(flag);
+  if (i === -1) return null;
+  const n = Number(argv[i + 1]);
+  if (!Number.isInteger(n) || n < 1) throw new Error(`${flag} needs a whole number`);
+  return n;
+}
+
+const usd = (n: number) => `$${n.toFixed(n < 1 ? 4 : 2)}`;
+
+export const MAX_CONCURRENCY = 4;
+
+/**
+ * The run the flags ask for. Throws on a run that would read everything without saying so, and on
+ * any flag it does not know: a mistyped one must not fall through to a paid run.
+ */
+export function itemsOptions(argv: string[]): Omit<ExtractOptions, 'log'> {
   const ids: string[] = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i]!;
-    if (!FLAGS.includes(arg)) throw new Error(`Unknown argument ${arg}. ${USAGE}`);
+    if (!FLAGS.includes(arg)) throw new Error(`Unknown argument ${arg}. Flags: ${FLAGS.join(', ')}.`);
     if (VALUE_FLAGS.includes(arg)) i++;
-    if (arg !== '--debate') continue;
-    const before = ids.length;
-    while (i + 1 < argv.length && !argv[i + 1]!.startsWith('--')) ids.push(argv[++i]!);
-    if (ids.length === before) throw new Error(`--debate needs at least one id. ${USAGE}`);
+    else if (arg === '--debate') {
+      const before = ids.length;
+      while (i + 1 < argv.length && !argv[i + 1]!.startsWith('--')) ids.push(argv[++i]!);
+      if (ids.length === before) throw new Error('--debate needs at least one id');
+    }
   }
-  const count = (flag: string) => {
-    const at = argv.indexOf(flag);
-    if (at === -1) return null;
-    const n = Number(argv[at + 1]);
-    if (!Number.isInteger(n) || n < 1) throw new Error(`${flag} needs a whole number. ${USAGE}`);
-    return n;
-  };
-  const scopes = [argv.includes('--all'), argv.includes('--limit'), argv.includes('--pilot'), ids.length > 0].filter(Boolean).length;
-  if (scopes !== 1) throw new Error(USAGE);
+  const pilot = argNumber(argv, '--pilot');
+  const limit = argNumber(argv, '--limit');
+  const all = argv.includes('--all');
+  if (ids.length === 0 && pilot === null && limit === null && !(all && argv.includes('--yes'))) {
+    throw new Error('Say how much to read: --limit N, --pilot N, --debate <id>, or --all --yes for every unit (that can cost dollars).');
+  }
+  if ([ids.length > 0, pilot !== null, limit !== null, all].filter(Boolean).length > 1) {
+    throw new Error('Choose one of --limit, --pilot, --debate or --all.');
+  }
+  const concurrency = argNumber(argv, '--concurrency') ?? 2;
+  if (concurrency > MAX_CONCURRENCY) throw new Error(`--concurrency is at most ${MAX_CONCURRENCY}: the provider caps calls in flight per account.`);
   return {
     debateIds: ids.length > 0 ? ids : undefined,
-    pilot: count('--pilot'),
-    limit: count('--limit'),
-    concurrency: count('--concurrency') ?? 2,
+    pilot,
+    limit,
+    concurrency,
     force: argv.includes('--force'),
     dryRun: argv.includes('--dry-run'),
   };
 }
 
-const usd = (n: number) => `$${n.toFixed(n < 1 ? 4 : 2)}`;
-
 export interface ItemsJob {
   /** "argued debates", "question exchanges": how the report names the units. */
   units: string;
   extract(options: ExtractOptions): Promise<ExtractSummary>;
+  /** How many units there are and their words, to project the cost of reading them all. */
+  total(): Promise<{ count: number; words: number }>;
 }
 
 async function main(job: ItemsJob): Promise<ExtractSummary> {
-  const options = parseArgs(process.argv.slice(2));
+  const argv = process.argv.slice(2);
+  const options = itemsOptions(argv);
   if (!isLLMConfigured()) throw new Error('No LLM configured: set LLM_API_KEY.');
+  const all = await job.total();
+  if (argv.includes('--all')) console.log(`Reading up to all ${all.count} ${job.units} (${all.words} words); the cost is printed at the end.`);
   const summary = await job.extract({ ...options, log: (line) => console.log(line) });
 
   // The rate comes from finished units only: a failed one stops part-way and would understate it.
   const done = summary.results.filter((r) => !r.error);
   const doneWords = done.reduce((n, r) => n + r.words, 0);
-  const scale = doneWords > 0 ? summary.all.words / doneWords : 0;
+  const scale = doneWords > 0 ? all.words / doneWords : 0;
   const full = costOf(done.reduce((n, r) => n + r.promptTokens, 0) * scale, done.reduce((n, r) => n + r.completionTokens, 0) * scale);
   const kinds = Object.entries(summary.acceptedByKind).map(([k, n]) => `${k} ${n}`).join(', ');
   const rejections = REJECT_REASONS.filter((r) => summary.rejected[r].en + summary.rejected[r].ga > 0)
@@ -80,19 +101,23 @@ async function main(job: ItemsJob): Promise<ExtractSummary> {
     .join('; ');
 
   console.log('');
-  console.log(`Chosen: ${summary.debates} ${job.units}; ${summary.done} done, ${summary.failed} failed, ${summary.skipped} already read.`);
+  console.log(
+    `Chosen: ${summary.debates} ${job.units}; ${summary.done} done, ${summary.failed} failed, ${summary.skipped} already read` +
+      `${summary.capped ? `, ${summary.capped} left alone after failing every time (--force to retry)` : ''}.`,
+  );
   console.log(`Read: ${summary.speeches} speeches (${summary.irishSpeeches} in Irish), ${summary.words} words, ${summary.calls} calls.`);
   console.log(`Tokens: ${summary.promptTokens} in, ${summary.completionTokens} out. Cost ${usd(summary.costUsd.offPeak)} off-peak, ${usd(summary.costUsd.peak)} peak.`);
   console.log(`Items accepted: ${kinds}.`);
   console.log(`Rejected by code: ${rejections || 'none'}${summary.malformed ? `; ${summary.malformed} malformed entries` : ''}.`);
   console.log(
     doneWords > 0
-      ? `All ${summary.all.count} ${job.units} (${summary.all.words} words) at the rate of the ${done.length} finished: ${usd(full.offPeak)} off-peak, ${usd(full.peak)} peak.`
+      ? `All ${all.count} ${job.units} (${all.words} words) at the rate of the ${done.length} finished: ${usd(full.offPeak)} off-peak, ${usd(full.peak)} peak.`
       : `Nothing finished, so there is no rate to project.`,
   );
   if (summary.stopped) console.log(`Stopped early: ${summary.stopped}.`);
   if (summary.orphansRemoved > 0) console.log(`Removed ${summary.orphansRemoved} item(s) whose speech left the record.`);
-  console.log(options.dryRun ? 'Dry run: nothing was written.' : `Record rebuilt: ${summary.recordRows} rows.`);
+  if (options.dryRun) console.log('Dry run: nothing was written.');
+  else if (summary.recordRows > 0) console.log(`Record rebuilt: ${summary.recordRows} rows.`);
   return summary;
 }
 

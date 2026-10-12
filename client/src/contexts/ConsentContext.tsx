@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "@/contexts/AuthContext";
 import { fetchProfileMe, profileMeKey, useProfileMe } from "@/hooks/useProfileMe";
-import { apiRequest } from "@/lib/queryClient";
+import { apiCall, isApiError } from "@/lib/api";
 import { POLITICAL_CONSENT_POINTS, POLITICAL_CONSENT_STATEMENT, POLITICAL_CONSENT_VERSION, hasPoliticalConsent } from "@shared/consent";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -48,7 +48,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const answer = useRef<((agreed: boolean) => void) | null>(null);
   const declined = useRef(false);
 
-  const granted = isAuthenticated && hasPoliticalConsent(profile.data?.data?.user);
+  const granted = isAuthenticated && hasPoliticalConsent(profile.data?.user);
   const known = !isAuthenticated || profile.isSuccess || profile.isError;
   const userId = user?.id;
 
@@ -58,13 +58,13 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   }, [userId]);
 
   const grant = useCallback(async () => {
-    await apiRequest({ method: "PUT", path: CONSENT_PATH, body: { version: POLITICAL_CONSENT_VERSION } });
+    await apiCall("PUT", CONSENT_PATH, { version: POLITICAL_CONSENT_VERSION });
     declined.current = false;
     await queryClient.invalidateQueries({ queryKey: profileMeKey(userId) });
   }, [queryClient, userId]);
 
   const withdraw = useCallback(async () => {
-    await apiRequest({ method: "DELETE", path: CONSENT_PATH });
+    await apiCall("DELETE", CONSENT_PATH);
     declined.current = false;
     // Their quiz history, votes and rankings are gone on the server: drop every cached copy.
     await queryClient.invalidateQueries();
@@ -77,7 +77,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
       // Always ask the server, never the cached profile: consent can be withdrawn in another tab, or
       // the wording can change under an open page, and a save on a stale "yes" fails with a 403.
       const fresh = await queryClient.fetchQuery({ queryKey: profileMeKey(userId), queryFn: fetchProfileMe, staleTime: 0 }).catch(() => null);
-      if (hasPoliticalConsent(fresh?.data?.user)) return true;
+      if (hasPoliticalConsent(fresh?.user)) return true;
       return new Promise<boolean>((resolve) => {
         answer.current?.(false);
         answer.current = resolve;
@@ -103,7 +103,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
       settle(true);
     } catch (err) {
       // 409: the server holds newer wording than this page showed.
-      setError(err instanceof Error && err.message.startsWith("409:") ? "The wording has changed. Reload the page and read it again." : "We could not save your choice. Please try again.");
+      setError(isApiError(err, 409) ? "The wording has changed. Reload the page and read it again." : "We could not save your choice. Please try again.");
     } finally {
       setSaving(false);
     }

@@ -1,5 +1,5 @@
 import { Redirect, Route, Switch, useLocation } from "wouter";
-import { useEffect, type ComponentType } from "react";
+import { lazy, Suspense, useEffect, type ComponentType } from "react";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
@@ -24,28 +24,31 @@ import { GlasMark } from "@/components/pulse/GlasMark";
 
 import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/HomePage";
-import TDProfilePage from "@/pages/TDProfilePage";
-import PartyProfilePage from "@/pages/PartyProfilePage";
-import ResearchedTDsPage from "@/pages/ResearchedTDsPage";
-import DebatesPage from "@/pages/DebatesPage";
-import ConstituenciesPage from "@/pages/ConstituenciesPage";
-import ConstituencyProfilePage from "@/pages/ConstituencyProfilePage";
-import QuizPage from "@/pages/QuizPage";
-import QuizResultsPage from "@/pages/QuizResultsPage";
-import MyPoliticsPage from "@/pages/MyPoliticsPage";
-import DailySessionPage from "@/pages/DailySessionPage";
-import ProfilePage from "@/pages/ProfilePage";
-import AdminPage from "@/pages/AdminPage";
-import LeaveWatchPage from "@/pages/admin/LeaveWatchPage";
-import LoginPage from "@/pages/LoginPage";
-import RegisterPage from "@/pages/RegisterPage";
-import AuthCallbackPage from "@/pages/AuthCallbackPage";
-import ForgotPasswordPage from "@/pages/ForgotPasswordPage";
-import ResetPasswordPage from "@/pages/ResetPasswordPage";
-import RegionSelectionPage from "@/pages/RegionSelectionPage";
-import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
-import TermsOfServicePage from "@/pages/TermsOfServicePage";
-import ContactPage from "@/pages/ContactPage";
+
+// Every other page is its own chunk, so the home page does not download the map, the charts
+// and the animation library.
+const TDProfilePage = lazy(() => import("@/pages/TDProfilePage"));
+const PartyProfilePage = lazy(() => import("@/pages/PartyProfilePage"));
+const ResearchedTDsPage = lazy(() => import("@/pages/ResearchedTDsPage"));
+const DebatesPage = lazy(() => import("@/pages/DebatesPage"));
+const ConstituenciesPage = lazy(() => import("@/pages/ConstituenciesPage"));
+const ConstituencyProfilePage = lazy(() => import("@/pages/ConstituencyProfilePage"));
+const QuizPage = lazy(() => import("@/pages/QuizPage"));
+const QuizResultsPage = lazy(() => import("@/pages/QuizResultsPage"));
+const MyPoliticsPage = lazy(() => import("@/pages/MyPoliticsPage"));
+const DailySessionPage = lazy(() => import("@/pages/DailySessionPage"));
+const ProfilePage = lazy(() => import("@/pages/ProfilePage"));
+const AdminPage = lazy(() => import("@/pages/AdminPage"));
+const LeaveWatchPage = lazy(() => import("@/pages/admin/LeaveWatchPage"));
+const LoginPage = lazy(() => import("@/pages/LoginPage"));
+const RegisterPage = lazy(() => import("@/pages/RegisterPage"));
+const AuthCallbackPage = lazy(() => import("@/pages/AuthCallbackPage"));
+const ForgotPasswordPage = lazy(() => import("@/pages/ForgotPasswordPage"));
+const ResetPasswordPage = lazy(() => import("@/pages/ResetPasswordPage"));
+const RegionSelectionPage = lazy(() => import("@/pages/RegionSelectionPage"));
+const PrivacyPolicyPage = lazy(() => import("@/pages/PrivacyPolicyPage"));
+const TermsOfServicePage = lazy(() => import("@/pages/TermsOfServicePage"));
+const ContactPage = lazy(() => import("@/pages/ContactPage"));
 
 /** Wraps a page so only a signed-in user (or an admin) sees it. */
 function guarded(Page: ComponentType, requireAdmin = false) {
@@ -73,6 +76,15 @@ function FullScreenLoader() {
   return (
     <div className="flex min-h-[100dvh] items-center justify-center bg-background" role="status" aria-label="Loading">
       <GlasMark className="h-12 w-12 animate-pulse" />
+    </div>
+  );
+}
+
+/** Shown inside the shell while a page's chunk downloads. Not the full-screen loader: the app is not restarting. */
+function PageLoader() {
+  return (
+    <div className="flex min-h-[50vh] items-center justify-center" role="status" aria-label="Loading page">
+      <GlasMark className="h-10 w-10 animate-pulse" />
     </div>
   );
 }
@@ -174,7 +186,9 @@ function Router() {
 
   return (
     <AppShell bare={bare}>
-      {shouldForceDaily ? <DailySessionPage /> : region?.status === "preview" ? <PreviewRoutes /> : <IrishRoutes />}
+      <Suspense fallback={<PageLoader />}>
+        {shouldForceDaily ? <DailySessionPage /> : region?.status === "preview" ? <PreviewRoutes /> : <IrishRoutes />}
+      </Suspense>
     </AppShell>
   );
 }

@@ -2,7 +2,7 @@
  * Q2: read question exchanges with the shared runner (debateItems/run.ts), one window per
  * exchange and no context speeches, so a commitment's askers are always the exchange's own.
  *
- *   npm run questions:items -- --all | --limit N | --pilot 100 | --debate <exchange id>
+ *   npm run questions:items -- --limit N | --pilot 100 | --debate <exchange id> | --all --yes
  */
 import type { QuestionFormat } from '@shared/schema/parliament';
 import { extractUnits, sampleByShare, type ExtractConfig, type ExtractOptions, type ExtractSummary } from '../debateItems/run';

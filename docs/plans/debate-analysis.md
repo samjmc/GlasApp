@@ -401,17 +401,14 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   without a limit, which compares the speeches' hash.
 - **A failed re-read keeps the debate in the record.** It used to mark the finished run failed,
   which dropped the debate from the record (or fell back to an older version) until a read
-  succeeded. Now only the error is recorded. A thrown call (network, rate limit, no credit) is
-  tried again by the next nightly run, on a first read too; a reply that would fail the same way
-  at temperature 0 is not paid for every night (until the unit's word count changes), and a run
-  without a limit still tries it.
-- **One run per extractor at a time.** A run holds a Postgres advisory lock for its extractor
-  version from start to end; a second run (a hand run during the 04:45 run) stops at once and
-  says so, instead of reading and paying for the same units twice.
-- **The jobs check every flag.** `debates:items` and `questions:items` need exactly one of
-  `--all`, `--limit N`, `--pilot N` or `--debate <id> …`; an unknown or mistyped flag stops the
-  job, rather than falling through to a paid run of every unit. A job exits 1 when a unit failed
-  or the run stopped early.
+  succeeded. Now only the error is recorded. After a model outage the next nightly run tries
+  again; after a reply that would fail the same way at temperature 0 it does not (until the
+  debate's word count changes), and a run without a limit still does. A debate that never had a
+  finished read is capped instead (`MAX_FAILED_RUNS`, from the codebase sweep's P22).
+- **The jobs check every flag.** On top of the sweep's rule (P27: one of `--limit N`, `--pilot N`,
+  `--debate <id> …` or `--all --yes`), a mistyped flag, a flag with no value, or two scopes at
+  once stop the job, rather than falling through to a paid run of every unit; every id after
+  `--debate` is read; and a job exits 1 when a unit failed or the run stopped early.
 - **Record rebuilds take one lock before they read** (`RECORD_REBUILD_LOCK`), so a sync and an
   extractor job never rebuild at once, and a rebuild that read older items never commits last. A
   server that starts with `SCHEDULER=on` rebuilds any record scored under older rules at once.

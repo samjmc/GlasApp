@@ -1,6 +1,6 @@
 /**
  * TD stances against a real Postgres: the pipeline end to end with only the model calls mocked
- * (at `callChatCompletion`, the one seam every model call goes through), the td_stances table
+ * (at aiService's `callChatCompletion` and `completeJson`, the seams every model call goes through), the td_stances table
  * and its constraints, the rebuild's selection SQL, and the `issues` a signed-in user sees.
  *
  * Skipped unless TEST_DATABASE_URL is set. Uses its OWN database, `<db>_stances`.
@@ -23,29 +23,27 @@ if (url) {
 
 const ai = vi.hoisted(() => ({ replies: {} as Record<string, unknown>, operations: [] as string[] }));
 
-vi.mock('../services/aiService', () => ({
-  isLLMConfigured: () => true,
-  callChatCompletion: vi.fn(async (_params: unknown, options: { operation: string }) => {
-    ai.operations.push(options.operation);
-    const reply = ai.replies[options.operation];
-    if (reply === undefined) throw new Error(`unexpected LLM operation ${options.operation}`);
-    return { choices: [{ message: { content: JSON.stringify(reply) } }] };
-  }),
-}));
+vi.mock('../services/aiService', async (importOriginal) => {
+  const answer = (operation: string) => {
+    ai.operations.push(operation);
+    const reply = ai.replies[operation];
+    if (reply === undefined) throw new Error(`unexpected LLM operation ${operation}`);
+    return reply;
+  };
+  return {
+    ...(await importOriginal<typeof import('../services/aiService')>()),
+    isLLMConfigured: () => true,
+    callChatCompletion: vi.fn(async (_params: unknown, options: { operation: string }) => ({
+      choices: [{ message: { content: JSON.stringify(answer(options.operation)) } }],
+    })),
+    completeJson: vi.fn(async (_system: string, _user: string, _temperature: number, operation: string) => answer(operation)),
+  };
+});
 // The Jev position check is the other outside call; every stance here is a position.
 vi.mock('./position', async (importOriginal) => ({
   ...(await importOriginal<typeof import('./position')>()),
   isJevConfigured: () => true,
   positionProbability: vi.fn(async () => 0.9),
-}));
-vi.mock('../services/articleImportanceService', () => ({
-  ArticleImportanceService: {
-    batchScoreAndRank: vi.fn(async (articles: Array<{ id: number }>) => ({
-      topArticles: articles.map((article) => ({ article, importance: { score: 80, reasoning: 'r', topicCategory: 'policy' } })),
-      skippedArticles: [],
-      stats: { scored: articles.length },
-    })),
-  },
 }));
 vi.mock('../services/tdExtractionService', () => ({
   TDExtractionService: {

@@ -1,5 +1,10 @@
 # Runs on every PR and every push to main. The job names are the required-check names.
 # Never add path filters: a required check that does not run blocks the PR as "Expected".
+#
+# Actions and the Postgres image are pinned by commit SHA / digest, with the version in a comment.
+# Dependabot (.github/dependabot.yml) opens the PRs that move the actions. It does not read a
+# job's `services:` image, so the Postgres digest (two places) is moved by hand:
+#   docker buildx imagetools inspect postgres:16
 name: CI
 on:
   pull_request:
@@ -16,8 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npm run check
@@ -27,7 +32,7 @@ jobs:
     timeout-minutes: 15
     services:
       postgres:
-        image: postgres:16
+        image: postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d
         env: { POSTGRES_PASSWORD: postgres }
         ports: ['5432:5432']
         options: >-
@@ -37,8 +42,8 @@ jobs:
     env:
       TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npm test -- --reporter=default --reporter=json --outputFile=vitest-report.json
@@ -46,26 +51,47 @@ jobs:
       - name: Integration suites actually ran
         run: node -e "const r=require('./vitest-report.json'); console.log('tests', r.numTotalTests, 'skipped', r.numPendingTests); if (r.numTotalTests === 0 || r.numPendingTests > 0) process.exit(1)"
 
+  # The one production build of the app in this workflow's Node jobs. e2e downloads it instead of
+  # building again. The client bakes VITE_* in at build time, so these two values are the ones
+  # playwright.config.ts gives its server (NO_SUPABASE and the dummy key): keep them identical.
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    env:
+      VITE_SUPABASE_URL: http://127.0.0.1:9
+      VITE_SUPABASE_ANON_KEY: e2e-dummy
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npm run build
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: dist
+          path: dist/
+          retention-days: 1
+          if-no-files-found: error
 
   # deploy/compose.yml and docs/deploy.md depend on the production image, which nothing else builds.
   # It has to build, boot and serve the client with no database behind it (the start-up check is
-  # non-blocking), and stop cleanly when told to.
+  # non-blocking), and stop cleanly when told to. Layers come from the GitHub Actions cache, so an
+  # unchanged package-lock.json skips both `npm ci` stages.
   image:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
       - name: Build the production image
-        run: docker build -t glasapp:ci --build-arg VITE_SUPABASE_ANON_KEY=ci-placeholder-key .
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
+        with:
+          context: .
+          load: true
+          tags: glasapp:ci
+          build-args: VITE_SUPABASE_ANON_KEY=ci-placeholder-key
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: The image starts, answers /health, and serves the client
         run: |
           docker run -d --name glasapp-ci -p 5000:5000 \
@@ -89,32 +115,38 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with: { fetch-depth: 2 }
       # PR: the merge commit's first parent is the base branch tip. Push: the commit
-      # before the push (origin/main would equal HEAD and prove nothing).
+      # before the push (origin/main would equal HEAD and prove nothing). After a force-push
+      # that commit may be gone from the remote; fall back to HEAD's first parent.
       - name: Resolve base commit
         env:
           EVENT: ${{ github.event_name }}
           BEFORE: ${{ github.event.before }}
         run: |
           if [ "$EVENT" = pull_request ]; then BASE=$(git rev-parse HEAD^1)
-          else BASE="$BEFORE"; git fetch --no-tags --depth=1 origin "$BASE"; fi
+          else
+            BASE="$BEFORE"
+            git fetch --no-tags --depth=1 origin "$BASE" || BASE=$(git rev-parse HEAD^1)
+          fi
           git cat-file -e "$BASE^{commit}"
           echo "BASE=$BASE" >> "$GITHUB_ENV"
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npx drizzle-kit check
       - run: npx tsx scripts/ci/check-migrations.ts --base "$BASE"
 
-  # Browser e2e: production build + throwaway <db>_e2e database (playwright.config.ts).
+  # Browser e2e: the production build from the `build` job + throwaway <db>_e2e database
+  # (playwright.config.ts, E2E_PREBUILT=1 skips its own build).
   e2e:
+    needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 15
     services:
       postgres:
-        image: postgres:16
+        image: postgres:16@sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d
         env: { POSTGRES_PASSWORD: postgres }
         ports: ['5432:5432']
         options: >-
@@ -122,16 +154,21 @@ jobs:
           --health-interval 5s --health-timeout 5s --health-retries 10
     env:
       TEST_DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+      E2E_PREBUILT: '1'
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
+        with:
+          name: dist
+          path: dist/
       # No browser cache: restoring it takes about as long as the download.
       - run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
       - if: failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: playwright-report
           path: |
