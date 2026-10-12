@@ -26,6 +26,9 @@ jobs:
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npm run check
+      # Warnings only for now (eslint.config.js): the log shows them, the job does not fail on them.
+      - run: npm run lint
+        continue-on-error: true
 
   test:
     runs-on: ubuntu-latest
@@ -76,7 +79,8 @@ jobs:
   # deploy/compose.yml and docs/deploy.md depend on the production image, which nothing else builds.
   # It has to build, boot and serve the client with no database behind it (the start-up check is
   # non-blocking), and stop cleanly when told to. Layers come from the GitHub Actions cache, so an
-  # unchanged package-lock.json skips both `npm ci` stages.
+  # unchanged package-lock.json skips both `npm ci` stages. Only pushes to main write the cache
+  # (exporting it takes longer than it saves); pull requests read main's.
   image:
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -91,7 +95,7 @@ jobs:
           tags: glasapp:ci
           build-args: VITE_SUPABASE_ANON_KEY=ci-placeholder-key
           cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-to: ${{ github.event_name == 'push' && 'type=gha,mode=max' || '' }}
       - name: The image starts, answers /health, and serves the client
         run: |
           docker run -d --name glasapp-ci -p 5000:5000 \
