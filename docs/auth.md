@@ -74,18 +74,17 @@ the client called it. It is mounted now.
 `politics.users` (`shared/schema/accounts.ts`) is the application-side profile, keyed by the
 Supabase id and read and written only through `server/account/profile.ts`. The row is created on
 the first authenticated request, so there is no registration step that can leave Supabase and
-the app out of step. Email, sign-in and role stay in Supabase; the row holds name, county, bio,
-avatar and phone.
+the app out of step. Email, sign-in and role stay in Supabase; the row holds name, county, bio
+and avatar. Account deletion (`server/account/deleteUserData.ts`) erases the row with the rest
+of the user's data.
 
-Phone codes are 6 digits from the CSPRNG. Only a hash salted with the user id is stored, with a
-10-minute expiry and 5 wrong guesses per code, counted under a row lock
-(`server/account/phone.ts`). Account deletion (`server/account/deleteUserData.ts`) erases the row
-with the rest of the user's data.
+Phone verification (SMS through Twilio) was removed: no screen used it, and its routes let any
+signed-in user send a paid text to any number. The `phone_*` columns on `politics.users` are
+still there, unread, until a migration drops them.
 
 | Route | |
 |---|---|
-| `GET /me` · `PATCH /me` | read and update the profile |
-| `POST /phone/verify` · `POST /phone/resend` | SMS verification of the caller's own number |
+| `GET /me` · `PATCH /me` | read and update the profile (name, county, bio) |
 | `POST /image` | avatar upload |
 
 ## Tests
