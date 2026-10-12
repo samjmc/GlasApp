@@ -7,10 +7,14 @@ import { requireAuth } from '../auth';
 import { Router } from 'express';
 import { z } from 'zod';
 import { asyncHandler } from '../middleware/errorHandler';
+import { createRateLimit } from '../middleware/rateLimit';
 import { QuizInputError, quizHistory, submitQuiz } from '../quiz';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
 const router = Router();
+
+/** Quiz submissions: 60 per IP per 15 minutes. Enough for a class taking it on one network; stops a loop. */
+const quizSubmitRateLimit = createRateLimit({ windowMs: 15 * 60 * 1000, max: 60, name: 'quiz-submit' });
 
 const submitSchema = z.object({
   answers: z
@@ -28,6 +32,7 @@ const submitSchema = z.object({
  */
 router.post(
   '/',
+  quizSubmitRateLimit,
   asyncHandler(async (req, res) => {
     const body = submitSchema.safeParse(req.body);
     if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid quiz answers', body.error.flatten()));

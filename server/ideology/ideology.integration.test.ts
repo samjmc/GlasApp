@@ -324,6 +324,34 @@ run('quiz and ideology against Postgres', () => {
       expect(tds[0]!.alignment).toBeGreaterThan(tds[1]!.alignment);
     });
 
+    it('matches from the cached inputs exactly as from a fresh read; an evidence write drops them', async () => {
+      const service = await import('./service');
+      // An Independent, so its evidence recomputes no party: the TD recompute alone must drop the inputs.
+      const id = await addTd('Cache Deputy', 'Independent');
+      await addTd('Other Deputy', 'Sinn Féin');
+      await ideology.recordTdEvidence({ td: id, source: 'debate', sourceRef: 'c1', raw: { economic: 0.5, welfare: -0.3, social: 0.2, cultural: -0.1 }, weight: 2, observedAt: new Date() });
+      await ideology.recalculateAll();
+      const position = { ...zero, economic: 5, welfare: -3 };
+      await ideology.matchesFor(position, { welfare: 2 }); // reads the inputs
+      const cached = await ideology.matchesFor(position, { welfare: 2 }); // from the cache
+      const cachedParty = await ideology.partyProfile('Fine Gael');
+      service.forgetMatchInputs();
+      expect(await ideology.matchesFor(position, { welfare: 2 })).toEqual(cached);
+      expect(await ideology.partyProfile('Fine Gael')).toEqual(cachedParty);
+
+      // A write behind the service's back (as another process makes) is not seen while cached...
+      await dbmod.pool.query("update politics.ideology_profiles set economic = -9 where subject_kind = 'td'");
+      expect(await ideology.matchesFor(position, { welfare: 2 })).toEqual(cached);
+      // ...but an evidence write in this process drops the inputs at once.
+      await ideology.recordTdEvidence({ td: id, source: 'debate', sourceRef: 'c2', raw: { authority: 0.4 }, weight: 1, observedAt: new Date() });
+      const after = (await ideology.matchesFor(position, { welfare: 2 })).tds.find((t) => t.tdId === id)!;
+      expect(after.evidenceBySource).toEqual({ debate: 2 });
+      expect(after.measured).toEqual(['economic', 'social', 'cultural', 'authority', 'welfare']);
+      expect((await ideology.matchesFor(position, { welfare: 2 })).tds.find((t) => t.tdId !== id)!.alignment).not.toBe(
+        cached.tds.find((t) => t.tdId !== id)!.alignment,
+      );
+    });
+
     it("matches a user only on the dimensions they have evidence on", async () => {
       await addTd('Market Deputy', 'Fine Gael');
       await addTd('Left Deputy', 'Sinn Féin');
