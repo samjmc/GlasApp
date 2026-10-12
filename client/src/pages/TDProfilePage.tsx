@@ -156,7 +156,7 @@ export default function TDProfilePageEnhanced() {
 
   // null = no such TD (404).
   const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TdProfile | null>({
-    queryKey: ['td-profile-v4', name],  // v4: the score is built from Oireachtas facts only
+    queryKey: queryKeys.td.profile(name),
     queryFn: () => orNullOn404(apiCall<TdProfile>('GET', `/api/scores/td/${encodeURIComponent(name || '')}`)),
     enabled: !!name,
     retry: 2,
