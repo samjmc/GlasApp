@@ -183,28 +183,3 @@ describe('secretsMatch', () => {
     expect(auth.secretsMatch('', '')).toBe(true);
   });
 });
-
-describe('ownsOrAdmin', () => {
-  const withUser = (user: unknown) => ({ ...mockReq(), user } as Request);
-
-  it('allows the owner, 403s another user, allows an admin, 401s anonymous', () => {
-    expect(auth.ownsOrAdmin(withUser({ id: 'me', email: null, role: null, userMetadata: {} }), mockRes(), 'me')).toBe(true);
-
-    const other = mockRes();
-    expect(auth.ownsOrAdmin(withUser({ id: 'me', email: null, role: null, userMetadata: {} }), other, 'someone')).toBe(false);
-    expect(other.statusCode).toBe(403);
-
-    expect(auth.ownsOrAdmin(withUser({ id: 'me', email: null, role: 'admin', userMetadata: {} }), mockRes(), 'someone')).toBe(true);
-
-    const anon = mockRes();
-    expect(auth.ownsOrAdmin(mockReq(), anon, 'someone')).toBe(false);
-    expect(anon.statusCode).toBe(401);
-  });
-});
-
-describe('currentUserId', () => {
-  it('is the id or null', () => {
-    expect(auth.currentUserId(mockReq())).toBeNull();
-    expect(auth.currentUserId({ ...mockReq(), user: { id: 'x' } } as Request)).toBe('x');
-  });
-});

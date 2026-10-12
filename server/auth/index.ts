@@ -150,29 +150,6 @@ export const requireJob: RequestHandler = async (req: Request, res: Response, ne
   return requireAdmin(req, res, next);
 };
 
-/** The caller's id, or null when unauthenticated. */
-export function currentUserId(req: Request): string | null {
-  return req.user?.id ?? null;
-}
-
-/**
- * Allow a request that names a user id in the path only when it is the caller's own, or
- * the caller is an admin. Use on every `/:userId/…` route: `requireAuth` alone proves who
- * is calling, not whose data they asked for.
- */
-export function ownsOrAdmin(req: Request, res: Response, targetUserId: string): boolean {
-  const user = req.user;
-  if (!user) {
-    deny(res, 401, 'Authentication required');
-    return false;
-  }
-  if (user.id !== targetUserId && !isAdminUser(user)) {
-    deny(res, 403, 'Access denied');
-    return false;
-  }
-  return true;
-}
-
 /** Log an admin action with the actor's identity. */
 export function logAdminAction(req: Request, action: string, detail?: Record<string, unknown>): void {
   logger.info({

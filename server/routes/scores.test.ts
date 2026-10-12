@@ -20,7 +20,7 @@ const { state } = vi.hoisted(() => ({
   },
 }));
 
-vi.mock('../db', () => ({ db: {}, pool: {}, supabaseDb: null, shutdown: vi.fn(), checkDatabaseConnection: vi.fn() }));
+vi.mock('../db', () => ({ db: {}, pool: {}, shutdown: vi.fn(), checkDatabaseConnection: vi.fn() }));
 
 vi.mock('../scoring', async () => {
   const weights = await import('../scoring/weights');

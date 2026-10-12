@@ -28,7 +28,6 @@ process.env.LOG_LEVEL = 'silent';
 
 vi.mock('../db', () => ({
   pool: null,
-  supabaseDb: null,
   db: {
     select: vi.fn(() => ({ from: () => ({ where: async () => [] }) })),
     insert: vi.fn(() => ({ values: () => ({ returning: async () => [] }) })),
@@ -37,13 +36,6 @@ vi.mock('../db', () => ({
   },
   shutdown: vi.fn(),
   checkDatabaseConnection: vi.fn(async () => true),
-}));
-
-vi.mock('../services/cacheService', () => ({
-  cached: vi.fn(async (_key: string, _ttl: number, fn: () => Promise<unknown>) => fn()),
-  TTL: { ONE_DAY: 86400000, ONE_HOUR: 3600000 },
-  CacheKeys: {},
-  cache: { get: vi.fn(async () => null), set: vi.fn(), del: vi.fn(), delete: vi.fn() },
 }));
 
 // The sync trigger must never reach the Oireachtas from a test.

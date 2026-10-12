@@ -159,18 +159,6 @@ export async function insertStanceEvidenceRows(database: Pick<Db, 'insert'>, row
   }
 }
 
-/**
- * Replace every `stance` evidence row with `rows`, rebuilt from td_stances, in one transaction
- * under STANCE_SYNC_LOCK. Profiles are not recomputed here.
- */
-export async function replaceStanceEvidence(rows: NewTdIdeologyEvidence[], database: Db = db): Promise<void> {
-  await database.transaction(async (tx) => {
-    await tx.execute(sql`select pg_advisory_xact_lock(${STANCE_SYNC_LOCK}::bigint)`);
-    await tx.delete(tdIdeologyEvidence).where(eq(tdIdeologyEvidence.source, 'stance'));
-    await insertStanceEvidenceRows(tx, rows);
-  });
-}
-
 /** Delete every evidence row of one source; with `dryRun`, only count them. */
 export async function deleteTdEvidenceBySource(source: EvidenceSource, dryRun: boolean, database: Db = db): Promise<number> {
   const where = eq(tdIdeologyEvidence.source, source);

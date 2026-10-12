@@ -17,8 +17,8 @@ in the schema is a `varchar`, so that one value fits everywhere.
 | `requireAdmin` | the caller's role is admin; else 401/403 |
 | `requireJob` | the job secret is in `x-admin-secret`/`x-cron-secret`, or the caller is an admin |
 
-Helpers: `ownsOrAdmin(req, res, targetUserId)` for any `/:userId/…` route, `currentUserId(req)`,
-`logAdminAction(req, action, detail)`.
+Helper: `logAdminAction(req, action, detail)`. No route takes a user id in its path; identity is
+always the caller's own `req.user.id`.
 
 `optionalAuth` runs app-wide in `registerRoutes`, so a handler can offer a signed-in view
 without its own guard and `regionMiddleware` can read the user's saved region.

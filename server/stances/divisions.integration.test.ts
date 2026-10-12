@@ -508,7 +508,8 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
         const sync = divisions.syncDivisionStances(NOW).then(() => {
           done = true;
         });
-        const rebuild = ideologyRepo.replaceStanceEvidence([]).then(() => {
+        const { rebuildStanceEvidence } = await import('./record');
+        const rebuild = stancesRepo.withStanceLock((tx) => rebuildStanceEvidence(tx, null)).then(() => {
           evidenceDone = true;
         });
         await new Promise((resolve) => setTimeout(resolve, 500));
