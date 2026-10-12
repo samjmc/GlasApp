@@ -6,7 +6,7 @@ port 5000. The files for this are `Dockerfile`, `deploy/compose.yml`, `deploy/Ca
 
 Rules that do not bend:
 
-- **One instance only.** Rate limits and the cache (unless `REDIS_URL` is set) live in process
+- **One instance only.** Rate limits live in process
   memory. A second copy would not share them. (The job locks do not: each job takes a Postgres
   advisory lock, so a job started from the command line never runs alongside the server's cron.)
 - **Migrations are manual** and never run at boot (see "Migrations").
@@ -34,7 +34,7 @@ names only are listed here; the values come from you.
 | Required. The server stops at start-up without them | `DATABASE_URL`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` when `NODE_ENV=production` (the image sets it) |
 | Build time, baked into the client | `VITE_SUPABASE_ANON_KEY` (required), `VITE_SUPABASE_URL` (optional) |
 | Needed for real use | `ADMIN_EMAILS`, one admin secret (`ADMIN_API_SECRET`, or `ADMIN_SECRET`, `CRON_SECRET`, `JOB_SECRET`), `LLM_API_KEY`, `JEV_API_KEY`, `CLOUDFLARE_ACCOUNT_ID` |
-| Optional | `LLM_BASE_URL`, `LLM_MODEL_NAME` (every model call uses it when set; unset, DeepSeek uses `deepseek-flash` and OpenAI `gpt-4o-mini`), `OPENAI_API_KEY` (used only when `LLM_API_KEY` is unset), `REDIS_URL`, `LOG_LEVEL`, `PORT` (leave it unset with the compose file: the port mapping and the Caddyfile both assume 5000), `DB_POOL_MAX` (database connections, default 10; the session pooler's Pool Size in Supabase is 15 and shared with GlasIntelligence, so raise that first) |
+| Optional | `LLM_BASE_URL`, `LLM_MODEL_NAME` (every model call uses it when set; unset, DeepSeek uses `deepseek-flash` and OpenAI `gpt-4o-mini`), `OPENAI_API_KEY` (used only when `LLM_API_KEY` is unset), `LOG_LEVEL`, `PORT` (leave it unset with the compose file: the port mapping and the Caddyfile both assume 5000), `DB_POOL_MAX` (database connections, default 10; the session pooler's Pool Size in Supabase is 15 and shared with GlasIntelligence, so raise that first) |
 | Scheduled jobs | `SCHEDULER` (`off` stops every cron), `DIVISION_STANCES`, `DEBATE_ITEMS`, `QUESTION_ITEMS` |
 | Only with the proxy profile | `SITE_DOMAIN` |
 | Tests and one-off tools, never on the host | `TEST_DATABASE_URL` (a disposable Postgres, for `npm test` and `npm run test:e2e`), `E2E_PORT` (port of the e2e server, default 5055), `ROBOTS_SOURCE_DATABASE_URL` (`npm run robots`, read-only copy source), `DIRECT_URL` (a non-pooled URL for `db:migrate`, wins over `DATABASE_URL`) |

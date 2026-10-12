@@ -22,7 +22,7 @@ Browser (React SPA) --HTTPS--> Caddy (optional, one proxy hop)
 
 ## Rules that shape everything
 
-- **One instance only.** Rate limits, the cache (unless `REDIS_URL` is set) and the parliament-sync
+- **One instance only.** Rate limits and the parliament-sync
   lock live in process memory. A second copy would not share them, so it does not run serverless,
   scaled out, or behind a second proxy or CDN. `app.set('trust proxy', 1)` trusts exactly one hop.
 - **Migrations are manual and never run at boot.** `npm run db:migrate` from a checkout of `main`

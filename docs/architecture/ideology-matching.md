@@ -111,11 +111,12 @@ question, they chose the same answer". Removing it from either would lose one of
 ## Seams
 
 - `server/voting` calls `recomputeProfile(userId)` after each vote and `getIdeologyProfile(userId)`.
-- `server/stances/record.ts` (news pipeline and `npm run stances -- --rebuild`) calls
-  `recordTdEvidence({ source: 'stance', sourceRef: 'question:<id>', … })`.
+- `server/stances/record.ts` (news pipeline and `npm run stances -- --rebuild`) rebuilds the
+  `stance` evidence of the TDs it touched from td_stances, under the stance lock
+  (`rebuildStanceEvidence`).
 - Nothing records `article` evidence any more. `npm run stances -- --rebuild` deletes those rows
   (`deleteTdEvidence('article')`) and backfills stances from articles that already have a question.
 - A debate pipeline calls `recordTdEvidence({ source: 'debate', sourceRef: <speech id>, … })`.
 - `npm run stances -- --divisions --sync` and the nightly `runDivisionStances` (only with
-  `DIVISION_STANCES=on`) write Dáil-vote stances, then `replaceStanceEvidence` and
+  `DIVISION_STANCES=on`) write Dáil-vote stances, then `rebuildStanceEvidence` for every TD and
   `recomputeTdsAndParties`.

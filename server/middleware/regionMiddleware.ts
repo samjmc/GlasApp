@@ -3,14 +3,12 @@ import {
   DEFAULT_REGION_CODE,
   isRegionCode,
   type RegionCode,
-  REGION_CONFIGS,
 } from "@shared/region-config";
 
 declare global {
   namespace Express {
     interface Request {
       regionCode?: RegionCode;
-      regionConfig?: unknown;
     }
   }
 }
@@ -69,29 +67,5 @@ export function regionMiddleware(req: Request, res: Response, next: NextFunction
   }
 
   req.regionCode = resolvedRegion;
-
-  // Expose region metadata for downstream handlers if needed
-  req.regionConfig = REGION_CONFIGS[resolvedRegion];
-
   next();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

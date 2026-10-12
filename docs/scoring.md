@@ -134,7 +134,9 @@ News is **not part of the score**. The news → TD pipeline (`server/news/tdPipe
 `npm run news:tds`, every two hours from the scheduler, and `POST /api/admin/td-scoring/run`)
 only records facts and makes questions:
 
-1. importance triage (newsworthiness, also the feed's "Top stories" order);
+1. keep the top slice of each batch by the relevance score ingest stored
+   (`server/news/relevance.ts`); no model call. That score is also written to `importance_score`,
+   which orders the feed's "Top stories";
 2. find the TDs each article is substantially about and link them in `article_tds`
    (`linkArticleTd`, idempotent), which feeds "In the news" on a TD's page;
 3. what those TDs say becomes stance records, never a score (`server/stances`,

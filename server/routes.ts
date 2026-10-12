@@ -3,12 +3,10 @@ import { apiNotFound } from "./middleware/apiNotFound";
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { regionMiddleware } from "./middleware/regionMiddleware";
-import { registerAuthRoutes } from "./routes/auth";
 import profileRoutes from "./routes/profileRoutes";
 import quizRoutes from "./routes/quiz";
 import ideologyRoutes from "./routes/ideology";
 import newsRoutes from "./routes/news";
-import cacheRoutes from "./routes/cacheRoutes";
 import accountRoutes from "./routes/accountRoutes";
 import newsAdminRoutes from "./routes/admin/news";
 import scoresRoutes from "./routes/scores";
@@ -28,10 +26,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use(regionMiddleware);
   app.use("/api/region", regionRoutes);
 
-  
-  // Setup Supabase auth routes
-  await registerAuthRoutes(app);
-  
   // Register API routes
   
   // The signed-in user's own profile. Accounts themselves live in Supabase Auth.
@@ -54,9 +48,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/daily-session", dailySessionRouter);
   app.use("/api/votes", votesRouter);
 
-  // Register cache management routes for monitoring and clearing cache
-  app.use("/api/cache", requireJob, cacheRoutes);
-  // Account deletion endpoint is now consolidated into auth routes
   // Account deletion (GDPR erasure). Was imported but never mounted, so DELETE
   // /api/account — which the client calls — returned 404.
   app.use("/api/account", accountRoutes);
