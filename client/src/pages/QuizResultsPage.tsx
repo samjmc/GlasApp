@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useLocation } from 'wouter';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { AlertCircle, Compass, Download, Loader2, RotateCcw, Share2 } from 'lucide-react';
@@ -26,9 +26,18 @@ import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { fetchMyQuizResults, submitQuiz, type DimensionWeights } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 import { clearStoredQuiz, loadStoredQuiz, loadWeights, storeQuiz } from '@/lib/quizStorage';
+import { quizSaveStatus, type QuizSaveAttempt, type QuizSaveStatus } from '@/lib/quizSaveStatus';
 
 // One save per page load, even under StrictMode's double effects.
 let savingAnswers: Promise<QuizResult> | null = null;
+
+const SAVE_STATUS_TEXT: Record<QuizSaveStatus, string> = {
+  saved: "This result is saved to your profile.",
+  saving: "Saving this result to your profile…",
+  declined: "Not saved. We keep a result only if you agree to us keeping your opinions.",
+  failed: "We couldn't save this result to your profile.",
+  signedOut: "Sign in to save this result and track how your views change over time.",
+};
 
 const heroButton =
   "flex h-11 w-11 items-center justify-center rounded-full bg-hero-muted text-hero-foreground transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
@@ -48,6 +57,7 @@ const QuizResultsPage: React.FC = () => {
   const [stored, setStored] = useState(loadStoredQuiz);
   const [weights, setWeights] = useState<DimensionWeights>(loadWeights);
   const saveAttemptedRef = useRef(false);
+  const [saveAttempt, setSaveAttempt] = useState<QuizSaveAttempt>("idle");
   const [isDownloading, setIsDownloading] = useState(false);
   const [confirmRetake, setConfirmRetake] = useState(false);
 
@@ -63,38 +73,53 @@ const QuizResultsPage: React.FC = () => {
     enabled: isAuthenticated,
   });
 
-  // Save-after-sign-in: answers scored anonymously are posted once, then replaced by the saved result.
+  // Save-after-sign-in: answers scored anonymously are posted, then replaced by the saved result.
+  // respectDecline: the automatic save on load; false when the user pressed "Save to my profile".
+  const saveResult = useCallback(
+    (respectDecline: boolean) => {
+      if (!stored) return;
+      setSaveAttempt("saving");
+      // Saving shows political opinions: needs the user's consent. Someone who just said no on the quiz page is not asked again.
+      void ensureConsent({ respectDecline }).then((agreed) => {
+        if (!agreed) {
+          setSaveAttempt("declined");
+          return;
+        }
+        savingAnswers ??= submitQuiz(stored.answers, stored.seed);
+        return savingAnswers
+          .then(async (saved) => {
+            // The server scores but keeps nothing for someone who has not agreed (consent withdrawn in another tab, or new wording).
+            if (saved.id === null) {
+              setSaveAttempt("declined");
+              toast({ title: "Not saved", description: "We did not save this result because you have not agreed to us keeping your opinions. You can agree on your profile page." });
+              return;
+            }
+            storeQuiz(saved, stored.answers, stored.seed);
+            setStored({ result: saved, answers: stored.answers, seed: stored.seed });
+            await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
+            await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
+            toast({ title: "Result saved", description: "Your quiz result is saved to your profile." });
+          })
+          .catch((error) => {
+            console.error("Error saving quiz result:", error);
+            setSaveAttempt("failed");
+            toast({ title: "Save failed", description: "We couldn't save your result to your profile.", variant: "destructive" });
+          })
+          .finally(() => {
+            savingAnswers = null;
+          });
+      });
+    },
+    [stored, queryClient, toast, ensureConsent],
+  );
+
+  // Once per page load.
   useEffect(() => {
     if (!isAuthenticated || !stored || stored.result.id !== null || stored.answers.length === 0) return;
     if (saveAttemptedRef.current) return;
     saveAttemptedRef.current = true;
-
-    // Saving shows political opinions: needs the user's consent. Someone who just said no on the quiz page is not asked again.
-    void ensureConsent({ respectDecline: true }).then((agreed) => {
-      if (!agreed) return;
-      savingAnswers ??= submitQuiz(stored.answers, stored.seed);
-      return savingAnswers
-        .then(async (saved) => {
-          // The server scores but keeps nothing for someone who has not agreed (consent withdrawn in another tab, or new wording).
-          if (saved.id === null) {
-            toast({ title: "Not saved", description: "We did not save this result because you have not agreed to us keeping your opinions. You can agree on your profile page." });
-            return;
-          }
-          storeQuiz(saved, stored.answers, stored.seed);
-          setStored({ result: saved, answers: stored.answers, seed: stored.seed });
-          await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
-          await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
-          toast({ title: "Result saved", description: "Your quiz result is saved to your profile." });
-        })
-        .catch((error) => {
-          console.error("Error saving quiz result:", error);
-          toast({ title: "Save failed", description: "We couldn't save your result to your profile.", variant: "destructive" });
-        })
-        .finally(() => {
-          savingAnswers = null;
-        });
-    });
-  }, [isAuthenticated, stored, queryClient, toast, ensureConsent]);
+    saveResult(true);
+  }, [isAuthenticated, stored, saveResult]);
 
   const result: QuizResult | null = stored?.result ?? history?.[0] ?? null;
 
@@ -199,7 +224,7 @@ const QuizResultsPage: React.FC = () => {
     );
   }
 
-  const isSaving = isAuthenticated && result.id === null;
+  const saveStatus = quizSaveStatus(isAuthenticated, result.id, saveAttempt);
   const actions = [
     { id: "share", label: "Share", icon: Share2, onClick: handleShare, pending: false },
     { id: "download", label: isDownloading ? "Saving…" : "Download", icon: Download, onClick: handleDownloadImage, pending: isDownloading },
@@ -244,14 +269,15 @@ const QuizResultsPage: React.FC = () => {
       <aside className="flex flex-col gap-3 lg:sticky lg:top-6">
         <section className="flex flex-col gap-3 rounded-2xl border bg-card p-4 sm:p-5">
           <h2 className="font-display text-[22px] font-bold">Keep this result</h2>
-          <p className="flex items-center gap-2 text-sm leading-relaxed text-muted-foreground" role={isSaving ? "status" : undefined}>
-            {isSaving && <Loader2 className="h-4 w-4 shrink-0 animate-spin" aria-hidden="true" />}
-            {result.id !== null
-              ? "This result is saved to your profile."
-              : isAuthenticated
-                ? "Saving this result to your profile…"
-                : "Sign in to save this result and track how your views change over time."}
+          <p className="flex items-center gap-2 text-sm leading-relaxed text-muted-foreground" role="status">
+            {saveStatus === "saving" && <Loader2 className="h-4 w-4 shrink-0 animate-spin" aria-hidden="true" />}
+            {SAVE_STATUS_TEXT[saveStatus]}
           </p>
+          {(saveStatus === "declined" || saveStatus === "failed") && (
+            <Button size="lg" className="h-[52px] w-full text-base font-extrabold" onClick={() => saveResult(false)}>
+              Save to my profile
+            </Button>
+          )}
           {!isAuthenticated && (
             <Button asChild size="lg" className="h-[52px] w-full text-base font-extrabold">
               <Link href="/login">Sign in to save</Link>
