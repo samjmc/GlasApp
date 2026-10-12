@@ -54,6 +54,13 @@ describe('OireachtasClient', () => {
     await expect(client.questions('2026-01-01', '2026-01-31')).rejects.toThrow(/Read 2 of 3/);
   });
 
+  it('fetches the Dáil members once for both the roster and the former members', async () => {
+    const { urls, client } = fakeFetch([{ status: 200, body: { results: [] } }]);
+    expect(await client.roster()).toEqual([]);
+    expect(await client.formerMembers()).toEqual([]);
+    expect(urls.filter((u) => new URL(u).pathname.endsWith('/members'))).toHaveLength(1);
+  });
+
   it('keeps only Dáil and joint committee sittings, with their transcript', async () => {
     const { urls, client } = fakeFetch([
       {

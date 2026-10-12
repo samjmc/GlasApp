@@ -5,10 +5,13 @@
  *   oral_pq            one section is one exchange; its askers come from /questions (several
  *                      for questions taken together), never from speaker order
  *   topical_issue      one section is one exchange; the asker is the member not in office
- *   leaders_questions  split on speaker order: a new exchange starts only when an office holder
- *   rapid              ANSWERS a member who is not the current asker and who said at least
- *                      MIN_QUESTION_WORDS since the last answer. The member answered is the one with
- *                      the most words since then, so a heckle or an interjection never starts one.
+ *   leaders_questions  split on speaker order: a new exchange starts when an office holder answers,
+ *   rapid              or the section ends on a question nobody answered, and the member answered is
+ *                      not the current asker and has said at least MIN_QUESTION_WORDS, counting their
+ *                      short turns answered since the current asker was last answered. The member
+ *                      answered is the one with the most words since the last answer, so a heckle or
+ *                      an interjection never starts one. The exchange begins with the first turn after
+ *                      the answer that preceded that member.
  *
  * The chair's turns are dropped.
  */
@@ -45,9 +48,10 @@ export interface Exchange {
 const unique = <T>(xs: T[]) => Array.from(new Set(xs));
 
 /**
- * The fewest words a member says before an answer for it to start an exchange. A leader's question
- * runs to hundreds of words; on a disorderly day (2025-03-25) dozens of 3- to 10-word interjections
- * each drew a one-line reply and would otherwise have been 70 exchanges in one sitting.
+ * The fewest words a new asker says, short turns already answered included, for an answer to start
+ * their exchange. A leader's question runs to hundreds of words; on a disorderly day (2025-03-25)
+ * dozens of 3- to 10-word interjections each drew a one-line reply and would otherwise have been 70
+ * exchanges in one sitting.
  */
 export const MIN_QUESTION_WORDS = 40;
 
@@ -75,12 +79,24 @@ export function splitExchanges(section: SectionToSplit): Exchange[] {
   const starts: Array<{ asker: string; from: number }> = [];
   let pending = new Map<string, number>();
   let pendingFrom: number | null = null;
+  // A new member's turns answered while still too short to be a question: their words and first turn.
+  let carried = new Map<string, { words: number; from: number }>();
   const close = () => {
     if (pending.size === 0) return;
-    const [asker, words] = [...pending.entries()].sort((a, b) => b[1] - a[1])[0]!;
+    const total = (code: string) => pending.get(code)! + (carried.get(code)?.words ?? 0);
+    const asker = [...pending.keys()].sort((a, b) => total(b) - total(a))[0]!;
+    const words = total(asker);
+    const from = carried.get(asker)?.from ?? pendingFrom!;
     const isNew = starts.length === 0 || starts[starts.length - 1]!.asker !== asker;
-    // An interjection (too short to be a question) stays in the exchange it interrupted.
-    if (isNew && (starts.length === 0 || words >= MIN_QUESTION_WORDS)) starts.push({ asker, from: starts.length === 0 ? first : pendingFrom! });
+    if (isNew && (starts.length === 0 || words >= MIN_QUESTION_WORDS)) {
+      starts.push({ asker, from: starts.length === 0 ? first : from });
+      carried = new Map();
+    } else if (isNew) {
+      // An interjection (too short to be a question) stays in the exchange it interrupted.
+      carried.set(asker, { words, from });
+    } else {
+      carried = new Map();
+    }
     pending = new Map();
     pendingFrom = null;
   };

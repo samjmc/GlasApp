@@ -7,6 +7,9 @@ export function chunks<T>(rows: T[], size = INSERT_CHUNK): T[][] {
   return out;
 }
 
+/** A member who left the Dáil has no tds row: "Paschal-Donohoe.D.2011-03-09" → "Paschal Donohoe". */
+export const nameFromCode = (code: string) => code.split('.')[0]!.replace(/-/g, ' ');
+
 /** Postgres SQLSTATE for "deadlock detected". */
 const DEADLOCK = '40P01';
 const DEADLOCK_ATTEMPTS = 3;

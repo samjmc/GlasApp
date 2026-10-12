@@ -27,3 +27,11 @@ reports
 # Not needed to build or run
 docs
 test
+
+# GeoJSON the app never loads. The client fetches only ireland-constituencies-detailed-0.001
+# and -full (client/src/helpers/fetchConstituencyGeoJSON.ts); /assets serves the rest as-is, and
+# the 2023 file alone is 52 MB. Anything new in public/assets still ships.
+public/assets/ireland-constituencies-2023.geojson
+public/assets/ireland-constituencies-processed.geojson
+public/assets/ireland-constituencies-detailed-0.0005.geojson
+public/assets/ireland-constituencies-detailed-0.005.geojson

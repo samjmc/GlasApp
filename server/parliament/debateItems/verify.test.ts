@@ -137,6 +137,23 @@ describe('verifyItems', () => {
     const stated = labelSpeeches([{ id: 'x/2', memberCode: 'C', speaker: 'Aengus Ó Snodaigh', date: DATE, text: 'Tabharfaidh an tAire freagra ar an gceist seo. Cad eile?', wordCount: 10 }])[0];
     const notQ = verifyItems([item({ speech: 's1', kind: 'question', claimType: null, quote: 'Tabharfaidh an tAire freagra', addressee: 'an tAire' })], { context: [], speeches: [stated] }, offices);
     expect(notQ.rejected.not_a_question).toEqual({ en: 0, ga: 1 });
+    // Nor is a statement followed by a question.
+    const [next, both, quoted] = labelSpeeches(
+      ['The Minister has failed the patients. Will he resign?', 'Will it be €2,000 or €3,000? It is a straight question.', 'I ask the Minister: "Will you open the hospital this year?"'].map((text, i) => ({
+        id: `x/${i + 3}`,
+        memberCode: 'A',
+        speaker: 'Ann Murphy',
+        date: DATE,
+        text,
+        wordCount: 9,
+      })),
+    );
+    const asked = (speech: typeof next, quote: string) =>
+      verifyItems([item({ speech: speech.label, kind: 'question', claimType: null, quote, addressee: 'the Minister' })], { context: [], speeches: [speech] }, offices);
+    expect(asked(next, 'The Minister has failed the patients.').rejected.not_a_question.en).toBe(1);
+    // A quote may hold a question and the sentence after it. A closing quote mark may follow the question mark.
+    expect(asked(both, 'Will it be €2,000 or €3,000? It is a straight question.').accepted).toHaveLength(1);
+    expect(asked(quoted, 'Will you open the hospital this year').accepted).toHaveLength(1);
   });
 
   it('keeps a response whose target passage was mis-copied, without that passage', () => {

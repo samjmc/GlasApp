@@ -17,7 +17,7 @@ import { normalise } from '../../stances/verify';
  * Office words that name the holder, normalised (no fadas), in families: an Irish reply says "an
  * tAire" to a member listed as "Minister for …". "Government" names nobody.
  */
-const OFFICE_FAMILIES = [['minister', 'aire', 'taire'], ['taoiseach'], ['tanaiste']];
+export const OFFICE_FAMILIES = [['minister', 'aire', 'taire'], ['taoiseach'], ['tanaiste']];
 
 /** Lower case, no fadas, letters, digits, apostrophes and hyphens only: " deputy boyd barrett ". */
 const words = (text: string) => ` ${normalise(text).text.replace(/[^a-z0-9'-]+/g, ' ').trim()} `;
@@ -32,15 +32,16 @@ export function surnameForms(name: string): string[] {
 
 /**
  * The sentence or sentences of `text` that hold [start, end): from the end of the sentence before
- * to the end of the sentence after, so "As Deputy Whitmore said, <quote>" counts.
+ * the quote to the end of the sentence the quote ends in, so "As Deputy Whitmore said, <quote>"
+ * counts and a name in the next sentence does not.
  */
 export function sentenceAround(text: string, start: number, end: number): string {
   // A paragraph break ends a sentence too: transcripts end paragraphs with ".\n", not ". ".
   const before = text.slice(0, start);
   const from = Math.max(before.lastIndexOf('. '), before.lastIndexOf('? '), before.lastIndexOf('! '), before.lastIndexOf('\n')) + 1;
-  const rest = text.slice(end);
-  const next = rest.search(/[.?!](\s|$)|\n/);
-  return text.slice(from, next === -1 ? text.length : end + next + 1);
+  // From the quote's last character, so a quote that ends its sentence does not take in the next.
+  const next = text.slice(end - 1).search(/[.?!](\s|$)|\n/);
+  return text.slice(from, next === -1 ? text.length : end + next);
 }
 
 export interface ReplyCheck {

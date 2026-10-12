@@ -10,7 +10,7 @@ Tested on a laptop, not on a real host:
 - The production image **builds** from `main`, runs as the non-root user `node`, answers `/health`, serves
   the client and its SPA fallback, reads the database, refuses unauthenticated calls with 401, and **stops
   on SIGTERM in about 1.5 seconds with exit code 0**.
-- All 24 migrations apply to an **empty** database.
+- Every migration in `drizzle/` applies to an **empty** database.
 - CI now builds the image and runs these checks on every pull request (`image` job), so the kit cannot rot.
 
 Fixed in the same round: the server no longer dies when the database drops an idle connection (`pool`
@@ -19,8 +19,9 @@ closes database connections; container logs are rotated by size; the service wor
 signed-in API responses (and deletes the old cache); an unused public endpoint that sent free text to an AI
 provider is removed.
 
-Not checked: Docker Compose with the Caddy profile, a real Supabase project sign-in, email delivery, and
-anything on a real host.
+Not checked: Docker Compose with the Caddy profile, the read-only root file system in `deploy/compose.yml`
+(only the app's writes were checked in the code: profile pictures go to the `uploads` volume), a real
+Supabase project sign-in, email delivery, and anything on a real host.
 
 ## 1. Decide (the owner)
 
@@ -39,15 +40,17 @@ In the Supabase dashboard (Authentication):
 2. **Site URL:** one value for the whole project. Check with whoever runs the other product first.
 3. **Confirm email: ON.** The admin allow-list trusts `email_confirmed_at`.
 4. **Google provider:** enabled, with the redirect URI Supabase shows.
-5. **Reset-password email template:** use `{{ .SiteURL }}/auth/reset-password?token_hash={{ .TokenHash }}&type=recovery`
-   so the link works in any browser.
+5. **Reset-password email template:** use `{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=recovery`
+   so the link works in any browser. The app sends `/auth/reset-password` as the redirect address.
+   Do not use `{{ .SiteURL }}`: the Site URL may still be GlasIntelligence's domain. The template
+   is project-wide, so agree any change with whoever runs GlasIntelligence first.
 6. **SMTP:** set a real sender. Supabase's built-in sender is rate limited and meant for testing.
 7. **Database, API settings:** confirm the `politics` schema is **not** exposed through the public API.
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
-   (`docs/deploy.md` section 3). GlasCore already has 0000 to 0023.
+   (`docs/deploy.md` section 3). GlasCore already has the earlier ones; only what is missing is applied.
 
-On the host: fill `deploy/glasapp.env` (a secret per line; `VITE_SUPABASE_ANON_KEY` is needed at **build** time
-or sign-in is silently disabled), set an admin secret, keep `SCHEDULER=off`.
+On the host: fill `deploy/glasapp.env` (a secret per line; `SUPABASE_URL` and `SUPABASE_ANON_KEY` are also baked
+into the client at **build** time, so rebuild after changing either), set an admin secret, keep `SCHEDULER=off`.
 
 ## 3. First boot, then prove it
 
@@ -64,8 +67,9 @@ or sign-in is silently disabled), set an admin secret, keep `SCHEDULER=off`.
 ## 4. Turning the crons on
 
 Only when step 3 passes, the migrations are applied, and no other copy (a laptop, an old host) runs crons
-against the same database. Then follow `docs/deploy.md` section 6. `DIVISION_STANCES` and `DEBATE_ITEMS`
-stay off until you want the model cost.
+against the same database. Then follow `docs/deploy.md` section 6. `DIVISION_STANCES`, `DEBATE_ITEMS` and
+`QUESTION_ITEMS` stay off until you want the model cost. (The debate and question backlogs on GlasCore are
+already read, so the last two read only new or changed items.)
 
 ## 5. Known limits at launch
 
@@ -78,7 +82,9 @@ stay off until you want the model cost.
 
 ## 6. First week
 
-- Read the container logs daily (rotated, about a week kept). Look for `Database pool:` and `fatal` lines.
-- Watch pooler connections in Supabase against `DB_POOL_MAX` (default 15).
+- Read the container logs daily (rotated, about a week kept). Look for `Database pool:` lines and for
+  `"level":60` (pino's number for fatal). Request lines hold no visitor IP address or user agent: the logger
+  redacts them, and the size rotation is only a second guard for the 90 days in the privacy policy.
+- Watch pooler connections in Supabase against `DB_POOL_MAX` (default 10).
 - Confirm the Supabase plan's backups, and do one restore drill into a scratch project.
 - Watch model spend when the crons are on.

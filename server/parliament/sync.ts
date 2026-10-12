@@ -8,7 +8,10 @@
  *                    each division's place in its debate (divisions.section_position)
  *   4. committees  → committee_sittings, committee_attendance (the roll call of each sitting)
  *   5. bills       → bills, bill_sponsors, bill_stages, bill_debates (the whole term)
- *   6. questions   → question_counts (per TD, month, department, type)
+ *   6. questions   → question_counts (per TD, month, department, type), question_askers (who
+ *                    asked each oral PQ, and the section it was answered in)
+ *   6b. exchanges  → question_exchanges (an exchange that changed loses its q1 read), then
+ *                    question_participation from the items already read
  *   7. relink rows stored before their TD existed; per-TD counts in each TD's own window
  *   8. the scoring inputs, then recalculateAll()
  *

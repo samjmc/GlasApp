@@ -48,6 +48,13 @@ function RulesNote() {
   );
 }
 
+/** Only a question from the other side of the House can secure a commitment. */
+function securedText(f: TdQuestionRecord['formats'][number]) {
+  if (f.askedAcross === 0) return 'all from the government side, where commitments are not counted';
+  const of = f.askedAcross < f.asked ? ` of the ${f.askedAcross} asked across the House` : '';
+  return `a specific commitment secured in ${f.securedExchanges}${of}`;
+}
+
 function Commitments({ items }: { items: QuestionCommitmentView[] }) {
   return (
     <ul className="flex flex-col gap-2">
@@ -117,7 +124,7 @@ export function TdQuestionRecordCard({ tdId }: { tdId: number | undefined }) {
                   </span>
                 </span>
                 <span className="text-[13px] text-muted-foreground">
-                  {f.asked} asked · a specific commitment secured in {f.securedExchanges} · {f.followUps} follow-ups
+                  {f.asked} asked · {securedText(f)} · {f.followUps} follow-ups
                 </span>
                 {f.perTen !== null && (
                   <span className="text-[13px] text-muted-foreground">
@@ -173,7 +180,7 @@ export function TdQuestionRecordCard({ tdId }: { tdId: number | undefined }) {
           <MessageSquareQuote className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
           Question record
         </h2>
-        <span className="text-[13px] text-muted-foreground">Oral questions, Topical Issues and Leaders&apos; Questions · rules {data?.rulesVersion ?? 'q1'}</span>
+        <span className="text-[13px] text-muted-foreground">Oral questions, Topical Issues, Leaders&apos; Questions and questions on legislation · rules {data?.rulesVersion ?? 'q1'}</span>
       </div>
       {body}
       <RulesNote />
@@ -216,7 +223,7 @@ export function QuestionRecordPanel({ sectionId }: { sectionId: string }) {
                 </span>
               ))}
             </span>
-            {x.commitments.length > 0 ? <Commitments items={x.commitments} /> : <span className="text-[13px] text-muted-foreground">No commitment made.</span>}
+            {x.commitments.length > 0 ? <Commitments items={x.commitments} /> : <span className="text-[13px] text-muted-foreground">No commitment listed.</span>}
           </li>
         ))}
       </ol>

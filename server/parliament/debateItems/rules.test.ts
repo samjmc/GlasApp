@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { GovernmentOffices } from './verify';
 import { GOVERNMENT_SUPPORTERS, isGovernmentSide } from '../governmentSide';
-import { MIN_DEBATES, TAKEN_UP_POINTS, replyNoPoints, scoreDebates, termFigure, type Participant, type ScoredItem } from './rules';
+import { MIN_DEBATES, TAKEN_UP_POINTS, replyNoPoints, scoreDebates, scoringConcessions, termFigure, type Participant, type ScoredItem } from './rules';
 
 const P = (memberCode: string, role: Participant['role'] = 'backbench', debateId = 'd1'): Participant => ({ debateId, memberCode, tdId: null, role, speeches: 2, words: 500 });
 const I = (over: Partial<ScoredItem>): ScoredItem => ({
@@ -70,9 +70,24 @@ describe('scoreDebates', () => {
     const by = Object.fromEntries(rows.map((r) => [r.memberCode, r]));
     expect(by.A).toMatchObject({ takenUp: 0, takenUpPoints: 0, points: 0 });
     expect([by.B?.replies, by.C?.replies]).toEqual([1, 1]);
-    expect(replyNoPoints({ sameParty: true, closingSpeech: false })).toBe('same_party');
-    expect(replyNoPoints({ sameParty: true, closingSpeech: true })).toBe('closing_speech');
-    expect(replyNoPoints({ sameParty: false, closingSpeech: false })).toBeNull();
+    const none = new Set<string>();
+    expect(replyNoPoints(R('B', 'A', { sameParty: true }), none)).toBe('same_party');
+    expect(replyNoPoints(R('B', 'A', { sameParty: true, closingSpeech: true }), none)).toBe('closing_speech');
+    expect(replyNoPoints(R('B', 'A'), none)).toBeNull();
+  });
+
+  it('gives no reply points in a speech whose concession to the same member scored, so one agreement is not +5', () => {
+    const items = [
+      I({ memberCode: 'B', speechId: 'b1', kind: 'concession', targetMemberCode: 'A', crossesHouse: true }),
+      R('B', 'A', { speechId: 'b1' }), // the same agreement read as a reply: the concession's +3 only
+      I({ memberCode: 'C', speechId: 'c1', kind: 'concession', targetMemberCode: 'A', crossesHouse: false }),
+      R('C', 'A', { speechId: 'c1' }), // that concession scored nothing, so this reply still scores
+    ];
+    const by = Object.fromEntries(scoreDebates([P('A'), P('B', 'office'), P('C')], items).map((r) => [r.memberCode, r]));
+    expect(by.A).toMatchObject({ concessionPoints: 3, takenUp: 1, takenUpPoints: 2, points: 5 });
+    expect(by.B).toMatchObject({ replies: 1 });
+    const conceded = scoringConcessions(items);
+    expect([replyNoPoints(items[1]!, conceded), replyNoPoints(items[3]!, conceded)]).toEqual(['conceded', null]);
   });
 
   it('ignores a reply that does not name its target, a reply to oneself, and one to a member who did not speak', () => {

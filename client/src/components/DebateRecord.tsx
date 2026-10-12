@@ -37,6 +37,7 @@ const KIND_ORDER: Record<DebateItemView['kind'], number> = { specific_claim: 0, 
 const REPLY_NO_POINTS: Record<NonNullable<DebateItemView['replyNoPoints']>, string> = {
   same_party: ' (same party, no points)',
   closing_speech: ' (closing speech, no points)',
+  conceded: ' (scored as a concession)',
 };
 
 /** The rules in words, shown under both views so a reader can check any number. */
@@ -45,7 +46,7 @@ function RulesNote() {
     <p className="text-[13px] leading-relaxed text-muted-foreground">
       Points under the published rules: 1 per specific claim (at most 3 per speech), 3 when someone on the other side of
       the House concedes a point to them, and 2 for each speaker from another party who takes up their point by name (not
-      in the debate&apos;s closing speech). A reply is shown only when it names the member it answers. Questions and
+      in the debate&apos;s closing speech, and not in a speech whose concession to them already scored). A reply is shown only when it names the member it answers. Questions and
       promises are shown but score nothing; speaking time and the vote do not count either. A model found and quoted these;
       code checked every quote against the transcript and gave every point.{' '}
       <strong className="text-foreground">Not part of the TD score.</strong>
@@ -125,7 +126,7 @@ export function TdDebateRecordCard({ tdId }: { tdId: number | undefined }) {
         <Scale className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
         Debate record
       </h2>
-      <span className="text-[13px] text-muted-foreground">Bill stages, motions and statements · rules {data?.rulesVersion ?? 'r1'}</span>
+      <span className="text-[13px] text-muted-foreground">Bill stages, motions and statements{data ? ` · rules ${data.rulesVersion}` : ''}</span>
     </div>
   );
 

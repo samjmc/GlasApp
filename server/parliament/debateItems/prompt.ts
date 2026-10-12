@@ -13,6 +13,10 @@ import type { DebateWindow, LabelledSpeech } from './windows';
 // v3 (2026-10-10, after the blind check against two independent markers): each window is read in
 // two passes (PASSES); every reference to what an earlier speaker said is a response; a commitment
 // includes continuing or reviewing something; the question mark may end the quote's sentence.
+// Not bumped (2026-10-12, review fixes): the question check stopped reading the sentence AFTER the
+// quote, and a blank "claim_type" no longer drops a whole item. On GlasCore 18 of 1,850 stored v3
+// questions (and 54 of 9,291 q1) had passed only through the next sentence. Questions score
+// nothing, so they were not read again; later reads use the fixed checks.
 export const EXTRACTOR_VERSION = 'v3';
 /**
  * Every version the debate record may read, oldest first; EXTRACTOR_VERSION is the last. The record
@@ -113,7 +117,7 @@ const optionalText = z
 const itemSchema = z.object({
   speech: z.string().trim(),
   kind: z.enum(debateItemKind.enumValues),
-  claim_type: z.enum(debateClaimType.enumValues).nullish(),
+  claim_type: optionalText,
   quote: z.string(),
   target_speech: optionalText,
   target_quote: optionalText,
@@ -121,6 +125,7 @@ const itemSchema = z.object({
   due: optionalText,
   commitment_type: optionalText,
 });
+const CLAIM_TYPES: readonly string[] = debateClaimType.enumValues;
 const COMMITMENT_TYPES: readonly string[] = commitmentType.enumValues;
 
 /**
@@ -142,7 +147,8 @@ export function parseItems(raw: unknown): { items: RawItem[]; malformed: number 
     items.push({
       speech: p.speech,
       kind: p.kind,
-      claimType: p.kind === 'specific_claim' ? (p.claim_type ?? null) : null,
+      // An unknown type on a claim is no type, which verify.ts rejects; on any other kind it is ignored.
+      claimType: p.kind === 'specific_claim' && p.claim_type && CLAIM_TYPES.includes(p.claim_type) ? (p.claim_type as DebateClaimType) : null,
       quote: p.quote,
       targetSpeech: p.target_speech,
       targetQuote: p.target_quote,

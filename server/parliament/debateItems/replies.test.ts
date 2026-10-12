@@ -29,6 +29,11 @@ describe('sentenceAround', () => {
     const start = text.indexOf('The valid');
     expect(sentenceAround(text, start, start + 'The valid point was made'.length).trim()).toBe('The valid point was made that this is old.');
   });
+
+  it('ends with a quote that ends its own sentence, and does not take in the next', () => {
+    expect(sentenceAround('The plan is late. Deputy Whitmore knows that.', 0, 'The plan is late.'.length)).toBe('The plan is late.');
+    expect(reply('The plan is late. Deputy Whitmore knows that.', 'The plan is late.', 'Jen Whitmore')).toBe(false);
+  });
 });
 
 // The eight replies in Sam's check of v2 items (2026-10-04), as the transcript has them.

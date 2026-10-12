@@ -1,7 +1,8 @@
 # Question sessions: a record of what a question secured
 
-Status: **plan, 2026-10-10, revised after an adversarial review the same day. Nothing is built.**
-Sam chooses the rule (see "Decision for Sam") before any model call is made.
+Status: **plan, 2026-10-10, revised after an adversarial review the same day. Option 1 built
+2026-10-10** (see "As built" at the end, which also lists where the build differs from the text
+below). The q1 read of every question exchange has finished.
 
 ## Why
 
@@ -218,3 +219,48 @@ Sam chose option 1. Built as planned, with these differences and measurements.
 - **Q5** a "Question record" card under the debate record on the TD profile, and a panel under
   each question section on the Dáil record page; routes `GET /api/parliament/tds/:id/question-record`
   and `GET /api/parliament/question-records/:sectionId`.
+- **The q1 read finished (2026-10-10).** All 5,573 question exchanges are read, none failed, for
+  $5.46 at off-peak prices. **Turning on `QUESTION_ITEMS=on` therefore starts no backfill:** a
+  nightly run (at most 100 exchanges) takes only exchanges with no finished q1 read, or whose word
+  count changed (`extractUnits` in `debateItems/run.ts`), so it reads only new or changed ones.
+
+### Where the build differs from the plan text above
+
+- **Migration `0024_question_record`, not 0023.** It adds `question_askers`, `question_exchanges`
+  and `question_participation`, the `commitment_type` enum and the nullable `debate_items.commitment_type`
+  column. **There is no `question_extraction_runs` table and no `exchange_id` on `debate_items`.** q1
+  runs live in `debate_extraction_runs`, keyed by the exchange id; an item is joined to its exchange
+  by speech position (`repo/questionRecord.ts`).
+- **`EXTRACTOR_VERSION` is now `v3`, not `v2`**, and the debate record reads every version in
+  `EXTRACTOR_VERSIONS` (`['v2', 'v3']`), taking each debate's newest finished read. A version bump
+  therefore no longer empties the record. q1 is still its own version, which the debate record never
+  reads.
+- **"Rapid" is a rule on the data, not a heading list.** A `questions` section with no oral-PQ askers
+  in `question_askers` is a rapid session (`repo/questionRecord.ts`). `debateGroups.ts` maps those
+  headings only to the kind `questions`; no heading is marked rapid.
+- **Question items are stored, not shown.** The plan's rules table says specific claims and questions
+  are "shown". The extractor does store `question` items and specific-claim quotes, but no view reads
+  them: the card shows commitments with their quotes, and counts of an office holder's answers that
+  held a claim or a commitment. The `question` kind was kept in the prompt anyway, because changing
+  the q1 prompt would invalidate the blind check.
+
+## As built: review fixes (2026-10-12)
+
+- **Only exchanges asked across the House count.** A government backbencher's friendly question
+  answered with an announcement is not a commitment secured from the government, but it counted in
+  the per-10 rate and lifted the 75th percentile others are measured against. Migration
+  `0025_question_government_side` stores `government_side` on `question_participation`; the per-10
+  rate, the secured count and the cohort use only exchanges asked from the other side of the House
+  (`askedAcross` in the API), and `asked` stays the total.
+- **One answerer per exchange**: the office holder who said most. A minister who interjected in a
+  colleague's exchange no longer counts as having answered it.
+- **Short questions add up.** A new member's short turns that a minister answered count together
+  towards the 40 words, so a question split by an interjection is still its own exchange. The
+  2025-03-25 sitting is unchanged.
+- **A changed exchange is read again.** Exchange ids are positional (`<section>#<n>`), so each sync's
+  rebuild now resets the q1 read of any exchange whose span or askers changed, or that is gone; its
+  items count for nothing until the nightly read takes it again.
+- **A TD who only spoke** (a supplementary, an interjection) gets no record rather than an empty card.
+- **Smaller**: a pilot of n reads at most n exchanges (n = 5 read about 1,900); recent exchanges sort
+  by date, section and position, not as text; an unclassified commitment no longer reads as "No
+  commitment made"; the unused API fields `role` and `recent[].sectionId` are gone.

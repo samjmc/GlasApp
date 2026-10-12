@@ -12,7 +12,10 @@ import type { DebateWindow } from '../debateItems/windows';
  */
 // q1 (2026-10-10): the first question-session extractor.
 export const QUESTION_EXTRACTOR_VERSION = 'q1';
-/** Replies and concessions are left out: in a two-person exchange every turn is a reply. */
+/**
+ * Replies and concessions are left out: in a two-person exchange every turn is a reply.
+ * `question` items are stored but not shown yet; the kind stays because the q1 blind check measured this exact prompt.
+ */
 export const QUESTION_KINDS = ['specific_claim', 'question', 'commitment'] as const satisfies readonly DebateItemKind[];
 
 // q1 pilot (100 exchanges, 2026-10-10): with only action/follow_up, about half the "actions" were

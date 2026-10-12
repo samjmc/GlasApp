@@ -1,13 +1,14 @@
 /**
  * Step 2 of debate analysis: read argued debates for items (docs/plans/debate-analysis.md).
  *
- *   extractDebates   for each debate: windows of whole speeches → one model call each →
- *                    parseItems → verifyItems → its items and run stored together. A debate is
- *                    read once per EXTRACTOR_VERSION, and again only when its speeches change.
+ *   extractUnits     for each unit (an argued debate, or a question exchange): windows of whole
+ *                    speeches → one model call per window and pass → parseItems → verifyItems →
+ *                    its items and run stored together. A unit is read once per version, and
+ *                    again only when its speeches change.
  *   pilotSample      a fixed, repeatable sample of argued debates across kinds.
  *
  * Every model call goes through an `ItemCompletion`, so tests never reach a model. Nothing here
- * scores anyone: items are shown and scored only after the check set (Step 3).
+ * scores anyone: after a run, the config's `rebuild` turns the stored items into points.
  */
 import { createHash } from 'node:crypto';
 import { debateItemKind, type DebateItemKind } from '@shared/schema/parliament';
@@ -191,6 +192,8 @@ export interface ExtractUnit {
   id: string;
   kind: string;
   title: string;
+  /** Words in its member speeches, counted as its run counts them. */
+  words: number;
 }
 
 /**
@@ -229,9 +232,17 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
   const { debateIds, pilot = null, limit = null, force = false, dryRun = false, concurrency = 2, complete = itemCompletion, log = () => {} } = options;
   const [all, runs, offices] = await Promise.all([config.units(), repo.extractionRunsFor(config.version), repo.governmentOffices()]);
   let chosen = debateIds ? all.filter((d) => debateIds.includes(d.id)) : pilot ? config.sample(all, pilot) : all;
-  // A limit takes debates this version has not finished, so a daily run reads what is new rather
-  // than re-hashing old debates. (A run without a limit also catches a corrected old debate.)
-  if (limit !== null) chosen = chosen.filter((d) => force || runs.get(d.id)?.status !== 'done').slice(0, limit);
+  // A limit takes units this version has not finished, or whose word count changed since (a
+  // resumed debate, a merged exchange), so a daily run reads what is new without hashing every
+  // unit's speeches. (A run without a limit also catches a correction that keeps the word count.)
+  if (limit !== null) {
+    chosen = chosen
+      .filter((d) => {
+        const run = runs.get(d.id);
+        return force || run?.status !== 'done' || run.words !== d.words;
+      })
+      .slice(0, limit);
+  }
 
   const summary: ExtractSummary = {
     debates: chosen.length,
