@@ -25,7 +25,7 @@ import { AGREE_THRESHOLD, agreementFor, latestStances, type AgreementItem } from
 import { mappedStancesOn } from '../stances/repository';
 import { listUserVoteVectors, questionsWithPositions, type UserVoteVector } from '../voting';
 import { alignment, closestAndFurthest, subjectWeights, type DimensionWeights } from './alignment';
-import { computeProfile, meanProfile, type Observation, type Profile } from './model';
+import { addObservation, computeProfile, copySums, meanProfile, profileOf, startSums, type Observation, type Profile } from './model';
 import { isIndependent, partyBaseline, partyKey } from './partyBaselines';
 import * as repo from './repository';
 import {
@@ -71,7 +71,7 @@ function userObservations(quizzes: QuizResultRow[], votes: UserVoteVector[], unt
   return observations;
 }
 
-function userProfileOf(quizzes: QuizResultRow[], votes: UserVoteVector[], now: Date): Profile | null {
+export function userProfileOf(quizzes: QuizResultRow[], votes: UserVoteVector[], now: Date): Profile | null {
   const observations = userObservations(quizzes, votes, now);
   if (observations.length === 0) return null;
   return computeProfile(null, observations, { now, halfLifeDays: null });
@@ -79,18 +79,21 @@ function userProfileOf(quizzes: QuizResultRow[], votes: UserVoteVector[], now: D
 
 /** A user's position from their latest quiz and every vote. null = no quiz and no votes yet. */
 export async function computeUserProfile(userId: string, database?: Pick<Db, 'select'>): Promise<Profile | null> {
-  const [quizzes, votes] = await Promise.all([repo.listQuizResults(userId, database), listUserVoteVectors(userId, undefined, database)]);
-  return userProfileOf(quizzes, votes, new Date());
+  const [quiz, votes] = await Promise.all([repo.latestQuizResult(userId, database), listUserVoteVectors(userId, undefined, database)]);
+  return userProfileOf(quiz ? [quiz] : [], votes, new Date());
 }
 
 /**
  * Called by voting after each vote and by the quiz after each save. Reads and writes under the
  * user's consent (withPoliticalConsent), so a withdrawal cannot slip in between and leave a profile
  * behind. Without consent there is no basis to keep a profile, so it is deleted, never written.
+ * The user's profile lock, taken in the same transaction, makes concurrent recomputes run one
+ * after the other, so the last one to write has read every vote committed before it.
  */
 export async function recomputeProfile(userId: string): Promise<void> {
   try {
     await repo.withPoliticalConsent(userId, async (tx) => {
+      await repo.lockUserProfile(userId, tx);
       const profile = await computeUserProfile(userId, tx);
       if (profile) await repo.upsertProfile('user', userId, profile, tx);
       else await repo.deleteProfile('user', userId, tx);
@@ -141,14 +144,28 @@ export interface TimelinePoint {
 /** The user's position at the end of each day on which they took a quiz or voted. */
 export async function userTimeline(userId: string): Promise<TimelinePoint[]> {
   const [quizzes, votes] = await Promise.all([repo.listQuizResults(userId), listUserVoteVectors(userId)]);
+  return timelineOf(quizzes, votes);
+}
+
+/**
+ * One pass over the votes, oldest first: each day adds its votes to running sums, then that day's
+ * latest quiz on a copy. Votes before the quiz, as userObservations orders them, so the sums
+ * are added in the same order and every point equals a full recompute at the end of its day.
+ */
+export function timelineOf(quizzes: QuizResultRow[], votes: UserVoteVector[]): TimelinePoint[] {
   const days = Array.from(new Set<string>([...quizzes.map((q) => day(q.createdAt)), ...votes.map((v) => day(v.votedAt))])).sort();
-  const points: TimelinePoint[] = [];
-  for (const date of days) {
+  const oldestFirst = [...votes].sort((a, b) => a.votedAt.getTime() - b.votedAt.getTime());
+  const voteSums = startSums(null);
+  let next = 0;
+  return days.map((date) => {
     const until = new Date(`${date}T23:59:59.999Z`);
-    const observations = userObservations(quizzes, votes, until);
-    points.push({ date, vector: computeProfile(null, observations, { now: until, halfLifeDays: null }).vector });
-  }
-  return points;
+    const options = { now: until, halfLifeDays: null };
+    for (; next < oldestFirst.length && oldestFirst[next]!.votedAt <= until; next++) addObservation(voteSums, voteObservation(oldestFirst[next]!), options);
+    const sums = copySums(voteSums);
+    const quiz = quizzes.find((q) => q.createdAt <= until);
+    if (quiz) addObservation(sums, quizObservation(quiz), options);
+    return { date, vector: profileOf(sums).vector };
+  });
 }
 
 const day = (d: Date) => d.toISOString().slice(0, 10);

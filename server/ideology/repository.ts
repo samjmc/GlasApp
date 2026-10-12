@@ -53,7 +53,7 @@ export async function listQuizResults(userId: string, database: Pick<Db, 'select
   return database.select().from(quizResults).where(eq(quizResults.userId, userId)).orderBy(desc(quizResults.createdAt), desc(quizResults.id));
 }
 
-export async function latestQuizResult(userId: string, database: Db = db): Promise<QuizResultRow | null> {
+export async function latestQuizResult(userId: string, database: Pick<Db, 'select'> = db): Promise<QuizResultRow | null> {
   const rows = await database
     .select()
     .from(quizResults)
@@ -203,6 +203,14 @@ export async function evidenceSummary(tdId?: number, database: Db = db): Promise
 }
 
 // --- profiles --------------------------------------------------------------
+
+/**
+ * Serialise one user's profile recomputes until `tx` ends: two votes in flight would otherwise
+ * both read, and the one that read first could write last, storing a profile without the other.
+ */
+export async function lockUserProfile(userId: string, tx: Pick<Db, 'execute'>): Promise<void> {
+  await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${`profile:${userId}`}))`);
+}
 
 export async function upsertProfile(
   kind: ProfileSubject,
