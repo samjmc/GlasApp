@@ -41,6 +41,8 @@ jobs:
       - uses: actions/setup-node@v7
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
+      # Every test file in git is run by exactly one runner (vitest or playwright).
+      - run: npm run guard:tests
       - run: npm test -- --reporter=default --reporter=json --outputFile=vitest-report.json
       # Without a database the integration suites skip and vitest still exits 0.
       - name: Integration suites actually ran

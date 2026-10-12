@@ -15,6 +15,7 @@
     "test": "vitest run --root .",
     "test:e2e": "playwright test",
     "guard:migrations": "tsx scripts/ci/check-migrations.ts",
+    "guard:tests": "tsx scripts/ci/check-test-discovery.ts",
     "git:safety-check": "bash scripts/git-safety-checks.sh",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
