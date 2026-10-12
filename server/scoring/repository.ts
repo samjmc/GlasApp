@@ -104,9 +104,10 @@ export interface SyncTdsResult {
 
 /**
  * Bring `tds` in line with a roster of current Dáil members. One transaction, so a
- * half-applied roster is never visible. Nothing is deleted: see tdSync.ts.
+ * half-applied roster is never visible. Nothing is deleted: see tdSync.ts, which also refuses
+ * a roster that would deactivate many TDs unless `force`.
  */
-export async function syncTds(seeds: TdSeed[], database: Db = db): Promise<SyncTdsResult> {
+export async function syncTds(seeds: TdSeed[], database: Db = db, options: { force?: boolean } = {}): Promise<SyncTdsResult> {
   const current = await database
     .select({
       id: tds.id,
@@ -119,7 +120,7 @@ export async function syncTds(seeds: TdSeed[], database: Db = db): Promise<SyncT
     })
     .from(tds);
 
-  const plan: TdSyncPlan = planTdSync(current as ExistingTd[], seeds);
+  const plan: TdSyncPlan = planTdSync(current as ExistingTd[], seeds, options);
   const now = new Date();
 
   await database.transaction(async (tx) => {

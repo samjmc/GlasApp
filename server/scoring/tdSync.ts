@@ -35,6 +35,15 @@ export interface TdSyncPlan {
   deactivate: number[];
 }
 
+/**
+ * More deactivations than this in one roster is refused unless forced. A short roster (an API
+ * shape change, a truncated page) would otherwise drop real TDs from every list until the next
+ * good run; a general election, which really does unseat dozens, is the forced case.
+ */
+export const MAX_DEACTIVATIONS = 5;
+
+export class RosterShrinkRefused extends Error {}
+
 const key = (name: string) => name.trim().toLowerCase();
 
 function differs(existing: ExistingTd, seed: TdSeed): boolean {
@@ -55,9 +64,10 @@ function differs(existing: ExistingTd, seed: TdSeed): boolean {
  * insert that the database would reject.
  *
  * An empty roster returns an empty plan: a failed API call must never deactivate
- * the whole Dáil.
+ * the whole Dáil. A plan that deactivates more than MAX_DEACTIVATIONS throws
+ * RosterShrinkRefused, naming them, unless `force`.
  */
-export function planTdSync(existing: ExistingTd[], seeds: TdSeed[]): TdSyncPlan {
+export function planTdSync(existing: ExistingTd[], seeds: TdSeed[], { force = false }: { force?: boolean } = {}): TdSyncPlan {
   const plan: TdSyncPlan = { insert: [], update: [], deactivate: [] };
   if (seeds.length === 0) return plan;
 
@@ -87,6 +97,13 @@ export function planTdSync(existing: ExistingTd[], seeds: TdSeed[]): TdSyncPlan 
 
   for (const td of existing) {
     if (td.isActive && !matched.has(td.id)) plan.deactivate.push(td.id);
+  }
+  if (!force && plan.deactivate.length > MAX_DEACTIVATIONS) {
+    const names = existing.filter((td) => plan.deactivate.includes(td.id)).map((td) => td.name);
+    throw new RosterShrinkRefused(
+      `The roster would deactivate ${names.length} TDs (more than ${MAX_DEACTIVATIONS}): ${names.join(', ')}. ` +
+        'Refusing; if the Dáil really changed (an election), run again with the force option.',
+    );
   }
 
   return plan;
