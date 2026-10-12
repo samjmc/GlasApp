@@ -1,5 +1,5 @@
 /**
- * Deterministic checks on the three model replies about a Dáil division (01c §3.2–3.3). Pure.
+ * Deterministic checks on the three model replies about a Dáil division (docs/architecture/ideology-matching.md). Pure.
  *
  * A quote proves the text is real, not that the reading is right: whether "Tá means X" is right
  * and whether the option is a fair reading of X are for the human gates. What code can check is

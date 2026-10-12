@@ -4,8 +4,7 @@
  * allow what shows up, then set `reportOnly` to false.
  *
  * Known to report today: the inline theme script in client/index.html (give it a hash or move it
- * to a file before enforcing) and the fallback constituency GeoJSON hosts in
- * client/src/helpers/fetchConstituencyGeoJSON.ts.
+ * to a file before enforcing).
  */
 import helmet from 'helmet';
 import type { RequestHandler } from 'express';

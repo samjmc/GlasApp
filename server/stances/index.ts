@@ -1,7 +1,7 @@
 /**
  * TD stances (docs/plans/td-stances.md): what a TD said in a news article, with a quote checked
  * against the text, matched to an answer of the article's own daily-vote question; and how a TD
- * voted in the Dáil, when the division matches a daily-vote question (docs/plans/quiz-improvements/01c).
+ * voted in the Dáil, when the division matches a daily-vote question (docs/architecture/ideology-matching.md).
  *
  *   recordStances        the news pipeline and the rebuild job: extract → verify → position check (Jev)
  *                        → map → save → evidence
