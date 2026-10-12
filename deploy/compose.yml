@@ -40,12 +40,8 @@ services:
     volumes:
       # Profile pictures. The app also serves public/assets from the image.
       - uploads:/app/public/uploads
-    healthcheck:
-      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:5000/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
-      interval: 30s
-      timeout: 5s
-      start_period: 40s
-      retries: 3
+    # No healthcheck here: the image has one (Dockerfile HEALTHCHECK) that follows PORT, and a second
+    # one written for port 5000 would go on checking 5000 after PORT changed.
 
   # HTTPS in front of the app. Off unless you pass --profile proxy.
   # One proxy only: the app trusts exactly one hop of X-Forwarded-For.
@@ -55,6 +51,13 @@ services:
     restart: unless-stopped
     environment:
       SITE_DOMAIN: ${SITE_DOMAIN:-glas.example.com}
+    # Caddy writes no access log unless the Caddyfile asks for one (it does not: that log would hold
+    # every visitor's IP and full URL). Its own messages still go to the container log; bound them.
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
     ports:
       - "80:80"
       - "443:443"
