@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import type { QuizResult } from '@shared/quiz';
 import MultidimensionalIdeologyProfile from '@/components/MultidimensionalIdeologyProfile';
 import MatchesAndWeights from '@/components/MatchesAndWeights';

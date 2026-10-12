@@ -39,6 +39,7 @@ import { TdQuestionRecordCard } from '@/components/QuestionRecord';
 import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
+import { decodeParam } from '@/lib/routeParam';
 import { apiCall, apiEnvelope, orNullOn404, userMessage } from '@/lib/api';
 import { formatIsoDate } from '@/lib/isoDate';
 import { partyStyle } from '@/lib/parties';
@@ -150,7 +151,7 @@ function fairnessNotes(s: TdParliamentSummary): string[] {
 }
 
 export default function TDProfilePageEnhanced() {
-  const { name } = useParams<{ name: string }>();
+  const name = decodeParam(useParams<{ name: string }>().name);
   const { toast } = useToast();
 
   // null = no such TD (404).

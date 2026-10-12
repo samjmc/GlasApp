@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { ChevronDown, Loader2, Vote } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePoliticalConsent } from "@/contexts/ConsentContext";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVoteControl";
 import { useArticleVote, useCastArticleVote } from "@/hooks/useDailySession";
