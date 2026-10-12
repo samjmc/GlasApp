@@ -15,6 +15,8 @@ import {
 } from '@shared/ideologyMatch';
 import type { IdeologyProfileRow, QuizResultRow } from '@shared/schema/quiz';
 import type { SharedIssue } from '@shared/stancesApi';
+import { ConsentRequiredError } from '../account/consentError';
+import type { Db } from '../db';
 import { blendPartyTarget, manifestoPosition } from '../partyQuiz/position';
 import { ideologyLabel } from '../quiz/label';
 import { answeredCountsOf, coverageOf, scoreQuiz } from '../quiz/score';
@@ -76,16 +78,27 @@ function userProfileOf(quizzes: QuizResultRow[], votes: UserVoteVector[], now: D
 }
 
 /** A user's position from their latest quiz and every vote. null = no quiz and no votes yet. */
-export async function computeUserProfile(userId: string): Promise<Profile | null> {
-  const [quizzes, votes] = await Promise.all([repo.listQuizResults(userId), listUserVoteVectors(userId)]);
+export async function computeUserProfile(userId: string, database?: Pick<Db, 'select'>): Promise<Profile | null> {
+  const [quizzes, votes] = await Promise.all([repo.listQuizResults(userId, database), listUserVoteVectors(userId, undefined, database)]);
   return userProfileOf(quizzes, votes, new Date());
 }
 
-/** Called by voting after each vote and by the quiz after each save. */
+/**
+ * Called by voting after each vote and by the quiz after each save. Reads and writes under the
+ * user's consent (withPoliticalConsent), so a withdrawal cannot slip in between and leave a profile
+ * behind. Without consent there is no basis to keep a profile, so it is deleted, never written.
+ */
 export async function recomputeProfile(userId: string): Promise<void> {
-  const profile = await computeUserProfile(userId);
-  if (profile) await repo.upsertProfile('user', userId, profile);
-  else await repo.deleteProfile('user', userId);
+  try {
+    await repo.withPoliticalConsent(userId, async (tx) => {
+      const profile = await computeUserProfile(userId, tx);
+      if (profile) await repo.upsertProfile('user', userId, profile, tx);
+      else await repo.deleteProfile('user', userId, tx);
+    });
+  } catch (error) {
+    if (!(error instanceof ConsentRequiredError)) throw error;
+    await repo.deleteProfile('user', userId);
+  }
 }
 
 export async function getIdeologyProfile(userId: string): Promise<Record<IdeologyDimension, number> | null> {

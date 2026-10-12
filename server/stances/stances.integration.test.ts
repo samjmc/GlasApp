@@ -10,6 +10,7 @@
  *   npx vitest run server/stances/stances.integration.test.ts
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
 const url = testDatabaseUrl('stances');
@@ -119,6 +120,7 @@ run('TD stances against Postgres', () => {
     await ensureDatabase(url!);
     dbmod = await import('../db');
     await applyAllMigrations(dbmod.pool);
+    await consentTo(dbmod.pool, 'agrees', 'differs');
     pipeline = await import('../news/tdPipeline');
     stancesRepo = await import('./repository');
     ideology = await import('../ideology');
