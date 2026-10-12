@@ -82,6 +82,10 @@ jobs:
         run: |
           docker stop --time 4 glasapp-ci
           test "$(docker inspect glasapp-ci --format '{{.State.ExitCode}}')" = 0
+      - name: The Caddyfile is valid
+        # Caddy itself is not started here. A later 2.x that renamed a field in the log filter would
+        # still pass this, so re-measure by hand when the image tag is bumped (deploy/Caddyfile says how).
+        run: docker run --rm -v "$PWD/deploy/Caddyfile:/etc/caddy/Caddyfile:ro" caddy:2 caddy validate --config /etc/caddy/Caddyfile
       - if: failure()
         run: docker logs glasapp-ci || true
 

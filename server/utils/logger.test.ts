@@ -18,6 +18,13 @@ describe('serializeError', () => {
     expect(err.body).toBe('{"bio":"my private words"}');
   });
 
+  it('also cleans an error that is ALREADY serialised, which is what pino-http hands a custom serialiser', () => {
+    const serialised = { type: 'SyntaxError', message: 'bad', stack: 'SyntaxError: bad\n    at x', body: '{"bio":"my private words"}', status: 400 };
+    const out = serializeError(serialised) as Record<string, unknown>;
+    expect(out).toEqual({ type: 'SyntaxError', message: 'bad', stack: 'SyntaxError: bad\n    at x', status: 400 });
+    expect(serialised.body).toBe('{"bio":"my private words"}');
+  });
+
   it('passes anything that is not an Error through unchanged (a rejection can be any value)', () => {
     const reason = { body: 'kept', code: 7 };
     expect(serializeError(reason)).toBe(reason);

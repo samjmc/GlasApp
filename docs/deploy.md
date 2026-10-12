@@ -82,8 +82,9 @@ must finish inside the 2-minute statement limit.
 docker compose --env-file deploy/glasapp.env -f deploy/compose.yml up -d --build
 ```
 
-`SCHEDULER` is `off` unless you set it in `deploy/glasapp.env`, so this first boot runs no
-cron. Check it:
+With Compose, `SCHEDULER` is `off` unless you set it in `deploy/glasapp.env` (`SCHEDULER:
+${SCHEDULER:-off}` in the compose file), so this first boot runs no cron. The image itself sets no
+default: a plain `docker run` without `SCHEDULER=off` starts all four crons. Check it:
 
 ```
 docker compose --env-file deploy/glasapp.env -f deploy/compose.yml ps
@@ -93,7 +94,7 @@ docker compose --env-file deploy/glasapp.env -f deploy/compose.yml logs app
 ```
 
 Expect `healthy`, a 200 from `/health`, JSON from the status call, and the log line
-`SCHEDULER=off: no scheduled jobs will run`. Always pass `--env-file` too. Compose reads
+`SCHEDULER is off: no scheduled jobs will run`. Always pass `--env-file` too. Compose reads
 `deploy/glasapp.env` for the build arguments and for `SCHEDULER`, and `env_file` in the
 compose file hands the same variables to the container.
 
@@ -132,9 +133,11 @@ the 04:45 run. Leave them off until you want that cost.
 the sync in the same run, so every division the checks accept becomes a public TD stance overnight with
 nobody looking. The human gates come BEFORE you turn it on, by hand against the database you will run
 it on: `npm run stances -- --divisions --audit` (it must agree with the party baselines at 75% or more),
-then read every matched division yourself, then `--divisions --sync`
-(`docs/plans/quiz-improvements/01c-division-stances.md` section 9). After a change to the matching prompt
-(`MATCH_PROMPT_VERSION`), run `--divisions --reclassify` before the next sync: the sync keeps whatever is stored.
+then read every matched division yourself (the audit prints each one: the question, the answer a Tá vote
+states, the quote it rests on and the oireachtas.ie link; check the answer says no more than the quote
+does), then `--divisions --sync`. After a change to the matching prompt (`MATCH_PROMPT_VERSION`) or to the
+checks in `server/stances/divisionVerify.ts`, run `--divisions --reclassify` before the next sync: the sync
+keeps whatever is stored.
 
 To turn the crons off again, set `SCHEDULER=off` and run `up -d` again.
 

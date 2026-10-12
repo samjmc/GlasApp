@@ -39,10 +39,18 @@ export const logRedaction = {
  * and the standard serialiser copies every own property of the error into the line.
  */
 export function serializeError(err: unknown): unknown {
-  if (!(err instanceof Error)) return err;
-  const out = pino.stdSerializers.err(err) as unknown as Record<string, unknown>;
-  delete out.body;
-  return out;
+  if (err instanceof Error) {
+    const out = pino.stdSerializers.err(err) as unknown as Record<string, unknown>;
+    delete out.body;
+    return out;
+  }
+  // pino-http hands a custom error serialiser the error ALREADY serialised by the stock one (it wraps ours),
+  // so by then `body` is a plain property of a plain object with the serialiser's type/message/stack.
+  if (typeof err === 'object' && err !== null && 'type' in err && 'message' in err && 'stack' in err) {
+    const { body: _raw, ...rest } = err as Record<string, unknown>;
+    return rest;
+  }
+  return err;
 }
 
 /** Shared pino logger instance for the server. */

@@ -1,6 +1,7 @@
 import type { Logger } from 'pino';
 import pinoHttp from 'pino-http';
 import type { Request, Response } from 'express';
+import { serializeError } from './logger';
 
 /**
  * One structured log line per request (not for the health probes): method, path, status, duration
@@ -30,6 +31,10 @@ export function createHttpLogger(logger: Logger) {
         remoteAddress: req.remoteAddress,
       }),
       res: (res: { statusCode: number }) => ({ statusCode: res.statusCode }),
+      // pino-http installs the stock error serialiser on its child logger when none is given here, which
+      // overrides the root logger's: an error logged through `req.log` (the error handler does) would carry
+      // body-parser's raw request text in `body`.
+      err: serializeError as never,
     },
     customLogLevel: (_req, res, err) => {
       if (err || res.statusCode >= 500) return 'error';

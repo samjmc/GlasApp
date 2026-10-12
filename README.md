@@ -52,9 +52,7 @@ An advanced Irish political analysis platform providing multidimensional politic
 - **User Engagement:** Track community activity
 
 ### 🤖 AI Integration
-- **OpenAI Analysis:** Advanced political insights
-- **Anthropic Claude:** Enhanced contextual understanding
-- **Personalized Insights:** Custom analysis for your constituency
+- **Background jobs only:** news relevance and de-duplication, the debate and question readers, and the Dáil-vote stance matcher call a chat model (DeepSeek when `LLM_API_KEY` is set, else OpenAI) with **public text only**. No quiz answer, vote or score of a user is sent to an AI provider.
 
 ---
 
@@ -147,7 +145,7 @@ SUPABASE_SERVICE_ROLE_KEY=
 LLM_API_KEY=                         # DeepSeek: all chat AI (news ranking, TD scoring panel)
 LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL_NAME=deepseek-flash
-OPENAI_API_KEY=                      # embeddings only (debate search)
+OPENAI_API_KEY=                      # used only when LLM_API_KEY is unset
 JEV_API_KEY=                         # Jev via Cloudflare: is a TD quote a policy position?
 CLOUDFLARE_ACCOUNT_ID=               # without both, every news stance is held back
 ```

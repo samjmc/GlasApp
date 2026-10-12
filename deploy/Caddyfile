@@ -6,16 +6,20 @@
 # request log with the path only (server/utils/httpLogger.ts).
 #
 # Caddy's ERROR log is separate. Whenever the app is not answering (a 502 during `docker compose up
-# -d --build`) it writes the request: the full URI, the user agent and the visitor's IP. A
-# password-reset link carries its one-time token in the query, so unfiltered it would sit in the
-# container log. Measured with caddy:2: unfiltered, the token, the user agent and the IP all appeared;
-# with this filter the line keeps the path and method and nothing that identifies the visitor.
+# -d --build`) it writes the request: the full URI, EVERY header except Cookie and Authorization, and
+# the visitor's IP. A password-reset link carries its one-time token in the query, and the job calls
+# (cron, admin) send their secret in X-Admin-Secret / X-Cron-Secret, so unfiltered both would sit in
+# the container log. Measured with caddy:2: unfiltered, the token, the user agent, the IP and an
+# X-Admin-Secret header all appeared; with this filter the line keeps the path and method and nothing
+# else about the caller. To re-check after a Caddy upgrade: stop the app container, request
+# https://<domain>/x?token_hash=SECRET-T with the header "X-Admin-Secret: SECRET-S", then
+# `docker compose logs caddy` must show neither SECRET-T nor SECRET-S.
 {
 	log {
 		format filter {
 			wrap json
 			request>uri regexp \?.* ""
-			request>headers>User-Agent delete
+			request>headers delete
 			request>remote_ip delete
 			request>client_ip delete
 			request>remote_port delete
