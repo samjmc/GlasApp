@@ -37,7 +37,7 @@ It is **not** evidence about quiz quality. Robots answer from a model we wrote, 
 
 ## Process (`server/jobs/robots.ts`, run with `tsx`)
 
-**Order matters.** `server/db` reads `DATABASE_URL` at import, and `server/services/aiService.ts` runs `dotenv.config()` at import, which fills any unset variable from `.env`. So the runner:
+**Order matters.** `server/db` reads `DATABASE_URL` at import, and every other job (`import 'dotenv/config'` first) fills any unset variable from `.env`; the robot runner does not load `.env`, but sets its own values anyway. So the runner:
 
 1. **Sets its own environment first,** before any `server/*` import:
    - every `BLANKED_ENV` key (`test/e2e/harness.ts`: model keys, Jev, Redis, Twilio) to `''`

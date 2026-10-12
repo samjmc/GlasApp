@@ -7,6 +7,7 @@
  *   npm run td-history -- --delete --td <id> [--reason <text>]   take one TD's background down, and keep it down
  *   npm run td-history -- --force --td <id>      restore a TD that was taken down (lifts the takedown)
  */
+import 'dotenv/config';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { shutdown } from '../db';

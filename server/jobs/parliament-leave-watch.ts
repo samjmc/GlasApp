@@ -5,6 +5,7 @@
  *
  *   npm run parliament:leave-watch
  */
+import 'dotenv/config';
 import { shutdown } from '../db';
 import { leaveWatch } from '../parliament';
 

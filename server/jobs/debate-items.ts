@@ -6,6 +6,7 @@
  *   npm run debates:items -- --debate <id> …     these debates
  *   npm run debates:items -- --limit 20          the first 20 not read yet
  */
+import 'dotenv/config';
 import { repository as repo } from '../parliament';
 import { extractDebates } from '../parliament/debateItems/run';
 import { runItemsJob } from './itemsJob';

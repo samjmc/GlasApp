@@ -6,6 +6,7 @@
  *   npm run questions:items -- --debate <id> …   these exchanges ("<section id>#<n>")
  *   npm run questions:items -- --limit 200       the first 200 not read yet
  */
+import 'dotenv/config';
 import { repository as repo } from '../parliament';
 import { extractQuestions } from '../parliament/questionItems/run';
 import { runItemsJob } from './itemsJob';

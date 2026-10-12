@@ -11,15 +11,12 @@
  */
 import { createHash } from 'node:crypto';
 import { debateItemKind, type DebateItemKind } from '@shared/schema/parliament';
-import { callChatCompletion } from '../../services/aiService';
+import { callChatCompletion, OutOfCreditError } from '../../services/aiService';
 import * as repo from '../repository';
 import type { ArguedDebate } from '../repo/debateItems';
 import { EXTRACT_SYSTEM, EXTRACTOR_VERSION, PASSES, extractPrompt, parseItems } from './prompt';
 import { emptyRejections, REJECT_REASONS, verifyItems, type Rejections, type VerifiedItem } from './verify';
 import { buildWindows, isIrish, labelSpeeches, splitWindow, type DebateSpeech, type DebateWindow, type LabelledSpeech } from './windows';
-
-/** The model asked for; a configured provider (DeepSeek) replaces it, so the answer's own model is stored. */
-const ITEM_MODEL = 'gpt-4o-mini';
 
 /**
  * deepseek-flash list prices, USD per million tokens, from api-docs.deepseek.com/quick_start/pricing
@@ -39,31 +36,15 @@ export interface ItemAnswer {
   truncated?: boolean;
 }
 
-/** One model call. Throws on failure, which records the debate's run as `failed`. */
+/**
+ * One model call. Throws on failure, which records the debate's run as `failed`; an
+ * OutOfCreditError instead stops the run. aiService waits out 429s; the answer's own model is stored.
+ */
 export type ItemCompletion = (system: string, user: string) => Promise<ItemAnswer>;
 
-/**
- * Waits after a 429 before trying again. DeepSeek caps concurrent requests per account by its
- * balance (10 on 2026-10-04), and other apps share the key: the second pilot run lost 22 of 50
- * debates to 429s when the client's own sub-second backoff gave up.
- */
-const RATE_LIMIT_WAITS_MS = [5_000, 15_000, 45_000];
-
 export const itemCompletion: ItemCompletion = async (system, user) => {
-  for (let attempt = 0; ; attempt++) {
-    try {
-      return await completeOnce(system, user);
-    } catch (error) {
-      if ((error as { status?: number }).status !== 429 || attempt >= RATE_LIMIT_WAITS_MS.length) throw error;
-      await new Promise((r) => setTimeout(r, RATE_LIMIT_WAITS_MS[attempt]));
-    }
-  }
-};
-
-async function completeOnce(system: string, user: string): Promise<ItemAnswer> {
   const response = await callChatCompletion(
     {
-      model: ITEM_MODEL,
       temperature: 0,
       max_tokens: 8192,
       response_format: { type: 'json_object' },
@@ -81,7 +62,7 @@ async function completeOnce(system: string, user: string): Promise<ItemAnswer> {
     completionTokens: response.usage?.completion_tokens ?? null,
     truncated: response.choices[0]?.finish_reason === 'length',
   };
-}
+};
 
 const hashOf = (parts: string[]) => createHash('sha256').update(parts.join('\n')).digest('hex').slice(0, 16);
 const rank = (id: string) => createHash('sha1').update(id).digest('hex');
@@ -160,9 +141,6 @@ export interface ExtractSummary {
   recordRows: number;
   results: DebateResult[];
 }
-
-/** The provider says the account has no credit: every later call would fail the same way. */
-const OUT_OF_CREDIT = 402;
 
 export interface ExtractOptions {
   /** These debates only. */
@@ -291,7 +269,7 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
         answer = await complete(EXTRACT_SYSTEM, config.prompt(debate.title, window, pass));
       } catch (error) {
         result.error = error instanceof Error ? error.message : String(error);
-        if ((error as { status?: number }).status === OUT_OF_CREDIT) summary.stopped = `the model provider has no credit left (${result.error})`;
+        if (error instanceof OutOfCreditError) summary.stopped = `the model provider has no credit left (${result.error})`;
         break;
       }
       model = answer.model.slice(0, 60);

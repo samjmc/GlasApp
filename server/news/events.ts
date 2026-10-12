@@ -17,7 +17,6 @@ export const EVENT_WINDOW_HOURS = 72;
 export const EVENT_CANDIDATE_LIMIT = 300;
 /** New items per call. */
 export const EVENT_MATCH_MAX_ITEMS = 60;
-const MODEL = 'deepseek-flash';
 
 /** What an article is the same event as: a stored row (by id), or another article of this run (by index). */
 export type Link = { stored: number } | { run: number };
@@ -99,7 +98,6 @@ export function parseEvents(reply: string, count: number, candidateIds: Set<numb
 async function callEvents(items: EventItem[], candidates: EventCandidate[]): Promise<EventMatch[]> {
   const completion = await callChatCompletion(
     {
-      model: MODEL,
       temperature: 0,
       response_format: { type: 'json_object' },
       messages: [
