@@ -6,6 +6,7 @@ import { serveStatic } from "./static";
 import { checkDatabaseConnection, shutdown as closeDatabase } from "./db";
 import { logger } from "./utils/logger";
 import { createHttpLogger } from "./utils/httpLogger";
+import { schedulerDisabled } from "./utils/schedulerFlag";
 
 // Nothing is catching these, and the process is in an unknown state after them. Put them in the
 // structured log (a bare stack trace is easy to miss in a JSON log), then exit so the container
@@ -100,8 +101,8 @@ app.use('/assets', express.static('public/assets'));
     // Initialize Scheduler (news ingest, news → TD links, parliament sync, leave watch).
     // SCHEDULER=off for a local run against the shared GlasCore database, so looking at the
     // site never triggers a scoring run that changes real TD scores.
-    if (process.env.SCHEDULER === 'off') {
-      logger.warn('SCHEDULER=off: no scheduled jobs will run');
+    if (schedulerDisabled(process.env.SCHEDULER)) {
+      logger.warn('SCHEDULER is off: no scheduled jobs will run');
     } else {
       const { initScheduler } = await import('./services/scheduler');
       initScheduler();

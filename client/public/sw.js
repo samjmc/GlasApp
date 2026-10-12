@@ -1,8 +1,9 @@
 // Glas Politics Service Worker
 // Caching strategy: Network-first with cache fallback for API calls, cache-first for static assets
 
-// v2: v1's data cache held signed-in users' API responses (profile, quiz history). Activating
-// this version deletes every v1 cache, so those copies are removed from existing browsers too.
+// v2: v1's data cache held signed-in users' API responses (profile, quiz history). Activating a newer
+// version deletes every older cache, so those copies are removed from existing browsers too.
+// v3: v2's image cache held profile pictures (/uploads/), which are no longer cached.
 const CACHE_VERSION = 'glas-politics-v3';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DATA_CACHE = `${CACHE_VERSION}-data`;

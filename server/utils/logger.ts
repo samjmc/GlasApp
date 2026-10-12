@@ -33,6 +33,18 @@ export const logRedaction = {
   censor: '[REDACTED]',
 };
 
+/**
+ * An error as the log holds it: pino's serialisation, minus `body`. body-parser puts the raw text of a
+ * request it could not parse on its error as `body` (up to the 1 MB limit: a bio, a free-text answer),
+ * and the standard serialiser copies every own property of the error into the line.
+ */
+export function serializeError(err: unknown): unknown {
+  if (!(err instanceof Error)) return err;
+  const out = pino.stdSerializers.err(err) as unknown as Record<string, unknown>;
+  delete out.body;
+  return out;
+}
+
 /** Shared pino logger instance for the server. */
 export const logger: Logger = pino({
   level:
@@ -40,7 +52,7 @@ export const logger: Logger = pino({
     (process.env.NODE_ENV === 'production' ? 'info' : 'debug'),
   redact: logRedaction,
   serializers: {
-    err: pino.stdSerializers.err,
+    err: serializeError,
   },
 });
 

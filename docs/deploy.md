@@ -126,9 +126,15 @@ Set `SCHEDULER=on` in `deploy/glasapp.env` and run the same `up -d` command. The
 news ingest every two hours at :30 past odd hours, news to TD links every two hours, the
 parliament sync at 04:45 and the leave watch on Mondays at 06:15 (all Europe/Dublin).
 `DIVISION_STANCES=on`, `DEBATE_ITEMS=on` and `QUESTION_ITEMS=on` each add a model-calling step to
-the 04:45 run. Leave them off until you want that cost. `DIVISION_STANCES` only reads new divisions
-into the database: nothing becomes a public TD stance until someone runs `npm run stances --
---divisions --audit`, checks the matches by hand, and then runs `--divisions --sync`.
+the 04:45 run. Leave them off until you want that cost.
+
+**`DIVISION_STANCES=on` publishes.** The nightly step reads new divisions with the model and then runs
+the sync in the same run, so every division the checks accept becomes a public TD stance overnight with
+nobody looking. The human gates come BEFORE you turn it on, by hand against the database you will run
+it on: `npm run stances -- --divisions --audit` (it must agree with the party baselines at 75% or more),
+then read every matched division yourself, then `--divisions --sync`
+(`docs/plans/quiz-improvements/01c-division-stances.md` section 9). After a change to the matching prompt
+(`MATCH_PROMPT_VERSION`), run `--divisions --reclassify` before the next sync: the sync keeps whatever is stored.
 
 To turn the crons off again, set `SCHEDULER=off` and run `up -d` again.
 
