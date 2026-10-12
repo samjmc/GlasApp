@@ -50,7 +50,7 @@ router.delete('/', requireAuth, async (req, res) => {
  */
 router.get('/export', requireAuth, exportRateLimit, async (req, res) => {
   try {
-    const data = await exportUserData(req.user!.id, { email: req.user!.email });
+    const data = await exportUserData(req.user!.id, { email: req.user!.email, userMetadata: req.user!.userMetadata });
     res.setHeader('Cache-Control', 'no-store');
     return res.json(formatSuccess(data));
   } catch (error) {

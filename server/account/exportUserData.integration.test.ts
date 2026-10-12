@@ -71,9 +71,19 @@ run('exportUserData against Postgres', () => {
     await seedUser('user-a', 'option_a');
     await seedUser('user-b', 'option_b');
 
-    const out = await mod.exportUserData('user-a', { email: 'a@example.ie' }, NOW);
+    const userMetadata = {
+      first_name: 'Aoife', last_name: 'Tester', username: 'aoife', county: 'Kerry', constituency: 'Kerry', bio: 'meta bio',
+      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE',
+      // Not profile details the app keeps: left out.
+      role: 'admin', avatar_url: 'https://google.example/p.png', has_seen_onboarding: true,
+    };
+    const out = await mod.exportUserData('user-a', { email: 'a@example.ie', userMetadata }, NOW);
 
     expect(out).toMatchObject({ format: mod.EXPORT_FORMAT_VERSION, exportedAt: '2026-10-10T12:00:00.000Z' });
+    expect(out.profileMetadata).toEqual({
+      first_name: 'Aoife', last_name: 'Tester', username: 'aoife', county: 'Kerry', constituency: 'Kerry', bio: 'meta bio',
+      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE',
+    });
     expect(out.account).toMatchObject({ id: 'user-a', email: 'a@example.ie', firstName: 'First user-a', county: 'Cork', bio: 'about me', phoneVerified: true, politicalConsentVersion: 1 });
     expect(out.quizResults).toHaveLength(1);
     expect(out.quizResults[0]).toMatchObject({ ideology: 'Centrist', description: 'desc of user-a', economic: 1, technocratic: 8, answers: [{ questionId: 1, answerIndex: 0 }] });
@@ -92,7 +102,7 @@ run('exportUserData against Postgres', () => {
 
   it('never carries the phone code hash or its bookkeeping, or the owner id on a row', async () => {
     await seedUser('user-a', 'option_a');
-    const out = await mod.exportUserData('user-a', { email: null }, NOW);
+    const out = await mod.exportUserData('user-a', { email: null, userMetadata: {} }, NOW);
     const text = JSON.stringify(out);
     expect(text).not.toContain('secret-hash');
     expect(out.account).not.toHaveProperty('phoneCodeHash');
@@ -105,9 +115,9 @@ run('exportUserData against Postgres', () => {
   });
 
   it('is empty, not an error, for a user with no data, and refuses an empty id', async () => {
-    const out = await mod.exportUserData('nobody', { email: 'n@example.ie' }, NOW);
-    expect(out).toMatchObject({ account: null, quizResults: [], ideologyProfile: null, votes: [], dailySessions: [], pledgePriorities: [] });
-    await expect(mod.exportUserData('', { email: null })).rejects.toThrow();
+    const out = await mod.exportUserData('nobody', { email: 'n@example.ie', userMetadata: { bio: null } }, NOW);
+    expect(out).toMatchObject({ account: null, profileMetadata: {}, quizResults: [], ideologyProfile: null, votes: [], dailySessions: [], pledgePriorities: [] });
+    await expect(mod.exportUserData('', { email: null, userMetadata: {} })).rejects.toThrow();
   });
 
   it('covers every user-keyed table in the politics schema', async () => {
