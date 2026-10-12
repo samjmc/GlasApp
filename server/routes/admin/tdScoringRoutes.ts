@@ -5,27 +5,41 @@
  * - POST /run            link new articles to the TDs they name, make daily-vote questions
  * - GET  /status         article counts by pipeline status
  * - POST /full-pipeline  ingest, then /run
+ *
+ * The body is optional: { batchSize 1..100, topPercentile 1..50 }. A run is synchronous in the
+ * request and every article in it may cost model calls, so both are capped.
  */
 
 import { Router } from 'express';
+import { z } from 'zod';
 import { ingest } from '../../news/ingest.js';
 import { statusCounts } from '../../news/repository.js';
 import { runTdPipeline } from '../../news/tdPipeline.js';
+import { formatError } from '../../utils/responseFormatters';
 
 const router = Router();
 
-function pipelineOptions(body: { batchSize?: number; topPercentile?: number }) {
-  return {
-    batchSize: body.batchSize || 50,
-    topPercentile: body.topPercentile || 25,
-  };
+/** Numbers may arrive as strings from a cron service's form; other fields (the old minImportance) are ignored. */
+export const pipelineBody = z.object({
+  batchSize: z.coerce.number().int().min(1).max(100).default(50),
+  topPercentile: z.coerce.number().int().min(1).max(50).default(25),
+});
+
+/** The pipeline options from the request body, or null when it is out of range. */
+function pipelineOptions(body: unknown): z.infer<typeof pipelineBody> | null {
+  const parsed = pipelineBody.safeParse(body ?? {});
+  return parsed.success ? parsed.data : null;
 }
+
+const BAD_BODY = formatError('VALIDATION_ERROR', 'Body must be { batchSize?: 1..100, topPercentile?: 1..50 }');
 
 /** POST /api/admin/td-scoring/run */
 router.post('/run', async (req, res, next) => {
   try {
+    const options = pipelineOptions(req.body);
+    if (!options) return res.status(400).json(BAD_BODY);
     console.log('News → TD pipeline triggered via API...');
-    const stats = await runTdPipeline(pipelineOptions(req.body));
+    const stats = await runTdPipeline(options);
     res.json({ success: true, message: 'News → TD pipeline completed', stats });
   } catch (error: unknown) {
     console.error('News → TD pipeline failed:', error);
@@ -55,9 +69,11 @@ router.get('/status', async (req, res, next) => {
 /** POST /api/admin/td-scoring/full-pipeline: ingest, then the news → TD pipeline. */
 router.post('/full-pipeline', async (req, res, next) => {
   try {
+    const options = pipelineOptions(req.body);
+    if (!options) return res.status(400).json(BAD_BODY);
     console.log('Full news pipeline triggered via API...');
     const ingestStats = await ingest();
-    const scoringStats = await runTdPipeline(pipelineOptions(req.body));
+    const scoringStats = await runTdPipeline(options);
     res.json({
       success: true,
       message: 'Full pipeline completed',

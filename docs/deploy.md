@@ -132,6 +132,18 @@ the 04:45 run. Leave them off until you want that cost. `DIVISION_STANCES` only 
 into the database: nothing becomes a public TD stance until someone runs `npm run stances --
 --divisions --audit`, checks the matches by hand, and then runs `--divisions --sync`.
 
+The start-up log line `Scheduler initialized` says which of the three flags are on. Every run is
+recorded in `politics.job_runs` (started, finished, `ok`, the job's own counts) and logged as JSON
+with `job` and `ok` fields. To see the latest runs of each job:
+
+```
+curl -H "x-admin-secret: $ADMIN_API_SECRET" http://127.0.0.1:5000/api/admin/jobs
+```
+
+`ok: false` means the job threw, or finished with part of its work failed (a sync day, a feed,
+a disclosure file, items held back, a run stopped because the model account is out of credit).
+A run with no `finished_at` is still going, or the process died during it.
+
 To turn the crons off again, set `SCHEDULER=off` and run `up -d` again.
 
 ## Updating
