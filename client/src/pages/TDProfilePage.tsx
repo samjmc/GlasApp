@@ -39,6 +39,7 @@ import { TdQuestionRecordCard } from '@/components/QuestionRecord';
 import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
+import { apiCall, apiEnvelope, orNullOn404, userMessage } from '@/lib/api';
 import { formatIsoDate } from '@/lib/isoDate';
 import { partyStyle } from '@/lib/parties';
 import { formatScore } from '@/lib/score';
@@ -59,13 +60,7 @@ import type {
 import type { TdProfile } from '@shared/scoresApi';
 import type { FeedArticle } from '@/lib/news';
 
-type ApiEnvelope<T> = { success: true; data: T; meta?: { total: number } };
-
-async function getParliament<T>(path: string): Promise<ApiEnvelope<T>> {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`);
-  return res.json();
-}
+const getParliament = <T,>(path: string) => apiEnvelope<T, { total: number }>('GET', path);
 
 /** Seats in the 34th Dáil. */
 const DAIL_SEATS = 174;
@@ -158,24 +153,12 @@ export default function TDProfilePageEnhanced() {
   const { name } = useParams<{ name: string }>();
   const { toast } = useToast();
 
-  const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TdProfile>({
+  // null = no such TD (404).
+  const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TdProfile | null>({
     queryKey: ['td-profile-v4', name],  // v4: the score is built from Oireachtas facts only
-    queryFn: async () => {
-      const res = await fetch(`/api/scores/td/${encodeURIComponent(name || '')}`);
-      if (!res.ok) {
-        if (res.status === 404) throw new Error('TD_NOT_FOUND');
-        if (res.status >= 500) throw new Error('Server error - please try again later');
-        throw new Error('Failed to load TD profile');
-      }
-      const json = await res.json();
-      return json.data as TdProfile;
-    },
+    queryFn: () => orNullOn404(apiCall<TdProfile>('GET', `/api/scores/td/${encodeURIComponent(name || '')}`)),
     enabled: !!name,
-    retry: (failureCount, error) => {
-      // Don't retry if TD not found
-      if (error instanceof Error && error.message === 'TD_NOT_FOUND') return false;
-      return failureCount < 2;
-    },
+    retry: 2,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
     staleTime: 300000  // 5 minutes
   });
@@ -303,12 +286,10 @@ export default function TDProfilePageEnhanced() {
   // Recent news articles for this TD
   const { data: newsArticles = [], isLoading: newsLoading } = useQuery({
     queryKey: queryKeys.td.news(name || ''),
-    queryFn: async () => {
-      const res = await fetch(`/api/news-feed/td/${encodeURIComponent(name || '')}`);
-      if (!res.ok) return [] as FeedArticle[];
-      const json = await res.json();
-      return (json.data?.articles ?? []) as FeedArticle[];
-    },
+    queryFn: () =>
+      apiCall<{ articles: FeedArticle[] }>('GET', `/api/news-feed/td/${encodeURIComponent(name || '')}`)
+        .then((data) => data.articles)
+        .catch(() => [] as FeedArticle[]),
     enabled: !!name,
     staleTime: 300000  // 5 minutes
   });
@@ -331,7 +312,7 @@ export default function TDProfilePageEnhanced() {
   }
 
   if (error || !scoreData) {
-    const isNotFound = !error || (error instanceof Error && error.message === 'TD_NOT_FOUND');
+    const isNotFound = !error;
     return (
       <EmptyState
         icon={SearchX}
@@ -349,9 +330,7 @@ export default function TDProfilePageEnhanced() {
       >
         {isNotFound
           ? 'No TD in the current Dáil has that name. Pick one from the rankings.'
-          : error instanceof Error
-            ? error.message
-            : 'Unable to fetch TD data.'}
+          : userMessage(error)}
       </EmptyState>
     );
   }

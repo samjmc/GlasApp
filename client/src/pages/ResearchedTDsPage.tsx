@@ -4,7 +4,6 @@
  */
 
 import { useMemo, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { Link, useSearch } from 'wouter';
 import { Info, SearchX, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -19,16 +18,11 @@ import { PartyDot, PartyLabel, TDAvatar } from '@/components/pulse/Party';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { RetryButton } from '@/components/data/RetryButton';
 import { TDQuickInfoModal } from '@/components/TDQuickInfoModal';
-import { queryKeys } from '@/lib/queryKeys';
+import { useAllTDs } from '@/components/home/useAllTDs';
 import { partyStyle } from '@/lib/parties';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { cn } from '@/lib/utils';
 import type { ScoreComponents, TdListItem } from '@shared/scoresApi';
-
-type RankingsData = {
-  tds: TdListItem[];
-  count: number;
-};
 
 type Component = keyof ScoreComponents;
 type SortKey = 'overall' | Component;
@@ -107,16 +101,7 @@ export default function ResearchedTDsPage() {
   const [selectedTDId, setSelectedTDId] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { data, isLoading, isError, refetch, isFetching } = useQuery<RankingsData>({
-    queryKey: queryKeys.td.rankings(),
-    queryFn: async () => {
-      const res = await fetch('/api/scores/tds');
-      if (!res.ok) throw new Error('Failed to fetch');
-      const json = await res.json();
-      const tds = (json.data ?? []) as TdListItem[];
-      return { tds, count: json.meta?.count ?? tds.length };
-    },
-  });
+  const { data, isLoading, isError, refetch, isFetching } = useAllTDs();
 
   const tds = data?.tds ?? [];
 

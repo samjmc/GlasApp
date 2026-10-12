@@ -20,6 +20,7 @@ import { RetryButton } from '@/components/data/RetryButton';
 import { PartyMixBar } from '@/components/data/PartyMixBar';
 import OfficialElectoralMap from '@/components/OfficialElectoralMap';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
+import { apiCall } from '@/lib/api';
 import { cn } from '@/lib/utils';
 
 interface ConstituencyParty {
@@ -125,23 +126,13 @@ export default function ConstituenciesPage() {
 
   const { data: summary, isLoading, isError, refetch, isFetching } = useQuery<ConstituencySummaryData>({
     queryKey: ['constituencies-summary'],
-    queryFn: async () => {
-      const res = await fetch('/api/scores/constituencies/summary');
-      if (!res.ok) throw new Error('Failed to fetch constituencies');
-      const json = await res.json();
-      return json.data as ConstituencySummaryData;
-    },
+    queryFn: () => apiCall<ConstituencySummaryData>('GET', '/api/scores/constituencies/summary'),
   });
   const data = summary?.constituencies ?? [];
 
   const { data: selectedData } = useQuery<ConstituencyDetail>({
     queryKey: ['constituency-detail', selectedConstituency],
-    queryFn: async () => {
-      const res = await fetch(`/api/scores/constituency/${encodeURIComponent(selectedConstituency!)}`);
-      if (!res.ok) throw new Error('Failed to fetch constituency');
-      const json = await res.json();
-      return json.data as ConstituencyDetail;
-    },
+    queryFn: () => apiCall<ConstituencyDetail>('GET', `/api/scores/constituency/${encodeURIComponent(selectedConstituency!)}`),
     enabled: !!selectedConstituency,
   });
   // The summary already carries each constituency's TDs, so the panel can fill in before the detail call lands.

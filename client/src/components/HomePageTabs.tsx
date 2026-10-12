@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { AlertCircle, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { queryKeys } from '@/lib/queryKeys';
+import { apiCall } from '@/lib/api';
 import type { FeedArticle } from '@/lib/news';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
 import { TodaysTopStory } from '@/components/TodaysTopStory';
@@ -46,14 +47,10 @@ export function HomePageTabs() {
     queryKey: queryKeys.news.feed(sortBy, page),
     queryFn: async () => {
       const offset = (page - 1) * ARTICLES_PER_PAGE;
-      const res = await fetch(`/api/news-feed?sort=${sortBy}&limit=${ARTICLES_PER_PAGE}&offset=${offset}`);
-      if (!res.ok) {
-        if (res.status === 404) throw new Error('News feed not available');
-        if (res.status >= 500) throw new Error('Server error - please try again later');
-        throw new Error('Failed to load news feed');
-      }
-      const json = await res.json();
-      return json.data as { articles: FeedArticle[]; total: number; hasMore: boolean };
+      return apiCall<{ articles: FeedArticle[]; total: number; hasMore: boolean }>(
+        'GET',
+        `/api/news-feed?sort=${sortBy}&limit=${ARTICLES_PER_PAGE}&offset=${offset}`
+      );
     },
     staleTime: 1000,
     retry: 2,
