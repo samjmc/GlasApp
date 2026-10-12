@@ -47,8 +47,10 @@ vi.mock('./position', async (importOriginal) => ({
 }));
 vi.mock('../services/tdExtractionService', () => ({
   TDExtractionService: {
-    extractTDMentions: vi.fn(async () => [{ name: 'Mary Lou McDonald' }]),
-    filterHighConfidenceMentions: (mentions: unknown[]) => mentions,
+    // Mary Lou McDonald, with the row the test inserts: extraction carries each TD's row.
+    extractTDMentions: vi.fn(async () => [
+      { name: 'Mary Lou McDonald', td: { id: tdId, name: 'Mary Lou McDonald', party: 'Sinn Féin', constituency: null, offices: [{ title: 'Leader of the Opposition' }] }, context: '' },
+    ]),
     isSubstantialMention: () => true,
   },
 }));
