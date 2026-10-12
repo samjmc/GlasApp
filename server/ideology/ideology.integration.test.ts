@@ -11,7 +11,9 @@
  *   npx vitest run server/ideology/ideology.integration.test.ts
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { and, eq, inArray } from 'drizzle-orm';
 import { QUIZ_QUESTIONS } from '@shared/quiz';
+import { tdIdeologyEvidence, type NewTdIdeologyEvidence } from '@shared/schema/quiz';
 import { planQuiz, responsesFor } from '@shared/quizPlan';
 import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
@@ -276,6 +278,78 @@ run('quiz and ideology against Postgres', () => {
       const debate = { td: id, source: 'debate' as const, sourceRef: 'x', raw: { economic: 0.5 }, weight: 1, observedAt: new Date('2026-09-23T00:00:00Z') };
       expect(await ideology.recordTdEvidence(debate)).toBe('recorded');
       expect(await ideology.recordTdEvidence({ ...debate, raw: { economic: -0.5 }, observedAt: new Date('2026-09-24T00:00:00Z') })).toBe('duplicate');
+    });
+  });
+
+  describe('the stance evidence rebuild', () => {
+    type Row = NewTdIdeologyEvidence;
+    const at = (day: number) => new Date(Date.UTC(2026, 8, day));
+    const stance = (tdId: number, q: number, economic: number | null, day: number, weight = 1): Row => ({
+      tdId, source: 'stance', sourceRef: `question:${q}`, policyTopic: 'housing', economic, welfare: q % 2 ? -2 : null, weight, observedAt: at(day),
+    });
+    const contents = async () =>
+      (
+        await dbmod.pool.query(
+          `select td_id, source, source_ref, policy_topic, economic, social, cultural, authority, environmental, welfare, globalism, technocratic, weight, observed_at
+             from politics.td_ideology_evidence order by td_id, source, source_ref`,
+        )
+      ).rows;
+    const ids = async () =>
+      Object.fromEntries((await dbmod.pool.query('select td_id, source_ref, id from politics.td_ideology_evidence')).rows.map((r) => [`${r.td_id}/${r.source_ref}`, r.id]));
+
+    /** The write before the diff: delete every `stance` row of these TDs, insert the new set (server/stances/repository.ts). */
+    async function replaceBefore(tdIds: number[] | null, rows: Row[]) {
+      await dbmod.db.transaction(async (tx) => {
+        const where = eq(tdIdeologyEvidence.source, 'stance');
+        await tx.delete(tdIdeologyEvidence).where(tdIds === null ? where : and(where, inArray(tdIdeologyEvidence.tdId, tdIds)));
+        await repo.insertStanceEvidenceRows(tx, rows);
+      });
+    }
+
+    async function seed(): Promise<number[]> {
+      await dbmod.pool.query('truncate politics.td_ideology_evidence, politics.tds restart identity cascade');
+      const tdIds = [await addTd('Stance A', 'Fine Gael'), await addTd('Stance B', 'Sinn Féin'), await addTd('Stance C', 'Independent')];
+      const [a, b, c] = tdIds as [number, number, number];
+      await repo.insertStanceEvidenceRows(dbmod.db, [stance(a, 1, 2, 10), stance(a, 2, -1, 10), stance(a, 3, 1, 12), stance(b, 1, 0.5, 11), stance(c, 1, 1, 9)]);
+      await repo.insertTdEvidence({ tdId: a, source: 'debate', sourceRef: 'dail/1', economic: 4, weight: 1, observedAt: at(5) });
+      return tdIds;
+    }
+
+    // Unchanged, changed, changed to an OLDER statement (a newer one was deleted), removed and added rows.
+    const next = ([a, b]: number[]): Row[] => [stance(a!, 1, 2, 10), stance(a!, 2, 1.5, 13), stance(a!, 3, 0.4, 8), stance(a!, 4, -2, 14), stance(b!, 2, 1, 11, 0.5)];
+
+    for (const scope of ['every TD', 'some TDs'] as const) {
+      it(`ends with the same rows as delete + insert, for ${scope}`, async () => {
+        let tdIds = await seed();
+        const only = scope === 'every TD' ? null : tdIds.slice(0, 2);
+        await replaceBefore(only, next(tdIds));
+        const expected = await contents();
+
+        tdIds = await seed();
+        const before = await ids();
+        await dbmod.db.transaction((tx) => repo.replaceStanceEvidenceRows(tx, only, next(tdIds)));
+        expect(await contents()).toEqual(expected);
+        // TD C's row survives only when C is out of scope; the debate row always does.
+        expect(expected.some((r) => r.td_id === tdIds[2])).toBe(scope === 'some TDs');
+        expect(expected.some((r) => r.source === 'debate')).toBe(true);
+        // Rows that stay keep their id; an unchanged one is not even rewritten.
+        const after = await ids();
+        for (const key of [`${tdIds[0]}/question:1`, `${tdIds[0]}/question:2`, `${tdIds[0]}/question:3`]) expect(after[key]).toBe(before[key]);
+      });
+    }
+
+    it('leaves an unchanged row untouched, and an empty scope or set does what delete + insert did', async () => {
+      const [a] = await seed();
+      const xmin = async () => (await dbmod.pool.query("select xmin::text as x from politics.td_ideology_evidence where source_ref = 'question:1' and td_id = $1", [a])).rows[0].x;
+      const before = await xmin();
+      await dbmod.db.transaction((tx) => repo.replaceStanceEvidenceRows(tx, [a!], [stance(a!, 1, 2, 10)]));
+      expect(await xmin()).toBe(before);
+
+      await dbmod.db.transaction((tx) => repo.replaceStanceEvidenceRows(tx, [], []));
+      const kept = await contents();
+      expect(kept.filter((r) => r.source === 'stance')).toHaveLength(3); // a's one row, b's and c's
+      await dbmod.db.transaction((tx) => repo.replaceStanceEvidenceRows(tx, null, []));
+      expect((await contents()).map((r) => r.source)).toEqual(['debate']);
     });
   });
 

@@ -1,7 +1,7 @@
 /**
  * Every read and write of the quiz and ideology tables. Nothing else touches them.
  */
-import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
+import { and, asc, desc, eq, inArray, sql, type SQL } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { withPoliticalConsent } from '../account/consent';
 
@@ -156,6 +156,39 @@ const EVIDENCE_INSERT_CHUNK = 500;
 export async function insertStanceEvidenceRows(database: Pick<Db, 'insert'>, rows: NewTdIdeologyEvidence[]): Promise<void> {
   for (let i = 0; i < rows.length; i += EVIDENCE_INSERT_CHUNK) {
     await database.insert(tdIdeologyEvidence).values(rows.slice(i, i + EVIDENCE_INSERT_CHUNK)).onConflictDoUpdate(STANCE_UPSERT);
+  }
+}
+
+const STANCE_VALUE_COLUMNS = [...IDEOLOGY_DIMENSIONS, 'policyTopic', 'weight', 'observedAt'] as const;
+
+/** The rebuild's upsert: every value column from the new row (older or not), and only when one differs. */
+const STANCE_REBUILD_UPSERT = {
+  target: STANCE_UPSERT.target,
+  set: STANCE_UPSERT.set,
+  setWhere: sql`(${sql.join(
+    STANCE_VALUE_COLUMNS.map((c) => tdIdeologyEvidence[c]),
+    sql`, `,
+  )}) is distinct from (${sql.raw(STANCE_VALUE_COLUMNS.map((c) => `excluded.${tdIdeologyEvidence[c].name}`).join(', '))})`,
+};
+
+/**
+ * Make the `stance` evidence of these TDs (every TD when null) exactly `rows`: one row per
+ * (TD, source_ref), all of these TDs. Inside the caller's withStanceLock transaction. A diff on the
+ * natural key rather than delete-all + insert: rows not in `rows` are deleted, the rest upserted,
+ * and an unchanged row is not rewritten, so it keeps its id and created_at.
+ */
+export async function replaceStanceEvidenceRows(tx: Pick<Db, 'delete' | 'insert'>, tdIds: number[] | null, rows: NewTdIdeologyEvidence[]): Promise<void> {
+  if (tdIds !== null && tdIds.length === 0) return;
+  const keys = JSON.stringify(rows.map((r) => ({ td_id: r.tdId, source_ref: r.sourceRef })));
+  await tx.delete(tdIdeologyEvidence).where(
+    and(
+      eq(tdIdeologyEvidence.source, 'stance'),
+      tdIds === null ? undefined : inArray(tdIdeologyEvidence.tdId, tdIds),
+      sql`(${tdIdeologyEvidence.tdId}, ${tdIdeologyEvidence.sourceRef}) not in (select td_id, source_ref from jsonb_to_recordset(${keys}::jsonb) as k(td_id int, source_ref text))`,
+    ),
+  );
+  for (let i = 0; i < rows.length; i += EVIDENCE_INSERT_CHUNK) {
+    await tx.insert(tdIdeologyEvidence).values(rows.slice(i, i + EVIDENCE_INSERT_CHUNK)).onConflictDoUpdate(STANCE_REBUILD_UPSERT);
   }
 }
 
