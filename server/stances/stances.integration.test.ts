@@ -290,6 +290,54 @@ run('TD stances against Postgres', () => {
     expect(differs.alignment).toBeLessThan(axisDiffers.alignment);
   });
 
+  it('a re-run under stricter rules deletes the stance it no longer accepts, with its evidence (sweep P10)', async () => {
+    const articleId = await addArticle({ title: 'Housing plan unveiled', content: STATED });
+    modelStates();
+    await pipeline.runTdPipeline();
+    expect(await count('td_stances')).toBe(1);
+    expect(await count('td_ideology_evidence')).toBe(1);
+
+    const { emptyStanceStats, recordStances } = await import('./record');
+    const td = { id: tdId, name: 'Mary Lou McDonald', party: 'Sinn Féin', offices: [] };
+    // The same quote, now judged not a policy position: as `npm run stances -- --rebuild` would see it.
+    const stats = emptyStanceStats();
+    await recordStances({ id: articleId, title: 'Housing plan unveiled', content: STATED }, [td], stats, {
+      complete: async (_s, _u, _t, operation) => ai.replies[operation],
+      position: async () => 0.2,
+      question: async () => null,
+    });
+    expect(stats).toMatchObject({ accepted: 0, rejected: { not_position: 1 } });
+    expect(await count('td_stances')).toBe(0);
+    expect(await count('td_ideology_evidence')).toBe(0);
+    expect((await ideology.tdProfile(tdId))?.profile?.evidenceCount ?? 0).toBe(0);
+  });
+
+  it('a news stance write waits for the stance lock the nightly rebuild holds, so neither loses the other (sweep P11, P33)', async () => {
+    const articleId = await addArticle({ title: 'Housing plan unveiled', content: STATED });
+    modelStates();
+    const { STANCE_SYNC_LOCK } = await import('../ideology/repository');
+    const { emptyStanceStats, recordStances } = await import('./record');
+    const td = { id: tdId, name: 'Mary Lou McDonald', party: 'Sinn Féin', offices: [] };
+    const other = await dbmod.pool.connect();
+    try {
+      await other.query('select pg_advisory_lock($1::bigint)', [STANCE_SYNC_LOCK]);
+      let done = false;
+      const write = recordStances({ id: articleId, title: 'Housing plan unveiled', content: STATED }, [td], emptyStanceStats(), {
+        complete: async (_s, _u, _t, operation) => ai.replies[operation],
+        position: async () => 0.9,
+        question: async () => null,
+      }).then(() => (done = true));
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      expect(done).toBe(false);
+      expect(await count('td_stances')).toBe(0);
+      await other.query('select pg_advisory_unlock($1::bigint)', [STANCE_SYNC_LOCK]);
+      await write;
+      expect(await count('td_stances')).toBe(1);
+    } finally {
+      other.release();
+    }
+  });
+
   it('the rebuild reads canonical articles in the window that already have a question and a linked TD', async () => {
     const day = 86_400_000;
     const ago = (days: number) => new Date(Date.now() - days * day);

@@ -8,7 +8,9 @@ const m = vi.hoisted(() => ({
   questionForArticle: vi.fn(),
   linkArticleTd: vi.fn(),
   saveStances: vi.fn(),
-  recordTdEvidence: vi.fn(),
+  /** The `stance` evidence each stance transaction wrote. */
+  replaceEvidence: vi.fn(),
+  recomputeTdProfile: vi.fn(),
   positionProbability: vi.fn(),
   /** Answers each model call by its operation name; an Error makes that call throw. */
   replies: {} as Record<string, unknown>,
@@ -35,11 +37,27 @@ vi.mock('../scoring', () => ({ repository: { findByName: m.findByName } }));
 vi.mock('../voting', () => ({
   generateQuestionForArticle: m.generateQuestionForArticle,
   questionForArticle: m.questionForArticle,
+  questionsWithPositions: async () => [QUESTION],
 }));
 vi.mock('./repository', () => ({ linkArticleTd: m.linkArticleTd }));
-// extract → verify → map run for real; only the writes are stubbed.
-vi.mock('../stances/repository', () => ({ saveStances: m.saveStances, rebuildArticles: vi.fn() }));
-vi.mock('../ideology', () => ({ recordTdEvidence: m.recordTdEvidence }));
+// extract → verify → map → evidence run for real; only the database is stubbed. A saved stance
+// is read back as td_stances would give it to the evidence rebuild.
+vi.mock('../stances/repository', () => {
+  let saved: Array<{ tdId: number; questionId: number | null; optionKey: string | null; quoteKind: string }> = [];
+  return {
+    withStanceLock: async (fn: (tx: unknown) => Promise<unknown>) => fn({}),
+    deleteArticleStancesExcept: async () => [],
+    saveStances: async (id: number, rows: typeof saved) => {
+      saved = rows;
+      return m.saveStances(id, rows);
+    },
+    stanceRowsForEvidence: async () =>
+      saved.filter((r) => r.optionKey).map((r, i) => ({ id: i + 1, tdId: r.tdId, questionId: r.questionId, optionKey: r.optionKey, quoteKind: r.quoteKind, discipline: null, statedAt: STATED_AT })),
+    replaceStanceEvidenceOf: m.replaceEvidence,
+    rebuildArticles: vi.fn(),
+  };
+});
+vi.mock('../ideology/service', () => ({ recomputeTdProfile: m.recomputeTdProfile, recomputePartyProfile: vi.fn() }));
 vi.mock('../stances/position', async (importOriginal) => ({
   ...(await importOriginal<typeof import('../stances/position')>()),
   isJevConfigured: () => true,
@@ -49,6 +67,7 @@ vi.mock('../stances/position', async (importOriginal) => ({
 const { rankByRelevance, runTdPipeline } = await import('./tdPipeline');
 const { AIError, OutOfCreditError } = await import('../services/aiService');
 
+const STATED_AT = new Date('2026-09-25T10:00:00Z');
 const QUOTE = 'We will build fifty thousand public homes every year until the housing crisis is over.';
 const STATED = 'Mary Lou McDonald told the Dáil: "' + QUOTE + '" She was speaking on Tuesday. ';
 /** What is stored: the quote widened to its whole sentence (server/stances/verify.ts). */
@@ -94,6 +113,7 @@ const QUESTION = {
 };
 
 const stance = (quote: string, kind = 'direct') => ({ stances: [{ td_id: 7, policy_domain: 'housing', quote, quote_kind: kind }] });
+const evidenceWritten = () => m.replaceEvidence.mock.calls.flatMap((call) => call[2]);
 const outage = () => new AIError('503 Service Unavailable', { operation: 'tdStances', attempts: 3, elapsedMs: 1, status: 503 });
 const noCredit = () => new OutOfCreditError('402 Insufficient Balance', { operation: 'tdStances', attempts: 1, elapsedMs: 1, status: 402 });
 
@@ -138,15 +158,15 @@ describe('runTdPipeline', () => {
     expect(m.saveStances).toHaveBeenCalledWith(1, [
       { tdId: 7, questionId: 55, optionKey: 'option_a', optionText: 'Build public homes', quote: SENTENCE, quoteKind: 'direct', policyDomain: 'housing' },
     ]);
-    expect(m.recordTdEvidence).toHaveBeenCalledWith({
-      td: 7,
-      source: 'stance',
-      sourceRef: 'question:55',
-      raw: QUESTION.options[0]!.vector,
-      weight: 1.5 * 0.8 * 1, // option weight × option confidence × direct
-      observedAt: new Date('2026-09-25T10:00:00Z'),
-      policyTopic: 'public_housing_targets',
-    });
+    // In the same transaction: TD 7's stance evidence, rebuilt from its stances.
+    expect(m.replaceEvidence).toHaveBeenCalledTimes(1);
+    const [, tdIds, evidence] = m.replaceEvidence.mock.calls[0]!;
+    expect(tdIds).toEqual([7]);
+    expect(evidence).toEqual([
+      expect.objectContaining({ tdId: 7, source: 'stance', sourceRef: 'question:55', economic: -10, welfare: -5, observedAt: STATED_AT, policyTopic: 'public_housing_targets' }),
+    ]);
+    expect(evidence[0].weight).toBeCloseTo(1.5 * 0.8 * 1, 9); // option weight × option confidence × direct
+    expect(m.recomputeTdProfile).toHaveBeenCalledWith(7);
     expect(stats.stances).toEqual({
       extracted: 1,
       accepted: 1,
@@ -165,8 +185,8 @@ describe('runTdPipeline', () => {
 
     expect(m.generateQuestionForArticle).not.toHaveBeenCalled();
     expect(m.operations).toEqual(['tdStances']); // no mapping call either
-    expect(m.saveStances).not.toHaveBeenCalled();
-    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(m.saveStances).toHaveBeenCalledWith(1, []); // the article keeps no stance (an earlier one is deleted)
+    expect(evidenceWritten()).toEqual([]);
     expect(stats.stances).toMatchObject({ extracted: 1, accepted: 0, mapped: 0, rejected: { not_position: 1 } });
     expect(outcomes.get(1)?.errorMessage).toBeUndefined();
   });
@@ -200,8 +220,8 @@ describe('runTdPipeline', () => {
 
     expect(m.linkArticleTd).toHaveBeenCalledWith(1, 7); // the mention is still a fact
     expect(m.generateQuestionForArticle).not.toHaveBeenCalled();
-    expect(m.saveStances).not.toHaveBeenCalled();
-    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(m.saveStances).toHaveBeenCalledWith(1, []);
+    expect(evidenceWritten()).toEqual([]);
     expect(m.operations).toEqual(['tdStances']); // no mapping call either
     expect(stats.stances).toMatchObject({ extracted: 1, accepted: 0, mapped: 0, rejected: { quote_not_found: 1 } });
   });
@@ -216,7 +236,7 @@ describe('runTdPipeline', () => {
     expect(m.saveStances.mock.calls[0][1]).toEqual([
       expect.objectContaining({ questionId: null, optionKey: null, optionText: null, quoteKind: 'paraphrase' }),
     ]);
-    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(evidenceWritten()).toEqual([]);
     expect(stats.stances).toMatchObject({ accepted: 1, mapped: 0 });
   });
 
@@ -229,7 +249,7 @@ describe('runTdPipeline', () => {
 
     expect(m.operations).toEqual(['tdStances']);
     expect(m.saveStances.mock.calls[0][1]).toEqual([expect.objectContaining({ questionId: null, optionKey: null })]);
-    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(evidenceWritten()).toEqual([]);
   });
 
   it('makes no model call and no question for an article that names no TD in the TD table', async () => {

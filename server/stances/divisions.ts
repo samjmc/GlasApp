@@ -22,7 +22,7 @@ import { createHash } from 'node:crypto';
 import { emptyIdeologyVector, IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
 import { AUDIT_UNSCORED_DIMENSIONS, DIVISION_READING_STATUSES, type DivisionKind, type DivisionReadingStatus, type DivisionRejectReason } from '@shared/divisionMeaning';
 import type { DivisionReadingRow, NewDivisionReading } from '@shared/schema/stances';
-import { recomputeTdsAndParties, replaceStanceEvidence } from '../ideology';
+import { recomputeTdsAndParties } from '../ideology';
 import { partyBaseline } from '../ideology/partyBaselines';
 import { oireachtasVoteUrl, repository as parliament, type DivisionContext, type DivisionRef, type DivisionVoteRecord } from '../parliament';
 import { callChatCompletion, isLLMConfigured, OutOfCreditError } from '../services/aiService';
@@ -43,7 +43,7 @@ import {
   proposalBlocks,
 } from './divisionPrompt';
 import { ALLOWED_BLOCKS, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
-import { stanceEvidenceRows } from './evidence';
+import { rebuildStanceEvidence } from './record';
 import { QUOTE_MIN_WORDS } from './extract';
 import * as repo from './repository';
 
@@ -537,11 +537,10 @@ export async function syncDivisionStances(now = new Date()): Promise<StanceSyncS
   }
   await repo.replaceDivisionStances(rows);
 
-  const stances = await repo.stanceRowsForEvidence();
-  const evidence = stanceEvidenceRows(stances, await questionsWithPositions(unique(stances.map((s) => s.questionId))));
-  await replaceStanceEvidence(evidence);
+  // td_stances is read inside the locked transaction, so a news stance committed meanwhile is never dropped.
+  const evidence = await repo.withStanceLock((tx) => rebuildStanceEvidence(tx, null));
   const recomputed = await recomputeTdsAndParties(now);
-  return { divisions, rows: rows.length, skipped, evidence: evidence.length, ...recomputed };
+  return { divisions, rows: rows.length, skipped, evidence, ...recomputed };
 }
 
 // ---------------------------------------------------------------------------
