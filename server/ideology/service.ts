@@ -23,7 +23,9 @@ import { answeredCountsOf, coverageOf, scoreQuiz } from '../quiz/score';
 // Not '../stances': its record.ts imports this domain, and the two would form a cycle.
 import { AGREE_THRESHOLD, agreementFor, latestStances, type AgreementItem } from '../stances/agreement';
 import { mappedStancesOn } from '../stances/repository';
+import { startOfLocalDay } from '../news/feed';
 import { listUserVoteVectors, questionsWithPositions, type UserVoteVector } from '../voting';
+import { sessionDateFor } from '../voting/summary';
 import { alignment, closestAndFurthest, subjectWeights, type DimensionWeights } from './alignment';
 import { addObservation, computeProfile, copySums, meanProfile, profileOf, startSums, type Observation, type Profile } from './model';
 import { isIndependent, partyBaseline, partyKey } from './partyBaselines';
@@ -158,7 +160,7 @@ export function timelineOf(quizzes: QuizResultRow[], votes: UserVoteVector[]): T
   const voteSums = startSums(null);
   let next = 0;
   return days.map((date) => {
-    const until = new Date(`${date}T23:59:59.999Z`);
+    const until = endOfDay(date);
     const options = { now: until, halfLifeDays: null };
     for (; next < oldestFirst.length && oldestFirst[next]!.votedAt <= until; next++) addObservation(voteSums, voteObservation(oldestFirst[next]!), options);
     const sums = copySums(voteSums);
@@ -168,7 +170,14 @@ export function timelineOf(quizzes: QuizResultRow[], votes: UserVoteVector[]): T
   });
 }
 
-const day = (d: Date) => d.toISOString().slice(0, 10);
+/** Days are Irish calendar days, as the daily sessions and the streak count them. */
+const day = (d: Date) => sessionDateFor(d);
+
+/** The last instant of `date` (YYYY-MM-DD) in Europe/Dublin. Noon UTC is always inside that local day. */
+function endOfDay(date: string): Date {
+  const nextDay = new Date(Date.parse(`${date}T12:00:00Z`) + 86_400_000);
+  return new Date(startOfLocalDay(nextDay).getTime() - 1);
+}
 
 // --- TDs and parties -------------------------------------------------------
 

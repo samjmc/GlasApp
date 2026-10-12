@@ -9,6 +9,9 @@ import { z } from 'zod';
 import { asyncHandler } from '../middleware/errorHandler';
 import { createRateLimit } from '../middleware/rateLimit';
 import { QuizInputError, quizHistory, submitQuiz } from '../quiz';
+import { FULL_COVERAGE_ANSWERS, answeredCountsOf } from '../quiz/score';
+import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
+import type { QuizResponse } from '@shared/quiz';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
 const router = Router();
@@ -25,6 +28,18 @@ const submitSchema = z.object({
   seed: z.number().int().min(0).max(0xffffffff).optional(),
 });
 
+const INCOMPLETE_QUIZ = `Answer the whole quiz: at least ${FULL_COVERAGE_ANSWERS} questions on each dimension`;
+
+/**
+ * A user's profile takes their LATEST quiz only, so a short quiz would wipe a full one's answers on
+ * every dimension it skipped. Every plan the client makes asks at least FULL_COVERAGE_ANSWERS
+ * questions per dimension (shared/quizPlan.ts), so a submission short of that is not a real quiz.
+ */
+function isWholeQuiz(answers: QuizResponse[]): boolean {
+  const answered = answeredCountsOf(answers);
+  return IDEOLOGY_DIMENSIONS.every((d) => answered[d] >= FULL_COVERAGE_ANSWERS);
+}
+
 /**
  * POST /api/quiz — score answers. Open to anonymous visitors; saved only when signed in AND the
  * user has consented to us keeping their political opinions. Without consent the answers are
@@ -36,6 +51,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const body = submitSchema.safeParse(req.body);
     if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid quiz answers', body.error.flatten()));
+    if (!isWholeQuiz(body.data.answers)) return res.status(400).json(formatError('VALIDATION_ERROR', INCOMPLETE_QUIZ));
     try {
       const saveFor = req.user && (await hasPoliticalConsent(req.user.id)) ? req.user.id : null;
       res.json(formatSuccess(await submitQuiz(saveFor, body.data.answers, body.data.seed)));

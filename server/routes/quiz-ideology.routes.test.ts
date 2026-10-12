@@ -6,6 +6,9 @@
 import type { Server } from 'node:http';
 import express from 'express';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
+import { QUIZ_QUESTIONS } from '@shared/quiz';
+import { planQuiz } from '@shared/quizPlan';
 
 const calls = vi.hoisted(() => ({ list: [] as Array<{ fn: string; args: unknown[] }> }));
 
@@ -116,8 +119,11 @@ const post = (path: string, body: unknown, user?: string) =>
 const get = (path: string, user?: string) =>
   fetch(`${base}${path}`, { headers: { connection: 'close', ...(user ? { 'x-test-user': user } : {}) } });
 
+/** A whole quiz, as the client plans it: the base questions of a seed. */
+const wholeQuiz = (seed: number) => planQuiz(seed, {}).base.map((questionId) => ({ questionId, answerIndex: 0 }));
+
 describe('POST /api/quiz', () => {
-  const answers = [{ questionId: 1, answerIndex: 0 }];
+  const answers = wholeQuiz(1);
 
   it('scores an anonymous quiz without a user', async () => {
     const res = await post('/api/quiz', { answers });
@@ -159,9 +165,26 @@ describe('POST /api/quiz', () => {
     expect(empty.status).toBe(400);
     expect(((await empty.json()) as { error: object }).error).toMatchObject({ code: 'VALIDATION_ERROR', message: 'Invalid quiz answers' });
     expect((await post('/api/quiz', { answers: [{ questionId: 1, answerIndex: 'a' }] })).status).toBe(400);
-    const res = await post('/api/quiz', { answers: [{ questionId: 999, answerIndex: 0 }] });
+    const res = await post('/api/quiz', { answers: [{ questionId: 999, answerIndex: 0 }, ...answers] });
     expect(res.status).toBe(400);
     expect(((await res.json()) as { error: object }).error).toEqual({ code: 'VALIDATION_ERROR', message: 'Unknown question 999' });
+  });
+
+  it('refuses a part of a quiz, which as the latest quiz would wipe a whole one (A18)', async () => {
+    const oneAnswer = await post('/api/quiz', { answers: [{ questionId: 1, answerIndex: 0 }] }, 'user-1');
+    expect(oneAnswer.status).toBe(400);
+    expect(((await oneAnswer.json()) as { error: { message: string } }).error.message).toMatch(/whole quiz/);
+    // Short by one question on one dimension.
+    const economic = new Set(QUIZ_QUESTIONS.filter((q) => q.dimension === 'economic').map((q) => q.id));
+    const short = answers.filter((a, i, all) => !(economic.has(a.questionId) && all.findIndex((b) => economic.has(b.questionId)) === i));
+    expect(short).toHaveLength(answers.length - 1);
+    expect((await post('/api/quiz', { answers: short }, 'user-1')).status).toBe(400);
+    expect(calls.list).toEqual([]);
+  });
+
+  it('accepts every quiz the client can plan', async () => {
+    for (let seed = 0; seed < 10; seed++) expect((await post('/api/quiz', { answers: wholeQuiz(seed), seed })).status, `seed ${seed}`).toBe(200);
+    expect(new Set(QUIZ_QUESTIONS.map((q) => q.dimension))).toEqual(new Set(IDEOLOGY_DIMENSIONS));
   });
 });
 
@@ -282,7 +305,7 @@ describe('/api/ideology party manifesto answers', () => {
 // Last in the file: these use up the routes' rate-limit budget for this IP.
 describe('rate limits on the public POSTs', () => {
   for (const [path, body, max] of [
-    ['/api/quiz', { answers: [{ questionId: 1, answerIndex: 0 }] }, 60],
+    ['/api/quiz', { answers: wholeQuiz(1) }, 60],
     ['/api/ideology/matches', { vector }, 300],
   ] as const) {
     it(`${path}: ${max} per window, then 429`, async () => {
