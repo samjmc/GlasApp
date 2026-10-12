@@ -7,6 +7,7 @@ import { Link } from "wouter";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePoliticalConsent } from "@/contexts/ConsentContext";
+import { queryKeys } from "@/lib/queryKeys";
 import { PLEDGE_CATEGORIES } from "@shared/pledges";
 import { CATEGORY_LABELS, pledgesApi, type PledgeCategory } from "@/services/pledgesApi";
 
@@ -18,11 +19,11 @@ const RANKABLE = PLEDGE_CATEGORIES.filter((c) => c !== "other");
  * priorities" delivery rate; signed-out visitors see everyone's combined ranking.
  */
 export function PledgePriorities() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const { ensure: ensureConsent } = usePoliticalConsent();
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const priorities = useQuery({ queryKey: ["/api/pledges/priorities"], queryFn: pledgesApi.priorities });
+  const priorities = useQuery({ queryKey: queryKeys.pledges.priorities(user?.id), queryFn: pledgesApi.priorities });
   const [order, setOrder] = useState<PledgeCategory[]>([...RANKABLE]);
 
   // Start from the caller's saved ranking, then the community's, then the default order.
@@ -37,8 +38,8 @@ export function PledgePriorities() {
     mutationFn: () => pledgesApi.savePriorities(order),
     onSuccess: () => {
       toast({ title: "Priorities saved", description: "Party delivery rates now use your ranking." });
-      queryClient.invalidateQueries({ queryKey: ["/api/pledges/priorities"] });
-      queryClient.invalidateQueries({ queryKey: ["/api/pledges/parties"] });
+      queryClient.invalidateQueries({ queryKey: queryKeys.pledges.priorities(user?.id) });
+      queryClient.invalidateQueries({ queryKey: queryKeys.pledges.parties(user?.id) });
     },
     onError: () => toast({ title: "Could not save your ranking", description: "Please try again.", variant: "destructive" }),
   });
