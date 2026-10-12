@@ -3,6 +3,7 @@
  *
  *   npm run scores:recalculate -- --yes     (--yes: needed for a database not on this machine)
  */
+import 'dotenv/config';
 import { recalculateAll } from '../scoring';
 import { shutdown } from '../db';
 import { approveWrite } from './liveDbGuard';

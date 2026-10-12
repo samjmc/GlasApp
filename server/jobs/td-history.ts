@@ -9,6 +9,7 @@
  *
  * Every run but --dry-run also needs --yes for a database not on this machine (liveDbGuard.ts).
  */
+import 'dotenv/config';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { shutdown } from '../db';

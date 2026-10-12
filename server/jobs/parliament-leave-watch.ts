@@ -5,6 +5,7 @@
  *
  *   npm run parliament:leave-watch -- --yes     (--yes: needed for a database not on this machine)
  */
+import 'dotenv/config';
 import { shutdown } from '../db';
 import { leaveWatch } from '../parliament';
 import { approveWrite } from './liveDbGuard';

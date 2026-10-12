@@ -8,7 +8,6 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --watch server --watch shared --ignore client --exec \"npx tsx\" server/index.ts",
-    "dev:clean": "taskkill /F /IM node.exe /IM tsx.exe & timeout /t 2 & npm run dev",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "check": "tsc",
@@ -20,7 +19,6 @@
     "facts": "tsx scripts/ci/generate-facts.ts",
     "facts:check": "tsx scripts/ci/generate-facts.ts --check",
     "docs:check": "tsx scripts/ci/check-doc-facts.ts",
-    "git:safety-check": "bash scripts/git-safety-checks.sh",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",

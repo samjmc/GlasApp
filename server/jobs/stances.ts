@@ -27,6 +27,7 @@
  * this machine (liveDbGuard.ts). --sync stays the step that makes stances public; --yes only says
  * which database.
  */
+import 'dotenv/config';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { AUDIT_UNSCORED_DIMENSIONS } from '@shared/divisionMeaning';
@@ -163,6 +164,7 @@ export async function runDivisions(argv: string[], log: (line: string) => void =
     `${args.dryRun ? '[dry run, nothing written] ' : ''}Read ${s.read} of ${s.pending} division(s) needing work: ${statuses}. ` +
       `${s.calls} model call(s), ${s.promptTokens} prompt + ${s.completionTokens} completion tokens.`,
   );
+  if (s.stopped) log(`Stopped early: ${s.stopped}.`);
   if (!args.dryRun) log('Nothing is public yet: `npm run stances -- --divisions --sync` writes the TD stances.');
 }
 

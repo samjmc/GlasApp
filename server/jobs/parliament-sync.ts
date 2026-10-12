@@ -7,6 +7,7 @@
  * Safe to re-run: every write replaces what it covers. The scheduler runs it daily (without the
  * --yes, which only this command line asks for, for a database not on this machine).
  */
+import 'dotenv/config';
 import { runSync, syncHadFailures } from '../parliament';
 import { shutdown } from '../db';
 import { approveWrite } from './liveDbGuard';

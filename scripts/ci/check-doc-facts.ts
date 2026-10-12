@@ -48,13 +48,6 @@ export const ENV_MISSING_FROM_EXAMPLE: readonly string[] = [
  */
 export const KNOWN_DOC_DRIFT: ReadonlyArray<{ file: string; why: string }> = [
   { file: 'README.md', why: 'Links MIGRATION_SUMMARY.md, which is gone, and LICENSE, which was never committed; the migration checklist around the first link is stale too.' },
-  { file: 'docs/DEBATE_FETCH_AND_ANALYSIS_INTEGRATION.md', why: 'Pre-rebuild status doc; the scripts it names were removed by the parliament and ideology rebuilds. Delete or archive it.' },
-  { file: 'docs/DEBATE_PROCESSING_FINAL.md', why: 'Pre-rebuild status doc; names a script the rebuilds removed. Delete or archive it.' },
-  { file: 'docs/DEBATE_PROCESSING_STATUS.md', why: 'Pre-rebuild status doc; names a script the rebuilds removed. Delete or archive it.' },
-  { file: 'docs/DEBATE_PROCESSING_UPDATE.md', why: 'Pre-rebuild status doc; names a script the rebuilds removed. Delete or archive it.' },
-  { file: 'docs/DEBATE_UPDATE_WORKFLOW.md', why: 'Pre-rebuild status doc; the scripts it names were removed by the parliament and ideology rebuilds. Delete or archive it.' },
-  { file: 'docs/IMPLEMENTATION_STATUS_CHECK.md', why: 'Pre-rebuild status doc; the scripts it names were removed by the parliament and ideology rebuilds. Delete or archive it.' },
-  { file: 'docs/UNIFIED_DEBATE_PROCESS_COMPLETE.md', why: 'Pre-rebuild status doc; the scripts it names were removed by the parliament and ideology rebuilds. Delete or archive it.' },
   { file: 'docs/plans/news-ingestion-rebuild.md', why: 'Lists `npm run update-news` in the table of code this rebuild deleted, so the name is meant to be gone.' },
 ];
 

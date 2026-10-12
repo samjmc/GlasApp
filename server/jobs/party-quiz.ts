@@ -13,6 +13,7 @@
  * --store <dir> overrides the local text store (default ~/.glas/party-quiz; never inside the repo).
  * `answer` spends only with --yes, after printing its estimate.
  */
+import 'dotenv/config';
 import fs from 'node:fs';
 import { parseArgs } from 'node:util';
 import type { PartyQuizSheet } from '@shared/partyQuiz';

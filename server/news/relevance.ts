@@ -17,7 +17,6 @@ export const RELEVANCE_BATCH_SIZE = 20;
  */
 export const RELEVANCE_FLOOR = 60;
 export const SUMMARY_MAX_WORDS = 45;
-const MODEL = 'deepseek-flash';
 
 export interface RelevanceInput {
   title: string;
@@ -109,7 +108,6 @@ export async function scoreRelevance(items: RelevanceInput[]): Promise<{ results
       try {
         const completion = await callChatCompletion(
           {
-            model: MODEL,
             temperature: 0,
             response_format: { type: 'json_object' },
             messages: [

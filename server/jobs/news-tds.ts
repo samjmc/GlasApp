@@ -7,6 +7,7 @@
  *
  * --yes: needed for a database not on this machine.
  */
+import 'dotenv/config';
 import { processArticleById, runTdPipeline } from '../news/tdPipeline';
 import type { StanceStats } from '../stances';
 import { shutdown } from '../db';
