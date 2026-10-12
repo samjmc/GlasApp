@@ -159,7 +159,7 @@ export async function runDivisions(argv: string[], log: (line: string) => void =
     `${args.dryRun ? '[dry run, nothing written] ' : ''}Read ${s.read} of ${s.pending} division(s) needing work: ${statuses}. ` +
       `${s.calls} model call(s), ${s.promptTokens} prompt + ${s.completionTokens} completion tokens.`,
   );
-  if (s.stopped) log(`Stopped early: ${s.stopped}.`);
+  if (s.stopped) log(`Stopped early: ${s.stopped}. Divisions that were not reached are unchanged; run it again when the provider answers.`);
   if (!args.dryRun) log('Nothing is public yet: `npm run stances -- --divisions --sync` writes the TD stances.');
 }
 

@@ -9,6 +9,18 @@
  *                         they are really there: any claim without them refuses the match. Never
  *                         touches td_stances or evidence. After changing MATCH_PROMPT_VERSION, run
  *                         --reclassify before the next sync: the sync keeps whatever is stored.
+ *                         A call that THROWS (provider down, out of credit) writes nothing and uses no
+ *                         attempt; a run stops after MAX_CONSECUTIVE_ERRORS in a row. A re-read of a MATCHED
+ *                         division keeps its question a candidate whatever --window says (the window is not
+ *                         stored), and a bad reply or a vanished question keeps the stored match: only a
+ *                         clean reading can change what is public.
+ *
+ *                         Known limits for the human check: a motion's block is its "I move" paragraph and
+ *                         the rest of the SAME speech (MOVED_TEXT_CHARS), so the mover's remarks count as the
+ *                         proposal for the figure and claims checks; figures are read from the option's
+ *                         label, not the question's stem; and the sync's evidence snapshot is taken just before
+ *                         it is written, not under the lock, so a news stance saved in that gap loses its
+ *                         evidence until the next sync.
  *   syncDivisionStances   readings × roll call → td_stances rows (quote kind 'division'), then
  *                         the whole `stance` evidence set rebuilt from td_stances, then every TD
  *                         and party profile. No model calls.
@@ -47,10 +59,12 @@ import { stanceEvidenceRows } from './evidence';
 import { QUOTE_MIN_WORDS } from './extract';
 import * as repo from './repository';
 
-/** Model calls per nightly run. */
+/** Model calls per nightly run. aiService retries a call inside (a timeout once, a 429 after a wait), so the requests can be more than this when the provider is struggling. */
 export const NIGHTLY_LIMIT = 20;
-/** A failed reading is retried until this many calls in a row have failed. */
+/** A reading whose reply was unusable is retried until this many replies in a row have been. A call that THROWS counts for nothing: see MAX_CONSECUTIVE_ERRORS. */
 export const MAX_ATTEMPTS = 3;
+/** A run stops after this many model calls in a row that threw: the provider is down, out of credit, or refusing us. */
+export const MAX_CONSECUTIVE_ERRORS = 3;
 /** A division with no debate record waits this long for one, then is read on what exists. */
 export const NO_CONTEXT_DAYS = 14;
 /** A daily-vote question is a candidate when it is dated within this many days of the vote. */
@@ -74,8 +88,9 @@ export interface DivisionAnswer {
 }
 
 /**
- * One model call. Throws on failure, which records the reading as `failed`; an OutOfCreditError
- * instead stops the run and records nothing for that division.
+ * One model call. Throws on failure, which records nothing for that division and uses no attempt (an
+ * unusable REPLY, by contrast, is recorded as `failed`); a few throws in a row stop the run, and an
+ * OutOfCreditError stops it at once.
  */
 export type DivisionCompletion = (system: string, user: string) => Promise<DivisionAnswer>;
 
@@ -206,8 +221,13 @@ interface ReadDeps {
 }
 
 interface ReadResult {
-  /** null = nothing to write: a re-check that found nothing new, or a failed re-read of a matched row, which keeps its answer. */
+  /** null = nothing to write: a re-check that found nothing new, or a model call that threw (see `transportError`). */
   row: NewDivisionReading | null;
+  /**
+   * A model call threw (a timeout, a 401, a 402, a 429, a 5xx). That says nothing about this division, so
+   * nothing is written and no attempt is counted: an outage must not use up every division's attempts.
+   */
+  transportError: boolean;
   calls: number;
   promptTokens: number;
   completionTokens: number;
@@ -238,6 +258,7 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   };
   const result: ReadResult = {
     row: null,
+    transportError: false,
     calls: 0,
     promptTokens: 0,
     completionTokens: 0,
@@ -286,15 +307,28 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
     }
   };
   const usage = (answer: DivisionAnswer) => ({ model: answer.model.slice(0, 60), promptTokens: result.promptTokens, completionTokens: result.completionTokens });
+  // A call that threw: nothing is learned about the division, so nothing is written (it stays as it was and is
+  // tried again next run) and no attempt is counted. classifyDivisions stops the run after a few in a row.
+  const transport = (error: Error) => {
+    result.reading.error = error.message;
+    result.transportError = true;
+    return result;
+  };
   const failed = (row: NewDivisionReading, error: string) => {
     result.reading.error = error;
     // A failed re-read must not unpublish a match that was already good (the next sync would delete its
-    // stances): keep the stored row and write nothing. The calls spent are still counted.
-    if (previous?.status === 'matched') return result;
+    // stances): keep the stored row. Only its check time moves, so a run with a --limit does not meet the
+    // same rows first every time. The calls spent are still counted.
+    if (previous?.status === 'matched') {
+      result.row = { ...previous, matchCheckedAt: deps.now };
+      return result;
+    }
     return done({ ...row, status: 'failed', attempts: (row.attempts ?? 0) + 1 });
   };
 
   const blocks = proposalBlocks(context);
+  // Every block, whatever fits the prompt: a second motion that was cut for length is still a second motion.
+  const everyBlock = proposalBlocks(context, Number.POSITIVE_INFINITY);
   let meaning: Meaning;
   if (stage !== 'meaning' && previous && hasMeaning(previous)) {
     meaning = meaningOf(previous);
@@ -314,10 +348,10 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
 
     // ---- call 1: the meaning ----
     const answer = await call(MEANING_SYSTEM_PROMPT, divisionUserPrompt(context, blocks));
-    if (answer instanceof Error) return failed(base, answer.message);
+    if (answer instanceof Error) return transport(answer);
     const reply = parseMeaning(answer.content);
     if (!reply) return failed({ ...base, ...usage(answer) }, 'unusable model output');
-    const check = verifyMeaning(reply, blocks);
+    const check = verifyMeaning(reply, blocks, everyBlock);
     const read = {
       ...base,
       ...usage(answer),
@@ -340,10 +374,17 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   // The proposal's own text, from the blocks this kind of question may be read from only: another
   // block can hold the countermotion (which Tá voters reject) or a bill's general statement of purpose.
   const allowedBlocks = ALLOWED_BLOCKS[meaning.divisionKind as DivisionKind] ?? [];
-  const proposalText = blocks.filter((b) => allowedBlocks.includes(b.kind)).map((b) => b.text).join('\n');
+  const proposalTexts = blocks.filter((b) => allowedBlocks.includes(b.kind)).map((b) => b.text);
+  const proposalText = proposalTexts.join('\n');
 
   // ---- call 2: the match ----
-  const candidates = await candidateQuestions({ domains: domainsOf(meaning), from, to, limit: MAX_CANDIDATES });
+  const candidates: QuestionPositions[] = await candidateQuestions({ domains: domainsOf(meaning), from, to, limit: MAX_CANDIDATES });
+  // The window a reading was made with (--window) is not stored. A re-read of a MATCHED division must still be
+  // able to match the question it matched, whatever window this run has, or the result is no candidates or a
+  // different answer and the match, with its public stances, is gone at the next sync.
+  if (previous?.status === 'matched' && previous.questionId !== null && !candidates.some((c) => c.id === previous.questionId)) {
+    candidates.push(...(await questionsWithPositions([previous.questionId])));
+  }
   result.reading.candidates = candidates.length;
   const ids = candidates.map((c) => c.id).sort((a, b) => a - b);
   const known = previous?.candidateIds ? [...previous.candidateIds].sort((a, b) => a - b) : null;
@@ -352,14 +393,15 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
     const same = known !== null && known.length === ids.length && known.every((id, i) => id === ids[i]);
     if (candidates.length === 0 || (previous?.status === 'no_match' && same)) return null;
   }
-  if (candidates.length === 0) return done({ ...base, ...meaning, status: 'no_candidates', candidateIds: [] });
+  // A matched division whose question has gone: keep the match (it is not a verdict on the vote).
+  if (candidates.length === 0) return previous?.status === 'matched' ? failed(base, 'the matched question is no longer a candidate') : done({ ...base, ...meaning, status: 'no_candidates', candidateIds: [] });
   if (result.calls === 0 && deps.callsLeft < 2) return null; // the match, and the claims check if it matches
   const answer = await call(
     MATCH_SYSTEM_PROMPT,
     matchUserPrompt({ taMeans: meaning.taMeans ?? '', quote: meaning.quote ?? '', divisionKind: meaning.divisionKind as DivisionKind }, candidates),
   );
   const matchBase: NewDivisionReading = { ...base, ...meaning, ...noMatch(), candidateIds: ids, matchCheckedAt: deps.now };
-  if (answer instanceof Error) return failed(matchBase, answer.message);
+  if (answer instanceof Error) return transport(answer);
   const reply = parseMatch(answer.content);
   if (!reply) return failed({ ...matchBase, ...usage(answer) }, 'unusable model output');
   const check = verifyMatch(reply, candidates, proposalText);
@@ -369,17 +411,22 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
     const refused = check.overstated ? { matchReason: `Refused: the answer names ${check.overstated.join(', ')}, which the proposal does not. Model said: ${reply.reason}`.slice(0, 500) } : {};
     return done({ ...checked, ...refused, status: 'no_match' });
   }
-  if (check.status === 'rejected') return done({ ...checked, status: 'rejected', rejectReason: check.reason });
+  if (check.status === 'rejected') {
+    // A reply naming a question or answer that was not offered is a bad reply, not a verdict on a matched vote.
+    if (previous?.status === 'matched') return failed({ ...matchBase, ...usage(answer) }, 'the model named a question or answer that was not offered');
+    return done({ ...checked, status: 'rejected', rejectReason: check.reason });
+  }
   const question = candidates.find((c) => c.id === check.questionId)!;
   const label = (key: string | null) => question.options.find((o) => o.key === key)?.label ?? null;
 
   // ---- call 3: for each claim in the matched answer, the proposal's own words that state it ----
   // The whole allowed proposal, not the stored quote: a claim may be stated outside the excerpt chosen for it.
   const fitAnswer = await call(FIT_SYSTEM_PROMPT, fitUserPrompt({ proposal: proposalText, answer: label(check.taOption)! }));
-  if (fitAnswer instanceof Error) return failed({ ...matchBase, ...usage(answer) }, fitAnswer.message);
+  if (fitAnswer instanceof Error) return transport(fitAnswer);
   const claims = parseFit(fitAnswer.content);
   if (!claims) return failed({ ...matchBase, ...usage(fitAnswer) }, 'unusable model output');
-  const unstated = verifyFit(claims, proposalText);
+  // Each claim's support must sit inside one block: words joined across two blocks are not a passage of the proposal.
+  const unstated = verifyFit(claims, proposalTexts);
   if (unstated.length > 0) {
     return done({
       ...checked,
@@ -418,7 +465,7 @@ export interface ClassifySummary {
   completionTokens: number;
   /** Divisions read with a model call, in the order read. */
   readings: DivisionReading[];
-  /** Why the run stopped early (the provider is out of credit), if it did. */
+  /** Why the run stopped early: the provider is out of credit, or the model calls kept failing. null when it ran to its end. */
   stopped: string | null;
 }
 
@@ -448,6 +495,7 @@ export async function classifyDivisions(options: ClassifyOptions = {}): Promise<
     readings: [],
     stopped: null,
   };
+  let throwing = 0;
   for (const w of work) {
     if (limit !== null && summary.read >= limit) break;
     const callsLeft = maxCalls === null ? Number.POSITIVE_INFINITY : maxCalls - summary.calls;
@@ -468,6 +516,16 @@ export async function classifyDivisions(options: ClassifyOptions = {}): Promise<
       summary.promptTokens += result.promptTokens;
       summary.completionTokens += result.completionTokens;
       summary.readings.push(result.reading);
+    }
+    // A provider that is down, out of credit or refusing us fails every call: stop after a few in a row
+    // instead of spending the whole budget on errors.
+    if (result.transportError) {
+      if (++throwing >= MAX_CONSECUTIVE_ERRORS) {
+        summary.stopped = `${throwing} model calls in a row failed: ${result.reading.error ?? 'no message'}`;
+        break;
+      }
+    } else if (result.calls > 0) {
+      throwing = 0;
     }
     if (!result.row) continue;
     summary.statuses[result.row.status as DivisionReadingStatus]++;

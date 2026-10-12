@@ -80,9 +80,10 @@ describe('parseFit', () => {
     expect(parseFit(json({ claims: [{ claim: 'no support key' }] }))).toEqual([{ claim: 'no support key', support: null }]);
   });
 
-  it('drops blank claims and keeps at most eight', () => {
+  it('drops blank claims and keeps every other one', () => {
     expect(parseFit(json({ claims: [{ claim: '  ', support: 'x' }, { claim: 'real', support: null }] }))).toEqual([{ claim: 'real', support: null }]);
-    expect(parseFit(json({ claims: Array.from({ length: 12 }, (_, i) => ({ claim: `c${i}`, support: null })) }))).toHaveLength(8);
+    // None is cut off: a claim past some number would be one that is never checked.
+    expect(parseFit(json({ claims: Array.from({ length: 12 }, (_, i) => ({ claim: `c${i}`, support: null })) }))).toHaveLength(12);
   });
 
   it('is null for bad JSON, a wrong shape, or no claims at all, so an unusable check is never read as "nothing to check"', () => {
@@ -353,6 +354,14 @@ describe('proposalBlocks', () => {
     expect(a1.text).toContain('In page 3, between lines 23 and 24, to insert the following:');
     expect(a1.text).toContain('defective concrete blocks');
     expect(a1.text).not.toContain('I thank the Deputy for raising this matter');
+  });
+
+  it('"I move on to…" does not open a block (its remarks would join the proposal text); "I move that…" and "I move amendment…" do', () => {
+    const only = (text: string) => proposalBlocks({ ...context, bills: [], speeches: [speech({ text })] }).map((b) => b.label);
+    expect(only('I move on to the next point, which is the cost of the relief, now at 50,000 euro.')).toEqual(['Q']);
+    expect(only('I move to the amendment on page 4, and the figure there is 50,000 euro.')).toEqual(['Q']);
+    expect(only('I move that the Dáil calls on the Government to cap rents.')).toEqual(['Q', 'M1']);
+    expect(only('I move amendment No. 3: In page 4, line 9, to insert a cap.')).toEqual(['Q', 'A1']);
   });
 
   it('"I move amendment" is an A block, any other "I move" an M block, numbered in document order', () => {
