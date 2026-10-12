@@ -30,7 +30,7 @@ export const newsSources = politics.table('news_sources', {
   logoUrl: text('logo_url'),
   enabled: boolean('enabled').notNull().default(true),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
-});
+}).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Articles.
@@ -84,7 +84,7 @@ export const newsArticles = politics.table(
     index('news_articles_duplicate_of_idx').on(t.duplicateOf).where(sql`${t.duplicateOf} is not null`),
     check('news_articles_duplicate_link_chk', sql`(${t.status} = 'duplicate') = (${t.duplicateOf} is not null)`),
   ],
-);
+).enableRLS();
 
 export type NewsSourceRow = typeof newsSources.$inferSelect;
 export type NewsArticleRow = typeof newsArticles.$inferSelect;

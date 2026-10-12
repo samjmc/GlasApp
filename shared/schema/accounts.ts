@@ -34,6 +34,6 @@ export const users = politics.table(
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [uniqueIndex('users_phone_number_idx').on(t.phoneNumber).where(sql`${t.phoneNumber} is not null`)],
-);
+).enableRLS();
 
 export type UserRow = typeof users.$inferSelect;

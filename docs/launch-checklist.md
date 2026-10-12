@@ -43,6 +43,8 @@ In the Supabase dashboard (Authentication):
    so the link works in any browser.
 6. **SMTP:** set a real sender. Supabase's built-in sender is rate limited and meant for testing.
 7. **Database, API settings:** confirm the `politics` schema is **not** exposed through the public API.
+   Migration 0026 is the second line: `anon` and `authenticated` have no grant on the schema, and every
+   table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
    (`docs/deploy.md` section 3). GlasCore already has 0000 to 0023.
 
