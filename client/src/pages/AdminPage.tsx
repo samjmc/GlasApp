@@ -296,7 +296,7 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
 function EvidenceEditor({ pledgeId }: { pledgeId: number }) {
   const { toast } = useToast();
   const invalidate = useInvalidatePledges();
-  const detail = useQuery({ queryKey: ["/api/pledges", pledgeId], queryFn: () => pledgesApi.get(pledgeId) });
+  const detail = useQuery({ queryKey: ["/api/pledges", pledgeId], queryFn: () => pledgesApi.get(pledgeId), meta: { toastOnError: true } });
   const [kind, setKind] = useState<EvidenceKind>("policy_implemented");
   const [summary, setSummary] = useState("");
   const [occurredOn, setOccurredOn] = useState(today());
