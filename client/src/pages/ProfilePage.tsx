@@ -61,7 +61,7 @@ const ProfilePage = () => {
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
   const [isSavingProfile, setIsSavingProfile] = useState(false);
-  const { granted: consentGranted, known: consentKnown, grant: grantConsent, withdraw: withdrawConsent } = usePoliticalConsent();
+  const { granted: consentGranted, known: consentKnown, failed: consentFailed, grant: grantConsent, withdraw: withdrawConsent } = usePoliticalConsent();
   const [isChangingConsent, setIsChangingConsent] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
 
@@ -439,13 +439,15 @@ const ProfilePage = () => {
               <p className="text-sm text-muted-foreground" role="status">
                 {!consentKnown
                   ? 'Checking your choice…'
-                  : consentGranted
-                    ? 'You agreed to us keeping them. You can withdraw at any time.'
-                    : 'You have not agreed to the current wording. You can still take the quiz and see your result, but we do not save it. Anything saved earlier stays until you agree again or delete it.'}
+                  : consentFailed
+                    ? 'We could not check your choice just now. Reload the page to try again. You can still delete your saved opinions.'
+                    : consentGranted
+                      ? 'You agreed to us keeping them. You can withdraw at any time.'
+                      : 'You have not agreed to the current wording. You can still take the quiz and see your result, but we do not save it. Anything saved earlier stays until you agree again or delete it.'}
               </p>
             </CardContent>
             <CardFooter className="justify-end gap-2">
-              {consentKnown && !consentGranted && (
+              {consentKnown && !consentFailed && !consentGranted && (
                 <Button onClick={() => changeConsent('grant')} disabled={isChangingConsent}>
                   {isChangingConsent && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
                   I agree
@@ -506,7 +508,7 @@ const ProfilePage = () => {
                 </Alert>
               )}
               <p className="text-sm text-muted-foreground">
-                This action is irreversible. We will remove your Supabase Auth account and scrub personal data from all analytics tables. You can create a new account later, but your historical insights will not be recoverable.
+                This action is irreversible. We will remove your sign-in account and everything Glas Politics holds about you: your profile, quiz results, votes, rankings and daily sessions. You can create a new account later, but your historical insights will not be recoverable.
               </p>
             </CardContent>
             <CardFooter className="flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">

@@ -3,6 +3,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "@/contexts/AuthContext";
 import { fetchProfileMe, profileMeKey, useProfileMe } from "@/hooks/useProfileMe";
 import { apiRequest } from "@/lib/queryClient";
+import { clearAllQuizStorage } from "@/lib/quizStorage";
 import { POLITICAL_CONSENT_POINTS, POLITICAL_CONSENT_STATEMENT, POLITICAL_CONSENT_VERSION, hasPoliticalConsent } from "@shared/consent";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -17,8 +18,10 @@ interface EnsureOptions {
 interface ConsentValue {
   /** The signed-in user has agreed to the current wording. False while unknown and when signed out. */
   granted: boolean;
-  /** The answer is known: signed out, or the profile has loaded (or failed to). False while it loads. */
+  /** The answer is settled: signed out, or the profile has loaded (or failed to). False while it loads. */
   known: boolean;
+  /** The profile could not be loaded, so `granted` is false only because nothing is known. Do not say "you have not agreed". */
+  failed: boolean;
   /**
    * Call before saving anything that shows a political opinion. Resolves true when saving is allowed
    * (the user agreed now or before, or is signed out and nothing is saved) and false when they said no.
@@ -50,6 +53,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
 
   const granted = isAuthenticated && hasPoliticalConsent(profile.data?.data?.user);
   const known = !isAuthenticated || profile.isSuccess || profile.isError;
+  const failed = isAuthenticated && profile.isError && !profile.isSuccess;
   const userId = user?.id;
 
   // A different person signing in on this device starts with a clean slate.
@@ -66,7 +70,9 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const withdraw = useCallback(async () => {
     await apiRequest({ method: "DELETE", path: CONSENT_PATH });
     declined.current = false;
-    // Their quiz history, votes and rankings are gone on the server: drop every cached copy.
+    // Their quiz history, votes and rankings are gone on the server: drop every cached copy, including
+    // the result this tab holds (the results page would otherwise go on showing it as "saved").
+    clearAllQuizStorage();
     await queryClient.invalidateQueries();
   }, [queryClient]);
 
@@ -109,7 +115,7 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const value = useMemo(() => ({ granted, known, ensure, grant, withdraw }), [granted, known, ensure, grant, withdraw]);
+  const value = useMemo(() => ({ granted, known, failed, ensure, grant, withdraw }), [granted, known, failed, ensure, grant, withdraw]);
 
   return (
     <ConsentContext.Provider value={value}>

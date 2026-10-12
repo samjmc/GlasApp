@@ -1,7 +1,8 @@
 import React, { createContext, useContext, ReactNode, useEffect, useRef, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { supabase, type User } from '@/lib/supabase';
-import { shouldClearCache } from '@/lib/authCache';
+import { shouldClearCache, shouldClearQuizStorage } from '@/lib/authCache';
+import { clearAllQuizStorage } from '@/lib/quizStorage';
 
 interface AuthUser {
   id: string;
@@ -100,6 +101,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const nextUserId = session?.user?.id ?? null;
       // Cleared before setUser, so queries that start for the new user are fresh.
       if (shouldClearCache(cacheUserIdRef.current, nextUserId, event)) queryClient.clear();
+      // The quiz result kept in this tab is the previous person's opinions: not for the next person to see.
+      if (shouldClearQuizStorage(cacheUserIdRef.current, nextUserId, event)) clearAllQuizStorage();
       cacheUserIdRef.current = nextUserId;
       setUser(convertSupabaseUser(session?.user ?? null));
       setIsLoading(false);
@@ -149,6 +152,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       // Even if signout fails, clear local user state (and the data cached for that user)
       queryClient.clear();
+      clearAllQuizStorage();
       setUser(null);
       throw new Error('Failed to sign out. Please try again.');
     }

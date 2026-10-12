@@ -65,6 +65,17 @@ export function clearStoredQuiz(): void {
   write(session, RESULT_SEED_KEY, null);
 }
 
+/**
+ * Everything of the person's quiz that the tab holds: the result, its answers and seed, and the
+ * in-progress draft. For a sign-out, a different person signing in, and a withdrawal of consent (the
+ * server has erased what these were copies of). The device's seed and the match weights stay: they are
+ * not opinions about a person.
+ */
+export function clearAllQuizStorage(): void {
+  clearStoredQuiz();
+  write(session, DRAFT_KEY, null);
+}
+
 /** An in-progress quiz: its seed and the answers so far (question id → answer index). */
 export interface QuizDraft {
   seed: number;
