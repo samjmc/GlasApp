@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ProposalBlock, MatchReply, MeaningReply } from './divisionPrompt';
-import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, figuresIn, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
+import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, MIN_SUPPORT_WORDS, figuresIn, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
 
 const MOTION =
   'That Dáil Éireann calls on the Government to build fifty thousand public homes every year on public land, and to end the use of tax reliefs for investment funds.';
@@ -47,6 +47,10 @@ describe('verifyMeaning: the as-amended and countermotion questions (GApp 3b)', 
 
   it('(iv) unclear: ambiguous', () => {
     expect(verifyMeaning(reply({ divisionKind: 'unclear' }), PMM)).toEqual({ status: 'rejected', reason: 'ambiguous' });
+  });
+
+  it('(v) a blank Tá meaning is invalid: a matched reading has to carry one (the database refuses it otherwise)', () => {
+    expect(verifyMeaning(reply({ taMeans: '' }), PMM)).toEqual({ status: 'rejected', reason: 'invalid' });
   });
 });
 
@@ -105,7 +109,14 @@ describe('verifyFit', () => {
   it('a claim whose support is really in the proposal is stated, whatever the case, quote marks or spacing', () => {
     expect(verifyFit([{ claim: 'remove the wait', support: 'removal of the 3 day waiting period' }], PROPOSAL)).toEqual([]);
     expect(verifyFit([{ claim: 'doctors', support: '  Ending  the CRIMINALISATION of doctors ' }], PROPOSAL)).toEqual([]);
-    expect(verifyFit([{ claim: 'report', support: 'the Marie O\'Shea report' }], PROPOSAL)).toEqual([]);
+    expect(verifyFit([{ claim: 'report', support: 'recommendations of the Marie O\'Shea report' }], PROPOSAL)).toEqual([]);
+  });
+
+  it('punctuation around the copied words does not matter, inside them it still has to match', () => {
+    // The proposal has a comma after "period"; the model copied a full stop, or quote marks, around the words.
+    expect(verifyFit([{ claim: 'wait', support: 'removal of the 3 day waiting period.' }], PROPOSAL)).toEqual([]);
+    expect(verifyFit([{ claim: 'wait', support: '“removal of the 3 day waiting period,”' }], PROPOSAL)).toEqual([]);
+    expect(verifyFit([{ claim: 'wait', support: 'removal of the 3-day waiting period' }], PROPOSAL)).toEqual(['wait']);
   });
 
   it('a claim with no support, invented support, paraphrased support, or support too short to mean anything is not stated', () => {
@@ -121,6 +132,15 @@ describe('verifyFit', () => {
       PROPOSAL,
     );
     expect(unstated).toEqual(['no support', 'invented', 'paraphrased', 'too short', 'joined']);
+  });
+
+  it('needs MIN_SUPPORT_WORDS words, and whole words only', () => {
+    expect(MIN_SUPPORT_WORDS).toBe(5);
+    // Four real words from the proposal are not enough to vouch for anything; five are.
+    expect(verifyFit([{ claim: 'five', support: 'ending the criminalisation of doctors' }], PROPOSAL)).toEqual([]);
+    expect(verifyFit([{ claim: 'four', support: 'the criminalisation of doctors' }], PROPOSAL)).toEqual(['four']);
+    // A support that only matches part of a word in the proposal is not the proposal's words.
+    expect(verifyFit([{ claim: 'partial', support: 'the removal of the 3 day waiting peri' }], PROPOSAL)).toEqual(['partial']);
   });
 
   it('every claim must be supported: one unstated claim among stated ones is returned alone', () => {
@@ -149,26 +169,24 @@ describe('verifyMatch', () => {
     { id: 7, options: [{ key: 'option_a' }, { key: 'option_b' }, { key: 'option_c' }] },
     { id: 9, options: [{ key: 'option_a' }, { key: 'option_b' }] },
   ];
-  const match = (over: Partial<MatchReply> = {}): MatchReply => ({ questionId: 7, taOption: 'option_a', nilOption: 'option_b', confidence: 0.8, reason: 'r', ...over });
+  const match = (over: Partial<MatchReply> = {}): MatchReply => ({ questionId: 7, taOption: 'option_a', confidence: 0.8, reason: 'r', ...over });
   const PROPOSAL = 'Financial Resolution No. 1 raises the maximum relief from €30,000 to €35,000. A Tá vote supported raising the relief.';
 
-  it('a candidate that was sent, with its own keys, at 0.7 or more, is a match', () => {
-    expect(verifyMatch(match(), candidates, PROPOSAL)).toEqual({ status: 'matched', questionId: 7, taOption: 'option_a', nilOption: 'option_b', confidence: 0.8, reason: 'r' });
-    expect(verifyMatch(match({ nilOption: null, confidence: MIN_MATCH_CONFIDENCE }), candidates, PROPOSAL)).toMatchObject({ status: 'matched', nilOption: null });
+  it('a candidate that was sent, with its own key, at 0.7 or more, is a match; only the Tá answer is kept', () => {
+    expect(verifyMatch(match(), candidates, PROPOSAL)).toEqual({ status: 'matched', questionId: 7, taOption: 'option_a', confidence: 0.8, reason: 'r' });
+    expect(verifyMatch(match({ confidence: MIN_MATCH_CONFIDENCE }), candidates, PROPOSAL)).toMatchObject({ status: 'matched' });
   });
 
   it('no question, or below 0.7, is no_match', () => {
-    expect(verifyMatch(match({ questionId: null, taOption: null, nilOption: null }), candidates, PROPOSAL)).toEqual({ status: 'no_match' });
+    expect(verifyMatch(match({ questionId: null, taOption: null }), candidates, PROPOSAL)).toEqual({ status: 'no_match' });
     expect(verifyMatch(match({ confidence: 0.69 }), candidates, PROPOSAL)).toEqual({ status: 'no_match' });
   });
 
-  it('a question not sent, an unknown key, Tá = Níl, or Níl without Tá rejects the whole match', () => {
+  it('a question not sent, or an unknown or missing key, rejects the whole match', () => {
     const invalid = { status: 'rejected', reason: 'invalid' };
     expect(verifyMatch(match({ questionId: 8 }), candidates, PROPOSAL)).toEqual(invalid);
     expect(verifyMatch(match({ taOption: 'option_z' }), candidates, PROPOSAL)).toEqual(invalid);
-    expect(verifyMatch(match({ questionId: 9, taOption: 'option_c', nilOption: null }), candidates, PROPOSAL)).toEqual(invalid);
-    expect(verifyMatch(match({ nilOption: 'option_z' }), candidates, PROPOSAL)).toEqual(invalid);
-    expect(verifyMatch(match({ nilOption: 'option_a' }), candidates, PROPOSAL)).toEqual(invalid);
+    expect(verifyMatch(match({ questionId: 9, taOption: 'option_c' }), candidates, PROPOSAL)).toEqual(invalid);
     expect(verifyMatch(match({ taOption: null }), candidates, PROPOSAL)).toEqual(invalid);
   });
 
@@ -177,15 +195,15 @@ describe('verifyMatch', () => {
 
     it('refuses "€50,000" when the proposal says €35,000, and lists the figure', () => {
       const answer = labelled('Raise the Help to Buy tax refund threshold to €50,000 to boost first-time buyers.');
-      expect(verifyMatch(match({ nilOption: null }), answer, PROPOSAL)).toEqual({ status: 'no_match', overstated: ['50000'] });
+      expect(verifyMatch(match(), answer, PROPOSAL)).toEqual({ status: 'no_match', overstated: ['50000'] });
     });
 
     it('accepts a figure the proposal does name, however it is written', () => {
-      expect(verifyMatch(match({ nilOption: null }), labelled('Raise the relief to €35,000.'), PROPOSAL)).toMatchObject({ status: 'matched' });
-      expect(verifyMatch(match({ nilOption: null }), labelled('Raise the relief to 35000 euro.'), PROPOSAL)).toMatchObject({ status: 'matched' });
+      expect(verifyMatch(match(), labelled('Raise the relief to €35,000.'), PROPOSAL)).toMatchObject({ status: 'matched' });
+      expect(verifyMatch(match(), labelled('Raise the relief to 35000 euro.'), PROPOSAL)).toMatchObject({ status: 'matched' });
     });
 
-    it('checks the Tá answer only, and an answer with no figure is never refused', () => {
+    it('an answer with no figure is never refused, whatever the other answers say', () => {
       const answer = [{ id: 7, options: [{ key: 'option_a', label: 'Raise the relief.' }, { key: 'option_b', label: 'Keep it at €99,999' }] }];
       expect(verifyMatch(match(), answer, PROPOSAL)).toMatchObject({ status: 'matched' });
     });
