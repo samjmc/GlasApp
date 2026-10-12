@@ -20,6 +20,7 @@ import { partyStyle } from '@/lib/parties';
 import { formatScore } from '@/lib/score';
 import { apiCall, orNullOn404 } from '@/lib/api';
 import { decodeParam } from '@/lib/routeParam';
+import { queryKeys } from '@/lib/queryKeys';
 
 type PartyBreakdownEntry = {
   party: string;
@@ -63,7 +64,7 @@ export default function ConstituencyProfilePage() {
   const name = decodeParam(useParams<{ name: string }>().name);
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery<ConstituencyDetail | null>({
-    queryKey: ['constituency-profile', name],
+    queryKey: queryKeys.constituency.profile(name),
     queryFn: () => orNullOn404(apiCall<ConstituencyDetail>('GET', `/api/scores/constituency/${encodeURIComponent(name || '')}`)),
     enabled: !!name,
   });

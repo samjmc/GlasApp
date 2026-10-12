@@ -21,6 +21,7 @@ import { PartyMixBar } from '@/components/data/PartyMixBar';
 import OfficialElectoralMap from '@/components/OfficialElectoralMap';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { apiCall } from '@/lib/api';
+import { queryKeys } from '@/lib/queryKeys';
 import { cn } from '@/lib/utils';
 
 interface ConstituencyParty {
@@ -125,13 +126,13 @@ export default function ConstituenciesPage() {
   const [query, setQuery] = useState('');
 
   const { data: summary, isLoading, isError, refetch, isFetching } = useQuery<ConstituencySummaryData>({
-    queryKey: ['constituencies-summary'],
+    queryKey: queryKeys.constituency.summary(),
     queryFn: () => apiCall<ConstituencySummaryData>('GET', '/api/scores/constituencies/summary'),
   });
   const data = summary?.constituencies ?? [];
 
   const { data: selectedData } = useQuery<ConstituencyDetail>({
-    queryKey: ['constituency-detail', selectedConstituency],
+    queryKey: queryKeys.constituency.detail(selectedConstituency),
     queryFn: () => apiCall<ConstituencyDetail>('GET', `/api/scores/constituency/${encodeURIComponent(selectedConstituency!)}`),
     enabled: !!selectedConstituency,
   });

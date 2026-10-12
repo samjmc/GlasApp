@@ -96,7 +96,7 @@ const QuizResultsPage: React.FC = () => {
             }
             storeQuiz(saved, stored.answers, stored.seed);
             setStored({ result: saved, answers: stored.answers, seed: stored.seed });
-            await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
+            await queryClient.invalidateQueries({ queryKey: queryKeys.quiz.all() });
             await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
             toast({ title: "Result saved", description: "Your quiz result is saved to your profile." });
           })

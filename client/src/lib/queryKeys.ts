@@ -6,24 +6,22 @@ export const queryKeys = {
   td: {
     scoresWidget: () => ["td-scores-widget-v3"] as const,
     quickInfo: (tdId: number) => ["td-quick-info", tdId] as const,
-    constituencyScores: (constituency: string) =>
-      ["constituency-scores", constituency] as const,
-    profile: (name: string) => ["td-profile", name] as const,
-    profileV3: (name: string) => ["td-profile-v3", name] as const,
-    consistency: (politicianName: string | undefined) =>
-      ["td-consistency", politicianName] as const,
-    forChat: () => ["tds-for-chat"] as const,
+    /** GET /api/scores/td/:name. v4: the score is built from Oireachtas facts only. */
+    profile: (name: string | undefined) => ["td-profile-v4", name] as const,
     rankings: () => ["td-rankings"] as const,
     news: (name: string) => ["td-news-v3", name] as const,
     /** GET /api/stances/td/:id */
     stances: (tdId: number) => ["/api/stances/td", tdId] as const,
   },
   party: {
-    rankings: () => ["party-rankings-v4"] as const,
-    quickInfo: (partyName: string) => ["party-quick-info", partyName] as const,
-    profile: (name: string) => ["party-profile", name] as const,
-    tds: (partyName: string) => ["party-tds", partyName] as const,
-    polling: (party: string | undefined) => ["party-polling", party] as const,
+    /** GET /api/scores/party/:name plus its row from /api/scores/parties. */
+    profile: (name: string | undefined) => ["party-profile-v2", name] as const,
+  },
+  constituency: {
+    summary: () => ["constituencies-summary"] as const,
+    /** The map's side panel and the constituency page read the same endpoint under their own keys. */
+    detail: (name: string | null) => ["constituency-detail", name] as const,
+    profile: (name: string | undefined) => ["constituency-profile", name] as const,
   },
   news: {
     feed: (sortBy: string, page: number) => ["news-feed-v7", sortBy, page] as const,
@@ -57,6 +55,7 @@ export const queryKeys = {
     bill: (id: string) => ["parliament-bill", id] as const,
   },
   quiz: {
+    all: () => ["/api/quiz/me"] as const,
     /** GET /api/quiz/me — scoped by user so a sign-out/sign-in never shows the last user's rows. */
     mine: (userId: string | undefined) => ["/api/quiz/me", userId] as const,
   },
@@ -81,10 +80,20 @@ export const queryKeys = {
     data: (regionCode: string) => ["global-search-data", regionCode] as const,
   },
   pledges: {
+    all: () => ["/api/pledges"] as const,
+    /** GET /api/pledges?party= */
+    list: (party: string) => ["/api/pledges", "party", party] as const,
+    /** GET /api/pledges/:id, with its evidence. */
+    detail: (id: number) => ["/api/pledges", id] as const,
     /** GET /api/pledges/priorities: `mine` is the caller's ranking, so it is scoped by user. */
     priorities: (userId: string | undefined) => ["/api/pledges/priorities", userId] as const,
+    partiesAll: () => ["/api/pledges/parties"] as const,
     /** GET /api/pledges/parties: the delivery rate is weighted by the caller's ranking, so scoped by user. */
     parties: (userId: string | undefined) => ["/api/pledges/parties", userId] as const,
+  },
+  leaveWatch: {
+    all: () => ["/api/parliament/admin/leave-alerts"] as const,
+    list: (scope: "open" | "all") => ["/api/parliament/admin/leave-alerts", scope] as const,
   },
   /** GET /api/daily-session: the signed-in user's own session. */
   dailySession: (regionCode: string | null, userId: string | undefined) =>

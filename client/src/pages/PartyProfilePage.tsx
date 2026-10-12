@@ -77,7 +77,7 @@ export default function PartyProfilePage() {
 
   // null = no such party (404).
   const { data: party, isLoading, error, refetch, isFetching } = useQuery<PartyProfile | null>({
-    queryKey: ['party-profile-v2', name],
+    queryKey: queryKeys.party.profile(name),
     queryFn: async () => {
       const [detail, rankings] = await Promise.all([
         orNullOn404(apiCall<PartyDetail>('GET', `/api/scores/party/${encodeURIComponent(name || '')}`)),

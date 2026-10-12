@@ -37,7 +37,7 @@ function PledgeRow({ pledge }: { pledge: Pledge }) {
   const [open, setOpen] = useState(false);
   const evidenceId = useId();
   const detail = useQuery({
-    queryKey: ["/api/pledges", pledge.id],
+    queryKey: queryKeys.pledges.detail(pledge.id),
     queryFn: () => pledgesApi.get(pledge.id),
     enabled: open && pledge.evidenceCount > 0,
   });
@@ -109,7 +109,7 @@ function PledgeRow({ pledge }: { pledge: Pledge }) {
  * No score is computed here: a status is set by a person reviewing sourced evidence.
  */
 export function PartyPledgesPanel({ party }: { party: string }) {
-  const pledges = useQuery({ queryKey: ["/api/pledges", "party", party], queryFn: () => pledgesApi.list(party) });
+  const pledges = useQuery({ queryKey: queryKeys.pledges.list(party), queryFn: () => pledgesApi.list(party) });
   const { user } = useAuth();
   const summaries = useQuery({ queryKey: queryKeys.pledges.parties(user?.id), queryFn: pledgesApi.parties });
   const summary = summaries.data?.find((s) => s.party.toLowerCase() === party.toLowerCase());
