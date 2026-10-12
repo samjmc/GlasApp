@@ -1,40 +1,19 @@
-import React, { createContext, useContext, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { createContext, useCallback, useContext, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { supabase, type User } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import { shouldClearCache } from '@/lib/authCache';
 import { apiCall } from '@/lib/api';
-
-interface AuthUser {
-  id: string;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  profileImageUrl?: string;
-  displayName?: string;
-  username?: string;
-  county?: string;
-  bio?: string;
-  role?: string;
-}
+import { sameAuthUser, toAuthUser, type AuthUser } from '@/lib/authUser';
 
 interface AuthContextType {
   user: AuthUser | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  updateProfile?: (data: Partial<AuthUser>) => Promise<void>;
-  logout?: () => Promise<void>;
-  deleteAccount?: () => Promise<void>;
-  signInWithGoogle?: () => Promise<void>;
-  signInWithMagicLink?: (email: string) => Promise<{ success: boolean; message?: string }>;
-  login?: (username: string, password: string) => Promise<{ success: boolean; message?: string }>;
-  register?: (data: {
-    username: string;
-    email: string;
-    password: string;
-    firstName?: string;
-    lastName?: string;
-    county?: string;
-  }) => Promise<{ success: boolean; message?: string }>;
+  updateProfile: (data: Partial<AuthUser>) => Promise<void>;
+  logout: () => Promise<void>;
+  deleteAccount: () => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
+  signInWithMagicLink: (email: string) => Promise<{ success: boolean; message?: string }>;
 }
 
 const defaultContext: AuthContextType = {
@@ -46,31 +25,9 @@ const defaultContext: AuthContextType = {
   deleteAccount: async () => {},
   signInWithGoogle: async () => {},
   signInWithMagicLink: async () => ({ success: false, message: "Not implemented" }),
-  login: async () => ({ success: false, message: "Not implemented" }),
-  register: async () => ({ success: false, message: "Not implemented" }),
 };
 
 const AuthContext = createContext<AuthContextType>(defaultContext);
-
-// Convert Supabase User to AuthUser
-function convertSupabaseUser(supabaseUser: User | null): AuthUser | null {
-  if (!supabaseUser) return null;
-
-  return {
-    id: supabaseUser.id,
-    email: supabaseUser.email,
-    firstName: supabaseUser.user_metadata?.first_name || supabaseUser.user_metadata?.given_name,
-    lastName: supabaseUser.user_metadata?.last_name || supabaseUser.user_metadata?.family_name,
-    // glas_avatar_url is our upload; Google rewrites avatar_url and picture at every sign-in.
-    profileImageUrl:
-      supabaseUser.user_metadata?.glas_avatar_url || supabaseUser.user_metadata?.avatar_url || supabaseUser.user_metadata?.picture,
-    displayName: supabaseUser.user_metadata?.full_name || supabaseUser.user_metadata?.name,
-    username: supabaseUser.user_metadata?.username,
-    county: supabaseUser.user_metadata?.county,
-    bio: supabaseUser.user_metadata?.bio,
-    role: supabaseUser.app_metadata?.role,
-  };
-}
 
 /** React context provider for auth state. */
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -81,11 +38,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const cacheUserIdRef = useRef<string | null | undefined>(undefined);
 
   useEffect(() => {
+    // A token refresh sends the same person again: keep the old object, so nothing re-renders.
+    const applyUser = (next: AuthUser | null) => setUser((prev) => (sameAuthUser(prev, next) ? prev : next));
+
     // Get initial session
     supabase.auth.getSession()
       .then(({ data: { session } }) => {
         if (cacheUserIdRef.current === undefined) cacheUserIdRef.current = session?.user?.id ?? null;
-        setUser(convertSupabaseUser(session?.user ?? null));
+        applyUser(toAuthUser(session?.user ?? null));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -102,14 +62,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       // Cleared before setUser, so queries that start for the new user are fresh.
       if (shouldClearCache(cacheUserIdRef.current, nextUserId, event)) queryClient.clear();
       cacheUserIdRef.current = nextUserId;
-      setUser(convertSupabaseUser(session?.user ?? null));
+      applyUser(toAuthUser(session?.user ?? null));
       setIsLoading(false);
     });
 
     return () => subscription.unsubscribe();
   }, [queryClient]);
 
-  const updateProfile = async (data: Partial<AuthUser>) => {
+  const updateProfile = useCallback(async (data: Partial<AuthUser>) => {
     try {
       const { error } = await supabase.auth.updateUser({
         data: {
@@ -137,9 +97,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       throw error;
     }
-  };
+  }, []);
 
-  const logout = async () => {
+  const logout = useCallback(async () => {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
@@ -153,9 +113,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setUser(null);
       throw new Error('Failed to sign out. Please try again.');
     }
-  };
+  }, [queryClient]);
 
-  const deleteAccount = async () => {
+  const deleteAccount = useCallback(async () => {
     try {
       const {
         data: { session },
@@ -179,9 +139,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         ? error
         : new Error('Failed to delete account. Please try again.');
     }
-  };
+  }, []);
 
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = useCallback(async () => {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
@@ -202,9 +162,9 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       throw error;
     }
-  };
+  }, []);
 
-  const signInWithMagicLink = async (email: string) => {
+  const signInWithMagicLink = useCallback(async (email: string) => {
     try {
       const { error } = await supabase.auth.signInWithOtp({
         email,
@@ -224,69 +184,22 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       return { success: false, message: error instanceof Error ? error.message : 'Failed to send magic link.' };
     }
-  };
+  }, []);
 
-  const login = async (username: string, password: string) => {
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: username.includes('@') ? username : `${username}@example.com`, // Handle username or email
-        password,
-      });
-
-      if (error) {
-        return { success: false, message: error.message || 'Login failed' };
-      }
-
-      return { success: true };
-    } catch (error) {
-      return { success: false, message: error instanceof Error ? error.message : 'Login failed' };
-    }
-  };
-
-  const register = async (data: {
-    username: string;
-    email: string;
-    password: string;
-    firstName?: string;
-    lastName?: string;
-    county?: string;
-  }) => {
-    try {
-      const { error } = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          data: {
-            username: data.username,
-            first_name: data.firstName,
-            last_name: data.lastName,
-            county: data.county,
-          },
-        },
-      });
-
-      if (error) {
-        return { success: false, message: error.message || 'Registration failed' };
-      }
-
-      return { success: true };
-    } catch (error) {
-      return { success: false, message: error instanceof Error ? error.message : 'Registration failed' };
-    }
-  };
-
-  const value: AuthContextType = {
-    user,
-    isLoading,
-    isAuthenticated: !!user,
-    updateProfile,
-    logout,
-    deleteAccount,
-    signInWithGoogle,
-    signInWithMagicLink,
-    login,
-    register,
-  };
+  // A new object only when something changed, so useAuth() consumers do not re-render on every render here.
+  const value = useMemo<AuthContextType>(
+    () => ({
+      user,
+      isLoading,
+      isAuthenticated: !!user,
+      updateProfile,
+      logout,
+      deleteAccount,
+      signInWithGoogle,
+      signInWithMagicLink,
+    }),
+    [user, isLoading, updateProfile, logout, deleteAccount, signInWithGoogle, signInWithMagicLink]
+  );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

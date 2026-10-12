@@ -58,36 +58,46 @@ const STEPS: OnboardingStep[] = [
   },
 ];
 
+/** Also kept on the device, so a failed account write does not bring the card back. */
+const SEEN_KEY = 'glas.onboardingSeen';
+
+function seenOnThisDevice(userId: string): boolean {
+  try {
+    return window.localStorage.getItem(SEEN_KEY) === userId;
+  } catch {
+    return false;
+  }
+}
+
 /** Multi-step onboarding shown once to new signed-in users. */
 export function OnboardingModal() {
-  const { user, isAuthenticated } = useAuth();
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  // The flag is in the session already; no need to ask Supabase again on each auth event.
+  const shouldOpen = !!user && !user.hasSeenOnboarding && !seenOnThisDevice(user.id);
 
   useEffect(() => {
-    if (!isAuthenticated || !user) return;
-    let cancelled = false;
-    let timer: ReturnType<typeof setTimeout> | undefined;
-    supabase.auth.getUser().then(({ data: { user: supabaseUser } }) => {
-      if (cancelled || supabaseUser?.user_metadata?.has_seen_onboarding) return;
-      timer = setTimeout(() => setIsOpen(true), 500);
-    });
-    return () => {
-      cancelled = true;
-      clearTimeout(timer);
-    };
-  }, [isAuthenticated, user]);
+    if (!shouldOpen) return;
+    const timer = setTimeout(() => setIsOpen(true), 500);
+    return () => clearTimeout(timer);
+  }, [shouldOpen]);
 
   const handleClose = async (completed = false) => {
     setIsOpen(false);
-    if (isAuthenticated) {
-      await supabase.auth.updateUser({
-        data: {
-          has_seen_onboarding: true,
-          onboarding_completed_at: completed ? new Date().toISOString() : null,
-        },
-      });
+    if (!user) return;
+    try {
+      window.localStorage.setItem(SEEN_KEY, user.id);
+    } catch {
+      // Storage blocked: the account flag below still records it.
     }
+    const { error } = await supabase.auth.updateUser({
+      data: {
+        has_seen_onboarding: true,
+        onboarding_completed_at: completed ? new Date().toISOString() : null,
+      },
+    });
+    if (error && import.meta.env.DEV) console.error('Could not save the onboarding flag:', error);
   };
 
   if (!isOpen) return null;
