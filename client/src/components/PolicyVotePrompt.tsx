@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLocation } from "wouter";
 import { ChevronDown, Loader2, Vote } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -6,12 +6,10 @@ import { usePoliticalConsent } from "@/contexts/ConsentContext";
 import { useToast } from "@/components/ui/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { MultipleChoiceVoteControl } from "@/components/votes/MultipleChoiceVoteControl";
+import { useArticleVote, useCastArticleVote } from "@/hooks/useDailySession";
+import { userMessage } from "@/lib/api";
 import { cn } from "@/lib/utils";
-import {
-  castArticleVote,
-  fetchArticleVote,
-  type QuestionTally,
-} from "@/services/dailySessionService";
+import type { QuestionTally } from "@/services/dailySessionService";
 
 /** The question as the news feed passes it to the card. */
 export interface PolicyVoteData {
@@ -31,8 +29,6 @@ interface PolicyVotePromptProps {
 
 const EMPTY_TALLY: QuestionTally = { total: 0, byOption: {} };
 
-const messageOf = (error: unknown) => (error instanceof Error ? error.message : "Please try again in a moment.");
-
 /** The policy question under a news article: answer it in one tap, then see how others answered. */
 export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProps) {
   const { isAuthenticated } = useAuth();
@@ -40,25 +36,14 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
   const { toast } = useToast();
   const [, navigate] = useLocation();
 
-  const [tally, setTally] = useState<QuestionTally>(EMPTY_TALLY);
-  const [myVote, setMyVote] = useState<string | null>(null);
+  const view = useArticleVote(articleId);
+  const cast = useCastArticleVote(articleId, policyVote.id);
+  const tally: QuestionTally = view.data?.tally ?? EMPTY_TALLY;
+  const myVote = view.data?.myVote ?? null;
+  const isSubmitting = cast.isPending;
   const [showResults, setShowResults] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let active = true;
-    fetchArticleVote(articleId)
-      .then((view) => {
-        if (!active) return;
-        setTally(view.tally);
-        setMyVote(view.myVote);
-      })
-      .catch((err: unknown) => active && setError(messageOf(err)));
-    return () => {
-      active = false;
-    };
-  }, [articleId, isAuthenticated]);
+  const [castError, setCastError] = useState<string | null>(null);
+  const error = castError ?? (view.error ? userMessage(view.error) : null);
 
   const handleVote = async (optionKey: string) => {
     if (!isAuthenticated) {
@@ -77,18 +62,13 @@ export function PolicyVotePrompt({ articleId, policyVote }: PolicyVotePromptProp
     // A vote shows a political opinion: the user agrees to us keeping it before the first one is saved.
     if (!(await ensureConsent())) return;
 
-    setIsSubmitting(true);
-    setError(null);
+    setCastError(null);
     try {
-      const result = await castArticleVote(policyVote.id, optionKey);
-      setTally(result.tally);
-      setMyVote(result.myVote);
+      await cast.mutateAsync(optionKey);
       toast({ title: "Vote recorded", description: "Thanks! Your answer will shape your profile." });
     } catch (err: unknown) {
-      setError(messageOf(err));
-      toast({ title: "Could not save vote", description: messageOf(err), variant: "destructive" });
-    } finally {
-      setIsSubmitting(false);
+      setCastError(userMessage(err));
+      toast({ title: "Could not save vote", description: userMessage(err), variant: "destructive" });
     }
   };
 
