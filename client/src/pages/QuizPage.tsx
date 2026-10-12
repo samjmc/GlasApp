@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import LoadingScreen from '@/components/LoadingScreen';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { cn } from '@/lib/utils';
+import { arrowKeyTarget, isTabStop } from '@/lib/radioGroupKeys';
 import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { submitQuiz } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
@@ -193,6 +194,7 @@ const QuizPage: React.FC = () => {
   const [hasStoredResult] = useState(() => loadStoredQuiz() !== null);
 
   const saveIndicatorTimeoutRef = useRef<number | null>(null);
+  const radioRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const plan = useMemo(() => planQuiz(seed, answers), [seed, answers]);
   // The base, then (once it is answered and a dimension is not clear-cut) a note and the
@@ -322,6 +324,20 @@ const QuizPage: React.FC = () => {
     [seed, currentQuestion],
   );
 
+  // One tab stop for the answers; the arrow keys move between them and select (WAI-ARIA radio group).
+  const handleRadioKeyDown = (event: React.KeyboardEvent, position: number) => {
+    const target = arrowKeyTarget(event.key, position, shownOrder.length);
+    if (target === null) return;
+    event.preventDefault();
+    handleAnswerSelect(shownOrder[target]);
+    radioRefs.current[target]?.focus();
+  };
+
+  // A new question's heading takes focus, so a screen reader reads it rather than staying on "Next".
+  const focusOnMount = useCallback((el: HTMLHeadingElement | null) => {
+    el?.focus();
+  }, []);
+
   const startAgain = () => {
     setSeed(attemptSeed());
     setAnswers({});
@@ -447,23 +463,28 @@ const QuizPage: React.FC = () => {
                 data-testid="quiz-question"
                 data-question-id={currentQuestion.id}
               >
-                <h2 className="font-display text-2xl font-bold leading-tight tracking-tight sm:text-[34px]">
+                <h2 ref={focusOnMount} tabIndex={-1} className="font-display text-2xl font-bold leading-tight tracking-tight focus:outline-none sm:text-[34px]">
                   {currentQuestion.text}
                 </h2>
 
                 <div role="radiogroup" aria-label="Answers" className="flex flex-col gap-3">
-                  {shownOrder.map((answerIndex) => {
+                  {shownOrder.map((answerIndex, position) => {
                     const answer = currentQuestion.answers[answerIndex];
                     const isSelected = selectedAnswerIndex === answerIndex;
                     return (
                       <button
                         key={answerIndex}
+                        ref={(el) => {
+                          radioRefs.current[position] = el;
+                        }}
                         type="button"
                         role="radio"
                         aria-checked={isSelected}
+                        tabIndex={isTabStop(position, shownOrder.indexOf(selectedAnswerIndex ?? -1)) ? 0 : -1}
                         data-testid="quiz-answer"
                         data-answer-index={answerIndex}
                         onClick={() => handleAnswerSelect(answerIndex)}
+                        onKeyDown={(event) => handleRadioKeyDown(event, position)}
                         className={cn(
                           "flex items-start gap-4 rounded-xl border-2 p-4 text-left transition-colors active:scale-[0.99] sm:p-5",
                           isSelected ? "border-primary bg-primary/10" : "border-transparent bg-elevated hover:border-input"
@@ -499,7 +520,7 @@ const QuizPage: React.FC = () => {
                 className="flex flex-col gap-3"
                 data-testid="quiz-follow-ups"
               >
-                <h2 className="font-display text-2xl font-bold leading-tight tracking-tight sm:text-[34px]">A few more questions</h2>
+                <h2 ref={focusOnMount} tabIndex={-1} className="font-display text-2xl font-bold leading-tight tracking-tight focus:outline-none sm:text-[34px]">A few more questions</h2>
                 <p className="text-base text-muted-foreground sm:text-lg">
                   Your first answers on {followUpLabels} weren't clear-cut, so we'll ask {plan.followUps.length} more.
                 </p>
@@ -514,13 +535,17 @@ const QuizPage: React.FC = () => {
               <ArrowLeft /> Back
             </Button>
             <span
-              aria-live="polite"
+              aria-hidden="true"
               className={cn(
                 "ml-auto flex items-center gap-1.5 text-sm font-semibold text-primary transition-opacity",
                 saveIndicatorVisible ? "opacity-100" : "opacity-0"
               )}
             >
-              <CheckCircle2 className="h-4 w-4" aria-hidden="true" /> Saved
+              <CheckCircle2 className="h-4 w-4" /> Saved
+            </span>
+            {/* The faded text above never changes, so it is never announced: this does, on each save. */}
+            <span className="sr-only" aria-live="polite" data-testid="quiz-saved-announcement">
+              {saveIndicatorVisible ? "Answer saved" : ""}
             </span>
             <Button size="lg" onClick={handleNext} disabled={isNextDisabled} className="min-w-[140px]">
               {isLastStep ? 'See my results' : currentQuestion ? 'Next' : 'Continue'} <ArrowRight />
