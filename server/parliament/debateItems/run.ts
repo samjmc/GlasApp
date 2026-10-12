@@ -1,13 +1,14 @@
 /**
  * Step 2 of debate analysis: read argued debates for items (docs/plans/debate-analysis.md).
  *
- *   extractDebates   for each debate: windows of whole speeches → one model call each →
- *                    parseItems → verifyItems → its items and run stored together. A debate is
- *                    read once per EXTRACTOR_VERSION, and again only when its speeches change.
+ *   extractUnits     for each unit (an argued debate, or a question exchange): windows of whole
+ *                    speeches → one model call per window and pass → parseItems → verifyItems →
+ *                    its items and run stored together. A unit is read once per version, and
+ *                    again only when its speeches change.
  *   pilotSample      a fixed, repeatable sample of argued debates across kinds.
  *
  * Every model call goes through an `ItemCompletion`, so tests never reach a model. Nothing here
- * scores anyone: items are shown and scored only after the check set (Step 3).
+ * scores anyone: after a run, the config's `rebuild` turns the stored items into points.
  */
 import { createHash } from 'node:crypto';
 import { debateItemKind, type DebateItemKind } from '@shared/schema/parliament';
@@ -169,6 +170,8 @@ export interface ExtractUnit {
   id: string;
   kind: string;
   title: string;
+  /** Words in its member speeches, counted as its run counts them. */
+  words: number;
 }
 
 /**
@@ -207,9 +210,17 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
   const { debateIds, pilot = null, limit = null, force = false, dryRun = false, concurrency = 2, complete = itemCompletion, log = () => {} } = options;
   const [all, runs, offices] = await Promise.all([config.units(), repo.extractionRunsFor(config.version), repo.governmentOffices()]);
   let chosen = debateIds ? all.filter((d) => debateIds.includes(d.id)) : pilot ? config.sample(all, pilot) : all;
-  // A limit takes debates this version has not finished, so a daily run reads what is new rather
-  // than re-hashing old debates. (A run without a limit also catches a corrected old debate.)
-  if (limit !== null) chosen = chosen.filter((d) => force || runs.get(d.id)?.status !== 'done').slice(0, limit);
+  // A limit takes units this version has not finished, or whose word count changed since (a
+  // resumed debate, a merged exchange), so a daily run reads what is new without hashing every
+  // unit's speeches. (A run without a limit also catches a correction that keeps the word count.)
+  if (limit !== null) {
+    chosen = chosen
+      .filter((d) => {
+        const run = runs.get(d.id);
+        return force || run?.status !== 'done' || run.words !== d.words;
+      })
+      .slice(0, limit);
+  }
 
   const summary: ExtractSummary = {
     debates: chosen.length,
@@ -236,17 +247,23 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
     const speeches = labelSpeeches(await config.speechesOf(debate));
     // Ids and full text: a corrected word changes the hash, so its quote offsets are never stale.
     const inputHash = hashOf(speeches.map((s) => `${s.id}\u0000${s.text}`));
+    const words = speeches.reduce((n, s) => n + s.wordCount, 0);
     const prior = runs.get(debate.id);
     if (!force && prior?.status === 'done' && prior.inputHash === inputHash) {
       summary.skipped++;
+      // Same text, counted differently: store the count, or `--limit` picks this unit every night.
+      if (prior.words !== words && !dryRun) await repo.setExtractionWords(debate.id, config.version, words);
       return;
     }
+    // A thrown call (network, rate limit, no credit) may work tomorrow; an unusable reply at
+    // temperature 0 will not. See the `words` stored below.
+    let thrown = false;
     const result: DebateResult = {
       id: debate.id,
       title: debate.title,
       kind: debate.kind,
       speeches: speeches.length,
-      words: speeches.reduce((n, s) => n + s.wordCount, 0),
+      words,
       irishSpeeches: speeches.filter((s) => isIrish(s.text)).length,
       calls: 0,
       promptTokens: 0,
@@ -268,6 +285,7 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
       try {
         answer = await complete(EXTRACT_SYSTEM, config.prompt(debate.title, window, pass));
       } catch (error) {
+        thrown = true;
         result.error = error instanceof Error ? error.message : String(error);
         if (error instanceof OutOfCreditError) summary.stopped = `the model provider has no credit left (${result.error})`;
         break;
@@ -326,7 +344,10 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
         inputHash,
         status: result.error ? 'failed' : 'done',
         speeches: result.speeches,
-        words: result.words,
+        // A failed re-read keeps the finished run. After a thrown call it keeps the old count, so
+        // the next `--limit` run tries again; after a reply that will fail the same way, it takes
+        // the new count, so `--limit` stops paying for it (a run without a limit still re-reads).
+        words: thrown && prior ? prior.words : result.words,
         irishSpeeches: result.irishSpeeches,
         calls: result.calls,
         promptTokens: result.promptTokens,

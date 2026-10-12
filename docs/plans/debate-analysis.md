@@ -1,7 +1,7 @@
 # Debate analysis: a structured way to see who drives a debate
 
-Status: **Step 1 built and live (2026-10-04); Step 2 built, piloted on 55 debates, Irish within the
-limit (2026-10-04); Steps 3–5 not built.** Sam chose "the most robust way forward" at every fork. See "As built" at the end.
+Status: **Steps 1–5 built; the v3 read is live (2026-10-10), rules r3 since 2026-10-12.** Sam chose "the most
+robust way forward" at every fork. See "As built" at the end.
 
 ## Why
 
@@ -216,7 +216,8 @@ Points come only from kinds that passed the gate. Version 1 starts small:
 - `server/parliament/debateItems/` (`windows.ts`, `prompt.ts`, `verify.ts` pure and tested;
   `run.ts` with an injected model call) and `server/parliament/repo/debateItems.ts`; migration
   `0020_debate_items`: `politics.debate_items` and `politics.debate_extraction_runs`. Job:
-  `npm run debates:items -- --pilot 50`. **Not scheduled**: daily reading waits for Step 3.
+  `npm run debates:items -- --pilot 50`. Daily reading is scheduled behind `DEBATE_ITEMS=on` (see
+  "As built: Steps 3 to 5").
 - Speakers are named by name and role only, never party, so the model has no party to lean on.
 - **`debate_items.speech_id` is not a foreign key, on purpose.** Re-reading a sitting day deletes
   and re-inserts its speeches under the same ids; a cascade would have silently emptied every
@@ -299,12 +300,15 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   reflected the same night.
 - **API**: `GET /api/parliament/tds/:id/debate-record` and `GET /api/parliament/debate-records/:id`;
   both return `null` data when nothing has been read.
-- **UI**: a "Debate record" card on the TD profile's Debates tab (term figure, cohort line, four
+- **UI**: a "Debate record" card on the TD profile's Debates tab (term figure, cohort line, six
   counts, the 10 most recent debates with their quotes), and a panel under each argued debate on
   the Dáil record page (participants by points, with quotes). Both say "Not part of the TD score"
   and state the rules. The words "won" and "winner" are not used.
-- **Daily reading**: the scheduler reads up to 30 unread argued debates after the 04:45 parliament
-  sync, **only when `DEBATE_ITEMS=on`**. Off by default, so the cost stays a decision.
+- **Daily reading**: the scheduler reads up to 30 argued debates after the 04:45 parliament
+  sync, **only when `DEBATE_ITEMS=on`**. Off by default, so the cost stays a decision. A nightly
+  run takes only debates with no finished read at the current extractor version, or whose word
+  count changed since (`extractUnits` in `debateItems/run.ts`). Since the v3 read finished (see
+  the last section) that means **only new or changed debates, not a backfill**.
 - **Full backfill, done 2026-10-04**: all **445 of 445** argued debates on GlasCore (18 Dec 2024
   to 1 Oct 2026) have a done v2 run. "Argued" means at least 2 members spoke; the other 111
   debates of those kinds have 0 or 1 speakers. Stored runs: 10.9 M tokens in and 2.7 M out =
@@ -371,3 +375,37 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   as v2: claims 1,459 against 1,514 (−4%), replies 659 against 140, commitments 94 against 74,
   concessions 34 against 26, questions 175 against 180; claims and shown replies equally precise.
   Cost 1.65 times v2's (two calls per window share the input).
+- **The v3 read finished (2026-10-10).** All 454 argued debates on GlasCore have a done v3 read, for
+  $5.42 at off-peak prices. The debate record reads the newest finished version of each debate
+  (`EXTRACTOR_VERSIONS` in `debateItems/prompt.ts`), so bumping the version does not empty it.
+  **Turning on `DEBATE_ITEMS=on` therefore starts no backfill:** it reads only debates that are new
+  or whose word count changed since their v3 read.
+
+## As built: review fixes and rules r3 (2026-10-12)
+
+- **A reply's sentence ends where its quote ends.** When a quote ended its own sentence, the
+  check also read the next one, so a name there counted; a stop before a closing quote mark or
+  bracket (`."`, `?”`, `.)`) now ends a sentence too. On GlasCore's 7,687 stored v3 replies, 76 of
+  4,455 that named their member did so only in another sentence; they are no longer shown or
+  scored. No reply gained. The same fix applies to the question check, which now needs a question
+  mark that ends a sentence of the quote's own: 19 of 1,850 stored v3 questions (and 53 of 9,291
+  q1) passed only through another sentence. Questions score nothing, so nothing was read again;
+  later reads use the fixed check (see the note in `prompt.ts`).
+- **Rules r3: one agreement scores once.** "I agree with Deputy X that …" is read as both a
+  concession and a reply. A reply in a speech whose concession to the same member scored (+3)
+  now adds nothing, and is shown as "scored as a concession". A same-side concession scores
+  nothing, so a reply in that speech still scores.
+- **The TD card's totals** count the debates in the TD's main role, the same debates as the figure.
+- **The nightly read** (`--limit`) also reads a debate again when its word count changed since its
+  last read (a resumed debate). A correction that keeps the word count is caught by a run
+  without a limit, which compares the speeches' hash.
+- **A failed re-read keeps the debate in the record.** It used to mark the finished run failed,
+  which dropped the debate from the record (or fell back to an older version) until a read
+  succeeded. Now only the error is recorded. A thrown call (network, rate limit, no credit) is
+  tried again by the next nightly run; a reply that would fail the same way at temperature 0 is
+  not paid for every night, and a run without a limit still tries it.
+- **Record rebuilds take one lock before they read** (`RECORD_REBUILD_LOCK`), so a sync and an
+  extractor job never rebuild at once, and a rebuild that read older items never commits last. A
+  server that starts with `SCHEDULER=on` rebuilds any record scored under older rules at once.
+- **A blank `claim_type` no longer drops an item.** Models send `""` for a field that does not
+  apply; on a question that made the whole item malformed.

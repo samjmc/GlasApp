@@ -1,6 +1,8 @@
 /**
- * Which side of the House a TD was on, on a given day: the government side or not. Used only so
- * that a concession scores when it crosses the House (docs/plans/debate-analysis.md, Step 4).
+ * Which side of the House a TD was on, on a given day: the government side or not. A concession
+ * scores, and a question exchange counts towards the question record, only when it crosses the
+ * House (docs/plans/debate-analysis.md, docs/plans/question-sessions.md). `holdsGovernmentOffice`
+ * also decides who may make a commitment and a member's role (office or backbench).
  *
  * Government side = a member of a government party on that day, anyone holding cabinet or
  * Minister of State office that day (td_offices, which covers the independent ministers and

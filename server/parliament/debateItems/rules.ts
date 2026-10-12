@@ -2,12 +2,14 @@
  * Step 4 of debate analysis: the published rules that turn checked items into points. Pure.
  * Code gives every point; the model only found and quoted the items (prompt.ts, verify.ts).
  *
- * Rules r2 (2026-10-10; r1 2026-10-04 had replies hidden):
+ * Rules r3 (2026-10-12; r2 2026-10-10 could score one agreement as both kinds; r1 2026-10-04 had
+ * replies hidden):
  *   specific claim                 +1, at most 3 per speech, so a long speech does not win
  *   a concession made TO you       +3, only from the other side of the House (governmentSide.ts)
  *   your point taken up            +2 per distinct speaker per debate who replies to you BY NAME
- *                                  (replies.ts), not from your own party, and not in the debate's
- *                                  closing speech, where the minister names everyone who spoke
+ *                                  (replies.ts), not from your own party, not in the debate's
+ *                                  closing speech, where the minister names everyone who spoke,
+ *                                  and not in a speech whose concession to you already scored
  *   questions, commitments         shown, no points
  *   a reply that does not name     not shown and no points: the model linked about 3 replies in 8
  *   the member it is linked to     wrongly when nothing in the text could check it
@@ -20,13 +22,11 @@
 import type { DebateItemKind } from '@shared/schema/parliament';
 import { percentile } from '../metrics';
 
-export const RULES_VERSION = 'r2';
+export const RULES_VERSION = 'r3';
 export const CLAIM_POINTS = 1;
 export const MAX_CLAIM_POINTS_PER_SPEECH = 3;
 export const CONCESSION_POINTS = 3;
 export const TAKEN_UP_POINTS = 2;
-/** The kinds shown to readers. A reply is shown only when it names its target (`namesTarget`). */
-export const SHOWN_KINDS: readonly DebateItemKind[] = ['specific_claim', 'concession', 'response', 'question', 'commitment'];
 /** Fewer argued debates than this in a role gives no term figure. */
 export const MIN_DEBATES = 5;
 export const COHORT_PERCENTILE = 0.75;
@@ -61,10 +61,19 @@ export interface ScoredItem {
   closingSpeech: boolean;
 }
 
-/** Why a shown reply scores nothing, or null when it scores. */
-export function replyNoPoints(item: Pick<ScoredItem, 'sameParty' | 'closingSpeech'>): 'same_party' | 'closing_speech' | null {
+/** speech + target of each concession that scores: a reply in that speech to that member does not. */
+export function scoringConcessions(items: Array<Pick<ScoredItem, 'kind' | 'speechId' | 'targetMemberCode' | 'crossesHouse'>>): Set<string> {
+  return new Set(items.filter((i) => i.kind === 'concession' && i.crossesHouse && i.targetMemberCode).map((i) => `${i.speechId}\u0000${i.targetMemberCode}`));
+}
+
+/** Why a shown reply scores nothing, or null when it scores. `conceded` is scoringConcessions(). */
+export function replyNoPoints(
+  item: Pick<ScoredItem, 'sameParty' | 'closingSpeech' | 'speechId' | 'targetMemberCode'>,
+  conceded: Set<string>,
+): 'same_party' | 'closing_speech' | 'conceded' | null {
   if (item.closingSpeech) return 'closing_speech';
-  return item.sameParty ? 'same_party' : null;
+  if (item.sameParty) return 'same_party';
+  return conceded.has(`${item.speechId}\u0000${item.targetMemberCode}`) ? 'conceded' : null;
 }
 
 export interface ParticipationRow extends Participant {
@@ -92,6 +101,7 @@ export function scoreDebates(participants: Participant[], items: ScoredItem[]): 
     ]),
   );
   const claimsPerSpeech = new Map<string, number>();
+  const conceded = scoringConcessions(items);
   /** debate + target → the speakers whose reply to them scores, each counted once. */
   const takenUpBy = new Map<string, Set<string>>();
   for (const item of items) {
@@ -116,7 +126,7 @@ export function scoreDebates(participants: Participant[], items: ScoredItem[]): 
         if (!item.namesTarget || !item.targetMemberCode || item.targetMemberCode === item.memberCode) break;
         own.replies++;
         const targetKey = key(item.debateId, item.targetMemberCode);
-        if (!rows.has(targetKey) || replyNoPoints(item) !== null) break;
+        if (!rows.has(targetKey) || replyNoPoints(item, conceded) !== null) break;
         takenUpBy.set(targetKey, (takenUpBy.get(targetKey) ?? new Set()).add(item.memberCode));
         break;
       }

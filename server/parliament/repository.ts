@@ -47,6 +47,10 @@ import {
 import type { ParsedDivision, ParsedSpeech } from './parse';
 
 import { chunks } from './repo/util';
+import { rebuildDebateRecord } from './repo/debateRecord';
+import { rebuildQuestionRecord } from './repo/questionRecord';
+import { RULES_VERSION } from './debateItems/rules';
+import { QUESTION_RULES_VERSION } from './questionItems/rules';
 
 export * from './repo/committees';
 export * from './repo/bills';
@@ -61,6 +65,27 @@ export * from './repo/questionRecord';
 
 /** The byParty group for voters who are not in `tds`. */
 export const NOT_IN_ROSTER = 'Not in current roster';
+
+/**
+ * Rebuild a record whose rows were scored under other rules than this code's, from the stored
+ * items with no model calls: the API labels every row with the current rules. Names what it rebuilt.
+ */
+export async function rebuildStaleRecords(database: Db = db): Promise<string[]> {
+  const res = await database.execute(sql`
+    select exists (select 1 from politics.debate_participation where rules_version <> ${RULES_VERSION}) debates,
+           exists (select 1 from politics.question_participation where rules_version <> ${QUESTION_RULES_VERSION}) questions`);
+  const stale = res.rows[0] as { debates: boolean; questions: boolean };
+  const rebuilt: string[] = [];
+  if (stale.debates) {
+    await rebuildDebateRecord(database);
+    rebuilt.push('debate record');
+  }
+  if (stale.questions) {
+    await rebuildQuestionRecord(database);
+    rebuilt.push('question record');
+  }
+  return rebuilt;
+}
 
 // ---------------------------------------------------------------------------
 // Writes (sync only)
@@ -113,9 +138,15 @@ export async function replaceDebateDay(
   database: Db = db,
 ): Promise<void> {
   await database.transaction(async (tx) => {
+    // A section keeps its debate until the grouping step regroups the day, so whatever reads
+    // in between (the extractor, or a later step when grouping fails) still sees whole debates.
+    const grouped = new Map(
+      (await tx.select({ id: debateSections.id, debateId: debateSections.debateId }).from(debateSections).where(eq(debateSections.date, date))).map((s) => [s.id, s.debateId]),
+    );
     // Cascades to the day's speeches; a section dropped from a corrected transcript goes too.
     await tx.delete(debateSections).where(eq(debateSections.date, date));
-    for (const batch of chunks(sections)) await tx.insert(debateSections).values(batch);
+    const kept = sections.map((s) => ({ ...s, debateId: s.debateId ?? grouped.get(s.id) ?? null }));
+    for (const batch of chunks(kept)) await tx.insert(debateSections).values(batch);
     const rows: NewDebateSpeech[] = speeches.map((s) => ({ ...s, tdId: s.memberCode ? (tdIds.get(s.memberCode) ?? null) : null }));
     for (const batch of chunks(rows, 200)) await tx.insert(debateSpeeches).values(batch);
   });

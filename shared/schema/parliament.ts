@@ -730,12 +730,14 @@ export const questionParticipation = politics.table(
     tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
     format: questionFormat('format').notNull(),
     role: debateRole('role').notNull(),
+    /** On the government side that day: an asker's commitments then score nothing and count in no rate. */
+    governmentSide: boolean('government_side').notNull().default(false),
     asked: boolean('asked').notNull(),
     /** An asker: `action` commitments a minister made in the exchange (scored once, across the House). */
     secured: integer('secured').notNull(),
     /** An asker: promises to reply or revert (shown, no points). */
     followUps: integer('follow_ups').notNull(),
-    /** An office holder who answered in the exchange. */
+    /** The office holder who said most in the exchange. */
     answered: boolean('answered').notNull(),
     /** An answerer: specific claims and `action` commitments in their answers (shown, never ranked). */
     answerClaims: integer('answer_claims').notNull(),

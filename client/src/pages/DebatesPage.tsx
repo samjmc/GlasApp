@@ -508,7 +508,9 @@ function DebatesSection() {
                     <Chevron open={isExpanded} />
                   </button>
                   {isExpanded && (
-                    <div id={panelId} className="flex flex-col gap-3 border-t p-4" aria-live="polite">
+                    // Not aria-live, unlike the other panels: the two record panels load on their own and
+                    // would be read out whole.
+                    <div id={panelId} className="flex flex-col gap-3 border-t p-4">
                       {detailLoading ? (
                         <ListSkeleton rows={4} className="h-12" />
                       ) : detail && detail.speakers.length > 0 ? (

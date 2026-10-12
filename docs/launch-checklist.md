@@ -10,8 +10,8 @@ Tested on a laptop, not on a real host:
 - The production image **builds** from `main`, runs as the non-root user `node`, answers `/health`, serves
   the client and its SPA fallback, reads the database, refuses unauthenticated calls with 401, and **stops
   on SIGTERM in about 1.5 seconds with exit code 0**.
-- Every migration applies to an **empty** database (25 when this was checked on 2026-10-10; `main` has 27 now,
-  0000 to 0026, and CI applies them all).
+- Every migration in `drizzle/` applies to an **empty** database (25 when this was checked on 2026-10-10;
+  CI applies them all on every pull request).
 - CI now builds the image and runs these checks on every pull request (`image` job), so the kit cannot rot.
 
 Fixed in the same round: the server no longer dies when the database drops a connection, idle or in use
@@ -22,8 +22,9 @@ query), and no health probe is logged; the service worker no longer caches signe
 profile pictures (and deletes the old cache); two public endpoints that sent free text to an AI provider
 are removed.
 
-Not checked: Docker Compose with the Caddy profile, a real Supabase project sign-in, email delivery, and
-anything on a real host.
+Not checked: Docker Compose with the Caddy profile, the read-only root file system in `deploy/compose.yml`
+(only the app's writes were checked in the code: profile pictures go to the `uploads` volume), a real
+Supabase project sign-in, email delivery, and anything on a real host.
 
 ## 1. Decide (the owner)
 
@@ -42,16 +43,19 @@ In the Supabase dashboard (Authentication):
 2. **Site URL:** one value for the whole project. Check with whoever runs the other product first.
 3. **Confirm email: ON.** The admin allow-list trusts `email_confirmed_at`.
 4. **Google provider:** enabled, with the redirect URI Supabase shows.
-5. **Reset-password email template:** use `{{ .SiteURL }}/auth/reset-password?token_hash={{ .TokenHash }}&type=recovery`
-   so the link works in any browser.
+5. **Reset-password email template:** use `{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=recovery`
+   so the link works in any browser. The app sends `/auth/reset-password` as the redirect address.
+   Do not use `{{ .SiteURL }}`: the Site URL may still be GlasIntelligence's domain. The template
+   is project-wide, so agree any change with whoever runs GlasIntelligence first.
 6. **SMTP:** set a real sender. Supabase's built-in sender is rate limited and meant for testing.
 7. **Database, API settings:** confirm the `politics` schema is **not** exposed through the public API.
    Migration 0026 is the second line: `anon` and `authenticated` have no grant on the schema, and every
    table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
-   (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown) and 0026
-   (row level security on the politics tables) came after. Compare `drizzle/meta/_journal.json` with the
-   `drizzle.__drizzle_migrations` table before you migrate.
+   (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown), 0026
+   (row level security on the politics tables), 0027 (user id foreign keys) and 0028 (the question record's
+   government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
+   table before you migrate.
 9. **Political data saved before consent existed.** Votes, rankings, pledge priorities and quiz results
    from people with no recorded consent (or consent to an older text) have no lawful basis under Article 9.
    Count them, then delete them or ask the people to consent again. Read-only count:
@@ -70,8 +74,8 @@ In the Supabase dashboard (Authentication):
    Change `1` to `POLITICAL_CONSENT_VERSION` in `shared/consent.ts` if it has moved. Until this is done, the
    regional and party summaries also count those people.
 
-On the host: fill `deploy/glasapp.env` (a secret per line; `VITE_SUPABASE_ANON_KEY` is needed at **build** time
-or sign-in is silently disabled), set an admin secret, keep `SCHEDULER=off`.
+On the host: fill `deploy/glasapp.env` (a secret per line; `SUPABASE_URL` and `SUPABASE_ANON_KEY` are also baked
+into the client at **build** time, so rebuild after changing either), set an admin secret, keep `SCHEDULER=off`.
 
 ## 3. First boot, then prove it
 
@@ -88,8 +92,9 @@ or sign-in is silently disabled), set an admin secret, keep `SCHEDULER=off`.
 ## 4. Turning the crons on
 
 Only when step 3 passes, the migrations are applied, and no other copy (a laptop, an old host) runs crons
-against the same database. Then follow `docs/deploy.md` section 6. `DIVISION_STANCES` and `DEBATE_ITEMS`
-stay off until you want the model cost.
+against the same database. Then follow `docs/deploy.md` section 6. `DIVISION_STANCES`, `DEBATE_ITEMS` and
+`QUESTION_ITEMS` stay off until you want the model cost. (The debate and question backlogs on GlasCore are
+already read, so the last two read only new or changed items.)
 
 ## 5. Known limits at launch
 
@@ -102,7 +107,8 @@ stay off until you want the model cost.
 
 ## 6. First week
 
-- Read the container logs daily (rotated, about a week kept). Look for `Database pool:` and `fatal` lines.
+- Read the container logs daily (rotated, about a week kept). Look for `Database pool:` lines and for
+  `"level":60` (pino's number for fatal; the text "fatal" is not in the line).
 - Watch pooler connections in Supabase against `DB_POOL_MAX` (default 10; the pooler holds 15, shared).
 - Confirm the Supabase plan's backups, and do one restore drill into a scratch project.
 - Watch model spend when the crons are on.

@@ -153,29 +153,32 @@ stages, motions, statements): a model finds and quotes items, code checks every 
 word against the transcript, and code gives every point under published rules
 (`server/parliament/debateItems/rules.ts`, `docs/plans/debate-analysis.md`).
 
-| Rule (r2) | Points | Limit |
+| Rule (r3) | Points | Limit |
 |---|---|---|
 | A specific claim (a figure, a named source, a cost, a date) | +1 | 3 per speech |
 | A speaker conceded a point to you | +3 | only from the other side of the House |
-| A speaker took up your point by name | +2 per distinct speaker per debate | not from your own party; not in the debate's closing speech |
+| A speaker took up your point by name | +2 per distinct speaker per debate | not from your own party; not in the debate's closing speech; not in a speech whose concession to you already scored |
 | Questions, promises, replies you made | shown, no points | |
 | A reply that does not name the member it answers | not shown, no points | |
 | Speaking time, who moved it, the vote | no points | |
 
-"By name" is checked by code, not the model: the reply's sentence must hold the member's surname,
-or an office word ("the Minister", "an tAire") when they spoke in office (`replies.ts`). The other
+"By name" is checked by code, not the model: the reply's own sentence (never the one after it) must
+hold the member's surname, or an office word ("the Minister", "an tAire") when they spoke in office
+(`replies.ts`). The other
 side of the House is the government parties, anyone in government office that day, and the
 independents who formally supported the government (`governmentSide.ts`, each with sources).
 
 A TD's figure is points per debate, compared only with TDs in the same role (government office or
-not) against the 75th percentile; below 5 debates there is no figure. Stored in
+not) against the 75th percentile; below 5 debates there is no figure. The totals on a TD's card
+count the debates in that same role. Stored in
 `politics.debate_participation`, rebuilt from stored items after every read and every sync, with
 no model calls.
 
 ## Question record
 
 Also **not part of the score**. It shows what ministers committed to in reply to a member's
-question at oral PQs, Topical Issues and Leaders' Questions (`docs/plans/question-sessions.md`):
+question at oral PQs, Topical Issues, Leaders' Questions and the rapid sessions (any oral-questions
+section with no listed PQ askers) (`docs/plans/question-sessions.md`):
 a model finds and quotes commitments and labels each `action` (a specific thing someone could
 later check was done), `follow_up` (a reply, a letter, a meeting) or `general` (nothing specific
 to check); code checks every quote and gives every point (`server/parliament/questionItems/rules.ts`).
@@ -186,9 +189,12 @@ to check); code checks every quote and gives every point (`server/parliament/que
 | Follow-ups and general undertakings | shown, no points | |
 | Claims and commitments in a minister's answers | shown, never scored or ranked | |
 
-A TD's figure is per format, never pooled: exchanges with a specific commitment per 10 asked, for
-oral PQs and Topical Issues, against the 75th percentile of backbenchers with at least 10 of that
-format. Whether a question was answered is never judged. Stored in
+A TD's figure is per format, never pooled: exchanges with a specific commitment per 10 asked from
+the other side of the House, for oral PQs and Topical Issues, against the 75th percentile of
+backbenchers with at least 10 of that format asked the same way. A question from the government
+side answered with an announcement is not a commitment secured, so it counts in neither. The
+answerer of an exchange is the office holder who said most in it. Leaders' Questions and the rapid sessions have no figure. Whether a question was answered
+is never judged. Stored in
 `politics.question_participation`, rebuilt from stored items after every read and every sync.
 
 ## Getting a TD table

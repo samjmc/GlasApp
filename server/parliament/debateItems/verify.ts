@@ -7,8 +7,9 @@
  * 3. A response or concession points to an EARLIER speech in the window, by ANOTHER member, else
  *    `bad_target`. A response's target quote is kept when it is found in that speech (v3: it no
  *    longer rejects the response, since only the reply's own words are shown).
- * 4. A question's sentence ends with a question mark, else `not_a_question`; and names an office
- *    or someone who speaks in the window, else `unknown_addressee`.
+ * 4. A question mark ends a sentence of the quote's own (never the next sentence's), else
+ *    `not_a_question`; and it names an office or someone who speaks in the window, else
+ *    `unknown_addressee`.
  * 5. A commitment is made by someone in government office that day, else `not_office_holder`.
  * 6. The same kind and quote twice in one speech is `duplicate`.
  * 7. Claims past MAX_CLAIMS_PER_SPEECH in one speech are `over_limit` (the model does not always
@@ -16,8 +17,9 @@
  */
 import type { CommitmentType, DebateClaimType, DebateItemKind } from '@shared/schema/parliament';
 import { normalise } from '../../stances/verify';
+import { holdsGovernmentOffice } from '../governmentSide';
 import { MAX_CLAIMS_PER_SPEECH, QUOTE_MAX_WORDS, QUOTE_MIN_WORDS, type RawItem } from './prompt';
-import { sentenceAround } from './replies';
+import { OFFICE_FAMILIES, sentenceAround, surnameForms } from './replies';
 import { isIrish, type DebateWindow, type LabelledSpeech } from './windows';
 
 export const REJECT_REASONS = [
@@ -56,10 +58,11 @@ export type GovernmentOffices = Map<string, Array<{ start: string; end: string |
 
 const ELLIPSIS = /\.\.\.|…/;
 /**
- * Words a question can be put to that are offices, not people. Normalised (no fadas). Irish
- * included: "an tAire" normalises to "an taire", which the pilot first rejected.
+ * Words a question can be put to that are offices, not people, normalised (no fadas): the offices
+ * that name a holder, and bodies that name nobody. Irish included: "an tAire" normalises to "an
+ * taire", which the pilot first rejected.
  */
-const OFFICE_WORDS = ['minister', 'taoiseach', 'tanaiste', 'government', 'ceann comhairle', 'aire', 'taire', 'rialtas'];
+const OFFICE_WORDS = [...OFFICE_FAMILIES.flat(), 'government', 'ceann comhairle', 'rialtas'];
 
 export function emptyRejections(): Rejections {
   const out = {} as Rejections;
@@ -79,22 +82,12 @@ export function findQuote(text: string, quote: string): { start: number; end: nu
 
 const wordCount = (quote: string) => normalise(quote).text.split(' ').filter(Boolean).length;
 
-/** The surname, normalised: the last word of a speaker's name ("Deputy Pa Daly" → "daly"). */
-function surnameOf(speaker: string): string {
-  const name = speaker.split(/[(,]/)[0]!.trim();
-  const words = normalise(name).text.split(' ');
-  return words[words.length - 1] ?? '';
-}
-
 function addresseeKnown(addressee: string, window: DebateWindow): boolean {
   const a = ` ${normalise(addressee).text} `;
   if (OFFICE_WORDS.some((w) => a.includes(` ${w}`))) return true;
-  const surnames = [...window.context, ...window.speeches].map((s) => surnameOf(s.speaker)).filter((s) => s.length > 1);
+  // A speaker is "Name (role)": the surname forms of the name part.
+  const surnames = [...window.context, ...window.speeches].flatMap((s) => surnameForms(s.speaker.split(/[(,]/)[0]!));
   return surnames.some((s) => a.includes(` ${s} `) || a.includes(` ${s}'`));
-}
-
-function holdsOffice(offices: GovernmentOffices, memberCode: string, date: string): boolean {
-  return (offices.get(memberCode) ?? []).some((o) => o.start <= date && (o.end === null || date <= o.end));
 }
 
 export function verifyItems(raw: RawItem[], window: DebateWindow, offices: GovernmentOffices): { accepted: VerifiedItem[]; rejected: Rejections } {
@@ -146,8 +139,9 @@ export function verifyItems(raw: RawItem[], window: DebateWindow, offices: Gover
         targetQuote = t ? target.text.slice(t.start, t.end) : null;
       }
     }
-    // The question mark ends the sentence, which often runs on past the quote.
-    if (item.kind === 'question' && !sentenceAround(speech.text, at.start, at.end).includes('?')) {
+    // A question mark ends a sentence of the quote's own: its sentence often runs on past the quote,
+    // and a quote may hold a question and the sentence after it. Never the NEXT sentence's.
+    if (item.kind === 'question' && !/\?["'’”)]*(?=[\s,;:.—–-]|$)/.test(sentenceAround(speech.text, at.start, at.end))) {
       reject('not_a_question');
       continue;
     }
@@ -155,7 +149,7 @@ export function verifyItems(raw: RawItem[], window: DebateWindow, offices: Gover
       reject('unknown_addressee');
       continue;
     }
-    if (item.kind === 'commitment' && !holdsOffice(offices, speech.memberCode, speech.date)) {
+    if (item.kind === 'commitment' && !holdsGovernmentOffice(offices, speech.memberCode, speech.date)) {
       reject('not_office_holder');
       continue;
     }

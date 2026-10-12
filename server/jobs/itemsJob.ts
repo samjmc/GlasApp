@@ -5,7 +5,7 @@
  *
  *   --pilot N         a fixed sample of N units
  *   --debate <id> …   these units (debate or exchange ids)
- *   --limit N         the first N not read yet
+ *   --limit N         the first N not read yet, or whose word count changed since their read
  *   --dry-run         make the calls, write nothing
  *   --force           read again even when this version already read the same speeches
  *   --concurrency N   units read at once (default 2: DeepSeek caps concurrent calls per account,
@@ -65,7 +65,7 @@ async function main(job: ItemsJob) {
     .join('; ');
 
   console.log('');
-  console.log(`Debates: ${summary.debates} chosen, ${summary.done} done, ${summary.failed} failed, ${summary.skipped} already read.`);
+  console.log(`Chosen: ${summary.debates} ${job.units}; ${summary.done} done, ${summary.failed} failed, ${summary.skipped} already read.`);
   console.log(`Read: ${summary.speeches} speeches (${summary.irishSpeeches} in Irish), ${summary.words} words, ${summary.calls} calls.`);
   console.log(`Tokens: ${summary.promptTokens} in, ${summary.completionTokens} out. Cost ${usd(summary.costUsd.offPeak)} off-peak, ${usd(summary.costUsd.peak)} peak.`);
   console.log(`Items accepted: ${kinds}.`);
@@ -77,7 +77,7 @@ async function main(job: ItemsJob) {
   );
   if (summary.stopped) console.log(`Stopped early: ${summary.stopped}.`);
   if (summary.orphansRemoved > 0) console.log(`Removed ${summary.orphansRemoved} item(s) whose speech left the record.`);
-  if (argv.includes('--dry-run')) console.log('Dry run: nothing was written.');
+  console.log(argv.includes('--dry-run') ? 'Dry run: nothing was written.' : `Record rebuilt: ${summary.recordRows} rows.`);
 }
 
 export function runItemsJob(job: ItemsJob): void {

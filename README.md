@@ -146,7 +146,6 @@ DATABASE_URL=postgresql://...        # GlasCore Postgres
 SUPABASE_URL=https://...             # Auth
 SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
-SESSION_SECRET=                      # required in production
 LLM_API_KEY=                         # DeepSeek: all chat AI (news ranking, TD scoring panel)
 LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL_NAME=deepseek-flash
@@ -195,7 +194,7 @@ glas-politics/
 │   ├── types.ts           # Shared TypeScript types
 │   └── data/              # Shared data files
 │
-├── migrations/             # Database migrations
+├── drizzle/                # Database migrations
 ├── public/                 # Static assets
 ├── scripts/               # Utility scripts
 └── docs/                  # Documentation
@@ -213,7 +212,7 @@ npm run dev              # Start dev server with hot reload
 npm run check            # TypeScript type checking
 
 # Database
-npm run db:push          # Push schema to database
+npm run db:push          # Not for GlasCore: migrations only (docs/deploy.md section 3)
 npm run db:generate      # Generate migration files
 npm run db:migrate       # Run migrations
 npm run db:studio        # Open Drizzle Studio (DB GUI)
@@ -235,8 +234,8 @@ npm run start            # Run production server
 
 1. **Modify schema** in `shared/schema.ts`
 2. **Generate migration** with `npm run db:generate`
-3. **Review migration** in `migrations/` folder
-4. **Apply migration** with `npm run db:push`
+3. **Review migration** in the `drizzle/` folder
+4. **Apply migration** as in [docs/deploy.md](docs/deploy.md) section 3 (`npm run db:migrate`, by hand; never `db:push`)
 5. **Test changes** thoroughly
 
 ---

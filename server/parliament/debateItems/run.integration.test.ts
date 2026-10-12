@@ -112,14 +112,16 @@ run('debate items (real Postgres)', () => {
     expect(await stored()).toHaveLength(3);
   });
 
-  it('keeps the items when a sitting day is re-read, which deletes and re-inserts its speeches', async () => {
+  it('keeps the items, and each section its debate, when a sitting day is re-read', async () => {
     const day = (await q('select * from politics.debate_speeches where date = $1 order by position', [DAY])).rows;
+    // As the transcript parser gives it: no debate. The grouping step sets that later in a sync.
     await repo.replaceDebateDay(
       DAY,
-      [{ id: SECTION, date: DAY, title: 'Health: Motion', parentId: null, parentTitle: null, debateId: SECTION, speechCount: 2 }],
+      [{ id: SECTION, date: DAY, title: 'Health: Motion', parentId: null, parentTitle: null, debateId: null, speechCount: 2 }],
       day.map((r) => ({ id: r.id, sectionId: r.section_id, date: DAY, position: r.position, memberCode: r.member_code, role: null, isPresiding: false, text: r.text, wordCount: r.word_count })),
       new Map(),
     );
+    expect((await q('select debate_id from politics.debate_sections where id = $1', [SECTION])).rows).toEqual([{ debate_id: SECTION }]);
     expect(await stored()).toHaveLength(3);
     const complete = fake();
     expect(await items.extractDebates({ complete })).toMatchObject({ skipped: 1 });
@@ -135,14 +137,48 @@ run('debate items (real Postgres)', () => {
     expect((await stored()).map((r) => r.kind)).toEqual(['specific_claim']);
   });
 
-  it('stores no items for a failed read, keeps the earlier ones, and tries again next time', async () => {
+  it('with a limit, reads a finished debate again only when its word count changed', async () => {
+    let complete = fake();
+    expect(await items.extractDebates({ complete, limit: 10 })).toMatchObject({ debates: 0 });
+    expect(complete.calls).toBe(0);
+    // A resumed debate gains words: the limited (nightly) run reads it again.
+    await q("update politics.debate_speeches set text = text || ' Three more words.', word_count = word_count + 3 where id = $1", [SPEECHES[1].id]);
+    complete = fake({ items: [REPLY.items[0]] });
+    expect(await items.extractDebates({ complete, limit: 10 })).toMatchObject({ debates: 1, done: 1 });
+    expect(complete.calls).toBe(2);
+  });
+
+  it('with a limit, retries a failed re-read only when the failure may not recur, and never re-pays for a recount', async () => {
+    const grow = () => q("update politics.debate_speeches set text = text || ' Two words.', word_count = word_count + 2 where id = $1", [SPEECHES[1].id]);
+    const unusable: ItemCompletion = async () => ({ content: 'not json', model: 'fake-model', promptTokens: 10, completionTokens: 1 });
+    const thrown: ItemCompletion = async () => {
+      throw new Error('socket hang up');
+    };
+    // An unusable reply recurs at temperature 0: the next limited run does not pay for it again.
+    await grow();
+    expect(await items.extractDebates({ complete: unusable, limit: 10 })).toMatchObject({ failed: 1 });
+    expect(await items.extractDebates({ complete: fake(), limit: 10 })).toMatchObject({ debates: 0 });
+    // A thrown call may work tomorrow: the next limited run tries again.
+    await grow();
+    expect(await items.extractDebates({ complete: thrown, limit: 10 })).toMatchObject({ failed: 1 });
+    expect(await items.extractDebates({ complete: fake({ items: [REPLY.items[0]] }), limit: 10 })).toMatchObject({ debates: 1, done: 1 });
+    // The same text counted differently is hashed once, then left alone.
+    await q('update politics.debate_speeches set word_count = word_count + 1 where id = $1', [SPEECHES[1].id]);
+    const recount = fake();
+    expect(await items.extractDebates({ complete: recount, limit: 10 })).toMatchObject({ debates: 1, skipped: 1 });
+    expect(await items.extractDebates({ complete: recount, limit: 10 })).toMatchObject({ debates: 0 });
+    expect(recount.calls).toBe(0);
+  });
+
+  it('stores no items for a failed read, keeps the earlier ones and their finished run, and tries again next time', async () => {
     await q("update politics.debate_speeches set text = text || ' Again.' where id = $1", [SPEECHES[1].id]);
     const broken: ItemCompletion = async () => {
       throw new Error('model down');
     };
     const s = await items.extractDebates({ complete: broken });
     expect(s).toMatchObject({ failed: 1, done: 0 });
-    expect((await q('select status, error from politics.debate_extraction_runs')).rows).toEqual([{ status: 'failed', error: 'model down' }]);
+    // The record keeps reading the earlier finished run; only the error is recorded.
+    expect((await q('select status, error from politics.debate_extraction_runs')).rows).toEqual([{ status: 'done', error: 'model down' }]);
     expect(await stored()).toHaveLength(1);
 
     const unusable: ItemCompletion = async () => ({ content: 'not json', model: 'fake-model', promptTokens: 10, completionTokens: 1 });
@@ -165,7 +201,7 @@ run('debate items (real Postgres)', () => {
     };
     expect(await items.extractDebates({ complete: alwaysCut })).toMatchObject({ failed: 1, calls: 2 });
     expect(calls).toBe(2);
-    expect((await q('select status, error from politics.debate_extraction_runs')).rows).toEqual([{ status: 'failed', error: 'model output cut off at the token limit' }]);
+    expect((await q('select status, error from politics.debate_extraction_runs')).rows).toEqual([{ status: 'done', error: 'model output cut off at the token limit' }]);
     expect(await stored()).toHaveLength(3);
 
     // Cut off once (the first pass): its two halves are read, then the second pass whole, and the
@@ -228,5 +264,27 @@ run('debate items (real Postgres)', () => {
     expect(rows[0].n).toBe(0);
     // The other debate's concession points at its own speech, and stays.
     expect((await stored()).filter((r) => r.kind === 'concession')).toHaveLength(1);
+  });
+
+  it('stores a failed run for a debate never read before', async () => {
+    const third = `dail-${DAY}-dbsect_12`;
+    await q("insert into politics.debates (id, kind, title, first_date, last_date, section_count) values ($1, 'statements', 'Energy: Statements', $2, $2, 1)", [third, DAY]);
+    await q("insert into politics.debate_sections (id, date, title, speech_count, debate_id) values ($1, $2, 'Energy: Statements', 2, $1)", [third, DAY]);
+    for (const [i, s] of SPEECHES.entries()) {
+      await q('insert into politics.debate_speeches (id, section_id, date, position, member_code, text, word_count) values ($1, $2, $3, $4, $5, $6, $7)', [
+        `${third}/spk_${i + 1}`,
+        third,
+        DAY,
+        i,
+        s.member,
+        s.text,
+        s.text.split(' ').length,
+      ]);
+    }
+    const broken: ItemCompletion = async () => {
+      throw new Error('model down');
+    };
+    expect(await items.extractDebates({ complete: broken, debateIds: [third] })).toMatchObject({ failed: 1 });
+    expect((await q('select status, error from politics.debate_extraction_runs where debate_id = $1', [third])).rows).toEqual([{ status: 'failed', error: 'model down' }]);
   });
 });

@@ -306,8 +306,8 @@ export interface DebateItemView {
   to: string | null;
   /** A concession: whether it crosses the House, so scores. */
   crossesHouse: boolean;
-  /** A reply: why it scores nothing (same party, or the closing speech), or null when it scores. */
-  replyNoPoints: 'same_party' | 'closing_speech' | null;
+  /** A reply: why it scores nothing (same party, the closing speech, or its speech's concession to them scored), or null when it scores. */
+  replyNoPoints: 'same_party' | 'closing_speech' | 'conceded' | null;
   /** A question: who it was put to, as said. */
   addressee: string | null;
   /** A commitment: the time given, as said. */
@@ -391,15 +391,17 @@ export interface QuestionCommitmentView {
   due: string | null;
 }
 
-/** GET /api/parliament/tds/:id/question-record. NULL data when the TD took part in no exchange read yet. */
+/** GET /api/parliament/tds/:id/question-record. NULL data when the TD neither asked nor answered in an exchange read yet. */
 export interface TdQuestionRecord {
   rulesVersion: string;
-  /** Whether the TD mostly answered (government office) or asked. */
-  role: 'office' | 'backbench';
-  /** Per format, never pooled; `perTen` only for oral PQs and Topical Issues, from enough exchanges. */
+  /**
+   * Per format, never pooled; `perTen` only for oral PQs and Topical Issues, from enough exchanges.
+   * `securedExchanges` and `perTen` count only the `askedAcross` exchanges, asked from the other side of the House.
+   */
   formats: Array<{
     format: QuestionFormatName;
     asked: number;
+    askedAcross: number;
     securedExchanges: number;
     points: number;
     followUps: number;
@@ -410,7 +412,7 @@ export interface TdQuestionRecord {
   /** An office holder's answers: shown, never scored or ranked. */
   answers: { answered: number; withClaim: number; withCommitment: number } | null;
   /** Exchanges they asked where a minister committed to something, newest first. */
-  recent: Array<{ exchangeId: string; sectionId: string; date: string; title: string; format: QuestionFormatName; points: number; commitments: QuestionCommitmentView[] }>;
+  recent: Array<{ exchangeId: string; date: string; title: string; format: QuestionFormatName; points: number; commitments: QuestionCommitmentView[] }>;
 }
 
 /** GET /api/parliament/question-records/:sectionId. NULL data when no exchange of it has been read. */

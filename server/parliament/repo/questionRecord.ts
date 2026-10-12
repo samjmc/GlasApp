@@ -11,51 +11,56 @@ import type { DebateSpeech } from '../debateItems/windows';
 import { holdsGovernmentOffice, isGovernmentSide } from '../governmentSide';
 import { splitExchanges, type SectionTurn } from '../questionItems/exchanges';
 import { QUESTION_EXTRACTOR_VERSION } from '../questionItems/prompt';
-import { QUESTION_RULES_VERSION, formatFigures, scoreExchanges, type ExchangeItem, type ExchangeMember, type QuestionParticipationRow } from '../questionItems/rules';
+import { QUESTION_RULES_VERSION, formatFigures, scoreExchanges, type CohortMember, type ExchangeItem, type ExchangeMember, type QuestionParticipationRow } from '../questionItems/rules';
 import { governmentOffices } from './debateItems';
-import { chunks } from './util';
+import { RECORD_REBUILD_LOCK, chunks, nameFromCode, type Reader } from './util';
 
-const nameFromCode = (code: string) => code.split('.')[0]!.replace(/-/g, ' ');
 const FORMAT_OF_KIND: Record<string, QuestionFormat | null> = { topical_issue: 'topical_issue', leaders_questions: 'leaders_questions', questions: null };
 
 /** Cut every question-session section into exchanges, replacing the table (Q1). */
 export async function rebuildQuestionExchanges(database: Db = db): Promise<{ sections: number; exchanges: number }> {
-  const [speechRes, askerRes, offices] = await Promise.all([
-    database.execute(sql`
+  return database.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(${RECORD_REBUILD_LOCK}::bigint)`);
+    const speechRes = await tx.execute(sql`
       select s.id section_id, s.date::text date, d.kind, p.position, p.member_code, p.is_presiding, p.word_count
       from politics.debate_sections s
       join politics.debates d on d.id = s.debate_id
       join politics.debate_speeches p on p.section_id = s.id
       where d.kind in ('questions', 'topical_issue', 'leaders_questions')
-      order by s.id, p.position`),
-    database.execute(sql`select section_id, member_code from politics.question_askers order by section_id, question_number`),
-    governmentOffices(database),
-  ]);
-  const askers = new Map<string, string[]>();
-  for (const r of askerRes.rows as Array<{ section_id: string; member_code: string }>) askers.set(r.section_id, [...(askers.get(r.section_id) ?? []), r.member_code]);
-  const sections = new Map<string, { date: string; kind: string; turns: SectionTurn[] }>();
-  for (const r of speechRes.rows as Array<{ section_id: string; date: string; kind: string; position: number; member_code: string | null; is_presiding: boolean; word_count: number }>) {
-    const s = sections.get(r.section_id) ?? { date: r.date, kind: r.kind, turns: [] };
-    s.turns.push({
-      position: Number(r.position),
-      memberCode: r.member_code,
-      isPresiding: r.is_presiding,
-      inOffice: r.member_code !== null && holdsGovernmentOffice(offices, r.member_code, r.date),
-      words: Number(r.word_count),
+      order by s.id, p.position`);
+    const askerRes = await tx.execute(sql`select section_id, member_code from politics.question_askers order by section_id, question_number`);
+    const offices = await governmentOffices(tx);
+    const askers = new Map<string, string[]>();
+    for (const r of askerRes.rows as Array<{ section_id: string; member_code: string }>) askers.set(r.section_id, [...(askers.get(r.section_id) ?? []), r.member_code]);
+    const sections = new Map<string, { date: string; kind: string; turns: SectionTurn[] }>();
+    for (const r of speechRes.rows as Array<{ section_id: string; date: string; kind: string; position: number; member_code: string | null; is_presiding: boolean; word_count: number }>) {
+      const s = sections.get(r.section_id) ?? { date: r.date, kind: r.kind, turns: [] };
+      s.turns.push({
+        position: Number(r.position),
+        memberCode: r.member_code,
+        isPresiding: r.is_presiding,
+        inOffice: r.member_code !== null && holdsGovernmentOffice(offices, r.member_code, r.date),
+        words: Number(r.word_count),
+      });
+      sections.set(r.section_id, s);
+    }
+    const rows = Array.from(sections.entries()).flatMap(([sectionId, s]) => {
+      const pqAskers = askers.get(sectionId) ?? [];
+      // An oral PQ section is known by its askers in /questions; the rest of `questions` is rapid.
+      const format = FORMAT_OF_KIND[s.kind] ?? (pqAskers.length > 0 ? 'oral_pq' : 'rapid');
+      return splitExchanges({ sectionId, format, date: s.date, turns: s.turns, pqAskers });
     });
-    sections.set(r.section_id, s);
-  }
-  const rows = Array.from(sections.entries()).flatMap(([sectionId, s]) => {
-    const pqAskers = askers.get(sectionId) ?? [];
-    // An oral PQ section is known by its askers in /questions; the rest of `questions` is rapid.
-    const format = FORMAT_OF_KIND[s.kind] ?? (pqAskers.length > 0 ? 'oral_pq' : 'rapid');
-    return splitExchanges({ sectionId, format, date: s.date, turns: s.turns, pqAskers });
-  });
-  await database.transaction(async (tx) => {
+    // Ids are positional, so a q1 read stands only while its exchange keeps the same span and
+    // askers. Any other exchange is read again, and until then its items count for nothing.
+    const before = await tx.execute(sql`select id, from_position, to_position, askers from politics.question_exchanges`);
+    const span = (from: number, to: number, askers: string[]) => JSON.stringify([from, to, askers]);
+    const old = new Map((before.rows as Array<{ id: string; from_position: number; to_position: number; askers: string[] }>).map((r) => [r.id, span(r.from_position, r.to_position, r.askers)]));
+    const unchanged = rows.filter((x) => old.get(x.id) === span(x.fromPosition, x.toPosition, x.askers)).map((x) => x.id);
     await tx.delete(questionExchanges);
     for (const batch of chunks(rows)) await tx.insert(questionExchanges).values(batch);
+    await tx.execute(sql`delete from politics.debate_extraction_runs where extractor_version = ${QUESTION_EXTRACTOR_VERSION} and debate_id <> all(${sql.param(unchanged)}::text[])`);
+    return { sections: sections.size, exchanges: rows.length };
   });
-  return { sections: sections.size, exchanges: rows.length };
 }
 
 export interface QuestionUnit {
@@ -64,7 +69,7 @@ export interface QuestionUnit {
   kind: string;
   format: QuestionFormat;
   title: string;
-  /** Members' words in the exchange, to project the cost of reading them all. */
+  /** Members' words in the exchange: `--limit` compares it with the read's, and it projects the cost. */
   words: number;
 }
 
@@ -104,14 +109,19 @@ const readExchanges = sql`(
 )`;
 
 /** Members and items of the read exchanges, filtered by `where` on the exchange `e`. */
-async function exchangeData(where: ReturnType<typeof sql>, database: Db): Promise<{ members: ExchangeMember[]; items: Array<ExchangeItem & { quote: string; due: string | null; date: string }> }> {
+async function exchangeData(where: ReturnType<typeof sql>, database: Reader): Promise<{ members: ExchangeMember[]; items: Array<ExchangeItem & { quote: string; due: string | null; date: string }> }> {
   const [memberRes, itemRes, tdRes, offices] = await Promise.all([
     database.execute(sql`
-      select e.id exchange_id, e.format, e.date::text date, e.askers, array_remove(array_agg(distinct p.member_code), null) speakers
-      from ${readExchanges} e
-      left join politics.debate_speeches p on p.section_id = e.section_id and p.position between e.from_position and e.to_position and not p.is_presiding
-      where ${where}
-      group by e.id, e.format, e.date, e.askers`),
+      select x.exchange_id, x.format, x.date, x.askers, coalesce(jsonb_object_agg(x.member_code, x.words) filter (where x.member_code is not null), '{}') words
+      from (
+        select e.id exchange_id, e.format, e.date::text date, e.askers, p.member_code, sum(p.word_count)::int words
+        from ${readExchanges} e
+        left join politics.debate_speeches p on p.section_id = e.section_id and p.position between e.from_position and e.to_position
+          and not p.is_presiding and p.member_code is not null
+        where ${where}
+        group by e.id, e.format, e.date, e.askers, p.member_code
+      ) x
+      group by x.exchange_id, x.format, x.date, x.askers`),
     database.execute(sql`
       select e.id exchange_id, e.date::text date, i.member_code, i.kind, i.commitment_type, i.quote, i.due
       from ${readExchanges} e
@@ -124,8 +134,8 @@ async function exchangeData(where: ReturnType<typeof sql>, database: Db): Promis
   ]);
   const tds = new Map((tdRes.rows as Array<{ id: number; member_code: string; party: string | null }>).map((r) => [r.member_code, r]));
   const members: ExchangeMember[] = [];
-  for (const r of memberRes.rows as Array<{ exchange_id: string; format: QuestionFormat; date: string; askers: string[]; speakers: string[] }>) {
-    for (const code of Array.from(new Set([...r.askers, ...r.speakers]))) {
+  for (const r of memberRes.rows as Array<{ exchange_id: string; format: QuestionFormat; date: string; askers: string[]; words: Record<string, number> }>) {
+    for (const code of Array.from(new Set([...r.askers, ...Object.keys(r.words)]))) {
       const td = tds.get(code);
       members.push({
         exchangeId: r.exchange_id,
@@ -135,7 +145,7 @@ async function exchangeData(where: ReturnType<typeof sql>, database: Db): Promis
         inOffice: holdsGovernmentOffice(offices, code, r.date),
         governmentSide: isGovernmentSide(td?.party ?? null, code, r.date, offices),
         asked: r.askers.includes(code),
-        spoke: r.speakers.includes(code),
+        words: r.words[code] ?? 0,
       });
     }
   }
@@ -153,27 +163,29 @@ async function exchangeData(where: ReturnType<typeof sql>, database: Db): Promis
 
 /** Rebuild every row of question_participation from the stored q1 items (Q4). */
 export async function rebuildQuestionRecord(database: Db = db): Promise<{ rows: number }> {
-  const { members, items } = await exchangeData(sql`true`, database);
-  const rows = scoreExchanges(members, items).map((r) => ({
-    exchangeId: r.exchangeId,
-    memberCode: r.memberCode,
-    tdId: r.tdId,
-    format: r.format,
-    role: (r.inOffice ? 'office' : 'backbench') as 'office' | 'backbench',
-    asked: r.asked,
-    secured: r.secured,
-    followUps: r.followUps,
-    answered: r.answered,
-    answerClaims: r.answerClaims,
-    answerCommitments: r.answerCommitments,
-    points: r.points,
-    rulesVersion: QUESTION_RULES_VERSION,
-  }));
-  await database.transaction(async (tx) => {
+  return database.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(${RECORD_REBUILD_LOCK}::bigint)`);
+    const { members, items } = await exchangeData(sql`true`, tx);
+    const rows = scoreExchanges(members, items).map((r) => ({
+      exchangeId: r.exchangeId,
+      memberCode: r.memberCode,
+      tdId: r.tdId,
+      format: r.format,
+      role: (r.inOffice ? 'office' : 'backbench') as 'office' | 'backbench',
+      governmentSide: r.governmentSide,
+      asked: r.asked,
+      secured: r.secured,
+      followUps: r.followUps,
+      answered: r.answered,
+      answerClaims: r.answerClaims,
+      answerCommitments: r.answerCommitments,
+      points: r.points,
+      rulesVersion: QUESTION_RULES_VERSION,
+    }));
     await tx.delete(questionParticipation);
     for (const batch of chunks(rows)) await tx.insert(questionParticipation).values(batch);
+    return { rows: rows.length };
   });
-  return { rows: rows.length };
 }
 
 const toRow = (r: Record<string, unknown>): QuestionParticipationRow => ({
@@ -182,9 +194,9 @@ const toRow = (r: Record<string, unknown>): QuestionParticipationRow => ({
   memberCode: r.member_code as string,
   tdId: (r.td_id as number | null) ?? null,
   inOffice: r.role === 'office',
-  governmentSide: false, // not needed once points are stored
+  governmentSide: r.government_side as boolean,
   asked: r.asked as boolean,
-  spoke: true,
+  words: 0, // not stored: `answered` is
   secured: Number(r.secured),
   followUps: Number(r.follow_ups),
   answered: r.answered as boolean,
@@ -202,29 +214,42 @@ async function namesOf(codes: string[], database: Db): Promise<Map<string, strin
   return new Map((res.rows as Array<{ member_code: string; name: string }>).map((r) => [r.member_code, r.name]));
 }
 
-/** A TD's question record; NULL when they took part in no exchange read yet. */
+/** A TD's question record; NULL when they neither asked nor answered in an exchange read yet. */
 export async function tdQuestionRecord(tdId: number, database: Db = db): Promise<TdQuestionRecord | null> {
   const td = (await database.execute(sql`select member_code from politics.tds where id = ${tdId}`)).rows[0] as { member_code: string | null } | undefined;
   if (!td?.member_code) return null;
   const code = td.member_code;
   const [mineRes, everyoneRes] = await Promise.all([
     database.execute(sql`select * from politics.question_participation where member_code = ${code}`),
-    database.execute(sql`select * from politics.question_participation where asked and role = 'backbench'`),
+    // The cohort as counts per member and format (thousands of rows otherwise, on every view).
+    database.execute(sql`
+      select format, count(*)::int asked, (count(*) filter (where secured > 0))::int secured
+      from politics.question_participation
+      where asked and role = 'backbench' and not government_side
+      group by member_code, format`),
   ]);
   const mine = (mineRes.rows as Array<Record<string, unknown>>).map(toRow);
-  if (mine.length === 0) return null;
+  // Nothing to show for a TD who only spoke (a supplementary, an interjection), or asked only
+  // while in office: the figures count a backbencher's questions and an office holder's answers.
+  if (!mine.some((r) => (r.asked && !r.inOffice) || r.answered)) return null;
   const answered = mine.filter((r) => r.answered);
   // The exchanges they asked where a minister committed to something, newest first.
   const askedIds = mine.filter((r) => r.asked && (r.secured > 0 || r.followUps > 0)).map((r) => r.exchangeId);
-  const recentIds = askedIds.sort().reverse().slice(0, RECENT_EXCHANGES);
+  const recentRows = askedIds.length
+    ? ((
+        await database.execute(sql`
+          select e.id, e.date::text date, s.title
+          from politics.question_exchanges e
+          join politics.debate_sections s on s.id = e.section_id
+          where e.id in (${sql.join(askedIds.map((id) => sql`${id}`), sql`, `)})
+          order by e.date desc, coalesce(substring(e.section_id from 'dbsect_([0-9]+)$')::int, 0) desc, e.from_position desc
+          limit ${RECENT_EXCHANGES}`)
+      ).rows as Array<{ id: string; date: string; title: string }>)
+    : [];
+  const recentIds = recentRows.map((r) => r.id);
   const recent = recentIds.length
     ? await exchangeData(sql`e.id in (${sql.join(recentIds.map((id) => sql`${id}`), sql`, `)})`, database)
     : { members: [], items: [] };
-  const titles = recentIds.length
-    ? new Map(
-        ((await database.execute(sql`select e.id, e.section_id, s.title from politics.question_exchanges e join politics.debate_sections s on s.id = e.section_id where e.id in (${sql.join(recentIds.map((id) => sql`${id}`), sql`, `)})`)).rows as Array<{ id: string; section_id: string; title: string }>).map((r) => [r.id, r]),
-      )
-    : new Map<string, { id: string; section_id: string; title: string }>();
   const names = await namesOf(Array.from(new Set(recent.items.map((i) => i.memberCode))), database);
   const commitmentsOf = (exchangeId: string): QuestionCommitmentView[] => {
     const office = new Set(recent.members.filter((m) => m.exchangeId === exchangeId && m.inOffice).map((m) => m.memberCode));
@@ -234,8 +259,7 @@ export async function tdQuestionRecord(tdId: number, database: Db = db): Promise
   };
   return {
     rulesVersion: QUESTION_RULES_VERSION,
-    role: answered.length > mine.filter((r) => r.asked).length ? 'office' : 'backbench',
-    formats: formatFigures(mine, (everyoneRes.rows as Array<Record<string, unknown>>).map(toRow)),
+    formats: formatFigures(mine, everyoneRes.rows as unknown as CohortMember[]),
     answers: answered.length
       ? {
           answered: answered.length,
@@ -243,10 +267,9 @@ export async function tdQuestionRecord(tdId: number, database: Db = db): Promise
           withCommitment: answered.filter((r) => r.answerCommitments > 0).length,
         }
       : null,
-    recent: recentIds.map((id) => {
+    recent: recentRows.map(({ id, date, title }) => {
       const row = mine.find((r) => r.exchangeId === id)!;
-      const t = titles.get(id);
-      return { exchangeId: id, sectionId: t?.section_id ?? id.split('#')[0]!, date: recent.items.find((i) => i.exchangeId === id)?.date ?? '', title: t?.title ?? '', format: row.format, points: row.points, commitments: commitmentsOf(id) };
+      return { exchangeId: id, date, title, format: row.format, points: row.points, commitments: commitmentsOf(id) };
     }),
   };
 }

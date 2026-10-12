@@ -124,16 +124,31 @@ const billByA: RawBill = {
 };
 
 // --- Questions: A asks 15 oral (Taoiseach) and 77 written (50 Health, 27 Finance) in June;
-// C asks 3 in January; the chair 2 in March; B asks none.
+// C asks 3 in January; the chair 2 in March; B asks none. One of A's oral PQs names the
+// section it was answered in, dbsect_2 of PQ_TRANSCRIPT below.
 const q = (code: string, date: string, type: 'oral' | 'written', department: string, n: number): RawQuestion[] =>
   Array.from({ length: n }, () => ({ date, questionType: type, by: { memberCode: code }, to: { showAs: department } }));
+const PQ_DAY = '2025-06-12';
 const QUESTIONS: RawQuestion[] = [
-  ...q(A, '2025-06-12', 'oral', 'Taoiseach', 15),
+  { ...q(A, PQ_DAY, 'oral', 'Taoiseach', 1)[0]!, questionNumber: 7, debateSection: { debateSectionId: 'dbsect_2' } },
+  ...q(A, PQ_DAY, 'oral', 'Taoiseach', 14),
   ...q(A, '2025-06-12', 'written', 'Health', 50),
   ...q(A, '2025-06-13', 'written', 'Finance', 27),
   ...q(C, '2025-01-15', 'written', 'Transport', 3),
   ...q(CHAIR, '2025-03-03', 'written', 'Health', 2),
 ];
+
+// A's question 7, answered by B (a Minister of State since March) under Priority Questions.
+const PQ_TRANSCRIPT = `<akomaNtoso><debate><meta><references>
+  <TLCPerson eId="A" href="/ie/oireachtas/member/id/${A}" showAs="A"/>
+  <TLCPerson eId="B" href="/ie/oireachtas/member/id/${B}" showAs="B"/>
+  </references></meta><debateBody>
+  <debateSection eId="dbsect_1"><heading>Ceisteanna ar Sonraíodh Uain Dóibh - Priority Questions</heading>
+    <debateSection eId="dbsect_2"><heading>Hospital Waiting Lists</heading>
+      <speech by="#A" eId="spk_1"><p>Will the Minister publish the waiting list plan?</p></speech>
+      <speech by="#B" eId="spk_2"><p>I will publish it in November.</p></speech>
+    </debateSection>
+  </debateSection></debateBody></debate></akomaNtoso>`;
 
 interface FakeOptions {
   days?: Array<{ date: string; xmlUri: string | null }>;
@@ -170,6 +185,7 @@ function fakeClient(roster: RosterMember[], opts: FakeOptions = {}): OireachtasC
     transcript: async (xmlUri: string) => {
       if (xmlUri.startsWith('pac-')) return rollCallXml(rollCallFor(xmlUri.slice(4, 14)));
       if (xmlUri.startsWith('health-')) return rollCallXml({ linked: [Y], names: [] });
+      if (xmlUri === 'pq.xml') return PQ_TRANSCRIPT;
       return transcript;
     },
     bills: async () => {
@@ -1048,5 +1064,15 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     } finally {
       await dbmod.pool.query(`delete from politics.divisions where id in ('dail-34-2025-06-25-vote_13', 'dail-34-2025-06-25-vote_14', 'dail-34-2025-06-25-vote_15')`);
     }
+  });
+
+  // Last: A speaks on this day, and the fairness tests above rely on no roster TD speaking.
+  it('stores who asked each oral PQ, and cuts the section it was answered in into an oral PQ exchange', async () => {
+    const s = await sync({ client: fakeClient(roster, { days: [{ date: PQ_DAY, xmlUri: 'pq.xml' }] }), since: PQ_DAY, today: '2025-07-30', log: () => {} });
+    expect(s.failedFeeds).toEqual([]);
+    const { rows: askers } = await dbmod.pool.query('select section_id, question_number, member_code from politics.question_askers');
+    expect(askers).toEqual([{ section_id: `dail-${PQ_DAY}-dbsect_2`, question_number: 7, member_code: A }]);
+    const { rows: exchanges } = await dbmod.pool.query('select id, format, askers, from_position, to_position from politics.question_exchanges');
+    expect(exchanges).toEqual([{ id: `dail-${PQ_DAY}-dbsect_2#1`, format: 'oral_pq', askers: [A], from_position: 0, to_position: 1 }]);
   });
 });

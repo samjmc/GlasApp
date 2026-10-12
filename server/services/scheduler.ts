@@ -1,7 +1,7 @@
 import cron from "node-cron";
 import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
-import { extractDebates, extractQuestions, leaveWatch, runSync as runParliamentSync } from "../parliament";
+import { extractDebates, extractQuestions, leaveWatch, repository, runSync as runParliamentSync } from "../parliament";
 import { runDivisionStances } from "../stances";
 
 /** Debates read for items per night when DEBATE_ITEMS=on: about a sitting week's worth. */
@@ -15,6 +15,15 @@ export function initScheduler() {
   console.log("   📰 News ingest: every 2 hours, at :30 on odd hours");
   console.log("   🔗 News → TD links and daily-vote questions: every 2 hours");
   console.log("   🩺 Leave watch: Mondays 6:15 AM Dublin");
+
+  // A deploy that changes the published rules: rebuild the records now (no model calls), so the
+  // site never shows the new rules' name on points scored under the old ones until 04:45.
+  repository.rebuildStaleRecords().then(
+    (rebuilt) => {
+      if (rebuilt.length > 0) console.log(`[Scheduler] Rebuilt under the current rules: ${rebuilt.join(', ')}.`);
+    },
+    (error) => console.error("[Scheduler] Record rebuild failed:", error instanceof Error ? error.message : error),
+  );
 
   // ═══════════════════════════════════════════════════════════════════
   // NEWS PIPELINE (news is not part of any TD's score)

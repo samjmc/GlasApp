@@ -121,24 +121,26 @@ export class OireachtasClient {
     return (await (await this.request(`${BASE_URL}${path}?${qs}`)).json()) as T;
   }
 
-  /** Every member of the current Dáil whose seat has not ended. */
-  async roster(): Promise<RosterMember[]> {
-    const body = await this.get<{ results?: Array<{ member: RawMember }> }>('/members', {
+  private dailMembers?: Promise<RawMember[]>;
+
+  /** Every member of the current Dáil, fetched once per client (a sync makes its own client). */
+  private members(): Promise<RawMember[]> {
+    this.dailMembers ??= this.get<{ results?: Array<{ member: RawMember }> }>('/members', {
       chamber: 'dail',
       house_no: CURRENT_DAIL,
       limit: 500,
-    });
-    return (body.results ?? []).map((r) => toRosterMember(r.member)).filter((m): m is RosterMember => m !== null);
+    }).then((body) => (body.results ?? []).map((r) => r.member));
+    return this.dailMembers;
+  }
+
+  /** Every member of the current Dáil whose seat has not ended. */
+  async roster(): Promise<RosterMember[]> {
+    return (await this.members()).map(toRosterMember).filter((m): m is RosterMember => m !== null);
   }
 
   /** Every member whose seat in the current Dáil has ended, with the offices they held in it. */
   async formerMembers(): Promise<FormerMember[]> {
-    const body = await this.get<{ results?: Array<{ member: RawMember }> }>('/members', {
-      chamber: 'dail',
-      house_no: CURRENT_DAIL,
-      limit: 500,
-    });
-    return (body.results ?? []).map((r) => toFormerMember(r.member)).filter((m): m is FormerMember => m !== null);
+    return (await this.members()).map(toFormerMember).filter((m): m is FormerMember => m !== null);
   }
 
   /** Every Dáil division held from `from` to `to` inclusive (YYYY-MM-DD). */

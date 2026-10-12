@@ -136,7 +136,7 @@ router.get(
 );
 
 // The question record: what ministers committed to in reply (server/parliament/questionItems/rules.ts).
-// NULL data (not 404) when no exchange of that TD or section has been read yet.
+// NULL data (not 404) when the TD neither asked nor answered, or the section has no exchange, read yet.
 router.get(
   '/tds/:id/question-record',
   asyncHandler(async (req, res) => {

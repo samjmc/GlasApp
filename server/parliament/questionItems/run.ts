@@ -20,11 +20,11 @@ const SAMPLE_SHARES: Array<[QuestionFormat, number]> = [
 ];
 const rank = (id: string) => createHash('sha1').update(id).digest('hex');
 
-/** A fixed sample: per format, the exchanges whose id hashes lowest. The same input gives the same sample. */
+/** A fixed sample of at most n: per format, the exchanges whose id hashes lowest. The same input gives the same sample. */
 export function questionSample(units: QuestionUnit[], n: number): QuestionUnit[] {
   const out: QuestionUnit[] = [];
   for (const [format, share] of SAMPLE_SHARES) {
-    const take = format === 'rapid' ? n - out.length : Math.round(n * share);
+    const take = format === 'rapid' ? n - out.length : Math.min(n - out.length, Math.round(n * share));
     out.push(...units.filter((u) => u.format === format).sort((a, b) => (rank(a.id) < rank(b.id) ? -1 : 1)).slice(0, take));
   }
   return out;
