@@ -1,164 +1,72 @@
-# Glas Politics - System Architecture
+# Architecture
 
-## 🏗️ High-Level Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                          USERS                                   │
-│                    (Web Browsers)                                │
-└─────────────────────┬───────────────────────────────────────────┘
-                      │
-                      │ HTTPS
-                      │
-┌─────────────────────▼───────────────────────────────────────────┐
-│                   FRONTEND (React)                               │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │  Components (130+)  │  Pages (30+)  │  Contexts (5)      │  │
-│  ├──────────────────────────────────────────────────────────┤  │
-│  │  TanStack Query  │  Wouter Router  │  State Management   │  │
-│  ├──────────────────────────────────────────────────────────┤  │
-│  │  Radix UI  │  Tailwind CSS  │  Framer Motion           │  │
-│  └──────────────────────────────────────────────────────────┘  │
-└─────────────────────┬───────────────────────────────────────────┘
-                      │
-                      │ REST API
-                      │
-┌─────────────────────▼───────────────────────────────────────────┐
-│                  BACKEND (Express)                               │
-│  ┌──────────────────────────────────────────────────────────┐  │
-│  │              Authentication Middleware                    │  │
-│  │         (Supabase Auth + Session Management)             │  │
-│  ├──────────────────────────────────────────────────────────┤  │
-│  │                    API Routes (40+)                      │  │
-│  │  ┌───────────┬──────────┬──────────┬──────────────┐     │  │
-│  │  │ Auth      │ Quiz     │ Pledges  │ Elections    │     │  │
-│  │  │ Routes    │ Routes   │ Routes   │ Routes       │     │  │
-│  │  ├───────────┼──────────┼──────────┼──────────────┤     │  │
-│  │  │ Party     │ Map      │ AI       │ Community    │     │  │
-│  │  │ Routes    │ Routes   │ Routes   │ Routes       │     │  │
-│  │  └───────────┴──────────┴──────────┴──────────────┘     │  │
-│  ├──────────────────────────────────────────────────────────┤  │
-│  │                  Service Layer (12+)                     │  │
-│  │  ┌───────────┬──────────┬──────────┬──────────────┐     │  │
-│  │  │ Activity  │ Bot      │ Email    │ AI           │     │  │
-│  │  │ Tracker   │ Behavior │ Service  │ Analysis     │     │  │
-│  │  └───────────┴──────────┴──────────┴──────────────┘     │  │
-│  ├──────────────────────────────────────────────────────────┤  │
-│  │              Database Access (Drizzle ORM)               │  │
-│  └──────────────────────────────────────────────────────────┘  │
-└─────────────────────┬───────────────────────────────────────────┘
-                      │
-        ┌─────────────┼─────────────┬──────────────────┐
-        │             │             │                  │
-┌───────▼─────┐ ┌─────▼─────┐ ┌────▼────────┐ ┌──────▼─────┐
-│  Supabase   │ │  OpenAI   │ │  Anthropic  │ │  SendGrid  │
-│  PostgreSQL │ │    API    │ │  Claude API │ │   Email    │
-│  + Auth     │ │           │ │             │ │  Service   │
-│  + Storage  │ └───────────┘ └─────────────┘ └────────────┘
-└─────────────┘
-```
-
----
-
-## 🗄️ Database Architecture (Supabase PostgreSQL)
-
-### Core Tables
+GlasApp is one Node process in one Docker container. It serves the JSON API and the built React
+client, talks to one Postgres database, and runs a few scheduled jobs. The runbook is
+[docs/deploy.md](docs/deploy.md); this page is the shape of the system.
 
 ```
-┌──────────────────────────────────────────────────────────────┐
-│                        USERS                                  │
-│  ┌────────────────────────────────────────────────────────┐ │
-│  │ id, username, email, role, profile_image_url, etc.    │ │
-│  └────────────────────────────────────────────────────────┘ │
-└──────────────┬───────────────────────────────────────────────┘
-               │
-        ┌──────┼──────┬──────────────┬──────────────┐
-        │      │      │              │              │
-┌───────▼──┐ ┌─▼──────▼─┐ ┌──────────▼─┐ ┌─────────▼────┐
-│ USER     │ │  QUIZ    │ │ POLITICAL  │ │ USER         │
-│ ACTIVITY │ │ RESULTS  │ │ EVOLUTION  │ │ LOCATIONS    │
-└──────────┘ └──────────┘ └────────────┘ └──────────────┘
-
-┌──────────────────────────────────────────────────────────────┐
-│                       PARTIES                                 │
-│  ┌────────────────────────────────────────────────────────┐ │
-│  │ id, name, 8-dimensional scores, rationales, etc.      │ │
-│  └────────────────────────────────────────────────────────┘ │
-└──────────────┬───────────────────────────────────────────────┘
-               │
-        ┌──────┼──────┬──────────────┐
-        │      │      │              │
-┌───────▼──┐ ┌─▼──────▼─┐ ┌──────────▼─────────┐
-│ PLEDGES  │ │ ELECTION │ │ PERFORMANCE        │
-│          │ │ RESULTS  │ │ SCORES             │
-└──────────┘ └──────────┘ └────────────────────┘
-
-┌──────────────────────────────────────────────────────────────┐
-│                   CONSTITUENCIES                              │
-│  ┌────────────────────────────────────────────────────────┐ │
-│  │ id, name, county, seats, geo_data, scores, etc.       │ │
-│  └────────────────────────────────────────────────────────┘ │
-└──────────────┬───────────────────────────────────────────────┘
-               │
-        ┌──────┴──────┬──────────────┐
-        │             │              │
-┌───────▼──┐ ┌────────▼─┐ ┌──────────▼─┐
-│ ELECTION │ │ CANDIDATES│ │ USER       │
-│ RESULTS  │ │           │ │ LOCATIONS  │
-└──────────┘ └───────────┘ └────────────┘
+Browser (React SPA) --HTTPS--> Caddy (optional, one proxy hop)
+                                  |
+                                  v
+                    Express process (server/index.ts, port 5000)
+                      /api/*       routes -> services -> Drizzle -> Postgres
+                      /health      answers before any middleware
+                      /uploads     profile pictures (a volume)
+                      /assets      two map files (public/assets)
+                      everything else: the built client (dist/public), SPA fallback
+                      node-cron    scheduled jobs (server/services/scheduler.ts)
+                                  |
+              Postgres (GlasCore Supabase project, schema `politics`)
+              Supabase Auth (sign-in, token check) / DeepSeek or OpenAI / Cloudflare Workers AI
 ```
 
-### Table Statistics
-- **Total Tables:** 25+
-- **User-related:** 8 tables
-- **Political Data:** 10 tables
-- **Voting & Tracking:** 7 tables
+## Rules that shape everything
 
----
+- **One instance only.** Rate limits, the cache (unless `REDIS_URL` is set) and the parliament-sync
+  lock live in process memory. A second copy would not share them, so it does not run serverless,
+  scaled out, or behind a second proxy or CDN. `app.set('trust proxy', 1)` trusts exactly one hop.
+- **Migrations are manual and never run at boot.** `npm run db:migrate` from a checkout of `main`
+  (docs/deploy.md section 3). CI's `migration-guard` job rejects an edited merged migration.
+- **The server never trusts the client for identity.** See below.
 
-## 🔐 Authentication Flow
+## Server (`server/`)
 
-```
-┌─────────┐                                    ┌──────────────┐
-│ Client  │                                    │   Supabase   │
-│ (React) │                                    │     Auth     │
-└────┬────┘                                    └──────┬───────┘
-     │                                                │
-     │  1. Login Request (email, password)           │
-     ├──────────────────────────────────────────────>│
-     │                                                │
-     │  2. Validate credentials                      │
-     │                                                │
-     │  3. Generate JWT token                        │
-     │<──────────────────────────────────────────────┤
-     │                                                │
-     │  4. Store token in localStorage                │
-     │                                                │
-     │  5. Attach token to API requests              │
-     │     Authorization: Bearer <token>             │
-     │                                                │
-┌────▼────┐                                    ┌──────▼───────┐
-│ Express │                                    │   Supabase   │
-│ Backend │                                    │   Database   │
-└────┬────┘                                    └──────┬───────┘
-     │                                                │
-     │  6. Verify JWT token                          │
-     ├──────────────────────────────────────────────>│
-     │                                                │
-     │  7. Get user from token                       │
-     │<──────────────────────────────────────────────┤
-     │                                                │
-     │  8. Attach user to req.user                   │
-     │                                                │
-     │  9. Process authenticated request             │
-     │                                                │
-     │  10. Return response                          │
-     │                                                │
-```
+| Folder | What it does |
+|---|---|
+| `routes/` | HTTP routes, registered by `registerRoutes` |
+| `auth/` | Guards (`requireAuth`, `optionalAuth`, `requireAdmin`, `requireJob`): [docs/auth.md](docs/auth.md) |
+| `middleware/` | Security headers (CSP is report-only for now), rate limits, error handler, region |
+| `account/` | Consent, data export, account deletion, profile pictures |
+| `parliament/` | The Oireachtas record: members, votes, questions, debates, committees |
+| `scoring/` | TD scores from that record: [docs/scoring.md](docs/scoring.md) |
+| `news/`, `stances/` | News ingest, news linked to TDs, stances with evidence |
+| `quiz/`, `ideology/`, `voting/`, `pledges/`, `partyQuiz/` | The quiz and everything built on it |
+| `jobs/` | The command line entry points behind `npm run sync-tds`, `stances`, ... |
+| `services/` | The scheduler and the model-calling service |
+| `db.ts` | The `pg` pool and the Drizzle client |
 
----
+Scheduled jobs (Europe/Dublin): news ingest every two hours at :30 past odd hours, news to TD links
+every two hours, the parliament sync at 04:45 and the leave watch on Mondays at 06:15.
+`SCHEDULER=off` stops all of them. Three more model-calling steps are opt-in
+(`DIVISION_STANCES`, `DEBATE_ITEMS`, `QUESTION_ITEMS`; see docs/deploy.md section 6).
 
-## 🔄 Data Flow - Quiz and Ideology
+## Identity
+
+The client signs in with Supabase and sends the access token as `Authorization: Bearer`. The server
+verifies it on each request and puts the caller on `req.user`. There is no server-side session and no
+cookie identity. Admin comes from `app_metadata.role` or the `ADMIN_EMAILS` allow-list (confirmed
+emails only), never from anything the user can edit. Machine callers send the job secret in
+`x-admin-secret` or `x-cron-secret`. Full detail: [docs/auth.md](docs/auth.md).
+
+## Data
+
+All tables are in the `politics` schema, defined in `shared/schema/` with Drizzle and changed only
+through the SQL migrations in `drizzle/`. Row level security is on for every table with no policy,
+and `anon` and `authenticated` have no grant on the schema: the browser never reads the database,
+only the server does (migration 0026). Political opinions are special-category data, so saving
+a vote or quiz result needs recorded consent (`server/account/consent.ts`, `shared/consent.ts`).
+
+## Quiz and ideology
 
 One model for users, TDs and parties. Full design: `docs/architecture/ideology-matching.md`.
 
@@ -172,281 +80,17 @@ One model for users, TDs and parties. Full design: `docs/architecture/ideology-m
    `politics.ideology_profiles` and rebuild with `npm run ideology -- --recalculate`.
 4. Matches (`/api/ideology/me/matches`, public `POST /api/ideology/matches`) use one alignment formula.
 
-## 🗺️ Feature Modules
+## Client (`client/src/`)
 
-### Quiz and Ideology Modules
-```
-shared/ideology.ts   the 8 dimensions, −10..+10, + = right-coded pole on every one
-shared/quiz.ts       the question bank (25 questions, one dimension each)
-server/quiz/         scoring (server-side only) and the ideology label
-server/ideology/     model (weighted mean + prior), sources, alignment, party baselines
-server/routes/quiz.ts, server/routes/ideology.ts
-```
+React 18 with Vite, Wouter for routing (routes load lazily), TanStack Query for server state,
+Radix UI primitives with Tailwind. `pages/` are the screens, `components/` the pieces, `services/` the
+API calls, `lib/` the helpers. The constituency map is Leaflet over one GeoJSON file served from
+`/assets`. The production client is built into `dist/public` and served by the same Express process.
 
-### Party Matching Module
-```
-party-matching/
-├── Matching (server/ideology/alignment.ts)
-│   ├── Party = mean of its TDs' profiles
-│   ├── Weighted linear distance, 0..100
-│   └── Optional per-dimension weights (0..3)
-│
-├── Pledge Tracking
-│   ├── Promise database
-│   ├── Fulfillment scoring
-│   └── Evidence tracking
-│
-└── User Preferences
-    ├── Category ranking
-    ├── Importance voting
-    └── Personalized weights
-```
+## Build, test and ship
 
-### Electoral Mapping Module
-```
-electoral-mapping/
-├── Constituency Data
-│   ├── 43 constituencies
-│   ├── GeoJSON boundaries
-│   └── Demographic data
-│
-├── Interactive Maps
-│   ├── Leaflet integration
-│   ├── User heatmaps
-│   └── Zoom/pan controls
-│
-├── Comparison Tools
-│   ├── Side-by-side view
-│   ├── Statistical comparison
-│   └── Trend analysis
-│
-└── Predictions
-    ├── AI-powered trends
-    ├── Historical patterns
-    └── Confidence scores
-```
-
-### Community Module
-```
-community/
-└── Engagement Tracking
-    ├── User activity
-    ├── Contribution history
-    └── Reputation system
-```
-
----
-
-## 🔌 External Integrations
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Glas Politics Backend                     │
-└─────────────────────────────────────────────────────────────┘
-           │         │         │         │
-           │         │         │         │
-┌──────────▼───┐ ┌──▼─────┐ ┌─▼──────┐ ┌▼────────┐
-│  Supabase    │ │ OpenAI │ │Anthropic│ │SendGrid │
-│              │ │        │ │         │ │         │
-│ - Database   │ │ - GPT-4│ │ - Claude│ │ - Email │
-│ - Auth       │ │ - API  │ │ - API   │ │ - API   │
-│ - Storage    │ │        │ │         │ │         │
-│ - Realtime   │ │        │ │         │ │         │
-└──────────────┘ └────────┘ └─────────┘ └─────────┘
-```
-
-### Integration Details
-
-**Supabase**
-- PostgreSQL database with connection pooling
-- Authentication with JWT
-- File storage for uploads
-- Real-time subscriptions (future)
-- Row Level Security policies
-
-**OpenAI**
-- GPT-4 for complex analysis
-- Embeddings for semantic search (future)
-- Completion for text generation
-- Moderation for content safety
-
-**Anthropic (Claude)**
-- Advanced reasoning tasks
-- Context-aware analysis
-- Irish political context understanding
-- Cross-reference with OpenAI (planned)
-
-**SendGrid/Resend**
-- Transactional emails
-- Verification emails
-- Password resets
-- Notification emails
-
----
-
-## 🚀 Performance Considerations
-
-### Caching Strategy
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      Cache Layers                            │
-├─────────────────────────────────────────────────────────────┤
-│ 1. Browser Cache                                             │
-│    - Static assets (images, CSS, JS)                        │
-│    - Service Worker (future)                                │
-├─────────────────────────────────────────────────────────────┤
-│ 2. React Query Cache                                        │
-│    - API responses                                          │
-│    - Stale-while-revalidate                                 │
-│    - 5-minute default TTL                                   │
-├─────────────────────────────────────────────────────────────┤
-│ 3. Server Memory Cache                                      │
-│    - Frequently accessed data                               │
-│    - Quiz questions                                         │
-│    - Party positions                                        │
-├─────────────────────────────────────────────────────────────┤
-│ 4. Database Query Cache                                     │
-│    - Supabase built-in                                      │
-│    - Prepared statements                                    │
-│    - Connection pooling                                     │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Database Optimization
-- Indexes on frequently queried columns
-- Connection pooling (PgBouncer)
-- Query result caching
-- Optimized joins
-- Pagination for large datasets
-
-### Frontend Optimization
-- Code splitting by route
-- Lazy loading components
-- Image optimization (WebP)
-- Tree shaking unused code
-- Minification & compression
-
----
-
-## 🔒 Security Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Security Layers                           │
-├─────────────────────────────────────────────────────────────┤
-│ 1. Transport Layer                                          │
-│    - HTTPS only                                             │
-│    - TLS 1.3                                                │
-│    - Certificate pinning                                    │
-├─────────────────────────────────────────────────────────────┤
-│ 2. Authentication                                           │
-│    - JWT tokens                                             │
-│    - Token expiration                                       │
-│    - Refresh token rotation                                 │
-│    - 2FA support                                            │
-├─────────────────────────────────────────────────────────────┤
-│ 3. Authorization                                            │
-│    - Role-based access control                              │
-│    - Row Level Security (RLS)                               │
-│    - API key restrictions                                   │
-├─────────────────────────────────────────────────────────────┤
-│ 4. Input Validation                                         │
-│    - Zod schema validation                                  │
-│    - SQL injection prevention                               │
-│    - XSS protection                                         │
-│    - CSRF tokens                                            │
-├─────────────────────────────────────────────────────────────┤
-│ 5. Rate Limiting                                            │
-│    - API endpoint throttling                                │
-│    - Login attempt limits                                   │
-│    - reCAPTCHA for forms                                    │
-├─────────────────────────────────────────────────────────────┤
-│ 6. Data Protection                                          │
-│    - Password hashing (bcrypt)                              │
-│    - Encrypted environment variables                        │
-│    - Secure session storage                                 │
-│    - No sensitive data in logs                              │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 📊 Monitoring & Observability
-
-```
-Application Events
-        │
-        ├──> Error Tracking (Sentry - planned)
-        │    - Exception capture
-        │    - Stack traces
-        │    - User context
-        │
-        ├──> Performance Monitoring
-        │    - API response times
-        │    - Database query duration
-        │    - Page load metrics
-        │
-        ├──> Logging
-        │    - Structured logs
-        │    - Request/response logging
-        │    - Database query logs
-        │
-        └──> Analytics (Supabase)
-             - User activity
-             - Feature usage
-             - Conversion tracking
-```
-
----
-
-## 🔄 Deployment Architecture
-
-```
-┌─────────────┐
-│   GitHub    │
-│ Repository  │
-└──────┬──────┘
-       │
-       │ Push to main
-       │
-┌──────▼──────┐
-│   CI/CD     │
-│  Pipeline   │
-│ (GitHub     │
-│  Actions)   │
-└──────┬──────┘
-       │
-       ├──> Lint & Type Check
-       ├──> Run Tests
-       ├──> Build Application
-       │
-┌──────▼──────────────────────────────────────────┐
-│           Deployment Platform                    │
-│          (Vercel / Railway)                     │
-│  ┌────────────────────────────────────────────┐│
-│  │  Frontend Build (Static)                   ││
-│  │  - Vite optimized bundle                   ││
-│  │  - CDN distribution                        ││
-│  │  - Edge caching                            ││
-│  └────────────────────────────────────────────┘│
-│  ┌────────────────────────────────────────────┐│
-│  │  Backend Server (Node.js)                  ││
-│  │  - Express API                             ││
-│  │  - Serverless functions                    ││
-│  │  - Auto-scaling                            ││
-│  └────────────────────────────────────────────┘│
-└─────────────────────┬─────────────────────────┬──┘
-                      │                         │
-              ┌───────▼───────┐        ┌────────▼────────┐
-              │   Supabase    │        │  External APIs  │
-              │  (Database)   │        │  (OpenAI, etc)  │
-              └───────────────┘        └─────────────────┘
-```
-
----
-
-**Last Updated:** October 24, 2025  
-**Version:** 1.0
-
-
-
+- `npm run build` writes `dist/public` (Vite) and `dist/index.js` (esbuild, with `node_modules`
+  left external). The Dockerfile builds both, then installs production dependencies only.
+- CI (`.github/workflows/ci.yml`): `typecheck`, `test` (against a real Postgres), `build`, `e2e`
+  (Playwright), `migration-guard`, and `image` (the production image boots and stops cleanly).
+- Nothing deploys automatically: an operator builds and runs the image (docs/deploy.md).

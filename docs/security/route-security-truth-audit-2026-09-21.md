@@ -1,5 +1,10 @@
 # Route security truth audit — 2026-09-21
 
+> **Historical.** This is the audit as it stood on 2026-09-21. The auth rewrite of 2026-09-22
+> deleted `server/middleware/sessionMiddleware.ts`, `server/replitAuth.ts` and the session
+> login: see `docs/auth.md` for what replaced them. File paths below that no longer exist are
+> deleted code, not typos.
+
 **Scope:** every Express route in `server/`, the four auth guards, the RLS migrations, and the
 claims made by the Phase 4A (route security) and Phase 4B (RLS) agent reports.
 **Method:** static inventory (`scripts/audit/route-inventory.mjs`, committed) plus a read of
