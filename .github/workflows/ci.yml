@@ -70,7 +70,8 @@ jobs:
         run: |
           docker run -d --name glasapp-ci -p 5000:5000 \
             -e DATABASE_URL=postgres://u:p@127.0.0.1:1/x -e SUPABASE_URL=http://localhost:54321 \
-            -e SUPABASE_ANON_KEY=ci-placeholder-key -e SCHEDULER=off glasapp:ci
+            -e SUPABASE_ANON_KEY=ci-placeholder-key -e SUPABASE_SERVICE_ROLE_KEY=ci-placeholder-key \
+            -e SCHEDULER=off glasapp:ci
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:5000/health >/dev/null && break; sleep 2; done
           curl -fsS http://127.0.0.1:5000/health
           curl -fsS http://127.0.0.1:5000/ | grep -q 'id="root"'
