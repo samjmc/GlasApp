@@ -3,7 +3,7 @@
  * listens for `beforeinstallprompt` itself.
  */
 import { createElement } from "react";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 import { ToastAction, type ToastActionElement } from "@/components/ui/toast";
 
 async function registerServiceWorker() {

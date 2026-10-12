@@ -4,7 +4,7 @@ import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Toaster } from '@/components/ui/toaster';
-import { toast } from '@/components/ui/use-toast';
+import { toast } from '@/hooks/use-toast';
 import { ToastAction } from '@/components/ui/toast';
 import { QueryErrorResetBoundary, useQueryClient } from '@tanstack/react-query';
 import { shouldResetBoundary } from '@/lib/errorBoundaryReset';

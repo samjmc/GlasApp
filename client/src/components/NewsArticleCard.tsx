@@ -6,7 +6,7 @@
 import { ExternalLink, Share2, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { PolicyVotePrompt } from './PolicyVotePrompt';
 import { ArticleImage } from './news/ArticleImage';
 import { humanizeCategory, type FeedArticle } from '@/lib/news';
