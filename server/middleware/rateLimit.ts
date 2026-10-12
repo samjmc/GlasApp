@@ -103,12 +103,16 @@ export const publicWriteRateLimit = createRateLimit({
   key: (req) => (req.user ? `user:${req.user.id}` : clientIp(req)),
 });
 
-/** A full copy of one account's data: 10 per signed-in user per hour. Mount after requireAuth. It guards a GET, so GET has to be named: the default leaves GET uncounted. */
+/**
+ * A full copy of one account's data: 10 per signed-in user per hour. Mount after requireAuth. It guards
+ * a GET, so GET has to be named: the default leaves GET uncounted. HEAD too: Express answers a HEAD
+ * through the GET handler, so it runs the whole export and would otherwise be free.
+ */
 export const exportRateLimit = createRateLimit({
   windowMs: 60 * 60 * 1000,
   max: 10,
   name: 'export',
-  methods: ['GET'],
+  methods: ['GET', 'HEAD'],
   key: (req) => (req.user ? `user:${req.user.id}` : clientIp(req)),
 });
 

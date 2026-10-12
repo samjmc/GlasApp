@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { communityWeights, rankingsByUser, summariseParty, weightsFromRanking } from './score';
+import { communityWeights, MIN_COMMUNITY_RANKERS, publishableCommunityWeights, rankingsByUser, summariseParty, weightsFromRanking } from './score';
 
 describe('weightsFromRanking', () => {
   it('gives n points to the first of n categories and 1 to the last, normalised to 1', () => {
@@ -37,6 +37,21 @@ describe('communityWeights', () => {
 
   it('is empty with no rankings', () => {
     expect(communityWeights([])).toEqual({});
+  });
+});
+
+describe('publishableCommunityWeights', () => {
+  const ranking = ['housing', 'health'] as const;
+
+  it('publishes nothing below the minimum: the weights would be one person’s ranking', () => {
+    expect(publishableCommunityWeights([ranking])).toEqual({});
+    expect(publishableCommunityWeights(Array.from({ length: MIN_COMMUNITY_RANKERS - 1 }, () => ranking))).toEqual({});
+  });
+
+  it('publishes the same weights as communityWeights from the minimum up', () => {
+    const rankings = Array.from({ length: MIN_COMMUNITY_RANKERS }, () => ranking);
+    expect(Object.keys(publishableCommunityWeights(rankings))).toEqual(['housing', 'health']);
+    expect(publishableCommunityWeights(rankings)).toEqual(communityWeights(rankings));
   });
 });
 

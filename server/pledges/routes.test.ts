@@ -15,7 +15,7 @@ process.env.ADMIN_API_SECRET = 'job-secret';
 process.env.ADMIN_EMAILS = '';
 process.env.LOG_LEVEL = 'silent';
 
-const state = vi.hoisted(() => ({ calls: [] as Array<{ fn: string; args: unknown[] }>, logged: [] as string[] }));
+const state = vi.hoisted(() => ({ calls: [] as Array<{ fn: string; args: unknown[] }>, logged: [] as string[], otherRankers: 0 }));
 
 // Real guards, scripted identity: a bearer token maps straight to a user.
 vi.mock('../auth/supabase', () => ({
@@ -67,6 +67,7 @@ vi.mock('./repository', () => {
     allPriorityRows: record('allPriorityRows', () => [
       { userId: 'someone', category: 'housing', rank: 1 },
       { userId: 'user-1', category: 'health', rank: 1 },
+      ...Array.from({ length: state.otherRankers }, (_, i) => ({ userId: `other-${i}`, category: 'housing', rank: 1 })),
     ]),
     userRanking: record('userRanking', (userId) => (userId === 'user-1' ? ['health'] : null)),
     saveRanking: record('saveRanking', () => undefined),
@@ -74,12 +75,14 @@ vi.mock('./repository', () => {
 });
 
 const { pledgesRouter } = await import('./routes');
+const { MIN_COMMUNITY_RANKERS } = await import('./score');
 
 let server: Server;
 let base: string;
 
 beforeEach(async () => {
   state.calls = [];
+  state.otherRankers = 0;
   const app = express();
   app.use(express.json());
   app.use('/api/pledges', pledgesRouter);
@@ -176,13 +179,24 @@ describe('pledge validation and errors', () => {
 });
 
 describe('priorities', () => {
-  it('reports everyone’s weights, and the caller’s own ranking only when signed in', async () => {
+  it('reports everyone’s weights once enough people have ranked, and the caller’s own ranking only when signed in', async () => {
+    state.otherRankers = MIN_COMMUNITY_RANKERS - 2;
     const anon = (await (await send('/api/pledges/priorities')).json()).data;
-    expect(anon).toMatchObject({ rankers: 2, mine: null });
-    expect(anon.community).toEqual({ housing: 0.5, health: 0.5 });
+    expect(anon).toMatchObject({ rankers: MIN_COMMUNITY_RANKERS, mine: null });
+    // 'someone' + the 8 others put housing first, user-1 puts health first: housing 9/10, health 1/10.
+    expect(anon.community).toEqual({ housing: 0.9, health: 0.1 });
 
     const mine = (await (await send('/api/pledges/priorities', { token: 'user-token' })).json()).data;
     expect(mine.mine).toEqual(['health']);
+  });
+
+  it('publishes no community weights below the minimum, because they would be one person’s ranking; the count still shows', async () => {
+    state.otherRankers = 0;
+    const anon = (await (await send('/api/pledges/priorities')).json()).data;
+    expect(anon).toMatchObject({ rankers: 2, community: {}, mine: null });
+
+    state.otherRankers = MIN_COMMUNITY_RANKERS - 3;
+    expect((await (await send('/api/pledges/priorities')).json()).data.community).toEqual({});
   });
 
   it('saves a ranking for the signed-in user only, and rejects repeats', async () => {

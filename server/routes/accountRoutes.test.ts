@@ -79,7 +79,8 @@ async function send(method: string, path: string, auth?: string, body?: unknown,
       headers: { ...(auth ? { authorization: auth } : {}), ...(body === undefined ? {} : { 'content-type': 'application/json' }), ...headers },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
-    return { status: res.status, body: await res.json(), headers: res.headers };
+    // A HEAD answer has no body to read.
+    return { status: res.status, body: method === 'HEAD' ? null : await res.json(), headers: res.headers };
   } finally {
     await new Promise<void>((r) => server.close(() => r()));
   }
@@ -148,6 +149,15 @@ describe('GET /api/account/export', () => {
     expect(statuses.slice(0, 10).every((s) => s === 200)).toBe(true);
     expect(statuses[10]).toBe(429);
     expect((await send('GET', PATH, 'Bearer ok', undefined, { 'x-test-user': 'someone-else' })).status).toBe(200);
+  });
+
+  it('counts a HEAD too: Express runs the whole GET handler for it', async () => {
+    const statuses: number[] = [];
+    for (let i = 0; i < 11; i++) statuses.push((await send('HEAD', PATH, 'Bearer ok', undefined, { 'x-test-user': 'head-exporter' })).status);
+    expect(statuses.slice(0, 10).every((s) => s === 200)).toBe(true);
+    expect(statuses[10]).toBe(429);
+    // Each one ran the export (the 429 did not): the limit is what stopped the eleventh.
+    expect(calls.order.filter((entry) => entry.startsWith('export:head-exporter'))).toHaveLength(10);
   });
 
   it('answers 500, not an empty file, when the database fails', async () => {

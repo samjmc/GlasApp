@@ -5,10 +5,10 @@
  * Granting stores when and which wording. Withdrawing erases the political data in the same
  * transaction: without the consent there is no basis left to keep it.
  *
- * Known limit: a save checks consent and then writes in a later statement, and withdrawal takes no
- * lock against it. A save that passed the check a moment before a withdrawal can land after the
- * erase (a double-tap, or a second tab). It would stay until the next withdrawal or account
- * deletion. Closing it needs the check and the write in one transaction, in each write path.
+ * Every political write goes through withPoliticalConsent below: it checks consent and writes in one
+ * transaction holding the users row FOR SHARE, and the erase takes the same row FOR UPDATE first, so a
+ * save and a withdrawal serialise (a double-tap or a second tab cannot leave a save behind an erase).
+ * A new write path that skips withPoliticalConsent reopens that gap.
  */
 import type { NextFunction, Request, Response } from 'express';
 import { and, eq, sql } from 'drizzle-orm';

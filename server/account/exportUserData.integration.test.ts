@@ -74,16 +74,19 @@ run('exportUserData against Postgres', () => {
 
     const userMetadata = {
       first_name: 'Aoife', last_name: 'Tester', username: 'aoife', county: 'Kerry', constituency: 'Kerry', bio: 'meta bio',
-      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE',
-      // Not profile details the app keeps: left out.
-      role: 'admin', avatar_url: 'https://google.example/p.png', has_seen_onboarding: true,
+      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE', has_seen_onboarding: true,
+      // What a Google sign-in fills in and the app shows when the person has not edited it.
+      given_name: 'Aoife', family_name: 'Tester', full_name: 'Aoife Tester', name: 'Aoife T', avatar_url: 'https://google.example/p.png', picture: 'https://google.example/q.png',
+      // The sign-in provider's own bookkeeping is held by Supabase, not by us: left out.
+      role: 'admin', sub: 'google-subject-id', provider_id: 'google-provider-id', email_verified: true,
     };
     const out = await mod.exportUserData('user-a', { email: 'a@example.ie', userMetadata }, NOW);
 
     expect(out).toMatchObject({ format: mod.EXPORT_FORMAT_VERSION, exportedAt: '2026-10-10T12:00:00.000Z' });
     expect(out.profileMetadata).toEqual({
       first_name: 'Aoife', last_name: 'Tester', username: 'aoife', county: 'Kerry', constituency: 'Kerry', bio: 'meta bio',
-      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE',
+      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE', has_seen_onboarding: true,
+      given_name: 'Aoife', family_name: 'Tester', full_name: 'Aoife Tester', name: 'Aoife T', avatar_url: 'https://google.example/p.png', picture: 'https://google.example/q.png',
     });
     expect(out.account).toMatchObject({ id: 'user-a', email: 'a@example.ie', firstName: 'First user-a', county: 'Cork', bio: 'about me', phoneVerified: true, politicalConsentVersion: 1 });
     expect(out.quizResults).toHaveLength(1);

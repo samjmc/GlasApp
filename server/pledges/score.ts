@@ -61,6 +61,18 @@ export function communityWeights(rankings: ReadonlyArray<readonly PledgeCategory
   return sum;
 }
 
+/**
+ * Fewer rankers than this and the "community" weights are one person's own ranking, readable by
+ * anyone (and by differencing, a newcomer's). A ranking shows political opinions (Art. 9), so below
+ * this nothing is published; the count of rankers still is.
+ */
+export const MIN_COMMUNITY_RANKERS = 10;
+
+/** communityWeights, or nothing while too few people have ranked for it to be anonymous. */
+export function publishableCommunityWeights(rankings: ReadonlyArray<readonly PledgeCategory[]>): CategoryWeights {
+  return rankings.length >= MIN_COMMUNITY_RANKERS ? communityWeights(rankings) : {};
+}
+
 const emptyCounts = (): Record<PledgeStatus, number> =>
   Object.fromEntries(PLEDGE_STATUSES.map((s) => [s, 0])) as Record<PledgeStatus, number>;
 
