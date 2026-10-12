@@ -4,6 +4,7 @@
  * database `<db>_pledges` (see server/testing/migrations.ts).
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { PLEDGE_CATEGORIES, type CategoryWeights, type PledgeCategory } from '@shared/pledges';
 import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
@@ -118,6 +119,96 @@ run('pledges against Postgres', () => {
     expect(await repo.userRanking('u1')).toBeNull();
 
     await repo.saveRanking('u2', ['health']);
-    expect(await repo.allPriorityRows()).toEqual([{ userId: 'u2', category: 'health', rank: 1 }]);
+    expect(await repo.communityPriorities()).toEqual({ weights: { health: 1 }, rankers: 1 });
+  });
+
+  // ---- The OLD community weights, as computed in Node before they moved to SQL. ----
+  function oldWeightsFromRanking(ranking: readonly PledgeCategory[]): CategoryWeights {
+    const n = ranking.length;
+    if (n === 0) return {};
+    const total = (n * (n + 1)) / 2;
+    const weights: CategoryWeights = {};
+    ranking.forEach((category, index) => {
+      weights[category] = (n - index) / total;
+    });
+    return weights;
+  }
+  function oldRankingsByUser(rows: ReadonlyArray<{ userId: string; category: PledgeCategory; rank: number }>): Map<string, PledgeCategory[]> {
+    const byUser = new Map<string, Array<{ category: PledgeCategory; rank: number }>>();
+    for (const row of rows) {
+      const list = byUser.get(row.userId) ?? [];
+      list.push(row);
+      byUser.set(row.userId, list);
+    }
+    return new Map(
+      Array.from(byUser.entries()).map(([userId, list]): [string, PledgeCategory[]] => [
+        userId,
+        list.sort((a, b) => a.rank - b.rank).map((r) => r.category),
+      ]),
+    );
+  }
+  function oldCommunityWeights(rankings: ReadonlyArray<readonly PledgeCategory[]>): CategoryWeights {
+    if (rankings.length === 0) return {};
+    const sum: CategoryWeights = {};
+    for (const ranking of rankings) {
+      for (const [category, weight] of Object.entries(oldWeightsFromRanking(ranking)) as Array<[PledgeCategory, number]>) {
+        sum[category] = (sum[category] ?? 0) + weight;
+      }
+    }
+    for (const category of Object.keys(sum) as PledgeCategory[]) sum[category] = sum[category]! / rankings.length;
+    return sum;
+  }
+  async function oldCommunity() {
+    const { rows } = await dbmod.pool.query(`select user_id as "userId", category, rank from politics.pledge_category_priorities`);
+    const rankings = oldRankingsByUser(rows);
+    return { weights: oldCommunityWeights(Array.from(rankings.values())), rankers: rankings.size };
+  }
+  // ---- end of the old code ----
+
+  /** Same categories, same rankers, each weight equal to 1e-12: SQL sums in a different order than Node. */
+  async function expectSameAsOld() {
+    const [before, after] = await Promise.all([oldCommunity(), repo.communityPriorities()]);
+    expect(after.rankers).toBe(before.rankers);
+    expect(Object.keys(after.weights).sort()).toEqual(Object.keys(before.weights).sort());
+    for (const [category, weight] of Object.entries(before.weights)) {
+      expect(Math.abs(after.weights[category as PledgeCategory]! - weight!), category).toBeLessThan(1e-12);
+    }
+    return after;
+  }
+
+  it('community weights: every user counts once, however long their ranking', async () => {
+    expect(await repo.communityPriorities()).toEqual({ weights: {}, rankers: 0 });
+    await repo.saveRanking('u1', ['housing']);
+    await repo.saveRanking('u2', ['health', 'housing']);
+    // u1: housing 1. u2: health 2/3, housing 1/3. Mean: housing 2/3, health 1/3.
+    const w = (await expectSameAsOld()).weights;
+    expect(w.housing).toBeCloseTo(2 / 3, 12);
+    expect(w.health).toBeCloseTo(1 / 3, 12);
+  });
+
+  it('community weights in SQL equal the old Node arithmetic for many random rankings', async () => {
+    let seed = 20261012;
+    const random = () => ((seed = (seed * 1103515245 + 12345) % 2 ** 31) / 2 ** 31);
+    const users = Array.from({ length: 400 }, (_, i) => `rank-user-${i}`);
+    await consentTo(dbmod.pool, ...users);
+    const rows: Array<[string, string, number]> = [];
+    for (const user of users) {
+      // Any length from 1 to all 12, in any order: partial rankings are the common case.
+      const shuffled = [...PLEDGE_CATEGORIES].sort(() => random() - 0.5);
+      const ranking = shuffled.slice(0, 1 + Math.floor(random() * PLEDGE_CATEGORIES.length));
+      // Some users' ranks have gaps (never written by saveRanking, but the column allows it): place, not rank value, decides.
+      const step = random() < 0.2 ? 3 : 1;
+      ranking.forEach((category, i) => rows.push([user, category, 1 + i * step]));
+    }
+    await dbmod.pool.query(
+      `insert into politics.pledge_category_priorities (user_id, category, rank)
+       select * from unnest($1::text[], $2::text[], $3::int[])`,
+      [rows.map((r) => r[0]), rows.map((r) => r[1]), rows.map((r) => r[2])],
+    );
+
+    const after = await expectSameAsOld();
+    expect(after.rankers).toBe(400);
+    expect(Object.keys(after.weights)).toHaveLength(PLEDGE_CATEGORIES.length);
+    expect(Object.values(after.weights).reduce((a, b) => a + b!, 0)).toBeCloseTo(1, 12);
   });
 });

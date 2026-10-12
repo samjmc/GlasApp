@@ -29,37 +29,7 @@ export function weightsFromRanking(ranking: readonly PledgeCategory[]): Category
   return weights;
 }
 
-/** Group stored rows into each user's ranking, ordered by rank. */
-export function rankingsByUser(
-  rows: ReadonlyArray<{ userId: string; category: PledgeCategory; rank: number }>,
-): Map<string, PledgeCategory[]> {
-  const byUser = new Map<string, Array<{ category: PledgeCategory; rank: number }>>();
-  for (const row of rows) {
-    const list = byUser.get(row.userId) ?? [];
-    list.push(row);
-    byUser.set(row.userId, list);
-  }
-  // Array.from, not spread: the ES2017 target cannot iterate a Map directly.
-  return new Map(
-    Array.from(byUser.entries()).map(([userId, list]): [string, PledgeCategory[]] => [
-      userId,
-      list.sort((a, b) => a.rank - b.rank).map((r) => r.category),
-    ]),
-  );
-}
-
-/** Everyone's rankings combined: the mean of each user's weights, so every user counts once. */
-export function communityWeights(rankings: ReadonlyArray<readonly PledgeCategory[]>): CategoryWeights {
-  if (rankings.length === 0) return {};
-  const sum: CategoryWeights = {};
-  for (const ranking of rankings) {
-    for (const [category, weight] of Object.entries(weightsFromRanking(ranking)) as Array<[PledgeCategory, number]>) {
-      sum[category] = (sum[category] ?? 0) + weight;
-    }
-  }
-  for (const category of Object.keys(sum) as PledgeCategory[]) sum[category] = sum[category]! / rankings.length;
-  return sum;
-}
+// Everyone's rankings combined are aggregated in SQL, with this same Borda count: communityPriorities in repository.ts.
 
 const emptyCounts = (): Record<PledgeStatus, number> =>
   Object.fromEntries(PLEDGE_STATUSES.map((s) => [s, 0])) as Record<PledgeStatus, number>;

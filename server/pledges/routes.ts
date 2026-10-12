@@ -25,7 +25,7 @@ import { logAdminAction, optionalAuth, requireAdmin, requireAuth } from '../auth
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES, type PledgeCategory } from '@shared/pledges';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 import * as repo from './repository';
-import { communityWeights, rankingsByUser, summariseParty, weightsFromRanking } from './score';
+import { summariseParty, weightsFromRanking } from './score';
 
 const idParam = z.coerce.number().int().positive();
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use YYYY-MM-DD');
@@ -112,12 +112,13 @@ pledgesRouter.get(
   '/parties',
   optionalAuth,
   handle(async (req) => {
-    const [all, rows, mine] = await Promise.all([
+    // Everyone's weights are read only when the viewer has no ranking of their own.
+    const [all, weights] = await Promise.all([
       repo.listPledges(),
-      repo.allPriorityRows(),
-      req.user ? repo.userRanking(req.user.id) : Promise.resolve(null),
+      (req.user ? repo.userRanking(req.user.id) : Promise.resolve(null)).then(async (mine) =>
+        mine ? weightsFromRanking(mine) : (await repo.communityPriorities()).weights,
+      ),
     ]);
-    const weights = mine ? weightsFromRanking(mine) : communityWeights(Array.from(rankingsByUser(rows).values()));
     const hasWeights = Object.keys(weights).length > 0;
 
     // Grouped case-insensitively, like the unique index and ?party=: "Sinn Féin" and "sinn féin" are one party.
@@ -137,12 +138,11 @@ pledgesRouter.get(
   '/priorities',
   optionalAuth,
   handle(async (req) => {
-    const rankings = rankingsByUser(await repo.allPriorityRows());
-    return {
-      community: communityWeights(Array.from(rankings.values())),
-      rankers: rankings.size,
-      mine: req.user ? (rankings.get(req.user.id) ?? null) : null,
-    };
+    const [community, mine] = await Promise.all([
+      repo.communityPriorities(),
+      req.user ? repo.userRanking(req.user.id) : Promise.resolve(null),
+    ]);
+    return { community: community.weights, rankers: community.rankers, mine };
   }),
 );
 
