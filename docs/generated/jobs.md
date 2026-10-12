@@ -38,3 +38,4 @@ Top-level files in `server/jobs/` and `scripts/` that no script above points at:
 - `scripts/parliament-sources-smoke.ts`
 - `scripts/simplify-constituencies.js`
 - `server/jobs/itemsJob.ts`
+- `server/jobs/liveDbGuard.ts`

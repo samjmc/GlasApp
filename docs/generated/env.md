@@ -15,7 +15,7 @@ Scope: `server` = read under `server/` or `shared/`; `client` = `VITE_` variable
 | `CI` | tooling | no | `playwright.config.ts` |
 | `CLOUDFLARE_ACCOUNT_ID` | server | yes | `server/stances/position.ts` |
 | `CRON_SECRET` | server | no | `server/auth/index.ts` |
-| `DATABASE_URL` | server, tooling | yes | `drizzle.config.ts`, `server/db.ts`, `server/index.ts` |
+| `DATABASE_URL` | server, tooling | yes | `drizzle.config.ts`, `server/db.ts`, `server/index.ts`, `server/jobs/liveDbGuard.ts` |
 | `DB_POOL_MAX` | server | no | `server/db.ts` |
 | `DEBATE_ITEMS` | server | no | `server/services/scheduler.ts` |
 | `DIRECT_URL` | tooling | yes | `drizzle.config.ts` |
