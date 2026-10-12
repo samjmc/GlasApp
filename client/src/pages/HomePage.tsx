@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Link } from "wouter";
 import { Heart, Map } from "lucide-react";
 import { HomePageTabs } from "@/components/HomePageTabs";
@@ -5,10 +6,14 @@ import { TDScoresWidget, useScoresWidget } from "@/components/TDScoresWidget";
 import { PartyRankingsWidget } from "@/components/PartyRankingsWidget";
 import { YourTDsCard } from "@/components/home/YourTDsCard";
 import { LatestVoteCard } from "@/components/home/LatestVoteCard";
-import { OnboardingModal } from "@/components/onboarding/OnboardingModal";
 import { WelcomeBanner } from "@/components/onboarding/WelcomeBanner";
 import { FirstTimeUserTour } from "@/components/onboarding/FirstTimeUserTour";
 import { useAuth } from "@/contexts/AuthContext";
+
+// Only signed-in users can see it, so signed-out visitors never download its animation library.
+const OnboardingModal = lazy(() =>
+  import("@/components/onboarding/OnboardingModal").then((m) => ({ default: m.OnboardingModal }))
+);
 
 function HeroContext() {
   const { data } = useScoresWidget();
@@ -32,7 +37,11 @@ export default function HomePage() {
 
   return (
     <>
-      <OnboardingModal />
+      {isAuthenticated && (
+        <Suspense fallback={null}>
+          <OnboardingModal />
+        </Suspense>
+      )}
       <FirstTimeUserTour />
 
       <div className="flex flex-col gap-6 md:gap-8">
