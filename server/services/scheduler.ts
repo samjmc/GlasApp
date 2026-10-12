@@ -25,7 +25,7 @@ export function initScheduler() {
     try {
       const stats = await ingest();
       const failed = stats.feeds.filter((f) => f.error).map((f) => f.source);
-      console.log(`📰 [Scheduler] Ingest: ${stats.inserted} new of ${stats.fetched} fetched, ${stats.withImage} with a picture${failed.length ? `; feeds failed: ${failed.join(', ')}` : ''}`);
+      console.log(`📰 [Scheduler] Ingest: ${stats.inserted} new of ${stats.fetched} fetched, ${stats.withImage} with a picture${stats.heldBack ? `, ${stats.heldBack} held back for the next run${stats.outOfCredit ? ' (model out of credit)' : ''}` : ''}${failed.length ? `; feeds failed: ${failed.join(', ')}` : ''}`);
     } catch (error: unknown) {
       console.error("❌ [Scheduler] News ingest failed:", error instanceof Error ? error.message : error);
     }
@@ -33,21 +33,23 @@ export function initScheduler() {
     timezone: "Europe/Dublin"
   });
 
-  // News → TD pipeline - every 2 hours: importance triage, link each article to the TDs it
-  // names, and make daily-vote questions. It scores nobody.
+  // News → TD pipeline - every 2 hours: keep the most relevant quarter, link each article to
+  // the TDs it names, and make daily-vote questions. It scores nobody.
   cron.schedule('0 */2 * * *', async () => {
     console.log("\n🔗 [Scheduler] Running the news → TD pipeline...");
     try {
       const stats = await runTdPipeline({
         batchSize: 50,
         topPercentile: 25,
-        minImportanceScore: 40
       });
       console.log(`✅ [Scheduler] News → TD pipeline complete:`);
       console.log(`   • Articles processed: ${stats.articlesProcessed}`);
       console.log(`   • TD links: ${stats.tdsLinked}`);
       if (stats.errors > 0) {
         console.warn(`   ⚠️ Errors: ${stats.errors}`);
+      }
+      if (stats.stopped) {
+        console.warn(`   ⚠️ Stopped early: ${stats.stopped}; ${stats.released} article(s) handed back`);
       }
     } catch (error: unknown) {
       console.error("❌ [Scheduler] News → TD pipeline failed:", error instanceof Error ? error.message : error);
