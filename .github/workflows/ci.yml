@@ -23,6 +23,10 @@ jobs:
       - run: npm run check
       # "Never do X" rules as one regex each (scripts/ci/check-code-guards.ts).
       - run: npm run guard:code
+      # docs/generated/ is built from the code; red means run `npm run facts` and commit.
+      - run: npm run facts:check
+      # Doc links resolve, `npm run` names exist, server env vars are in .env.example.
+      - run: npm run docs:check
 
   test:
     runs-on: ubuntu-latest
