@@ -89,4 +89,19 @@ export const queryKeys = {
   /** GET /api/daily-session: the signed-in user's own session. */
   dailySession: (regionCode: string | null, userId: string | undefined) =>
     ["daily-session-state", regionCode, userId] as const,
+  /** Every region's and user's daily session, for invalidation. */
+  dailySessionAll: () => ["daily-session-state"] as const,
+  votes: {
+    /** GET /api/votes/articles/:id: the tally and, signed in, the caller's own answer. */
+    article: (articleId: number, userId: string | undefined) => ["/api/votes/articles", articleId, userId] as const,
+  },
 };
+
+/**
+ * What a saved vote makes stale. Every vote recomputes the user's ideology (server/voting/service.ts),
+ * which moves their position, timeline and matches. An article vote also answers that question in
+ * today's session if it is there.
+ */
+export function keysStaleAfterVote(kind: "daily" | "article") {
+  return kind === "article" ? [queryKeys.ideology.all(), queryKeys.dailySessionAll()] : [queryKeys.ideology.all()];
+}
