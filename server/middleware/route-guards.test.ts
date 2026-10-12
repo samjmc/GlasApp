@@ -211,11 +211,10 @@ describe('createRateLimit', () => {
 describe('structural markers (catch a silent revert of the audit fixes)', () => {
   const read = (rel: string) => fs.readFileSync(path.join(REPO_ROOT, rel), 'utf8');
 
-  it('POST /api/quiz takes the user from the token, never from the request body, and saves only with consent', () => {
+  it('POST /api/quiz takes the user from the token, never from the request body', () => {
     // The quiz rebuild moved the old inline /api/quiz-results handler to server/routes/quiz.ts.
+    // (That it saves only with consent is a behaviour test: quiz-ideology.routes.test.ts.)
     const src = read('server/routes/quiz.ts');
-    assert.ok(src.includes('req.user && (await hasPoliticalConsent(req.user.id)) ? req.user.id : null'));
-    assert.ok(src.includes('submitQuiz(saveFor,'));
     assert.equal(/body\.data\.userId|req\.body\.userId/.test(src), false);
     assert.equal(src.includes('req.session'), false);
     assert.equal(read('server/routes.ts').includes('req.session'), false);

@@ -1,6 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { Link } from "wouter";
 import { useAuth } from "@/contexts/AuthContext";
 import { fetchProfileMe, profileMeKey, useProfileMe } from "@/hooks/useProfileMe";
 import { apiRequest } from "@/lib/queryClient";
@@ -51,8 +50,6 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
 
   const granted = isAuthenticated && hasPoliticalConsent(profile.data?.data?.user);
   const known = !isAuthenticated || profile.isSuccess || profile.isError;
-  const grantedRef = useRef(granted);
-  grantedRef.current = granted;
   const userId = user?.id;
 
   // A different person signing in on this device starts with a clean slate.
@@ -76,9 +73,9 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   const ensure = useCallback(
     async (options?: EnsureOptions) => {
       if (!isAuthenticated) return true;
-      if (grantedRef.current) return true;
       if (options?.respectDecline && declined.current) return false;
-      // The cached profile can be missing or old: ask the server before bothering the user.
+      // Always ask the server, never the cached profile: consent can be withdrawn in another tab, or
+      // the wording can change under an open page, and a save on a stale "yes" fails with a 403.
       const fresh = await queryClient.fetchQuery({ queryKey: profileMeKey(userId), queryFn: fetchProfileMe, staleTime: 0 }).catch(() => null);
       if (hasPoliticalConsent(fresh?.data?.user)) return true;
       return new Promise<boolean>((resolve) => {
@@ -104,8 +101,9 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
     try {
       await grant();
       settle(true);
-    } catch {
-      setError("We could not save your choice. Please try again.");
+    } catch (err) {
+      // 409: the server holds newer wording than this page showed.
+      setError(err instanceof Error && err.message.startsWith("409:") ? "The wording has changed. Reload the page and read it again." : "We could not save your choice. Please try again.");
     } finally {
       setSaving(false);
     }
@@ -116,7 +114,8 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
   return (
     <ConsentContext.Provider value={value}>
       {children}
-      <Dialog open={open} onOpenChange={(next) => !next && settle(false)}>
+      {/* Esc or a click outside while the choice is being saved must not report "no" for a "yes" that then lands. */}
+      <Dialog open={open} onOpenChange={(next) => !next && !saving && settle(false)}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Can we keep your political opinions?</DialogTitle>
@@ -128,7 +127,11 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
             ))}
           </ul>
           <p className="text-sm text-muted-foreground">
-            Read the <Link href="/privacy-policy" className="font-semibold text-primary underline underline-offset-2">privacy policy</Link> for the details.
+            Read the{" "}
+            <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary underline underline-offset-2">
+              privacy policy
+            </a>{" "}
+            for the details. It opens in a new tab.
           </p>
           {error && (
             <p role="alert" className="text-sm font-semibold text-warn">

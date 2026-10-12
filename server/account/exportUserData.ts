@@ -1,19 +1,22 @@
 /**
  * Everything GlasApp holds about one user, as one JSON document (GDPR Art. 15 access and Art. 20
  * portability). It reads the same user-keyed tables as deleteUserData.ts; a new one must be added
- * here in the same change, and exportUserData.integration.test.ts fails if one is missed.
+ * here in the same change. The integration test scans the schema for tables with a `user_id` or
+ * `subject_kind` column, so it catches a new table that follows that naming, not one keyed some
+ * other way (`owner_id`, a child of a user table): those need a person to remember.
  *
  * What is left out on purpose: the phone code's hash and its bookkeeping (a secret, not the user's
  * data), the sign-in itself (held by Supabase), and the profile picture file (its address is in).
  */
 import { and, asc, desc, eq, inArray } from 'drizzle-orm';
 import { db, type Db } from '../db';
+import { publicProfile } from './profile';
 import { users } from '@shared/schema/accounts';
 import { pledgeCategoryPriorities } from '@shared/schema/pledges';
 import { ideologyProfiles, quizResults } from '@shared/schema/quiz';
 import { dailySessionItems, dailySessions, policyQuestionOptions, policyQuestions, policyVotes } from '@shared/schema/voting';
 
-/** The politics tables the export covers: the exported sections come from exactly these. */
+/** The politics tables the export reads, for the schema scan in the integration test to compare against. */
 export const EXPORTED_USER_TABLES = [
   'users',
   'quiz_results',
@@ -29,10 +32,11 @@ export const EXPORT_FORMAT_VERSION = 1;
 const NOTES = [
   'Your sign-in (your password, or your Google sign-in) is held by our sign-in provider, Supabase, and is not in this file. Your email address is.',
   'Your profile picture is not in this file; its address is in account.profileImageUrl.',
-  'Dates are in UTC. The position on each quiz result and in ideologyProfile is one number from -10 to +10 on each of eight dimensions: economic, social, cultural, authority, environmental, welfare, globalism and technocratic.',
+  'Timestamps are in UTC; a daily session\'s sessionDate is the Irish calendar day. The position on each quiz result and in ideologyProfile is one number from -10 to +10 on each of eight dimensions: economic, social, cultural, authority, environmental, welfare, globalism and technocratic.',
 ];
 
-type Account = Omit<typeof users.$inferSelect, 'phoneCodeHash' | 'phoneCodeExpiresAt' | 'phoneCodeAttempts'> & { email: string | null };
+/** The profile as the app already shows it to its owner (publicProfile drops the phone code secrets), plus the email. */
+type Account = ReturnType<typeof publicProfile> & { email: string | null };
 
 export interface UserDataExport {
   format: number;
@@ -96,7 +100,7 @@ export async function exportUserData(userId: string, identity: { email: string |
   return {
     format: EXPORT_FORMAT_VERSION,
     exportedAt: now.toISOString(),
-    account: profile ? withoutPhoneSecrets(profile, identity.email) : null,
+    account: profile ? { ...publicProfile(profile), email: identity.email } : null,
     quizResults: quiz.map(({ userId: _owner, ...rest }) => rest),
     ideologyProfile: position ? (({ subjectKind: _kind, subjectId: _id, ...rest }) => rest)(position) : null,
     votes,
@@ -104,9 +108,4 @@ export async function exportUserData(userId: string, identity: { email: string |
     pledgePriorities: priorities,
     notes: NOTES,
   };
-}
-
-function withoutPhoneSecrets(row: typeof users.$inferSelect, email: string | null): Account {
-  const { phoneCodeHash: _hash, phoneCodeExpiresAt: _expires, phoneCodeAttempts: _attempts, ...rest } = row;
-  return { ...rest, email };
 }

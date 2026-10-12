@@ -100,6 +100,20 @@ run('political consent against Postgres', () => {
     expect(Math.abs(Date.now() - new Date(rows[0].political_consent_at).getTime())).toBeLessThan(60_000);
   });
 
+  it('agreeing again to the same wording keeps the original date; agreeing to new wording replaces it', async () => {
+    await mod.grantPoliticalConsent('keeper');
+    await q("update politics.users set political_consent_at = '2026-01-01T00:00:00Z' where id = 'keeper'");
+    await mod.grantPoliticalConsent('keeper');
+    const kept = await q("select political_consent_at from politics.users where id = 'keeper'");
+    expect(new Date(kept.rows[0].political_consent_at).toISOString()).toBe('2026-01-01T00:00:00.000Z');
+
+    await q("update politics.users set political_consent_version = $1 where id = 'keeper'", [POLITICAL_CONSENT_VERSION - 1]);
+    await mod.grantPoliticalConsent('keeper');
+    const replaced = await q("select political_consent_at, political_consent_version from politics.users where id = 'keeper'");
+    expect(replaced.rows[0].political_consent_version).toBe(POLITICAL_CONSENT_VERSION);
+    expect(new Date(replaced.rows[0].political_consent_at).getTime()).toBeGreaterThan(Date.parse('2026-06-01T00:00:00Z'));
+  });
+
   it('does not count a consent given to an older wording', async () => {
     await mod.grantPoliticalConsent('old-wording');
     await q("update politics.users set political_consent_version = $1 where id = 'old-wording'", [POLITICAL_CONSENT_VERSION - 1]);

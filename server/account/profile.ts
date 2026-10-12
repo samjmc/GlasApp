@@ -1,5 +1,6 @@
 /**
- * Every read and write of politics.users. Nothing else touches it; account deletion goes
+ * Reads and writes of the profile fields of politics.users. The consent columns are read and
+ * written by consent.ts, the export reads the row in exportUserData.ts, and account deletion goes
  * through deleteUserData.ts.
  */
 import { and, eq, ne, sql } from 'drizzle-orm';

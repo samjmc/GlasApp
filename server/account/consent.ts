@@ -4,9 +4,14 @@
  *
  * Granting stores when and which wording. Withdrawing erases the political data in the same
  * transaction: without the consent there is no basis left to keep it.
+ *
+ * Known limit: a save checks consent and then writes in a later statement, and withdrawal takes no
+ * lock against it. A save that passed the check a moment before a withdrawal can land after the
+ * erase (a double-tap, or a second tab). It would stay until the next withdrawal or account
+ * deletion. Closing it needs the check and the write in one transaction, in each write path.
  */
 import type { NextFunction, Request, Response } from 'express';
-import { eq, sql } from 'drizzle-orm';
+import { and, eq, sql } from 'drizzle-orm';
 import { hasPoliticalConsent as hasConsent, POLITICAL_CONSENT_VERSION } from '@shared/consent';
 import { users } from '@shared/schema/accounts';
 import { db, type Db } from '../db';
@@ -23,18 +28,17 @@ export async function hasPoliticalConsent(userId: string, database: Db = db): Pr
   return hasConsent(row);
 }
 
-/** Record consent to the current wording. Re-granting overwrites the date and version. */
+/** Record consent to the current wording. Someone already on the current wording keeps their original date. */
 export async function grantPoliticalConsent(userId: string, database: Db = db): Promise<void> {
   await ensureProfile(userId, database);
   await database
     .update(users)
     .set({ politicalConsentAt: sql`now()`, politicalConsentVersion: POLITICAL_CONSENT_VERSION, updatedAt: sql`now()` })
-    .where(eq(users.id, userId));
+    .where(and(eq(users.id, userId), sql`(${users.politicalConsentAt} is null or ${users.politicalConsentVersion} is distinct from ${POLITICAL_CONSENT_VERSION})`));
 }
 
 /** Withdraw consent and erase the political data, all or nothing. Returns what was erased. */
 export async function withdrawPoliticalConsent(userId: string, database: Db = db): Promise<PoliticalDataCounts> {
-  await ensureProfile(userId, database);
   return database.transaction(async (tx) => {
     const erased = await erasePoliticalData(tx, userId);
     await tx

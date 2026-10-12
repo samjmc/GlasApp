@@ -61,7 +61,7 @@ const ProfilePage = () => {
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [deleteAccountError, setDeleteAccountError] = useState<string | null>(null);
   const [isSavingProfile, setIsSavingProfile] = useState(false);
-  const { granted: consentGranted, grant: grantConsent, withdraw: withdrawConsent } = usePoliticalConsent();
+  const { granted: consentGranted, known: consentKnown, grant: grantConsent, withdraw: withdrawConsent } = usePoliticalConsent();
   const [isChangingConsent, setIsChangingConsent] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
 
@@ -437,40 +437,42 @@ const ProfilePage = () => {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-muted-foreground" role="status">
-                {consentGranted
-                  ? 'You agreed to us keeping them. You can withdraw at any time.'
-                  : 'You have not agreed. You can still take the quiz and see your result, but we do not save it.'}
+                {!consentKnown
+                  ? 'Checking your choice…'
+                  : consentGranted
+                    ? 'You agreed to us keeping them. You can withdraw at any time.'
+                    : 'You have not agreed to the current wording. You can still take the quiz and see your result, but we do not save it. Anything saved earlier stays until you agree again or delete it.'}
               </p>
             </CardContent>
-            <CardFooter className="justify-end">
-              {consentGranted ? (
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button variant="secondary" disabled={isChangingConsent}>
-                      {isChangingConsent && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
-                      Withdraw my agreement
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Withdraw your agreement?</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        We will delete your saved quiz results, your votes, your policy rankings and the political profile built from them.
-                        Your account stays. This cannot be undone.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
-                      <AlertDialogAction onClick={() => changeConsent('withdraw')}>Withdraw and delete</AlertDialogAction>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
-              ) : (
+            <CardFooter className="justify-end gap-2">
+              {consentKnown && !consentGranted && (
                 <Button onClick={() => changeConsent('grant')} disabled={isChangingConsent}>
                   {isChangingConsent && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
                   I agree
                 </Button>
               )}
+              {/* Works whatever the state: a user whose agreement is out of date can still erase what is stored. */}
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button variant="secondary" disabled={!consentKnown || isChangingConsent}>
+                    {isChangingConsent && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
+                    {consentGranted ? 'Withdraw my agreement' : 'Delete my saved opinions'}
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>{consentGranted ? 'Withdraw your agreement?' : 'Delete your saved opinions?'}</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      We will delete your saved quiz results, your votes, your policy rankings and the political profile built from them.
+                      Your account stays. This cannot be undone.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => changeConsent('withdraw')}>Delete my saved opinions</AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </CardFooter>
           </Card>
 
