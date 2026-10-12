@@ -82,6 +82,13 @@ export const newsArticles = politics.table(
     index('news_articles_status_published_idx').on(t.status, t.publishedAt),
     index('news_articles_published_idx').on(sql`${t.publishedAt} desc`),
     index('news_articles_duplicate_of_idx').on(t.duplicateOf).where(sql`${t.duplicateOf} is not null`),
+    // The FK from news_sources.
+    index('news_articles_source_idx').on(t.sourceId),
+    // The feed's `top` order over the visible rows (server/news/repository.ts BY_IMPORTANCE and
+    // VISIBLE; 60 is RELEVANCE_FLOOR). Change them together, or the feed sorts the whole table.
+    index('news_articles_feed_importance_idx')
+      .on(sql`(${t.importanceScore} is null)`, sql`${t.importanceScore} desc`, sql`${t.publishedAt} desc`, sql`${t.id} desc`)
+      .where(sql`${t.status} <> 'duplicate' and coalesce(${t.relevanceScore}, 100) >= 60`),
     check('news_articles_duplicate_link_chk', sql`(${t.status} = 'duplicate') = (${t.duplicateOf} is not null)`),
   ],
 ).enableRLS();
