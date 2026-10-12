@@ -9,6 +9,7 @@
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../../testing/migrations';
+import { OutOfCreditError } from '../../services/aiService';
 import type { ItemAnswer, ItemCompletion } from './run';
 
 const url = testDatabaseUrl('debateitems');
@@ -243,7 +244,7 @@ run('debate items (real Postgres)', () => {
     let calls = 0;
     const noCredit: ItemCompletion = async () => {
       calls++;
-      throw Object.assign(new Error('402 Insufficient Balance'), { status: 402 });
+      throw new OutOfCreditError('402 Insufficient Balance', { operation: 'debate-items', attempts: 1, elapsedMs: 0, status: 402 });
     };
     const s = await items.extractDebates({ complete: noCredit, concurrency: 1 });
     expect(calls).toBe(1);

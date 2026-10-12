@@ -3,6 +3,7 @@
  *
  *   npm run scores:recalculate
  */
+import 'dotenv/config';
 import { recalculateAll } from '../scoring';
 import { shutdown } from '../db';
 

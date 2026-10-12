@@ -2,6 +2,7 @@
  * Rebuild every user, TD and party ideology profile from its evidence. No model calls.
  *   npm run ideology -- --recalculate
  */
+import 'dotenv/config';
 import { recalculateAll, unknownTdCount } from '../ideology';
 import { shutdown } from '../db';
 

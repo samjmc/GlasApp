@@ -6,6 +6,7 @@
  *
  * Safe to re-run: every write replaces what it covers. The scheduler runs it daily.
  */
+import 'dotenv/config';
 import { runSync, syncHadFailures } from '../parliament';
 import { shutdown } from '../db';
 

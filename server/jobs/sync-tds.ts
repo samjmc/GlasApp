@@ -8,6 +8,7 @@
  * deactivates rather than deletes, so a TD who loses a seat keeps their record.
  * `npm run parliament:sync` does this too, as its first step.
  */
+import 'dotenv/config';
 import { OireachtasClient, rosterToSeeds } from '../parliament';
 import { repository as repo } from '../scoring';
 import { shutdown } from '../db';

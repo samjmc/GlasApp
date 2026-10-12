@@ -5,6 +5,7 @@
  * Writes reports/quiz-analysis/<YYYYMMDD-HHmmss>/report.md. reports/ is gitignored and a report
  * is never committed: the repo is public. Prints only the path and rounded counts.
  */
+import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
