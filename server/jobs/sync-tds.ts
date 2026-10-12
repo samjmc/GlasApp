@@ -2,6 +2,7 @@
  * Populate `politics.tds` from the Oireachtas roster of the current Dáil.
  *
  *   npm run sync-tds
+ *   npm run sync-tds -- --force    apply a roster that deactivates many TDs (after an election)
  *
  * Run this before the first scoring pass: the pipeline resolves TDs by name, so an
  * empty table means every article scores nobody. Safe to re-run — it upserts, and it
@@ -20,7 +21,7 @@ async function main(): Promise<void> {
   }
 
   const seeds = rosterToSeeds(members);
-  const result = await repo.syncTds(seeds);
+  const result = await repo.syncTds(seeds, undefined, { force: process.argv.includes('--force') });
   console.log(
     `Roster: ${members.length} members. Inserted ${result.inserted}, updated ${result.updated}, deactivated ${result.deactivated}.`,
   );

@@ -61,12 +61,17 @@ export async function debateSpeechesOf(debateId: string, database: Db = db): Pro
 }
 
 /** debate id → its run for this extractor version. */
-export async function extractionRunsFor(version: string, database: Db = db): Promise<Map<string, { inputHash: string; status: string }>> {
+export async function extractionRunsFor(version: string, database: Db = db): Promise<Map<string, { inputHash: string; status: string; failures: number }>> {
   const rows = await database
-    .select({ debateId: debateExtractionRuns.debateId, inputHash: debateExtractionRuns.inputHash, status: debateExtractionRuns.status })
+    .select({
+      debateId: debateExtractionRuns.debateId,
+      inputHash: debateExtractionRuns.inputHash,
+      status: debateExtractionRuns.status,
+      failures: debateExtractionRuns.failures,
+    })
     .from(debateExtractionRuns)
     .where(eq(debateExtractionRuns.extractorVersion, version));
-  return new Map(rows.map((r) => [r.debateId, { inputHash: r.inputHash, status: r.status }]));
+  return new Map(rows.map((r) => [r.debateId, { inputHash: r.inputHash, status: r.status, failures: r.failures }]));
 }
 
 /** Who held cabinet or Minister of State office, and when. A commitment needs one of these. */

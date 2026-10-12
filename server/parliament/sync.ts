@@ -19,11 +19,12 @@
  * later feeds still run, so one broken endpoint does not stop the rest of the data.
  */
 import { recalculateAll, repository as scoring } from '../scoring';
+import { JobAlreadyRunning, withJobLock } from '../services/jobLock';
 import { memberImageUrl, type TdSeed } from '../scoring/tdSync';
 import { OireachtasClient, type RosterMember } from './client';
 import { DOCUMENTED_ABSENCES, validateAbsences } from './absences';
 import { PARTY_LEADERS, validatePartyLeaders } from './partyLeaders';
-import { syncAllowances, syncInterests, type DisclosureResult, type DisclosureSource } from './disclosures';
+import { emptyDisclosureResult, syncAllowances, syncInterests, type DisclosureResult, type DisclosureSource } from './disclosures';
 import { fetchGenders } from './sources/wikidata';
 import { attendancePct, committeeAttendancePct } from './metrics';
 import {
@@ -62,6 +63,8 @@ export interface SyncOptions {
   disclosures?: DisclosureSource;
   today?: string;
   log?: (line: string) => void;
+  /** Apply a roster that deactivates more than MAX_DEACTIVATIONS TDs (after an election). */
+  forceRoster?: boolean;
 }
 
 export type SyncFeed =
@@ -86,7 +89,7 @@ export interface SyncSummary {
   /** Debates the stored sections were grouped into (all of them, not just this run's). */
   debateGroups: number;
   questions: { from: string; to: string; months: number; failedMonths: string[]; questions: number; totalsComplete: boolean };
-  /** New PDF files read this run; names that matched no current TD are listed, not stored. */
+  /** PDF files read this run; names that matched no TD of this Dáil are listed, not stored. */
   interests: DisclosureResult;
   allowances: DisclosureResult;
   /** Feeds that failed as a whole in this run; their tables keep what they had. */
@@ -95,13 +98,15 @@ export interface SyncSummary {
   scoringRowsWritten: number;
 }
 
-/** True when any part of the run failed: a whole feed, or a day or month inside one. */
+/** True when any part of the run failed: a whole feed, or a day, month or file inside one. */
 export function syncHadFailures(s: SyncSummary): boolean {
   return (
     s.failedFeeds.length > 0 ||
     s.debates.failedDays.length > 0 ||
     s.committees.failedDays.length > 0 ||
-    s.questions.failedMonths.length > 0
+    s.questions.failedMonths.length > 0 ||
+    s.interests.failedFiles.length > 0 ||
+    s.allowances.failedFiles.length > 0
   );
 }
 
@@ -162,10 +167,14 @@ function groupByDay<T extends { date: string }>(items: T[], keyOf: (item: T) => 
   return out;
 }
 
-/** Thrown when a sync is already running in this process (scheduler and admin trigger share it). */
+/**
+ * Thrown when a sync is already running: in this process (the scheduler and the admin trigger
+ * share it), or in another one (`npm run parliament:sync`), which holds the job's advisory lock.
+ */
 export class SyncAlreadyRunning extends Error {}
 let inFlight = false;
 
+/** A sync in THIS process; another process's sync shows only as SyncAlreadyRunning. */
 export function isSyncRunning(): boolean {
   return inFlight;
 }
@@ -174,7 +183,10 @@ export async function runSync(options: SyncOptions = {}): Promise<SyncSummary> {
   if (inFlight) throw new SyncAlreadyRunning('A parliament sync is already running');
   inFlight = true;
   try {
-    return await syncOnce(options);
+    return await withJobLock('parliament-sync', () => syncOnce(options));
+  } catch (error) {
+    if (error instanceof JobAlreadyRunning) throw new SyncAlreadyRunning('A parliament sync is already running in another process');
+    throw error;
   } finally {
     inFlight = false;
   }
@@ -196,11 +208,12 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     }
   }
 
-  // 1. Roster. An empty roster means the API failed, not that the Dáil emptied. Every
-  //    later step needs it, so a roster failure stops the run.
+  // 1. Roster. An empty roster means the API failed, not that the Dáil emptied, and so may a
+  //    short one (syncTds refuses one that deactivates many TDs). Every later step needs it,
+  //    so a roster failure stops the run.
   const roster = await client.roster();
   if (roster.length === 0) throw new Error('The Oireachtas roster came back empty; refusing to sync.');
-  const rosterResult = await scoring.syncTds(rosterToSeeds(roster));
+  const rosterResult = await scoring.syncTds(rosterToSeeds(roster), undefined, { force: options.forceRoster });
   const tdIds = await repo.tdIdsByMemberCode();
   await repo.updateRosterDetails(
     roster.map((m) => ({ memberCode: m.memberCode, offices: m.offices, committees: repo.currentCommitteeNames(m) })),
@@ -334,23 +347,24 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
     log(`Debate record: ${record.rows} rows over ${record.debates} debates read.`);
   });
 
-  // 5b. The interests register and allowance payments, from the Oireachtas's PDFs.
+  // 5b. The interests register and allowance payments, from the Oireachtas's PDFs. Names are
+  //     matched to members who have left too: their months in the Dáil stay on the record.
   const disclosureContext = {
-    roster: roster.map((m) => ({ memberCode: m.memberCode, fullName: m.fullName, constituency: m.constituency })),
+    roster: [...roster, ...former.filter((m) => m.fullName)].map((m) => ({ memberCode: m.memberCode, fullName: m.fullName, constituency: m.constituency })),
     tdIds,
     dailStart,
     source: options.disclosures,
     log,
   };
-  let interests: DisclosureResult = { files: 0, rows: 0, unmatched: [] };
-  let allowances: DisclosureResult = { files: 0, rows: 0, unmatched: [] };
+  let interests = emptyDisclosureResult();
+  let allowances = emptyDisclosureResult();
   await feed('interests', async () => {
     interests = await syncInterests(disclosureContext);
-    if (interests.unmatched.length) log(`Interests: no current TD for ${interests.unmatched.join('; ')}.`);
+    if (interests.unmatched.length) log(`Interests: no TD of this Dáil for ${interests.unmatched.join('; ')}.`);
   });
   await feed('allowances', async () => {
     allowances = await syncAllowances(disclosureContext);
-    if (allowances.unmatched.length) log(`Allowances: no current TD for ${allowances.unmatched.join('; ')}.`);
+    if (allowances.unmatched.length) log(`Allowances: no TD of this Dáil for ${allowances.unmatched.join('; ')}.`);
   });
 
   // 6. Questions, counted per month. A failed month keeps its previous counts and is

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { memberImageUrl, planTdSync, type ExistingTd, type TdSeed } from './tdSync';
+import { MAX_DEACTIVATIONS, RosterShrinkRefused, memberImageUrl, planTdSync, type ExistingTd, type TdSeed } from './tdSync';
 
 const seed = (over: Partial<TdSeed> & { name: string; memberCode: string }): TdSeed => ({
   party: 'Sinn Féin',
@@ -71,6 +71,17 @@ describe('planTdSync', () => {
   it('an empty roster changes nothing, so a failed fetch cannot wipe the Dáil', () => {
     const rows = [existing({ id: 1, name: 'Still Here', memberCode: 'A.D.2020' })];
     expect(planTdSync(rows, [])).toEqual({ insert: [], update: [], deactivate: [] });
+  });
+
+  it(`a short roster that would deactivate more than ${MAX_DEACTIVATIONS} TDs is refused, naming them, unless forced`, () => {
+    const rows = Array.from({ length: 10 }, (_, i) => existing({ id: i + 1, name: `TD ${i + 1}`, memberCode: `T${i + 1}.D.2020` }));
+    const short = rows.slice(0, 10 - MAX_DEACTIVATIONS - 1).map((r) => seed({ name: r.name, memberCode: r.memberCode! }));
+    expect(() => planTdSync(rows, short)).toThrow(RosterShrinkRefused);
+    expect(() => planTdSync(rows, short)).toThrow(/TD 10/);
+    expect(planTdSync(rows, short, { force: true }).deactivate).toHaveLength(MAX_DEACTIVATIONS + 1);
+    // Exactly the limit is a normal sitting (resignations, by-election seats).
+    const atLimit = rows.slice(0, 10 - MAX_DEACTIVATIONS).map((r) => seed({ name: r.name, memberCode: r.memberCode! }));
+    expect(planTdSync(rows, atLimit).deactivate).toHaveLength(MAX_DEACTIVATIONS);
   });
 
   it('collapses a roster that lists the same member twice', () => {

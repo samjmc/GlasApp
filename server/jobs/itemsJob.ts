@@ -6,10 +6,13 @@
  *   --pilot N         a fixed sample of N units
  *   --debate <id> …   these units (debate or exchange ids)
  *   --limit N         the first N not read yet
+ *   --all --yes       every unit (after an EXTRACTOR_VERSION bump, the whole term: dollars, not cents)
  *   --dry-run         make the calls, write nothing
  *   --force           read again even when this version already read the same speeches
- *   --concurrency N   units read at once (default 2: DeepSeek caps concurrent calls per account,
- *                     by balance, and other apps share the key)
+ *   --concurrency N   units read at once, 1 to MAX_CONCURRENCY (default 2: DeepSeek caps
+ *                     concurrent calls per account, by balance, and other apps share the key)
+ *
+ * One of --pilot, --debate, --limit or --all is required, so a bare command never reads everything.
  */
 import { shutdown } from '../db';
 import { costOf, type ExtractOptions, type ExtractSummary } from '../parliament/debateItems/run';
@@ -31,6 +34,28 @@ function argNumber(argv: string[], flag: string): number | null {
 
 const usd = (n: number) => `$${n.toFixed(n < 1 ? 4 : 2)}`;
 
+export const MAX_CONCURRENCY = 4;
+
+/** The run the flags ask for. Throws on a run that would read everything without saying so. */
+export function itemsOptions(argv: string[]): Omit<ExtractOptions, 'log'> {
+  const ids = argv.flatMap((a, i) => (argv[i - 1] === '--debate' ? [a] : []));
+  const pilot = argNumber(argv, '--pilot');
+  const limit = argNumber(argv, '--limit');
+  if (ids.length === 0 && pilot === null && limit === null && !(argv.includes('--all') && argv.includes('--yes'))) {
+    throw new Error('Say how much to read: --limit N, --pilot N, --debate <id>, or --all --yes for every unit (that can cost dollars).');
+  }
+  const concurrency = argNumber(argv, '--concurrency') ?? 2;
+  if (concurrency > MAX_CONCURRENCY) throw new Error(`--concurrency is at most ${MAX_CONCURRENCY}: the provider caps calls in flight per account.`);
+  return {
+    debateIds: ids.length > 0 ? ids : undefined,
+    pilot,
+    limit,
+    concurrency,
+    force: argv.includes('--force'),
+    dryRun: argv.includes('--dry-run'),
+  };
+}
+
 export interface ItemsJob {
   /** "argued debates", "question exchanges": how the report names the units. */
   units: string;
@@ -41,22 +66,15 @@ export interface ItemsJob {
 
 async function main(job: ItemsJob) {
   const argv = process.argv.slice(2);
+  const options = itemsOptions(argv);
   if (!isLLMConfigured()) throw new Error('No LLM configured: set LLM_API_KEY.');
-  const ids = argv.flatMap((a, i) => (argv[i - 1] === '--debate' ? [a] : []));
-  const summary = await job.extract({
-    debateIds: ids.length > 0 ? ids : undefined,
-    pilot: argNumber(argv, '--pilot'),
-    limit: argNumber(argv, '--limit'),
-    concurrency: argNumber(argv, '--concurrency') ?? 2,
-    force: argv.includes('--force'),
-    dryRun: argv.includes('--dry-run'),
-    log: (line) => console.log(line),
-  });
+  const all = await job.total();
+  if (argv.includes('--all')) console.log(`Reading up to all ${all.count} ${job.units} (${all.words} words); the cost is printed at the end.`);
+  const summary = await job.extract({ ...options, log: (line) => console.log(line) });
 
   // The rate comes from finished units only: a failed one stops part-way and would understate it.
   const done = summary.results.filter((r) => !r.error);
   const doneWords = done.reduce((n, r) => n + r.words, 0);
-  const all = await job.total();
   const scale = doneWords > 0 ? all.words / doneWords : 0;
   const full = costOf(done.reduce((n, r) => n + r.promptTokens, 0) * scale, done.reduce((n, r) => n + r.completionTokens, 0) * scale);
   const kinds = Object.entries(summary.acceptedByKind).map(([k, n]) => `${k} ${n}`).join(', ');
@@ -65,7 +83,10 @@ async function main(job: ItemsJob) {
     .join('; ');
 
   console.log('');
-  console.log(`Debates: ${summary.debates} chosen, ${summary.done} done, ${summary.failed} failed, ${summary.skipped} already read.`);
+  console.log(
+    `Debates: ${summary.debates} chosen, ${summary.done} done, ${summary.failed} failed, ${summary.skipped} already read` +
+      `${summary.capped ? `, ${summary.capped} left alone after failing every time (--force to retry)` : ''}.`,
+  );
   console.log(`Read: ${summary.speeches} speeches (${summary.irishSpeeches} in Irish), ${summary.words} words, ${summary.calls} calls.`);
   console.log(`Tokens: ${summary.promptTokens} in, ${summary.completionTokens} out. Cost ${usd(summary.costUsd.offPeak)} off-peak, ${usd(summary.costUsd.peak)} peak.`);
   console.log(`Items accepted: ${kinds}.`);

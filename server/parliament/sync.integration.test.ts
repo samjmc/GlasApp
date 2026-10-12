@@ -794,6 +794,56 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     await dbmod.pool.query('delete from politics.disclosure_files');
   });
 
+  it('one bad allowance file never blocks the others; a stored file is read again once a former TD can be matched', async () => {
+    const { syncAllowances } = await import('./disclosures');
+    const base = 'https://data.oireachtas.ie/ie/oireachtas/members/parliamentaryAllowances/psa/2026';
+    const url = (published: string, month: string) => `${base}/${published}_parliamentary-standard-allowance-payments-to-deputies-for-${month}-2026_en.pdf`;
+    const [june, july, august] = [url('2026-08-01', 'june'), url('2026-09-01', 'july'), url('2026-10-01', 'august')];
+    const page = [
+      'Parliamentary Standard Allowance',
+      'Name\tTAA Band\tNarrative\tDate Paid\tAmount',
+      'Deputy Murphy, Paul\tDublin\tPSA\t30/06/2026\t€2,445.83',
+      'Deputy Leaver, Alan\t5\tPSA\t30/06/2026\t€3,000.00',
+    ];
+    let reads: string[] = [];
+    const source = {
+      // Newest first, as the Oireachtas lists them: the broken file is the OLDEST, yet it must not stop the newer two.
+      links: async (_t: string, p: number) => (p > 1 ? [] : [august, july, june]),
+      pages: async (u: string) => {
+        reads.push(u);
+        if (u === june) throw new Error('Oireachtas 404');
+        return [page];
+      },
+    };
+    const paul = { memberCode: 'Paul-Murphy.D.2014-10-10', fullName: 'Paul Murphy', constituency: 'Dublin South-West' };
+    const ctx = { roster: [paul], tdIds: new Map<string, number>(), dailStart: '2024-11-29', source, log: () => {} };
+
+    const first = await syncAllowances(ctx);
+    expect(first).toMatchObject({ files: 2, rows: 2, unmatched: ['Leaver, Alan'] });
+    expect(first.failedFiles).toEqual([{ url: june, error: 'Oireachtas 404' }]);
+
+    // Nothing new to match: only the failed file is tried again.
+    reads = [];
+    expect(await syncAllowances(ctx)).toMatchObject({ files: 0 });
+    expect(reads).toEqual([june]);
+
+    // A TD who has left is now in the roster: both stored files are read again and keep his rows.
+    reads = [];
+    const leaver = { memberCode: 'Alan-Leaver.D.2024-11-29', fullName: 'Alan Leaver', constituency: 'Cork East' };
+    const again = await syncAllowances({ ...ctx, roster: [paul, leaver] });
+    expect(again).toMatchObject({ files: 2, rows: 4, unmatched: [] });
+    expect(reads.sort()).toEqual([august, july, june].sort());
+    const { rows } = await dbmod.pool.query('select count(*)::int n from politics.td_allowance_payments where member_code = $1', [leaver.memberCode]);
+    expect(rows[0].n).toBe(2);
+
+    // Settled: no file is read again but the broken one.
+    reads = [];
+    await syncAllowances({ ...ctx, roster: [paul, leaver] });
+    expect(reads).toEqual([june]);
+    await dbmod.pool.query('delete from politics.td_allowance_payments');
+    await dbmod.pool.query('delete from politics.disclosure_files');
+  });
+
   it('keeps only the newest file for a re-published month, and reports a month never published', async () => {
     const { syncAllowances } = await import('./disclosures');
     const base = 'https://data.oireachtas.ie/ie/oireachtas/members/parliamentaryAllowances/psa';
@@ -1048,5 +1098,22 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     } finally {
       await dbmod.pool.query(`delete from politics.divisions where id in ('dail-34-2025-06-25-vote_13', 'dail-34-2025-06-25-vote_14', 'dail-34-2025-06-25-vote_15')`);
     }
+  });
+
+  it('refuses to start while another process holds the sync lock, writing nothing, and runs once it is free', async () => {
+    const other = await dbmod.pool.connect();
+    let rosterCalls = 0;
+    const client = { ...fakeClient(roster), roster: async () => (rosterCalls++, roster) } as OireachtasClient;
+    try {
+      await other.query('select pg_advisory_lock(hashtext($1)::bigint)', ['glasapp:job:parliament-sync']);
+      await expect(sync({ client, today: '2025-06-30', log: () => {} })).rejects.toBeInstanceOf(parliament.SyncAlreadyRunning);
+      expect(rosterCalls).toBe(0);
+      expect(parliament.isSyncRunning()).toBe(false);
+    } finally {
+      await other.query('select pg_advisory_unlock_all()');
+      other.release();
+    }
+    await sync({ client, today: '2025-06-30', log: () => {} });
+    expect(rosterCalls).toBe(1);
   });
 });
