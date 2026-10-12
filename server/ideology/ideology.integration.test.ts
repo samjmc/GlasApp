@@ -45,7 +45,7 @@ run('quiz and ideology against Postgres', () => {
     await ensureDatabase(quizUrl!);
     dbmod = await import('../db');
     await applyAllMigrations(dbmod.pool);
-    await consentTo(dbmod.pool, 'user-a', 'user-b', 'user-c', 'user-d', 'user-full', 'user-m', 'user-p', 'user-q', 'user-r', 'user-s', 'user-v');
+    await consentTo(dbmod.pool, 'user-a', 'user-b', 'user-c', 'user-d', 'user-full', 'user-m', 'user-p', 'user-q', 'user-r', 'user-s', 'user-v', 'user-race');
     ideology = await import('./index');
     quiz = await import('../quiz');
     repo = await import('./repository');
@@ -169,6 +169,48 @@ run('quiz and ideology against Postgres', () => {
       );
       await ideology.recomputeProfile('ghost');
       expect(await ideology.getIdeologyProfile('ghost')).toBeNull();
+    });
+
+    it('the recompute reads only the latest quiz: the same row the full history led with', async () => {
+      await quiz.submitQuiz('user-a', [{ questionId: 1, answerIndex: 2 }]);
+      await quiz.submitQuiz('user-a', [{ questionId: 1, answerIndex: 0 }]);
+      await quiz.submitQuiz('user-a', [{ questionId: 20, answerIndex: 0 }]);
+      // Two results in the same instant: the higher id is the newer, in both reads.
+      await dbmod.pool.query("update politics.quiz_results set created_at = case when id = 1 then '2026-09-19T10:00:00Z'::timestamptz else '2026-09-20T10:00:00Z' end where user_id = 'user-a'");
+      // The read before: every row, newest first, then the first one at or before now.
+      const before = (await repo.listQuizResults('user-a')).find((q) => q.createdAt <= new Date());
+      const latest = await repo.latestQuizResult('user-a');
+      expect(latest!.id).toBe(3);
+      expect(latest).toEqual(before);
+      expect(await repo.latestQuizResult('nobody')).toBeNull();
+    });
+
+    it('two recomputes in flight end with the profile from both votes', async () => {
+      const vote = (vector: Partial<typeof zero>, votedAt: string) => ({ questionId: 1, optionKey: 'option_a', vector: { ...zero, ...vector }, weight: 1, confidence: null, votedAt: new Date(votedAt) });
+      const first = vote({ economic: -2 }, '2026-09-20T10:00:00Z');
+      const second = vote({ welfare: 2 }, '2026-09-20T10:00:05Z');
+      votes.byUser.set('user-race', [first, second]);
+      // Recompute A reads the votes as they were before the second one committed, then stalls before writing.
+      let release!: () => void;
+      let reached!: () => void;
+      const gate = new Promise<void>((resolve) => (release = resolve));
+      const inside = new Promise<void>((resolve) => (reached = resolve));
+      const { listUserVoteVectors } = await import('../voting');
+      vi.mocked(listUserVoteVectors).mockImplementationOnce(async () => {
+        reached();
+        await gate;
+        return [first];
+      });
+      const a = ideology.recomputeProfile('user-race');
+      await inside;
+      // Recompute B, for the second vote. Without the lock it reads both votes and writes now, and
+      // A then overwrites it with the stale profile. With the lock it waits for A, then reads both.
+      const b = ideology.recomputeProfile('user-race');
+      const bDoneWhileAStalled = await Promise.race([b.then(() => true), new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 1000))]);
+      release();
+      await Promise.all([a, b]);
+      expect(await ideology.getIdeologyProfile('user-race')).toMatchObject({ economic: -10, welfare: 10 });
+      expect(bDoneWhileAStalled).toBe(false);
     });
 
     it('builds a daily timeline', async () => {
