@@ -90,9 +90,22 @@ function deny(res: Response, status: 401 | 403, message: string): void {
   res.status(status).json({ success: false, message });
 }
 
+/**
+ * The caller, verified once per request. `optionalAuth` runs app-wide (server/routes.ts), so by the
+ * time a guard runs the token has been checked: a guard reuses that answer, including "no valid
+ * token", instead of a second round trip to Supabase. Without the app-wide pass (a router mounted
+ * on its own, as in tests) the first guard verifies the token itself.
+ */
+const verified = new WeakMap<Request, AuthUser | null>();
+
+async function caller(req: Request): Promise<AuthUser | null> {
+  if (!verified.has(req)) verified.set(req, await authenticate(req));
+  return verified.get(req)!;
+}
+
 /** Verified user required. */
 export const requireAuth: RequestHandler = async (req, res, next) => {
-  const user = await authenticate(req);
+  const user = await caller(req);
   if (!user) return deny(res, 401, 'Authentication required');
   req.user = user;
   next();
@@ -100,14 +113,14 @@ export const requireAuth: RequestHandler = async (req, res, next) => {
 
 /** Attaches a user when there is a valid token; never blocks. */
 export const optionalAuth: RequestHandler = async (req, _res, next) => {
-  const user = await authenticate(req);
+  const user = await caller(req);
   if (user) req.user = user;
   next();
 };
 
 /** Verified user whose role is admin. */
 export const requireAdmin: RequestHandler = async (req, res, next) => {
-  const user = await authenticate(req);
+  const user = await caller(req);
   if (!user) {
     logger.warn({ route: `${req.method} ${req.path}`, grant: 'deny', reason: 'unauthenticated' }, 'Admin denied');
     return deny(res, 401, 'Authentication required');

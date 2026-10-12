@@ -17,7 +17,7 @@ import { Router, type NextFunction, type Request, type RequestHandler, type Resp
 import { z } from 'zod';
 import { requirePoliticalConsent } from '../account/consent';
 import { ConsentRequiredError, sendConsentRequired } from '../account/consentError';
-import { optionalAuth, requireAuth } from '../auth';
+import { requireAuth } from '../auth';
 import { networkWriteRateLimit, publicWriteRateLimit } from '../middleware/rateLimit';
 import { OPTION_KEYS } from '@shared/voting';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
@@ -92,9 +92,9 @@ dailySessionRouter.post(
 
 export const votesRouter = Router();
 
+// Public; `req.user` is set for a signed-in caller by the app-wide optionalAuth (server/routes.ts).
 votesRouter.get(
   '/articles/:articleId',
-  optionalAuth,
   handle(async (req) => service.articleVoteView(idParam.parse(req.params.articleId), req.user?.id ?? null)),
 );
 

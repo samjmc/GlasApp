@@ -21,6 +21,7 @@ vi.mock('./supabase', () => ({
 }));
 
 const auth = await import('./index');
+const { supabase } = await import('./supabase');
 
 function mockReq(headers: Record<string, string> = {}): Request {
   const lower = Object.fromEntries(Object.entries(headers).map(([k, v]) => [k.toLowerCase(), v]));
@@ -99,6 +100,40 @@ describe('optionalAuth', () => {
     await auth.optionalAuth(signedIn, mockRes(), () => { calls++; });
     expect(signedIn.user?.id).toBe('uuid-1');
     expect(calls).toBe(2);
+  });
+});
+
+describe('one token check per request', () => {
+  const getUser = vi.mocked(supabase.auth.getUser);
+
+  it('a guard after the app-wide optionalAuth reuses its answer: Supabase is asked once', async () => {
+    state.user = SUPA_ADMIN;
+    for (const guard of [auth.requireAuth, auth.requireAdmin, auth.requireJob]) {
+      getUser.mockClear();
+      const req = mockReq({ authorization: 'Bearer good' });
+      let called = false;
+      await auth.optionalAuth(req, mockRes(), () => {});
+      await guard(req, mockRes(), () => { called = true; });
+      expect(called).toBe(true);
+      expect(getUser).toHaveBeenCalledTimes(1);
+    }
+  });
+
+  it('a rejected token is not checked again either', async () => {
+    state.error = new Error('invalid');
+    const req = mockReq({ authorization: 'Bearer bad' });
+    const res = mockRes();
+    await auth.optionalAuth(req, mockRes(), () => {});
+    await auth.requireAuth(req, res, () => {});
+    expect(res.statusCode).toBe(401);
+    expect(getUser).toHaveBeenCalledTimes(1);
+  });
+
+  it('a different request is checked afresh', async () => {
+    state.user = SUPA_USER;
+    await auth.requireAuth(mockReq({ authorization: 'Bearer good' }), mockRes(), () => {});
+    await auth.requireAuth(mockReq({ authorization: 'Bearer good' }), mockRes(), () => {});
+    expect(getUser).toHaveBeenCalledTimes(2);
   });
 });
 

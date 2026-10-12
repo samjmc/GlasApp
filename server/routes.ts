@@ -9,6 +9,7 @@ import ideologyRoutes from "./routes/ideology";
 import newsRoutes from "./routes/news";
 import accountRoutes from "./routes/accountRoutes";
 import newsAdminRoutes from "./routes/admin/news";
+import jobsAdminRoutes from "./routes/admin/jobs";
 import scoresRoutes from "./routes/scores";
 import { dailySessionRouter, votesRouter } from "./voting/routes";
 import { pledgesRouter } from "./pledges/routes";
@@ -55,6 +56,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Register admin routes for news scraping and system management
   app.use("/api/admin/news", requireJob, newsAdminRoutes);
   app.use("/api/admin/td-scoring", requireJob, tdScoringAdminRoutes);
+  app.use("/api/admin/jobs", requireJob, jobsAdminRoutes); // the latest runs of each scheduled job
 
 
   // The quiz and ideology profiles (server/quiz, server/ideology)
