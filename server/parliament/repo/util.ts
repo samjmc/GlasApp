@@ -1,3 +1,5 @@
+import { sql } from 'drizzle-orm';
+
 /** Postgres caps a statement at 65,535 parameters; rows × columns stays well under it. */
 export const INSERT_CHUNK = 500;
 
@@ -5,6 +7,20 @@ export function chunks<T>(rows: T[], size = INSERT_CHUNK): T[][] {
   const out: T[][] = [];
   for (let i = 0; i < rows.length; i += size) out.push(rows.slice(i, i + size));
   return out;
+}
+
+/**
+ * For an upsert that rewrites a row only when it changed: `set` takes each column from
+ * `excluded`, and `changed` (the `setWhere`) compares the stored row with the incoming one.
+ * `columns` maps each Drizzle key to its column name in `politics.<table>`.
+ */
+export function upsertChanged(table: string, columns: Record<string, string>) {
+  const pairs = Object.entries(columns);
+  const list = (prefix: string) => pairs.map(([, c]) => `${prefix}.${c}`).join(', ');
+  return {
+    set: Object.fromEntries(pairs.map(([key, c]) => [key, sql.raw(`excluded.${c}`)])),
+    changed: sql.raw(`(${list(`politics.${table}`)}) is distinct from (${list('excluded')})`),
+  };
 }
 
 /** Postgres SQLSTATE for "deadlock detected". */
