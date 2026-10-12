@@ -56,7 +56,8 @@ run('TD history (real Postgres)', () => {
     tdId = (await q(`insert into politics.tds (name, member_code) values ('Ann Byrne', 'Ann-Byrne.D.2020-02-08') returning id`)).rows[0].id;
     await q(`insert into politics.tds (name, member_code, is_active) values ('Gone TD', 'Gone.D.2011-03-09', false)`);
     await q(`insert into politics.tds (name) values ('No Code TD')`);
-  });
+    // Every migration, before every test: slower than vitest's 10 s default when all suites run at once.
+  }, 60_000);
 
   afterAll(async () => {
     if (dbmod) await dbmod.shutdown();

@@ -58,7 +58,7 @@ export const policyQuestions = politics.table(
     uniqueIndex('policy_questions_article_idx').on(t.articleId),
     index('policy_questions_created_idx').on(t.createdAt),
   ],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // The three or four answers to a question. Each carries where choosing it places a
@@ -101,7 +101,7 @@ export const policyQuestionOptions = politics.table(
         and ${t.weight} between 0.1 and 3`,
     ),
   ],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // One daily session per user per day. The completion summary is frozen when the user
@@ -136,7 +136,7 @@ export const dailySessions = politics.table(
     index('daily_sessions_date_constituency_idx').on(t.sessionDate, t.constituency),
     check('daily_sessions_status_chk', sql`${t.status} in ('pending', 'completed')`),
   ],
-);
+).enableRLS();
 
 export const dailySessionItems = politics.table(
   'daily_session_items',
@@ -154,7 +154,7 @@ export const dailySessionItems = politics.table(
     uniqueIndex('daily_session_items_question_idx').on(t.sessionId, t.questionId),
     uniqueIndex('daily_session_items_position_idx').on(t.sessionId, t.position),
   ],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Every vote, from every surface. One answer per user per question; voting again
@@ -186,7 +186,7 @@ export const policyVotes = politics.table(
     }).onDelete('cascade'),
     check('policy_votes_source_chk', sql`${t.source} in ('daily_session', 'article')`),
   ],
-);
+).enableRLS();
 
 export type PolicyQuestionRow = typeof policyQuestions.$inferSelect;
 export type NewPolicyQuestion = typeof policyQuestions.$inferInsert;

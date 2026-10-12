@@ -86,7 +86,7 @@ export const tdStances = politics.table(
       sql`${t.discipline} in (${inList(DISCIPLINES)}) and (${t.discipline} is null) = (${t.divisionId} is null)`,
     ),
   ],
-);
+).enableRLS();
 
 /**
  * What one Dáil division meant, as a model read it, and the daily-vote option it matched: one
@@ -158,7 +158,7 @@ export const divisionReadings = politics.table(
       foreignColumns: [policyQuestionOptions.questionId, policyQuestionOptions.optionKey],
     }).onDelete('cascade'),
   ],
-);
+).enableRLS();
 
 export type TdStanceRow = typeof tdStances.$inferSelect;
 export type NewTdStance = typeof tdStances.$inferInsert;

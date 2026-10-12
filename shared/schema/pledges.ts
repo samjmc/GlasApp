@@ -50,7 +50,7 @@ export const pledges = politics.table(
     check('pledges_status_chk', sql`${t.status} in (${inList(PLEDGE_STATUSES)})`),
     check('pledges_category_chk', sql`${t.category} in (${inList(PLEDGE_CATEGORIES)})`),
   ],
-);
+).enableRLS();
 
 export const pledgeEvidence = politics.table(
   'pledge_evidence',
@@ -75,7 +75,7 @@ export const pledgeEvidence = politics.table(
     index('pledge_evidence_pledge_idx').on(t.pledgeId, t.occurredOn),
     check('pledge_evidence_kind_chk', sql`${t.kind} in (${inList(EVIDENCE_KINDS)})`),
   ],
-);
+).enableRLS();
 
 /** One user's ranking of policy areas: rank 1 is what matters most to them. */
 export const pledgeCategoryPriorities = politics.table(
@@ -94,7 +94,7 @@ export const pledgeCategoryPriorities = politics.table(
     check('pledge_category_priorities_rank_chk', sql`${t.rank} >= 1`),
     check('pledge_category_priorities_category_chk', sql`${t.category} in (${inList(PLEDGE_CATEGORIES)})`),
   ],
-);
+).enableRLS();
 
 export type PledgeRow = typeof pledges.$inferSelect;
 export type NewPledge = typeof pledges.$inferInsert;
