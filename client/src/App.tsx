@@ -80,10 +80,10 @@ function FullScreenLoader() {
   );
 }
 
-/** Shown inside the shell while a page's chunk downloads. */
+/** Shown inside the shell while a page's chunk downloads. Not the full-screen loader: the app is not restarting. */
 function PageLoader() {
   return (
-    <div className="flex min-h-[50vh] items-center justify-center" role="status" aria-label="Loading">
+    <div className="flex min-h-[50vh] items-center justify-center" role="status" aria-label="Loading page">
       <GlasMark className="h-10 w-10 animate-pulse" />
     </div>
   );
