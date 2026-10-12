@@ -228,6 +228,7 @@ export async function recomputeTdProfile(tdId: number, now = new Date()): Promis
     observedAt: e.observedAt,
   }));
   await repo.upsertProfile('td', String(tdId), computeProfile(tdPrior(td.party), observations, { now, halfLifeDays: TD_HALF_LIFE_DAYS }));
+  forgetMatchInputs();
   return td;
 }
 
@@ -245,9 +246,55 @@ export async function recomputePartyProfile(party: string): Promise<void> {
   if (!vector) return;
   const totalWeight = members.reduce((s, m) => s + m.weight - PARTY_PRIOR_WEIGHT, 0);
   await repo.upsertProfile('party', party, { vector, totalWeight: Math.round(totalWeight * 100) / 100, evidenceCount: members.length });
+  forgetMatchInputs();
 }
 
 // --- reads for the API -----------------------------------------------------
+
+/**
+ * How old the cached match inputs may get. Writes in this process drop them at once
+ * (forgetMatchInputs); this bounds what a job in ANOTHER process (`npm run stances`, the CLI
+ * recalculation, the parliament sync's `tds` updates) leaves stale on the web server.
+ */
+export const MATCH_INPUTS_TTL_MS = 60_000;
+
+interface MatchInputs {
+  tds: repo.TdRef[];
+  tdProfiles: IdeologyProfileRow[];
+  partyProfiles: IdeologyProfileRow[];
+  evidence: Map<number, repo.EvidenceSummary>;
+}
+
+let matchInputs: { at: number; loaded: Promise<MatchInputs> } | null = null;
+
+/**
+ * What every match reads: the active TDs, every TD and party profile and the evidence summary
+ * (a grouped count over all of td_ideology_evidence). Same for every caller, and changed only
+ * by the evidence and profile writes below, so read once and shared. Callers must not mutate it.
+ */
+function loadMatchInputs(): Promise<MatchInputs> {
+  if (matchInputs && Date.now() - matchInputs.at < MATCH_INPUTS_TTL_MS) return matchInputs.loaded;
+  const entry = {
+    at: Date.now(),
+    loaded: Promise.all([repo.listActiveTds(), repo.listProfiles('td'), repo.listProfiles('party'), repo.evidenceSummary()]).then(
+      ([tds, tdProfiles, partyProfiles, evidence]) => ({ tds, tdProfiles, partyProfiles, evidence }),
+    ),
+  };
+  // A failed read is not kept. A read that a write dropped meanwhile is not put back either.
+  entry.loaded.catch(() => {
+    if (matchInputs === entry) matchInputs = null;
+  });
+  matchInputs = entry;
+  return entry.loaded;
+}
+
+/**
+ * Drop the cached match inputs. Called after every TD or party profile write; every evidence
+ * write is followed by one (recordTdEvidence, the stance rebuild, deleteTdEvidence + recalculateAll).
+ */
+export function forgetMatchInputs(): void {
+  matchInputs = null;
+}
 
 const NO_EVIDENCE: repo.EvidenceSummary = { bySource: {}, measured: [] };
 
@@ -283,12 +330,7 @@ function partyTarget(row: IdeologyProfileRow, tdMeasured: Iterable<IdeologyDimen
  * `partyTarget`, where a manifesto dimension counts as measured.
  */
 export async function matchesFor(vector: IdeologyVector, weights: DimensionWeights = {}): Promise<Matches> {
-  const [tds, tdProfiles, partyProfiles, evidence] = await Promise.all([
-    repo.listActiveTds(),
-    repo.listProfiles('td'),
-    repo.listProfiles('party'),
-    repo.evidenceSummary(),
-  ]);
+  const { tds, tdProfiles, partyProfiles, evidence } = await loadMatchInputs();
   const byId = new Map(tdProfiles.map((p) => [p.subjectId, p]));
   const tdMatches: TdMatch[] = [];
   for (const td of tds) {
@@ -440,7 +482,7 @@ export async function tdProfile(tdId: number): Promise<TdIdeology | null> {
 /** A party's position as matchesFor matches it, with the stored TD mean it was blended from. */
 export async function partyProfile(party: string): Promise<PartyIdeology | null> {
   const key = partyKey(party);
-  const [rows, tds, evidence] = await Promise.all([repo.listProfiles('party'), repo.listActiveTds(), repo.evidenceSummary()]);
+  const { partyProfiles: rows, tds, evidence } = await loadMatchInputs();
   const row = rows.find((p) => partyKey(p.subjectId) === key);
   if (!row) return null;
   const { vector, hasPartyBaseline, measured, manifesto } = partyTarget(row, measuredByParty(tds, evidence).get(key) ?? []);
@@ -496,8 +538,10 @@ const labelOf = (v: IdeologyVector) => {
  * Delete every TD evidence row of one source (with `dryRun`, only count them). Profiles are not
  * recomputed here: call `recalculateAll` after.
  */
-export function deleteTdEvidence(source: Exclude<SourceKind, 'vote'>, dryRun = false): Promise<number> {
-  return repo.deleteTdEvidenceBySource(source, dryRun);
+export async function deleteTdEvidence(source: Exclude<SourceKind, 'vote'>, dryRun = false): Promise<number> {
+  const count = await repo.deleteTdEvidenceBySource(source, dryRun);
+  if (!dryRun) forgetMatchInputs();
+  return count;
 }
 
 /** Rebuild every active TD's profile from its evidence, then every party's. No model calls. */
@@ -507,6 +551,8 @@ export async function recomputeTdsAndParties(now = new Date()): Promise<{ tds: n
   const parties = new Map<string, string>();
   for (const td of tds) if (!isIndependent(td.party)) parties.set(partyKey(td.party!), td.party!);
   for (const party of Array.from(parties.values())) await recomputePartyProfile(party);
+  // Also when there was nothing to recompute: the TD list itself may have changed.
+  forgetMatchInputs();
   return { tds: tds.length, parties: parties.size };
 }
 

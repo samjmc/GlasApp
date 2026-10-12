@@ -278,3 +278,25 @@ describe('/api/ideology party manifesto answers', () => {
     expect((await get(`/api/ideology/party-answers?questions=${ids(60)}`)).status).toBe(200);
   });
 });
+
+// Last in the file: these use up the routes' rate-limit budget for this IP.
+describe('rate limits on the public POSTs', () => {
+  for (const [path, body, max] of [
+    ['/api/quiz', { answers: [{ questionId: 1, answerIndex: 0 }] }, 60],
+    ['/api/ideology/matches', { vector }, 300],
+  ] as const) {
+    it(`${path}: ${max} per window, then 429`, async () => {
+      const first = await post(path, body);
+      expect(first.status).toBe(200);
+      expect(first.headers.get('x-ratelimit-limit')).toBe(String(max));
+      // Earlier tests in this file count too; use up exactly what is left.
+      const left = Number(first.headers.get('x-ratelimit-remaining'));
+      for (let i = 0; i < left; i++) expect((await post(path, body)).status).toBe(200);
+      const limited = await post(path, body);
+      expect(limited.status).toBe(429);
+      expect(limited.headers.get('retry-after')).not.toBeNull();
+      // GETs on the same routers are not counted.
+      expect((await get('/api/ideology/party/Fine%20Gael')).status).toBe(200);
+    });
+  }
+});
