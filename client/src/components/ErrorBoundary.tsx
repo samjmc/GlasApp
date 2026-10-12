@@ -7,11 +7,14 @@ import { Toaster } from '@/components/ui/toaster';
 import { toast } from '@/components/ui/use-toast';
 import { ToastAction } from '@/components/ui/toast';
 import { QueryErrorResetBoundary, useQueryClient } from '@tanstack/react-query';
+import { shouldResetBoundary } from '@/lib/errorBoundaryReset';
 
 interface ErrorBoundaryCoreProps {
   children: ReactNode;
   fallback?: ReactNode;
   onReset?: () => void;
+  /** When this changes while the fallback is showing, the boundary clears itself. */
+  resetKey?: string;
 }
 
 interface ErrorBoundaryCoreState {
@@ -69,6 +72,12 @@ class ErrorBoundaryCore extends Component<ErrorBoundaryCoreProps, ErrorBoundaryC
       error,
       errorInfo,
     });
+  }
+
+  componentDidUpdate(prevProps: ErrorBoundaryCoreProps) {
+    if (shouldResetBoundary(this.state.hasError, prevProps.resetKey ?? '', this.props.resetKey ?? '')) {
+      this.handleReset();
+    }
   }
 
   handleReset = () => {
@@ -233,8 +242,10 @@ interface ErrorBoundaryProps {
  *     (QueryErrorNotifier).
  *  3. Reset query errors on "Try Again" so failed queries re-fetch instead of
  *     re-throwing (QueryErrorResetBoundary).
- *  4. Reset itself when the route changes, so navigating to a different page
- *     after a crash shows that page instead of repeating the fallback UI.
+ *  4. Reset itself when the route changes while the fallback is showing, so
+ *     navigating to a different page after a crash shows that page. It is not
+ *     keyed on the location: a key would remount every provider below it
+ *     (auth, region, consent) on each navigation.
  */
 /** Error boundary that catches render and query errors with a fallback UI. */
 export function ErrorBoundary({ children, fallback }: ErrorBoundaryProps) {
@@ -243,7 +254,7 @@ export function ErrorBoundary({ children, fallback }: ErrorBoundaryProps) {
   return (
     <QueryErrorResetBoundary>
       {({ reset }) => (
-        <ErrorBoundaryCore key={location} onReset={reset} fallback={fallback}>
+        <ErrorBoundaryCore resetKey={location} onReset={reset} fallback={fallback}>
           <QueryErrorNotifier />
           {children}
         </ErrorBoundaryCore>
