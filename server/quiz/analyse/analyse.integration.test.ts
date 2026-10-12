@@ -17,6 +17,8 @@ run('the item-analysis loader against Postgres', () => {
   let loader: typeof import('./loader');
 
   async function insert(userId: string, answers: unknown, plan: unknown, createdAt: string): Promise<void> {
+    // quiz_results.user_id references politics.users (migration 0027).
+    await dbmod.pool.query('insert into politics.users (id) values ($1) on conflict do nothing', [userId]);
     await dbmod.pool.query(
       `insert into politics.quiz_results (user_id, answers, plan, economic, social, cultural, authority, environmental, welfare,
          globalism, technocratic, ideology, description, created_at)

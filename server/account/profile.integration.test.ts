@@ -28,7 +28,8 @@ run('profile store against Postgres', () => {
   }, 60_000);
 
   beforeEach(async () => {
-    await dbmod.pool.query('truncate politics.users');
+    // cascade: the political tables reference politics.users (migration 0027).
+    await dbmod.pool.query('truncate politics.users cascade');
   });
 
   afterAll(async () => {

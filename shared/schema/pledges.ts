@@ -19,6 +19,7 @@ import {
   uniqueIndex,
   varchar,
 } from 'drizzle-orm/pg-core';
+import { users } from './accounts';
 import { politics } from './politics';
 import { divisions } from './parliament';
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES } from '../pledges';
@@ -83,7 +84,9 @@ export const pledgeCategoryPriorities = politics.table(
   {
     id: serial('id').primaryKey(),
     /** auth.users id. */
-    userId: varchar('user_id', { length: 255 }).notNull(),
+    userId: varchar('user_id', { length: 255 })
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
     category: varchar('category', { length: 30 }).notNull(),
     rank: smallint('rank').notNull(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),

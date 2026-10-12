@@ -27,6 +27,7 @@ import {
   uniqueIndex,
   varchar,
 } from 'drizzle-orm/pg-core';
+import { users } from './accounts';
 import { politics, tds } from './politics';
 import type { QuizResponse } from '../quiz';
 import type { QuizPlanRecord } from '../quizPlan';
@@ -59,7 +60,9 @@ export const quizResults = politics.table(
   {
     id: serial('id').primaryKey(),
     /** Supabase auth user id. */
-    userId: varchar('user_id', { length: 255 }).notNull(),
+    userId: varchar('user_id', { length: 255 })
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
     /** The answered questions only. */
     answers: jsonb('answers').$type<QuizResponse[]>().notNull(),
     /**
