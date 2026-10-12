@@ -4,7 +4,8 @@
  * `--dry-run` makes every call and prints what it would save, but writes nothing.
  *
  *   npm run td-history -- [--td <id>] [--limit N] [--dry-run] [--force]
- *   npm run td-history -- --delete --td <id>     take one TD's background down at once
+ *   npm run td-history -- --delete --td <id> [--reason <text>]   take one TD's background down, and keep it down
+ *   npm run td-history -- --force --td <id>      restore a TD that was taken down (lifts the takedown)
  */
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -21,7 +22,7 @@ import {
 } from '../tdHistory';
 import { completeJson, QUESTION_MODEL } from '../voting';
 
-const USAGE = 'Usage: npm run td-history -- [--td <id>] [--limit N] [--dry-run] [--force] | --delete --td <id>';
+const USAGE = 'Usage: npm run td-history -- [--td <id>] [--limit N] [--dry-run] [--force] | --delete --td <id> [--reason <text>]';
 /** Between Wikipedia requests: Wikipedia asks API clients to stay at about one request a second. */
 const PAUSE_MS = 1_000;
 
@@ -31,6 +32,7 @@ export interface Args {
   dryRun: boolean;
   force: boolean;
   remove: boolean;
+  reason: string | null;
 }
 
 function positive(argv: string[], flag: string): number | null {
@@ -42,13 +44,23 @@ function positive(argv: string[], flag: string): number | null {
 }
 
 export function parseArgs(argv: string[]): Args {
-  const known = new Set(['--td', '--limit', '--dry-run', '--force', '--delete']);
+  const known = new Set(['--td', '--limit', '--dry-run', '--force', '--delete', '--reason']);
   argv.forEach((arg, i) => {
-    const isValue = i > 0 && (argv[i - 1] === '--td' || argv[i - 1] === '--limit');
+    const isValue = i > 0 && (argv[i - 1] === '--td' || argv[i - 1] === '--limit' || argv[i - 1] === '--reason');
     if (!isValue && !known.has(arg)) throw new Error(`Unknown argument ${arg}. ${USAGE}`);
   });
-  const args = { td: positive(argv, '--td'), limit: positive(argv, '--limit'), dryRun: argv.includes('--dry-run'), force: argv.includes('--force'), remove: argv.includes('--delete') };
+  const at = argv.indexOf('--reason');
+  const reason = at === -1 ? null : (argv[at + 1]?.trim() ?? '');
+  const args = {
+    td: positive(argv, '--td'),
+    limit: positive(argv, '--limit'),
+    dryRun: argv.includes('--dry-run'),
+    force: argv.includes('--force'),
+    remove: argv.includes('--delete'),
+    reason,
+  };
   if (args.remove && args.td === null) throw new Error(`--delete needs --td <id>. ${USAGE}`);
+  if (reason !== null && (!args.remove || !reason)) throw new Error(`--reason goes with --delete and needs some text. ${USAGE}`);
   return args;
 }
 
@@ -57,21 +69,29 @@ const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve,
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
   if (args.remove) {
-    const removed = await deleteHistory(args.td!);
-    console.log(removed ? `Deleted the background of TD ${args.td}.` : `TD ${args.td} had no background. Nothing changed.`);
+    const removed = await deleteHistory(args.td!, args.reason);
+    console.log(
+      removed
+        ? `Deleted the background of TD ${args.td}. Later runs skip this TD; restore it with --force --td ${args.td}.`
+        : `TD ${args.td} had no background. Later runs skip this TD; restore it with --force --td ${args.td}.`,
+    );
     return;
   }
   if (!isLLMConfigured()) throw new Error('No LLM key is configured, so no passage can be chosen. Nothing was changed.');
 
-  let tds = await historyCandidates();
+  // Only an explicit `--force --td <id>` reaches a TD whose background was taken down.
+  const restore = args.force && args.td !== null ? args.td : undefined;
+  let tds = await historyCandidates({ restore });
   if (args.td !== null) tds = tds.filter((t) => t.id === args.td);
   if (args.limit !== null) tds = tds.slice(0, args.limit);
-  if (tds.length === 0) throw new Error('No active TD with a member code matches. Nothing was changed.');
+  if (tds.length === 0) {
+    throw new Error('No active TD with a member code matches (a TD taken down with --delete needs --force --td <id>). Nothing was changed.');
+  }
 
   const titles = await fetchSitelinks(tds.map((t) => t.memberCode));
   const stored = await storedRevisions();
   const model = chatProviderFrom(process.env)?.model ?? QUESTION_MODEL;
-  const counts: Record<string, number> = { saved: 0, unchanged: 0, no_match: 0, missing: 0, disambiguation: 0, no_summary: 0, model_failed: 0, failed: 0 };
+  const counts: Record<string, number> = { saved: 0, unchanged: 0, no_match: 0, missing: 0, disambiguation: 0, no_summary: 0, model_failed: 0, suppressed: 0, failed: 0 };
   const rejected = emptyRejects();
 
   for (const td of tds) {
@@ -87,6 +107,7 @@ async function main(): Promise<void> {
         model,
         storedRevision: stored.get(td.id),
         force: args.force,
+        restore: restore === td.id,
         dryRun: args.dryRun,
         pause: () => sleep(PAUSE_MS),
       });

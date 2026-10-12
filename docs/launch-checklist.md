@@ -10,7 +10,8 @@ Tested on a laptop, not on a real host:
 - The production image **builds** from `main`, runs as the non-root user `node`, answers `/health`, serves
   the client and its SPA fallback, reads the database, refuses unauthenticated calls with 401, and **stops
   on SIGTERM in about 1.5 seconds with exit code 0**.
-- All 25 migrations (0000 to 0024) apply to an **empty** database.
+- Every migration applies to an **empty** database (25 when this was checked on 2026-10-10; `main` has 27 now,
+  0000 to 0026, and CI applies them all).
 - CI now builds the image and runs these checks on every pull request (`image` job), so the kit cannot rot.
 
 Fixed in the same round: the server no longer dies when the database drops a connection, idle or in use
@@ -45,8 +46,12 @@ In the Supabase dashboard (Authentication):
    so the link works in any browser.
 6. **SMTP:** set a real sender. Supabase's built-in sender is rate limited and meant for testing.
 7. **Database, API settings:** confirm the `politics` schema is **not** exposed through the public API.
+   Migration 0026 is the second line: `anon` and `authenticated` have no grant on the schema, and every
+   table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
-   (`docs/deploy.md` section 3). GlasCore already has 0000 to 0024.
+   (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown) and 0026
+   (row level security on the politics tables) came after. Compare `drizzle/meta/_journal.json` with the
+   `drizzle.__drizzle_migrations` table before you migrate.
 9. **Political data saved before consent existed.** Votes, rankings, pledge priorities and quiz results
    from people with no recorded consent (or consent to an older text) have no lawful basis under Article 9.
    Count them, then delete them or ask the people to consent again. Read-only count:

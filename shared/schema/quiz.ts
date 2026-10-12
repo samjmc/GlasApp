@@ -74,7 +74,7 @@ export const quizResults = politics.table(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('quiz_results_user_created_idx').on(t.userId, t.createdAt)],
-);
+).enableRLS();
 
 /** `article` = the deleted scoring panel's rows, kept only until `npm run stances -- --rebuild` purges them. */
 export const EVIDENCE_SOURCES = ['article', 'debate', 'stance'] as const;
@@ -104,7 +104,7 @@ export const tdIdeologyEvidence = politics.table(
     check('td_ideology_evidence_source_chk', sql`${t.source} in ('article', 'debate', 'stance')`),
     check('td_ideology_evidence_weight_chk', sql`${t.weight} > 0`),
   ],
-);
+).enableRLS();
 
 export const PROFILE_SUBJECTS = ['user', 'td', 'party'] as const;
 export type ProfileSubject = (typeof PROFILE_SUBJECTS)[number];
@@ -125,7 +125,7 @@ export const ideologyProfiles = politics.table(
     primaryKey({ columns: [t.subjectKind, t.subjectId] }),
     check('ideology_profiles_subject_chk', sql`${t.subjectKind} in ('user', 'td', 'party')`),
   ],
-);
+).enableRLS();
 
 export type QuizResultRow = typeof quizResults.$inferSelect;
 export type TdIdeologyEvidenceRow = typeof tdIdeologyEvidence.$inferSelect;

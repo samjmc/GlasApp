@@ -56,7 +56,11 @@ back, done correctly.
 - **R6 Attribution and takedown.**
   - The page links to the exact revision we read (`/w/index.php?oldid=<revision>`), shows the
     date we read it, and says "Text from Wikipedia, CC BY-SA 4.0" with a licence link.
-  - `--delete --td <id>` removes one TD's row at once, if a complaint arrives.
+  - `--delete --td <id> [--reason <text>]` removes one TD's row at once, if a complaint arrives,
+    and records the TD in `politics.td_history_suppressed` in the same transaction. Every later
+    run skips that TD, including a bulk run already in progress, so the takedown is not undone.
+  - Only `--force --td <id>` restores a TD that was taken down: it saves a new background and
+    removes the TD from `td_history_suppressed`.
 
 ## Sources (no paid API, no new key)
 
@@ -117,11 +121,13 @@ The table is empty. That is a checked fact: the first migration starts with
 ## Job
 
 `server/jobs/td-history.ts`, run with `npm run td-history -- [--td <id>] [--limit N] [--dry-run]
-[--force] [--delete --td <id>]`. Same pattern as `server/jobs/stances.ts`:
+[--force] [--delete --td <id> [--reason <text>]]`. Same pattern as `server/jobs/stances.ts`:
 - It stops before any work if no LLM key is set.
 - `--dry-run` makes the calls and prints what it would save, but writes nothing.
-- It prints a summary at the end: saved, unchanged, no Wikidata match, disambiguation, rejected
-  passages by reason, failed.
+- It skips a TD in `td_history_suppressed` (taken down with `--delete`) unless run with
+  `--force --td <id>` for that TD.
+- It prints a summary at the end: saved, unchanged, no Wikidata match, disambiguation, suppressed
+  (taken down while the run was going), rejected passages by reason, failed.
 
 It is not on the cron. A monthly cron can come later; "skip unchanged revision" keeps that
 cheap.
@@ -166,6 +172,7 @@ has ended, and the change touches only the baseline fields; ask any session that
   - A new revision replaces the row.
   - A reject writes no row.
   - `--delete` removes the row.
+  - After `--delete`, a bulk run neither lists nor saves the TD; `--force --td <id>` restores it.
   - The migration guard stops when the table has a row.
 - **Route.** `GET /api/scores/td/:name` returns the new shape, and `null` when there is no row.
 

@@ -9,6 +9,10 @@
  * own file beside it (voting.ts, ...) that imports `politics` from here and never
  * declares a second pgSchema('politics'). `npm run db:generate` reads every file in
  * shared/schema/ (see drizzle.config.ts) and turns them into one migration.
+ *
+ * Every table ends in `.enableRLS()`: row level security with no policy, so no role can read it
+ * except the owner the app connects as and roles that bypass RLS (migration 0026). server/db.integration.test.ts fails for a table
+ * without it.
  */
 import { sql } from 'drizzle-orm';
 import {
@@ -65,7 +69,7 @@ export const tds = politics.table(
     index('tds_party_idx').on(t.party),
     index('tds_constituency_idx').on(t.constituency),
   ],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Scores: one row per TD, derived from the Oireachtas facts by server/scoring/rollup.ts
@@ -92,7 +96,7 @@ export const tdScores = politics.table(
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('td_scores_overall_score_idx').on(t.overallScore)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Article ↔ TD: this TD is named in this article. A fact, not a verdict.
@@ -111,7 +115,7 @@ export const articleTds = politics.table(
     primaryKey({ columns: [t.articleId, t.tdId] }),
     index('article_tds_td_created_idx').on(t.tdId, t.createdAt),
   ],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // TD history: a background copied word for word from one Wikipedia revision (server/tdHistory).
@@ -140,7 +144,21 @@ export const tdHistoricalBaselines = politics.table(
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [uniqueIndex('td_historical_baselines_td_idx').on(t.tdId)],
-);
+).enableRLS();
+
+/**
+ * TDs whose background was taken down (`npm run td-history -- --delete --td <id>`, e.g. after a
+ * complaint). A bulk run skips them, so the takedown sticks; only `--force --td <id>` restores one,
+ * and that removes the row.
+ */
+export const tdHistorySuppressed = politics.table('td_history_suppressed', {
+  tdId: integer('td_id')
+    .primaryKey()
+    .references(() => tds.id, { onDelete: 'cascade' }),
+  suppressedAt: timestamp('suppressed_at', { withTimezone: true }).notNull().defaultNow(),
+  /** Why it was taken down, as given with --reason. */
+  reason: text('reason'),
+}).enableRLS();
 
 export type Td = typeof tds.$inferSelect;
 export type NewTd = typeof tds.$inferInsert;

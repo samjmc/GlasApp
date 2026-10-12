@@ -45,7 +45,7 @@ export const divisions = politics.table(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('divisions_date_idx').on(t.date)],
-);
+).enableRLS();
 
 export const divisionVotes = politics.table(
   'division_votes',
@@ -62,7 +62,7 @@ export const divisionVotes = politics.table(
     index('division_votes_td_idx').on(t.tdId),
     index('division_votes_member_idx').on(t.memberCode),
   ],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Debates: sections of the Dáil Official Report, and the speeches in them.
@@ -88,7 +88,7 @@ export const debateSections = politics.table(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('debate_sections_date_idx').on(t.date), index('debate_sections_debate_idx').on(t.debateId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Debates: the sections that make up one debate, which can run over several days
@@ -130,7 +130,7 @@ export const debates = politics.table(
     moverSource: debateMoverSource('mover_source'),
   },
   (t) => [index('debates_kind_date_idx').on(t.kind, t.firstDate)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Debate items (docs/plans/debate-analysis.md, Step 2): what a speech contains, as a model
@@ -185,7 +185,7 @@ export const debateItems = politics.table(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('debate_items_speech_idx').on(t.speechId), index('debate_items_member_idx').on(t.memberCode, t.kind)],
-);
+).enableRLS();
 
 /** Whether a TD held government office (cabinet or Minister of State) on the debate's first day. */
 export const debateRole = politics.enum('debate_role', ['office', 'backbench']);
@@ -220,7 +220,7 @@ export const debateParticipation = politics.table(
     rulesVersion: varchar('rules_version', { length: 20 }).notNull(),
   },
   (t) => [primaryKey({ columns: [t.debateId, t.memberCode] }), index('debate_participation_member_idx').on(t.memberCode), index('debate_participation_td_idx').on(t.tdId)],
-);
+).enableRLS();
 
 export const debateExtractionStatus = politics.enum('debate_extraction_status', ['done', 'failed']);
 
@@ -248,7 +248,7 @@ export const debateExtractionRuns = politics.table(
     ranAt: timestamp('ran_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [primaryKey({ columns: [t.debateId, t.extractorVersion] })],
-);
+).enableRLS();
 
 export const debateSpeeches = politics.table(
   'debate_speeches',
@@ -276,7 +276,7 @@ export const debateSpeeches = politics.table(
     index('debate_speeches_td_idx').on(t.tdId, t.date),
     index('debate_speeches_member_idx').on(t.memberCode),
   ],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Per-TD parliament record, recomputed by every sync. NULL means "not measurable",
@@ -323,7 +323,7 @@ export const tdParliamentStats = politics.table('td_parliament_stats', {
   /** The vote-attendance benchmark for this TD's mix of backbench and government time. */
   attendanceBenchmark: real('attendance_benchmark'),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
-});
+}).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Offices held in the current Dáil, past and present, from the roster. Government office
@@ -349,7 +349,7 @@ export const tdOffices = politics.table(
     endDate: date('end_date'),
   },
   (t) => [primaryKey({ columns: [t.memberCode, t.title, t.startDate] }), index('td_offices_td_idx').on(t.tdId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Party leaders: the Oireachtas records no party leadership, so it is kept in
@@ -368,7 +368,7 @@ export const tdPartyLeaders = politics.table(
     sourceUrl: text('source_url').notNull(),
   },
   (t) => [primaryKey({ columns: [t.memberCode, t.startDate] }), index('td_party_leaders_td_idx').on(t.tdId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Documented absences: leave a TD or their party announced publicly, each with its source.
@@ -396,7 +396,7 @@ export const tdAbsences = politics.table(
     origin: absenceOrigin('origin').notNull().default('code'),
   },
   (t) => [primaryKey({ columns: [t.memberCode, t.startDate] }), index('td_absences_td_idx').on(t.tdId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Leave watch: a weekly job lists runs of sitting days on which an active TD neither voted nor
@@ -437,7 +437,7 @@ export const tdLeaveAlerts = politics.table(
     daysWhenResolved: integer('days_when_resolved'),
   },
   (t) => [uniqueIndex('td_leave_alerts_run_idx').on(t.memberCode, t.startDate), index('td_leave_alerts_status_idx').on(t.status)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Every Oireachtas PDF read, one row per file: which period it covers and which printed names
@@ -456,7 +456,7 @@ export const disclosureFiles = politics.table(
     readAt: timestamp('read_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('disclosure_files_kind_period_idx').on(t.kind, t.period)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Register of Members' Interests (annual PDF, Ethics in Public Office Acts): what each TD
@@ -475,7 +475,7 @@ export const tdInterests = politics.table(
     sourceUrl: text('source_url').notNull(),
   },
   (t) => [primaryKey({ columns: [t.memberCode, t.registerYear, t.category] }), index('td_interests_td_idx').on(t.tdId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Parliamentary Standard Allowance payments (monthly PDF): one row per payment as printed.
@@ -499,7 +499,7 @@ export const tdAllowancePayments = politics.table(
     amountCents: integer('amount_cents').notNull(),
   },
   (t) => [primaryKey({ columns: [t.sourceUrl, t.position] }), index('td_allowance_payments_td_idx').on(t.tdId, t.month)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Committees: membership (from the roster) and sittings with their roll call
@@ -513,7 +513,7 @@ export const committees = politics.table('committees', {
   /** "Statutory", "Standing", "Select", "Joint", … as the Oireachtas types it. */
   committeeType: text('committee_type'),
   createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
-});
+}).enableRLS();
 
 export const committeeMemberships = politics.table(
   'committee_memberships',
@@ -532,7 +532,7 @@ export const committeeMemberships = politics.table(
     primaryKey({ columns: [t.committeeId, t.memberCode, t.startDate] }),
     index('committee_memberships_td_idx').on(t.tdId),
   ],
-);
+).enableRLS();
 
 export const committeeSittings = politics.table(
   'committee_sittings',
@@ -553,7 +553,7 @@ export const committeeSittings = politics.table(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('committee_sittings_committee_date_idx').on(t.committeeId, t.date)],
-);
+).enableRLS();
 
 export const committeeAttendance = politics.table(
   'committee_attendance',
@@ -565,7 +565,7 @@ export const committeeAttendance = politics.table(
     tdId: integer('td_id').references(() => tds.id, { onDelete: 'set null' }),
   },
   (t) => [primaryKey({ columns: [t.sittingUri, t.memberCode] }), index('committee_attendance_td_idx').on(t.tdId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Bills (/legislation): the bill, who sponsored it, its stages, and the debates it was
@@ -596,7 +596,7 @@ export const bills = politics.table(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index('bills_status_idx').on(t.status), index('bills_last_updated_idx').on(t.lastUpdated)],
-);
+).enableRLS();
 
 export const billSponsors = politics.table(
   'bill_sponsors',
@@ -613,7 +613,7 @@ export const billSponsors = politics.table(
     isPrimary: boolean('is_primary').notNull().default(false),
   },
   (t) => [primaryKey({ columns: [t.billId, t.position] }), index('bill_sponsors_td_idx').on(t.tdId), index('bill_sponsors_member_idx').on(t.memberCode)],
-);
+).enableRLS();
 
 export const billStages = politics.table(
   'bill_stages',
@@ -628,7 +628,7 @@ export const billStages = politics.table(
     date: date('date'),
   },
   (t) => [primaryKey({ columns: [t.billId, t.position] })],
-);
+).enableRLS();
 
 export const billDebates = politics.table(
   'bill_debates',
@@ -646,7 +646,7 @@ export const billDebates = politics.table(
     title: text('title'),
   },
   (t) => [primaryKey({ columns: [t.billId, t.debateSectionId] }), index('bill_debates_section_idx').on(t.debateSectionId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Parliamentary questions, counted per TD, month, department and type. The text is not
@@ -669,7 +669,7 @@ export const questionCounts = politics.table(
     n: integer('n').notNull(),
   },
   (t) => [primaryKey({ columns: [t.memberCode, t.month, t.department, t.questionType] }), index('question_counts_td_idx').on(t.tdId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // Question sessions (docs/plans/question-sessions.md): who asked each oral PQ, the exchanges a
@@ -687,7 +687,7 @@ export const questionAskers = politics.table(
     date: date('date').notNull(),
   },
   (t) => [primaryKey({ columns: [t.sectionId, t.questionNumber] }), index('question_askers_member_idx').on(t.memberCode), index('question_askers_date_idx').on(t.date)],
-);
+).enableRLS();
 
 /**
  * How an exchange was asked: an oral PQ (askers from /questions), a Topical Issue, Leaders'
@@ -715,7 +715,7 @@ export const questionExchanges = politics.table(
     toPosition: integer('to_position').notNull(),
   },
   (t) => [index('question_exchanges_section_idx').on(t.sectionId)],
-);
+).enableRLS();
 
 /**
  * Each member's part in each question exchange that has been read, and the points the
@@ -744,7 +744,7 @@ export const questionParticipation = politics.table(
     rulesVersion: varchar('rules_version', { length: 20 }).notNull(),
   },
   (t) => [primaryKey({ columns: [t.exchangeId, t.memberCode] }), index('question_participation_member_idx').on(t.memberCode), index('question_participation_td_idx').on(t.tdId)],
-);
+).enableRLS();
 
 // ---------------------------------------------------------------------------
 // How far each feed has been ingested; the next sync starts from here.
@@ -762,7 +762,7 @@ export const parliamentSyncState = politics.table('parliament_sync_state', {
    * days after it.
    */
   failures: jsonb('failures').$type<Record<string, number>>().notNull().default({}),
-});
+}).enableRLS();
 
 export type DivisionRow = typeof divisions.$inferSelect;
 export type NewDivision = typeof divisions.$inferInsert;

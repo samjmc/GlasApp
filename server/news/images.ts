@@ -9,6 +9,7 @@
  *   3. Check candidates in order and keep the first that really loads as an image, so the
  *      feed never stores a dead link.
  */
+import { safeFetch } from './safeFetch';
 
 export interface ImageCandidate {
   url: string;
@@ -73,10 +74,9 @@ export function candidateOrder(feed: ImageCandidate[], page: ImageCandidate | nu
 /** Does this URL answer as an image? One byte is enough to know. */
 export async function loadsAsImage(url: string): Promise<boolean> {
   try {
-    const res = await fetch(url, {
+    const res = await safeFetch(url, {
       headers: { 'User-Agent': USER_AGENT, Range: 'bytes=0-0', Accept: 'image/*' },
       signal: AbortSignal.timeout(IMAGE_TIMEOUT_MS),
-      redirect: 'follow',
     });
     await res.body?.cancel();
     return (res.status === 200 || res.status === 206) && (res.headers.get('content-type') ?? '').startsWith('image/');

@@ -3,6 +3,7 @@
  */
 import * as cheerio from 'cheerio';
 import { cleanImageUrl } from './images';
+import { readTextCapped, safeFetch } from './safeFetch';
 
 const TIMEOUT_MS = 15_000;
 const USER_AGENT = 'Mozilla/5.0 (compatible; GlasPoliticsBot/1.0; +https://glaspolitics.ie)';
@@ -19,9 +20,12 @@ export interface PageMeta {
 }
 
 async function fetchHtml(url: string): Promise<string> {
-  const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(TIMEOUT_MS) });
-  if (!res.ok) throw new Error(`${url} returned ${res.status}`);
-  return res.text();
+  const res = await safeFetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(TIMEOUT_MS) });
+  if (!res.ok) {
+    await res.body?.cancel();
+    throw new Error(`${url} returned ${res.status}`);
+  }
+  return readTextCapped(res);
 }
 
 const squash = (text: string) => text.replace(/\s+/g, ' ').trim();

@@ -97,9 +97,8 @@ export default function PrivacyPolicyPage() {
 
         <h3 className="mb-3">6. Cookies &amp; Tracking Technologies</h3>
         <ul className="mb-4">
-          <li>Essential cookies (authentication, preferences)</li>
-          <li>Analytics cookies (optional, requires consent)</li>
-          <li>Local storage data (quiz progress, settings)</li>
+          <li>Strictly necessary cookies and local storage (sign-in, region, quiz progress, settings)</li>
+          <li>No analytics or advertising cookies</li>
         </ul>
       </section>
 
@@ -322,32 +321,33 @@ export default function PrivacyPolicyPage() {
       <section id="cookies" className="scroll-mt-24">
         <h2 className="mb-4">Cookie Policy</h2>
         <p className="mb-4">
-          We use cookies and similar technologies. See our cookie banner for full control. Types of cookies:
+          We use cookies and local storage on your device only where the app needs them to work. We do not use
+          analytics or advertising cookies, so there are no optional cookies to switch on or off. What we store:
         </p>
 
         <table>
           <thead className="bg-elevated">
             <tr>
-              <th>Cookie Type</th>
+              <th>What</th>
               <th>Purpose</th>
               <th>Required?</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Essential</td>
-              <td>Authentication, security, preferences</td>
+              <td>Sign-in session</td>
+              <td>Keeps you signed in and keeps the site secure</td>
               <td>Yes</td>
             </tr>
             <tr>
-              <td>Analytics</td>
-              <td>Usage statistics, performance monitoring</td>
-              <td>No (requires consent)</td>
+              <td>Region choice</td>
+              <td>Shows the right country&apos;s content</td>
+              <td>Yes</td>
             </tr>
             <tr>
-              <td>Functional</td>
-              <td>Remember settings, quiz progress</td>
-              <td>No (requires consent)</td>
+              <td>Settings on your device</td>
+              <td>Your quiz progress, theme, and whether you have dismissed the tour or the install prompt</td>
+              <td>Yes</td>
             </tr>
           </tbody>
         </table>
