@@ -15,7 +15,7 @@ process.env.LOG_LEVEL = 'silent';
 const { state } = vi.hoisted(() => ({
   state: {
     rows: [] as unknown[],
-    baselines: [] as unknown[],
+    researched: [] as number[],
     recalculated: 0,
   },
 }));
@@ -39,7 +39,7 @@ vi.mock('../scoring', async () => {
     }),
     repository: {
       listActive: vi.fn(async () => state.rows),
-      listBaselines: vi.fn(async () => state.baselines),
+      researchedTdIds: vi.fn(async () => state.researched),
       findByName: vi.fn(async (name: string) => byName(name)),
       findById: vi.fn(async (id: number) => (state.rows as Array<{ td: { id: number } }>).find((r) => r.td.id === id) ?? null),
       baselineFor: vi.fn(async () => null),
@@ -121,7 +121,7 @@ beforeEach(() => {
     td(2, 'Simon Harris', 'Fine Gael', 'Wicklow', 65),
     td(3, 'New Deputy', 'Fine Gael', 'Wicklow', null),
   ];
-  state.baselines = [BACKGROUND_ROW];
+  state.researched = [BACKGROUND_ROW.tdId];
   state.recalculated = 0;
 });
 
