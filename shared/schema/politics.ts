@@ -142,6 +142,20 @@ export const tdHistoricalBaselines = politics.table(
   (t) => [uniqueIndex('td_historical_baselines_td_idx').on(t.tdId)],
 );
 
+/**
+ * TDs whose background was taken down (`npm run td-history -- --delete --td <id>`, e.g. after a
+ * complaint). A bulk run skips them, so the takedown sticks; only `--force --td <id>` restores one,
+ * and that removes the row.
+ */
+export const tdHistorySuppressed = politics.table('td_history_suppressed', {
+  tdId: integer('td_id')
+    .primaryKey()
+    .references(() => tds.id, { onDelete: 'cascade' }),
+  suppressedAt: timestamp('suppressed_at', { withTimezone: true }).notNull().defaultNow(),
+  /** Why it was taken down, as given with --reason. */
+  reason: text('reason'),
+});
+
 export type Td = typeof tds.$inferSelect;
 export type NewTd = typeof tds.$inferInsert;
 export type TdScoreRow = typeof tdScores.$inferSelect;

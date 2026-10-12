@@ -125,6 +125,27 @@ run('TD history (real Postgres)', () => {
     expect(await history.deleteHistory(tdId)).toBe(true);
     expect(await history.deleteHistory(tdId)).toBe(false);
     expect(await rows()).toEqual([]);
+    await expect(history.deleteHistory(999_999)).rejects.toThrow(/No TD has id 999999/);
+  });
+
+  it('a takedown sticks: the next bulk run neither lists nor saves the TD, until --force --td restores it', async () => {
+    const deps = { complete: chose([CAREER]), model: 'm', fetcher: wikipedia({ revision: 100, html: html() }) };
+    await history.researchTd(td(), 'Ann Byrne', deps);
+    expect(await history.deleteHistory(tdId, 'complaint 2026-10-12')).toBe(true);
+    const tombstone = await q('select reason, suppressed_at from politics.td_history_suppressed where td_id = $1', [tdId]);
+    expect(tombstone.rows).toEqual([{ reason: 'complaint 2026-10-12', suppressed_at: expect.any(Date) }]);
+
+    // A bulk run does not list it, and a run already working on it does not save it.
+    expect(await history.historyCandidates()).toEqual([]);
+    expect((await history.researchTd(td(), 'Ann Byrne', deps)).kind).toBe('suppressed');
+    expect(await rows()).toEqual([]);
+
+    // `--force --td <id>` lists it, saves it and lifts the takedown.
+    expect((await history.historyCandidates({ restore: tdId })).map((t) => t.id)).toEqual([tdId]);
+    expect((await history.researchTd(td(), 'Ann Byrne', { ...deps, force: true, restore: true })).kind).toBe('saved');
+    expect(await rows()).toHaveLength(1);
+    expect((await q('select count(*)::int as n from politics.td_history_suppressed')).rows[0].n).toBe(0);
+    expect((await history.historyCandidates()).map((t) => t.id)).toEqual([tdId]);
   });
 
   it('migration 0016 refuses to drop the old columns when the table holds a row', async () => {
