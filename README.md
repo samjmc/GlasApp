@@ -28,7 +28,6 @@ An advanced Irish political analysis platform providing multidimensional politic
 - **Party Matching Algorithm:** Find which Irish parties align with your views
 - **Historical Tracking:** See how your political views evolve over time
 - **Share Results:** Generate shareable links for quiz results
-- **AI-Powered Insights:** Get personalized analysis of your political profile
 
 ### 🗺️ Electoral Mapping
 - **Interactive Maps:** Explore Irish constituencies with detailed boundaries
@@ -55,7 +54,6 @@ An advanced Irish political analysis platform providing multidimensional politic
 ### 🤖 AI Integration
 - **OpenAI Analysis:** Advanced political insights
 - **Anthropic Claude:** Enhanced contextual understanding
-- **Quiz Assistance:** AI-powered quiz explanations
 - **Personalized Insights:** Custom analysis for your constituency
 
 ---
@@ -146,7 +144,6 @@ DATABASE_URL=postgresql://...        # GlasCore Postgres
 SUPABASE_URL=https://...             # Auth
 SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
-SESSION_SECRET=                      # required in production
 LLM_API_KEY=                         # DeepSeek: all chat AI (news ranking, TD scoring panel)
 LLM_BASE_URL=https://api.deepseek.com
 LLM_MODEL_NAME=deepseek-flash

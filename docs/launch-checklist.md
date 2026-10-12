@@ -10,8 +10,8 @@ Tested on a laptop, not on a real host:
 - The production image **builds** from `main`, runs as the non-root user `node`, answers `/health`, serves
   the client and its SPA fallback, reads the database, refuses unauthenticated calls with 401, and **stops
   on SIGTERM in about 1.5 seconds with exit code 0**.
-- Every migration applies to an **empty** database (25 when this was checked on 2026-10-10; `main` has 27 now,
-  0000 to 0026, and CI applies them all).
+- Every migration applies to an **empty** database (25 when this was checked on 2026-10-10; `main` has more
+  now, and CI applies them all on every pull request).
 - CI builds the image and runs the start, `/health`, SPA, non-root and SIGTERM checks on every pull request
   (`image` job). It does not run Compose, read the container's health status or start Caddy.
 
@@ -50,14 +50,17 @@ In the Supabase dashboard (Authentication):
    Migration 0026 is the second line: `anon` and `authenticated` have no grant on the schema, and every
    table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
-   (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown) and 0026
-   (row level security on the politics tables) came after. Compare `drizzle/meta/_journal.json` with the
-   `drizzle.__drizzle_migrations` table before you migrate.
+   (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown), 0026
+   (row level security on the politics tables) and 0027 (foreign keys from the user-keyed political tables to
+   `politics.users`) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
+   table before you migrate. **0027 fails if any vote, quiz result, daily session or pledge ranking belongs to
+   a user with no `politics.users` row** (nothing is deleted for you): run the count in step 9 first.
 9. **Political data saved before consent existed.** Votes, rankings, pledge priorities and quiz results
    from people with no recorded consent (or consent to an older text) have no lawful basis under Article 9.
    Count them, then delete them or ask the people to consent again. Read-only count. It starts from the data
    tables, not from `politics.users`: that row is only created when someone opens their profile, so a person
-   who voted or took the quiz and never did has data and no row at all.
+   who voted or took the quiz before consent existed and never opened it has data and no row at all. Those are
+   the rows that make migration 0027 fail (step 8), so run this **before** migrating, and delete them first.
 
    ```sql
    with owners as (
@@ -102,8 +105,9 @@ by hand first (`docs/deploy.md` section 6).
 ## 5. Known limits at launch
 
 - One instance; a deploy means a short gap. Uploads live on a volume that must be backed up.
-- **No Content-Security-Policy** (`helmet` has it off) while the sign-in token is in localStorage. Turn it on in
-  report-only mode first.
+- **The Content-Security-Policy is report-only** (`server/middleware/securityHeaders.ts`): it reports what it
+  would block and blocks nothing, while the sign-in token is in localStorage. Read the reports, allow what
+  shows up, then set `reportOnly` to false.
 - `/health` only says the process is up, not that the database is reachable. Watch `/api/parliament/status`.
 - Database TLS certificates are not verified (the pooler's chain is not trusted by node-postgres).
 - No error tracking (Sentry or similar) and no uptime monitor. Add one before the first campaign.

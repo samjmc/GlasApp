@@ -2,9 +2,27 @@
 # Caddy gets and renews the HTTPS certificate on its own: ports 80 and 443 must reach this
 # host, and the domain's DNS record must point straight at it (no CDN proxy in between).
 #
-# There is no `log` directive on purpose. Caddy's access log records the full URL (a password-reset
-# link carries its one-time token in the query) and the visitor's IP. The app writes its own request
-# log with the path only (server/utils/httpLogger.ts).
+# There is no access log: the site block has no `log` directive, on purpose. The app writes its own
+# request log with the path only (server/utils/httpLogger.ts).
+#
+# Caddy's ERROR log is separate. Whenever the app is not answering (a 502 during `docker compose up
+# -d --build`) it writes the request: the full URI, the user agent and the visitor's IP. A
+# password-reset link carries its one-time token in the query, so unfiltered it would sit in the
+# container log. Measured with caddy:2: unfiltered, the token, the user agent and the IP all appeared;
+# with this filter the line keeps the path and method and nothing that identifies the visitor.
+{
+	log {
+		format filter {
+			wrap json
+			request>uri regexp \?.* ""
+			request>headers>User-Agent delete
+			request>remote_ip delete
+			request>client_ip delete
+			request>remote_port delete
+		}
+	}
+}
+
 {$SITE_DOMAIN:glas.example.com} {
 	encode zstd gzip
 	reverse_proxy app:5000
