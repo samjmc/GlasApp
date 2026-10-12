@@ -314,7 +314,7 @@ export async function completeSession(userId: string, now: Date = new Date()): P
     region,
   });
 
-  if (!(await repo.completeSession(session.id, completion.streakCount, completion))) {
+  if (!(await repo.completeSession(userId, session.id, completion.streakCount, completion))) {
     // A concurrent request finished it first; return what that request stored.
     const stored = await repo.findSession(userId, sessionDate);
     if (stored?.completion) return stored.completion;

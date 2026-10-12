@@ -86,7 +86,6 @@ An advanced Irish political analysis platform providing multidimensional politic
 - **OpenAI** - GPT-4 for analysis
 - **Anthropic** - Claude for insights
 - **SendGrid/Resend** - Email delivery
-- **Twilio** - SMS verification
 
 ### DevOps
 - **Vite** - Build tool
@@ -117,6 +116,7 @@ npm install
 # Set up environment variables
 cp .env.example .env
 # Edit .env with the GlasCore connection string and keys
+# Keep SCHEDULER=off (already set in .env.example) so local runs do not start the crons
 
 # Apply the database migrations (creates the `politics` schema)
 npm run db:migrate

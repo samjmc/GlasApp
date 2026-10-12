@@ -10,30 +10,35 @@
 import pino, { type Logger } from 'pino';
 import type { Request } from 'express';
 
+/** Never persist credentials / verification secrets in logs. */
+export const logRedaction = {
+  paths: [
+    'password',
+    'confirmPassword',
+    'captchaToken',
+    'verificationCode',
+    'secret',
+    'authorization',
+    '*.password',
+    '*.confirmPassword',
+    '*.captchaToken',
+    '*.verificationCode',
+    '*.secret',
+    'req.headers.authorization',
+    'req.headers.cookie',
+    // Job secret: pino-http logs every request header, and the jobs send it in these.
+    'req.headers["x-admin-secret"]',
+    'req.headers["x-cron-secret"]',
+  ],
+  censor: '[REDACTED]',
+};
+
 /** Shared pino logger instance for the server. */
 export const logger: Logger = pino({
   level:
     process.env.LOG_LEVEL ||
     (process.env.NODE_ENV === 'production' ? 'info' : 'debug'),
-  redact: {
-    // Never persist credentials / verification secrets in logs.
-    paths: [
-      'password',
-      'confirmPassword',
-      'captchaToken',
-      'verificationCode',
-      'secret',
-      'authorization',
-      '*.password',
-      '*.confirmPassword',
-      '*.captchaToken',
-      '*.verificationCode',
-      '*.secret',
-      'req.headers.authorization',
-      'req.headers.cookie',
-    ],
-    censor: '[REDACTED]',
-  },
+  redact: logRedaction,
   serializers: {
     err: pino.stdSerializers.err,
   },

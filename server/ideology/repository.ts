@@ -3,6 +3,10 @@
  */
 import { and, asc, desc, eq, sql, type SQL } from 'drizzle-orm';
 import { db, type Db } from '../db';
+import { withPoliticalConsent } from '../account/consent';
+
+// Re-exported so the service reaches the database only through this file.
+export { withPoliticalConsent };
 import { tds } from '@shared/schema/politics';
 import {
   ideologyProfiles,
@@ -27,19 +31,25 @@ export function vectorOf(row: IdeologyVector): IdeologyVector {
 
 // --- quiz ------------------------------------------------------------------
 
+/** Throws ConsentRequiredError, storing nothing, when the user has no consent at the moment of writing. */
 export async function insertQuizResult(
   input: { userId: string; answers: QuizResponse[]; plan: QuizPlanRecord | null; vector: IdeologyVector; ideology: string; description: string },
   database: Db = db,
 ): Promise<QuizResultRow> {
-  const [row] = await database
-    .insert(quizResults)
-    .values({ userId: input.userId, answers: input.answers, plan: input.plan, ...input.vector, ideology: input.ideology, description: input.description })
-    .returning();
+  const [row] = await withPoliticalConsent(
+    input.userId,
+    (tx) =>
+      tx
+        .insert(quizResults)
+        .values({ userId: input.userId, answers: input.answers, plan: input.plan, ...input.vector, ideology: input.ideology, description: input.description })
+        .returning(),
+    database,
+  );
   return row!;
 }
 
 /** Newest first. */
-export async function listQuizResults(userId: string, database: Db = db): Promise<QuizResultRow[]> {
+export async function listQuizResults(userId: string, database: Pick<Db, 'select'> = db): Promise<QuizResultRow[]> {
   return database.select().from(quizResults).where(eq(quizResults.userId, userId)).orderBy(desc(quizResults.createdAt), desc(quizResults.id));
 }
 
@@ -210,7 +220,7 @@ export async function upsertProfile(
   kind: ProfileSubject,
   subjectId: string,
   profile: Omit<Profile, 'support'>,
-  database: Db = db,
+  database: Pick<Db, 'insert'> = db,
 ): Promise<void> {
   const values = {
     subjectKind: kind,
@@ -226,7 +236,7 @@ export async function upsertProfile(
     .onConflictDoUpdate({ target: [ideologyProfiles.subjectKind, ideologyProfiles.subjectId], set: values });
 }
 
-export async function deleteProfile(kind: ProfileSubject, subjectId: string, database: Db = db): Promise<void> {
+export async function deleteProfile(kind: ProfileSubject, subjectId: string, database: Pick<Db, 'delete'> = db): Promise<void> {
   await database.delete(ideologyProfiles).where(and(eq(ideologyProfiles.subjectKind, kind), eq(ideologyProfiles.subjectId, subjectId)));
 }
 

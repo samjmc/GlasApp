@@ -2,6 +2,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { Link, useLocation } from "wouter";
 import { Check, Compass, Flame, Globe, Search } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
+import { usePoliticalConsent } from "@/contexts/ConsentContext";
 import { useDailySession } from "@/hooks/useDailySession";
 import { GlobalSearch } from "@/components/GlobalSearch";
 import { GlasLogo } from "@/components/pulse/GlasMark";
@@ -12,10 +13,11 @@ import { AccountMenu } from "./AccountMenu";
 import { BOTTOM_NAV, FOOTER_LINKS, MAIN_NAV, isActive, labelFor, type NavItem } from "./nav";
 import { useRegion } from "@/hooks/useRegion";
 
-/** The day's streak, or null when unknown. */
+/** The day's streak, or null when unknown. Opening today's session needs consent (it stores the session). */
 function useStreak(): number | null {
   const { isAuthenticated } = useAuth();
-  const { data } = useDailySession(isAuthenticated);
+  const { granted: consented } = usePoliticalConsent();
+  const { data } = useDailySession(isAuthenticated && consented);
   if (!isAuthenticated || !data) return null;
   return typeof data.streakCount === "number" ? data.streakCount : data.completion?.streakCount ?? null;
 }

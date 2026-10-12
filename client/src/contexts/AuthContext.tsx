@@ -1,5 +1,7 @@
-import React, { createContext, useContext, ReactNode, useEffect, useState } from 'react';
+import React, { createContext, useContext, ReactNode, useEffect, useRef, useState } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { supabase, type User } from '@/lib/supabase';
+import { shouldClearCache } from '@/lib/authCache';
 
 interface AuthUser {
   id: string;
@@ -73,11 +75,15 @@ function convertSupabaseUser(supabaseUser: User | null): AuthUser | null {
 export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const queryClient = useQueryClient();
+  // The user id the cache was last filled for; undefined until the session has been read.
+  const cacheUserIdRef = useRef<string | null | undefined>(undefined);
 
   useEffect(() => {
     // Get initial session
     supabase.auth.getSession()
       .then(({ data: { session } }) => {
+        if (cacheUserIdRef.current === undefined) cacheUserIdRef.current = session?.user?.id ?? null;
         setUser(convertSupabaseUser(session?.user ?? null));
         setIsLoading(false);
       })
@@ -90,13 +96,17 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     // Listen for auth changes
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      const nextUserId = session?.user?.id ?? null;
+      // Cleared before setUser, so queries that start for the new user are fresh.
+      if (shouldClearCache(cacheUserIdRef.current, nextUserId, event)) queryClient.clear();
+      cacheUserIdRef.current = nextUserId;
       setUser(convertSupabaseUser(session?.user ?? null));
       setIsLoading(false);
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [queryClient]);
 
   const updateProfile = async (data: Partial<AuthUser>) => {
     try {
@@ -137,7 +147,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       if (import.meta.env.DEV) {
         console.error('Error signing out:', error);
       }
-      // Even if signout fails, clear local user state
+      // Even if signout fails, clear local user state (and the data cached for that user)
+      queryClient.clear();
       setUser(null);
       throw new Error('Failed to sign out. Please try again.');
     }

@@ -3,6 +3,7 @@
  */
 import { asc, count, desc, eq, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
+import { withPoliticalConsent } from '../account/consent';
 import {
   pledgeCategoryPriorities,
   pledgeEvidence,
@@ -147,9 +148,9 @@ export async function userRanking(userId: string, database: Db = db): Promise<Pl
   return rows.length ? rows.map((r) => r.category as PledgeCategory) : null;
 }
 
-/** Replace a user's whole ranking atomically; an empty ranking clears it. */
+/** Replace a user's whole ranking atomically; an empty ranking clears it. Throws ConsentRequiredError without consent. */
 export async function saveRanking(userId: string, ranking: readonly PledgeCategory[], database: Db = db): Promise<void> {
-  await database.transaction(async (tx) => {
+  await withPoliticalConsent(userId, async (tx) => {
     // Serialise one user's saves: two at once would both delete, then both insert and collide.
     await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${userId}))`);
     await tx.delete(pledgeCategoryPriorities).where(eq(pledgeCategoryPriorities.userId, userId));
@@ -157,5 +158,5 @@ export async function saveRanking(userId: string, ranking: readonly PledgeCatego
     await tx
       .insert(pledgeCategoryPriorities)
       .values(ranking.map((category, index) => ({ userId, category, rank: index + 1 })));
-  });
+  }, database);
 }

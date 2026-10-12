@@ -4,6 +4,7 @@
  */
 import { and, asc, count, desc, eq, gte, inArray, isNotNull, lt, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
+import { withPoliticalConsent } from '../account/consent';
 import {
   dailySessionItems,
   dailySessions,
@@ -222,6 +223,7 @@ export async function findSession(userId: string, sessionDate: string, database:
 /**
  * Create today's session with its items. Two tabs opening at once race on the unique
  * (user, date) index; the loser reads the winner's session instead of failing.
+ * Throws ConsentRequiredError without consent: the row holds the user's profile and area.
  */
 export async function createSession(
   input: {
@@ -234,7 +236,7 @@ export async function createSession(
   },
   database: Db = db,
 ): Promise<DailySessionRow> {
-  return database.transaction(async (tx) => {
+  return withPoliticalConsent(input.userId, async (tx) => {
     const [created] = await tx
       .insert(dailySessions)
       .values({
@@ -261,7 +263,7 @@ export async function createSession(
         .values(input.questionIds.map((questionId, position) => ({ sessionId: created.id, questionId, position })));
     }
     return created;
-  });
+  }, database);
 }
 
 export interface SessionItemView {
@@ -326,18 +328,27 @@ export async function completedDatesBefore(userId: string, beforeDate: string, d
   return rows.map((row) => row.date);
 }
 
-/** Mark completed only if still pending, so a double submit cannot overwrite the summary. */
+/**
+ * Mark completed only if still pending, so a double submit cannot overwrite the summary.
+ * Throws ConsentRequiredError without consent.
+ */
 export async function completeSession(
+  userId: string,
   sessionId: number,
   streakCount: number,
   completion: DailySessionCompletion,
   database: Db = db,
 ): Promise<boolean> {
-  const updated = await database
-    .update(dailySessions)
-    .set({ status: 'completed', streakCount, completion, completedAt: new Date() })
-    .where(and(eq(dailySessions.id, sessionId), eq(dailySessions.status, 'pending')))
-    .returning({ id: dailySessions.id });
+  const updated = await withPoliticalConsent(
+    userId,
+    (tx) =>
+      tx
+        .update(dailySessions)
+        .set({ status: 'completed', streakCount, completion, completedAt: new Date() })
+        .where(and(eq(dailySessions.id, sessionId), eq(dailySessions.userId, userId), eq(dailySessions.status, 'pending')))
+        .returning({ id: dailySessions.id }),
+    database,
+  );
   return updated.length > 0;
 }
 
@@ -400,23 +411,28 @@ export async function regionTotals(
 // Votes
 // ---------------------------------------------------------------------------
 
-/** One answer per user per question: a second vote replaces the first. */
+/** One answer per user per question: a second vote replaces the first. Throws ConsentRequiredError without consent. */
 export async function upsertVote(
   input: { userId: string; questionId: number; optionKey: string; source: VoteSource; sessionItemId: number | null },
   database: Db = db,
 ): Promise<void> {
-  await database
-    .insert(policyVotes)
-    .values(input)
-    .onConflictDoUpdate({
-      target: [policyVotes.userId, policyVotes.questionId],
-      set: {
-        optionKey: input.optionKey,
-        source: input.source,
-        sessionItemId: input.sessionItemId,
-        updatedAt: new Date(),
-      },
-    });
+  await withPoliticalConsent(
+    input.userId,
+    (tx) =>
+      tx
+        .insert(policyVotes)
+        .values(input)
+        .onConflictDoUpdate({
+          target: [policyVotes.userId, policyVotes.questionId],
+          set: {
+            optionKey: input.optionKey,
+            source: input.source,
+            sessionItemId: input.sessionItemId,
+            updatedAt: new Date(),
+          },
+        }),
+    database,
+  );
 }
 
 export async function tallies(questionIds: number[], database: Db = db): Promise<Map<number, QuestionTally>> {
@@ -453,7 +469,7 @@ export interface UserVoteVector {
   votedAt: Date;
 }
 
-export async function userVoteVectors(userId: string, since?: Date, database: Db = db): Promise<UserVoteVector[]> {
+export async function userVoteVectors(userId: string, since?: Date, database: Pick<Db, 'select'> = db): Promise<UserVoteVector[]> {
   const rows = await database
     .select({ vote: policyVotes, option: policyQuestionOptions })
     .from(policyVotes)

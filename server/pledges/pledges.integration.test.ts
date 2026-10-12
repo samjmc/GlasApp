@@ -4,6 +4,7 @@
  * database `<db>_pledges` (see server/testing/migrations.ts).
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
 const url = testDatabaseUrl('pledges');
@@ -34,6 +35,7 @@ run('pledges against Postgres', () => {
     dbmod = await import('../db');
     const applied = await applyAllMigrations(dbmod.pool);
     expect(applied).toContain('0002_pledges');
+    await consentTo(dbmod.pool, 'u1', 'u2');
     repo = await import('./repository');
   }, 60_000);
 

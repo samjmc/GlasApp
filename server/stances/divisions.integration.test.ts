@@ -14,6 +14,7 @@ import type { Server } from 'node:http';
 import express from 'express';
 import pkg from 'pg';
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
+import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 import type { DivisionCompletion } from './divisions';
 
@@ -158,6 +159,7 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
     await ensureDatabase(divisionsUrl!);
     dbmod = await import('../db');
     await applyAllMigrations(dbmod.pool);
+    await consentTo(dbmod.pool, 'user-c', 'user-m');
     divisions = await import('./divisions');
     ideology = await import('../ideology');
     ideologyRepo = await import('../ideology/repository');

@@ -6,15 +6,16 @@ import {
   submitDailyVote,
   fetchDailySession,
 } from "@/services/dailySessionService";
+import { useAuth } from "@/contexts/AuthContext";
+import { queryKeys } from "@/lib/queryKeys";
 import { useRegion } from "./useRegion";
-
-const DAILY_SESSION_QUERY_KEY = ["daily-session-state"];
 
 /** React hook fetching the current daily session state for the active region. */
 export function useDailySession(enabled: boolean) {
   const { regionCode } = useRegion();
+  const { user } = useAuth();
   return useQuery<DailySessionState>({
-    queryKey: [...DAILY_SESSION_QUERY_KEY, regionCode],
+    queryKey: queryKeys.dailySession(regionCode, user?.id),
     queryFn: fetchDailySession,
     enabled: enabled && !!regionCode,
     staleTime: 1000 * 30,
@@ -25,13 +26,14 @@ export function useDailySession(enabled: boolean) {
 export function useDailySessionVote() {
   const queryClient = useQueryClient();
   const { regionCode } = useRegion();
+  const { user } = useAuth();
 
   return useMutation({
     mutationFn: ({ sessionItemId, optionKey }: { sessionItemId: number; optionKey: string }) =>
       submitDailyVote(sessionItemId, optionKey),
     onSuccess: (session) => {
       queryClient.setQueryData<DailySessionState>(
-        [...DAILY_SESSION_QUERY_KEY, regionCode],
+        queryKeys.dailySession(regionCode, user?.id),
         session
       );
     },
@@ -42,28 +44,23 @@ export function useDailySessionVote() {
 export function useCompleteDailySession() {
   const queryClient = useQueryClient();
   const { regionCode } = useRegion();
+  const { user } = useAuth();
 
   return useMutation({
     mutationFn: completeDailySession,
     onSuccess: (summary: DailySessionCompletion) => {
-      const existing = queryClient.getQueryData<DailySessionState>(
-        [...DAILY_SESSION_QUERY_KEY, regionCode]
-      );
+      const key = queryKeys.dailySession(regionCode, user?.id);
+      const existing = queryClient.getQueryData<DailySessionState>(key);
       if (existing) {
-        queryClient.setQueryData<DailySessionState>(
-          [...DAILY_SESSION_QUERY_KEY, regionCode],
-          {
-            ...existing,
-            status: "completed",
-            completion: summary,
-            voteCount: existing.items.length,
-            streakCount: summary.streakCount,
-          }
-        );
-      } else {
-        queryClient.invalidateQueries({
-          queryKey: [...DAILY_SESSION_QUERY_KEY, regionCode],
+        queryClient.setQueryData<DailySessionState>(key, {
+          ...existing,
+          status: "completed",
+          completion: summary,
+          voteCount: existing.items.length,
+          streakCount: summary.streakCount,
         });
+      } else {
+        queryClient.invalidateQueries({ queryKey: key });
       }
     },
   });
