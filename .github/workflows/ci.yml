@@ -21,6 +21,8 @@ jobs:
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npm run check
+      # "Never do X" rules as one regex each (scripts/ci/check-code-guards.ts).
+      - run: npm run guard:code
 
   test:
     runs-on: ubuntu-latest

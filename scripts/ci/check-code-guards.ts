@@ -7,7 +7,7 @@
  *
  * Adding a rule: write the regex, run the script, and either fix every hit or allowlist the file
  * with a one-line reason. Never narrow the regex until it stops matching a real violation.
- * Allowlist entries are not checked for staleness: delete one when its file stops needing it.
+ * An allowlist entry whose file no longer matches its rule fails the check, so lists only shrink.
  *
  * Known limits: a regex cannot tell a string from code, so a banned pattern inside a string
  * literal is reported (allowlist it), and a line comment starting right after a quote is not
@@ -69,18 +69,16 @@ export const RULES: Rule[] = [
     },
   },
 
-  // 90facf7 (branch fix/review-pass-1): pino-http's default request serializer logs the whole URL
-  // and every header. A password-reset link (?token_hash=) and an OAuth return (?code=) carry
-  // one-time credentials in the query, so anyone reading the logs could redeem them.
+  // #159 (90facf7): pino-http's default request serializer logs the whole URL and every header. A
+  // password-reset link (?token_hash=) and an OAuth return (?code=) carry one-time credentials in
+  // the query, so anyone reading the logs could redeem them.
   {
     label: 'pino-http configured outside server/utils/httpLogger.ts',
-    fix: 'server/utils/httpLogger.ts, which logs the path only',
+    fix: 'createHttpLogger from server/utils/httpLogger.ts, which logs the path only',
     scope: inServer,
     pattern: /\bpinoHttp\s*[<(]/g,
     allow: {
-      'server/index.ts': 'TEMPORARY: still on the default serializer on main; 90facf7 moves it to httpLogger.ts. Delete this entry when that merges',
       'server/utils/httpLogger.ts': 'the one place the request log is configured',
-      'server/jobs/robots.ts': 'local robot-run harness on a disposable database, not deployed; mirrors server/index.ts and moves with it',
     },
   },
 
@@ -106,10 +104,7 @@ export const RULES: Rule[] = [
     scope: (p) => (inServer(p) || (p.startsWith('shared/') && !isTest(p))) && !p.startsWith('server/auth/'),
     pattern:
       /\.session\??\.(?:userId|user\b)|\bclaims\??\.sub\b|\bdev-user-|\b(?:isAuthenticated|replitAuth|sessionMiddleware)\b|['"](?:passport|express-session)['"]/g,
-    allow: {
-      'server/index.ts': 'dead fallback read of a session that no longer exists; falls through to req.user.id. Remove',
-      'server/middleware/errorHandler.ts': 'dead fallback read of a session that no longer exists; falls through to req.user.id. Remove',
-    },
+    allow: {},
   },
 
   // 25e98b2 and 4a30062: Leaflet tooltips are set as innerHTML, and an unescaped constituency
@@ -174,6 +169,22 @@ export function findViolations(files: SourceFile[], rules: Rule[] = RULES): Viol
   return violations;
 }
 
+/** An allowlist entry whose file is gone or no longer matches its rule. Left in, it would let
+ * the next violation in that file through unseen. */
+export function staleAllowances(files: SourceFile[], rules: Rule[] = RULES): string[] {
+  const byPath = new Map(files.map((file) => [file.path, file]));
+  const stale: string[] = [];
+  for (const rule of rules) {
+    for (const allowed of Object.keys(rule.allow)) {
+      const file = byPath.get(allowed);
+      if (!file || !rule.scope(allowed) || !stripComments(file.content).match(rule.pattern)) {
+        stale.push(`${rule.label}: ${allowed}`);
+      }
+    }
+  }
+  return stale;
+}
+
 /** A rule whose scope matches no file checks nothing, usually because a directory was renamed. */
 export function deadRules(files: SourceFile[], rules: Rule[] = RULES): Rule[] {
   return rules.filter((rule) => !files.some((file) => rule.scope(file.path)));
@@ -203,6 +214,11 @@ function main(): number {
   const dead = deadRules(files);
   if (dead.length > 0) {
     console.error(`Rules whose scope matches no file, so they check nothing:\n${dead.map((r) => `  ${r.label}`).join('\n')}`);
+    return 1;
+  }
+  const stale = staleAllowances(files);
+  if (stale.length > 0) {
+    console.error(`Allowlist entries that no longer match (delete them):\n${stale.map((s) => `  ${s}`).join('\n')}`);
     return 1;
   }
   const violations = findViolations(files);

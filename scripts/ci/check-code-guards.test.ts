@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { RULES, deadRules, findViolations, report, stripComments, type Rule } from './check-code-guards';
+import { RULES, deadRules, findViolations, report, staleAllowances, stripComments, type Rule } from './check-code-guards';
 
 const rule = (fragment: string): Rule => {
   const found = RULES.filter((r) => r.label.includes(fragment));
@@ -191,5 +191,12 @@ describe('rule table', () => {
   it('a rule whose scope matches nothing is reported as dead', () => {
     expect(deadRules([{ path: 'README.ts', content: '' }], [rule('Math.random')])).toHaveLength(1);
     expect(deadRules([{ path: 'server/a.ts', content: '' }], [rule('Math.random')])).toHaveLength(0);
+  });
+
+  it('an allowlist entry whose file is gone or no longer matches is reported as stale', () => {
+    const r: Rule = { ...rule('Math.random'), allow: { 'server/a.ts': 'jitter for a retry, nothing secret' } };
+    expect(staleAllowances([{ path: 'server/a.ts', content: 'const j = Math.random();' }], [r])).toEqual([]);
+    expect(staleAllowances([{ path: 'server/a.ts', content: '// Math.random() was here' }], [r])).toHaveLength(1);
+    expect(staleAllowances([], [r])).toHaveLength(1);
   });
 });
