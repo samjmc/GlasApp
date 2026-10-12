@@ -47,7 +47,7 @@ async function answer(page: Page, id: number, index = MAX.get(id)!): Promise<voi
 
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
-    localStorage.setItem('cookie_consent', JSON.stringify({ essential: true, analytics: false, functional: false }));
+    localStorage.setItem('cookie_consent', JSON.stringify({ essential: true }));
   });
 });
 

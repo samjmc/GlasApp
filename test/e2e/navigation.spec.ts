@@ -7,7 +7,7 @@ import { expect, test } from '@playwright/test';
 
 test('navigating between two pages does not show the full-screen loader again', async ({ page }) => {
   await page.addInitScript(() => {
-    localStorage.setItem('cookie_consent', JSON.stringify({ essential: true, analytics: false, functional: false }));
+    localStorage.setItem('cookie_consent', JSON.stringify({ essential: true }));
     localStorage.setItem('glas.region', 'IE');
     // Counts every time the loader (role=status, aria-label=Loading) is added to the page.
     (window as unknown as { __loaderShown: number }).__loaderShown = 0;

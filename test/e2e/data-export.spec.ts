@@ -18,7 +18,7 @@ const EXPORT = {
 
 async function signInOnProfile(page: Page, exportReply: { status: number; json: unknown }) {
   await page.addInitScript(() => {
-    localStorage.setItem('cookie_consent', JSON.stringify({ essential: true, analytics: false, functional: false }));
+    localStorage.setItem('cookie_consent', JSON.stringify({ essential: true }));
     localStorage.setItem('glas.region', 'IE');
     const now = Math.floor(Date.now() / 1000);
     localStorage.setItem(
