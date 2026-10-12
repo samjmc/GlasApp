@@ -26,8 +26,25 @@ export const EXPORTED_USER_TABLES = [
 
 export const EXPORT_FORMAT_VERSION = 1;
 
+/**
+ * The profile details the app keeps with the sign-in, in Supabase `user_metadata`, rather than in
+ * politics.users: what the profile page saves (client/src/contexts/AuthContext.tsx, ProfilePage.tsx),
+ * the area the daily session reads (server/voting/routes.ts) and the region (server/routes/regionRoutes.ts).
+ * Allowlisted, so whatever else a sign-in provider puts there does not leak into the file by accident.
+ */
+export const PROFILE_METADATA_KEYS = [
+  'first_name',
+  'last_name',
+  'username',
+  'county',
+  'constituency',
+  'bio',
+  'glas_avatar_url',
+  'region_code',
+] as const;
+
 const NOTES = [
-  'Your sign-in (your password, or your Google sign-in) is held by our sign-in provider, Supabase, and is not in this file. Your email address is.',
+  'Your sign-in (your password, or your Google sign-in) is held by our sign-in provider, Supabase, and is not in this file. Your email address is, and so are the profile details we keep with it (profileMetadata).',
   'Your profile picture is not in this file; its address is in account.profileImageUrl.',
   'Dates are in UTC. The position on each quiz result and in ideologyProfile is one number from -10 to +10 on each of eight dimensions: economic, social, cultural, authority, environmental, welfare, globalism and technocratic.',
 ];
@@ -39,6 +56,8 @@ export interface UserDataExport {
   exportedAt: string;
   /** Your account and profile. null when no profile row exists yet. */
   account: Account | null;
+  /** The profile details kept with your sign-in (name, username, county, bio, picture address, region). */
+  profileMetadata: Partial<Record<(typeof PROFILE_METADATA_KEYS)[number], unknown>>;
   quizResults: Array<Omit<typeof quizResults.$inferSelect, 'userId'>>;
   /** Your current political position, built from your quiz results and votes. */
   ideologyProfile: Omit<typeof ideologyProfiles.$inferSelect, 'subjectKind' | 'subjectId'> | null;
@@ -50,8 +69,13 @@ export interface UserDataExport {
   notes: string[];
 }
 
-/** One user's data. `email` comes from the verified sign-in token, not from this database. */
-export async function exportUserData(userId: string, identity: { email: string | null }, now = new Date(), database: Db = db): Promise<UserDataExport> {
+/** One user's data. `email` and `userMetadata` come from the verified sign-in token, not from this database. */
+export async function exportUserData(
+  userId: string,
+  identity: { email: string | null; userMetadata: Record<string, unknown> },
+  now = new Date(),
+  database: Db = db,
+): Promise<UserDataExport> {
   if (!userId) throw new Error('exportUserData needs a user id');
 
   const [profile] = await database.select().from(users).where(eq(users.id, userId));
@@ -97,6 +121,9 @@ export async function exportUserData(userId: string, identity: { email: string |
     format: EXPORT_FORMAT_VERSION,
     exportedAt: now.toISOString(),
     account: profile ? withoutPhoneSecrets(profile, identity.email) : null,
+    profileMetadata: Object.fromEntries(
+      PROFILE_METADATA_KEYS.filter((key) => identity.userMetadata[key] != null).map((key) => [key, identity.userMetadata[key]]),
+    ),
     quizResults: quiz.map(({ userId: _owner, ...rest }) => rest),
     ideologyProfile: position ? (({ subjectKind: _kind, subjectId: _id, ...rest }) => rest)(position) : null,
     votes,

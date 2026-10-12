@@ -17,7 +17,11 @@ const calls = vi.hoisted(() => ({ order: [] as string[], dataFails: false, authF
 vi.mock('../auth', () => ({
   requireAuth: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (req.headers.authorization !== 'Bearer ok') return res.status(401).json({ success: false });
-    (req as unknown as { user: { id: string; email: string } }).user = { id: 'user-1', email: 'u@example.ie' };
+    (req as unknown as { user: { id: string; email: string; userMetadata: Record<string, unknown> } }).user = {
+      id: 'user-1',
+      email: 'u@example.ie',
+      userMetadata: { county: 'Cork' },
+    };
     next();
   },
 }));
@@ -48,8 +52,8 @@ vi.mock('../account/consent', () => ({
 }));
 
 vi.mock('../account/exportUserData', () => ({
-  exportUserData: vi.fn(async (id: string, identity: { email: string | null }) => {
-    calls.order.push(`export:${id}:${identity.email}`);
+  exportUserData: vi.fn(async (id: string, identity: { email: string | null; userMetadata: Record<string, unknown> }) => {
+    calls.order.push(`export:${id}:${identity.email}:${JSON.stringify(identity.userMetadata)}`);
     if (calls.dataFails) throw new Error('db down');
     return { format: 1, exportedAt: '2026-10-10T12:00:00.000Z', account: { id, email: identity.email }, quizResults: [], votes: [] };
   }),
@@ -125,11 +129,11 @@ describe('DELETE /api/account', () => {
 describe('GET /api/account/export', () => {
   const PATH = '/api/account/export';
 
-  it("returns the caller's data in the envelope, for the caller's own id and email, and is never cached", async () => {
+  it("returns the caller's data in the envelope, for the caller's own id, email and profile metadata, and is never cached", async () => {
     const { status, body, headers } = await send('GET', PATH, 'Bearer ok');
     expect(status).toBe(200);
     expect(headers.get('cache-control')).toBe('no-store');
-    expect(calls.order).toEqual(['export:user-1:u@example.ie']);
+    expect(calls.order).toEqual(['export:user-1:u@example.ie:{"county":"Cork"}']);
     expect(body).toEqual({ success: true, data: expect.objectContaining({ format: 1, account: { id: 'user-1', email: 'u@example.ie' } }) });
   });
 
