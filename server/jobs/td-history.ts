@@ -6,6 +6,8 @@
  *   npm run td-history -- [--td <id>] [--limit N] [--dry-run] [--force]
  *   npm run td-history -- --delete --td <id> [--reason <text>]   take one TD's background down, and keep it down
  *   npm run td-history -- --force --td <id>      restore a TD that was taken down (lifts the takedown)
+ *
+ * Every run but --dry-run also needs --yes for a database not on this machine (liveDbGuard.ts).
  */
 import 'dotenv/config';
 import path from 'node:path';
@@ -22,8 +24,9 @@ import {
   type PassageReject,
 } from '../tdHistory';
 import { completeJson, QUESTION_MODEL } from '../voting';
+import { approveWrite } from './liveDbGuard';
 
-const USAGE = 'Usage: npm run td-history -- [--td <id>] [--limit N] [--dry-run] [--force] | --delete --td <id> [--reason <text>]';
+const USAGE = 'Usage: npm run td-history -- [--td <id>] [--limit N] [--dry-run] [--force] [--yes] | --delete --td <id> [--reason <text>] [--yes]';
 /** Between Wikipedia requests: Wikipedia asks API clients to stay at about one request a second. */
 const PAUSE_MS = 1_000;
 
@@ -45,7 +48,7 @@ function positive(argv: string[], flag: string): number | null {
 }
 
 export function parseArgs(argv: string[]): Args {
-  const known = new Set(['--td', '--limit', '--dry-run', '--force', '--delete', '--reason']);
+  const known = new Set(['--td', '--limit', '--dry-run', '--force', '--delete', '--reason', '--yes']);
   argv.forEach((arg, i) => {
     const isValue = i > 0 && (argv[i - 1] === '--td' || argv[i - 1] === '--limit' || argv[i - 1] === '--reason');
     if (!isValue && !known.has(arg)) throw new Error(`Unknown argument ${arg}. ${USAGE}`);
@@ -61,6 +64,8 @@ export function parseArgs(argv: string[]): Args {
     reason,
   };
   if (args.remove && args.td === null) throw new Error(`--delete needs --td <id>. ${USAGE}`);
+  // --delete never read --dry-run: a "dry run" of a takedown deleted the row.
+  if (args.remove && args.dryRun) throw new Error(`--delete has no --dry-run. ${USAGE}`);
   if (reason !== null && (!args.remove || !reason)) throw new Error(`--reason goes with --delete and needs some text. ${USAGE}`);
   return args;
 }
@@ -69,6 +74,7 @@ const sleep = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve,
 
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
+  approveWrite('td-history', args.dryRun);
   if (args.remove) {
     const removed = await deleteHistory(args.td!, args.reason);
     console.log(

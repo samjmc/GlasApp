@@ -1,14 +1,16 @@
 /**
  * Ingest new Oireachtas data and refresh every TD's parliament record and score.
  *
- *   npm run parliament:sync                       resume from the last run
- *   npm run parliament:sync -- --since 2024-11-29 re-ingest from a date
+ *   npm run parliament:sync -- --yes                       resume from the last run
+ *   npm run parliament:sync -- --since 2024-11-29 --yes    re-ingest from a date
  *
- * Safe to re-run: every write replaces what it covers. The scheduler runs it daily.
+ * Safe to re-run: every write replaces what it covers. The scheduler runs it daily (without the
+ * --yes, which only this command line asks for, for a database not on this machine).
  */
 import 'dotenv/config';
 import { runSync, syncHadFailures } from '../parliament';
 import { shutdown } from '../db';
+import { approveWrite } from './liveDbGuard';
 
 function argSince(argv: string[]): string | undefined {
   const i = argv.indexOf('--since');
@@ -18,7 +20,9 @@ function argSince(argv: string[]): string | undefined {
   return value;
 }
 
-runSync({ since: argSince(process.argv.slice(2)) })
+const since = argSince(process.argv.slice(2));
+approveWrite('parliament:sync');
+runSync({ since })
   .then(async (summary) => {
     console.log(JSON.stringify(summary, null, 2));
     await shutdown();

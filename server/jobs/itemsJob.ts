@@ -7,6 +7,7 @@
  *   --debate <id> …   these units (debate or exchange ids)
  *   --limit N         the first N not read yet
  *   --dry-run         make the calls, write nothing
+ *   --yes             write to a database not on this machine (liveDbGuard.ts)
  *   --force           read again even when this version already read the same speeches
  *   --concurrency N   units read at once (default 2: DeepSeek caps concurrent calls per account,
  *                     by balance, and other apps share the key)

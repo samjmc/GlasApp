@@ -30,7 +30,7 @@ export const errorHandler = (
 ) => {
   const log = requestLogger(req);
   const userId =
-    (req as any).user?.id ?? (req as any).session?.userId ?? 'anonymous';
+    (req as any).user?.id ?? 'anonymous';
 
   // Log full error details server-side (never exposed to the client)
   log.error(

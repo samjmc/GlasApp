@@ -115,11 +115,11 @@ async function main(): Promise<void> {
   // The app as server/index.ts builds it, without importing it (it listens and schedules at import).
   const express = (await import('express')).default;
   const helmet = (await import('helmet')).default;
-  const pinoHttp = (await import('pino-http')).default;
+  const { createHttpLogger } = await import('../utils/httpLogger');
   const { logger } = await import('../utils/logger');
   const app = express();
   app.set('trust proxy', 1);
-  app.use(pinoHttp({ logger }));
+  app.use(createHttpLogger(logger));
   app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
   app.use(express.json({ limit: '1mb' }));
   app.use(express.urlencoded({ extended: false, limit: '1mb' }));

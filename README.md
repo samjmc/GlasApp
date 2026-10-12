@@ -121,8 +121,9 @@ cp .env.example .env
 # Apply the database migrations (creates the `politics` schema)
 npm run db:migrate
 
-# Populate TDs from the Oireachtas roster (scoring needs this)
-npm run sync-tds
+# Populate TDs from the Oireachtas roster (scoring needs this). A job that writes to a
+# database not on this machine prints its target and stops unless given --yes.
+npm run sync-tds -- --yes
 
 # Start development server
 npm run dev
