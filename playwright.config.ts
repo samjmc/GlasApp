@@ -1,5 +1,5 @@
 /**
- * Browser e2e (npm run test:e2e). The webServer builds the app for production, prepares a
+ * Browser e2e (npm run test:e2e). The webServer builds the app for production (unless E2E_PREBUILT=1), prepares a
  * throwaway `<db>_e2e` database (test/e2e/prepare-db.ts) and starts the built server on it.
  *
  * Needs a local, disposable Postgres in TEST_DATABASE_URL. Never point it at GlasCore.
@@ -22,6 +22,8 @@ const PORT = Number(process.env.E2E_PORT || 5055);
 const baseURL = `http://127.0.0.1:${PORT}`;
 // Nothing listens on port 9, so any Supabase call fails at once instead of reaching GlasCore.
 const NO_SUPABASE = 'http://127.0.0.1:9';
+// Set by CI after its `build` job: use dist/ as it is instead of building again.
+const PREBUILT = process.env.E2E_PREBUILT === '1';
 
 export default defineConfig({
   testDir: './test/e2e',
@@ -40,7 +42,8 @@ export default defineConfig({
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: 'npm run build && node node_modules/tsx/dist/cli.mjs test/e2e/prepare-db.ts && node dist/index.js',
+    // CI builds once in the `build` job (with these same VITE_* values) and sets E2E_PREBUILT.
+    command: `${PREBUILT ? '' : 'npm run build && '}node node_modules/tsx/dist/cli.mjs test/e2e/prepare-db.ts && node dist/index.js`,
     url: `${baseURL}/health`,
     timeout: 300_000,
     reuseExistingServer: false,

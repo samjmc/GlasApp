@@ -1,0 +1,36 @@
+# Weekly update PRs for npm packages, GitHub Actions and Docker images. Actions and base images are
+# pinned by SHA / digest (see ci.yml and the Dockerfile), and these PRs are what move the pins.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule: { interval: weekly }
+    open-pull-requests-limit: 5
+    # One PR for the routine bumps; a major version gets its own PR so it can be read.
+    groups:
+      minor-and-patch:
+        update-types: [minor, patch]
+    ignore:
+      # @types/node follows the Node version in .nvmrc and the Dockerfile, not the latest major.
+      - dependency-name: '@types/node'
+        update-types: [version-update:semver-major]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule: { interval: weekly }
+    groups:
+      actions:
+        patterns: ['*']
+
+  - package-ecosystem: docker
+    directory: /
+    schedule: { interval: weekly }
+    ignore:
+      # A new Node major is a deliberate move (.nvmrc, engines, @types/node together).
+      - dependency-name: node
+        update-types: [version-update:semver-major]
+
+  # deploy/compose.yml (the Caddy proxy image)
+  - package-ecosystem: docker-compose
+    directory: /deploy
+    schedule: { interval: weekly }
