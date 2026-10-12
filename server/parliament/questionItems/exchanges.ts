@@ -83,19 +83,23 @@ export function splitExchanges(section: SectionToSplit): Exchange[] {
   let carried = new Map<string, { words: number; from: number }>();
   const close = () => {
     if (pending.size === 0) return;
-    const total = (code: string) => pending.get(code)! + (carried.get(code)?.words ?? 0);
-    const asker = [...pending.keys()].sort((a, b) => total(b) - total(a))[0]!;
-    const words = total(asker);
-    const from = carried.get(asker)?.from ?? pendingFrom!;
-    const isNew = starts.length === 0 || starts[starts.length - 1]!.asker !== asker;
-    if (isNew && (starts.length === 0 || words >= MIN_QUESTION_WORDS)) {
-      starts.push({ asker, from: starts.length === 0 ? first : from });
+    // The member answered is the one with the most words since the last answer; their short
+    // turns answered earlier count towards MIN_QUESTION_WORDS, and the exchange starts at the first.
+    const [asker, said] = [...pending.entries()].sort((a, b) => b[1] - a[1])[0]!;
+    const current = starts[starts.length - 1]?.asker;
+    const earlier = carried.get(asker);
+    if (starts.length === 0 || (asker !== current && said + (earlier?.words ?? 0) >= MIN_QUESTION_WORDS)) {
+      starts.push({ asker, from: starts.length === 0 ? first : (earlier?.from ?? pendingFrom!) });
       carried = new Map();
-    } else if (isNew) {
-      // An interjection (too short to be a question) stays in the exchange it interrupted.
-      carried.set(asker, { words, from });
+    } else if (asker === current) {
+      carried = new Map();
     } else {
-      carried = new Map();
+      // An interjection (too short to be a question) stays in the exchange it interrupted; every
+      // new member's words in it wait for their next answered turn.
+      for (const [code, words] of pending) {
+        const before = carried.get(code);
+        if (code !== current) carried.set(code, { words: words + (before?.words ?? 0), from: before?.from ?? pendingFrom! });
+      }
     }
     pending = new Map();
     pendingFrom = null;

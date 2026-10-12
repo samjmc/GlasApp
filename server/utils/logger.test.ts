@@ -9,7 +9,7 @@ import express from 'express';
 import pino from 'pino';
 import pinoHttp from 'pino-http';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { LOG_REDACT } from './logger';
+import { LOG_REDACT, logRequest } from './logger';
 
 const lines: Record<string, any>[] = [];
 let server: Server;
@@ -23,7 +23,7 @@ beforeAll(async () => {
     },
   });
   const app = express();
-  app.use(pinoHttp({ logger: pino({ redact: LOG_REDACT }, sink) }));
+  app.use(pinoHttp({ logger: pino({ redact: LOG_REDACT }, sink), serializers: { req: logRequest } }));
   app.get('/ping', (_req, res) => res.json({ ok: true }));
   server = app.listen(0, '127.0.0.1');
   await new Promise((r) => server.once('listening', r));
@@ -33,8 +33,9 @@ beforeAll(async () => {
 afterAll(() => new Promise<void>((r) => server.close(() => r())));
 
 describe('request log redaction', () => {
-  it('blanks the IP address, user agent, cookie and authorization header', async () => {
-    const res = await fetch(`${base}/ping`, {
+  it('blanks the IP address, user agent, cookie, authorization header and query string', async () => {
+    // The reset-password link arrives as /auth/reset-password?token_hash=...: never log the token.
+    const res = await fetch(`${base}/ping?token_hash=one-time-token-123&type=recovery`, {
       headers: {
         'x-forwarded-for': '203.0.113.7',
         'user-agent': 'TestBrowser/1.0',
@@ -58,7 +59,7 @@ describe('request log redaction', () => {
 
     const raw = JSON.stringify(requestLines[0]);
     // (The Host header names this test server, not a visitor, so 127.0.0.1 is not checked here.)
-    for (const secret of ['203.0.113.7', 'TestBrowser', 'secret-token']) {
+    for (const secret of ['203.0.113.7', 'TestBrowser', 'secret-token', 'one-time-token-123']) {
       expect(raw).not.toContain(secret);
     }
   });

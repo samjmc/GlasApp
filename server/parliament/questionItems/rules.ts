@@ -106,8 +106,15 @@ export interface FormatFigure {
   cohortSize: number;
 }
 
-/** A backbencher's figures per format, each against backbenchers with at least MIN_EXCHANGES of it asked across the House. */
-export function formatFigures(mine: QuestionParticipationRow[], everyone: QuestionParticipationRow[]): FormatFigure[] {
+/** One backbencher's exchanges of one format asked across the House, and how many secured an action. */
+export interface CohortMember {
+  format: QuestionFormat;
+  asked: number;
+  secured: number;
+}
+
+/** A backbencher's figures per format, each against the `cohort` members with at least MIN_EXCHANGES of it. */
+export function formatFigures(mine: QuestionParticipationRow[], everyone: CohortMember[]): FormatFigure[] {
   const askedRows = (rows: QuestionParticipationRow[]) => rows.filter((r) => r.asked && !r.inOffice);
   const rate = (rows: QuestionParticipationRow[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
   const formats = Array.from(new Set(askedRows(mine).map((r) => r.format)));
@@ -115,9 +122,7 @@ export function formatFigures(mine: QuestionParticipationRow[], everyone: Questi
     const rows = askedRows(mine).filter((r) => r.format === format);
     const across = rows.filter((r) => !r.governmentSide);
     const scored = FIGURE_FORMATS.includes(format);
-    const byMember = new Map<string, QuestionParticipationRow[]>();
-    for (const r of askedRows(everyone).filter((x) => x.format === format && !x.governmentSide)) byMember.set(r.memberCode, [...(byMember.get(r.memberCode) ?? []), r]);
-    const cohort = Array.from(byMember.values()).filter((xs) => xs.length >= MIN_EXCHANGES).map(rate);
+    const cohort = everyone.filter((c) => c.format === format && c.asked >= MIN_EXCHANGES).map((c) => (10 * c.secured) / c.asked);
     return {
       format,
       asked: rows.length,

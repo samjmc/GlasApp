@@ -5,7 +5,7 @@
  *
  *   --pilot N         a fixed sample of N units
  *   --debate <id> …   these units (debate or exchange ids)
- *   --limit N         the first N not read yet
+ *   --limit N         the first N not read yet, or whose word count changed since their read
  *   --dry-run         make the calls, write nothing
  *   --force           read again even when this version already read the same speeches
  *   --concurrency N   units read at once (default 2: DeepSeek caps concurrent calls per account,

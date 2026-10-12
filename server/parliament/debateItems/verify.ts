@@ -141,7 +141,7 @@ export function verifyItems(raw: RawItem[], window: DebateWindow, offices: Gover
     }
     // A question mark ends a sentence of the quote's own: its sentence often runs on past the quote,
     // and a quote may hold a question and the sentence after it. Never the NEXT sentence's.
-    if (item.kind === 'question' && !/\?["'’”)]*(\s|$)/.test(sentenceAround(speech.text, at.start, at.end))) {
+    if (item.kind === 'question' && !/\?["'’”)]*(?=[\s,;:.—–-]|$)/.test(sentenceAround(speech.text, at.start, at.end))) {
       reject('not_a_question');
       continue;
     }

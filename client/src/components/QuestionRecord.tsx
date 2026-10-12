@@ -7,22 +7,19 @@
  *
  * Not part of the TD score; both say so.
  */
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import { ChevronDown, MessageSquareQuote } from 'lucide-react';
+import { MessageSquareQuote } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { RetryButton } from '@/components/data/RetryButton';
-import { apiClient } from '@/lib/queryClient';
+import { Toggle, get } from '@/components/DebateRecord';
 import { formatIsoDate } from '@/lib/isoDate';
 import { queryKeys } from '@/lib/queryKeys';
-import { cn } from '@/lib/utils';
+import { securedText } from '@/lib/recordCopy';
 import type { QuestionCommitmentView, QuestionFormatName, QuestionRecordView, TdQuestionRecord } from '@shared/parliamentApi';
-
-type Envelope<T> = { success: true; data: T };
-const get = <T,>(path: string) => apiClient.get<Envelope<T>>(path).then((r) => r.data);
 
 const FORMAT_LABELS: Record<QuestionFormatName, string> = {
   oral_pq: 'Oral questions',
@@ -48,16 +45,9 @@ function RulesNote() {
   );
 }
 
-/** Only a question from the other side of the House can secure a commitment. */
-function securedText(f: TdQuestionRecord['formats'][number]) {
-  if (f.askedAcross === 0) return 'all from the government side, where commitments are not counted';
-  const of = f.askedAcross < f.asked ? ` of the ${f.askedAcross} asked across the House` : '';
-  return `a specific commitment secured in ${f.securedExchanges}${of}`;
-}
-
-function Commitments({ items }: { items: QuestionCommitmentView[] }) {
+function Commitments({ items, id }: { items: QuestionCommitmentView[]; id?: string }) {
   return (
-    <ul className="flex flex-col gap-2">
+    <ul id={id} className="flex flex-col gap-2">
       {items.map((c, i) => (
         <li key={`${c.type}-${i}`} className="flex flex-col gap-0.5 rounded-lg bg-elevated px-3 py-2">
           <span className="text-xs font-semibold text-muted-foreground">
@@ -71,20 +61,6 @@ function Commitments({ items }: { items: QuestionCommitmentView[] }) {
   );
 }
 
-function Toggle({ open, onClick, children }: { open: boolean; onClick: () => void; children: React.ReactNode }) {
-  return (
-    <button
-      type="button"
-      aria-expanded={open}
-      onClick={onClick}
-      className="inline-flex min-h-[44px] items-center gap-1 self-start text-[13px] font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline sm:min-h-0"
-    >
-      <ChevronDown className={cn('h-3.5 w-3.5 transition-transform', open && 'rotate-180')} aria-hidden="true" />
-      {children}
-    </button>
-  );
-}
-
 export function TdQuestionRecordCard({ tdId }: { tdId: number | undefined }) {
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: queryKeys.parliament.tdQuestionRecord(tdId ?? 0),
@@ -93,6 +69,7 @@ export function TdQuestionRecordCard({ tdId }: { tdId: number | undefined }) {
     staleTime: 5 * 60 * 1000,
   });
   const [open, setOpen] = useState<string | null>(null);
+  const listId = useId();
 
   let body;
   if (isLoading || !tdId) {
@@ -128,7 +105,8 @@ export function TdQuestionRecordCard({ tdId }: { tdId: number | undefined }) {
                 </span>
                 {f.perTen !== null && (
                   <span className="text-[13px] text-muted-foreground">
-                    <strong className="text-foreground">{f.perTen}</strong> per 10 asked; backbench 75th percentile{' '}
+                    <strong className="text-foreground">{f.perTen}</strong> per 10 asked across the House; opposition backbench 75th
+                    percentile{' '}
                     {f.cohortP75 === null ? '—' : <strong className="text-foreground">{f.cohortP75}</strong>} ({f.cohortSize} TDs)
                   </span>
                 )}
@@ -146,23 +124,24 @@ export function TdQuestionRecordCard({ tdId }: { tdId: number | undefined }) {
           <div className="flex flex-col gap-2">
             <h3 className="text-sm font-bold">Recent commitments to their questions</h3>
             <ul className="flex flex-col gap-2">
-              {data.recent.map((x) => {
+              {data.recent.map((x, i) => {
                 const isOpen = open === x.exchangeId;
+                const saidId = `${listId}-${i}`;
                 return (
                   <li key={x.exchangeId} className="flex flex-col gap-2 rounded-xl border p-3">
                     <span className="flex flex-wrap items-baseline justify-between gap-x-3 text-[13px] text-muted-foreground">
                       <span>
-                        {x.date ? formatIsoDate(x.date) : ''} · {FORMAT_LABELS[x.format]}
+                        {formatIsoDate(x.date)} · {FORMAT_LABELS[x.format]}
                       </span>
                       <strong className="text-foreground">
                         {x.points} {x.points === 1 ? 'point' : 'points'}
                       </strong>
                     </span>
                     <span className="text-[15px] font-bold leading-snug">{x.title}</span>
-                    <Toggle open={isOpen} onClick={() => setOpen(isOpen ? null : x.exchangeId)}>
+                    <Toggle open={isOpen} onClick={() => setOpen(isOpen ? null : x.exchangeId)} controls={saidId}>
                       {isOpen ? 'Hide' : 'Show'} what the minister said ({x.commitments.length})
                     </Toggle>
-                    {isOpen && <Commitments items={x.commitments} />}
+                    {isOpen && <Commitments items={x.commitments} id={saidId} />}
                   </li>
                 );
               })}
@@ -180,7 +159,7 @@ export function TdQuestionRecordCard({ tdId }: { tdId: number | undefined }) {
           <MessageSquareQuote className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
           Question record
         </h2>
-        <span className="text-[13px] text-muted-foreground">Oral questions, Topical Issues, Leaders&apos; Questions and questions on legislation · rules {data?.rulesVersion ?? 'q1'}</span>
+        <span className="text-[13px] text-muted-foreground">Oral questions, Topical Issues, Leaders&apos; Questions and questions on legislation{data ? ` · rules ${data.rulesVersion}` : ''}</span>
       </div>
       {body}
       <RulesNote />
@@ -190,12 +169,20 @@ export function TdQuestionRecordCard({ tdId }: { tdId: number | undefined }) {
 
 /** One question section's exchanges on the Dáil record page; nothing for a section that is not one. */
 export function QuestionRecordPanel({ sectionId }: { sectionId: string }) {
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isError, refetch, isFetching } = useQuery({
     queryKey: queryKeys.parliament.questionRecord(sectionId),
     queryFn: () => get<QuestionRecordView | null>(`/api/parliament/question-records/${encodeURIComponent(sectionId)}`),
     staleTime: 5 * 60 * 1000,
   });
   if (isLoading) return <Skeleton className="h-16 rounded-xl" />;
+  if (isError) {
+    return (
+      <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
+        <span>Could not load the question record.</span>
+        <RetryButton variant="outline" size="sm" className="h-11 md:h-9" onRetry={() => refetch()} pending={isFetching} />
+      </div>
+    );
+  }
   if (!data) return null; // not a question section, or not read yet
   return (
     <section className="flex flex-col gap-3" aria-label="Question record">

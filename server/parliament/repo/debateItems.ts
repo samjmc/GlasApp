@@ -14,7 +14,7 @@ import {
 import { db, type Db } from '../../db';
 import type { GovernmentOffices } from '../debateItems/verify';
 import type { DebateSpeech } from '../debateItems/windows';
-import { chunks, nameFromCode } from './util';
+import { chunks, nameFromCode, type Reader } from './util';
 
 export interface ArguedDebate {
   id: string;
@@ -66,8 +66,16 @@ export async function extractionRunsFor(version: string, database: Db = db): Pro
   return new Map(rows.map((r) => [r.debateId, { inputHash: r.inputHash, status: r.status, words: r.words }]));
 }
 
+/** A unit read again with the same text but a new word count: store the count `--limit` compares. */
+export async function setExtractionWords(debateId: string, version: string, words: number, database: Db = db): Promise<void> {
+  await database
+    .update(debateExtractionRuns)
+    .set({ words })
+    .where(and(eq(debateExtractionRuns.debateId, debateId), eq(debateExtractionRuns.extractorVersion, version)));
+}
+
 /** Who held cabinet or Minister of State office, and when. A commitment needs one of these. */
-export async function governmentOffices(database: Db = db): Promise<GovernmentOffices> {
+export async function governmentOffices(database: Reader = db): Promise<GovernmentOffices> {
   const rows = await database
     .select({ memberCode: tdOffices.memberCode, start: tdOffices.startDate, end: tdOffices.endDate })
     .from(tdOffices)
@@ -89,14 +97,15 @@ export async function deleteOrphanItems(database: Db = db): Promise<number> {
 /**
  * Store one debate's run. A finished run replaces this version's items for the debate's speeches;
  * a failed run (`items` null) records the failure and leaves any items alone. A failed re-read of
- * a finished debate keeps the finished run, so the record keeps the debate, and records only the error.
+ * a finished debate keeps the finished run, so the record keeps the debate, and records only the
+ * error and the word count the caller chose (see run.ts).
  */
 export async function saveExtraction(run: NewDebateExtractionRun, speechIds: string[], items: NewDebateItem[] | null, database: Db = db): Promise<void> {
   await database.transaction(async (tx) => {
     if (items === null) {
       const kept = await tx
         .update(debateExtractionRuns)
-        .set({ error: run.error, ranAt: new Date() })
+        .set({ error: run.error, words: run.words, ranAt: new Date() })
         .where(and(eq(debateExtractionRuns.debateId, run.debateId), eq(debateExtractionRuns.extractorVersion, run.extractorVersion), eq(debateExtractionRuns.status, 'done')))
         .returning({ id: debateExtractionRuns.debateId });
       if (kept.length > 0) return;

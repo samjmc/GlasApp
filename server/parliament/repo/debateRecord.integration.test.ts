@@ -115,6 +115,13 @@ run('debate record (real Postgres)', () => {
     expect((await q('select count(*)::int n from politics.debate_participation')).rows[0].n).toBe(3);
   });
 
+  it('rebuilds a record only when its rows were scored under other rules', async () => {
+    expect(await repo.rebuildStaleRecords()).toEqual([]);
+    await q("update politics.debate_participation set rules_version = 'r0', points = 99 where member_code = $1", [A]);
+    expect(await repo.rebuildStaleRecords()).toEqual(['debate record']);
+    expect((await q('select rules_version, points from politics.debate_participation where member_code = $1', [A])).rows).toEqual([{ rules_version: 'r3', points: 6 }]);
+  });
+
   it('shows one debate: most points first, with what each member said, and only replies that name their target', async () => {
     const view = await repo.debateRecord(DEBATE);
     expect(view).toMatchObject({ debateId: DEBATE, title: 'Health: Motion', kind: 'motion', rulesVersion: 'r3' });

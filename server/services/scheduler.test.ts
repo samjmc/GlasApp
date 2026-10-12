@@ -13,12 +13,13 @@ vi.mock('../parliament', () => ({
   leaveWatch: { runLeaveWatch: vi.fn() },
   extractDebates: vi.fn(async () => ({ done: 0, failed: 0, stopped: null })),
   extractQuestions: vi.fn(async () => ({ done: 0, failed: 0, stopped: null })),
+  repository: { rebuildStaleRecords: vi.fn(async () => []) },
 }));
 vi.mock('../stances', () => ({ runDivisionStances: vi.fn(async () => ({})) }));
 
 const { initScheduler } = await import('./scheduler');
 const { runDivisionStances } = await import('../stances');
-const { runSync, extractDebates, extractQuestions } = await import('../parliament');
+const { runSync, extractDebates, extractQuestions, repository } = await import('../parliament');
 
 const FLAG = 'DIVISION_STANCES';
 const before = process.env[FLAG];
@@ -35,6 +36,12 @@ describe('the 04:45 parliament run', () => {
 
   beforeEach(() => vi.clearAllMocks());
   afterAll(() => setFlag(before));
+
+  it('rebuilds any record scored under older rules when it starts, without waiting for the sync', () => {
+    initScheduler();
+    expect(repository.rebuildStaleRecords).toHaveBeenCalledTimes(1);
+    expect(runSync).not.toHaveBeenCalled();
+  });
 
   it('does no division work unless DIVISION_STANCES is exactly "on"', async () => {
     expect(nightly).toBeDefined();

@@ -184,4 +184,24 @@ run('question record (real Postgres)', () => {
     await repo.rebuildQuestionRecord();
     expect((await q('select count(*)::int n from politics.question_participation where exchange_id like $1', [`${LQ}#%`])).rows[0].n).toBe(0);
   });
+
+  it('measures a figure against backbenchers with 10+ questions across the House, and shows nothing for an office holder who only asked', async () => {
+    const row = (exchangeId: string, member: string, opts: { role?: string; governmentSide?: boolean; secured?: number }) =>
+      q(
+        `insert into politics.question_participation (exchange_id, member_code, format, role, government_side, asked, secured, follow_ups, answered, answer_claims, answer_commitments, points, rules_version)
+         values ($1, $2, 'oral_pq', $3, $4, true, $5, 0, false, 0, 0, 0, 'q1')`,
+        [exchangeId, member, opts.role ?? 'backbench', opts.governmentSide ?? false, opts.secured ?? 0],
+      );
+    // X: 12 across the House, 6 secured (5 per 10). Y: 12 from the government side, every one secured.
+    for (let k = 0; k < 12; k++) {
+      await row(`cohort-x#${k}`, 'X-Opp.D.2020-02-08', { secured: k % 2 === 0 ? 1 : 0 });
+      await row(`cohort-y#${k}`, 'Y-Gov.D.2020-02-08', { governmentSide: true, secured: 1 });
+    }
+    expect((await repo.tdQuestionRecord(await tdIdOf(A)))?.formats.find((f) => f.format === 'oral_pq')).toMatchObject({ cohortSize: 1, cohortP75: 5 });
+
+    // K asked one question while a Minister of State, and answered none: no record.
+    await q('delete from politics.question_participation where member_code = $1', [K]);
+    await row('office-ask#1', K, { role: 'office', governmentSide: true });
+    expect(await repo.tdQuestionRecord(await tdIdOf(K))).toBeNull();
+  });
 });

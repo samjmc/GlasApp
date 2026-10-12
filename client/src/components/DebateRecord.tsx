@@ -7,7 +7,7 @@
  *
  * Not part of the TD score; both say so.
  */
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { ChevronDown, Scale } from 'lucide-react';
@@ -19,26 +19,15 @@ import { RetryButton } from '@/components/data/RetryButton';
 import { apiClient } from '@/lib/queryClient';
 import { formatIsoDate } from '@/lib/isoDate';
 import { queryKeys } from '@/lib/queryKeys';
+import { itemLabel } from '@/lib/recordCopy';
 import { cn } from '@/lib/utils';
 import type { DebateItemView, DebateRecordParticipant, DebateRecordView, TdDebateRecord } from '@shared/parliamentApi';
 
 type Envelope<T> = { success: true; data: T };
-const get = <T,>(path: string) => apiClient.get<Envelope<T>>(path).then((r) => r.data);
-
-const CLAIM_LABELS: Record<NonNullable<DebateItemView['claimType']>, string> = {
-  figure: 'figure',
-  named_source: 'named source',
-  cost: 'cost',
-  date: 'date',
-};
+/** GET one of the record routes, unwrapped. QuestionRecord.tsx shares it. */
+export const get = <T,>(path: string) => apiClient.get<Envelope<T>>(path).then((r) => r.data);
 
 const KIND_ORDER: Record<DebateItemView['kind'], number> = { specific_claim: 0, concession: 1, response: 2, question: 3, commitment: 4 };
-
-const REPLY_NO_POINTS: Record<NonNullable<DebateItemView['replyNoPoints']>, string> = {
-  same_party: ' (same party, no points)',
-  closing_speech: ' (closing speech, no points)',
-  conceded: ' (scored as a concession)',
-};
 
 /** The rules in words, shown under both views so a reader can check any number. */
 function RulesNote() {
@@ -46,37 +35,19 @@ function RulesNote() {
     <p className="text-[13px] leading-relaxed text-muted-foreground">
       Points under the published rules: 1 per specific claim (at most 3 per speech), 3 when someone on the other side of
       the House concedes a point to them, and 2 for each speaker from another party who takes up their point by name (not
-      in the debate&apos;s closing speech, and not in a speech whose concession to them already scored). A reply is shown only when it names the member it answers. Questions and
-      promises are shown but score nothing; speaking time and the vote do not count either. A model found and quoted these;
-      code checked every quote against the transcript and gave every point.{' '}
+      in the debate&apos;s closing speech, and not in a speech whose concession to them already scored). A reply is shown
+      only when it names the member it answers. Questions and promises are shown but score nothing; speaking time and the
+      vote do not count either. A model found and quoted these; code checked every quote against the transcript and gave
+      every point.{' '}
       <strong className="text-foreground">Not part of the TD score.</strong>
     </p>
   );
 }
 
-function itemLabel(item: DebateItemView, perspective: 'speaker' | 'target'): string {
-  switch (item.kind) {
-    case 'specific_claim':
-      return item.claimType ? `Claim · ${CLAIM_LABELS[item.claimType]}` : 'Claim';
-    case 'concession':
-      return perspective === 'target'
-        ? `${item.speaker} conceded${item.crossesHouse ? '' : ' (same side, no points)'}`
-        : `Concession to ${item.to ?? 'another speaker'}${item.crossesHouse ? '' : ' (same side)'}`;
-    case 'response': {
-      const noPoints = item.replyNoPoints ? REPLY_NO_POINTS[item.replyNoPoints] : '';
-      return perspective === 'target' ? `${item.speaker} took up their point${noPoints}` : `Reply to ${item.to ?? 'another speaker'}${noPoints}`;
-    }
-    case 'question':
-      return item.addressee ? `Question to ${item.addressee}` : 'Question';
-    case 'commitment':
-      return item.due ? `Promise · ${item.due}` : 'Promise';
-  }
-}
-
-function ItemList({ items, perspective = 'speaker' }: { items: DebateItemView[]; perspective?: 'speaker' | 'target' }) {
+function ItemList({ items, perspective = 'speaker', id }: { items: DebateItemView[]; perspective?: 'speaker' | 'target'; id?: string }) {
   const sorted = [...items].sort((a, b) => KIND_ORDER[a.kind] - KIND_ORDER[b.kind]);
   return (
-    <ul className="flex flex-col gap-2">
+    <ul id={id} className="flex flex-col gap-2">
       {sorted.map((item, i) => (
         <li key={`${item.kind}-${i}`} className="flex flex-col gap-0.5 rounded-lg bg-elevated px-3 py-2">
           <span className="text-xs font-semibold text-muted-foreground">{itemLabel(item, perspective)}</span>
@@ -87,11 +58,13 @@ function ItemList({ items, perspective = 'speaker' }: { items: DebateItemView[];
   );
 }
 
-function Toggle({ open, onClick, children }: { open: boolean; onClick: () => void; children: React.ReactNode }) {
+/** Shows and hides the list whose id is `controls`. QuestionRecord.tsx shares it. */
+export function Toggle({ open, onClick, controls, children }: { open: boolean; onClick: () => void; controls: string; children: React.ReactNode }) {
   return (
     <button
       type="button"
       aria-expanded={open}
+      aria-controls={controls}
       onClick={onClick}
       className="inline-flex min-h-[44px] items-center gap-1 self-start text-[13px] font-semibold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline sm:min-h-0"
     >
@@ -119,6 +92,7 @@ export function TdDebateRecordCard({ tdId }: { tdId: number | undefined }) {
     staleTime: 5 * 60 * 1000,
   });
   const [open, setOpen] = useState<string | null>(null);
+  const listId = useId();
 
   const heading = (
     <div className="flex flex-col gap-1">
@@ -147,13 +121,15 @@ export function TdDebateRecordCard({ tdId }: { tdId: number | undefined }) {
       </EmptyState>
     );
   } else {
-    const roleLabel = data.role === 'office' ? 'TDs in government office' : 'TDs not in government office';
+    // The figure, the cohort and the totals all count the debates in the TD's main role only.
+    const role = data.role === 'office' ? 'in government office' : 'not in government office';
+    const debates = `${data.debates} ${data.debates === 1 ? 'debate' : 'debates'} as a TD ${role}`;
     body = (
       <>
         <div className="flex flex-col gap-1">
           {data.pointsPerDebate === null ? (
             <span className="text-sm text-muted-foreground">
-              {data.debates} {data.debates === 1 ? 'debate' : 'debates'} read: a figure needs at least {data.minDebates}.
+              {debates} read: a figure needs at least {data.minDebates}.
             </span>
           ) : (
             <>
@@ -161,16 +137,17 @@ export function TdDebateRecordCard({ tdId }: { tdId: number | undefined }) {
                 {data.pointsPerDebate} <span className="text-base font-semibold text-muted-foreground">points per debate</span>
               </span>
               <span className="text-[13px] text-muted-foreground">
-                Over {data.debates} debates. {roleLabel}: 75th percentile{' '}
+                Over {debates}. TDs {role}: 75th percentile{' '}
                 {data.cohortP75 === null ? '—' : <strong className="text-foreground">{data.cohortP75}</strong>} ({data.cohortSize} TDs).
               </span>
             </>
           )}
         </div>
+        <span className="text-[13px] font-semibold text-muted-foreground">In those debates:</span>
         <div className="grid grid-cols-2 gap-2">
           <Stat label="Specific claims" value={data.totals.claims} note={`${data.totals.claimPoints} points`} />
           <Stat label="Concessions won" value={data.totals.concessionsReceived} note={`${data.totals.concessionPoints} points`} />
-          <Stat label="Points taken up" value={data.totals.takenUp} note={`${data.totals.takenUpPoints} points`} />
+          <Stat label="Took up their point" value={data.totals.takenUp} note={`${data.totals.takenUpPoints} points`} />
           <Stat label="Replies made" value={data.totals.replies} note="no points" />
           <Stat label="Questions asked" value={data.totals.questions} note="no points" />
           <Stat label="Promises made" value={data.totals.commitments} note="no points" />
@@ -179,9 +156,10 @@ export function TdDebateRecordCard({ tdId }: { tdId: number | undefined }) {
           <div className="flex flex-col gap-2">
             <h3 className="text-sm font-bold">Recent debates</h3>
             <ul className="flex flex-col gap-2">
-              {data.recent.map((d) => {
+              {data.recent.map((d, i) => {
                 const isOpen = open === d.debateId;
                 const said = d.items.length + d.toThem.length;
+                const saidId = `${listId}-${i}`;
                 return (
                   <li key={d.debateId} className="flex flex-col gap-2 rounded-xl border p-3">
                     <span className="flex flex-wrap items-baseline justify-between gap-x-3 text-[13px] text-muted-foreground">
@@ -190,12 +168,12 @@ export function TdDebateRecordCard({ tdId }: { tdId: number | undefined }) {
                     </span>
                     <span className="text-[15px] font-bold leading-snug">{d.title}</span>
                     {said > 0 && (
-                      <Toggle open={isOpen} onClick={() => setOpen(isOpen ? null : d.debateId)}>
+                      <Toggle open={isOpen} onClick={() => setOpen(isOpen ? null : d.debateId)} controls={saidId}>
                         {isOpen ? 'Hide' : 'Show'} what was said ({said})
                       </Toggle>
                     )}
                     {isOpen && (
-                      <div className="flex flex-col gap-2">
+                      <div id={saidId} className="flex flex-col gap-2">
                         {d.items.length > 0 && <ItemList items={d.items} />}
                         {d.toThem.length > 0 && <ItemList items={d.toThem} perspective="target" />}
                       </div>
@@ -221,6 +199,7 @@ export function TdDebateRecordCard({ tdId }: { tdId: number | undefined }) {
 
 function ParticipantRow({ p }: { p: DebateRecordParticipant }) {
   const [open, setOpen] = useState(false);
+  const listId = useId();
   return (
     <li className="flex flex-col gap-2 rounded-xl border p-3">
       <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -245,10 +224,10 @@ function ParticipantRow({ p }: { p: DebateRecordParticipant }) {
       </span>
       {p.items.length > 0 && (
         <>
-          <Toggle open={open} onClick={() => setOpen(!open)}>
+          <Toggle open={open} onClick={() => setOpen(!open)} controls={listId}>
             {open ? 'Hide' : 'Show'} what they said ({p.items.length})
           </Toggle>
-          {open && <ItemList items={p.items} />}
+          {open && <ItemList items={p.items} id={listId} />}
         </>
       )}
     </li>

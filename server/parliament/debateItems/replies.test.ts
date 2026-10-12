@@ -34,6 +34,13 @@ describe('sentenceAround', () => {
     expect(sentenceAround('The plan is late. Deputy Whitmore knows that.', 0, 'The plan is late.'.length)).toBe('The plan is late.');
     expect(reply('The plan is late. Deputy Whitmore knows that.', 'The plan is late.', 'Jen Whitmore')).toBe(false);
   });
+
+  it('ends a sentence at a stop followed by a closing quote mark or bracket, on either side of the quote', () => {
+    const text = 'He said that "waiting lists are too long." Deputy Whitmore made that point (and others did.) We agree.';
+    expect(reply(text, 'waiting lists are too long', 'Jen Whitmore')).toBe(false);
+    expect(sentenceAround(text, text.indexOf('We agree'), text.length).trim()).toBe('We agree.');
+    expect(reply(text, 'Deputy Whitmore made that point', 'Jen Whitmore')).toBe(true);
+  });
 });
 
 // The eight replies in Sam's check of v2 items (2026-10-04), as the transcript has them.

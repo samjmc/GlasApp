@@ -1,3 +1,5 @@
+import type { Db } from '../../db';
+
 /** Postgres caps a statement at 65,535 parameters; rows × columns stays well under it. */
 export const INSERT_CHUNK = 500;
 
@@ -8,10 +10,14 @@ export function chunks<T>(rows: T[], size = INSERT_CHUNK): T[][] {
 }
 
 /**
- * Held by every rebuild of the debate and question records. The sync and the extractor jobs run
- * in different processes, and two delete-then-insert rebuilds at once fail on the primary key.
+ * Held by every rebuild of the debate and question records, from before its first read: the sync
+ * and the extractor jobs run in different processes, two delete-then-insert rebuilds at once fail
+ * on the primary key, and one that read earlier must not commit last.
  */
 export const RECORD_REBUILD_LOCK = 4_710_314_002;
+
+/** What a read needs: the database, or a transaction that holds RECORD_REBUILD_LOCK. */
+export type Reader = Pick<Db, 'execute' | 'select'>;
 
 /** A member who left the Dáil has no tds row: "Paschal-Donohoe.D.2011-03-09" → "Paschal Donohoe". */
 export const nameFromCode = (code: string) => code.split('.')[0]!.replace(/-/g, ' ');

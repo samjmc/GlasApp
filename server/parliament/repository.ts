@@ -47,6 +47,10 @@ import {
 import type { ParsedDivision, ParsedSpeech } from './parse';
 
 import { chunks } from './repo/util';
+import { rebuildDebateRecord } from './repo/debateRecord';
+import { rebuildQuestionRecord } from './repo/questionRecord';
+import { RULES_VERSION } from './debateItems/rules';
+import { QUESTION_RULES_VERSION } from './questionItems/rules';
 
 export * from './repo/committees';
 export * from './repo/bills';
@@ -61,6 +65,27 @@ export * from './repo/questionRecord';
 
 /** The byParty group for voters who are not in `tds`. */
 export const NOT_IN_ROSTER = 'Not in current roster';
+
+/**
+ * Rebuild a record whose rows were scored under other rules than this code's, from the stored
+ * items with no model calls: the API labels every row with the current rules. Names what it rebuilt.
+ */
+export async function rebuildStaleRecords(database: Db = db): Promise<string[]> {
+  const res = await database.execute(sql`
+    select exists (select 1 from politics.debate_participation where rules_version <> ${RULES_VERSION}) debates,
+           exists (select 1 from politics.question_participation where rules_version <> ${QUESTION_RULES_VERSION}) questions`);
+  const stale = res.rows[0] as { debates: boolean; questions: boolean };
+  const rebuilt: string[] = [];
+  if (stale.debates) {
+    await rebuildDebateRecord(database);
+    rebuilt.push('debate record');
+  }
+  if (stale.questions) {
+    await rebuildQuestionRecord(database);
+    rebuilt.push('question record');
+  }
+  return rebuilt;
+}
 
 // ---------------------------------------------------------------------------
 // Writes (sync only)

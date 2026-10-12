@@ -147,6 +147,28 @@ run('debate items (real Postgres)', () => {
     expect(complete.calls).toBe(2);
   });
 
+  it('with a limit, retries a failed re-read only when the failure may not recur, and never re-pays for a recount', async () => {
+    const grow = () => q("update politics.debate_speeches set text = text || ' Two words.', word_count = word_count + 2 where id = $1", [SPEECHES[1].id]);
+    const unusable: ItemCompletion = async () => ({ content: 'not json', model: 'fake-model', promptTokens: 10, completionTokens: 1 });
+    const thrown: ItemCompletion = async () => {
+      throw new Error('socket hang up');
+    };
+    // An unusable reply recurs at temperature 0: the next limited run does not pay for it again.
+    await grow();
+    expect(await items.extractDebates({ complete: unusable, limit: 10 })).toMatchObject({ failed: 1 });
+    expect(await items.extractDebates({ complete: fake(), limit: 10 })).toMatchObject({ debates: 0 });
+    // A thrown call may work tomorrow: the next limited run tries again.
+    await grow();
+    expect(await items.extractDebates({ complete: thrown, limit: 10 })).toMatchObject({ failed: 1 });
+    expect(await items.extractDebates({ complete: fake({ items: [REPLY.items[0]] }), limit: 10 })).toMatchObject({ debates: 1, done: 1 });
+    // The same text counted differently is hashed once, then left alone.
+    await q('update politics.debate_speeches set word_count = word_count + 1 where id = $1', [SPEECHES[1].id]);
+    const recount = fake();
+    expect(await items.extractDebates({ complete: recount, limit: 10 })).toMatchObject({ debates: 1, skipped: 1 });
+    expect(await items.extractDebates({ complete: recount, limit: 10 })).toMatchObject({ debates: 0 });
+    expect(recount.calls).toBe(0);
+  });
+
   it('stores no items for a failed read, keeps the earlier ones and their finished run, and tries again next time', async () => {
     await q("update politics.debate_speeches set text = text || ' Again.' where id = $1", [SPEECHES[1].id]);
     const broken: ItemCompletion = async () => {

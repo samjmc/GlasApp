@@ -384,11 +384,13 @@ Points come only from kinds that passed the gate. Version 1 starts small:
 ## As built: review fixes and rules r3 (2026-10-12)
 
 - **A reply's sentence ends where its quote ends.** When a quote ended its own sentence, the
-  check also read the next one, so a name there counted. On GlasCore's 7,687 stored v3 replies,
-  75 of 4,455 that named their member did so only in the next sentence; they are no longer shown
-  or scored. No reply gained. The same fix applies to the question check: 18 of 1,850 stored v3
-  questions (and 54 of 9,291 q1) passed only through the next sentence. Questions score nothing,
-  so nothing was read again; later reads use the fixed check (see the note in `prompt.ts`).
+  check also read the next one, so a name there counted; a stop before a closing quote mark or
+  bracket (`."`, `?”`, `.)`) now ends a sentence too. On GlasCore's 7,687 stored v3 replies, 76 of
+  4,455 that named their member did so only in another sentence; they are no longer shown or
+  scored. No reply gained. The same fix applies to the question check, which now needs a question
+  mark that ends a sentence of the quote's own: 19 of 1,850 stored v3 questions (and 53 of 9,291
+  q1) passed only through another sentence. Questions score nothing, so nothing was read again;
+  later reads use the fixed check (see the note in `prompt.ts`).
 - **Rules r3: one agreement scores once.** "I agree with Deputy X that …" is read as both a
   concession and a reply. A reply in a speech whose concession to the same member scored (+3)
   now adds nothing, and is shown as "scored as a concession". A same-side concession scores
@@ -399,6 +401,11 @@ Points come only from kinds that passed the gate. Version 1 starts small:
   without a limit, which compares the speeches' hash.
 - **A failed re-read keeps the debate in the record.** It used to mark the finished run failed,
   which dropped the debate from the record (or fell back to an older version) until a read
-  succeeded. Now only the error is recorded.
+  succeeded. Now only the error is recorded. A thrown call (network, rate limit, no credit) is
+  tried again by the next nightly run; a reply that would fail the same way at temperature 0 is
+  not paid for every night, and a run without a limit still tries it.
+- **Record rebuilds take one lock before they read** (`RECORD_REBUILD_LOCK`), so a sync and an
+  extractor job never rebuild at once, and a rebuild that read older items never commits last. A
+  server that starts with `SCHEDULER=on` rebuilds any record scored under older rules at once.
 - **A blank `claim_type` no longer drops an item.** Models send `""` for a field that does not
   apply; on a question that made the whole item malformed.

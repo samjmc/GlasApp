@@ -259,7 +259,10 @@ Sam chose option 1. Built as planned, with these differences and measurements.
   2025-03-25 sitting is unchanged.
 - **A changed exchange is read again.** Exchange ids are positional (`<section>#<n>`), so each sync's
   rebuild now resets the q1 read of any exchange whose span or askers changed, or that is gone; its
-  items count for nothing until the nightly read takes it again.
+  items count for nothing until the nightly read takes it again. **The first sync with these rules**
+  re-splits GlasCore into 5,593 exchanges: 5,492 keep their read and 81 lose it (about 89,000 words,
+  under $0.10), measured read-only on 2026-10-12; those and about 20 new exchanges were read again
+  by hand straight after, so the nightly read is not left with a backlog.
 - **A TD who only spoke** (a supplementary, an interjection) gets no record rather than an empty card.
 - **Smaller**: a pilot of n reads at most n exchanges (n = 5 read about 1,900); recent exchanges sort
   by date, section and position, not as text; an unclassified commitment no longer reads as "No

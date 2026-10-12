@@ -36,12 +36,15 @@ export function surnameForms(name: string): string[] {
  * counts and a name in the next sentence does not.
  */
 export function sentenceAround(text: string, start: number, end: number): string {
-  // A paragraph break ends a sentence too: transcripts end paragraphs with ".\n", not ". ".
-  const before = text.slice(0, start);
-  const from = Math.max(before.lastIndexOf('. '), before.lastIndexOf('? '), before.lastIndexOf('! '), before.lastIndexOf('\n')) + 1;
+  // A stop, with any closing quote marks or bracket after it, then a space; or a paragraph break,
+  // as transcripts end paragraphs with ".\n", not ". ".
+  const ends = /[.?!]["'’”)]*(?=\s|$)|\n/g;
+  let from = 0;
+  for (let m = ends.exec(text); m && m.index < start; m = ends.exec(text)) from = m.index + m[0].length;
   // From the quote's last character, so a quote that ends its sentence does not take in the next.
-  const next = text.slice(end - 1).search(/[.?!](\s|$)|\n/);
-  return text.slice(from, next === -1 ? text.length : end + next);
+  ends.lastIndex = end - 1;
+  const next = ends.exec(text);
+  return text.slice(from, next ? next.index + next[0].length : text.length);
 }
 
 export interface ReplyCheck {

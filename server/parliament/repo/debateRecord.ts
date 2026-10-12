@@ -14,7 +14,7 @@ import type { GovernmentOffices } from '../debateItems/verify';
 import { holdsGovernmentOffice, isGovernmentSide } from '../governmentSide';
 import { INDEPENDENT } from '../metrics';
 import { governmentOffices } from './debateItems';
-import { RECORD_REBUILD_LOCK, chunks, nameFromCode } from './util';
+import { RECORD_REBUILD_LOCK, chunks, nameFromCode, type Reader } from './util';
 
 interface ItemRow {
   debate_id: string;
@@ -52,7 +52,7 @@ const chosenRuns = sql`(
 )`;
 
 /** Items of each debate's newest finished read (`chosenRuns`), filtered by `where`. */
-async function itemRows(where: ReturnType<typeof sql>, database: Db): Promise<ItemRow[]> {
+async function itemRows(where: ReturnType<typeof sql>, database: Reader): Promise<ItemRow[]> {
   const res = await database.execute(sql`
     select s.debate_id, i.speech_id, i.member_code, i.kind, i.claim_type, i.quote, i.addressee, i.due, p.date::text date,
            t1.name speaker_name, t1.party speaker_party, tp.member_code target_member, t2.name target_name, t2.party target_party,
@@ -121,46 +121,46 @@ function views(rows: ItemRow[], offices: GovernmentOffices): DebateItemView[] {
 }
 
 /**
- * Rebuild every row of debate_participation from the stored items, in one transaction. Only
- * debates with a finished read (`chosenRuns`) are included: a debate not read yet has no row,
- * rather than a row of zeros.
+ * Rebuild every row of debate_participation from the stored items, in one transaction that reads
+ * under RECORD_REBUILD_LOCK. Only debates with a finished read (`chosenRuns`) are included: a
+ * debate not read yet has no row, rather than a row of zeros.
  */
 export async function rebuildDebateRecord(database: Db = db): Promise<{ debates: number; rows: number }> {
-  const offices = await governmentOffices(database);
-  const res = await database.execute(sql`
-    select s.debate_id, p.member_code, max(t.id) td_id, d.first_date::text first_date, count(*)::int speeches, sum(p.word_count)::int words
-    from ${chosenRuns} r
-    join politics.debates d on d.id = r.debate_id
-    join politics.debate_sections s on s.debate_id = d.id
-    join politics.debate_speeches p on p.section_id = s.id and not p.is_presiding and p.member_code is not null
-    left join politics.tds t on t.member_code = p.member_code
-    group by s.debate_id, p.member_code, d.first_date`);
-  const participants: Participant[] = (res.rows as Array<{ debate_id: string; member_code: string; td_id: number | null; first_date: string; speeches: number; words: number }>).map(
-    (r) => ({
-      debateId: r.debate_id,
-      memberCode: r.member_code,
-      tdId: r.td_id === null ? null : Number(r.td_id),
-      role: (holdsGovernmentOffice(offices, r.member_code, r.first_date) ? 'office' : 'backbench') as DebateRole,
-      speeches: Number(r.speeches),
-      words: Number(r.words),
-    }),
-  );
-  const items: ScoredItem[] = (await itemRows(sql`true`, database)).map((r) => ({
-    debateId: r.debate_id,
-    speechId: r.speech_id,
-    memberCode: r.member_code,
-    kind: r.kind as ScoredItem['kind'],
-    targetMemberCode: r.target_member,
-    crossesHouse: crosses(r, offices),
-    ...replyFacts(r),
-  }));
-  const rows: NewDebateParticipation[] = scoreDebates(participants, items).map((r) => ({ ...r, rulesVersion: RULES_VERSION }));
-  await database.transaction(async (tx) => {
+  return database.transaction(async (tx) => {
     await tx.execute(sql`select pg_advisory_xact_lock(${RECORD_REBUILD_LOCK}::bigint)`);
+    const offices = await governmentOffices(tx);
+    const res = await tx.execute(sql`
+      select s.debate_id, p.member_code, max(t.id) td_id, d.first_date::text first_date, count(*)::int speeches, sum(p.word_count)::int words
+      from ${chosenRuns} r
+      join politics.debates d on d.id = r.debate_id
+      join politics.debate_sections s on s.debate_id = d.id
+      join politics.debate_speeches p on p.section_id = s.id and not p.is_presiding and p.member_code is not null
+      left join politics.tds t on t.member_code = p.member_code
+      group by s.debate_id, p.member_code, d.first_date`);
+    const participants: Participant[] = (res.rows as Array<{ debate_id: string; member_code: string; td_id: number | null; first_date: string; speeches: number; words: number }>).map(
+      (r) => ({
+        debateId: r.debate_id,
+        memberCode: r.member_code,
+        tdId: r.td_id === null ? null : Number(r.td_id),
+        role: (holdsGovernmentOffice(offices, r.member_code, r.first_date) ? 'office' : 'backbench') as DebateRole,
+        speeches: Number(r.speeches),
+        words: Number(r.words),
+      }),
+    );
+    const items: ScoredItem[] = (await itemRows(sql`true`, tx)).map((r) => ({
+      debateId: r.debate_id,
+      speechId: r.speech_id,
+      memberCode: r.member_code,
+      kind: r.kind as ScoredItem['kind'],
+      targetMemberCode: r.target_member,
+      crossesHouse: crosses(r, offices),
+      ...replyFacts(r),
+    }));
+    const rows: NewDebateParticipation[] = scoreDebates(participants, items).map((r) => ({ ...r, rulesVersion: RULES_VERSION }));
     await tx.delete(debateParticipation);
     for (const batch of chunks(rows)) await tx.insert(debateParticipation).values(batch);
+    return { debates: new Set(rows.map((r) => r.debateId)).size, rows: rows.length };
   });
-  return { debates: new Set(rows.map((r) => r.debateId)).size, rows: rows.length };
 }
 
 /** One debate's record: every member who spoke, most points first, with what they said. */

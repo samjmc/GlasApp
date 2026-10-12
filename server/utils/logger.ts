@@ -36,6 +36,15 @@ export const LOG_REDACT = {
   censor: '[REDACTED]',
 };
 
+/**
+ * A request as pino-http logs it, without the query string: that can carry a one-time token (the
+ * reset-password link's `token_hash`), which no redact path can catch inside `url`.
+ */
+export function logRequest<R extends { url?: string; query?: unknown }>(req: R): Omit<R, 'query'> {
+  const { query: _query, ...rest } = req;
+  return { ...rest, url: req.url?.split('?')[0] };
+}
+
 /** Shared pino logger instance for the server. */
 export const logger: Logger = pino({
   level:

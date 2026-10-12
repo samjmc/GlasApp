@@ -5,7 +5,7 @@ import pinoHttp from "pino-http";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { checkDatabaseConnection, shutdown as closeDatabase } from "./db";
-import { logger } from "./utils/logger";
+import { logRequest, logger } from "./utils/logger";
 
 // Nothing is catching these, and the process is in an unknown state after them. Put them in the
 // structured log (a bare stack trace is easy to miss in a JSON log), then exit so the container
@@ -26,6 +26,7 @@ app.set('trust proxy', 1);
 // url, status code, duration (responseTime) and request id for every request.
 const httpLogger = pinoHttp<Request, Response>({
   logger,
+  serializers: { req: logRequest },
   autoLogging: {
     ignore: (req) =>
       req.url?.startsWith('/health') || req.url?.startsWith('/_health') || false,

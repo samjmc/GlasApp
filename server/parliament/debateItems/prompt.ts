@@ -14,8 +14,8 @@ import type { DebateWindow, LabelledSpeech } from './windows';
 // two passes (PASSES); every reference to what an earlier speaker said is a response; a commitment
 // includes continuing or reviewing something; the question mark may end the quote's sentence.
 // Not bumped (2026-10-12, review fixes): the question check stopped reading the sentence AFTER the
-// quote, and a blank "claim_type" no longer drops a whole item. On GlasCore 18 of 1,850 stored v3
-// questions (and 54 of 9,291 q1) had passed only through the next sentence. Questions score
+// quote, and a blank "claim_type" no longer drops a whole item. On GlasCore 19 of 1,850 stored v3
+// questions (and 53 of 9,291 q1) had passed only through the next sentence. Questions score
 // nothing, so they were not read again; later reads use the fixed checks.
 export const EXTRACTOR_VERSION = 'v3';
 /**
