@@ -2,9 +2,9 @@ import { describe, expect, it, vi } from 'vitest';
 import type { QuestionUnit } from '../repo/questionRecord';
 import { questionSample } from './run';
 
-// Hoisted above the imports: the sample is pure, so no database or model is needed.
+// Hoisted above the imports: the sample is pure (sampleByShare), so no database or model is needed.
 vi.mock('../repository', () => ({}));
-vi.mock('../debateItems/run', () => ({ extractUnits: vi.fn() }));
+vi.mock('../debateItems/run', async (importOriginal) => ({ ...(await importOriginal<typeof import('../debateItems/run')>()), extractUnits: vi.fn() }));
 
 describe('questionSample', () => {
   const units: QuestionUnit[] = (['oral_pq', 'topical_issue', 'leaders_questions', 'rapid'] as const).flatMap((format) =>

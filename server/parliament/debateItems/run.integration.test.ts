@@ -286,5 +286,27 @@ run('debate items (real Postgres)', () => {
     };
     expect(await items.extractDebates({ complete: broken, debateIds: [third] })).toMatchObject({ failed: 1 });
     expect((await q('select status, error from politics.debate_extraction_runs where debate_id = $1', [third])).rows).toEqual([{ status: 'failed', error: 'model down' }]);
+    // A thrown first read is tried again by the next limited run; one that fails the same way is not.
+    const unusable: ItemCompletion = async () => ({ content: 'not json', model: 'fake-model', promptTokens: 10, completionTokens: 1 });
+    expect(await items.extractDebates({ complete: unusable, limit: 10 })).toMatchObject({ debates: 1, failed: 1 });
+    expect(await items.extractDebates({ complete: unusable, limit: 10 })).toMatchObject({ debates: 0 });
+  });
+
+  it('runs one extractor run at a time: a second stops at once while the first holds the lock', async () => {
+    const { EXTRACTOR_LOCK } = await import('../repo/util');
+    const { EXTRACTOR_VERSION } = await import('./prompt');
+    const other = await dbmod.pool.connect();
+    try {
+      await other.query('select pg_advisory_lock($1, hashtext($2))', [EXTRACTOR_LOCK, EXTRACTOR_VERSION]);
+      const complete = fake();
+      const s = await items.extractDebates({ complete, force: true });
+      expect(s).toMatchObject({ debates: 0, done: 0 });
+      expect(s.stopped).toContain('in progress');
+      expect(complete.calls).toBe(0);
+    } finally {
+      await other.query('select pg_advisory_unlock($1, hashtext($2))', [EXTRACTOR_LOCK, EXTRACTOR_VERSION]);
+      other.release();
+    }
+    expect((await items.extractDebates({ complete: fake(), limit: 1 })).stopped).toBeNull();
   });
 });

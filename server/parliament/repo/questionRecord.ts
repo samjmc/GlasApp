@@ -11,8 +11,8 @@ import type { DebateSpeech } from '../debateItems/windows';
 import { holdsGovernmentOffice, isGovernmentSide } from '../governmentSide';
 import { splitExchanges, type SectionTurn } from '../questionItems/exchanges';
 import { QUESTION_EXTRACTOR_VERSION } from '../questionItems/prompt';
-import { QUESTION_RULES_VERSION, formatFigures, scoreExchanges, type CohortMember, type ExchangeItem, type ExchangeMember, type QuestionParticipationRow } from '../questionItems/rules';
-import { governmentOffices } from './debateItems';
+import { QUESTION_RULES_VERSION, formatFigures, scoreExchanges, type CohortMember, type ExchangeItem, type ExchangeMember, type StoredParticipation } from '../questionItems/rules';
+import { governmentOffices, toSpeech, type SpeechRow } from './debateItems';
 import { RECORD_REBUILD_LOCK, chunks, nameFromCode, type Reader } from './util';
 
 const FORMAT_OF_KIND: Record<string, QuestionFormat | null> = { topical_issue: 'topical_issue', leaders_questions: 'leaders_questions', questions: null };
@@ -96,10 +96,7 @@ export async function exchangeSpeechesOf(exchangeId: string, database: Db = db):
     left join politics.tds t on t.member_code = p.member_code
     where e.id = ${exchangeId} and not p.is_presiding and p.member_code is not null
     order by p.position`);
-  return (res.rows as Array<{ id: string; member_code: string; role: string | null; text: string; word_count: number; date: string; name: string | null }>).map((r) => {
-    const name = r.name ?? nameFromCode(r.member_code);
-    return { id: r.id, memberCode: r.member_code, speaker: r.role ? `${name} (${r.role})` : name, date: r.date, text: r.text, wordCount: Number(r.word_count) };
-  });
+  return (res.rows as SpeechRow[]).map(toSpeech);
 }
 
 /** Exchanges whose q1 read finished: (exchange, format, date, askers, section). */
@@ -108,8 +105,13 @@ const readExchanges = sql`(
   join politics.debate_extraction_runs r on r.debate_id = e.id and r.extractor_version = ${QUESTION_EXTRACTOR_VERSION} and r.status = 'done'
 )`;
 
+interface ExchangeData {
+  members: ExchangeMember[];
+  items: Array<ExchangeItem & { quote: string; due: string | null; date: string }>;
+}
+
 /** Members and items of the read exchanges, filtered by `where` on the exchange `e`. */
-async function exchangeData(where: ReturnType<typeof sql>, database: Reader): Promise<{ members: ExchangeMember[]; items: Array<ExchangeItem & { quote: string; due: string | null; date: string }> }> {
+async function exchangeData(where: ReturnType<typeof sql>, database: Reader): Promise<ExchangeData> {
   const [memberRes, itemRes, tdRes, offices] = await Promise.all([
     database.execute(sql`
       select x.exchange_id, x.format, x.date, x.askers, coalesce(jsonb_object_agg(x.member_code, x.words) filter (where x.member_code is not null), '{}') words
@@ -188,7 +190,7 @@ export async function rebuildQuestionRecord(database: Db = db): Promise<{ rows: 
   });
 }
 
-const toRow = (r: Record<string, unknown>): QuestionParticipationRow => ({
+const toRow = (r: Record<string, unknown>): StoredParticipation => ({
   exchangeId: r.exchange_id as string,
   format: r.format as QuestionFormat,
   memberCode: r.member_code as string,
@@ -196,7 +198,6 @@ const toRow = (r: Record<string, unknown>): QuestionParticipationRow => ({
   inOffice: r.role === 'office',
   governmentSide: r.government_side as boolean,
   asked: r.asked as boolean,
-  words: 0, // not stored: `answered` is
   secured: Number(r.secured),
   followUps: Number(r.follow_ups),
   answered: r.answered as boolean,
@@ -207,6 +208,13 @@ const toRow = (r: Record<string, unknown>): QuestionParticipationRow => ({
 
 /** How many recent exchanges with a commitment the TD profile lists. */
 const RECENT_EXCHANGES = 10;
+
+/** One exchange's commitments as shown: an office holder's, with a type. */
+function commitmentViews(items: ExchangeData['items'], exchangeId: string, office: Set<string>, names: Map<string, string>): QuestionCommitmentView[] {
+  return items
+    .filter((i) => i.exchangeId === exchangeId && i.kind === 'commitment' && i.commitmentType !== null && office.has(i.memberCode))
+    .map((i) => ({ quote: i.quote, minister: names.get(i.memberCode) ?? nameFromCode(i.memberCode), type: i.commitmentType!, due: i.due }));
+}
 
 async function namesOf(codes: string[], database: Db): Promise<Map<string, string>> {
   if (codes.length === 0) return new Map();
@@ -251,12 +259,8 @@ export async function tdQuestionRecord(tdId: number, database: Db = db): Promise
     ? await exchangeData(sql`e.id in (${sql.join(recentIds.map((id) => sql`${id}`), sql`, `)})`, database)
     : { members: [], items: [] };
   const names = await namesOf(Array.from(new Set(recent.items.map((i) => i.memberCode))), database);
-  const commitmentsOf = (exchangeId: string): QuestionCommitmentView[] => {
-    const office = new Set(recent.members.filter((m) => m.exchangeId === exchangeId && m.inOffice).map((m) => m.memberCode));
-    return recent.items
-      .filter((i) => i.exchangeId === exchangeId && i.kind === 'commitment' && i.commitmentType !== null && office.has(i.memberCode))
-      .map((i) => ({ quote: i.quote, minister: names.get(i.memberCode) ?? nameFromCode(i.memberCode), type: i.commitmentType!, due: i.due }));
-  };
+  const commitmentsOf = (exchangeId: string) =>
+    commitmentViews(recent.items, exchangeId, new Set(recent.members.filter((m) => m.exchangeId === exchangeId && m.inOffice).map((m) => m.memberCode)), names);
   return {
     rulesVersion: QUESTION_RULES_VERSION,
     formats: formatFigures(mine, everyoneRes.rows as unknown as CohortMember[]),
@@ -291,9 +295,7 @@ export async function questionRecord(sectionId: string, database: Db = db): Prom
       return {
         exchangeId: id,
         askers: here.filter((r) => r.asked).map((r) => ({ memberCode: r.memberCode, tdId: r.tdId, name: names.get(r.memberCode) ?? nameFromCode(r.memberCode), points: r.points })),
-        commitments: items
-          .filter((i) => i.exchangeId === id && i.kind === 'commitment' && i.commitmentType !== null && office.has(i.memberCode))
-          .map((i) => ({ quote: i.quote, minister: names.get(i.memberCode) ?? nameFromCode(i.memberCode), type: i.commitmentType!, due: i.due })),
+        commitments: commitmentViews(items, id, office, names),
       };
     }),
   };

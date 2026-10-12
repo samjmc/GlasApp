@@ -139,9 +139,10 @@ export function verifyItems(raw: RawItem[], window: DebateWindow, offices: Gover
         targetQuote = t ? target.text.slice(t.start, t.end) : null;
       }
     }
-    // A question mark ends a sentence of the quote's own: its sentence often runs on past the quote,
-    // and a quote may hold a question and the sentence after it. Never the NEXT sentence's.
-    if (item.kind === 'question' && !/\?["'’”)]*(?=[\s,;:.—–-]|$)/.test(sentenceAround(speech.text, at.start, at.end))) {
+    // A question mark from the quote on, up to the end of its sentence: the sentence often runs on
+    // past the quote, and a quote may hold a question and the sentence after it. Never a question
+    // mark before the quote ("He asked why? and …") or in the next sentence.
+    if (item.kind === 'question' && !/\?["'’”)]*(?=[\s,;:.—–-]|$)/.test(sentenceAround(speech.text.slice(at.start), 0, at.end - at.start))) {
       reject('not_a_question');
       continue;
     }

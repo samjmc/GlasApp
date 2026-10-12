@@ -2,7 +2,8 @@
  * Q4 of docs/plans/question-sessions.md: the published rules that turn checked question-session
  * items into points. Pure. Code gives every point; the model only found and quoted the items.
  *
- * Rules q1 (2026-10-10):
+ * Rules q2 (2026-10-12; q1 2026-10-10 counted government-side askers in the per-10 figure and its
+ * percentile, and every office holder who spoke as answering):
  *   an `action` commitment made in      +2 for each asker of the exchange, once per exchange, only
  *   reply to your question              when the asker is on the other side of the House: a
  *                                       government backbencher's question answered with an
@@ -19,11 +20,12 @@
  * of backbenchers with at least MIN_EXCHANGES of that format asked across the House. Leaders'
  * Questions (party leaders only) and rapid sessions are shown.
  */
+import type { TdQuestionRecord } from '@shared/parliamentApi';
 import type { CommitmentType, DebateItemKind, QuestionFormat } from '@shared/schema/parliament';
 import { COHORT_PERCENTILE } from '../debateItems/rules';
 import { percentile } from '../metrics';
 
-export const QUESTION_RULES_VERSION = 'q1';
+export const QUESTION_RULES_VERSION = 'q2';
 export const SECURED_POINTS = 2;
 export const MIN_EXCHANGES = 10;
 /** The formats a term figure is given for. */
@@ -91,20 +93,8 @@ export function scoreExchanges(members: ExchangeMember[], items: ExchangeItem[])
   });
 }
 
-export interface FormatFigure {
-  format: QuestionFormat;
-  asked: number;
-  /** Asked from the other side of the House: what securedExchanges and perTen count. */
-  askedAcross: number;
-  /** Exchanges asked across the House that secured at least one `action` commitment. */
-  securedExchanges: number;
-  points: number;
-  followUps: number;
-  /** Secured exchanges per 10 asked across the House; null below MIN_EXCHANGES of them or outside FIGURE_FORMATS. */
-  perTen: number | null;
-  cohortP75: number | null;
-  cohortSize: number;
-}
+/** A stored row: the words that chose the answerer are not kept, only `answered`. */
+export type StoredParticipation = Omit<QuestionParticipationRow, 'words'>;
 
 /** One backbencher's exchanges of one format asked across the House, and how many secured an action. */
 export interface CohortMember {
@@ -114,9 +104,9 @@ export interface CohortMember {
 }
 
 /** A backbencher's figures per format, each against the `cohort` members with at least MIN_EXCHANGES of it. */
-export function formatFigures(mine: QuestionParticipationRow[], everyone: CohortMember[]): FormatFigure[] {
-  const askedRows = (rows: QuestionParticipationRow[]) => rows.filter((r) => r.asked && !r.inOffice);
-  const rate = (rows: QuestionParticipationRow[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
+export function formatFigures(mine: StoredParticipation[], everyone: CohortMember[]): TdQuestionRecord['formats'] {
+  const askedRows = (rows: StoredParticipation[]) => rows.filter((r) => r.asked && !r.inOffice);
+  const rate = (rows: StoredParticipation[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
   const formats = Array.from(new Set(askedRows(mine).map((r) => r.format)));
   return formats.map((format) => {
     const rows = askedRows(mine).filter((r) => r.format === format);

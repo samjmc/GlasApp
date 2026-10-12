@@ -138,13 +138,14 @@ describe('verifyItems', () => {
     const notQ = verifyItems([item({ speech: 's1', kind: 'question', claimType: null, quote: 'Tabharfaidh an tAire freagra', addressee: 'an tAire' })], { context: [], speeches: [stated] }, offices);
     expect(notQ.rejected.not_a_question).toEqual({ en: 0, ga: 1 });
     // Nor is a statement followed by a question, or one after a quoted question.
-    const [next, both, quoted, after, comma] = labelSpeeches(
+    const [next, both, quoted, after, comma, earlier] = labelSpeeches(
       [
         'The Minister has failed the patients. Will he resign?',
         'Will it be €2,000 or €3,000? It is a straight question.',
         'I ask the Minister: "Will you open the hospital this year?"',
         'He asked the Minister "why?" I say the Minister failed the patients.',
         'Will the Minister act, or will he wait?, the patients ask.',
+        'He asked the Minister "why?", and the scheme will open in May.',
       ].map((text, i) => ({
         id: `x/${i + 3}`,
         memberCode: 'A',
@@ -158,6 +159,8 @@ describe('verifyItems', () => {
       verifyItems([item({ speech: speech.label, kind: 'question', claimType: null, quote, addressee: 'the Minister' })], { context: [], speeches: [speech] }, offices);
     expect(asked(next, 'The Minister has failed the patients.').rejected.not_a_question.en).toBe(1);
     expect(asked(after, 'I say the Minister failed the patients').rejected.not_a_question.en).toBe(1);
+    // Nor one whose question mark comes before the quote, in the same sentence.
+    expect(asked(earlier, 'and the scheme will open in May').rejected.not_a_question.en).toBe(1);
     // A quote may hold a question and the sentence after it. A closing quote mark or a comma may
     // follow the question mark.
     expect(asked(both, 'Will it be €2,000 or €3,000? It is a straight question.').accepted).toHaveLength(1);

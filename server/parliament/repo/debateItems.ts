@@ -11,10 +11,10 @@ import {
   type NewDebateExtractionRun,
   type NewDebateItem,
 } from '@shared/schema/parliament';
-import { db, type Db } from '../../db';
+import { db, pool, type Db } from '../../db';
 import type { GovernmentOffices } from '../debateItems/verify';
 import type { DebateSpeech } from '../debateItems/windows';
-import { chunks, nameFromCode, type Reader } from './util';
+import { EXTRACTOR_LOCK, chunks, nameFromCode, type Reader } from './util';
 
 export interface ArguedDebate {
   id: string;
@@ -51,10 +51,15 @@ export async function debateSpeechesOf(debateId: string, database: Db = db): Pro
     left join politics.tds t on t.member_code = p.member_code
     where s.debate_id = ${debateId} and not p.is_presiding and p.member_code is not null
     order by s.date, coalesce(substring(s.id from 'dbsect_([0-9]+)$')::int, 0), p.position`);
-  return (res.rows as Array<{ id: string; member_code: string; role: string | null; text: string; word_count: number; date: string; name: string | null }>).map((r) => {
-    const name = r.name ?? nameFromCode(r.member_code);
-    return { id: r.id, memberCode: r.member_code, speaker: r.role ? `${name} (${r.role})` : name, date: r.date, text: r.text, wordCount: Number(r.word_count) };
-  });
+  return (res.rows as SpeechRow[]).map(toSpeech);
+}
+
+export type SpeechRow = { id: string; member_code: string; role: string | null; text: string; word_count: number; date: string; name: string | null };
+
+/** A speech as the extractor reads it, named with the role spoken in; questionRecord.ts shares it. */
+export function toSpeech(r: SpeechRow): DebateSpeech {
+  const name = r.name ?? nameFromCode(r.member_code);
+  return { id: r.id, memberCode: r.member_code, speaker: r.role ? `${name} (${r.role})` : name, date: r.date, text: r.text, wordCount: Number(r.word_count) };
 }
 
 /** debate id → its run for this extractor version. */
@@ -64,6 +69,25 @@ export async function extractionRunsFor(version: string, database: Db = db): Pro
     .from(debateExtractionRuns)
     .where(eq(debateExtractionRuns.extractorVersion, version));
   return new Map(rows.map((r) => [r.debateId, { inputHash: r.inputHash, status: r.status, words: r.words }]));
+}
+
+/**
+ * Run `fn` holding this extractor version's lock on a connection of its own, or return null at
+ * once when another process holds it. The lock goes with the connection if the process dies.
+ */
+export async function withExtractorLock<T>(version: string, fn: () => Promise<T>): Promise<T | null> {
+  const client = await pool.connect();
+  try {
+    const { rows } = await client.query<{ ok: boolean }>('select pg_try_advisory_lock($1, hashtext($2)) ok', [EXTRACTOR_LOCK, version]);
+    if (!rows[0]!.ok) return null;
+    try {
+      return await fn();
+    } finally {
+      await client.query('select pg_advisory_unlock($1, hashtext($2))', [EXTRACTOR_LOCK, version]);
+    }
+  } finally {
+    client.release();
+  }
 }
 
 /** A unit read again with the same text but a new word count: store the count `--limit` compares. */

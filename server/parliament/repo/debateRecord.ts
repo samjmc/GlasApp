@@ -9,7 +9,7 @@ import type { DebateItemView, DebateRecordParticipant, DebateRecordView, TdDebat
 import { db, type Db } from '../../db';
 import { EXTRACTOR_VERSIONS } from '../debateItems/prompt';
 import { namesTarget } from '../debateItems/replies';
-import { MIN_DEBATES, RULES_VERSION, replyNoPoints, scoreDebates, scoringConcessions, termFigure, type DebateRole, type Participant, type ScoredItem } from '../debateItems/rules';
+import { MIN_DEBATES, RULES_VERSION, replyNoPoints, replyShown, scoreDebates, scoringConcessions, termFigure, type DebateRole, type Participant, type ScoredItem } from '../debateItems/rules';
 import type { GovernmentOffices } from '../debateItems/verify';
 import { holdsGovernmentOffice, isGovernmentSide } from '../governmentSide';
 import { INDEPENDENT } from '../metrics';
@@ -98,7 +98,7 @@ function replyFacts(r: ItemRow): Pick<ScoredItem, 'namesTarget' | 'sameParty' | 
 /** An item as readers see it; null for a reply the rules do not show. `conceded` is scoringConcessions(). */
 function view(r: ItemRow, offices: GovernmentOffices, conceded: Set<string>): DebateItemView | null {
   const reply = replyFacts(r);
-  if (r.kind === 'response' && (!reply.namesTarget || r.target_member === r.member_code)) return null;
+  if (r.kind === 'response' && !replyShown({ namesTarget: reply.namesTarget, targetMemberCode: r.target_member, memberCode: r.member_code })) return null;
   return {
     kind: r.kind as DebateItemView['kind'],
     claimType: (r.claim_type as DebateItemView['claimType']) ?? null,

@@ -183,7 +183,7 @@ a model finds and quotes commitments and labels each `action` (a specific thing 
 later check was done), `follow_up` (a reply, a letter, a meeting) or `general` (nothing specific
 to check); code checks every quote and gives every point (`server/parliament/questionItems/rules.ts`).
 
-| Rule (q1) | Points | Limit |
+| Rule (q2) | Points | Limit |
 |---|---|---|
 | A minister commits to a specific action in reply to your question | +2 for each asker | once per exchange; only from the other side of the House |
 | Follow-ups and general undertakings | shown, no points | |

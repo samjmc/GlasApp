@@ -38,12 +38,13 @@ export interface ItemAnswer {
 }
 
 /**
- * One model call. Throws on failure, which records the debate's run as `failed`; an
- * OutOfCreditError instead stops the run. aiService waits out 429s; the answer's own model is stored.
+ * One model call, named `operation` in aiService's logs. Throws on failure, which fails the unit's
+ * read (saveExtraction keeps a finished run); an OutOfCreditError also stops the run. aiService
+ * waits out 429s; the answer's own model is stored.
  */
-export type ItemCompletion = (system: string, user: string) => Promise<ItemAnswer>;
+export type ItemCompletion = (system: string, user: string, operation: string) => Promise<ItemAnswer>;
 
-export const itemCompletion: ItemCompletion = async (system, user) => {
+export const itemCompletion: ItemCompletion = async (system, user, operation) => {
   const response = await callChatCompletion(
     {
       temperature: 0,
@@ -54,7 +55,7 @@ export const itemCompletion: ItemCompletion = async (system, user) => {
         { role: 'user', content: user },
       ],
     },
-    { timeoutMs: 180_000, retries: 1, operation: 'debate-items' },
+    { timeoutMs: 180_000, retries: 1, operation },
   );
   return {
     content: response.choices[0]?.message.content ?? null,
@@ -68,6 +69,19 @@ export const itemCompletion: ItemCompletion = async (system, user) => {
 const hashOf = (parts: string[]) => createHash('sha256').update(parts.join('\n')).digest('hex').slice(0, 16);
 const rank = (id: string) => createHash('sha1').update(id).digest('hex');
 
+/**
+ * A fixed sample of at most n: per group its share of n (the last group takes what is left), the
+ * units whose id hashes lowest. The same input gives the same sample.
+ */
+export function sampleByShare<U extends { id: string }>(units: U[], n: number, shares: ReadonlyArray<readonly [string, number]>, groupOf: (unit: U) => string): U[] {
+  const out: U[] = [];
+  shares.forEach(([group, share], i) => {
+    const take = i === shares.length - 1 ? n - out.length : Math.min(n - out.length, Math.round(n * share));
+    out.push(...units.filter((u) => groupOf(u) === group).sort((a, b) => (rank(a.id) < rank(b.id) ? -1 : 1)).slice(0, take));
+  });
+  return out;
+}
+
 /** Share of a pilot per kind: bill stages and motions are most of the argument, statements the rest. */
 const PILOT_SHARES: Array<[ArguedDebate['kind'], number]> = [
   ['bill_stage', 0.4],
@@ -75,20 +89,7 @@ const PILOT_SHARES: Array<[ArguedDebate['kind'], number]> = [
   ['statements', 0.2],
 ];
 
-/** A fixed sample: per kind, the debates whose id hashes lowest. The same input gives the same sample. */
-export function pilotSample(debates: ArguedDebate[], n: number): ArguedDebate[] {
-  const out: ArguedDebate[] = [];
-  for (const [kind, share] of PILOT_SHARES) {
-    const take = kind === 'statements' ? n - out.length : Math.round(n * share);
-    out.push(
-      ...debates
-        .filter((d) => d.kind === kind)
-        .sort((a, b) => (rank(a.id) < rank(b.id) ? -1 : 1))
-        .slice(0, take),
-    );
-  }
-  return out;
-}
+export const pilotSample = (debates: ArguedDebate[], n: number): ArguedDebate[] => sampleByShare(debates, n, PILOT_SHARES, (d) => d.kind);
 
 /** JSON from a model reply, allowing a code fence around it. */
 function parseJson(content: string | null): unknown {
@@ -138,8 +139,10 @@ export interface ExtractSummary {
   orphansRemoved: number;
   /** Why the run stopped early, if it did: debates not started are not counted as failed. */
   stopped: string | null;
-  /** Rows of debate_participation after the rebuild (0 on a dry run). */
+  /** Rows of the record (debate or question participation) after the rebuild; 0 on a dry run. */
   recordRows: number;
+  /** Every unit this extractor reads, to project the cost of reading them all. */
+  all: { count: number; words: number };
   results: DebateResult[];
 }
 
@@ -181,6 +184,8 @@ export interface ExtractUnit {
  */
 export interface ExtractConfig<U extends ExtractUnit> {
   version: string;
+  /** The model calls' name in aiService's logs. */
+  operation: string;
   units(): Promise<U[]>;
   speechesOf(unit: U): Promise<DebateSpeech[]>;
   windowsOf(speeches: LabelledSpeech[]): DebateWindow[];
@@ -195,6 +200,7 @@ export interface ExtractConfig<U extends ExtractUnit> {
 
 export const DEBATE_EXTRACTION: ExtractConfig<ArguedDebate> = {
   version: EXTRACTOR_VERSION,
+  operation: 'debate-items',
   units: () => repo.arguedDebates(),
   speechesOf: (debate) => repo.debateSpeechesOf(debate.id),
   windowsOf: (speeches) => buildWindows(speeches),
@@ -206,42 +212,52 @@ export const DEBATE_EXTRACTION: ExtractConfig<ArguedDebate> = {
 
 export const extractDebates = (options: ExtractOptions = {}): Promise<ExtractSummary> => extractUnits(DEBATE_EXTRACTION, options);
 
+/**
+ * A failed run's words after a thrown call (network, rate limit, no credit): no unit has this
+ * many, so the next `--limit` run tries it again.
+ */
+const RETRY_WORDS = -1;
+
+const newSummary = (chosen: number, all: ExtractSummary['all']): ExtractSummary => ({
+  debates: chosen,
+  done: 0,
+  failed: 0,
+  skipped: 0,
+  calls: 0,
+  promptTokens: 0,
+  completionTokens: 0,
+  words: 0,
+  speeches: 0,
+  irishSpeeches: 0,
+  acceptedByKind: Object.fromEntries(debateItemKind.enumValues.map((k) => [k, 0])) as Record<DebateItemKind, number>,
+  rejected: emptyRejections(),
+  malformed: 0,
+  costUsd: { offPeak: 0, peak: 0 },
+  orphansRemoved: 0,
+  stopped: null,
+  recordRows: 0,
+  all,
+  results: [],
+});
+
 export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<U>, options: ExtractOptions = {}): Promise<ExtractSummary> {
+  // One run per extractor at a time: a run started by hand during the 04:45 run would read, and
+  // pay for, the same units twice.
+  const summary = await repo.withExtractorLock(config.version, () => readUnits(config, options));
+  return summary ?? { ...newSummary(0, { count: 0, words: 0 }), stopped: `another ${config.operation} run is in progress` };
+}
+
+async function readUnits<U extends ExtractUnit>(config: ExtractConfig<U>, options: ExtractOptions): Promise<ExtractSummary> {
   const { debateIds, pilot = null, limit = null, force = false, dryRun = false, concurrency = 2, complete = itemCompletion, log = () => {} } = options;
   const [all, runs, offices] = await Promise.all([config.units(), repo.extractionRunsFor(config.version), repo.governmentOffices()]);
   let chosen = debateIds ? all.filter((d) => debateIds.includes(d.id)) : pilot ? config.sample(all, pilot) : all;
-  // A limit takes units this version has not finished, or whose word count changed since (a
-  // resumed debate, a merged exchange), so a daily run reads what is new without hashing every
-  // unit's speeches. (A run without a limit also catches a correction that keeps the word count.)
-  if (limit !== null) {
-    chosen = chosen
-      .filter((d) => {
-        const run = runs.get(d.id);
-        return force || run?.status !== 'done' || run.words !== d.words;
-      })
-      .slice(0, limit);
-  }
+  // A limit takes units this version has not read, whose word count changed since (a resumed
+  // debate, a merged exchange) or whose last read threw (RETRY_WORDS), so a daily run reads what is
+  // new without hashing every unit's speeches, and never pays every night for a reply that fails
+  // the same way. (A run without a limit also catches a correction that keeps the word count.)
+  if (limit !== null) chosen = chosen.filter((d) => force || runs.get(d.id)?.words !== d.words).slice(0, limit);
 
-  const summary: ExtractSummary = {
-    debates: chosen.length,
-    done: 0,
-    failed: 0,
-    skipped: 0,
-    calls: 0,
-    promptTokens: 0,
-    completionTokens: 0,
-    words: 0,
-    speeches: 0,
-    irishSpeeches: 0,
-    acceptedByKind: Object.fromEntries(debateItemKind.enumValues.map((k) => [k, 0])) as Record<DebateItemKind, number>,
-    rejected: emptyRejections(),
-    malformed: 0,
-    costUsd: { offPeak: 0, peak: 0 },
-    orphansRemoved: 0,
-    stopped: null,
-    recordRows: 0,
-    results: [],
-  };
+  const summary = newSummary(chosen.length, { count: all.length, words: all.reduce((n, u) => n + u.words, 0) });
 
   const readOne = async (debate: U) => {
     const speeches = labelSpeeches(await config.speechesOf(debate));
@@ -283,7 +299,7 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
       result.calls++;
       let answer: ItemAnswer;
       try {
-        answer = await complete(EXTRACT_SYSTEM, config.prompt(debate.title, window, pass));
+        answer = await complete(EXTRACT_SYSTEM, config.prompt(debate.title, window, pass), config.operation);
       } catch (error) {
         thrown = true;
         result.error = error instanceof Error ? error.message : String(error);
@@ -344,10 +360,10 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
         inputHash,
         status: result.error ? 'failed' : 'done',
         speeches: result.speeches,
-        // A failed re-read keeps the finished run. After a thrown call it keeps the old count, so
-        // the next `--limit` run tries again; after a reply that will fail the same way, it takes
-        // the new count, so `--limit` stops paying for it (a run without a limit still re-reads).
-        words: thrown && prior ? prior.words : result.words,
+        // After a thrown call the next `--limit` run tries again: a finished run keeps its old
+        // count, a first read gets RETRY_WORDS. After a reply that will fail the same way, the unit's
+        // own count, so `--limit` stops paying for it (a run without a limit still re-reads).
+        words: !thrown ? result.words : prior?.status === 'done' ? prior.words : RETRY_WORDS,
         irishSpeeches: result.irishSpeeches,
         calls: result.calls,
         promptTokens: result.promptTokens,

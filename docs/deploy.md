@@ -39,7 +39,7 @@ names only are listed here; the values come from you.
 Leave a line commented out (`# NAME=`) when you have no value. An empty value is not the same
 as unset: an empty `SUPABASE_SERVICE_ROLE_KEY` stops the server.
 
-Do not set `PORT`. The port mapping, the health check and the Caddyfile are all fixed to 5000.
+Do not set `PORT`. The port mapping and the Caddyfile are fixed to 5000.
 
 The compose file builds the client with your `SUPABASE_URL` and `SUPABASE_ANON_KEY`, so the
 browser and the server always use the same Supabase project. Those two values are fixed when
@@ -154,7 +154,9 @@ into the database: nothing becomes a public TD stance until someone runs `npm ru
   (454, checked 2026-10-10) already has a finished v3 read, so this reads only new or changed
   debates. It is not a backfill.
 - `QUESTION_ITEMS=on` reads at most 100 question exchanges a night. All 5,573 exchanges on
-  GlasCore were read on 2026-10-10, so this too reads only new or changed ones.
+  GlasCore were read on 2026-10-10, so this too reads only new or changed ones. The first sync with
+  the 2026-10-12 splitter makes 5,593 exchanges and resets 81 reads; read those by hand straight
+  after that sync (`docs/plans/question-sessions.md`, "review fixes").
 - These counts are for GlasCore. A different database may still hold unread debates or exchanges,
   and a flag there would read them, at most 30 or 100 a night.
 

@@ -16,6 +16,12 @@ export function chunks<T>(rows: T[], size = INSERT_CHUNK): T[][] {
  */
 export const RECORD_REBUILD_LOCK = 4_710_314_002;
 
+/**
+ * With the extractor version's hash, the lock one run of an extractor holds from start to end
+ * (an int4 pair, so it never meets the bigint locks above).
+ */
+export const EXTRACTOR_LOCK = 4_710_314;
+
 /** What a read needs: the database, or a transaction that holds RECORD_REBUILD_LOCK. */
 export type Reader = Pick<Db, 'execute' | 'select'>;
 

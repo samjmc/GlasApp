@@ -61,6 +61,10 @@ export interface ScoredItem {
   closingSpeech: boolean;
 }
 
+/** A reply is shown, and counted, only when its sentence names its target and it is not to the speaker. */
+export const replyShown = (item: Pick<ScoredItem, 'namesTarget' | 'targetMemberCode' | 'memberCode'>): boolean =>
+  item.namesTarget && item.targetMemberCode !== null && item.targetMemberCode !== item.memberCode;
+
 /** speech + target of each concession that scores: a reply in that speech to that member does not. */
 export function scoringConcessions(items: Array<Pick<ScoredItem, 'kind' | 'speechId' | 'targetMemberCode' | 'crossesHouse'>>): Set<string> {
   return new Set(items.filter((i) => i.kind === 'concession' && i.crossesHouse && i.targetMemberCode).map((i) => `${i.speechId}\u0000${i.targetMemberCode}`));
@@ -123,9 +127,9 @@ export function scoreDebates(participants: Participant[], items: ScoredItem[]): 
         break;
       }
       case 'response': {
-        if (!item.namesTarget || !item.targetMemberCode || item.targetMemberCode === item.memberCode) break;
+        if (!replyShown(item)) break;
         own.replies++;
-        const targetKey = key(item.debateId, item.targetMemberCode);
+        const targetKey = key(item.debateId, item.targetMemberCode!);
         if (!rows.has(targetKey) || replyNoPoints(item, conceded) !== null) break;
         takenUpBy.set(targetKey, (takenUpBy.get(targetKey) ?? new Set()).add(item.memberCode));
         break;

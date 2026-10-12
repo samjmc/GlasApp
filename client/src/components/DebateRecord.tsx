@@ -147,7 +147,7 @@ export function TdDebateRecordCard({ tdId }: { tdId: number | undefined }) {
         <div className="grid grid-cols-2 gap-2">
           <Stat label="Specific claims" value={data.totals.claims} note={`${data.totals.claimPoints} points`} />
           <Stat label="Concessions won" value={data.totals.concessionsReceived} note={`${data.totals.concessionPoints} points`} />
-          <Stat label="Took up their point" value={data.totals.takenUp} note={`${data.totals.takenUpPoints} points`} />
+          <Stat label="Speakers who took up their point" value={data.totals.takenUp} note={`${data.totals.takenUpPoints} points`} />
           <Stat label="Replies made" value={data.totals.replies} note="no points" />
           <Stat label="Questions asked" value={data.totals.questions} note="no points" />
           <Stat label="Promises made" value={data.totals.commitments} note="no points" />

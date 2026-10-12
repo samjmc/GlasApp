@@ -192,7 +192,8 @@ Sam chose option 1. Built as planned, with these differences and measurements.
 - **Q2** the debate runner became `extractUnits(config)`; `DEBATE_EXTRACTION` passes today's values
   (its tests pass untouched) and `QUESTION_EXTRACTION` reads one window per exchange, no context.
   Runs share `debate_extraction_runs`, keyed by exchange id under version `q1`, which the debate
-  record never reads (tested). Job `npm run questions:items`; nightly behind `QUESTION_ITEMS=on`.
+  record never reads (tested). Job `npm run questions:items -- --all | --limit N | --pilot N`;
+  nightly behind `QUESTION_ITEMS=on`.
 - **`commitment_type` has three values, not two.** The first 100-exchange pilot with
   `action`/`follow_up` called about half of all undertakings actions, most of them general ("I will
   work as hard as is humanely possible", "we will continue to progress it"), so 3 oral PQs in 4
@@ -214,7 +215,7 @@ Sam chose option 1. Built as planned, with these differences and measurements.
 - **Cost**: the pilot read 100 exchanges for $0.11; the whole term (5,573 exchanges, 5.9 M words)
   projects to about **$5 off-peak, $10 peak**, more than the plan's $3–3.50 because answers are
   dense in claims.
-- **Q4** `questionItems/rules.ts` (rules q1) and `politics.question_participation` (migration 0024
+- **Q4** `questionItems/rules.ts` (rules q1; q2 since 2026-10-12, below) and `politics.question_participation` (migration 0024
   with the three tables and the `commitment_type` column), rebuilt after every read and every sync.
 - **Q5** a "Question record" card under the debate record on the TD profile, and a panel under
   each question section on the Dáil record page; routes `GET /api/parliament/tds/:id/question-record`
@@ -244,12 +245,16 @@ Sam chose option 1. Built as planned, with these differences and measurements.
   held a claim or a commitment. The `question` kind was kept in the prompt anyway, because changing
   the q1 prompt would invalidate the blind check.
 
-## As built: review fixes (2026-10-12)
+## As built: review fixes and rules q2 (2026-10-12)
+
+The rules below changed what the record counts, so they are **rules q2**; the extractor stays
+**q1**, so no exchange is read again for them. A server started with `SCHEDULER=on` rebuilds a
+record still labelled q1 at once.
 
 - **Only exchanges asked across the House count.** A government backbencher's friendly question
   answered with an announcement is not a commitment secured from the government, but it counted in
   the per-10 rate and lifted the 75th percentile others are measured against. Migration
-  `0025_question_government_side` stores `government_side` on `question_participation`; the per-10
+  `0028_question_government_side` stores `government_side` on `question_participation`; the per-10
   rate, the secured count and the cohort use only exchanges asked from the other side of the House
   (`askedAcross` in the API), and `asked` stays the total.
 - **One answerer per exchange**: the office holder who said most. A minister who interjected in a
@@ -261,8 +266,9 @@ Sam chose option 1. Built as planned, with these differences and measurements.
   rebuild now resets the q1 read of any exchange whose span or askers changed, or that is gone; its
   items count for nothing until the nightly read takes it again. **The first sync with these rules**
   re-splits GlasCore into 5,593 exchanges: 5,492 keep their read and 81 lose it (about 89,000 words,
-  under $0.10), measured read-only on 2026-10-12; those and about 20 new exchanges were read again
-  by hand straight after, so the nightly read is not left with a backlog.
+  under $0.10), measured read-only on 2026-10-12. Read those and the 20 or so new exchanges by hand
+  straight after that sync (`npm run questions:items -- --limit 200`), so the nightly read is not
+  left with a backlog.
 - **A TD who only spoke** (a supplementary, an interjection) gets no record rather than an empty card.
 - **Smaller**: a pilot of n reads at most n exchanges (n = 5 read about 1,900); recent exchanges sort
   by date, section and position, not as text; an unclassified commitment no longer reads as "No
