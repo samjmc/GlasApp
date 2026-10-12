@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './OfficialElectoralMap.css';
@@ -18,15 +18,6 @@ function token(name: string, alpha = 1): string {
   const value = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   return value ? `hsl(${value} / ${alpha})` : 'currentColor';
 }
-
-// Create a global cache for GeoJSON data to persist between component mounts
-const globalGeoJsonCache: {
-  data: GeoJSON.FeatureCollection | null;
-  promise: Promise<GeoJSON.FeatureCollection> | null;
-} = {
-  data: null,
-  promise: null
-};
 
 type MapLayer = 'party' | 'performance' | 'gender' | 'government';
 
@@ -341,39 +332,13 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
     }
   };
 
+  // The Leaflet `style` option is captured once, when the layer is built, and resetStyle()
+  // re-applies it, so it must read the current colouring through a ref, not a stale closure.
+  const colorRef = useRef(getConstituencyColor);
+  colorRef.current = getConstituencyColor;
+
   // Use loading placeholder to provide immediate visual feedback
   const [showPlaceholder, setShowPlaceholder] = useState(true);
-  const [mapInitialized, setMapInitialized] = useState(false);
-  
-  // Load the GeoJSON data once (and only once) at module level
-  const loadGeoJsonData = async () => {
-    // Return cached data if available
-    if (globalGeoJsonCache.data) {
-      return globalGeoJsonCache.data;
-    }
-    
-    // Return existing promise if we're already loading
-    if (globalGeoJsonCache.promise) {
-      return globalGeoJsonCache.promise;
-    }
-    
-    // Start a new load
-    console.time('Initial load');
-    try {
-      // Store the promise to prevent duplicate loads
-      globalGeoJsonCache.promise = fetchConstituencyBoundaries();
-      // Await the data and cache it
-      const data = await globalGeoJsonCache.promise;
-      globalGeoJsonCache.data = data;
-      console.timeEnd('Initial load');
-      return data;
-    } catch (error) {
-      console.error("Error loading GeoJSON data:", error);
-      // Clear promise on error so we can retry
-      globalGeoJsonCache.promise = null;
-      throw error;
-    }
-  };
 
   useEffect(() => {
     if (!mapContainerRef.current) return;
@@ -402,9 +367,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             zoomSnap: 0.5, // Allow fractional zoom levels
             attributionControl: false // Hide default attribution
           });
-          
-          setMapInitialized(true);
-          
+
           // Add OpenStreetMap tile layer immediately
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxNativeZoom: 19,
@@ -412,11 +375,9 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
           }).addTo(mapRef.current);
           
           // Second phase: Load the GeoJSON data
-          console.time('GeoJSON load and render');
-          
           try {
-            // Load the GeoJSON data using our optimized loader with caching
-            const geoJsonData = await loadGeoJsonData();
+            // Cached by the helper after the first successful load
+            const geoJsonData = await fetchConstituencyBoundaries();
             
             // Hide the placeholder once we have real data
             setShowPlaceholder(false);
@@ -435,7 +396,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                                       "Unknown";
                                       
                 return {
-                  fillColor: getConstituencyColor(constituencyName),
+                  fillColor: colorRef.current(constituencyName),
                   weight: 2,
                   opacity: 1,
                   color: token('--background'),
