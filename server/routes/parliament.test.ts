@@ -245,6 +245,19 @@ describe('/api/parliament/admin/leave-alerts', () => {
     expect((await send('POST', '/admin/leave-alerts/1/confirm', { ...leave, sourceUrl: undefined })).status).toBe(400);
   });
 
+  it('takes only an http(s) source link, because it is shown publicly as a link', async () => {
+    vi.mocked(leaveWatch.confirmLeave).mockClear();
+    for (const sourceUrl of ['javascript:alert(1)', 'data:text/html,<script>1</script>', 'ftp://example.test/a', 'example.test/announcement', 'not a link']) {
+      const res = await send('POST', '/admin/leave-alerts/1/confirm', { ...leave, sourceUrl });
+      expect(res.status, sourceUrl).toBe(400);
+    }
+    expect(leaveWatch.confirmLeave).not.toHaveBeenCalled();
+    for (const sourceUrl of ['http://example.test/announcement', 'HTTPS://example.test/announcement']) {
+      expect((await send('POST', '/admin/leave-alerts/1/confirm', { ...leave, sourceUrl })).status, sourceUrl).toBe(200);
+    }
+    expect(leaveWatch.confirmLeave).toHaveBeenCalledTimes(2);
+  });
+
   it('dismisses with an optional note', async () => {
     expect((await send('POST', '/admin/leave-alerts/3/dismiss', { note: 'No public reason found.' })).body.data).toEqual({ dismissed: true });
     expect(leaveWatch.dismissLeave).toHaveBeenLastCalledWith(3, 'No public reason found.', 'admin@example.test');
