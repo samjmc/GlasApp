@@ -3,7 +3,6 @@ import type { Article, ArticleOutcome, ArticleSource } from './articleSource';
 
 const m = vi.hoisted(() => ({
   extractTDMentions: vi.fn(),
-  findByName: vi.fn(),
   generateQuestionForArticle: vi.fn(),
   questionForArticle: vi.fn(),
   linkArticleTd: vi.fn(),
@@ -29,11 +28,9 @@ vi.mock('../services/aiService', async (importOriginal) => ({
 vi.mock('../services/tdExtractionService', () => ({
   TDExtractionService: {
     extractTDMentions: m.extractTDMentions,
-    filterHighConfidenceMentions: (mentions: unknown[]) => mentions,
     isSubstantialMention: (_text: string, name: string) => !name.startsWith('Passing'),
   },
 }));
-vi.mock('../scoring', () => ({ repository: { findByName: m.findByName } }));
 vi.mock('../voting', () => ({
   generateQuestionForArticle: m.generateQuestionForArticle,
   questionForArticle: m.questionForArticle,
@@ -114,6 +111,9 @@ const QUESTION = {
 
 const stance = (quote: string, kind = 'direct') => ({ stances: [{ td_id: 7, policy_domain: 'housing', quote, quote_kind: kind }] });
 const evidenceWritten = () => m.replaceEvidence.mock.calls.flatMap((call) => call[2]);
+/** A mention as extraction returns it: with the TD's row, so the pipeline looks nothing up. */
+const mention = (id: number, name: string) => ({ name, td: { id, name, party: 'Sinn Féin', constituency: 'Dublin Central', offices: [{ title: 'Leader of the Opposition', since: '2025-01-01' }] }, context: '' });
+const MARY = mention(7, 'Mary Lou McDonald');
 const outage = () => new AIError('503 Service Unavailable', { operation: 'tdStances', attempts: 3, elapsedMs: 1, status: 503 });
 const noCredit = () => new OutOfCreditError('402 Insufficient Balance', { operation: 'tdStances', attempts: 1, elapsedMs: 1, status: 402 });
 
@@ -131,17 +131,12 @@ describe('runTdPipeline', () => {
     vi.clearAllMocks();
     m.replies = {};
     m.operations = [];
-    m.findByName.mockImplementation(async (name: string) =>
-      name === 'Mary Lou McDonald'
-        ? { td: { id: 7, name, party: 'Sinn Féin', offices: [{ title: 'Leader of the Opposition', since: '2025-01-01' }] } }
-        : null,
-    );
     m.questionForArticle.mockResolvedValue(QUESTION);
     m.positionProbability.mockResolvedValue(0.9);
     m.saveStances.mockImplementation(async (_id: number, rows: Array<{ tdId: number }>) =>
       rows.map((row) => ({ tdId: row.tdId, statedAt: new Date('2026-09-25T10:00:00Z') })),
     );
-    m.extractTDMentions.mockResolvedValue([{ name: 'Mary Lou McDonald' }]);
+    m.extractTDMentions.mockResolvedValue([MARY]);
   });
 
   it('a verified stance gets the question, is saved with its answer, and becomes stance evidence', async () => {
@@ -252,12 +247,11 @@ describe('runTdPipeline', () => {
     expect(evidenceWritten()).toEqual([]);
   });
 
-  it('makes no model call and no question for an article that names no TD in the TD table', async () => {
-    const { source, outcomes } = fakeSource([article(1), article(2), article(3)]);
+  it('makes no model call and no question for an article that names no TD, or one only in passing', async () => {
+    const { source, outcomes } = fakeSource([article(1), article(2)]);
     m.extractTDMentions
       .mockResolvedValueOnce([]) // nobody
-      .mockResolvedValueOnce([{ name: 'Passing Mention' }]) // only in passing
-      .mockResolvedValueOnce([{ name: 'Not A Deputy' }]); // not in the TD table
+      .mockResolvedValueOnce([mention(9, 'Passing Mention')]); // only in passing
 
     const stats = await runTdPipeline({ source, topPercentile: 100 });
 
@@ -267,19 +261,21 @@ describe('runTdPipeline', () => {
     expect(stats.tdsLinked).toBe(0);
     expect(outcomes.get(1)?.skippedReason).toBe('No TD mentioned');
     expect(outcomes.get(2)?.skippedReason).toBe('TDs mentioned only in passing');
-    expect(outcomes.get(3)?.skippedReason).toBeUndefined();
   });
 
-  it('a TD named twice is one candidate', async () => {
+  it('links each TD by the id extraction found, with no lookup by name', async () => {
     const { source } = fakeSource([article(1)]);
-    m.extractTDMentions.mockResolvedValue([{ name: 'Mary Lou McDonald' }, { name: 'Mary Lou McDonald' }]);
+    m.extractTDMentions.mockResolvedValue([MARY, mention(12, 'Holly Cairns')]);
     m.replies.tdStances = { stances: [] };
 
-    await runTdPipeline({ source });
+    const stats = await runTdPipeline({ source });
 
+    expect(m.linkArticleTd.mock.calls).toEqual([
+      [1, 7],
+      [1, 12],
+    ]);
+    expect(stats.tdsLinked).toBe(2);
     expect(m.operations).toEqual(['tdStances']);
-    expect(m.linkArticleTd).toHaveBeenCalledTimes(2); // idempotent in the repository
-    expect(m.generateQuestionForArticle).not.toHaveBeenCalled();
   });
 
   it('an article below the relevance cut is skipped before extraction, with its relevance stored', async () => {
