@@ -14,7 +14,7 @@ import type { GovernmentOffices } from '../debateItems/verify';
 import { holdsGovernmentOffice, isGovernmentSide } from '../governmentSide';
 import { INDEPENDENT } from '../metrics';
 import { governmentOffices } from './debateItems';
-import { chunks, nameFromCode } from './util';
+import { RECORD_REBUILD_LOCK, chunks, nameFromCode } from './util';
 
 interface ItemRow {
   debate_id: string;
@@ -71,7 +71,7 @@ async function itemRows(where: ReturnType<typeof sql>, database: Db): Promise<It
     left join politics.tds t1 on t1.member_code = i.member_code
     left join politics.tds t2 on t2.member_code = tp.member_code
     where ${where}
-    order by p.date, s.id, p.position, i.quote_start`);
+    order by p.date, coalesce(substring(s.id from 'dbsect_([0-9]+)$')::int, 0), p.position, i.quote_start`);
   return res.rows as unknown as ItemRow[];
 }
 
@@ -156,6 +156,7 @@ export async function rebuildDebateRecord(database: Db = db): Promise<{ debates:
   }));
   const rows: NewDebateParticipation[] = scoreDebates(participants, items).map((r) => ({ ...r, rulesVersion: RULES_VERSION }));
   await database.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(${RECORD_REBUILD_LOCK}::bigint)`);
     await tx.delete(debateParticipation);
     for (const batch of chunks(rows)) await tx.insert(debateParticipation).values(batch);
   });

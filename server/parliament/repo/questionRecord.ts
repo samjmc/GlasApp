@@ -13,7 +13,7 @@ import { splitExchanges, type SectionTurn } from '../questionItems/exchanges';
 import { QUESTION_EXTRACTOR_VERSION } from '../questionItems/prompt';
 import { QUESTION_RULES_VERSION, formatFigures, scoreExchanges, type ExchangeItem, type ExchangeMember, type QuestionParticipationRow } from '../questionItems/rules';
 import { governmentOffices } from './debateItems';
-import { chunks, nameFromCode } from './util';
+import { RECORD_REBUILD_LOCK, chunks, nameFromCode } from './util';
 
 const FORMAT_OF_KIND: Record<string, QuestionFormat | null> = { topical_issue: 'topical_issue', leaders_questions: 'leaders_questions', questions: null };
 
@@ -51,6 +51,7 @@ export async function rebuildQuestionExchanges(database: Db = db): Promise<{ sec
     return splitExchanges({ sectionId, format, date: s.date, turns: s.turns, pqAskers });
   });
   await database.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(${RECORD_REBUILD_LOCK}::bigint)`);
     // Ids are positional, so a q1 read stands only while its exchange keeps the same span and
     // askers. Any other exchange is read again, and until then its items count for nothing.
     const before = await tx.execute(sql`select id, from_position, to_position, askers from politics.question_exchanges`);
@@ -182,6 +183,7 @@ export async function rebuildQuestionRecord(database: Db = db): Promise<{ rows: 
     rulesVersion: QUESTION_RULES_VERSION,
   }));
   await database.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(${RECORD_REBUILD_LOCK}::bigint)`);
     await tx.delete(questionParticipation);
     for (const batch of chunks(rows)) await tx.insert(questionParticipation).values(batch);
   });

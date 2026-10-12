@@ -111,14 +111,16 @@ run('debate items (real Postgres)', () => {
     expect(await stored()).toHaveLength(3);
   });
 
-  it('keeps the items when a sitting day is re-read, which deletes and re-inserts its speeches', async () => {
+  it('keeps the items, and each section its debate, when a sitting day is re-read', async () => {
     const day = (await q('select * from politics.debate_speeches where date = $1 order by position', [DAY])).rows;
+    // As the transcript parser gives it: no debate. The grouping step sets that later in a sync.
     await repo.replaceDebateDay(
       DAY,
-      [{ id: SECTION, date: DAY, title: 'Health: Motion', parentId: null, parentTitle: null, debateId: SECTION, speechCount: 2 }],
+      [{ id: SECTION, date: DAY, title: 'Health: Motion', parentId: null, parentTitle: null, debateId: null, speechCount: 2 }],
       day.map((r) => ({ id: r.id, sectionId: r.section_id, date: DAY, position: r.position, memberCode: r.member_code, role: null, isPresiding: false, text: r.text, wordCount: r.word_count })),
       new Map(),
     );
+    expect((await q('select debate_id from politics.debate_sections where id = $1', [SECTION])).rows).toEqual([{ debate_id: SECTION }]);
     expect(await stored()).toHaveLength(3);
     const complete = fake();
     expect(await items.extractDebates({ complete })).toMatchObject({ skipped: 1 });

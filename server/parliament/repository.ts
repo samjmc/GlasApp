@@ -113,9 +113,15 @@ export async function replaceDebateDay(
   database: Db = db,
 ): Promise<void> {
   await database.transaction(async (tx) => {
+    // A section keeps its debate until the grouping step regroups the day, so whatever reads
+    // in between (the extractor, or a later step when grouping fails) still sees whole debates.
+    const grouped = new Map(
+      (await tx.select({ id: debateSections.id, debateId: debateSections.debateId }).from(debateSections).where(eq(debateSections.date, date))).map((s) => [s.id, s.debateId]),
+    );
     // Cascades to the day's speeches; a section dropped from a corrected transcript goes too.
     await tx.delete(debateSections).where(eq(debateSections.date, date));
-    for (const batch of chunks(sections)) await tx.insert(debateSections).values(batch);
+    const kept = sections.map((s) => ({ ...s, debateId: s.debateId ?? grouped.get(s.id) ?? null }));
+    for (const batch of chunks(kept)) await tx.insert(debateSections).values(batch);
     const rows: NewDebateSpeech[] = speeches.map((s) => ({ ...s, tdId: s.memberCode ? (tdIds.get(s.memberCode) ?? null) : null }));
     for (const batch of chunks(rows, 200)) await tx.insert(debateSpeeches).values(batch);
   });

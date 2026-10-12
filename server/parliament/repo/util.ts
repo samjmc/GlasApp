@@ -7,6 +7,12 @@ export function chunks<T>(rows: T[], size = INSERT_CHUNK): T[][] {
   return out;
 }
 
+/**
+ * Held by every rebuild of the debate and question records. The sync and the extractor jobs run
+ * in different processes, and two delete-then-insert rebuilds at once fail on the primary key.
+ */
+export const RECORD_REBUILD_LOCK = 4_710_314_002;
+
 /** A member who left the Dáil has no tds row: "Paschal-Donohoe.D.2011-03-09" → "Paschal Donohoe". */
 export const nameFromCode = (code: string) => code.split('.')[0]!.replace(/-/g, ' ');
 

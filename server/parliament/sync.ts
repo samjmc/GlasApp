@@ -1,5 +1,6 @@
 /**
- * One incremental parliament sync. The only writer of the parliament tables.
+ * One incremental parliament sync. The only writer of the parliament tables, except the items the
+ * extractor jobs store (debate_items, debate_extraction_runs) and the record rebuilds they run.
  *
  *   1. roster      → politics.tds (insert / update / deactivate; never delete), offices,
  *                    committee memberships
@@ -8,7 +9,10 @@
  *                    each division's place in its debate (divisions.section_position)
  *   4. committees  → committee_sittings, committee_attendance (the roll call of each sitting)
  *   5. bills       → bills, bill_sponsors, bill_stages, bill_debates (the whole term)
- *   6. questions   → question_counts (per TD, month, department, type), question_askers (who
+ *   5a. grouping   → debates and each section's debate, then debate_participation from the
+ *                    items already read
+ *   5b. registers  → td_interests and td_allowance_payments, from the Oireachtas's PDFs
+ *   6. questions  → question_counts (per TD, month, department, type), question_askers (who
  *                    asked each oral PQ, and the section it was answered in)
  *   6b. exchanges  → question_exchanges (an exchange that changed loses its q1 read), then
  *                    question_participation from the items already read

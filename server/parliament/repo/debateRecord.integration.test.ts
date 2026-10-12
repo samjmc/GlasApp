@@ -109,8 +109,10 @@ run('debate record (real Postgres)', () => {
       { member_code: B, role: 'office', claims: 0, claim_points: 0, concessions_received: 1, concession_points: 3, replies: 1, taken_up: 1, taken_up_points: 2, questions: 0, commitments: 1, points: 5 },
       { member_code: C, role: 'backbench', claims: 0, claim_points: 0, concessions_received: 0, concession_points: 0, replies: 0, taken_up: 0, taken_up_points: 0, questions: 0, commitments: 0, points: 0 },
     ]);
-    // Rebuilding again gives the same rows.
+    // Rebuilding again gives the same rows, also when two rebuilds run at once (a sync and a job).
     expect(await repo.rebuildDebateRecord()).toEqual({ debates: 1, rows: 3 });
+    expect(await Promise.all([repo.rebuildDebateRecord(), repo.rebuildDebateRecord(), repo.rebuildDebateRecord()])).toHaveLength(3);
+    expect((await q('select count(*)::int n from politics.debate_participation')).rows[0].n).toBe(3);
   });
 
   it('shows one debate: most points first, with what each member said, and only replies that name their target', async () => {
