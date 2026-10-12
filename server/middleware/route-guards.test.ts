@@ -46,7 +46,10 @@ vi.mock('../parliament/sync', () => ({
   SyncAlreadyRunning: class extends Error {},
 }));
 
+vi.mock('../services/jobRuns', () => ({ recentJobRuns: vi.fn(async () => []) }));
+
 const parliamentRoutes = (await import('../routes/parliament')).default;
+const jobsAdminRoutes = (await import('../routes/admin/jobs')).default;
 const { createRateLimit } = await import('./rateLimit');
 
 const REPO_ROOT = path.resolve(__dirname, '..', '..');
@@ -91,6 +94,8 @@ describe('unguarded write surfaces found by the audit now require admin access',
     // The audit's six pledge write routes were deleted with the old pledge router; their
     // replacements in server/pledges/routes.ts are covered by server/pledges/routes.test.ts.
     { name: 'POST /parliament/sync', mount: '/api/parliament', router: parliamentRoutes, method: 'POST', path: '/api/parliament/sync' },
+    // Not a write, but job_runs shows every job's counts and errors: admin only.
+    { name: 'GET /admin/jobs', mount: '/api/admin/jobs', router: jobsAdminRoutes, method: 'GET', path: '/api/admin/jobs' },
   ];
 
   for (const c of cases) {
@@ -219,6 +224,10 @@ describe('structural markers (catch a silent revert of the audit fixes)', () => 
     assert.match(src, /router\.post\(\s*'\/admin\/leave-alerts\/:id\/dismiss',\s*requireAdmin,/);
     // The parliament router's only writes: the sync trigger and those two decisions.
     assert.equal((src.match(/router\.(post|put|patch|delete)\(/g) ?? []).length, 3);
+  });
+
+  it('the admin jobs router is mounted, behind the job guard like the other admin routers', () => {
+    assert.match(read('server/routes.ts'), /app\.use\("\/api\/admin\/jobs",\s*requireJob,\s*jobsAdminRoutes\)/);
   });
 
   it('the unmounted fake-login router is gone', () => {

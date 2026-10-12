@@ -21,7 +21,8 @@ Helper: `logAdminAction(req, action, detail)`. No route takes a user id in its p
 always the caller's own `req.user.id`.
 
 `optionalAuth` runs app-wide in `registerRoutes`, so a handler can offer a signed-in view
-without its own guard and `regionMiddleware` can read the user's saved region.
+without its own guard and `regionMiddleware` can read the user's saved region. The guards reuse
+its answer, so a token costs one Supabase call per request however many guards a route has.
 
 **Admin comes from the server only.** `app_metadata.role === 'admin'` or the `ADMIN_EMAILS`
 allowlist, which counts only a **confirmed** email (otherwise signing up with a listed address
