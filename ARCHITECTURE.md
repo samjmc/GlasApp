@@ -12,7 +12,7 @@ Browser (React SPA) --HTTPS--> Caddy (optional, one proxy hop)
                       /api/*       routes -> services -> Drizzle -> Postgres
                       /health      answers before any middleware
                       /uploads     profile pictures (a volume)
-                      /assets      two map files (public/assets)
+                      /geo         two map files (public/assets)
                       everything else: the built client (dist/public), SPA fallback
                       node-cron    scheduled jobs (server/services/scheduler.ts)
                                   |
@@ -85,7 +85,7 @@ One model for users, TDs and parties. Full design: `docs/architecture/ideology-m
 React 18 with Vite, Wouter for routing (routes load lazily), TanStack Query for server state,
 Radix UI primitives with Tailwind. `pages/` are the screens, `components/` the pieces, `services/` the
 API calls, `lib/` the helpers. The constituency map is Leaflet over one GeoJSON file served from
-`/assets`. The production client is built into `dist/public` and served by the same Express process.
+`/geo`. The production client is built into `dist/public` and served by the same Express process.
 
 ## Build, test and ship
 

@@ -8,7 +8,7 @@
 # values below (build arguments, SCHEDULER, SITE_DOMAIN), and `env_file` hands the same
 # variables to the container.
 #
-# Run ONE instance only. Rate limits, caches and locks live in process memory.
+# Run ONE instance only. Rate limits and locks live in process memory.
 
 services:
   app:
@@ -47,7 +47,9 @@ services:
   # One proxy only: the app trusts exactly one hop of X-Forwarded-For.
   caddy:
     profiles: ["proxy"]
-    image: caddy:2
+    # Pinned by digest (2.11.7), so every `up` runs the same image. To update, look up the new
+    # tag's index digest and change both.
+    image: caddy:2.11.7@sha256:f2a1290d0463aad60660d4ec134943f183ee2a5f6c3eb7bf32dd984f2f020772
     restart: unless-stopped
     environment:
       SITE_DOMAIN: ${SITE_DOMAIN:-glas.example.com}

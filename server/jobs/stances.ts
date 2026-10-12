@@ -11,7 +11,7 @@
  *
  *   npm run stances -- --rebuild [--days 180] [--dry-run]
  *
- * Dáil divisions as stances (docs/plans/quiz-improvements/01c). Only the modes marked "model"
+ * Dáil divisions as stances (docs/architecture/ideology-matching.md). Only the modes marked "model"
  * call an LLM, and they refuse to run without one:
  *
  *   npm run stances -- --divisions --dry-run [--limit 20] [--window D]   model: read, print, write nothing
@@ -62,7 +62,7 @@ export function parseArgs(argv: string[]): { days: number; dryRun: boolean } {
 // --divisions
 // ---------------------------------------------------------------------------
 
-/** A dry run reads this many divisions unless told otherwise (≈ $0.03; see 01c §10). */
+/** A dry run reads this many divisions unless told otherwise (≈ $0.03). */
 export const DRY_RUN_LIMIT = 20;
 const DIVISION_FLAGS = ['--divisions', '--dry-run', '--reclassify', '--limit', '--window', '--audit', '--sync'];
 const VALUE_FLAGS = ['--limit', '--window'];

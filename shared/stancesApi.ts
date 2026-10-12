@@ -10,7 +10,7 @@ export const NEWS_QUOTE_KINDS = ['direct', 'paraphrase'] as const;
 export type NewsQuoteKind = (typeof NEWS_QUOTE_KINDS)[number];
 /**
  * The news kinds, plus `division`: the TD's recorded Dáil vote. Its quote is the text of the
- * proposal that was voted on, not the TD's words (docs/plans/quiz-improvements/01c).
+ * proposal that was voted on, not the TD's words (docs/architecture/ideology-matching.md).
  */
 export const QUOTE_KINDS = [...NEWS_QUOTE_KINDS, 'division'] as const;
 export type QuoteKind = (typeof QUOTE_KINDS)[number];

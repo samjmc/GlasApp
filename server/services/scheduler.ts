@@ -91,8 +91,8 @@ export function initScheduler() {
       };
     });
     // Dáil divisions as TD stances, once the sync has brought in the day's divisions. Off
-    // unless DIVISION_STANCES=on: it calls a model, and goes on only after the human gates in
-    // docs/plans/quiz-improvements/01c-division-stances.md §9.
+    // unless DIVISION_STANCES=on: it calls a model, and its matches become stances only after a
+    // person audits them (docs/deploy.md section 6).
     if (flagOn("DIVISION_STANCES")) {
       await runJob("division-stances", async () => {
         const r = await runDivisionStances({ mode: "nightly" });

@@ -1,5 +1,5 @@
 /**
- * Dáil divisions as fixed-option TD stances (docs/plans/quiz-improvements/01c).
+ * Dáil divisions as fixed-option TD stances (docs/architecture/ideology-matching.md).
  *
  *   classifyDivisions     model calls → division_readings. Call 1 says what a Tá vote supported,
  *                         with a quote checked against the proposal; call 2 picks the option of
