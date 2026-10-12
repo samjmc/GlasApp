@@ -8,6 +8,7 @@ import OfficialElectoralMapLoading from './OfficialElectoralMapLoading';
 import { AlertTriangle, RotateCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { partyStyle } from '@/lib/parties';
+import { escapeHtml } from '@/lib/escapeHtml';
 
 /**
  * Leaflet writes colours into SVG attributes, where CSS variables do not resolve,
@@ -146,7 +147,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
           leadingPartyHTML = `
             <div class="tooltip-party-badge">
               <span class="tooltip-party-dot" style="background: ${partyColor};"></span>
-              <span>${topParty.party} (${topParty.count}/${actualSeats})</span>
+              <span>${escapeHtml(topParty.party)} (${topParty.count}/${escapeHtml(actualSeats)})</span>
             </div>
           `;
         }
@@ -155,8 +156,8 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
 
     return `
       <div class="tooltip-content">
-        <div class="tooltip-title">${constituencyName}</div>
-        ${nameIrish && nameIrish !== constituencyName ? `<div class="tooltip-subtitle">${nameIrish}</div>` : ''}
+        <div class="tooltip-title">${escapeHtml(constituencyName)}</div>
+        ${nameIrish && nameIrish !== constituencyName ? `<div class="tooltip-subtitle">${escapeHtml(nameIrish)}</div>` : ''}
         
         <div class="tooltip-info-row">
           <span class="tooltip-label">
@@ -165,7 +166,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
             </svg>
             Dáil seats
           </span>
-          <span class="tooltip-value">${seats}</span>
+          <span class="tooltip-value">${escapeHtml(seats)}</span>
         </div>
         
         ${leadingPartyHTML}

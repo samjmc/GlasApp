@@ -1,5 +1,5 @@
 {
-  "id": "a78c53b7-1cba-4bce-bc9d-c74b4f69a3bd",
+  "id": "61745d58-332c-44bc-aaec-fd8c4c5b35a0",
   "prevId": "55ad8d5e-1138-444e-9ab7-d291f750834f",
   "version": "7",
   "dialect": "postgresql",
@@ -2579,13 +2579,6 @@
           "primaryKey": false,
           "notNull": true
         },
-        "government_side": {
-          "name": "government_side",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
-        },
         "asked": {
           "name": "asked",
           "type": "boolean",
@@ -4002,6 +3995,53 @@
         "td_historical_baselines_td_id_tds_id_fk": {
           "name": "td_historical_baselines_td_id_tds_id_fk",
           "tableFrom": "td_historical_baselines",
+          "tableTo": "tds",
+          "schemaTo": "politics",
+          "columnsFrom": [
+            "td_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "politics.td_history_suppressed": {
+      "name": "td_history_suppressed",
+      "schema": "politics",
+      "columns": {
+        "td_id": {
+          "name": "td_id",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "suppressed_at": {
+          "name": "suppressed_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "reason": {
+          "name": "reason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "td_history_suppressed_td_id_tds_id_fk": {
+          "name": "td_history_suppressed_td_id_tds_id_fk",
+          "tableFrom": "td_history_suppressed",
           "tableTo": "tds",
           "schemaTo": "politics",
           "columnsFrom": [

@@ -11,7 +11,7 @@ import { logger } from '../utils/logger';
  *
  * State lives in this process: with more than one replica each replica keeps its
  * own counters, so the effective limit is `max * replicas`. That is acceptable
- * for what this protects (LLM cost, anonymous vote stuffing) and avoids a Redis
+ * for what this protects (vote stuffing, texts sent, export load) and avoids a Redis
  * dependency. Swap the store when the app runs multi-instance.
  */
 export interface RateLimitOptions {
@@ -91,9 +91,6 @@ export function createRateLimit(options: RateLimitOptions): RequestHandler {
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 
-/** Requests that can send a paid text message: 10 per IP per hour, on top of the per-user resend wait. */
-export const smsRateLimit = createRateLimit({ windowMs: 60 * 60 * 1000, max: 10, name: 'sms' });
-
 /**
  * Votes: 60 per signed-in user per 15 minutes (per IP for a caller without a user). Per user, not
  * per IP: a robot run (npm run robots) showed 10 people on one network could save only 60 votes
@@ -106,11 +103,12 @@ export const publicWriteRateLimit = createRateLimit({
   key: (req) => (req.user ? `user:${req.user.id}` : clientIp(req)),
 });
 
-/** A full copy of one account's data: 10 per signed-in user per hour. Mount after requireAuth. */
+/** A full copy of one account's data: 10 per signed-in user per hour. Mount after requireAuth. It guards a GET, so GET has to be named: the default leaves GET uncounted. */
 export const exportRateLimit = createRateLimit({
   windowMs: 60 * 60 * 1000,
   max: 10,
   name: 'export',
+  methods: ['GET'],
   key: (req) => (req.user ? `user:${req.user.id}` : clientIp(req)),
 });
 

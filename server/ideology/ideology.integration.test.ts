@@ -13,6 +13,7 @@
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 import { QUIZ_QUESTIONS } from '@shared/quiz';
 import { planQuiz, responsesFor } from '@shared/quizPlan';
+import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
 const quizUrl = testDatabaseUrl('quiz');
@@ -44,6 +45,7 @@ run('quiz and ideology against Postgres', () => {
     await ensureDatabase(quizUrl!);
     dbmod = await import('../db');
     await applyAllMigrations(dbmod.pool);
+    await consentTo(dbmod.pool, 'user-a', 'user-b', 'user-c', 'user-d', 'user-full', 'user-m', 'user-p', 'user-q', 'user-r', 'user-s', 'user-v');
     ideology = await import('./index');
     quiz = await import('../quiz');
     repo = await import('./repository');

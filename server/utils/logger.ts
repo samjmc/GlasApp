@@ -10,9 +10,8 @@
 import pino, { type Logger } from 'pino';
 import type { Request } from 'express';
 
-/** What pino blanks out of every log line. Exported so the test can check the real paths. */
-export const LOG_REDACT = {
-  // Never persist credentials / verification secrets in logs.
+/** Never persist credentials / verification secrets in logs. */
+export const logRedaction = {
   paths: [
     'password',
     'confirmPassword',
@@ -27,30 +26,19 @@ export const LOG_REDACT = {
     '*.secret',
     'req.headers.authorization',
     'req.headers.cookie',
-    // A visitor's IP address and browser. The privacy policy promises IP addresses do not
-    // outlive 90 days, and container logs rotate by size, so at low traffic they could.
-    'req.headers["x-forwarded-for"]',
-    'req.headers["user-agent"]',
-    'req.remoteAddress',
+    // Job secret: pino-http logs every request header, and the jobs send it in these.
+    'req.headers["x-admin-secret"]',
+    'req.headers["x-cron-secret"]',
   ],
   censor: '[REDACTED]',
 };
-
-/**
- * A request as pino-http logs it, without the query string: that can carry a one-time token (the
- * reset-password link's `token_hash`), which no redact path can catch inside `url`.
- */
-export function logRequest<R extends { url?: string; query?: unknown }>(req: R): Omit<R, 'query'> {
-  const { query: _query, ...rest } = req;
-  return { ...rest, url: req.url?.split('?')[0] };
-}
 
 /** Shared pino logger instance for the server. */
 export const logger: Logger = pino({
   level:
     process.env.LOG_LEVEL ||
     (process.env.NODE_ENV === 'production' ? 'info' : 'debug'),
-  redact: LOG_REDACT,
+  redact: logRedaction,
   serializers: {
     err: pino.stdSerializers.err,
   },

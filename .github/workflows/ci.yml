@@ -70,14 +70,17 @@ jobs:
         run: |
           docker run -d --name glasapp-ci -p 5000:5000 \
             -e DATABASE_URL=postgres://u:p@127.0.0.1:1/x -e SUPABASE_URL=http://localhost:54321 \
-            -e SUPABASE_ANON_KEY=ci-placeholder-key -e SCHEDULER=off glasapp:ci
+            -e SUPABASE_ANON_KEY=ci-placeholder-key -e SUPABASE_SERVICE_ROLE_KEY=ci-placeholder-key \
+            -e SCHEDULER=off glasapp:ci
           for i in $(seq 1 30); do curl -fsS http://127.0.0.1:5000/health >/dev/null && break; sleep 2; done
           curl -fsS http://127.0.0.1:5000/health
           curl -fsS http://127.0.0.1:5000/ | grep -q 'id="root"'
           docker exec glasapp-ci node -e "process.exit(process.getuid() === 0 ? 1 : 0)"
-      - name: It stops on SIGTERM without being killed
+      - name: It stops on SIGTERM by itself, inside the app's own 5 s limit
+        # The app's fallback timer also exits 0 after 5 s, so a shutdown that hangs would still pass
+        # with a long grace period. 4 s is under that timer: only a clean shutdown exits 0 in time.
         run: |
-          docker stop --time 15 glasapp-ci
+          docker stop --time 4 glasapp-ci
           test "$(docker inspect glasapp-ci --format '{{.State.ExitCode}}')" = 0
       - if: failure()
         run: docker logs glasapp-ci || true

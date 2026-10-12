@@ -49,9 +49,12 @@ function loadWorker(network: (request: Request) => Promise<Response>) {
   vm.runInNewContext(SOURCE, context);
 
   /** Dispatch a fetch event; returns what the worker answered with, or `undefined` when it did not respond. */
-  async function request(url: string, headers: Record<string, string> = {}): Promise<Response | undefined> {
+  async function request(url: string, headers: Record<string, string> = {}, destination = ''): Promise<Response | undefined> {
     const respondWith = vi.fn();
-    listeners.fetch!({ request: new Request(url, { headers }), respondWith });
+    // `destination` is read-only on a constructed Request (always ''), so an image request is a stand-in.
+    const real = new Request(url, { headers });
+    const fetched = destination ? { url: real.url, headers: real.headers, mode: real.mode, destination, clone: () => real.clone() } : real;
+    listeners.fetch!({ request: fetched, respondWith });
     if (respondWith.mock.calls.length === 0) return undefined;
     return (await respondWith.mock.calls[0]![0]) as Response;
   }
@@ -77,19 +80,30 @@ describe('the service worker and API responses', () => {
     const live = await worker.request('http://localhost/api/ideology/party-answers?questions=1');
     expect(await live!.text()).toBe('{"parties":[]}');
     // The write happens after the response is returned; wait for it.
-    await vi.waitFor(() => expect(worker.written).toEqual(['glas-politics-v2-data http://localhost/api/ideology/party-answers?questions=1']));
+    await vi.waitFor(() => expect(worker.written).toEqual(['glas-politics-v3-data http://localhost/api/ideology/party-answers?questions=1']));
 
     online = false;
     const offline = await worker.request('http://localhost/api/ideology/party-answers?questions=1');
     expect(await offline!.text()).toBe('{"parties":[]}');
   });
 
+  it('never answers or caches a profile picture, which its owner can replace or erase', async () => {
+    const worker = loadWorker(ok('png-bytes'));
+    expect(await worker.request('http://localhost/uploads/avatars/eva.png', {}, 'image')).toBeUndefined();
+    expect(worker.written).toEqual([]);
+    // Other images are still cached.
+    const logo = await worker.request('http://localhost/assets/logo.png', {}, 'image');
+    expect(await logo!.text()).toBe('png-bytes');
+    await vi.waitFor(() => expect(worker.written).toEqual(['glas-politics-v3-images http://localhost/assets/logo.png']));
+  });
+
   it('deletes the caches an older version left behind, the signed-in data cache included', async () => {
     const worker = loadWorker(ok('x'));
-    for (const name of ['glas-politics-v1-data', 'glas-politics-v1-static', 'glas-politics-v2-data', 'unrelated-site-cache']) worker.store(name);
+    // v2 held cached profile pictures as well as signed-in data (v1).
+    for (const name of ['glas-politics-v1-data', 'glas-politics-v1-static', 'glas-politics-v2-images', 'glas-politics-v3-data', 'unrelated-site-cache']) worker.store(name);
     let done: Promise<unknown> = Promise.resolve();
     worker.listeners.activate!({ waitUntil: (p: Promise<unknown>) => (done = p) });
     await done;
-    expect([...worker.stores.keys()].sort()).toEqual(['glas-politics-v2-data', 'unrelated-site-cache']);
+    expect([...worker.stores.keys()].sort()).toEqual(['glas-politics-v3-data', 'unrelated-site-cache']);
   });
 });

@@ -1,6 +1,6 @@
 /**
- * What a Dáil division meant and which daily-vote option it states, asked of a model in two
- * calls (docs/plans/quiz-improvements/01c §3.2–3.3). Pure: the PROPOSAL blocks, the choice of
+ * What a Dáil division meant and which daily-vote option it states, asked of a model in three
+ * calls (docs/plans/quiz-improvements/01c §3.2–3.3, and a claims check after a match). Pure: the PROPOSAL blocks, the choice of
  * debate excerpts, the prompts and the parses. The calls, the checks (divisionVerify.ts) and the
  * storage live elsewhere. The model writes no axis numbers: a vector only ever comes from the
  * option it picks, fixed when the question was made.
@@ -18,7 +18,7 @@ import type { DivisionContext } from '../parliament';
 /** Stored on every reading; bump when the meaning prompt changes what a reading means. */
 export const MEANING_PROMPT_VERSION = 1;
 /** Stored on every match; bump when the match prompt changes. */
-export const MATCH_PROMPT_VERSION = 5;
+export const MATCH_PROMPT_VERSION = 6;
 /** Debate excerpts per prompt. */
 export const SPEECH_CONTEXT_CHARS = 12_000;
 /** PROPOSAL blocks per prompt. */
@@ -234,11 +234,10 @@ Rules:
 - Choose a question and an answer ONLY when what a Tá vote supported itself states that choice. When no question's answer is clearly stated, use null.
 - An answer must not say more than the proposal does. If it names a figure, a date, a scope or a measure that the proposal's words do not (for example "to €50,000" when the proposal says €35,000), or adds a stated trade-off the proposal does not mention, use null for that question.
 - Never infer an answer from who proposed the motion or how parties voted.
-- Give a Níl answer only when voting against the proposal itself states one of that question's answers; else null. It must differ from the Tá answer.
 - "confidence" (0..1) is how sure you are that the Tá answer is stated.
 
 Return strict JSON:
-{ "question_id": 123, "ta_option": "option_b", "nil_option": null, "confidence": 0.8, "reason": "one sentence" }
+{ "question_id": 123, "ta_option": "option_b", "confidence": 0.8, "reason": "one sentence" }
 `.trim();
 
 export function matchUserPrompt(meaning: { taMeans: string; quote: string; divisionKind: DivisionKind }, candidates: MatchCandidate[]): string {
@@ -255,7 +254,6 @@ export function matchUserPrompt(meaning: { taMeans: string; quote: string; divis
 export interface MatchReply {
   questionId: number | null;
   taOption: string | null;
-  nilOption: string | null;
   confidence: number;
   reason: string;
 }
@@ -263,7 +261,6 @@ export interface MatchReply {
 const matchSchema = z.object({
   question_id: z.number().int().nullable(),
   ta_option: z.string().nullable().optional(),
-  nil_option: z.string().nullable().optional(),
   confidence: z.number().finite().optional(),
   reason: z.string().optional(),
 });
@@ -276,7 +273,6 @@ export function parseMatch(content: string | null): MatchReply | null {
   return {
     questionId: v.question_id,
     taOption: v.ta_option ?? null,
-    nilOption: v.nil_option ?? null,
     confidence: unit(v.confidence),
     reason: (v.reason ?? '').trim(),
   };

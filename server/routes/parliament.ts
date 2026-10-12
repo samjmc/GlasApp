@@ -252,7 +252,13 @@ const confirmBody = z.object({
   reason: z.enum(absenceReason.enumValues),
   from: isoDay,
   to: isoDay.nullable(),
-  sourceUrl: z.string().trim().max(2000),
+  // Shown publicly as a link, so only http(s): a javascript: or data: URL would run on click.
+  sourceUrl: z
+    .string()
+    .trim()
+    .max(2000)
+    .url()
+    .refine((u) => /^https?:\/\//i.test(u), 'Must be an http(s) link'),
   note: z.string().trim().max(1000).nullable(),
 });
 const dismissBody = z.object({ note: z.string().trim().max(1000).nullable().default(null) });

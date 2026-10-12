@@ -17,7 +17,11 @@ const calls = vi.hoisted(() => ({ order: [] as string[], dataFails: false, authF
 vi.mock('../auth', () => ({
   requireAuth: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (req.headers.authorization !== 'Bearer ok') return res.status(401).json({ success: false });
-    (req as unknown as { user: { id: string; email: string } }).user = { id: 'user-1', email: 'u@example.ie' };
+    (req as unknown as { user: { id: string; email: string; userMetadata: Record<string, unknown> } }).user = {
+      id: req.headers['x-test-user'] ?? 'user-1',
+      email: 'u@example.ie',
+      userMetadata: { county: 'Cork' },
+    };
     next();
   },
 }));
@@ -48,8 +52,8 @@ vi.mock('../account/consent', () => ({
 }));
 
 vi.mock('../account/exportUserData', () => ({
-  exportUserData: vi.fn(async (id: string, identity: { email: string | null }) => {
-    calls.order.push(`export:${id}:${identity.email}`);
+  exportUserData: vi.fn(async (id: string, identity: { email: string | null; userMetadata: Record<string, unknown> }) => {
+    calls.order.push(`export:${id}:${identity.email}:${JSON.stringify(identity.userMetadata)}`);
     if (calls.dataFails) throw new Error('db down');
     return { format: 1, exportedAt: '2026-10-10T12:00:00.000Z', account: { id, email: identity.email }, quizResults: [], votes: [] };
   }),
@@ -63,7 +67,7 @@ vi.mock('../account/profileImages', () => ({
 
 const router = (await import('./accountRoutes')).default;
 
-async function send(method: string, path: string, auth?: string, body?: unknown) {
+async function send(method: string, path: string, auth?: string, body?: unknown, headers: Record<string, string> = {}) {
   const app = express();
   app.use(express.json());
   app.use('/api/account', router);
@@ -72,7 +76,7 @@ async function send(method: string, path: string, auth?: string, body?: unknown)
   try {
     const res = await fetch(`http://127.0.0.1:${(server.address() as AddressInfo).port}${path}`, {
       method,
-      headers: { ...(auth ? { authorization: auth } : {}), ...(body === undefined ? {} : { 'content-type': 'application/json' }) },
+      headers: { ...(auth ? { authorization: auth } : {}), ...(body === undefined ? {} : { 'content-type': 'application/json' }), ...headers },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
     return { status: res.status, body: await res.json(), headers: res.headers };
@@ -125,17 +129,25 @@ describe('DELETE /api/account', () => {
 describe('GET /api/account/export', () => {
   const PATH = '/api/account/export';
 
-  it("returns the caller's data in the envelope, for the caller's own id and email, and is never cached", async () => {
+  it("returns the caller's data in the envelope, for the caller's own id, email and profile metadata, and is never cached", async () => {
     const { status, body, headers } = await send('GET', PATH, 'Bearer ok');
     expect(status).toBe(200);
     expect(headers.get('cache-control')).toBe('no-store');
-    expect(calls.order).toEqual(['export:user-1:u@example.ie']);
+    expect(calls.order).toEqual(['export:user-1:u@example.ie:{"county":"Cork"}']);
     expect(body).toEqual({ success: true, data: expect.objectContaining({ format: 1, account: { id: 'user-1', email: 'u@example.ie' } }) });
   });
 
   it('needs a signed-in caller and reads nothing without one', async () => {
     expect((await send('GET', PATH)).status).toBe(401);
     expect(calls.order).toEqual([]);
+  });
+
+  it('allows 10 an hour per signed-in user: the GET it guards is counted, and another user is not affected', async () => {
+    const statuses: number[] = [];
+    for (let i = 0; i < 11; i++) statuses.push((await send('GET', PATH, 'Bearer ok', undefined, { 'x-test-user': 'busy-exporter' })).status);
+    expect(statuses.slice(0, 10).every((s) => s === 200)).toBe(true);
+    expect(statuses[10]).toBe(429);
+    expect((await send('GET', PATH, 'Bearer ok', undefined, { 'x-test-user': 'someone-else' })).status).toBe(200);
   });
 
   it('answers 500, not an empty file, when the database fails', async () => {

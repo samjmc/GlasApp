@@ -4,7 +4,7 @@
 
 # GlasApp production image: one Express process that serves the API and the built client.
 # Build:  docker build -t glasapp --build-arg VITE_SUPABASE_URL=... --build-arg VITE_SUPABASE_ANON_KEY=... .
-# Run:    needs DATABASE_URL, SUPABASE_URL and SUPABASE_ANON_KEY at runtime. See docs/deploy.md.
+# Run:    needs DATABASE_URL, SUPABASE_URL, SUPABASE_ANON_KEY and SUPABASE_SERVICE_ROLE_KEY at runtime. See docs/deploy.md.
 
 # ---- build: full dependencies, client bundle (dist/public) and server bundle (dist/index.js)
 FROM node:20-slim AS build

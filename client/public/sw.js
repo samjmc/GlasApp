@@ -3,7 +3,7 @@
 
 // v2: v1's data cache held signed-in users' API responses (profile, quiz history). Activating
 // this version deletes every v1 cache, so those copies are removed from existing browsers too.
-const CACHE_VERSION = 'glas-politics-v2';
+const CACHE_VERSION = 'glas-politics-v3';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DATA_CACHE = `${CACHE_VERSION}-data`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
@@ -57,6 +57,12 @@ self.addEventListener('fetch', (event) => {
 
   // Skip cross-origin requests
   if (url.origin !== location.origin) {
+    return;
+  }
+
+  // Profile pictures: a person's own upload, which they can replace or erase. Cache-first would keep
+  // showing the old one, and keep a copy of an erased account's picture, in a cache nothing clears.
+  if (url.pathname.startsWith('/uploads/')) {
     return;
   }
 

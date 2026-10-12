@@ -28,17 +28,18 @@ run('exportUserData against Postgres', () => {
   const q = (sql: string, params: unknown[] = []) => dbmod.pool.query(sql, params);
 
   async function seedUser(userId: string, vote: 'option_a' | 'option_b') {
+    // First: the political tables reference politics.users (migration 0027).
+    await q(
+      `insert into politics.users (id, first_name, last_name, county, bio, phone_number, phone_verified, phone_code_hash, phone_code_attempts, political_consent_at, political_consent_version)
+       values ($1, $2, 'Tester', 'Cork', 'about me', $3, true, 'secret-hash', 2, '2026-10-01T10:00:00Z', 1)`,
+      [userId, `First ${userId}`, `+35387${userId.length}${userId.charCodeAt(5)}`],
+    );
     const session = await q("insert into politics.daily_sessions (user_id, session_date, status, county) values ($1, '2026-09-25', 'completed', 'Cork') returning id", [userId]);
     const item = await q('insert into politics.daily_session_items (session_id, question_id, position) values ($1, $2, 0) returning id', [session.rows[0].id, questionId]);
     await q("insert into politics.policy_votes (user_id, question_id, option_key, source, session_item_id) values ($1, $2, $3, 'daily_session', $4)", [userId, questionId, vote, item.rows[0].id]);
     await q("insert into politics.pledge_category_priorities (user_id, category, rank) values ($1, 'housing', 1), ($1, 'health', 2)", [userId]);
     await q(`insert into politics.quiz_results (user_id, answers, ${VECTOR}, ideology, description) values ($1, '[{"questionId":1,"answerIndex":0}]', 1, 2, 3, 4, 5, 6, 7, 8, 'Centrist', $2)`, [userId, `desc of ${userId}`]);
     await q(`insert into politics.ideology_profiles (subject_kind, subject_id, ${VECTOR}, total_weight, evidence_count) values ('user', $1, 1, 2, 3, 4, 5, 6, 7, 8, 1, 1)`, [userId]);
-    await q(
-      `insert into politics.users (id, first_name, last_name, county, bio, phone_number, phone_verified, phone_code_hash, phone_code_attempts, political_consent_at, political_consent_version)
-       values ($1, $2, 'Tester', 'Cork', 'about me', $3, true, 'secret-hash', 2, '2026-10-01T10:00:00Z', 1)`,
-      [userId, `First ${userId}`, `+35387${userId.length}${userId.charCodeAt(5)}`],
-    );
   }
 
   beforeAll(async () => {
@@ -71,9 +72,19 @@ run('exportUserData against Postgres', () => {
     await seedUser('user-a', 'option_a');
     await seedUser('user-b', 'option_b');
 
-    const out = await mod.exportUserData('user-a', { email: 'a@example.ie' }, NOW);
+    const userMetadata = {
+      first_name: 'Aoife', last_name: 'Tester', username: 'aoife', county: 'Kerry', constituency: 'Kerry', bio: 'meta bio',
+      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE',
+      // Not profile details the app keeps: left out.
+      role: 'admin', avatar_url: 'https://google.example/p.png', has_seen_onboarding: true,
+    };
+    const out = await mod.exportUserData('user-a', { email: 'a@example.ie', userMetadata }, NOW);
 
     expect(out).toMatchObject({ format: mod.EXPORT_FORMAT_VERSION, exportedAt: '2026-10-10T12:00:00.000Z' });
+    expect(out.profileMetadata).toEqual({
+      first_name: 'Aoife', last_name: 'Tester', username: 'aoife', county: 'Kerry', constituency: 'Kerry', bio: 'meta bio',
+      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE',
+    });
     expect(out.account).toMatchObject({ id: 'user-a', email: 'a@example.ie', firstName: 'First user-a', county: 'Cork', bio: 'about me', phoneVerified: true, politicalConsentVersion: 1 });
     expect(out.quizResults).toHaveLength(1);
     expect(out.quizResults[0]).toMatchObject({ ideology: 'Centrist', description: 'desc of user-a', economic: 1, technocratic: 8, answers: [{ questionId: 1, answerIndex: 0 }] });
@@ -92,7 +103,7 @@ run('exportUserData against Postgres', () => {
 
   it('never carries the phone code hash or its bookkeeping, or the owner id on a row', async () => {
     await seedUser('user-a', 'option_a');
-    const out = await mod.exportUserData('user-a', { email: null }, NOW);
+    const out = await mod.exportUserData('user-a', { email: null, userMetadata: {} }, NOW);
     const text = JSON.stringify(out);
     expect(text).not.toContain('secret-hash');
     expect(out.account).not.toHaveProperty('phoneCodeHash');
@@ -105,9 +116,9 @@ run('exportUserData against Postgres', () => {
   });
 
   it('is empty, not an error, for a user with no data, and refuses an empty id', async () => {
-    const out = await mod.exportUserData('nobody', { email: 'n@example.ie' }, NOW);
-    expect(out).toMatchObject({ account: null, quizResults: [], ideologyProfile: null, votes: [], dailySessions: [], pledgePriorities: [] });
-    await expect(mod.exportUserData('', { email: null })).rejects.toThrow();
+    const out = await mod.exportUserData('nobody', { email: 'n@example.ie', userMetadata: { bio: null } }, NOW);
+    expect(out).toMatchObject({ account: null, profileMetadata: {}, quizResults: [], ideologyProfile: null, votes: [], dailySessions: [], pledgePriorities: [] });
+    await expect(mod.exportUserData('', { email: null, userMetadata: {} })).rejects.toThrow();
   });
 
   it('covers every user-keyed table in the politics schema', async () => {

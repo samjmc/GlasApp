@@ -18,7 +18,7 @@ export const E2E_TDS = [
 ] as const;
 
 /**
- * Inherited variables the e2e server must not see (LLMs, Redis, Twilio). Set to '' rather than
+ * Inherited variables the e2e server must not see (LLMs, Redis). Set to '' rather than
  * left out: the webServer inherits the parent environment, and dotenv never overrides a
  * variable that is already set, so '' also keeps a local dotenv file from filling them in.
  * SUPABASE_SERVICE_ROLE_KEY is not here: '' crashes server/auth/supabase.ts (it falls back
@@ -32,6 +32,4 @@ export const BLANKED_ENV = [
   'JEV_API_KEY',
   'TAVILY_API_KEY',
   'REDIS_URL',
-  'TWILIO_ACCOUNT_SID',
-  'TWILIO_AUTH_TOKEN',
 ] as const;

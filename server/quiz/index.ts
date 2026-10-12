@@ -8,6 +8,7 @@ import type { IdeologyDimension } from '@shared/ideology';
 import { QUIZ_QUESTIONS, type QuizResponse, type QuizResult } from '@shared/quiz';
 import { verifyPlan, type QuizPlanRecord } from '@shared/quizPlan';
 import type { QuizResultRow } from '@shared/schema/quiz';
+import { ConsentRequiredError } from '../account/consentError';
 import { recomputeProfile } from '../ideology';
 import * as repo from '../ideology/repository';
 import { ideologyLabel } from './label';
@@ -47,8 +48,16 @@ export async function submitQuiz(userId: string | null, answers: QuizResponse[],
   if (seed !== undefined && !plan) console.warn('[quiz] plan mismatch', { seed, answered: answers.map((a) => a.questionId) });
   const followUpDimensions = followUpDimensionsOf(plan);
   const { name, description } = ideologyLabel(vector);
-  if (!userId) return { id: null, vector, ideology: name, description, answeredCount, answeredByDimension, followUpDimensions, createdAt: null };
-  const row = await repo.insertQuizResult({ userId, answers, plan, vector, ideology: name, description });
+  const unsaved: QuizResult = { id: null, vector, ideology: name, description, answeredCount, answeredByDimension, followUpDimensions, createdAt: null };
+  if (!userId) return unsaved;
+  let row: QuizResultRow;
+  try {
+    row = await repo.insertQuizResult({ userId, answers, plan, vector, ideology: name, description });
+  } catch (error) {
+    // Consent was withdrawn after the route checked it: answer like an anonymous quiz, store nothing.
+    if (error instanceof ConsentRequiredError) return unsaved;
+    throw error;
+  }
   // The result is saved; a failed recompute must not turn that into an error the client
   // retries (a duplicate row). The next vote, quiz or `npm run ideology -- --recalculate` heals it.
   await recomputeProfile(userId).catch((error) => {

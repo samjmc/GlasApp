@@ -12,6 +12,7 @@
  *   npx vitest run server/voting/voting.integration.test.ts
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
 const votingUrl = testDatabaseUrl('voting');
@@ -77,6 +78,7 @@ run('voting against Postgres', () => {
     await ensureDatabase(votingUrl!);
     dbmod = await import('../db');
     await applyAllMigrations(dbmod.pool);
+    await consentTo(dbmod.pool, 'u1', 'u2');
     repo = await import('./repository');
     service = await import('./service');
     index = await import('./index');

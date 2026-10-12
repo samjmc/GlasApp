@@ -243,16 +243,16 @@ community/
 ┌─────────────────────────────────────────────────────────────┐
 │                    Glas Politics Backend                     │
 └─────────────────────────────────────────────────────────────┘
-           │         │         │         │         │
-           │         │         │         │         │
-┌──────────▼───┐ ┌──▼─────┐ ┌─▼──────┐ ┌▼────────┐ ┌▼────────┐
-│  Supabase    │ │ OpenAI │ │Anthropic│ │SendGrid │ │ Twilio  │
-│              │ │        │ │         │ │         │ │         │
-│ - Database   │ │ - GPT-4│ │ - Claude│ │ - Email │ │ - SMS   │
-│ - Auth       │ │ - API  │ │ - API   │ │ - API   │ │ - Verify│
-│ - Storage    │ │        │ │         │ │         │ │         │
-│ - Realtime   │ │        │ │         │ │         │ │         │
-└──────────────┘ └────────┘ └─────────┘ └─────────┘ └─────────┘
+           │         │         │         │
+           │         │         │         │
+┌──────────▼───┐ ┌──▼─────┐ ┌─▼──────┐ ┌▼────────┐
+│  Supabase    │ │ OpenAI │ │Anthropic│ │SendGrid │
+│              │ │        │ │         │ │         │
+│ - Database   │ │ - GPT-4│ │ - Claude│ │ - Email │
+│ - Auth       │ │ - API  │ │ - API   │ │ - API   │
+│ - Storage    │ │        │ │         │ │         │
+│ - Realtime   │ │        │ │         │ │         │
+└──────────────┘ └────────┘ └─────────┘ └─────────┘
 ```
 
 ### Integration Details
@@ -281,11 +281,6 @@ community/
 - Verification emails
 - Password resets
 - Notification emails
-
-**Twilio**
-- SMS verification
-- Two-factor authentication
-- Notification alerts
 
 ---
 

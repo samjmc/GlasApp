@@ -7,6 +7,7 @@
  */
 import type { NextFunction, Request, Response } from 'express';
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { sql } from 'drizzle-orm';
 import { POLITICAL_CONSENT_VERSION } from '@shared/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
@@ -32,6 +33,8 @@ run('political consent against Postgres', () => {
 
   /** One row of every kind of political data, plus a profile with a name. */
   async function seedPoliticalData(userId: string) {
+    // First: the political tables reference politics.users (migration 0027).
+    await q("insert into politics.users (id, first_name) values ($1, 'Test') on conflict (id) do nothing", [userId]);
     const session = await q("insert into politics.daily_sessions (user_id, session_date) values ($1, '2026-09-25') returning id", [userId]);
     const item = await q('insert into politics.daily_session_items (session_id, question_id, position) values ($1, $2, 0) returning id', [
       session.rows[0].id,
@@ -44,7 +47,6 @@ run('political consent against Postgres', () => {
     await q("insert into politics.pledge_category_priorities (user_id, category, rank) values ($1, 'housing', 1)", [userId]);
     await q(`insert into politics.quiz_results (user_id, answers, ${VECTOR}, ideology, description) values ($1, '[]', ${ZEROS}, 'Centrist', 'x')`, [userId]);
     await q(`insert into politics.ideology_profiles (subject_kind, subject_id, ${VECTOR}, total_weight, evidence_count) values ('user', $1, ${ZEROS}, 1, 1)`, [userId]);
-    await q("insert into politics.users (id, first_name) values ($1, 'Test') on conflict (id) do nothing", [userId]);
   }
 
   async function politicalRowsOf(userId: string): Promise<number> {
@@ -100,6 +102,20 @@ run('political consent against Postgres', () => {
     expect(Math.abs(Date.now() - new Date(rows[0].political_consent_at).getTime())).toBeLessThan(60_000);
   });
 
+  it('agreeing again to the same wording keeps the original date; agreeing to new wording replaces it', async () => {
+    await mod.grantPoliticalConsent('keeper');
+    await q("update politics.users set political_consent_at = '2026-01-01T00:00:00Z' where id = 'keeper'");
+    await mod.grantPoliticalConsent('keeper');
+    const kept = await q("select political_consent_at from politics.users where id = 'keeper'");
+    expect(new Date(kept.rows[0].political_consent_at).toISOString()).toBe('2026-01-01T00:00:00.000Z');
+
+    await q("update politics.users set political_consent_version = $1 where id = 'keeper'", [POLITICAL_CONSENT_VERSION - 1]);
+    await mod.grantPoliticalConsent('keeper');
+    const replaced = await q("select political_consent_at, political_consent_version from politics.users where id = 'keeper'");
+    expect(replaced.rows[0].political_consent_version).toBe(POLITICAL_CONSENT_VERSION);
+    expect(new Date(replaced.rows[0].political_consent_at).getTime()).toBeGreaterThan(Date.parse('2026-06-01T00:00:00Z'));
+  });
+
   it('does not count a consent given to an older wording', async () => {
     await mod.grantPoliticalConsent('old-wording');
     await q("update politics.users set political_consent_version = $1 where id = 'old-wording'", [POLITICAL_CONSENT_VERSION - 1]);
@@ -132,6 +148,94 @@ run('political consent against Postgres', () => {
     expect(await mod.withdrawPoliticalConsent('empty')).toEqual({ policyVotes: 0, dailySessions: 0, pledgeCategoryPriorities: 0, quizResults: 0, ideologyProfile: 0 });
     await mod.grantPoliticalConsent('empty');
     expect(await mod.hasPoliticalConsent('empty')).toBe(true);
+  });
+
+  describe('every political write re-checks consent as it writes', () => {
+    const vote = (userId: string) =>
+      import('../voting/repository').then((voting) =>
+        voting.upsertVote({ userId, questionId, optionKey: 'option_a', source: 'article', sessionItemId: null }),
+      );
+
+    it('refuses each write, storing nothing, for a user who withdrew after the route guard let them through', async () => {
+      const voting = await import('../voting/repository');
+      const ideologyRepo = await import('../ideology/repository');
+      const pledges = await import('../pledges/repository');
+      const quiz = await import('../quiz');
+      const ideology = await import('../ideology');
+
+      // Control: with consent the same writes store rows, so the zero below is not vacuous.
+      await mod.grantPoliticalConsent('late');
+      await vote('late');
+      await pledges.saveRanking('late', ['housing']);
+      expect(await politicalRowsOf('late')).toBe(2);
+
+      await mod.withdrawPoliticalConsent('late');
+      await expect(vote('late')).rejects.toBeInstanceOf(mod.ConsentRequiredError);
+      await expect(
+        voting.createSession({ userId: 'late', sessionDate: '2026-09-25', county: 'Cork', constituency: null, profileBefore: null, questionIds: [questionId] }),
+      ).rejects.toBeInstanceOf(mod.ConsentRequiredError);
+      await expect(voting.completeSession('late', 1, 1, {} as never)).rejects.toBeInstanceOf(mod.ConsentRequiredError);
+      await expect(
+        ideologyRepo.insertQuizResult({ userId: 'late', answers: [], plan: null, vector: {} as never, ideology: 'x', description: 'x' }),
+      ).rejects.toBeInstanceOf(mod.ConsentRequiredError);
+      await expect(pledges.saveRanking('late', ['housing'])).rejects.toBeInstanceOf(mod.ConsentRequiredError);
+      // The quiz still answers, like an anonymous one, and the profile recompute writes nothing.
+      expect((await quiz.submitQuiz('late', [{ questionId: 1, answerIndex: 0 }])).id).toBeNull();
+      await ideology.recomputeProfile('late');
+
+      expect(await politicalRowsOf('late')).toBe(0);
+    });
+
+    it('a withdrawal waits for a write already in progress, then erases what it wrote', async () => {
+      await mod.grantPoliticalConsent('racer');
+      let release!: () => void;
+      const gate = new Promise<void>((resolve) => (release = resolve));
+      let locked!: () => void;
+      const inside = new Promise<void>((resolve) => (locked = resolve));
+
+      const writing = mod.withPoliticalConsent('racer', async (tx) => {
+        await tx.execute(
+          sql`insert into politics.policy_votes (user_id, question_id, option_key, source) values ('racer', ${questionId}, 'option_a', 'article')`,
+        );
+        locked();
+        await gate;
+      });
+      await inside;
+
+      const withdrawing = mod.withdrawPoliticalConsent('racer');
+      const early = await Promise.race([withdrawing.then(() => 'finished'), new Promise((r) => setTimeout(() => r('waiting'), 300))]);
+      expect(early).toBe('waiting');
+
+      release();
+      await writing;
+      const erased = await withdrawing;
+      expect(erased.policyVotes).toBe(1);
+      expect(await politicalRowsOf('racer')).toBe(0);
+    });
+
+    it('a write that waits on a withdrawal in progress sees it and is refused', async () => {
+      await mod.grantPoliticalConsent('waiter');
+      const client = await dbmod.pool.connect();
+      try {
+        await client.query('begin');
+        await client.query("select id from politics.users where id = 'waiter' for update");
+        await client.query("update politics.users set political_consent_at = null, political_consent_version = null where id = 'waiter'");
+
+        const writing = vote('waiter');
+        const settled = writing.then(
+          () => 'stored',
+          (error: unknown) => (error instanceof mod.ConsentRequiredError ? 'refused' : String(error)),
+        );
+        const early = await Promise.race([settled, new Promise((r) => setTimeout(() => r('waiting'), 300))]);
+        expect(early).toBe('waiting');
+
+        await client.query('commit');
+        expect(await settled).toBe('refused');
+      } finally {
+        client.release();
+      }
+      expect(await politicalRowsOf('waiter')).toBe(0);
+    });
   });
 
   describe('requirePoliticalConsent', () => {

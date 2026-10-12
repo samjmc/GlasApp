@@ -6,7 +6,7 @@
  * Skipped unless TEST_DATABASE_URL is set; uses its own database `<db>_account`.
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from 'vitest';
-import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
+import { applyAllMigrations, applyMigration, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
 
 const url = testDatabaseUrl('account');
 const run = describe.skipIf(!url);
@@ -39,6 +39,8 @@ run('deleteUserData against Postgres', () => {
   const q = (sql: string, params: unknown[] = []) => dbmod.pool.query(sql, params);
 
   async function seedUser(userId: string) {
+    // First: the political tables reference politics.users (migration 0027).
+    await q("insert into politics.users (id, first_name, phone_number) values ($1, 'Test', $2)", [userId, `+35387${userId.length}${userId.charCodeAt(5)}`]);
     const session = await q(
       "insert into politics.daily_sessions (user_id, session_date) values ($1, '2026-09-25') returning id",
       [userId],
@@ -60,7 +62,6 @@ run('deleteUserData against Postgres', () => {
       `insert into politics.ideology_profiles (subject_kind, subject_id, ${VECTOR}, total_weight, evidence_count) values ('user', $1, ${ZEROS}, 1, 1)`,
       [userId],
     );
-    await q("insert into politics.users (id, first_name, phone_number) values ($1, 'Test', $2)", [userId, `+35387${userId.length}${userId.charCodeAt(5)}`]);
   }
 
   async function countsFor(userId: string) {
@@ -137,4 +138,33 @@ run('deleteUserData against Postgres', () => {
     const covered = OWNED.map((o) => o.table);
     expect(found.filter((t: string) => !covered.includes(t))).toEqual([]);
   });
+
+  it('deleting a users row any other way takes its political rows with it (foreign keys, 0027)', async () => {
+    await seedUser('user-a');
+    await seedUser('user-b');
+    const before = await countsFor('user-b');
+
+    await q("delete from politics.users where id = 'user-a'");
+
+    // ideology_profiles has no foreign key (subject_id also holds TD ids and party names); deleteUserData erases it.
+    expect(await countsFor('user-a')).toEqual({
+      policy_votes: 0, daily_sessions: 0, daily_session_items: 0, pledge_category_priorities: 0, quiz_results: 0, ideology_profiles: 1, users: 0,
+    });
+    expect(await countsFor('user-b')).toEqual(before);
+    // And no political row can be written for someone with no users row.
+    await expect(q("insert into politics.pledge_category_priorities (user_id, category, rank) values ('user-a', 'housing', 1)")).rejects.toThrow(
+      /violates foreign key constraint/,
+    );
+  });
+
+  it('migration 0027 fails on a row with no users row, and deletes nothing', async () => {
+    try {
+      await applyAllMigrations(dbmod.pool, '0027_user_id_foreign_keys');
+      await q(`insert into politics.quiz_results (user_id, answers, ${VECTOR}, ideology, description) values ('orphan', '[]', ${ZEROS}, 'Centrist', 'x')`);
+      await expect(applyMigration(dbmod.pool, '0027_user_id_foreign_keys')).rejects.toThrow(/violates foreign key constraint/);
+      expect((await q("select count(*)::int as n from politics.quiz_results where user_id = 'orphan'")).rows[0].n).toBe(1);
+    } finally {
+      await applyAllMigrations(dbmod.pool);
+    }
+  }, 60_000);
 });

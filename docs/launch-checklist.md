@@ -10,14 +10,17 @@ Tested on a laptop, not on a real host:
 - The production image **builds** from `main`, runs as the non-root user `node`, answers `/health`, serves
   the client and its SPA fallback, reads the database, refuses unauthenticated calls with 401, and **stops
   on SIGTERM in about 1.5 seconds with exit code 0**.
-- Every migration in `drizzle/` applies to an **empty** database.
+- Every migration in `drizzle/` applies to an **empty** database (25 when this was checked on 2026-10-10;
+  CI applies them all on every pull request).
 - CI now builds the image and runs these checks on every pull request (`image` job), so the kit cannot rot.
 
-Fixed in the same round: the server no longer dies when the database drops an idle connection (`pool`
-error listener); unhandled errors are written to the structured log before the process exits; the shutdown
-closes database connections; container logs are rotated by size; the service worker no longer caches
-signed-in API responses (and deletes the old cache); an unused public endpoint that sent free text to an AI
-provider is removed.
+Fixed in the same round: the server no longer dies when the database drops a connection, idle or in use
+(listeners on the pool and on every client); unhandled errors are written to the structured log before the
+process exits; the shutdown closes database connections; container logs are rotated by size; the request
+log records the path only, never the query string or headers (a reset link carries a one-time token in its
+query), and no health probe is logged; the service worker no longer caches signed-in API responses or
+profile pictures (and deletes the old cache); two public endpoints that sent free text to an AI provider
+are removed.
 
 Not checked: Docker Compose with the Caddy profile, the read-only root file system in `deploy/compose.yml`
 (only the app's writes were checked in the code: profile pictures go to the `uploads` volume), a real
@@ -46,8 +49,30 @@ In the Supabase dashboard (Authentication):
    is project-wide, so agree any change with whoever runs GlasIntelligence first.
 6. **SMTP:** set a real sender. Supabase's built-in sender is rate limited and meant for testing.
 7. **Database, API settings:** confirm the `politics` schema is **not** exposed through the public API.
+   Migration 0026 is the second line: `anon` and `authenticated` have no grant on the schema, and every
+   table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
-   (`docs/deploy.md` section 3). GlasCore already has the earlier ones; only what is missing is applied.
+   (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown), 0026
+   (row level security on the politics tables), 0027 (user id foreign keys) and 0028 (the question record's
+   government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
+   table before you migrate.
+9. **Political data saved before consent existed.** Votes, rankings, pledge priorities and quiz results
+   from people with no recorded consent (or consent to an older text) have no lawful basis under Article 9.
+   Count them, then delete them or ask the people to consent again. Read-only count:
+
+   ```sql
+   select count(*) as users_with_opinions_and_no_current_consent
+   from politics.users u
+   where (u.political_consent_at is null or u.political_consent_version is distinct from 1)
+     and (exists (select 1 from politics.policy_votes v where v.user_id::text = u.id::text)
+       or exists (select 1 from politics.quiz_results q where q.user_id::text = u.id::text)
+       or exists (select 1 from politics.daily_sessions d where d.user_id::text = u.id::text)
+       or exists (select 1 from politics.pledge_category_priorities p where p.user_id::text = u.id::text)
+       or exists (select 1 from politics.ideology_profiles i where i.subject_kind = 'user' and i.subject_id = u.id::text));
+   ```
+
+   Change `1` to `POLITICAL_CONSENT_VERSION` in `shared/consent.ts` if it has moved. Until this is done, the
+   regional and party summaries also count those people.
 
 On the host: fill `deploy/glasapp.env` (a secret per line; `SUPABASE_URL` and `SUPABASE_ANON_KEY` are also baked
 into the client at **build** time, so rebuild after changing either), set an admin secret, keep `SCHEDULER=off`.
@@ -83,8 +108,7 @@ already read, so the last two read only new or changed items.)
 ## 6. First week
 
 - Read the container logs daily (rotated, about a week kept). Look for `Database pool:` lines and for
-  `"level":60` (pino's number for fatal). Request lines hold no visitor IP address or user agent: the logger
-  redacts them, and the size rotation is only a second guard for the 90 days in the privacy policy.
-- Watch pooler connections in Supabase against `DB_POOL_MAX` (default 10).
+  `"level":60` (pino's number for fatal; the text "fatal" is not in the line).
+- Watch pooler connections in Supabase against `DB_POOL_MAX` (default 10; the pooler holds 15, shared).
 - Confirm the Supabase plan's backups, and do one restore drill into a scratch project.
 - Watch model spend when the crons are on.

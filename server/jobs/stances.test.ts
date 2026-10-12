@@ -32,7 +32,25 @@ vi.mock('../stances', () => ({
         quoteBlock: 'M1',
         quote: 'calls on the Government to build public homes',
         candidates: 4,
-        match: { questionId: 7, question: 'How should the State meet housing demand?', ta: 'Build public homes', nil: 'Leave it to the market', confidence: 0.8 },
+        match: { questionId: 7, question: 'How should the State meet housing demand?', ta: 'Build public homes', confidence: 0.8 },
+        matchReason: null,
+        model: 'stub-model',
+        error: null,
+      },
+      {
+        divisionId: 'dail-34-2026-09-23-vote_9',
+        date: '2026-09-23',
+        subject: 'Question put',
+        status: 'no_match',
+        rejectReason: null,
+        divisionKind: 'motion',
+        taMeans: 'Raise the relief.',
+        blocks: ['Q', 'M1'],
+        quoteBlock: 'M1',
+        quote: 'raises the maximum relief to 35,000 euro',
+        candidates: 2,
+        match: null,
+        matchReason: 'Refused: the answer names 50000, which the proposal does not.',
         model: 'stub-model',
         error: null,
       },
@@ -40,7 +58,22 @@ vi.mock('../stances', () => ({
   })),
   syncDivisionStances: vi.fn(async () => ({ divisions: 2, rows: 40, skipped: 0, evidence: 12, tds: 170, parties: 9 })),
   runDivisionAudit: vi.fn(async () => ({
-    audit: { divisions: 1, agree: 1, total: 2, byDimension: { economic: { agree: 1, total: 2 } }, worst: [] },
+    audit: {
+      divisions: 1,
+      agree: 1,
+      total: 2,
+      byDimension: {
+        economic: { agree: 1, total: 2 },
+        social: { agree: 0, total: 0 },
+        cultural: { agree: 0, total: 0 },
+        authority: { agree: 0, total: 0 },
+        environmental: { agree: 0, total: 0 },
+        welfare: { agree: 0, total: 0 },
+        globalism: { agree: 0, total: 0 },
+        technocratic: { agree: 0, total: 1 },
+      },
+      worst: [],
+    },
     matched: [{ divisionId: 'dail-34-2026-09-24-vote_3', date: '2026-09-24', subject: 'Question put', divisionKind: 'words_stand', taMeans: 'Keep it.', quoteBlock: 'M1', quote: 'q', question: 'Q?', ta: 'Build public homes', nil: null, meaningConfidence: 0.8, matchConfidence: 0.9, url: 'https://www.oireachtas.ie/en/debates/vote/dail/34/2026-09-24/3/' }],
   })),
 }));
@@ -130,7 +163,9 @@ describe('npm run stances -- --divisions: what each mode runs', () => {
       'Q, M1, A1',
       '[M1] "calls on the Government to build public homes"',
       '4 candidate question(s)',
-      'Tá: Build public homes | Níl: Leave it to the market (confidence 0.8)',
+      'Tá: Build public homes (confidence 0.8)',
+      // A refused match shows why, so a person can see what the checks turned away.
+      'Refused: the answer names 50000, which the proposal does not.',
       'https://www.oireachtas.ie/en/debates/vote/dail/34/2026-09-24/3/',
     ]) {
       expect(out).toContain(text);
@@ -161,7 +196,9 @@ describe('npm run stances -- --divisions: what each mode runs', () => {
     await runDivisions(['--divisions', '--audit'], log);
     expect(stances.runDivisionAudit).toHaveBeenCalledTimes(1);
     const out = lines.join('\n');
-    expect(out).toMatch(/1 of 2.*50%/);
+    expect(out).toMatch(/Audit: 1 division\(s\) checked; .*on 1 of 2 \(50%\)/);
+    // The confounded axis is shown, labelled, and not part of the score above.
+    expect(out).toContain('technocratic: 0 of 1 (0%) - not scored');
     expect(out).toContain('Tá: Build public homes | Níl: (none)');
     expect(out).toContain('https://www.oireachtas.ie/en/debates/vote/dail/34/2026-09-24/3/');
   });
