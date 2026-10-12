@@ -37,6 +37,7 @@ names only are listed here; the values come from you.
 | Optional | `LLM_BASE_URL`, `LLM_MODEL_NAME` (every model call uses it when set; unset, DeepSeek uses `deepseek-flash` and OpenAI `gpt-4o-mini`), `OPENAI_API_KEY` (used only when `LLM_API_KEY` is unset), `REDIS_URL`, `LOG_LEVEL`, `PORT` (leave it unset with the compose file: the port mapping and the Caddyfile both assume 5000), `DB_POOL_MAX` (database connections, default 10; the session pooler's Pool Size in Supabase is 15 and shared with GlasIntelligence, so raise that first) |
 | Scheduled jobs | `SCHEDULER` (`off` stops every cron), `DIVISION_STANCES`, `DEBATE_ITEMS`, `QUESTION_ITEMS` |
 | Only with the proxy profile | `SITE_DOMAIN` |
+| Tests and one-off tools, never on the host | `TEST_DATABASE_URL` (a disposable Postgres, for `npm test` and `npm run test:e2e`), `E2E_PORT` (port of the e2e server, default 5055), `ROBOTS_SOURCE_DATABASE_URL` (`npm run robots`, read-only copy source), `DIRECT_URL` (a non-pooled URL for `db:migrate`, wins over `DATABASE_URL`) |
 
 Leave a line commented out (`# NAME=`) when you have no value. An empty value is not the same
 as unset: an empty `SUPABASE_SERVICE_ROLE_KEY` stops the server.

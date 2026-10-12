@@ -66,7 +66,7 @@ no answer (no `JEV_API_KEY`/`CLOUDFLARE_ACCOUNT_ID`, an error, no credit) the qu
 
 ### Dáil divisions as stances (`server/stances/divisions.ts`, behind `DIVISION_STANCES`)
 
-Plan: `docs/plans/quiz-improvements/01c-division-stances.md`. A matched division becomes rows in
+Plan: the "Division stances" section of `docs/plans/td-stances.md`. A matched division becomes rows in
 `td_stances` with quote kind `division` — no evidence source of its own. Two model calls per
 division, both checked by code: call 1 says what a Tá vote supported, with a quote copied from ONE
 labelled PROPOSAL block (the motion or amendment moved, a bill's long title, the question); call 2
