@@ -1,0 +1,180 @@
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { afterAll, describe, expect, it } from 'vitest';
+import { applyKnownDrift, checkDocFacts, linkIssues, linkTargets, npmRunIssues, resolveLink, withoutCode } from './check-doc-facts';
+import { listFiles } from './source-files';
+
+const made: string[] = [];
+afterAll(() => made.forEach((d) => fs.rmSync(d, { recursive: true, force: true })));
+
+/** A throwaway repo on disk: relative path -> content. */
+function repo(files: Record<string, string>): { root: string; files: string[] } {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'doc-facts-'));
+  made.push(root);
+  for (const [rel, content] of Object.entries(files)) {
+    fs.mkdirSync(path.dirname(path.join(root, rel)), { recursive: true });
+    fs.writeFileSync(path.join(root, rel), content);
+  }
+  return { root, files: listFiles(root, { useGit: false }) };
+}
+
+// Built from parts so this file never spells a full environment read.
+const reads = (name: string) => `export const v = ${'process'}${'.env'}.${name};\n`;
+
+describe('link check', () => {
+  const base = {
+    'package.json': '{"scripts":{}}',
+    'docs/real.md': '# real\n',
+    'docs/folder/index.md': '# index\n',
+  };
+
+  it('flags a link to a file that is not there, with file and line', () => {
+    const { root, files } = repo({ ...base, 'README.md': 'intro\n\nSee [gone](docs/gone.md).\n' });
+    const { issues, checked } = linkIssues(root, files, ['README.md']);
+    expect(checked).toBe(1);
+    expect(issues).toEqual(['README.md:3: broken link docs/gone.md (no docs/gone.md)']);
+  });
+
+  it('accepts files, folders, anchors, queries and links resolved from the linking file', () => {
+    const { root, files } = repo({
+      ...base,
+      'docs/a.md': '[r](real.md) [r2](./real.md#top) [f](folder/) [up](../README.md) [root](/docs/real.md) [q](real.md?x=1)\n',
+      'README.md': '# readme\n',
+    });
+    const { issues, checked } = linkIssues(root, files, ['docs/a.md']);
+    expect(checked).toBe(6);
+    expect(issues).toEqual([]);
+  });
+
+  it('ignores web links, mail links and pure anchors, and counts only what it checked', () => {
+    const { root, files } = repo({
+      ...base,
+      'README.md': '[w](https://example.com/x.md) [m](mailto:a@b.c) [a](#section) [l](docs/real.md)\n',
+    });
+    const { issues, checked } = linkIssues(root, files, ['README.md']);
+    expect(checked).toBe(1);
+    expect(issues).toEqual([]);
+  });
+
+  it('does not read links inside code', () => {
+    const md = ['`[x](nope.md)`', '', '```md', '[y](nope2.md)', '```', '', '[z](docs/real.md)'].join('\n');
+    expect(linkTargets(md).map((l) => l.target)).toEqual(['docs/real.md']);
+    expect(withoutCode(md).split('\n')).toHaveLength(md.split('\n').length);
+  });
+
+  it('reads reference definitions and HTML links', () => {
+    const md = '[ref]: docs/gone.md\n<a href="docs/also-gone.md">x</a>\n<img src="docs/real.md">\n';
+    expect(linkTargets(md).map((l) => l.target).sort()).toEqual(['docs/also-gone.md', 'docs/gone.md', 'docs/real.md']);
+  });
+
+  it('is case-sensitive, as GitHub is, even on a case-insensitive disk', () => {
+    const { root, files } = repo({ ...base, 'README.md': '[x](docs/REAL.md)\n' });
+    expect(linkIssues(root, files, ['README.md']).issues).toHaveLength(1);
+  });
+
+  it('flags a link that leaves the repository', () => {
+    const { root, files } = repo({ ...base, 'README.md': '[x](../outside.md)\n' });
+    expect(linkIssues(root, files, ['README.md']).issues[0]).toMatch(/leaves the repository/);
+  });
+
+  it('resolveLink', () => {
+    expect(resolveLink('docs/a.md', '../README.md#x')).toBe('README.md');
+    expect(resolveLink('docs/a.md', 'https://x.y')).toBeNull();
+    expect(resolveLink('docs/a.md', '#top')).toBeNull();
+    expect(resolveLink('docs/a.md', 'my%20file.md')).toBe('docs/my file.md');
+  });
+});
+
+describe('npm run check', () => {
+  const scripts = new Set(['dev', 'db:push']);
+
+  it('flags a script that package.json does not have, and passes ones it has', () => {
+    const { root } = repo({
+      'README.md': 'Run `npm run dev`, then `npm run db:push -- --force`.\n\n```bash\nnpm run ghost-script\n```\n',
+    });
+    const { issues, checked } = npmRunIssues(root, ['README.md'], scripts);
+    expect(checked).toBe(3);
+    expect(issues).toEqual(['README.md:4: `npm run ghost-script` is not a script in package.json']);
+  });
+
+  it('strips sentence punctuation from the name and ignores placeholders', () => {
+    const { root } = repo({ 'README.md': 'Use npm run dev. Or npm run <name>.\n' });
+    const { issues, checked } = npmRunIssues(root, ['README.md'], scripts);
+    expect(checked).toBe(1);
+    expect(issues).toEqual([]);
+  });
+
+  it('skips generated files, whose regenerate command exists only once it is wired', () => {
+    const { root } = repo({ 'docs/generated/routes.md': 'Generated by `npm run facts`\n' });
+    expect(npmRunIssues(root, ['docs/generated/routes.md'], scripts)).toEqual({ issues: [], checked: 0 });
+  });
+});
+
+describe('known drift list', () => {
+  const known = [{ file: 'docs/old.md', why: 'old' }];
+
+  it('tolerates issues in a listed file and fails on every other file', () => {
+    const out = applyKnownDrift(['docs/old.md:3: broken link x', 'docs/new.md:1: broken link y'], known);
+    expect(out.tolerated).toBe(1);
+    expect(out.issues).toEqual(['docs/new.md:1: broken link y']);
+  });
+
+  it('fails when a listed file has no issue left, so the list only shrinks', () => {
+    const out = applyKnownDrift([], known);
+    expect(out.issues).toHaveLength(1);
+    expect(out.issues[0]).toMatch(/docs\/old\.md has no broken link or dead npm run left/);
+  });
+});
+
+describe('checkDocFacts', () => {
+  const clean = {
+    'package.json': '{"scripts":{"dev":"x"}}',
+    '.env.example': 'SUPABASE_URL=\nOPTIONAL_THING=\n',
+    'server/a.ts': reads('SUPABASE_URL'),
+    'README.md': 'See [guide](docs/guide.md). Run `npm run dev`.\n',
+    'docs/guide.md': '# Guide\n',
+  };
+
+  it('passes a clean repo and reports what it checked', () => {
+    const { root, files } = repo(clean);
+    const { issues, counts } = checkDocFacts(root, files, [], []);
+    expect(issues).toEqual([]);
+    expect(counts).toMatchObject({ markdownFiles: 2, links: 1, npmRuns: 1, serverEnvVars: 1 });
+  });
+
+  it('fails a repo with a broken link, a dead npm script and an undocumented variable, all at once', () => {
+    const { root, files } = repo({
+      ...clean,
+      'README.md': 'See [guide](docs/missing.md). Run `npm run nope`.\n',
+      'server/b.ts': reads('UNDOCUMENTED_KEY'),
+    });
+    const { issues } = checkDocFacts(root, files, [], []);
+    expect(issues).toHaveLength(3);
+    expect(issues.join('\n')).toMatch(/broken link docs\/missing\.md/);
+    expect(issues.join('\n')).toMatch(/`npm run nope` is not a script/);
+    expect(issues.join('\n')).toMatch(/UNDOCUMENTED_KEY is read by the server but is not in \.env\.example/);
+  });
+
+  it('tolerates an allowlisted variable, and flags an allowlist entry that has been documented or is unread', () => {
+    const { root, files } = repo({ ...clean, 'server/b.ts': reads('UNDOCUMENTED_KEY') });
+    expect(checkDocFacts(root, files, ['UNDOCUMENTED_KEY'], []).issues).toEqual([]);
+    const stale = checkDocFacts(root, files, ['UNDOCUMENTED_KEY', 'SUPABASE_URL', 'NEVER_READ'], []).issues;
+    expect(stale).toHaveLength(2);
+    expect(stale.join('\n')).toMatch(/SUPABASE_URL is now in \.env\.example/);
+    expect(stale.join('\n')).toMatch(/NEVER_READ is on the allowlist but the server no longer reads it/);
+  });
+
+  it('does not count a client or tooling variable against .env.example', () => {
+    const { root, files } = repo({ ...clean, 'scripts/tool.ts': reads('ONLY_FOR_TOOLING') });
+    expect(checkDocFacts(root, files, [], []).issues).toEqual([]);
+  });
+
+  it('fails when it checked nothing, rather than passing vacuously', () => {
+    const { root, files } = repo({ 'package.json': '{"scripts":{}}', '.env.example': '', 'README.md': 'No links here.\n' });
+    const { issues, counts } = checkDocFacts(root, files, [], []);
+    expect(counts.links).toBe(0);
+    expect(issues.join('\n')).toMatch(/checked 0 relative links/);
+    expect(issues.join('\n')).toMatch(/0 environment variables/);
+  });
+});

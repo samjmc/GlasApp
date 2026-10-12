@@ -2,16 +2,13 @@
 
 **Scope:** every Express route in `server/`, the four auth guards, the RLS migrations, and the
 claims made by the Phase 4A (route security) and Phase 4B (RLS) agent reports.
-**Method:** static inventory (`scripts/audit/route-inventory.mjs`, committed) plus a read of
-every mutating handler it flagged. Numbers below are from running that script on `main` at
-`e5af558`, then re-checked after the fixes on this branch.
+**Method:** static inventory (`scripts/audit/route-inventory.mjs`, since replaced by the generated
+`docs/generated/routes.md`) plus a read of every mutating handler it flagged. Numbers below are
+from running that script on `main` at `e5af558`, then re-checked after the fixes on this branch.
 **Branch:** `audit/route-security-truth`.
 
-Regenerate the inventory at any time:
-
-```bash
-node scripts/audit/route-inventory.mjs --md /tmp/routes.md --json /tmp/routes.json
-```
+The inventory is now generated from the code and checked in CI; see `docs/generated/routes.md`
+(`scripts/ci/generate-facts.ts`).
 
 ---
 
@@ -117,7 +114,7 @@ points at, and whether the deployment is running.
 ```
 npx vitest run --root .     # 8 files, 163 tests pass (was 7 / 138)
 npx tsc --noEmit            # 771 errors (was 774); 0 in every touched file
-node scripts/audit/route-inventory.mjs   # unguarded-write surfaces: 0
+node scripts/audit/route-inventory.mjs   # unguarded-write surfaces: 0 (the script is gone; see docs/generated/routes.md)
 ```
 
 The new tests (`server/middleware/route-guards.test.ts`) prove each guarded endpoint returns
