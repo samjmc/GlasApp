@@ -3,9 +3,12 @@
  *
  *   classifyDivisions     model calls → division_readings. Call 1 says what a Tá vote supported,
  *                         with a quote checked against the proposal; call 2 picks the option of
- *                         an existing daily-vote question it states, or none; call 3 (only after a
- *                         match) lists what that option says that the vote does not, and any such
- *                         claim refuses the match. Never touches td_stances or evidence.
+ *                         an existing daily-vote question it states, or none (a Tá answer only: a
+ *                         vote against states none); call 3 (only after a match) asks, for each claim
+ *                         in that answer, for the proposal's own words that state it, and code checks
+ *                         they are really there: any claim without them refuses the match. Never
+ *                         touches td_stances or evidence. After changing MATCH_PROMPT_VERSION, run
+ *                         --reclassify before the next sync: the sync keeps whatever is stored.
  *   syncDivisionStances   readings × roll call → td_stances rows (quote kind 'division'), then
  *                         the whole `stance` evidence set rebuilt from td_stances, then every TD
  *                         and party profile. No model calls.
@@ -39,7 +42,7 @@ import {
   parseMeaning,
   proposalBlocks,
 } from './divisionPrompt';
-import { verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
+import { ALLOWED_BLOCKS, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
 import { stanceEvidenceRows } from './evidence';
 import { QUOTE_MIN_WORDS } from './extract';
 import * as repo from './repository';
@@ -155,6 +158,7 @@ type Stage = 'meaning' | 'match' | 'recheck';
 function stageFor(ref: DivisionRef, row: DivisionReadingRow | undefined, o: { reclassify: boolean; now: Date; windowDays: number }): Stage | null {
   if (!row) return 'meaning';
   if (o.reclassify && isStale(ref, row)) return 'meaning';
+  if (o.reclassify && row.status === 'failed') return hasMeaning(row) ? 'match' : 'meaning';
   if (o.reclassify && hasMeaning(row) && (row.status === 'matched' || matchIsStale(row))) return 'match';
   const windowOpen = o.now.getTime() <= Date.parse(`${ref.date}T00:00:00Z`) + o.windowDays * DAY_MS;
   switch (row.status) {
@@ -185,7 +189,9 @@ export interface DivisionReading {
   quoteBlock: string | null;
   quote: string | null;
   candidates: number;
-  match: { questionId: number; question: string; ta: string; nil: string | null; confidence: number } | null;
+  match: { questionId: number; question: string; ta: string; confidence: number } | null;
+  /** Why a match the model made was refused, when it was. */
+  matchReason: string | null;
   model: string | null;
   error: string | null;
 }
@@ -199,7 +205,7 @@ interface ReadDeps {
 }
 
 interface ReadResult {
-  /** null = nothing to write (a re-check that found nothing new). */
+  /** null = nothing to write: a re-check that found nothing new, or a failed re-read of a matched row, which keeps its answer. */
   row: NewDivisionReading | null;
   calls: number;
   promptTokens: number;
@@ -217,13 +223,15 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   const at = Date.parse(`${d.date}T00:00:00Z`);
   const from = new Date(at - deps.windowDays * DAY_MS);
   const to = new Date(at + deps.windowDays * DAY_MS);
-  const fresh = !previous || stage === 'meaning';
+  // The stored meaning is reused unless call 1 runs, and then the record it was read from is the stored one too:
+  // stamping today's hash on an old meaning would hide that the record has changed since.
+  const reusesMeaning = previous !== undefined && stage !== 'meaning' && hasMeaning(previous);
   const base: NewDivisionReading = {
     divisionId: ref.id,
     status: 'failed',
     ...NO_READING,
-    ...(previous && !fresh ? meaningOf(previous) : {}),
-    inputHash: divisionInputHash(d),
+    ...(reusesMeaning ? meaningOf(previous!) : {}),
+    inputHash: reusesMeaning ? previous!.inputHash : divisionInputHash(d),
     attempts: previous && !isStale(d, previous) ? previous.attempts : 0,
     readAt: deps.now,
   };
@@ -245,6 +253,7 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
       quote: base.quote ?? null,
       candidates: 0,
       match: null,
+      matchReason: null,
       model: null,
       error: null,
     },
@@ -258,6 +267,7 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
       taMeans: row.taMeans ?? null,
       quoteBlock: row.quoteBlock ?? null,
       quote: row.quote ?? null,
+      matchReason: row.matchReason ?? null,
       model: row.model ?? null,
     });
     return result;
@@ -276,9 +286,13 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   const usage = (answer: DivisionAnswer) => ({ model: answer.model.slice(0, 60), promptTokens: result.promptTokens, completionTokens: result.completionTokens });
   const failed = (row: NewDivisionReading, error: string) => {
     result.reading.error = error;
+    // A failed re-read must not unpublish a match that was already good (the next sync would delete its
+    // stances): keep the stored row and write nothing. The calls spent are still counted.
+    if (previous?.status === 'matched') return result;
     return done({ ...row, status: 'failed', attempts: (row.attempts ?? 0) + 1 });
   };
 
+  const blocks = proposalBlocks(context);
   let meaning: Meaning;
   if (stage !== 'meaning' && previous && hasMeaning(previous)) {
     meaning = meaningOf(previous);
@@ -289,7 +303,6 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
     }
     const young = (deps.now.getTime() - at) / DAY_MS < NO_CONTEXT_DAYS;
     if (context.speeches.length === 0 && young) return done({ ...base, status: 'no_context' });
-    const blocks = proposalBlocks(context);
     result.reading.blocks = blocks.map((b) => b.label);
     if (wordCount(blocks.map((b) => b.text).join(' ')) < QUOTE_MIN_WORDS) {
       return done(young ? { ...base, status: 'no_context' } : { ...base, status: 'rejected', rejectReason: 'quote_not_found' });
@@ -322,12 +335,18 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
     Object.assign(base, read, meaning);
   }
 
+  // The proposal's own text, from the blocks this kind of question may be read from only: another
+  // block can hold the countermotion (which Tá voters reject) or a bill's general statement of purpose.
+  const allowedBlocks = ALLOWED_BLOCKS[meaning.divisionKind as DivisionKind] ?? [];
+  const proposalText = blocks.filter((b) => allowedBlocks.includes(b.kind)).map((b) => b.text).join('\n');
+
   // ---- call 2: the match ----
   const candidates = await candidateQuestions({ domains: domainsOf(meaning), from, to, limit: MAX_CANDIDATES });
   result.reading.candidates = candidates.length;
   const ids = candidates.map((c) => c.id).sort((a, b) => a - b);
   const known = previous?.candidateIds ? [...previous.candidateIds].sort((a, b) => a - b) : null;
-  if (stage === 'recheck') {
+  if (stage === 'recheck' && result.calls === 0) {
+    // Nothing was spent, so nothing new means nothing to write. After call 1 the meaning is worth keeping.
     const same = known !== null && known.length === ids.length && known.every((id, i) => id === ids[i]);
     if (candidates.length === 0 || (previous?.status === 'no_match' && same)) return null;
   }
@@ -341,7 +360,7 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   if (answer instanceof Error) return failed(matchBase, answer.message);
   const reply = parseMatch(answer.content);
   if (!reply) return failed({ ...matchBase, ...usage(answer) }, 'unusable model output');
-  const check = verifyMatch(reply, candidates, `${meaning.quote ?? ''} ${meaning.taMeans ?? ''}`);
+  const check = verifyMatch(reply, candidates, proposalText);
   const checked = { ...matchBase, ...usage(answer), attempts: 0, matchConfidence: reply.confidence, matchReason: reply.reason || null, matchPromptVersion: MATCH_PROMPT_VERSION };
   if (check.status === 'no_match') {
     // Keep why: a match the model made but the figures check refused is worth a person's eye.
@@ -353,8 +372,7 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
   const label = (key: string | null) => question.options.find((o) => o.key === key)?.label ?? null;
 
   // ---- call 3: for each claim in the matched answer, the proposal's own words that state it ----
-  // The whole proposal, not the stored quote: a claim may be stated outside the excerpt chosen for it.
-  const proposalText = proposalBlocks(context).map((b) => `[${b.label}] ${b.text}`).join('\n');
+  // The whole allowed proposal, not the stored quote: a claim may be stated outside the excerpt chosen for it.
   const fitAnswer = await call(FIT_SYSTEM_PROMPT, fitUserPrompt({ proposal: proposalText, answer: label(check.taOption)! }));
   if (fitAnswer instanceof Error) return failed({ ...matchBase, ...usage(answer) }, fitAnswer.message);
   const claims = parseFit(fitAnswer.content);
@@ -368,8 +386,8 @@ async function readDivision(ref: DivisionRef, previous: DivisionReadingRow | und
       status: 'no_match',
     });
   }
-  result.reading.match = { questionId: question.id, question: question.question, ta: label(check.taOption)!, nil: label(check.nilOption), confidence: check.confidence };
-  return done({ ...checked, ...usage(fitAnswer), status: 'matched', questionId: check.questionId, taOptionKey: check.taOption, nilOptionKey: check.nilOption });
+  result.reading.match = { questionId: question.id, question: question.question, ta: label(check.taOption)!, confidence: check.confidence };
+  return done({ ...checked, ...usage(fitAnswer), status: 'matched', questionId: check.questionId, taOptionKey: check.taOption });
 }
 
 export interface ClassifyOptions {
@@ -381,7 +399,7 @@ export interface ClassifyOptions {
   dryRun?: boolean;
   /** Also re-read readings with an old prompt version or a changed record, and re-match matched ones. */
   reclassify?: boolean;
-  /** Days either side of the vote a question may be dated (the dry run may widen it). */
+  /** Days either side of the vote a question may be dated (`--window`; the nightly run keeps the default). */
   windowDays?: number;
   complete?: DivisionCompletion;
   now?: Date;
@@ -430,8 +448,8 @@ export async function classifyDivisions(options: ClassifyOptions = {}): Promise<
     const callsLeft = maxCalls === null ? Number.POSITIVE_INFINITY : maxCalls - summary.calls;
     if (callsLeft <= 0) break;
     const result = await readDivision(w.ref, w.row, w.stage, { complete, now, windowDays, callsLeft });
-    if (!result || !result.row) continue;
-    summary.statuses[result.row.status as DivisionReadingStatus]++;
+    if (!result) continue;
+    // Calls are counted even when there is nothing to write, so the budget and the log tell the truth.
     if (result.calls > 0) {
       summary.read++;
       summary.calls += result.calls;
@@ -439,6 +457,8 @@ export async function classifyDivisions(options: ClassifyOptions = {}): Promise<
       summary.completionTokens += result.completionTokens;
       summary.readings.push(result.reading);
     }
+    if (!result.row) continue;
+    summary.statuses[result.row.status as DivisionReadingStatus]++;
     if (!dryRun) await repo.upsertDivisionReading(result.row);
   }
   return summary;

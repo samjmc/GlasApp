@@ -1,6 +1,10 @@
 # Template. SITE_DOMAIN comes from deploy/glasapp.env; glas.example.com is a placeholder.
 # Caddy gets and renews the HTTPS certificate on its own: ports 80 and 443 must reach this
 # host, and the domain's DNS record must point straight at it (no CDN proxy in between).
+#
+# There is no `log` directive on purpose. Caddy's access log records the full URL (a password-reset
+# link carries its one-time token in the query) and the visitor's IP. The app writes its own request
+# log with the path only (server/utils/httpLogger.ts).
 {$SITE_DOMAIN:glas.example.com} {
 	encode zstd gzip
 	reverse_proxy app:5000

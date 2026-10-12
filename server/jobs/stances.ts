@@ -110,7 +110,8 @@ function printReading(r: DivisionReading, log: (line: string) => void): void {
   if (r.blocks.length) log(`  PROPOSAL blocks: ${r.blocks.join(', ')}`);
   if (r.quote) log(`  [${r.quoteBlock}] "${r.quote}"`);
   log(`  ${r.candidates} candidate question(s)`);
-  if (r.match) log(`  Question ${r.match.questionId}: ${r.match.question}\n  Tá: ${r.match.ta} | Níl: ${r.match.nil ?? '(none)'} (confidence ${r.match.confidence})`);
+  if (r.match) log(`  Question ${r.match.questionId}: ${r.match.question}\n  Tá: ${r.match.ta} (confidence ${r.match.confidence})`);
+  if (r.matchReason && !r.match) log(`  ${r.matchReason}`);
   if (r.error) log(`  ${r.error}`);
   const url = oireachtasVoteUrl(r.divisionId);
   if (url) log(`  ${url}`);
@@ -143,7 +144,7 @@ export async function runDivisions(argv: string[], log: (line: string) => void =
     log(`Audit: ${audit.divisions} division(s) checked; the options agree with the lobbies on ${audit.agree} of ${audit.total} (${pct(audit.agree, audit.total)}). Target: 75% or more.`);
     for (const d of IDEOLOGY_DIMENSIONS) {
       const c = audit.byDimension[d];
-      if (c?.total) log(`  ${d}: ${c.agree} of ${c.total} (${pct(c.agree, c.total)})${AUDIT_UNSCORED_DIMENSIONS.includes(d) ? ' - not scored (government-vs-opposition confound, see divisions.ts)' : ''}`);
+      if (c.total) log(`  ${d}: ${c.agree} of ${c.total} (${pct(c.agree, c.total)})${AUDIT_UNSCORED_DIMENSIONS.includes(d) ? ' - not scored (government-vs-opposition confound, see shared/divisionMeaning.ts)' : ''}`);
     }
     for (const w of audit.worst) log(`  disagrees: ${w.divisionId} on ${w.disagreements.map((x) => x.dimension).join(', ')}`);
     return;

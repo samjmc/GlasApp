@@ -1,10 +1,11 @@
 /**
- * Deterministic checks on the two model replies about a Dáil division (01c §3.2–3.3). Pure.
+ * Deterministic checks on the three model replies about a Dáil division (01c §3.2–3.3). Pure.
  *
  * A quote proves the text is real, not that the reading is right: whether "Tá means X" is right
  * and whether the option is a fair reading of X are for the human gates. What code can check is
  * that the quote is copied from the ONE block it names, that the block fits the kind of question,
- * and that the match names only a question and keys that were sent.
+ * that the match names only a question and keys that were sent, that its answer names no figure the
+ * proposal does not, and that every claim in it has supporting words really in the proposal.
  */
 import type { DivisionKind, DivisionRejectReason } from '@shared/divisionMeaning';
 import { POLICY_DOMAINS, type PolicyDomain } from '../constants/policyTopics';
@@ -40,12 +41,13 @@ const rejected = (reason: DivisionRejectReason): MeaningCheck => ({ status: 'rej
 /**
  * The meaning reply against exactly the blocks that were sent. In order, the first failure
  * wins: procedural; "as amended" or unclear (nothing on record says what Tá means there);
- * no known domain; a quote of the wrong length; a block not sent or not allowed; more than one
+ * a blank `ta_means` (a matched reading must carry one); no known domain; a quote of the wrong length; a block not sent or not allowed; more than one
  * allowed block; the quote not in its block; low confidence.
  */
 export function verifyMeaning(reply: MeaningReply, blocks: ProposalBlock[]): MeaningCheck {
   if (reply.procedural || reply.divisionKind === 'procedural' || reply.divisionKind === 'confidence') return { status: 'procedural' };
   if (reply.divisionKind === 'as_amended' || reply.divisionKind === 'unclear') return rejected('ambiguous');
+  if (!reply.taMeans) return rejected('invalid');
 
   const domains = reply.policyDomains.filter((d): d is PolicyDomain => Object.prototype.hasOwnProperty.call(POLICY_DOMAINS, d));
   const kept = Array.from(new Set(domains)).slice(0, MAX_DOMAINS);
@@ -78,23 +80,27 @@ export function figuresIn(text: string): string[] {
   return (text.match(/\d[\d,.]*\d|\d/g) ?? []).map((n) => n.replace(/,/g, ''));
 }
 
-/** Below this many words a "supporting passage" proves nothing: "the wait" is in every proposal about waits. */
-export const MIN_SUPPORT_WORDS = 3;
+/** Below this many words a "supporting passage" proves nothing: "calls on the Government" is in nearly every motion. */
+export const MIN_SUPPORT_WORDS = 5;
+
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /**
  * The claims of a matched answer against the proposal's text. A claim is stated only when the
- * words the model gave as support really are in the proposal (case, fadas, quote marks and
- * spacing aside) and are long enough to mean something. Returns the claims that are NOT stated.
- * A claim the model could not support (`support: null`) or whose support is invented or
- * paraphrased is not stated.
+ * words the model gave as support really are in the proposal (case, fadas, quote marks, spacing and
+ * the punctuation around them aside; whole words only) and are long enough to mean something.
+ * Returns the claims that are NOT stated: no support (`support: null`), support that is invented
+ * or paraphrased, or too short.
+ *
+ * What it cannot see: a claim the model left out of its list. That is the model's call to make.
  */
 export function verifyFit(claims: FitClaim[], proposal: string): string[] {
   const text = normalise(proposal).text;
   return claims
     .filter((c) => {
-      const support = c.support === null ? '' : normalise(c.support).text.replace(/^['" ]+|['" ]+$/g, '');
+      const support = c.support === null ? '' : normalise(c.support).text.replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '');
       const words = support ? support.split(' ').length : 0;
-      return words < MIN_SUPPORT_WORDS || !text.includes(support);
+      return words < MIN_SUPPORT_WORDS || !new RegExp(`(?:^|[^a-z0-9])${escapeRegExp(support)}(?:$|[^a-z0-9])`).test(text);
     })
     .map((c) => c.claim);
 }
@@ -102,16 +108,20 @@ export function verifyFit(claims: FitClaim[], proposal: string): string[] {
 export type MatchCheck =
   | { status: 'no_match'; overstated?: string[] }
   | { status: 'rejected'; reason: 'invalid' }
-  | { status: 'matched'; questionId: number; taOption: string; nilOption: string | null; confidence: number; reason: string };
+  | { status: 'matched'; questionId: number; taOption: string; confidence: number; reason: string };
 
 /**
  * The match reply against the candidates that were SENT. Any wrong id or key rejects the whole
  * match (a wrong key would publish a TD's vote as something it was not); no question, or low
  * confidence, is no match.
  *
- * `proposal` is everything the vote is known to state: the verified quote and what a Tá vote
- * supported. The Tá answer may not name a figure that is not in it (a vote to raise relief to
- * €35,000 does not state "raise it to €50,000"); that is no match, with the figures listed.
+ * Only the Tá answer is kept. A vote AGAINST a proposal does not state an answer: which one it
+ * implies is an inference, and the words-as-support check cannot verify a negation, so a Níl
+ * answer would be published on the model's word alone.
+ *
+ * `proposal` is the proposal's own text (the blocks this kind of question may be read from). The
+ * Tá answer may not name a figure that is not in it (a vote to raise relief to €35,000 does not
+ * state "raise it to €50,000"); that is no match, with the figures listed.
  */
 export function verifyMatch(
   reply: MatchReply,
@@ -123,10 +133,9 @@ export function verifyMatch(
   if (!question) return { status: 'rejected', reason: 'invalid' };
   const isKey = (key: string | null) => key !== null && question.options.some((o) => o.key === key);
   if (!isKey(reply.taOption)) return { status: 'rejected', reason: 'invalid' };
-  if (reply.nilOption !== null && (!isKey(reply.nilOption) || reply.nilOption === reply.taOption)) return { status: 'rejected', reason: 'invalid' };
   if (reply.confidence < MIN_MATCH_CONFIDENCE) return { status: 'no_match' };
   const stated = new Set(figuresIn(proposal));
   const overstated = figuresIn(question.options.find((o) => o.key === reply.taOption)?.label ?? '').filter((n) => !stated.has(n));
   if (overstated.length > 0) return { status: 'no_match', overstated };
-  return { status: 'matched', questionId: question.id, taOption: reply.taOption!, nilOption: reply.nilOption, confidence: reply.confidence, reason: reply.reason };
+  return { status: 'matched', questionId: question.id, taOption: reply.taOption!, confidence: reply.confidence, reason: reply.reason };
 }

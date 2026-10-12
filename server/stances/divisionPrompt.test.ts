@@ -52,15 +52,15 @@ describe('parseMeaning', () => {
 });
 
 describe('parseMatch', () => {
-  it('reads a match, a Níl answer and a null', () => {
-    expect(parseMatch(json({ question_id: 3, ta_option: 'option_a', nil_option: 'option_b', confidence: 0.9, reason: ' r ' }))).toEqual({
+  it('reads a match and a null, and ignores a Níl answer: a vote against a proposal states none', () => {
+    expect(parseMatch(json({ question_id: 3, ta_option: 'option_a', confidence: 0.9, reason: ' r ' }))).toEqual({
       questionId: 3,
       taOption: 'option_a',
-      nilOption: 'option_b',
       confidence: 0.9,
       reason: 'r',
     });
-    expect(parseMatch(json({ question_id: null }))).toMatchObject({ questionId: null, taOption: null, nilOption: null, confidence: 0 });
+    expect(parseMatch(json({ question_id: 3, ta_option: 'option_a', nil_option: 'option_b', confidence: 0.9 }))).not.toHaveProperty('nilOption');
+    expect(parseMatch(json({ question_id: null }))).toMatchObject({ questionId: null, taOption: null, confidence: 0 });
   });
 
   it('is null for bad JSON or a wrong shape', () => {
@@ -124,7 +124,8 @@ describe('the system prompts', () => {
   it('match: an answer only when it is stated, never from who proposed it', () => {
     expect(MATCH_SYSTEM_PROMPT).toMatch(/ONLY when what a Tá vote supported itself states that choice/);
     expect(MATCH_SYSTEM_PROMPT).toMatch(/Never infer an answer from who proposed the motion/);
-    expect(MATCH_SYSTEM_PROMPT).toMatch(/Give a Níl answer only when voting against the proposal itself states/);
+    // Only the Tá answer is asked for and kept.
+    expect(MATCH_SYSTEM_PROMPT).not.toMatch(/nil_option|Níl answer/);
   });
 
   it('match prompt: the meaning, the quote and each candidate with its keyed answers; no tallies', () => {

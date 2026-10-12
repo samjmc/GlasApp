@@ -48,11 +48,17 @@ export const pool = new Pool({
   ssl: isLocal ? undefined : { rejectUnauthorized: false },
 });
 
-// A pooled client that is idle when the server drops it (a pooler restart, a network blip) emits
-// 'error' on the POOL. With no listener node-postgres rethrows it as an uncaught exception and the
-// process dies. Log it instead: the pool discards the broken client and opens a new one on demand.
+// A pooled client the server drops (a pooler restart, a network blip) emits 'error'. With no
+// listener node-postgres rethrows it as an uncaught exception and the process dies. Two places:
+//  - idle: the pool listens for it and re-emits on the POOL;
+//  - checked out (every drizzle transaction holds one): the pool removes its own listener on checkout,
+//    so the client needs one for its whole life, and the query that was running fails with its own error.
+// Log both: the broken client is discarded and a new one opens on demand.
 pool.on('error', (error) => {
   console.error('Database pool: an idle connection failed and was discarded:', error.message);
+});
+pool.on('connect', (client) => {
+  client.on('error', (error) => console.error('Database client: a connection failed:', error.message));
 });
 
 export const db = drizzle(pool, { schema: politics });

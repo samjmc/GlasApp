@@ -1,11 +1,11 @@
 import 'dotenv/config';
-import express, { type Request, Response, NextFunction } from "express";
-import pinoHttp from "pino-http";
+import express from "express";
 import { securityHeaders } from "./middleware/securityHeaders";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { checkDatabaseConnection, shutdown as closeDatabase } from "./db";
 import { logger } from "./utils/logger";
+import { createHttpLogger } from "./utils/httpLogger";
 
 // Nothing is catching these, and the process is in an unknown state after them. Put them in the
 // structured log (a bare stack trace is easy to miss in a JSON log), then exit so the container
@@ -22,34 +22,13 @@ process.on('uncaughtException', (error) => {
 const app = express();
 app.set('trust proxy', 1);
 
-// Request-level structured logging (pino-http). Logs timestamp, level, method,
-// url, status code, duration (responseTime) and request id for every request.
-const httpLogger = pinoHttp<Request, Response>({
-  logger,
-  autoLogging: {
-    ignore: (req) =>
-      req.url?.startsWith('/health') || req.url?.startsWith('/_health') || false,
-  },
-  customLogLevel: (req, res, err) => {
-    if (err || res.statusCode >= 500) return 'error';
-    if (res.statusCode >= 400) return 'warn';
-    return 'info';
-  },
-  customProps: (req, res) => ({
-    route: `${req.method} ${(req.originalUrl || req.url || '').split('?')[0]}`,
-    userId:
-      (req as any).session?.userId ?? (req as any).user?.id ?? undefined,
-  }),
-});
-app.use(httpLogger);
+app.use(createHttpLogger(logger));
 
 // Simple health check - responds immediately before any middleware
 app.get('/health', (req, res) => {
-  logger.info({ route: 'GET /health' }, 'Health check received');
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 app.get('/_health', (req, res) => {
-  logger.info({ route: 'GET /_health' }, 'Health check received');
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
