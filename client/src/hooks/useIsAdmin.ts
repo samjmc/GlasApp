@@ -8,5 +8,5 @@ import { useProfileMe } from "@/hooks/useProfileMe";
 export function useIsAdmin(): { isAdmin: boolean; isLoading: boolean } {
   const { isAuthenticated } = useAuth();
   const { data, isLoading } = useProfileMe();
-  return { isAdmin: isAuthenticated && data?.data?.isAdmin === true, isLoading: isAuthenticated && isLoading };
+  return { isAdmin: isAuthenticated && data?.isAdmin === true, isLoading: isAuthenticated && isLoading };
 }

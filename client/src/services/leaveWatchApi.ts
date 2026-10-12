@@ -1,16 +1,11 @@
 /**
- * Client for the admin leave watch (/api/parliament/admin/leave-alerts). Unwraps the
- * `{ success, data }` envelope; types come from @shared/parliamentApi.
+ * Client for the admin leave watch (/api/parliament/admin/leave-alerts). Types come from
+ * @shared/parliamentApi.
  */
-import { apiRequest } from "@/lib/queryClient";
+import { apiCall as call } from "@/lib/api";
 import type { AbsenceKind, ConfirmLeaveInput, LeaveAlertView } from "@shared/parliamentApi";
 
 export type { ConfirmLeaveInput, LeaveAlertView } from "@shared/parliamentApi";
-
-type Envelope<T> = { success: boolean; data: T };
-
-const call = async <T>(method: string, path: string, body?: unknown): Promise<T> =>
-  (await apiRequest<Envelope<T>>({ method, path, body })).data;
 
 export const leaveWatchApi = {
   list: (scope: "open" | "all") => call<LeaveAlertView[]>("GET", `/api/parliament/admin/leave-alerts?status=${scope}`),

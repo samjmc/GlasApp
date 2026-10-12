@@ -1,12 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import {
-  REGION_CONFIGS,
-  REGION_LIST,
-  isRegionCode,
-  type RegionCode,
-  type RegionConfig,
-} from "@shared/region-config";
+import { REGION_CONFIGS, REGION_LIST, type RegionCode, type RegionConfig } from "@shared/region-config";
+import { getStoredRegion, setStoredRegion } from "@/lib/regionStorage";
 
 type RegionStatus = "loading" | "ready" | "needs-selection";
 
@@ -19,26 +14,6 @@ interface RegionContextValue {
 }
 
 const RegionContext = createContext<RegionContextValue | null>(null);
-
-/** Set only when the visitor has picked a region themselves; until then we ask. */
-const LOCAL_STORAGE_KEY = "glas.region";
-
-function getStoredRegion(): RegionCode | null {
-  try {
-    const stored = window.localStorage.getItem(LOCAL_STORAGE_KEY);
-    return isRegionCode(stored) ? stored : null;
-  } catch {
-    return null;
-  }
-}
-
-function setStoredRegion(code: RegionCode) {
-  try {
-    window.localStorage.setItem(LOCAL_STORAGE_KEY, code);
-  } catch {
-    // Not remembered on this device; the server cookie still holds it.
-  }
-}
 
 /** `region-ie` / `region-uk` / `region-us` on <html> switches the accent colours (index.css). */
 function applyRegionClass(code: RegionCode | null) {

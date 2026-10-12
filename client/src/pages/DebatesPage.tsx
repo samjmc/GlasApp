@@ -2,7 +2,7 @@ import { useMemo, useState, type ReactNode } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useSearch } from "wouter";
 import { AlertCircle, ChevronDown, ChevronLeft, ChevronRight, ExternalLink, Landmark, MessagesSquare, ScrollText, Trophy, Users } from "lucide-react";
-import { apiClient } from "@/lib/queryClient";
+import { apiEnvelope } from "@/lib/api";
 import { queryKeys } from "@/lib/queryKeys";
 import { formatIsoDate } from "@/lib/isoDate";
 import { partyStyle } from "@/lib/parties";
@@ -35,11 +35,7 @@ import type {
 } from "@shared/parliamentApi";
 import { LEADERBOARD_METRICS } from "@shared/parliamentApi";
 
-type ApiEnvelope<T> = { success: true; data: T; meta?: { total: number } };
-
-async function getParliament<T>(path: string): Promise<ApiEnvelope<T>> {
-  return apiClient.get<ApiEnvelope<T>>(path);
-}
+const getParliament = <T,>(path: string) => apiEnvelope<T, { total: number }>("GET", path);
 
 const PAGE_SIZE = 20;
 

@@ -15,14 +15,13 @@ import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { RetryButton } from '@/components/data/RetryButton';
-import { apiClient } from '@/lib/queryClient';
+import { apiCall } from '@/lib/api';
 import { formatIsoDate } from '@/lib/isoDate';
 import { queryKeys } from '@/lib/queryKeys';
 import { cn } from '@/lib/utils';
 import type { QuestionCommitmentView, QuestionFormatName, QuestionRecordView, TdQuestionRecord } from '@shared/parliamentApi';
 
-type Envelope<T> = { success: true; data: T };
-const get = <T,>(path: string) => apiClient.get<Envelope<T>>(path).then((r) => r.data);
+const get = <T,>(path: string) => apiCall<T>('GET', path);
 
 const FORMAT_LABELS: Record<QuestionFormatName, string> = {
   oral_pq: 'Oral questions',

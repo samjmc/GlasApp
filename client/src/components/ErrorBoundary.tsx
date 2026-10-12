@@ -8,6 +8,7 @@ import { toast } from '@/components/ui/use-toast';
 import { ToastAction } from '@/components/ui/toast';
 import { QueryErrorResetBoundary, useQueryClient } from '@tanstack/react-query';
 import { shouldResetBoundary } from '@/lib/errorBoundaryReset';
+import { userMessage } from '@/lib/api';
 
 interface ErrorBoundaryCoreProps {
   children: ReactNode;
@@ -181,14 +182,12 @@ class ErrorBoundaryCore extends Component<ErrorBoundaryCoreProps, ErrorBoundaryC
 }
 
 /**
- * QueryErrorNotifier - Surfaces React Query async failures as a toast with a
- * retry action.
+ * QueryErrorNotifier - Raises a toast with a retry action when a query that
+ * opted in (`meta: { toastOnError: true }`) fails.
  *
- * In @tanstack/react-query v5, queries do not throw to error boundaries by
- * default (`throwOnError` defaults to `false` unless suspense is enabled), so
- * we subscribe to the QueryCache and notify on the final `error` transition
- * of any query. This intentionally does not replace per-query inline error
- * UI; it is additive global visibility with a one-tap retry.
+ * Opt-in, because most pages already show their own error state with a retry,
+ * and a toast on top of that is noise (a missing TD showed "TD not found" plus
+ * a red toast). Only a query with no error state of its own should opt in.
  */
 function QueryErrorNotifier() {
   const queryClient = useQueryClient();
@@ -196,17 +195,13 @@ function QueryErrorNotifier() {
   React.useEffect(() => {
     const cache = queryClient.getQueryCache();
     const unsubscribe = cache.subscribe((event) => {
-      if (event.type !== 'updated' || event.action?.type !== 'error') {
+      if (event.type !== 'updated' || event.action?.type !== 'error' || !event.query.meta?.toastOnError) {
         return;
       }
-      const error = event.action.error;
       toast({
         variant: 'destructive',
         title: 'Failed to load data',
-        description:
-          error instanceof Error
-            ? error.message
-            : 'The request could not be completed.',
+        description: userMessage(event.action.error),
         action: (
           <ToastAction
             altText="Retry"
@@ -238,7 +233,7 @@ interface ErrorBoundaryProps {
  *
  * Wraps the app root to:
  *  1. Catch render errors (class boundary) and show a fallback UI.
- *  2. Surface React Query async failures with a toast + retry action
+ *  2. Toast (with retry) the failures of queries that opt in
  *     (QueryErrorNotifier).
  *  3. Reset query errors on "Try Again" so failed queries re-fetch instead of
  *     re-throwing (QueryErrorResetBoundary).

@@ -1,14 +1,7 @@
 /**
- * Central query-key factory.
- *
- * Every key here reproduces a literal query-key shape that is already used by a
- * `useQuery` call site in this app (verified by grep), so migrating a call site
- * to these functions is a drop-in refactor that does NOT invalidate existing
- * query-cache entries. `getQueryFn` fetches `queryKey[0]` as the URL, so the
- * first element of each key is the API path (or a stable namespace) exactly as
- * used today.
+ * Central query-key factory. The first element of a key is the API path or a stable namespace,
+ * so `invalidateQueries` on that prefix reaches every variant.
  */
-/** Central query-key factory for all React Query cache keys. */
 export const queryKeys = {
   td: {
     scoresWidget: () => ["td-scores-widget-v3"] as const,
