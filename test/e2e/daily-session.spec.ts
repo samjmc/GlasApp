@@ -149,7 +149,7 @@ class FakeDaily {
 /** Signed in as a made-up user, and past the cookie banner and the region picker. */
 async function signIn(page: Page) {
   await page.addInitScript(() => {
-    localStorage.setItem('cookie_consent', JSON.stringify({ essential: true, analytics: false, functional: false }));
+    localStorage.setItem('cookie_consent', JSON.stringify({ essential: true }));
     localStorage.setItem('glas.region', 'IE');
     const now = Math.floor(Date.now() / 1000);
     localStorage.setItem(
