@@ -86,7 +86,6 @@ An advanced Irish political analysis platform providing multidimensional politic
 - **OpenAI** - GPT-4 for analysis
 - **Anthropic** - Claude for insights
 - **SendGrid/Resend** - Email delivery
-- **Twilio** - SMS verification
 
 ### DevOps
 - **Vite** - Build tool

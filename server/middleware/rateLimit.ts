@@ -91,9 +91,6 @@ export function createRateLimit(options: RateLimitOptions): RequestHandler {
 
 const FIFTEEN_MINUTES = 15 * 60 * 1000;
 
-/** Requests that can send a paid text message: 10 per IP per hour, on top of the per-user resend wait. */
-export const smsRateLimit = createRateLimit({ windowMs: 60 * 60 * 1000, max: 10, name: 'sms' });
-
 /**
  * Votes: 60 per signed-in user per 15 minutes (per IP for a caller without a user). Per user, not
  * per IP: a robot run (npm run robots) showed 10 people on one network could save only 60 votes
