@@ -78,6 +78,26 @@ Do not use `npm run db:push`, and do not add a migrate step to the image or to s
 `drizzle-kit` is a dev dependency, so it is not inside the production image. Each migration
 must finish inside the 2-minute statement limit.
 
+### Indexes and constraints on a big table
+
+`db:migrate` runs every pending migration in one transaction, so a migration cannot use
+`CREATE INDEX CONCURRENTLY`, and a plain `CREATE INDEX` blocks writes to its table until it is
+built. Every table so far is small enough for that (0030 builds its biggest index, on ~70k
+speeches, in well under a second). When a table is too big for that (for example `policy_votes`
+or `news_articles` once they hold millions of rows):
+
+1. Before the release, build the index by hand on GlasCore, outside any transaction:
+   `CREATE INDEX CONCURRENTLY IF NOT EXISTS <name> ON politics.<table> (...);`
+   If it fails it leaves an INVALID index: `DROP INDEX CONCURRENTLY <name>;` and run it again.
+2. Ship the migration with the same statement as `CREATE INDEX IF NOT EXISTS <name> ...`
+   (hand-edit what `db:generate` writes). On GlasCore it is then a no-op; on a fresh database
+   it builds the index.
+
+A new constraint on a big table: add it `NOT VALID` (only new rows are checked, no long lock),
+then `VALIDATE CONSTRAINT` in the same or a later migration (it reads the rows but does not
+block writes). 0027 is an example. If old rows may break the rule, find them first and say in
+the migration how to fix them, since a failed `VALIDATE` rolls the whole `db:migrate` back.
+
 ## 4. Build and first boot
 
 ```

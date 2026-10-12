@@ -7,6 +7,7 @@
  * are kept on every row, so votes and speeches by someone not (yet) in `tds` are stored
  * and linked by `td_id` on the next roster sync instead of being dropped.
  */
+import { sql } from 'drizzle-orm';
 import { boolean, date, index, integer, jsonb, primaryKey, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
 import { politics, tds } from './politics';
 
@@ -44,7 +45,11 @@ export const divisions = politics.table(
     staonCount: integer('staon_count').notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index('divisions_date_idx').on(t.date)],
+  (t) => [
+    index('divisions_date_idx').on(t.date),
+    // text_pattern_ops serves both `=` and the `LIKE 'dail-<date>-%'` of setDivisionPositions.
+    index('divisions_debate_section_idx').on(t.debateSectionId.op('text_pattern_ops')),
+  ],
 ).enableRLS();
 
 export const divisionVotes = politics.table(
@@ -60,7 +65,8 @@ export const divisionVotes = politics.table(
   (t) => [
     primaryKey({ columns: [t.divisionId, t.memberCode] }),
     index('division_votes_td_idx').on(t.tdId),
-    index('division_votes_member_idx').on(t.memberCode),
+    // With td_id, so relinkTds finds the (member, td) pairs from the index alone.
+    index('division_votes_member_idx').on(t.memberCode, t.tdId),
   ],
 ).enableRLS();
 
@@ -87,7 +93,13 @@ export const debateSections = politics.table(
     speechCount: integer('speech_count').notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index('debate_sections_date_idx').on(t.date), index('debate_sections_debate_idx').on(t.debateId)],
+  (t) => [
+    index('debate_sections_date_idx').on(t.date),
+    index('debate_sections_debate_idx').on(t.debateId),
+    index('debate_sections_parent_idx').on(t.parentId).where(sql`${t.parentId} is not null`),
+    // Hash: equality is the only lookup (a division's fallback section), and a title can be long.
+    index('debate_sections_title_idx').using('hash', t.title),
+  ],
 ).enableRLS();
 
 // ---------------------------------------------------------------------------
@@ -228,7 +240,8 @@ export const debateExtractionStatus = politics.enum('debate_extraction_status', 
 export const debateExtractionRuns = politics.table(
   'debate_extraction_runs',
   {
-    debateId: varchar('debate_id', { length: 80 }).notNull(),
+    /** debates.id, or question_exchanges.id (up to 100) for a question session. */
+    debateId: varchar('debate_id', { length: 100 }).notNull(),
     extractorVersion: varchar('extractor_version', { length: 20 }).notNull(),
     /** The speeches read (ids and text). A different hash means the record changed. */
     inputHash: varchar('input_hash', { length: 16 }).notNull(),
@@ -279,7 +292,8 @@ export const debateSpeeches = politics.table(
   (t) => [
     index('debate_speeches_section_idx').on(t.sectionId, t.position),
     index('debate_speeches_td_idx').on(t.tdId, t.date),
-    index('debate_speeches_member_idx').on(t.memberCode),
+    // With td_id, so relinkTds finds the (member, td) pairs without reading the speeches.
+    index('debate_speeches_member_idx').on(t.memberCode, t.tdId),
   ],
 ).enableRLS();
 
@@ -460,7 +474,8 @@ export const disclosureFiles = politics.table(
     unmatched: jsonb('unmatched').$type<string[]>().notNull().default([]),
     readAt: timestamp('read_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index('disclosure_files_kind_period_idx').on(t.kind, t.period)],
+  // One file per period: recordFile upserts on it.
+  (t) => [uniqueIndex('disclosure_files_kind_period_idx').on(t.kind, t.period)],
 ).enableRLS();
 
 // ---------------------------------------------------------------------------
@@ -673,7 +688,12 @@ export const questionCounts = politics.table(
     questionType: questionType('question_type').notNull(),
     n: integer('n').notNull(),
   },
-  (t) => [primaryKey({ columns: [t.memberCode, t.month, t.department, t.questionType] }), index('question_counts_td_idx').on(t.tdId)],
+  (t) => [
+    primaryKey({ columns: [t.memberCode, t.month, t.department, t.questionType] }),
+    index('question_counts_td_idx').on(t.tdId),
+    // replaceQuestionMonths deletes by month.
+    index('question_counts_month_idx').on(t.month),
+  ],
 ).enableRLS();
 
 // ---------------------------------------------------------------------------
@@ -691,7 +711,7 @@ export const questionAskers = politics.table(
     memberCode: varchar('member_code', { length: 120 }).notNull(),
     date: date('date').notNull(),
   },
-  (t) => [primaryKey({ columns: [t.sectionId, t.questionNumber] }), index('question_askers_member_idx').on(t.memberCode), index('question_askers_date_idx').on(t.date)],
+  (t) => [primaryKey({ columns: [t.sectionId, t.questionNumber] }), index('question_askers_date_idx').on(t.date)],
 ).enableRLS();
 
 /**

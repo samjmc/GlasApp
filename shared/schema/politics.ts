@@ -95,7 +95,7 @@ export const tdScores = politics.table(
     computedAt: timestamp('computed_at', { withTimezone: true }),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index('td_scores_overall_score_idx').on(t.overallScore)],
+  // No index on overall_score: every read sorts the ~200 rows after a join with tds.
 ).enableRLS();
 
 // ---------------------------------------------------------------------------

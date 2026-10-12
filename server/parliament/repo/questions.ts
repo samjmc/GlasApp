@@ -46,8 +46,9 @@ export async function questionTotals(since: string, database: Db = db): Promise<
 
 /** Whether any question month has been ingested at all (so a missing member means 0, not unknown). */
 export async function hasQuestionCounts(database: Db = db): Promise<boolean> {
-  const [row] = await database.select({ n: sql<number>`count(*)::int` }).from(questionCounts).limit(1);
-  return Number(row?.n ?? 0) > 0;
+  // exists(), not count(*): the count read the whole table on every TD summary.
+  const { rows } = await database.execute<{ any: boolean }>(sql`select exists (select 1 from ${questionCounts}) as any`);
+  return rows[0]?.any === true;
 }
 
 /**

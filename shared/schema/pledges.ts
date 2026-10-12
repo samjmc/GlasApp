@@ -46,8 +46,8 @@ export const pledges = politics.table(
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [
+    // Also serves lookups by lower(party) alone: it is the leading column.
     uniqueIndex('pledges_party_title_year_idx').on(sql`lower(${t.party})`, sql`lower(${t.title})`, t.electionYear),
-    index('pledges_party_idx').on(sql`lower(${t.party})`),
     check('pledges_status_chk', sql`${t.status} in (${inList(PLEDGE_STATUSES)})`),
     check('pledges_category_chk', sql`${t.category} in (${inList(PLEDGE_CATEGORIES)})`),
   ],
