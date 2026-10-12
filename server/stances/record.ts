@@ -4,16 +4,25 @@
  * where the question comes from (made if missing, or only read).
  *
  * A stance that fails verification, or that Jev does not call a policy position (./position),
- * is never stored and never becomes evidence. Only a stance mapped to an option of the question
- * becomes evidence, under source `stance`.
+ * is never stored and never becomes evidence, and one an earlier run stored is deleted. Only a
+ * stance mapped to an option of the question becomes evidence, under source `stance`.
  */
-import { recordTdEvidence } from '../ideology';
-import type { CompleteJson, QuestionPositions } from '../voting';
-import { stanceEvidenceWeight } from './evidence';
+import { isIndependent, partyKey } from '../ideology/partyBaselines';
+import { recomputePartyProfile, recomputeTdProfile } from '../ideology/service';
+import { questionsWithPositions, type CompleteJson, type QuestionPositions } from '../voting';
+import { stanceEvidenceRows } from './evidence';
 import { extractStances, extractionText, type CandidateTd, type StanceArticle } from './extract';
 import { mapStances } from './map';
 import { isJevConfigured, POSITION_THRESHOLD, type PositionCheck } from './position';
-import { saveStances } from './repository';
+import {
+  deleteArticleStancesExcept,
+  replaceStanceEvidenceOf,
+  saveStances,
+  stanceRowsForEvidence,
+  withStanceLock,
+  type StanceInput,
+  type Tx,
+} from './repository';
 import { REJECT_REASONS, verifyStances } from './verify';
 
 /** Verification's reasons, then the position check's: below the threshold, or no answer. */
@@ -84,9 +93,8 @@ export async function recordStances(
   // Without Jev configured every stance is held back by design; with it, no answer is an outage.
   if (unchecked > 0 && isJevConfigured()) throw new Error(`Jev gave no answer for ${unchecked} quote(s) of article ${article.id}`);
   stats.accepted += accepted.length;
-  if (accepted.length === 0) return 0;
 
-  const question = await deps.question();
+  const question = accepted.length > 0 ? await deps.question() : null;
   const keys = question
     ? await mapStances(
         { question: question.question, options: question.options.map(({ key, label }) => ({ key, label })) },
@@ -101,7 +109,8 @@ export async function recordStances(
   stats.mapped += rows.filter((row) => row.option).length;
   if (deps.dryRun) return accepted.length;
 
-  const saved = await saveStances(
+  // Even with nothing accepted: a stance an earlier run stored that the rules now reject must go.
+  await saveArticleStances(
     article.id,
     rows.map(({ stance, option }) => ({
       tdId: stance.tdId,
@@ -113,19 +122,40 @@ export async function recordStances(
       policyDomain: stance.policyDomain,
     })),
   );
-  const statedAt = new Map(saved.map((row) => [row.tdId, row.statedAt]));
-  for (const { stance, option } of rows) {
-    const observedAt = statedAt.get(stance.tdId);
-    if (!question || !option || !observedAt) continue;
-    await recordTdEvidence({
-      td: stance.tdId,
-      source: 'stance',
-      sourceRef: `question:${question.id}`,
-      raw: option.vector,
-      weight: stanceEvidenceWeight(option, stance.quoteKind, null),
-      observedAt,
-      policyTopic: question.policyTopic,
-    });
-  }
   return accepted.length;
+}
+
+const unique = (ids: number[]) => Array.from(new Set(ids));
+
+/**
+ * Make `stances` the article's whole set of news stances: the article's other TDs' rows are
+ * deleted, and the `stance` evidence of every TD touched is rebuilt from td_stances, all in one
+ * transaction under the stance lock (so a crash leaves no stance without its evidence, and the
+ * nightly rebuild never interleaves). Then those TDs' profiles, and their parties', once each.
+ */
+export async function saveArticleStances(articleId: number, stances: StanceInput[]): Promise<void> {
+  const touched = await withStanceLock(async (tx) => {
+    const removed = await deleteArticleStancesExcept(articleId, stances.map((s) => s.tdId), tx);
+    await saveStances(articleId, stances, tx);
+    const tdIds = unique([...removed, ...stances.map((s) => s.tdId)]);
+    await rebuildStanceEvidence(tx, tdIds);
+    return tdIds;
+  });
+  const parties = new Map<string, string>();
+  for (const tdId of touched) {
+    const td = await recomputeTdProfile(tdId);
+    if (td && !isIndependent(td.party)) parties.set(partyKey(td.party!), td.party!);
+  }
+  for (const party of Array.from(parties.values())) await recomputePartyProfile(party);
+}
+
+/**
+ * Inside a withStanceLock transaction: the `stance` evidence of these TDs (every TD when null),
+ * rebuilt from td_stances as they are now. Returns how many evidence rows that is.
+ */
+export async function rebuildStanceEvidence(tx: Tx, tdIds: number[] | null): Promise<number> {
+  const stances = await stanceRowsForEvidence(tx, tdIds);
+  const evidence = stanceEvidenceRows(stances, await questionsWithPositions(unique(stances.map((s) => s.questionId))));
+  await replaceStanceEvidenceOf(tx, tdIds, evidence);
+  return evidence.length;
 }
