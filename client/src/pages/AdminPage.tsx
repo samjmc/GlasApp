@@ -75,9 +75,9 @@ export default function AdminPage() {
         </div>
 
         <div className="max-w-xs">
-          <Label>Party</Label>
+          <Label htmlFor="pledge-party">Party</Label>
           <Select value={party} onValueChange={setParty}>
-            <SelectTrigger>
+            <SelectTrigger id="pledge-party">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -161,9 +161,9 @@ function NewPledgeForm({ party }: { party: string }) {
             <Textarea id="pledge-description" rows={3} value={form.description} onChange={(e) => set("description", e.target.value)} />
           </div>
           <div>
-            <Label>Category</Label>
+            <Label htmlFor="pledge-category">Category</Label>
             <Select value={form.category} onValueChange={(v) => set("category", v as PledgeCategory)}>
-              <SelectTrigger>
+              <SelectTrigger id="pledge-category">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -261,9 +261,9 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
 
       <div className="mt-2 grid gap-2 md:grid-cols-[200px_1fr_auto] md:items-end">
         <div>
-          <Label>Status</Label>
+          <Label htmlFor={`status-${pledge.id}`}>Status</Label>
           <Select value={status} onValueChange={(v) => setStatus(v as PledgeStatus)}>
-            <SelectTrigger>
+            <SelectTrigger id={`status-${pledge.id}`}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -276,8 +276,8 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
           </Select>
         </div>
         <div>
-          <Label>Why (shown to readers)</Label>
-          <Input value={note} onChange={(e) => setNote(e.target.value)} placeholder="One sentence, based on the evidence" />
+          <Label htmlFor={`status-note-${pledge.id}`}>Why (shown to readers)</Label>
+          <Input id={`status-note-${pledge.id}`} value={note} onChange={(e) => setNote(e.target.value)} placeholder="One sentence, based on the evidence" />
         </div>
         <Button onClick={() => save.mutate()} disabled={!changed || save.isPending}>
           {save.isPending ? "Saving…" : "Save status"}

@@ -309,14 +309,15 @@ const ProfilePage = () => {
                 </Avatar>
                 {isEditing && (
                   <label
-                    aria-label="Change photo"
-                    className="absolute -bottom-1 -right-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-card bg-elevated text-foreground transition-colors hover:bg-accent"
+                    className="absolute -bottom-1 -right-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-card bg-elevated text-foreground transition-colors hover:bg-accent focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background"
                   >
                     <Camera className="h-4 w-4" aria-hidden="true" />
+                    {/* sr-only, not hidden: display:none would take it out of the tab order. */}
                     <input
                       type="file"
                       accept="image/*"
-                      className="hidden"
+                      aria-label="Change photo"
+                      className="sr-only"
                       onChange={handleProfileImageUpload}
                     />
                   </label>
