@@ -18,6 +18,7 @@ import { sql } from 'drizzle-orm';
 import {
   bigint,
   boolean,
+  check,
   index,
   integer,
   jsonb,
@@ -34,6 +35,9 @@ import {
 
 export const politics = pgSchema('politics');
 
+/** A const list as the SQL literal list of a CHECK (`col in (...)`). */
+export const inList = (values: readonly string[]) => sql.raw(values.map((v) => `'${v}'`).join(', '));
+
 // ---------------------------------------------------------------------------
 // TDs: who they are. Profile data only, no scores.
 // ---------------------------------------------------------------------------
@@ -47,12 +51,15 @@ export const tds = politics.table(
     imageUrl: text('image_url'),
     /** Oireachtas member code, e.g. "Mary-Lou-McDonald.D.2011-03-09". */
     memberCode: varchar('member_code', { length: 120 }),
-    memberUri: text('member_uri'),
     gender: varchar('gender', { length: 20 }),
     isActive: boolean('is_active').notNull().default(true),
     /** Ministerial or party offices held, as [{ title, since }]. */
     offices: jsonb('offices').$type<Array<{ title: string; since?: string }>>(),
     committees: jsonb('committees').$type<string[]>(),
+    /**
+     * The scoring input, written by the parliament sync from question_counts: NULL for a TD not
+     * expected to ask, and kept at its last value while a month is missing. Profiles read the counts.
+     */
     questionCountOral: integer('question_count_oral'),
     questionCountWritten: integer('question_count_written'),
     /** Vote attendance, 0–100. NULL means no data, never 0. */
@@ -68,6 +75,7 @@ export const tds = politics.table(
     uniqueIndex('tds_member_code_idx').on(t.memberCode),
     index('tds_party_idx').on(t.party),
     index('tds_constituency_idx').on(t.constituency),
+    check('tds_pct_range_chk', sql`${t.attendancePct} between 0 and 100 and ${t.committeeAttendancePct} between 0 and 100`),
   ],
 ).enableRLS();
 
@@ -96,6 +104,9 @@ export const tdScores = politics.table(
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
   // No index on overall_score: every read sorts the ~200 rows after a join with tds.
+  (t) => [
+    check('td_scores_range_chk', sql`${t.overallScore} between 0 and 100 and ${t.parliamentaryScore} between 0 and 100 and ${t.debateScore} between 0 and 100`),
+  ],
 ).enableRLS();
 
 // ---------------------------------------------------------------------------

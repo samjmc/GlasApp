@@ -20,10 +20,9 @@ import { DIVISION_KINDS, DIVISION_READING_STATUSES, DIVISION_REJECT_REASONS } fr
 import { DISCIPLINES, QUOTE_KINDS, STANCE_VOTES } from '../stancesApi';
 import { newsArticles } from './news';
 import { divisions } from './parliament';
-import { politics, tds } from './politics';
+import { inList, politics, tds } from './politics';
 import { policyQuestionOptions } from './voting';
 
-const inList = (values: readonly string[]) => sql.raw(values.map((v) => `'${v}'`).join(', '));
 const DOMAIN_KEYS = Object.keys(POLICY_DOMAINS);
 
 export const tdStances = politics.table(
