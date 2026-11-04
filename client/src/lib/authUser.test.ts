@@ -20,8 +20,12 @@ describe('toAuthUser', () => {
     expect(toAuthUser(supabaseUser())?.hasSeenOnboarding).toBe(false);
   });
 
-  it('prefers our uploaded avatar over the one Google rewrites', () => {
-    expect(toAuthUser(supabaseUser({ glas_avatar_url: 'ours', avatar_url: 'google' }))?.profileImageUrl).toBe('ours');
+  it('carries only the provider picture: our upload is a profile field, read from politics.users', () => {
+    const user = toAuthUser(supabaseUser({ glas_avatar_url: 'ours', avatar_url: 'google', county: 'Cork', bio: 'old' }));
+    expect(user?.providerImageUrl).toBe('google');
+    expect(user).not.toHaveProperty('firstName');
+    expect(user).not.toHaveProperty('county');
+    expect(user).not.toHaveProperty('bio');
   });
 
   it('maps no user to null', () => {
@@ -35,7 +39,7 @@ describe('sameAuthUser', () => {
   });
 
   it('a real change is not', () => {
-    expect(sameAuthUser(toAuthUser(supabaseUser()), toAuthUser(supabaseUser({ first_name: 'Bríd' })))).toBe(false);
+    expect(sameAuthUser(toAuthUser(supabaseUser()), toAuthUser(supabaseUser({ username: 'brid' })))).toBe(false);
     expect(sameAuthUser(toAuthUser(supabaseUser()), toAuthUser(supabaseUser({ has_seen_onboarding: true })))).toBe(false);
     expect(sameAuthUser(toAuthUser(supabaseUser()), null)).toBe(false);
     expect(sameAuthUser(null, null)).toBe(true);
@@ -61,6 +65,6 @@ describe('wiring', () => {
   });
 
   it('the profile form is not reset while the user is editing', () => {
-    expect(read('pages', 'ProfilePage.tsx')).toMatch(/if \(user && !isEditing\)/);
+    expect(read('pages', 'ProfilePage.tsx')).toMatch(/if \(saved && !isEditing\)/);
   });
 });

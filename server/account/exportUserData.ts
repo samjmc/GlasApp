@@ -30,10 +30,12 @@ export const EXPORTED_USER_TABLES = [
 export const EXPORT_FORMAT_VERSION = 1;
 
 /**
- * The profile details the app keeps with the sign-in, in Supabase `user_metadata`, rather than in
- * politics.users: what the profile page saves (client/src/contexts/AuthContext.tsx, ProfilePage.tsx),
- * the area the daily session reads (server/voting/routes.ts) and the region (server/routes/regionRoutes.ts).
- * Allowlisted, so whatever else a sign-in provider puts there does not leak into the file by accident.
+ * The profile details kept with the sign-in, in Supabase `user_metadata`: the name, county, bio and
+ * picture address the profile page saved there before politics.users became their home (account
+ * holds the current ones; account/profile.ts copies these in once), and what still lives only there:
+ * the username, the constituency the daily session reads (server/voting/routes.ts) and the region
+ * (server/routes/regionRoutes.ts). Allowlisted, so whatever else a sign-in provider puts there does
+ * not leak into the file by accident.
  */
 export const PROFILE_METADATA_KEYS = [
   'first_name',

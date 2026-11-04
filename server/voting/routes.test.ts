@@ -39,6 +39,14 @@ vi.mock('../account/consent', () => ({
   },
 }));
 
+// The caller's politics.users row, reduced to its county column; undefined = no row at all.
+const rows = vi.hoisted(() => ({ county: undefined as string | null | undefined }));
+vi.mock('../db', () => ({ db: {} }));
+vi.mock('../account/profile', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../account/profile')>()),
+  getProfile: vi.fn(async () => (rows.county === undefined ? null : { county: rows.county })),
+}));
+
 vi.mock('./service', async () => {
   class VotingError extends Error {
     constructor(
@@ -75,6 +83,7 @@ let base: string;
 
 beforeEach(async () => {
   calls.list = [];
+  rows.county = undefined;
   const app = express();
   app.use(express.json());
   app.use('/api/daily-session', dailySessionRouter);
@@ -105,12 +114,27 @@ const send = (path: string, init: { method?: string; body?: unknown; user?: stri
   });
 
 describe('voting routes', () => {
-  it('wraps results in the success envelope and passes location from user metadata', async () => {
+  it('wraps results in the success envelope and passes location from user metadata while there is no profile row', async () => {
     const res = await send('/api/daily-session', { user: 'u1' });
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ success: true, data: { sessionId: 1, items: [] } });
     // A non-string metadata value is ignored rather than passed through.
     expect(calls.list[0]!.args[0]).toEqual({ id: 'u1', county: 'Cork', constituency: null });
+  });
+
+  it('takes the county from the profile row, and metadata only while the row has never held one', async () => {
+    rows.county = 'Galway';
+    await send('/api/daily-session', { user: 'u1' });
+    expect(calls.list.at(-1)!.args[0]).toMatchObject({ county: 'Galway' });
+
+    rows.county = null;
+    await send('/api/daily-session', { user: 'u1' });
+    expect(calls.list.at(-1)!.args[0]).toMatchObject({ county: 'Cork' });
+
+    // Cleared on the profile page: no county, and not the older one from metadata.
+    rows.county = '';
+    await send('/api/daily-session', { user: 'u1' });
+    expect(calls.list.at(-1)!.args[0]).toMatchObject({ county: null });
   });
 
   it('requires a signed-in user to vote, and takes identity from the token only', async () => {

@@ -3,6 +3,7 @@ import { Globe, LogIn, LogOut, Moon, Settings, ShieldCheck, UserRound } from "lu
 import { useAuth } from "@/contexts/AuthContext";
 import { useTheme, type ThemeChoice } from "@/contexts/ThemeContext";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
+import { useProfileMe, type ProfileMe } from "@/hooks/useProfileMe";
 import { useRegion } from "@/hooks/useRegion";
 import type { RegionCode } from "@shared/region-config";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -24,8 +25,8 @@ const THEMES: { value: ThemeChoice; label: string }[] = [
   { value: "system", label: "Match my device" },
 ];
 
-function displayName(user: NonNullable<ReturnType<typeof useAuth>["user"]>): string {
-  return user.displayName || [user.firstName, user.lastName].filter(Boolean).join(" ") || user.email || "Your account";
+function displayName(user: NonNullable<ReturnType<typeof useAuth>["user"]>, profile: ProfileMe["user"]): string {
+  return [profile?.firstName, profile?.lastName].filter(Boolean).join(" ") || user.displayName || user.email || "Your account";
 }
 
 /** The account button: sign in when signed out; profile, theme, region and admin links when signed in. */
@@ -33,6 +34,7 @@ export function AccountMenu({ compact = false }: { compact?: boolean }) {
   const { user, isAuthenticated, isLoading, logout } = useAuth();
   const { theme, setTheme } = useTheme();
   const { isAdmin } = useIsAdmin();
+  const profile = useProfileMe().data?.user;
   const { regionCode, availableRegions, selectRegion } = useRegion();
   const [, navigate] = useLocation();
 
@@ -49,9 +51,9 @@ export function AccountMenu({ compact = false }: { compact?: boolean }) {
     isAuthenticated && user ? (
       <Button variant="ghost" size="icon" className="rounded-full p-0" aria-label="Account menu">
         <Avatar className="h-9 w-9">
-          <AvatarImage src={user.profileImageUrl || ""} alt="" />
+          <AvatarImage src={profile?.profileImageUrl || user.providerImageUrl || ""} alt="" />
           <AvatarFallback className="bg-primary text-sm font-bold text-primary-foreground">
-            {(user.firstName || user.email || "U").charAt(0).toUpperCase()}
+            {(profile?.firstName || user.email || "U").charAt(0).toUpperCase()}
           </AvatarFallback>
         </Avatar>
       </Button>
@@ -74,7 +76,7 @@ export function AccountMenu({ compact = false }: { compact?: boolean }) {
           {isAuthenticated && user ? (
             <>
               <DropdownMenuLabel className="flex flex-col gap-0.5">
-                <span className="truncate">{displayName(user)}</span>
+                <span className="truncate">{displayName(user, profile)}</span>
                 {user.email && <span className="truncate text-xs font-normal text-muted-foreground">{user.email}</span>}
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
