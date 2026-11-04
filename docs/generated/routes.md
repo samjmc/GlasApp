@@ -96,8 +96,8 @@ Access: `public` = no blocking guard; `auth` = `requireAuth`; `admin` = `require
 | PATCH | `/api/pledges/:id` | admin | `requireAdmin` | `server/pledges/routes.ts` |
 | POST | `/api/pledges/:id/evidence` | admin | `requireAdmin` | `server/pledges/routes.ts` |
 | DELETE | `/api/pledges/evidence/:evidenceId` | admin | `requireAdmin` | `server/pledges/routes.ts` |
-| GET | `/api/pledges/parties` | public | `optionalAuth` | `server/pledges/routes.ts` |
-| GET | `/api/pledges/priorities` | public | `optionalAuth` | `server/pledges/routes.ts` |
+| GET | `/api/pledges/parties` | public | — | `server/pledges/routes.ts` |
+| GET | `/api/pledges/priorities` | public | — | `server/pledges/routes.ts` |
 | PUT | `/api/pledges/priorities` | auth | `requireAuth` | `server/pledges/routes.ts` |
 | POST | `/api/profile/image` | auth | `requireAuth` | `server/routes/profileRoutes.ts` |
 | GET | `/api/profile/me` | auth | `requireAuth` | `server/routes/profileRoutes.ts` |

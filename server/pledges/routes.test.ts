@@ -72,6 +72,7 @@ vi.mock('./repository', () => {
 
 const { pledgesRouter } = await import('./routes');
 const { MIN_COMMUNITY_RANKERS } = await import('./score');
+const { optionalAuth } = await import('../auth');
 
 let server: Server;
 let base: string;
@@ -82,6 +83,8 @@ beforeEach(async () => {
   state.resolved = false;
   const app = express();
   app.use(express.json());
+  // App-wide, as server/routes.ts mounts it.
+  app.use(optionalAuth);
   app.use('/api/pledges', pledgesRouter);
   server = await new Promise<Server>((resolve) => {
     const s = app.listen(0, '127.0.0.1', () => resolve(s));
