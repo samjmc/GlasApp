@@ -110,10 +110,13 @@ interface ExchangeData {
   items: Array<ExchangeItem & { quote: string; due: string | null; date: string }>;
 }
 
-/** Members and items of the read exchanges, filtered by `where` on the exchange `e`. */
+/**
+ * Members and items of the read exchanges, filtered by `where` on the exchange `e`. One query at a
+ * time: the rebuild passes its transaction, one connection, which runs them one by one anyway, and
+ * pg 9 refuses a query sent while another is running on the same client.
+ */
 async function exchangeData(where: ReturnType<typeof sql>, database: Reader): Promise<ExchangeData> {
-  const [memberRes, itemRes, tdRes, offices] = await Promise.all([
-    database.execute(sql`
+  const memberRes = await database.execute(sql`
       select x.exchange_id, x.format, x.date, x.askers, coalesce(jsonb_object_agg(x.member_code, x.words) filter (where x.member_code is not null), '{}') words
       from (
         select e.id exchange_id, e.format, e.date::text date, e.askers, p.member_code, sum(p.word_count)::int words
@@ -123,17 +126,16 @@ async function exchangeData(where: ReturnType<typeof sql>, database: Reader): Pr
         where ${where}
         group by e.id, e.format, e.date, e.askers, p.member_code
       ) x
-      group by x.exchange_id, x.format, x.date, x.askers`),
-    database.execute(sql`
+      group by x.exchange_id, x.format, x.date, x.askers`);
+  const itemRes = await database.execute(sql`
       select e.id exchange_id, e.date::text date, i.member_code, i.kind, i.commitment_type, i.quote, i.due
       from ${readExchanges} e
       join politics.debate_speeches p on p.section_id = e.section_id and p.position between e.from_position and e.to_position
       join politics.debate_items i on i.speech_id = p.id and i.extractor_version = ${QUESTION_EXTRACTOR_VERSION}
       where ${where}
-      order by e.id, p.position, i.quote_start`),
-    database.execute(sql`select id, member_code, party from politics.tds where member_code is not null`),
-    governmentOffices(database),
-  ]);
+      order by e.id, p.position, i.quote_start`);
+  const tdRes = await database.execute(sql`select id, member_code, party from politics.tds where member_code is not null`);
+  const offices = await governmentOffices(database);
   const tds = new Map((tdRes.rows as Array<{ id: number; member_code: string; party: string | null }>).map((r) => [r.member_code, r]));
   const members: ExchangeMember[] = [];
   for (const r of memberRes.rows as Array<{ exchange_id: string; format: QuestionFormat; date: string; askers: string[]; words: Record<string, number> }>) {
