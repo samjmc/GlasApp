@@ -16,6 +16,10 @@ export const users = politics.table(
     firstName: varchar('first_name', { length: 100 }),
     lastName: varchar('last_name', { length: 100 }),
     county: varchar('county', { length: 50 }),
+    /** Both NULL until copied from the sign-in's user_metadata (server/account/profile.ts), where they were kept before. */
+    username: varchar('username', { length: 50 }),
+    /** The Dáil constituency the daily session is filed under (server/voting/routes.ts). */
+    constituency: varchar('constituency', { length: 100 }),
     bio: text('bio'),
     profileImageUrl: text('profile_image_url'),
     /** E.164. Unique across users once set. */

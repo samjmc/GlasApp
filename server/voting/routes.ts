@@ -60,13 +60,13 @@ dailySessionRouter.get(
   handle(async (req) => {
     const user = req.user!;
     const profile = await getProfile(user.id);
-    // The county is a profile field (politics.users). Metadata is where it was saved before; it is read
-    // only while the row has never held one. The constituency has no column yet, so it stays in metadata.
-    // userText also drops a value longer than the session's column.
+    // County and constituency are profile fields (politics.users). Metadata is where they were saved
+    // before; each is read only while the row has never held one. userText also drops a value longer
+    // than the session's column.
     return service.getOrCreateSession({
       id: user.id,
       county: userText(profile?.county ?? user.userMetadata.county, 60),
-      constituency: userText(user.userMetadata.constituency, 100),
+      constituency: userText(profile?.constituency ?? user.userMetadata.constituency, 100),
     });
   }),
 );

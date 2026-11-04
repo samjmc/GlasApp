@@ -100,6 +100,17 @@ run('/api/profile/me against Postgres', () => {
     expect(await stored()).toEqual({ first_name: 'Aoife', last_name: 'Tester', county: 'Kerry', bio: 'meta bio', profile_image_url: '/uploads/user-a-1700000000000.png' });
   });
 
+  it('copies the username and constituency from metadata once, and drops one longer than its column', async () => {
+    const res = await call('GET', { username: ' aoife ', constituency: 'Kerry' });
+    expect(res.body.data.user).toMatchObject({ username: 'aoife', constituency: 'Kerry' });
+    await call('GET', { username: 'other', constituency: 'Cork' });
+    const row = async () => (await dbmod.pool.query('select username, constituency from politics.users where id = $1', ['user-a'])).rows[0];
+    expect(await row()).toEqual({ username: 'aoife', constituency: 'Kerry' });
+
+    await call('GET', { username: 'x'.repeat(51), constituency: 'y'.repeat(101) }, undefined, 'user-b');
+    expect((await dbmod.pool.query('select username, constituency from politics.users where id = $1', ['user-b'])).rows[0]).toEqual({ username: null, constituency: null });
+  });
+
   it('copies only into fields the row has never held: a saved value, or one cleared to blank, wins', async () => {
     await call('PATCH', {}, { firstName: 'Brid', county: '' });
     const res = await call('GET', { first_name: 'Old', county: 'Cork', bio: 'old bio' });
