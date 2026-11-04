@@ -66,11 +66,13 @@ vi.mock('../account/profileImages', () => ({
 }));
 
 const router = (await import('./accountRoutes')).default;
+const { errorHandler } = await import('../middleware/errorHandler');
 
 async function send(method: string, path: string, auth?: string, body?: unknown, headers: Record<string, string> = {}) {
   const app = express();
   app.use(express.json());
   app.use('/api/account', router);
+  app.use(errorHandler);
   const server = app.listen(0);
   await new Promise((r) => server.once('listening', r));
   try {
@@ -110,7 +112,7 @@ describe('DELETE /api/account', () => {
     const { status, body } = await del('Bearer ok');
     expect(status).toBe(500);
     expect(calls.order).toEqual(['data:user-1']);
-    expect(body.error.message).toMatch(/Failed to delete your data/);
+    expect(body).toEqual({ success: false, error: { code: 'INTERNAL_ERROR', message: 'Something went wrong. Please try again.' } });
   });
 
   it('reports a failed sign-in removal instead of claiming success', async () => {
@@ -119,6 +121,8 @@ describe('DELETE /api/account', () => {
     expect(status).toBe(500);
     expect(body.success).toBe(false);
     expect(body.error.message).toMatch(/sign-in could not be removed/);
+    // The data went first; only the sign-in is left.
+    expect(calls.order).toEqual(['data:user-1', 'images:user-1', 'auth:user-1']);
   });
 
   it('needs a signed-in caller', async () => {
@@ -200,7 +204,9 @@ describe('/api/account/consent/political', () => {
 
   it('answers 500, not success, when the database fails', async () => {
     calls.dataFails = true;
-    expect((await send('PUT', PATH, 'Bearer ok', { version: POLITICAL_CONSENT_VERSION })).status).toBe(500);
-    expect((await send('DELETE', PATH, 'Bearer ok')).status).toBe(500);
+    for (const res of [await send('PUT', PATH, 'Bearer ok', { version: POLITICAL_CONSENT_VERSION }), await send('DELETE', PATH, 'Bearer ok')]) {
+      expect(res.status).toBe(500);
+      expect(res.body).toMatchObject({ success: false, error: { code: 'INTERNAL_ERROR' } });
+    }
   });
 });

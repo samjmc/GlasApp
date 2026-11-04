@@ -101,7 +101,7 @@ describe('errorHandler', () => {
     const logged = vi.spyOn(logger, 'error');
     const { status, body } = await get('/crash');
     expect(status).toBe(500);
-    expect(body).toEqual({ success: false, error: { code: 'INTERNAL_ERROR', message: 'An unexpected error occurred' } });
+    expect(body).toEqual({ success: false, error: { code: 'INTERNAL_ERROR', message: 'Something went wrong. Please try again.' } });
     expect(logged).toHaveBeenCalledTimes(1);
   });
 

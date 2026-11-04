@@ -34,56 +34,42 @@ function pipelineOptions(body: unknown): z.infer<typeof pipelineBody> | null {
 const BAD_BODY = formatError('VALIDATION_ERROR', 'Body must be { batchSize?: 1..100, topPercentile?: 1..50 }');
 
 /** POST /api/admin/td-scoring/run */
-router.post('/run', async (req, res, next) => {
-  try {
-    const options = pipelineOptions(req.body);
-    if (!options) return res.status(400).json(BAD_BODY);
-    console.log('News → TD pipeline triggered via API...');
-    const stats = await runTdPipeline(options);
-    res.json({ success: true, message: 'News → TD pipeline completed', stats });
-  } catch (error: unknown) {
-    console.error('News → TD pipeline failed:', error);
-    next(error);
-  }
+// A failed run reaches the central error handler, which logs it and answers 500.
+router.post('/run', async (req, res) => {
+  const options = pipelineOptions(req.body);
+  if (!options) return res.status(400).json(BAD_BODY);
+  console.log('News → TD pipeline triggered via API...');
+  const stats = await runTdPipeline(options);
+  res.json({ success: true, message: 'News → TD pipeline completed', stats });
 });
 
 /** GET /api/admin/td-scoring/status: article counts by pipeline status. */
-router.get('/status', async (req, res, next) => {
-  try {
-    const counts = await statusCounts();
-    res.json({
-      success: true,
-      status: {
-        ...counts,
-        message: counts.pending === 0 && counts.claimed === 0
-          ? 'All caught up!'
-          : `${counts.pending} articles waiting, ${counts.claimed} being processed`
-      }
-    });
-  } catch (error: unknown) {
-    console.error('Status check failed:', error);
-    next(error);
-  }
+router.get('/status', async (req, res) => {
+  const counts = await statusCounts();
+  res.json({
+    success: true,
+    status: {
+      ...counts,
+      message: counts.pending === 0 && counts.claimed === 0
+        ? 'All caught up!'
+        : `${counts.pending} articles waiting, ${counts.claimed} being processed`
+    }
+  });
 });
 
 /** POST /api/admin/td-scoring/full-pipeline: ingest, then the news → TD pipeline. */
-router.post('/full-pipeline', async (req, res, next) => {
-  try {
-    const options = pipelineOptions(req.body);
-    if (!options) return res.status(400).json(BAD_BODY);
-    console.log('Full news pipeline triggered via API...');
-    const ingestStats = await ingest();
-    const scoringStats = await runTdPipeline(options);
-    res.json({
-      success: true,
-      message: 'Full pipeline completed',
-      ingest: ingestStats,
-      scoring: scoringStats
-    });
-  } catch (error: unknown) {
-    console.error('Full pipeline failed:', error);
-    next(error);
-  }
+router.post('/full-pipeline', async (req, res) => {
+  const options = pipelineOptions(req.body);
+  if (!options) return res.status(400).json(BAD_BODY);
+  console.log('Full news pipeline triggered via API...');
+  const ingestStats = await ingest();
+  const scoringStats = await runTdPipeline(options);
+  res.json({
+    success: true,
+    message: 'Full pipeline completed',
+    ingest: ingestStats,
+    scoring: scoringStats
+  });
 });
 
 export default router;
