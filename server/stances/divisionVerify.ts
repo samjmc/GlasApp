@@ -29,6 +29,16 @@ export const ALLOWED_BLOCKS: Partial<Record<DivisionKind, BlockKind[]>> = {
 };
 /** One text per question: more than one allowed block and the vote cannot be tied to one. */
 const ONE_TEXT: DivisionKind[] = ['amendment', 'words_stand', 'motion'];
+/** The other kinds read from more than one kind of block (a bill's title and the motion to read it), but not from two of the same kind. */
+const ONE_OF_EACH: DivisionKind[] = ['bill_stage', 'other'];
+/**
+ * The question as recorded IS an amendment put ("Amendment put", "That amendment No. 4 be made", with or
+ * without a leading "Question put:" and quote marks). Anchored at the start: a bill's own title can hold
+ * the word ("Finance (Amendment) Bill") and "as amended" is a different question.
+ */
+const NAMES_AMENDMENT = /^(?:question put\s*:?\s*)?["“'‘]?\s*(?:that\s+)?(?:the\s+)?amendments?\b/i;
+/** A reading that treats such a question as one of these is reading the wrong text: the Tá voters backed the amendment. */
+const NOT_AN_AMENDMENT: DivisionKind[] = ['motion', 'words_stand', 'bill_stage', 'other'];
 const ELLIPSIS = /\.\.\.|…/;
 
 export type MeaningCheck =
@@ -39,12 +49,34 @@ export type MeaningCheck =
 const rejected = (reason: DivisionRejectReason): MeaningCheck => ({ status: 'rejected', reason });
 
 /**
+ * Whether a reading of this kind can be tied to ONE text of the proposal, from EVERY block there is (not
+ * only those that fitted the prompt): null when it can, 'ambiguous' when the recorded question names an
+ * amendment and the reading is of something else, or the kind's allowed blocks hold more than one text.
+ * A stored meaning is checked with this again whenever it is re-used, so a reading made before a check was
+ * added cannot go on being matched, or stay public, against it.
+ */
+export function kindConflict(kind: DivisionKind, every: ProposalBlock[]): DivisionRejectReason | null {
+  const allowed = ALLOWED_BLOCKS[kind] ?? [];
+  const recorded = every.find((b) => b.kind === 'Q')?.text ?? '';
+  if (NAMES_AMENDMENT.test(recorded) && NOT_AN_AMENDMENT.includes(kind)) return 'ambiguous';
+  if (ONE_TEXT.includes(kind) && every.filter((b) => allowed.includes(b.kind)).length > 1) return 'ambiguous';
+  if (ONE_OF_EACH.includes(kind) && allowed.some((k) => every.filter((b) => b.kind === k).length > 1)) return 'ambiguous';
+  return null;
+}
+
+/**
  * The meaning reply against exactly the blocks that were sent. In order, the first failure
  * wins: procedural; "as amended" or unclear (nothing on record says what Tá means there);
  * a blank `ta_means` (a matched reading must carry one); no known domain; a quote of the wrong length; a block not sent or not allowed; more than one
  * allowed block; the quote not in its block; low confidence.
+ *
+ * `blocks` are the blocks that were SENT (within the character budget); `every` are all of them. The
+ * ambiguity checks count `every`: a second motion that did not fit the prompt is still a second
+ * motion, and a reading that quoted the first would otherwise pass as the only one. The recorded
+ * question also has the last word on one thing: when it names an amendment, the reading must be of
+ * an amendment (or the words standing), not of a motion that the Tá voters did not vote for.
  */
-export function verifyMeaning(reply: MeaningReply, blocks: ProposalBlock[]): MeaningCheck {
+export function verifyMeaning(reply: MeaningReply, blocks: ProposalBlock[], every: ProposalBlock[] = blocks): MeaningCheck {
   if (reply.procedural || reply.divisionKind === 'procedural' || reply.divisionKind === 'confidence') return { status: 'procedural' };
   if (reply.divisionKind === 'as_amended' || reply.divisionKind === 'unclear') return rejected('ambiguous');
   if (!reply.taMeans) return rejected('invalid');
@@ -60,7 +92,8 @@ export function verifyMeaning(reply: MeaningReply, blocks: ProposalBlock[]): Mea
   const allowed = ALLOWED_BLOCKS[reply.divisionKind] ?? [];
   const named = blocks.find((b) => b.label === reply.quoteBlock);
   if (!named || !allowed.includes(named.kind)) return rejected('invalid');
-  if (ONE_TEXT.includes(reply.divisionKind) && blocks.filter((b) => allowed.includes(b.kind)).length > 1) return rejected('ambiguous');
+  const conflict = kindConflict(reply.divisionKind, every);
+  if (conflict) return rejected(conflict);
 
   const text = normalise(named.text);
   const at = text.text.indexOf(quote);
@@ -92,15 +125,21 @@ const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
  * Returns the claims that are NOT stated: no support (`support: null`), support that is invented
  * or paraphrased, or too short.
  *
+ * `proposal` is one text, or the texts of the allowed blocks: support has to be inside ONE of them.
+ * Joined into one string, the end of one block and the start of the next read as one passage, and
+ * words the model stitched across a block boundary would pass.
+ *
  * What it cannot see: a claim the model left out of its list. That is the model's call to make.
  */
-export function verifyFit(claims: FitClaim[], proposal: string): string[] {
-  const text = normalise(proposal).text;
+export function verifyFit(claims: FitClaim[], proposal: string | string[]): string[] {
+  const texts = (Array.isArray(proposal) ? proposal : [proposal]).map((p) => normalise(p).text);
   return claims
     .filter((c) => {
       const support = c.support === null ? '' : normalise(c.support).text.replace(/^[^a-z0-9]+|[^a-z0-9]+$/g, '');
       const words = support ? support.split(' ').length : 0;
-      return words < MIN_SUPPORT_WORDS || !new RegExp(`(?:^|[^a-z0-9])${escapeRegExp(support)}(?:$|[^a-z0-9])`).test(text);
+      if (words < MIN_SUPPORT_WORDS) return true;
+      const found = new RegExp(`(?:^|[^a-z0-9])${escapeRegExp(support)}(?:$|[^a-z0-9])`);
+      return !texts.some((text) => found.test(text));
     })
     .map((c) => c.claim);
 }
@@ -122,10 +161,15 @@ export type MatchCheck =
  * `proposal` is the proposal's own text (the blocks this kind of question may be read from). The
  * Tá answer may not name a figure that is not in it (a vote to raise relief to €35,000 does not
  * state "raise it to €50,000"); that is no match, with the figures listed.
+ *
+ * Only the option's label is read for figures, not the question's stem: the labels carry the
+ * specifics (that is how the €50,000 case showed up), and a stem often holds a number that is not the
+ * answer's (a year) and would refuse good matches. A question whose stem names the figure and whose
+ * options do not is a gap for the human check.
  */
 export function verifyMatch(
   reply: MatchReply,
-  candidates: Array<{ id: number; options: Array<{ key: string; label?: string }> }>,
+  candidates: Array<{ id: number; options: Array<{ key: string; label: string }> }>,
   proposal: string,
 ): MatchCheck {
   if (reply.questionId === null) return { status: 'no_match' };

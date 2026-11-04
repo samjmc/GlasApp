@@ -25,7 +25,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { fetchMyQuizResults, submitQuiz, type DimensionWeights } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
-import { clearStoredQuiz, loadStoredQuiz, loadWeights, storeQuiz } from '@/lib/quizStorage';
+import { clearStoredQuiz, loadStoredQuiz, loadWeights, quizStorageEpoch, storeQuiz } from '@/lib/quizStorage';
 import { quizSaveStatus, type QuizSaveAttempt, type QuizSaveStatus } from '@/lib/quizSaveStatus';
 
 // One save per page load, even under StrictMode's double effects.
@@ -78,6 +78,7 @@ const QuizResultsPage: React.FC = () => {
   const saveResult = useCallback(
     (respectDecline: boolean) => {
       if (!stored) return;
+      const since = quizStorageEpoch();
       setSaveAttempt("saving");
       // Saving shows political opinions: needs the user's consent. Someone who just said no on the quiz page is not asked again.
       void ensureConsent({ respectDecline }).then((agreed) => {
@@ -94,7 +95,9 @@ const QuizResultsPage: React.FC = () => {
               toast({ title: "Not saved", description: "We did not save this result because you have not agreed to us keeping your opinions. You can agree on your profile page." });
               return;
             }
-            storeQuiz(saved, stored.answers, stored.seed);
+            // Signed out, or consent withdrawn, while this was saving: the result is not for this tab any more.
+            if (quizStorageEpoch() !== since) return;
+            storeQuiz(saved, stored.answers, stored.seed, since);
             setStored({ result: saved, answers: stored.answers, seed: stored.seed });
             await queryClient.invalidateQueries({ queryKey: queryKeys.quiz.all() });
             await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });

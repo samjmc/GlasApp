@@ -160,7 +160,7 @@ export function PartyPledgesPanel({ party }: { party: string }) {
                 <Stat
                   label="Weighted by priorities"
                   value={percent(summary.weightedDeliveryRate)}
-                  hint="Your ranking if you have one, otherwise everyone's"
+                  hint="Your ranking if you have one, otherwise everyone's once enough people have ranked"
                 />
               )}
             </div>

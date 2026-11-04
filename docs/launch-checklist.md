@@ -10,17 +10,18 @@ Tested on a laptop, not on a real host:
 - The production image **builds** from `main`, runs as the non-root user `node`, answers `/health`, serves
   the client and its SPA fallback, reads the database, refuses unauthenticated calls with 401, and **stops
   on SIGTERM in about 1.5 seconds with exit code 0**.
-- Every migration in `drizzle/` applies to an **empty** database (25 when this was checked on 2026-10-10;
-  CI applies them all on every pull request).
-- CI now builds the image and runs these checks on every pull request (`image` job), so the kit cannot rot.
+- Every migration applies to an **empty** database (25 when this was checked on 2026-10-10; `main` has more
+  now, and CI applies them all on every pull request).
+- CI builds the image and runs the start, `/health`, SPA, non-root and SIGTERM checks on every pull request
+  (`image` job). It does not run Compose, read the container's health status or start Caddy.
 
 Fixed in the same round: the server no longer dies when the database drops a connection, idle or in use
 (listeners on the pool and on every client); unhandled errors are written to the structured log before the
 process exits; the shutdown closes database connections; container logs are rotated by size; the request
 log records the path only, never the query string or headers (a reset link carries a one-time token in its
 query), and no health probe is logged; the service worker no longer caches signed-in API responses or
-profile pictures (and deletes the old cache); two public endpoints that sent free text to an AI provider
-are removed.
+profile pictures (and deletes the old cache); two public endpoints that sent each quiz result's eight scores
+to an AI provider are removed (and a third, a free-text assistant, earlier).
 
 Not checked: Docker Compose with the Caddy profile, the read-only root file system in `deploy/compose.yml`
 (only the app's writes were checked in the code: profile pictures go to the `uploads` volume), a real
@@ -31,7 +32,7 @@ Supabase project sign-in, email delivery, and anything on a real host.
 | Decision | Why it matters |
 |---|---|
 | **Host and domain.** One Docker host, one instance (`docs/deploy.md` "Rules that do not bend"). | Rate limits, the cache and the sync lock live in process memory. |
-| **Own Supabase project, or keep sharing GlasCore.** | The auth user table, the Site URL and the connection budget (60, shared) are project-wide. |
+| **Own Supabase project, or keep sharing GlasCore.** | The auth user table, the Site URL, the email templates (so the reset-link template in step 2.5 too) and the connection budget (the pooler holds 15, shared) are project-wide. |
 | **The AI provider for the background jobs** (news ranking, stances, debates). | These send public text only. The two public analysis endpoints that sent each result's eight scores to the provider are gone (removed 2026-10-10). If you add a user-facing AI feature, name the provider, get a DPA and pick an EU or UK one first. |
 | **Privacy policy rewrite, cookie banner, age gate, self-hosted fonts.** | The policy does not match the app. See the data protection impact assessment draft. |
 
@@ -53,22 +54,32 @@ In the Supabase dashboard (Authentication):
    table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
    (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown), 0026
-   (row level security on the politics tables), 0027 (user id foreign keys), 0028 (extraction failure counts),
-   0029 (job runs), 0030 (indexes) and 0031 (the question record's government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
-   table before you migrate.
+   (row level security on the politics tables), 0027 (foreign keys from the user-keyed political tables to
+   `politics.users`), 0028 (extraction failure counts), 0029 (job runs), 0030 (indexes), 0031 (username and
+   constituency on `politics.users`), 0032 (CHECKs, drop `tds.member_uri`) and 0033 (the question record's
+   government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
+   table before you migrate. **0027 fails if any vote, quiz result, daily session or pledge ranking belongs to
+   a user with no `politics.users` row** (nothing is deleted for you): run the count in step 9 first. 0032
+   fails, and rolls everything back, if a row breaks one of its CHECKs: find such rows first.
 9. **Political data saved before consent existed.** Votes, rankings, pledge priorities and quiz results
    from people with no recorded consent (or consent to an older text) have no lawful basis under Article 9.
-   Count them, then delete them or ask the people to consent again. Read-only count:
+   Count them, then delete them or ask the people to consent again. Read-only count. It starts from the data
+   tables, not from `politics.users`: that row is only created when someone opens their profile, so a person
+   who voted or took the quiz before consent existed and never opened it has data and no row at all. Those are
+   the rows that make migration 0027 fail (step 8), so run this **before** migrating, and delete them first.
 
    ```sql
-   select count(*) as users_with_opinions_and_no_current_consent
-   from politics.users u
-   where (u.political_consent_at is null or u.political_consent_version is distinct from 1)
-     and (exists (select 1 from politics.policy_votes v where v.user_id::text = u.id::text)
-       or exists (select 1 from politics.quiz_results q where q.user_id::text = u.id::text)
-       or exists (select 1 from politics.daily_sessions d where d.user_id::text = u.id::text)
-       or exists (select 1 from politics.pledge_category_priorities p where p.user_id::text = u.id::text)
-       or exists (select 1 from politics.ideology_profiles i where i.subject_kind = 'user' and i.subject_id = u.id::text));
+   with owners as (
+     select user_id::text as id from politics.policy_votes
+     union select user_id::text from politics.quiz_results
+     union select user_id::text from politics.daily_sessions
+     union select user_id::text from politics.pledge_category_priorities
+     union select subject_id from politics.ideology_profiles where subject_kind = 'user'
+   )
+   select count(*) as people_with_opinions_and_no_current_consent
+   from owners o
+   left join politics.users u on u.id::text = o.id
+   where u.political_consent_at is null or u.political_consent_version is distinct from 1;
    ```
 
    Change `1` to `POLITICAL_CONSENT_VERSION` in `shared/consent.ts` if it has moved. Until this is done, the
@@ -93,8 +104,10 @@ into the client at **build** time, so rebuild after changing either), set an adm
 
 Only when step 3 passes, the migrations are applied, and no other copy (a laptop, an old host) runs crons
 against the same database. Then follow `docs/deploy.md` section 6. `DIVISION_STANCES`, `DEBATE_ITEMS` and
-`QUESTION_ITEMS` stay off until you want the model cost. (The debate and question backlogs on GlasCore are
-already read, so the last two read only new or changed items.)
+`QUESTION_ITEMS` stay off until you want the model cost. **`DIVISION_STANCES=on` also PUBLISHES** the matched
+divisions as TD stances every night (the sync runs straight after the read): run the audit and read each match
+by hand first (`docs/deploy.md` section 6). (The debate and question backlogs on GlasCore are already read, so
+`DEBATE_ITEMS` and `QUESTION_ITEMS` read only new or changed items.)
 
 ## 5. Known limits at launch
 
@@ -107,8 +120,8 @@ already read, so the last two read only new or changed items.)
 
 ## 6. First week
 
-- Read the container logs daily (rotated, about a week kept). Look for `Database pool:` lines and for
-  `"level":60` (pino's number for fatal; the text "fatal" is not in the line).
+- Read the container logs daily (rotated by size: about a week at busy traffic, longer when quiet). Look for
+  `Database pool:` and `Database client:` lines and for `"level":60` (pino's number for fatal).
 - Watch pooler connections in Supabase against `DB_POOL_MAX` (default 10; the pooler holds 15, shared).
 - Confirm the Supabase plan's backups, and do one restore drill into a scratch project.
 - Watch model spend when the crons are on.

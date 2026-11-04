@@ -27,8 +27,11 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core';
 import { users } from './accounts';
-import { politics } from './politics';
+import { inList, politics } from './politics';
+import { IDEOLOGY_DIMENSIONS } from '../ideology';
 import type { DailySessionCompletion } from '../voting';
+// Pure data with no imports, so the schema can read the one list of domains.
+import { POLICY_DOMAINS } from '../../server/constants/policyTopics';
 
 // ---------------------------------------------------------------------------
 // A question made from one news article. The headline, summary, link and image are a
@@ -58,6 +61,8 @@ export const policyQuestions = politics.table(
   (t) => [
     uniqueIndex('policy_questions_article_idx').on(t.articleId),
     index('policy_questions_created_idx').on(t.createdAt),
+    check('policy_questions_domain_chk', sql`${t.policyDomain} in (${inList(Object.keys(POLICY_DOMAINS))})`),
+    check('policy_questions_dimension_chk', sql`${t.primaryDimension} in (${inList(IDEOLOGY_DIMENSIONS)})`),
   ],
 ).enableRLS();
 

@@ -96,11 +96,6 @@ export interface TdRef {
 
 const tdRefColumns = { id: tds.id, name: tds.name, party: tds.party, constituency: tds.constituency, imageUrl: tds.imageUrl };
 
-export async function findTdIdByName(name: string, database: Db = db): Promise<number | null> {
-  const rows = await database.select({ id: tds.id }).from(tds).where(sql`lower(${tds.name}) = lower(${name.trim()})`).limit(1);
-  return rows[0]?.id ?? null;
-}
-
 export async function findTd(id: number, database: Db = db): Promise<TdRef | null> {
   const rows = await database.select(tdRefColumns).from(tds).where(eq(tds.id, id)).limit(1);
   return rows[0] ?? null;
@@ -113,23 +108,10 @@ export async function listActiveTds(database: Db = db): Promise<TdRef[]> {
 // --- TD evidence -----------------------------------------------------------
 
 /**
- * Idempotent on (TD, source, sourceRef). Returns false when nothing was written.
- *
- * A `stance` is the TD's CURRENT answer to one question, so a later statement replaces it: every
- * value column is overwritten (a dimension the new answer is silent on becomes NULL), but only
- * when the new row is not older, so an older article never overwrites a newer position.
- * Every other source keeps the first row.
+ * The `stance` upsert. A `stance` is the TD's CURRENT answer to one question, so a later statement
+ * replaces it: every value column is overwritten (a dimension the new answer is silent on becomes
+ * NULL), but only when the new row is not older, so an older article never overwrites a newer position.
  */
-export async function insertTdEvidence(row: NewTdIdeologyEvidence, database: Db = db): Promise<boolean> {
-  const insert = database.insert(tdIdeologyEvidence).values(row);
-  const written =
-    row.source === 'stance'
-      ? await insert.onConflictDoUpdate(STANCE_UPSERT).returning({ id: tdIdeologyEvidence.id })
-      : await insert.onConflictDoNothing().returning({ id: tdIdeologyEvidence.id });
-  return written.length > 0;
-}
-
-/** The `stance` upsert: every value column from the new row, only when it is not older. */
 const STANCE_UPSERT = {
   target: [tdIdeologyEvidence.tdId, tdIdeologyEvidence.source, tdIdeologyEvidence.sourceRef],
   set: {
@@ -150,8 +132,8 @@ export const STANCE_SYNC_LOCK = 4_710_314_001;
 const EVIDENCE_INSERT_CHUNK = 500;
 
 /**
- * Insert `stance` rows in chunks, with the same guard as `insertTdEvidence`: a row whose slot
- * already exists (the news pipeline wrote it meanwhile) updates it only when it is not older.
+ * Insert `stance` rows in chunks with STANCE_UPSERT: a row whose slot already exists (the news
+ * pipeline wrote it meanwhile) updates it only when it is not older.
  */
 export async function insertStanceEvidenceRows(database: Pick<Db, 'insert'>, rows: NewTdIdeologyEvidence[]): Promise<void> {
   for (let i = 0; i < rows.length; i += EVIDENCE_INSERT_CHUNK) {

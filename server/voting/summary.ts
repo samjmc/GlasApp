@@ -6,7 +6,7 @@
  * shift to show, and the summary says which way today's answers leaned instead. It never
  * invents a before/after pair.
  */
-import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '../constants/ideology';
+import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '@shared/ideology';
 import type {
   DailySessionCompletion,
   DailySessionDimensionShift,

@@ -3,12 +3,14 @@
  * TD stated a position, with the quote checked against the article text by server/stances.
  * No model-written summary is stored: the quote and the link are the record.
  *
- * A row can instead be a recorded Dáil vote (docs/plans/quiz-improvements/01c): `division_id`
+ * A row can instead be a recorded Dáil vote (docs/architecture/ideology-matching.md, "Dáil divisions
+ * as stances"): `division_id`
  * set, `quote_kind` 'division', the quote being the text of the proposal voted on. Those rows
  * are derived from `division_readings` and the roll call, and replaced whole by each sync.
  *
- * The article's url, outlet and headline are copies, and so is `option_text`: the question bank
- * can change, and the record should still say what the TD was matched to.
+ * The article's url, outlet and headline are copies, and so is `option_text` for a news stance: the
+ * question bank can change, and the record should still say what the TD was matched to. A Dáil-vote
+ * row is rebuilt by each sync, so its `option_text` is the option's label as of that sync.
  */
 import { sql } from 'drizzle-orm';
 import { check, foreignKey, index, integer, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
@@ -18,10 +20,9 @@ import { DIVISION_KINDS, DIVISION_READING_STATUSES, DIVISION_REJECT_REASONS } fr
 import { DISCIPLINES, QUOTE_KINDS, STANCE_VOTES } from '../stancesApi';
 import { newsArticles } from './news';
 import { divisions } from './parliament';
-import { politics, tds } from './politics';
+import { inList, politics, tds } from './politics';
 import { policyQuestionOptions } from './voting';
 
-const inList = (values: readonly string[]) => sql.raw(values.map((v) => `'${v}'`).join(', '));
 const DOMAIN_KEYS = Object.keys(POLICY_DOMAINS);
 
 export const tdStances = politics.table(
@@ -48,7 +49,7 @@ export const tdStances = politics.table(
     quote: text('quote').notNull(),
     quoteKind: varchar('quote_kind', { length: 12 }).notNull(),
     policyDomain: varchar('policy_domain', { length: 40 }).notNull(),
-    /** The option's label when it was matched. */
+    /** The option's label when a news stance was matched; as of the last sync for a Dáil-vote row. */
     optionText: text('option_text'),
     /** The article's published_at (created_at when it has none); a vote's time. */
     statedAt: timestamp('stated_at', { withTimezone: true }).notNull(),

@@ -14,6 +14,7 @@ import { z } from 'zod';
 import { DIVISION_KINDS, type DivisionKind } from '@shared/divisionMeaning';
 import { POLICY_DOMAINS } from '../constants/policyTopics';
 import type { DivisionContext } from '../parliament';
+import { QUOTE_MAX_WORDS, QUOTE_MIN_WORDS } from './extract';
 
 /** Stored on every reading; bump when the meaning prompt changes what a reading means. */
 export const MEANING_PROMPT_VERSION = 1;
@@ -47,7 +48,8 @@ export interface ProposalBlock {
   text: string;
 }
 
-const MOTION = /^I move\b/i;
+/** "I move that…" / "I move amendment No. 3…" opens a block; "I move on to the next point" does not. */
+const MOTION = /^I move\b(?!\s+(?:on|to|now|next)\b)/i;
 /** The Standing Orders formula for moving an amendment. This reads procedure, not meaning. */
 const MOVES_AMENDMENT = /^I move\b[^:]*\bamendments?\b/i;
 
@@ -131,7 +133,7 @@ The PROPOSAL lists the text that was put, in labelled blocks: Q is the question 
 Code the policy content of the proposal; do not infer it from who proposed it.
 
 Rules:
-- "quote_block" is the label of ONE PROPOSAL block, and "quote" is 8 to 60 words copied EXACTLY from that block, one continuous passage, no ellipsis, that states what a Tá vote supported.
+- "quote_block" is the label of ONE PROPOSAL block, and "quote" is ${QUOTE_MIN_WORDS} to ${QUOTE_MAX_WORDS} words copied EXACTLY from that block, one continuous passage, no ellipsis, that states what a Tá vote supported.
 - "policy_domains": one or two of these keys: ${DOMAIN_KEYS.join(', ')}.
 - "confidence" (0..1) is how sure you are what a Tá vote supported.
 
@@ -318,14 +320,17 @@ export interface FitClaim {
 
 const fitSchema = z.object({ claims: z.array(z.object({ claim: z.string(), support: z.string().nullable().optional() })) });
 
-/** The model's JSON → the answer's claims, each with its claimed support. Null on bad JSON, a wrong shape, or no claims at all. */
+/**
+ * The model's JSON → the answer's claims, each with its claimed support. Null on bad JSON, a wrong
+ * shape, or no claims at all. Every claim is kept: cutting the list at some number would leave the
+ * rest unchecked, and an answer that said more than that has said a lot.
+ */
 export function parseFit(content: string | null): FitClaim[] | null {
   const parsed = fitSchema.safeParse(parseJson(content));
   if (!parsed.success) return null;
   const claims = parsed.data.claims
     .map((c) => ({ claim: c.claim.trim(), support: c.support?.trim() || null }))
-    .filter((c) => c.claim !== '')
-    .slice(0, 8);
+    .filter((c) => c.claim !== '');
   // An answer always says something: no claims is an unusable reply, not "nothing to check".
   return claims.length > 0 ? claims : null;
 }

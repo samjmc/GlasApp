@@ -5,7 +5,7 @@
  * GlasCore, so every signed-in profile request failed.
  */
 import { sql } from 'drizzle-orm';
-import { boolean, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
+import { boolean, check, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
 import { politics } from './politics';
 
 export const users = politics.table(
@@ -16,6 +16,10 @@ export const users = politics.table(
     firstName: varchar('first_name', { length: 100 }),
     lastName: varchar('last_name', { length: 100 }),
     county: varchar('county', { length: 50 }),
+    /** Both NULL until copied from the sign-in's user_metadata (server/account/profile.ts), where they were kept before. */
+    username: varchar('username', { length: 50 }),
+    /** The Dáil constituency the daily session is filed under (server/voting/routes.ts). */
+    constituency: varchar('constituency', { length: 100 }),
     bio: text('bio'),
     profileImageUrl: text('profile_image_url'),
     /** E.164. Unique across users once set. */
@@ -33,7 +37,11 @@ export const users = politics.table(
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [uniqueIndex('users_phone_number_idx').on(t.phoneNumber).where(sql`${t.phoneNumber} is not null`)],
+  (t) => [
+    uniqueIndex('users_phone_number_idx').on(t.phoneNumber).where(sql`${t.phoneNumber} is not null`),
+    // Given and withdrawn together (server/account/consent.ts): a time without a wording, or the reverse, is no consent.
+    check('users_political_consent_chk', sql`(${t.politicalConsentAt} is null) = (${t.politicalConsentVersion} is null)`),
+  ],
 ).enableRLS();
 
 export type UserRow = typeof users.$inferSelect;

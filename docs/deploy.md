@@ -122,8 +122,10 @@ the migration how to fix them, since a failed `VALIDATE` rolls the whole `db:mig
 docker compose --env-file deploy/glasapp.env -f deploy/compose.yml up -d --build
 ```
 
-`SCHEDULER` is `off` unless you set it in `deploy/glasapp.env`, so this first boot runs no
-cron. Check it:
+`SCHEDULER` is `off` unless you set it in `deploy/glasapp.env`, so this first boot runs no cron. The
+image defaults to `off` too (`ENV SCHEDULER=off` in the Dockerfile), so a plain `docker run` without
+the variable starts no cron either; the compose file repeats the default (`SCHEDULER: ${SCHEDULER:-off}`).
+CI starts the image with no `SCHEDULER` and checks it. Check it:
 
 ```
 docker compose --env-file deploy/glasapp.env -f deploy/compose.yml ps
@@ -133,7 +135,7 @@ docker compose --env-file deploy/glasapp.env -f deploy/compose.yml logs app
 ```
 
 Expect `healthy`, a 200 from `/health`, JSON from the status call, and the log line
-`SCHEDULER is not "on": no scheduled jobs will run`. Always pass `--env-file` too. Compose reads
+`SCHEDULER is off: no scheduled jobs will run`. Always pass `--env-file` too. Compose reads
 `deploy/glasapp.env` for the build arguments and for `SCHEDULER`, and `env_file` in the
 compose file hands the same variables to the container.
 
@@ -166,9 +168,17 @@ Set `SCHEDULER=on` in `deploy/glasapp.env` and run the same `up -d` command. The
 news ingest every two hours at :30 past odd hours, news to TD links every two hours, the
 parliament sync at 04:45 and the leave watch on Mondays at 06:15 (all Europe/Dublin).
 `DIVISION_STANCES=on`, `DEBATE_ITEMS=on` and `QUESTION_ITEMS=on` each add a model-calling step to
-the 04:45 run. Leave them off until you want that cost. `DIVISION_STANCES` only reads new divisions
-into the database: nothing becomes a public TD stance until someone runs `npm run stances --
---divisions --audit`, checks the matches by hand, and then runs `--divisions --sync`.
+the 04:45 run. Leave them off until you want that cost.
+
+**`DIVISION_STANCES=on` publishes.** The nightly step reads new divisions with the model and then runs
+the sync in the same run, so every division the checks accept becomes a public TD stance overnight with
+nobody looking. The human gates come BEFORE you turn it on, by hand against the database you will run
+it on: `npm run stances -- --divisions --audit` (it must agree with the party baselines at 75% or more),
+then read every matched division yourself (the audit prints each one: the question, the answer a Tá vote
+states, the quote it rests on and the oireachtas.ie link; check the answer says no more than the quote
+does), then `--divisions --sync`. After a change to the matching prompt (`MATCH_PROMPT_VERSION`) or to the
+checks in `server/stances/divisionVerify.ts`, run `--divisions --reclassify` before the next sync: the sync
+keeps whatever is stored.
 
 - `DEBATE_ITEMS=on` reads at most 30 argued debates a night. Every argued debate on GlasCore
   (454, checked 2026-10-10) already has a finished v3 read, so this reads only new or changed

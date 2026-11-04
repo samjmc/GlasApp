@@ -1,7 +1,8 @@
 import React, { createContext, useCallback, useContext, ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/lib/supabase';
-import { shouldClearCache } from '@/lib/authCache';
+import { shouldClearCache, shouldClearQuizStorage } from '@/lib/authCache';
+import { clearAllQuizStorage, loadQuizOwner, storeQuizOwner } from '@/lib/quizStorage';
 import { apiCall } from '@/lib/api';
 import { sameAuthUser, toAuthUser, type AuthUser } from '@/lib/authUser';
 
@@ -38,11 +39,18 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   useEffect(() => {
     // A token refresh sends the same person again: keep the old object, so nothing re-renders.
     const applyUser = (next: AuthUser | null) => setUser((prev) => (sameAuthUser(prev, next) ? prev : next));
+    // The quiz result kept in this tab is the person it was stored for's political opinions: not for the next
+    // person to see, even after a full-page reload (a Google sign-in is one). The owner is kept in the tab's own storage.
+    const syncQuizOwner = (nextUserId: string | null, event: string) => {
+      if (shouldClearQuizStorage(loadQuizOwner(), nextUserId, event)) clearAllQuizStorage();
+      if (nextUserId) storeQuizOwner(nextUserId);
+    };
 
     // Get initial session
     supabase.auth.getSession()
       .then(({ data: { session } }) => {
         if (cacheUserIdRef.current === undefined) cacheUserIdRef.current = session?.user?.id ?? null;
+        syncQuizOwner(session?.user?.id ?? null, 'INITIAL_SESSION');
         applyUser(toAuthUser(session?.user ?? null));
         setIsLoading(false);
       })
@@ -59,6 +67,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const nextUserId = session?.user?.id ?? null;
       // Cleared before setUser, so queries that start for the new user are fresh.
       if (shouldClearCache(cacheUserIdRef.current, nextUserId, event)) queryClient.clear();
+      syncQuizOwner(nextUserId, event);
       cacheUserIdRef.current = nextUserId;
       applyUser(toAuthUser(session?.user ?? null));
       setIsLoading(false);
@@ -78,6 +87,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
       // Even if signout fails, clear local user state (and the data cached for that user)
       queryClient.clear();
+      clearAllQuizStorage();
       setUser(null);
       throw new Error('Failed to sign out. Please try again.');
     }
@@ -97,7 +107,11 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
       await apiCall('DELETE', '/api/account');
 
+      // signOut returns its error instead of throwing, and fails without a network: the account is gone on the
+      // server either way, so nothing of this person stays in the tab whatever it says.
       await supabase.auth.signOut();
+      queryClient.clear();
+      clearAllQuizStorage();
       setUser(null);
     } catch (error) {
       if (import.meta.env.DEV) {
@@ -107,7 +121,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         ? error
         : new Error('Failed to delete account. Please try again.');
     }
-  }, []);
+  }, [queryClient]);
 
   const signInWithGoogle = useCallback(async () => {
     try {

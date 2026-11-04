@@ -15,7 +15,7 @@ vi.mock('../auth', () => {
         id: req.header('x-test-user'),
         email: null,
         role: null,
-        userMetadata: { county: req.header('x-test-county') ?? ' Cork ', constituency: 42 },
+        userMetadata: { county: req.header('x-test-county') ?? ' Cork ', constituency: req.header('x-test-constituency') ?? 42 },
       };
       return next();
     }
@@ -39,12 +39,12 @@ vi.mock('../account/consent', () => ({
   },
 }));
 
-// The caller's politics.users row, reduced to its county column; undefined = no row at all.
-const rows = vi.hoisted(() => ({ county: undefined as string | null | undefined }));
+// The caller's politics.users row, reduced to its county and constituency; county undefined = no row at all.
+const rows = vi.hoisted(() => ({ county: undefined as string | null | undefined, constituency: null as string | null }));
 vi.mock('../db', () => ({ db: {} }));
 vi.mock('../account/profile', async (importOriginal) => ({
   ...(await importOriginal<typeof import('../account/profile')>()),
-  getProfile: vi.fn(async () => (rows.county === undefined ? null : { county: rows.county })),
+  getProfile: vi.fn(async () => (rows.county === undefined ? null : { county: rows.county, constituency: rows.constituency })),
 }));
 
 vi.mock('./service', async () => {
@@ -84,6 +84,7 @@ let base: string;
 beforeEach(async () => {
   calls.list = [];
   rows.county = undefined;
+  rows.constituency = null;
   const app = express();
   app.use(express.json());
   app.use('/api/daily-session', dailySessionRouter);
@@ -100,7 +101,7 @@ afterEach(async () => {
   await new Promise<void>((resolve) => server.close(() => resolve()));
 });
 
-const send = (path: string, init: { method?: string; body?: unknown; user?: string; county?: string; noConsent?: boolean } = {}) =>
+const send = (path: string, init: { method?: string; body?: unknown; user?: string; county?: string; constituency?: string; noConsent?: boolean } = {}) =>
   fetch(base + path, {
     method: init.method ?? 'GET',
     headers: {
@@ -108,6 +109,7 @@ const send = (path: string, init: { method?: string; body?: unknown; user?: stri
       connection: 'close',
       ...(init.user ? { 'x-test-user': init.user } : {}),
       ...(init.county ? { 'x-test-county': init.county } : {}),
+      ...(init.constituency ? { 'x-test-constituency': init.constituency } : {}),
       ...(init.noConsent ? { 'x-test-no-consent': '1' } : {}),
     },
     body: init.body === undefined ? undefined : JSON.stringify(init.body),
@@ -135,6 +137,21 @@ describe('voting routes', () => {
     rows.county = '';
     await send('/api/daily-session', { user: 'u1' });
     expect(calls.list.at(-1)!.args[0]).toMatchObject({ county: null });
+  });
+
+  it('takes the constituency from the profile row the same way', async () => {
+    rows.county = null;
+    rows.constituency = 'Galway West';
+    await send('/api/daily-session', { user: 'u1', constituency: 'Kerry' });
+    expect(calls.list.at(-1)!.args[0]).toMatchObject({ constituency: 'Galway West' });
+
+    rows.constituency = null;
+    await send('/api/daily-session', { user: 'u1', constituency: 'Kerry' });
+    expect(calls.list.at(-1)!.args[0]).toMatchObject({ constituency: 'Kerry' });
+
+    rows.constituency = '';
+    await send('/api/daily-session', { user: 'u1', constituency: 'Kerry' });
+    expect(calls.list.at(-1)!.args[0]).toMatchObject({ constituency: null });
   });
 
   it('requires a signed-in user to vote, and takes identity from the token only', async () => {

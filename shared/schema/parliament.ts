@@ -8,7 +8,7 @@
  * and linked by `td_id` on the next roster sync instead of being dropped.
  */
 import { sql } from 'drizzle-orm';
-import { boolean, date, index, integer, jsonb, primaryKey, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
+import { boolean, check, date, index, integer, jsonb, primaryKey, real, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
 import { politics, tds } from './politics';
 
 /** How a member voted in a division. Absence is the lack of a row, not a value. */
@@ -141,7 +141,7 @@ export const debates = politics.table(
     moverMemberCode: varchar('mover_member_code', { length: 120 }),
     moverSource: debateMoverSource('mover_source'),
   },
-  (t) => [index('debates_kind_date_idx').on(t.kind, t.firstDate)],
+  (t) => [index('debates_kind_date_idx').on(t.kind, t.firstDate), check('debates_dates_chk', sql`${t.firstDate} <= ${t.lastDate}`)],
 ).enableRLS();
 
 // ---------------------------------------------------------------------------
@@ -196,7 +196,14 @@ export const debateItems = politics.table(
     extractorVersion: varchar('extractor_version', { length: 20 }).notNull(),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index('debate_items_speech_idx').on(t.speechId), index('debate_items_member_idx').on(t.memberCode, t.kind)],
+  (t) => [
+    index('debate_items_speech_idx').on(t.speechId),
+    index('debate_items_member_idx').on(t.memberCode, t.kind),
+    // As verify.ts stores them: a claim type on every specific claim and nothing else; a commitment type only on a commitment.
+    check('debate_items_claim_type_chk', sql`(${t.kind} = 'specific_claim') = (${t.claimType} is not null)`),
+    check('debate_items_commitment_type_chk', sql`${t.commitmentType} is null or ${t.kind} = 'commitment'`),
+    check('debate_items_quote_range_chk', sql`${t.quoteStart} >= 0 and ${t.quoteEnd} >= ${t.quoteStart}`),
+  ],
 ).enableRLS();
 
 /** Whether a TD held government office (cabinet or Minister of State) on the debate's first day. */
@@ -386,7 +393,12 @@ export const tdPartyLeaders = politics.table(
     endDate: date('end_date'),
     sourceUrl: text('source_url').notNull(),
   },
-  (t) => [primaryKey({ columns: [t.memberCode, t.startDate] }), index('td_party_leaders_td_idx').on(t.tdId)],
+  (t) => [
+    primaryKey({ columns: [t.memberCode, t.startDate] }),
+    index('td_party_leaders_td_idx').on(t.tdId),
+    // partyLeaders.ts refuses an entry that ends before it starts.
+    check('td_party_leaders_dates_chk', sql`${t.endDate} >= ${t.startDate}`),
+  ],
 ).enableRLS();
 
 // ---------------------------------------------------------------------------
@@ -414,7 +426,12 @@ export const tdAbsences = politics.table(
     note: text('note'),
     origin: absenceOrigin('origin').notNull().default('code'),
   },
-  (t) => [primaryKey({ columns: [t.memberCode, t.startDate] }), index('td_absences_td_idx').on(t.tdId)],
+  (t) => [
+    primaryKey({ columns: [t.memberCode, t.startDate] }),
+    index('td_absences_td_idx').on(t.tdId),
+    // validateAbsences (absences.ts) refuses a leave that ends before it starts, for the list and the leave watch alike.
+    check('td_absences_dates_chk', sql`${t.endDate} >= ${t.startDate}`),
+  ],
 ).enableRLS();
 
 // ---------------------------------------------------------------------------

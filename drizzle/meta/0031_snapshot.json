@@ -1,5 +1,5 @@
 {
-  "id": "87c68b25-7885-4af9-9476-8ca29584fc7b",
+  "id": "904a995d-7016-432f-b401-bfc9f8724074",
   "prevId": "c1b2e89a-4c7b-4485-9c20-02d7cb42189f",
   "version": "7",
   "dialect": "postgresql",
@@ -29,6 +29,18 @@
         "county": {
           "name": "county",
           "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "constituency": {
+          "name": "constituency",
+          "type": "varchar(100)",
           "primaryKey": false,
           "notNull": false
         },
@@ -2771,13 +2783,6 @@
           "typeSchema": "politics",
           "primaryKey": false,
           "notNull": true
-        },
-        "government_side": {
-          "name": "government_side",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true,
-          "default": false
         },
         "asked": {
           "name": "asked",
