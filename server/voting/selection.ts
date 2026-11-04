@@ -2,7 +2,7 @@
  * Choosing today's questions for one user. Pure and deterministic: the same inputs
  * always give the same session, so it can be tested exactly.
  */
-import type { IdeologyDimension } from '../constants/ideology';
+import type { IdeologyDimension } from '@shared/ideology';
 
 export interface QuestionCandidate {
   questionId: number;

@@ -102,12 +102,14 @@ run('jobs: dry runs and second runs (real Postgres)', { timeout: 60_000 }, () =>
       { memberCode: 'Ann-Byrne.D.2020-02-08', questionsOral: 40, questionsWritten: 160, attendancePct: 95, committeeAttendancePct: 68 },
     ]);
     // Ideology evidence: one debate row each, and one row of the old scoring panel's `article` kind.
-    const ideology = await import('../ideology');
-    const evidence = (td: number, source: 'debate' | 'article', ref: string) =>
-      ideology.recordTdEvidence({ td, source, sourceRef: ref, raw: { economic: 0.5 }, weight: 1, observedAt: new Date('2025-03-01T00:00:00Z') });
-    expect(await evidence(ann, 'debate', 'dail-1/spk_1')).toBe('recorded');
-    expect(await evidence(bob, 'debate', 'dail-1/spk_2')).toBe('recorded');
-    expect(await evidence(bob, 'article', '7')).toBe('recorded');
+    // economic 10 is +0.5 on the ±0.5 debate scale; then the profiles, as the stance rebuild does.
+    for (const [td, source, ref] of [[ann, 'debate', 'dail-1/spk_1'], [bob, 'debate', 'dail-1/spk_2'], [bob, 'article', '7']] as const) {
+      await dbmod.pool.query(
+        `insert into politics.td_ideology_evidence (td_id, source, source_ref, economic, weight, observed_at) values ($1, $2, $3, 10, 1, '2025-03-01T00:00:00Z')`,
+        [td, source, ref],
+      );
+    }
+    await (await import('../ideology')).recomputeTdsAndParties();
   }, 60_000);
 
   afterAll(async () => {

@@ -15,8 +15,11 @@ import { and, eq, inArray } from 'drizzle-orm';
 import { QUIZ_QUESTIONS } from '@shared/quiz';
 import { tdIdeologyEvidence, type NewTdIdeologyEvidence } from '@shared/schema/quiz';
 import { planQuiz, responsesFor } from '@shared/quizPlan';
+import type { IdeologyDimension } from '@shared/ideology';
 import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
+import { isIndependent } from './partyBaselines';
+import { toObservationVector } from './sources';
 
 const quizUrl = testDatabaseUrl('quiz');
 const run = describe.skipIf(!quizUrl);
@@ -37,10 +40,18 @@ run('quiz and ideology against Postgres', () => {
   let quiz: typeof import('../quiz');
   let repo: typeof import('./repository');
   let partyBaseline: typeof import('./partyBaselines').partyBaseline;
+  let service: typeof import('./service');
 
   async function addTd(name: string, party: string | null): Promise<number> {
     const { rows } = await dbmod.pool.query<{ id: number }>('insert into politics.tds (name, party) values ($1, $2) returning id', [name, party]);
     return rows[0]!.id;
+  }
+
+  /** Store one evidence row, then recompute the TD and its party as the stance rebuild does (which drops the cached match inputs). */
+  async function addEvidence(tdId: number, source: 'article' | 'debate' | 'stance', sourceRef: string, raw: Partial<Record<IdeologyDimension, number>>, weight = 1) {
+    await dbmod.db.insert(tdIdeologyEvidence).values({ tdId, source, sourceRef, ...toObservationVector(source, raw), weight, observedAt: new Date() });
+    const td = await service.recomputeTdProfile(tdId);
+    if (td?.party && !isIndependent(td.party)) await service.recomputePartyProfile(td.party);
   }
 
   beforeAll(async () => {
@@ -52,6 +63,7 @@ run('quiz and ideology against Postgres', () => {
     quiz = await import('../quiz');
     repo = await import('./repository');
     partyBaseline = (await import('./partyBaselines')).partyBaseline;
+    service = await import('./service');
   }, 60_000);
 
   beforeEach(async () => {
@@ -226,8 +238,7 @@ run('quiz and ideology against Postgres', () => {
   describe('TD evidence', () => {
     it('starts a party TD at the party baseline and moves with evidence', async () => {
       const id = await addTd('Test Deputy', 'Fine Gael');
-      const r = await ideology.recordTdEvidence({ td: 'test deputy', source: 'article', sourceRef: '1', raw: { economic: 0.5 }, weight: 3, observedAt: new Date() });
-      expect(r).toBe('recorded');
+      await addEvidence(id, 'article', '1', { economic: 0.5 }, 3);
       const { profile } = (await ideology.tdProfile(id))!;
       const baseline = partyBaseline('Fine Gael')!;
       // prior weight 3 at the baseline, evidence weight 3 at +10
@@ -235,17 +246,6 @@ run('quiz and ideology against Postgres', () => {
       expect(profile!.vector.social).toBeCloseTo(baseline.social, 1); // no evidence on social
       expect(profile!.evidenceCount).toBe(1);
       expect(await ideology.partyProfile('fine gael')).not.toBeNull();
-    });
-
-    it('is idempotent, skips no-signal evidence and unknown TDs', async () => {
-      await addTd('Solo Deputy', 'Independent');
-      const input = { td: 'Solo Deputy', source: 'debate' as const, sourceRef: 'dail-x/spk_1', raw: { welfare: -0.4 }, weight: 1, observedAt: new Date() };
-      expect(await ideology.recordTdEvidence(input)).toBe('recorded');
-      expect(await ideology.recordTdEvidence(input)).toBe('duplicate');
-      expect(await ideology.recordTdEvidence({ ...input, sourceRef: 'b', raw: { welfare: 0.01 } })).toBe('no_signal');
-      expect(await ideology.recordTdEvidence({ ...input, td: 'Nobody At All' })).toBe('unknown_td');
-      const { rows } = await dbmod.pool.query('select welfare, economic from politics.td_ideology_evidence');
-      expect(rows).toEqual([{ welfare: -8, economic: null }]); // NULL, not 0, where the evidence is silent
     });
 
     it('rejects a non-positive weight and an unknown source at the database', async () => {
@@ -258,26 +258,6 @@ run('quiz and ideology against Postgres', () => {
       await expect(insert('article', 0)).rejects.toThrow();
       await expect(insert('tweet', 1)).rejects.toThrow(/td_ideology_evidence_source_chk/);
       await expect(insert('stance', 1)).resolves.toBeDefined();
-    });
-
-    it('a stance is the current answer: a newer one replaces it, an older one never does', async () => {
-      const id = await addTd('Stance Deputy', 'Fine Gael');
-      const stance = (economic: number | null, welfare: number | null, observedAt: string) =>
-        ideology.recordTdEvidence({ td: id, source: 'stance', sourceRef: 'question:9', raw: { economic, welfare }, weight: 1, observedAt: new Date(observedAt) });
-      const stored = async () => (await dbmod.pool.query('select economic, welfare, observed_at from politics.td_ideology_evidence')).rows;
-
-      expect(await stance(-2, -1, '2026-09-20T00:00:00Z')).toBe('recorded');
-      expect(await stance(2, null, '2026-09-22T00:00:00Z')).toBe('recorded'); // newer: replaces, welfare becomes NULL
-      expect(await stored()).toEqual([{ economic: 10, welfare: null, observed_at: new Date('2026-09-22T00:00:00Z') }]);
-      expect(await stance(-2, -2, '2026-09-21T00:00:00Z')).toBe('duplicate'); // older: kept out
-      expect(await stored()).toEqual([{ economic: 10, welfare: null, observed_at: new Date('2026-09-22T00:00:00Z') }]);
-      // The profile is rebuilt from the newer answer.
-      const baseline = partyBaseline('Fine Gael')!;
-      expect((await ideology.tdProfile(id))!.profile!.vector.economic).toBeCloseTo((baseline.economic * 3 + 10 * 1) / 4, 0);
-      // Other sources still keep the first row.
-      const debate = { td: id, source: 'debate' as const, sourceRef: 'x', raw: { economic: 0.5 }, weight: 1, observedAt: new Date('2026-09-23T00:00:00Z') };
-      expect(await ideology.recordTdEvidence(debate)).toBe('recorded');
-      expect(await ideology.recordTdEvidence({ ...debate, raw: { economic: -0.5 }, observedAt: new Date('2026-09-24T00:00:00Z') })).toBe('duplicate');
     });
   });
 
@@ -311,7 +291,7 @@ run('quiz and ideology against Postgres', () => {
       const tdIds = [await addTd('Stance A', 'Fine Gael'), await addTd('Stance B', 'Sinn Féin'), await addTd('Stance C', 'Independent')];
       const [a, b, c] = tdIds as [number, number, number];
       await repo.insertStanceEvidenceRows(dbmod.db, [stance(a, 1, 2, 10), stance(a, 2, -1, 10), stance(a, 3, 1, 12), stance(b, 1, 0.5, 11), stance(c, 1, 1, 9)]);
-      await repo.insertTdEvidence({ tdId: a, source: 'debate', sourceRef: 'dail/1', economic: 4, weight: 1, observedAt: at(5) });
+      await dbmod.db.insert(tdIdeologyEvidence).values({ tdId: a, source: 'debate', sourceRef: 'dail/1', economic: 4, weight: 1, observedAt: at(5) });
       return tdIds;
     }
 
@@ -357,7 +337,7 @@ run('quiz and ideology against Postgres', () => {
     it('recalculateAll rebuilds every profile to the same values', async () => {
       const a = await addTd('Rebuild A', 'Sinn Féin');
       await addTd('Rebuild B', 'Fine Gael');
-      await ideology.recordTdEvidence({ td: a, source: 'article', sourceRef: '7', raw: { economic: -0.5 }, weight: 2, observedAt: new Date() });
+      await addEvidence(a, 'article', '7', { economic: -0.5 }, 2);
       await quiz.submitQuiz('user-r', [{ questionId: 1, answerIndex: 0 }]);
       await ideology.recalculateAll();
       const before = await repo.listProfiles('td');
@@ -399,11 +379,10 @@ run('quiz and ideology against Postgres', () => {
     });
 
     it('matches from the cached inputs exactly as from a fresh read; an evidence write drops them', async () => {
-      const service = await import('./service');
       // An Independent, so its evidence recomputes no party: the TD recompute alone must drop the inputs.
       const id = await addTd('Cache Deputy', 'Independent');
       await addTd('Other Deputy', 'Sinn Féin');
-      await ideology.recordTdEvidence({ td: id, source: 'debate', sourceRef: 'c1', raw: { economic: 0.5, welfare: -0.3, social: 0.2, cultural: -0.1 }, weight: 2, observedAt: new Date() });
+      await addEvidence(id, 'debate', 'c1', { economic: 0.5, welfare: -0.3, social: 0.2, cultural: -0.1 }, 2);
       await ideology.recalculateAll();
       const position = { ...zero, economic: 5, welfare: -3 };
       await ideology.matchesFor(position, { welfare: 2 }); // reads the inputs
@@ -417,7 +396,7 @@ run('quiz and ideology against Postgres', () => {
       await dbmod.pool.query("update politics.ideology_profiles set economic = -9 where subject_kind = 'td'");
       expect(await ideology.matchesFor(position, { welfare: 2 })).toEqual(cached);
       // ...but an evidence write in this process drops the inputs at once.
-      await ideology.recordTdEvidence({ td: id, source: 'debate', sourceRef: 'c2', raw: { authority: 0.4 }, weight: 1, observedAt: new Date() });
+      await addEvidence(id, 'debate', 'c2', { authority: 0.4 });
       const after = (await ideology.matchesFor(position, { welfare: 2 })).tds.find((t) => t.tdId === id)!;
       expect(after.evidenceBySource).toEqual({ debate: 2 });
       expect(after.measured).toEqual(['economic', 'social', 'cultural', 'authority', 'welfare']);
@@ -444,16 +423,13 @@ run('quiz and ideology against Postgres', () => {
   });
 
   describe('confidence and evidence transparency', () => {
-    const debate = (td: number, sourceRef: string, raw: Record<string, number>) =>
-      ideology.recordTdEvidence({ td, source: 'debate', sourceRef, raw, weight: 1, observedAt: new Date() });
+    const debate = (td: number, sourceRef: string, raw: Partial<Record<IdeologyDimension, number>>) => addEvidence(td, 'debate', sourceRef, raw);
 
     it('summarises evidence per TD and source, as numbers, and the dimensions it measures', async () => {
       const id = await addTd('Summary Deputy', 'Fine Gael');
-      const stance = (sourceRef: string, raw: Record<string, number>) =>
-        ideology.recordTdEvidence({ td: id, source: 'stance', sourceRef, raw, weight: 1, observedAt: new Date() });
-      expect(await stance('question:1', { economic: 2 })).toBe('recorded');
-      expect(await stance('question:2', { welfare: -2 })).toBe('recorded');
-      expect(await debate(id, 'dail-1/spk_1', { welfare: -0.4 })).toBe('recorded');
+      await addEvidence(id, 'stance', 'question:1', { economic: 2 });
+      await addEvidence(id, 'stance', 'question:2', { welfare: -2 });
+      await debate(id, 'dail-1/spk_1', { welfare: -0.4 });
 
       const summary = await repo.evidenceSummary();
       expect(summary.get(id)).toEqual({ bySource: { stance: 2, debate: 1 }, measured: ['economic', 'welfare'] });

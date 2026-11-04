@@ -17,7 +17,7 @@ import {
   type PolicyQuestionOptionRow,
   type PolicyQuestionRow,
 } from '@shared/schema/voting';
-import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '../constants/ideology';
+import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '@shared/ideology';
 import type { DailySessionCompletion, QuestionTally, VoteSource } from '@shared/voting';
 import type { OptionVector } from './questions';
 import type { QuestionCandidate } from './selection';

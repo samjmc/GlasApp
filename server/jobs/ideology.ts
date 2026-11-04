@@ -3,7 +3,7 @@
  *   npm run ideology -- --recalculate --yes     (--yes: needed for a database not on this machine)
  */
 import 'dotenv/config';
-import { recalculateAll, unknownTdCount } from '../ideology';
+import { recalculateAll } from '../ideology';
 import { shutdown } from '../db';
 import { approveWrite } from './liveDbGuard';
 
@@ -17,7 +17,6 @@ async function main(): Promise<void> {
     `Re-scored ${summary.quizzesRescored} stored quiz result(s). ` +
       `Recalculated ${summary.users} users, ${summary.tds} TDs and ${summary.parties} parties.`,
   );
-  if (unknownTdCount()) console.log(`${unknownTdCount()} evidence item(s) named an unknown TD.`);
 }
 
 main()
