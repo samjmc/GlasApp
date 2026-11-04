@@ -1,6 +1,6 @@
 /**
- * Reads and writes of the profile fields of politics.users, their one home (name, county, bio,
- * picture; the username is still only in Supabase `user_metadata`). The consent columns are read and
+ * Reads and writes of the profile fields of politics.users, their one home (name, username, county,
+ * constituency, bio, picture). The consent columns are read and
  * written by consent.ts, the export reads the row in exportUserData.ts, and account deletion goes
  * through deleteUserData.ts.
  */
@@ -10,7 +10,7 @@ import { users, type UserRow } from '@shared/schema/accounts';
 import { IMAGE_EXTENSIONS } from './profileImages';
 
 /** Longest value each field may hold: the column for names and county, the PATCH limit for the bio. */
-export const PROFILE_LIMITS = { firstName: 100, lastName: 100, county: 50, bio: 2000 } as const;
+export const PROFILE_LIMITS = { firstName: 100, lastName: 100, username: 50, county: 50, constituency: 100, bio: 2000 } as const;
 
 /** Profile fields a user may edit on their own row. */
 export interface ProfileEdits {
@@ -64,7 +64,9 @@ export async function backfillFromMetadata(row: UserRow, metadata: Record<string
   const found = {
     firstName: userText(metadata.first_name, PROFILE_LIMITS.firstName) ?? userText(metadata.given_name, PROFILE_LIMITS.firstName),
     lastName: userText(metadata.last_name, PROFILE_LIMITS.lastName) ?? userText(metadata.family_name, PROFILE_LIMITS.lastName),
+    username: userText(metadata.username, PROFILE_LIMITS.username),
     county: userText(metadata.county, PROFILE_LIMITS.county),
+    constituency: userText(metadata.constituency, PROFILE_LIMITS.constituency),
     bio: userText(metadata.bio, PROFILE_LIMITS.bio),
     profileImageUrl: ownUpload(row.id, metadata.glas_avatar_url),
   };
