@@ -36,9 +36,7 @@ export interface RosterMember {
   memberSince: string;
   /** Holds a presiding office now (does not vote). */
   isPresiding: boolean;
-  /** Offices held now (Taoiseach, Minister for …, Minister of State …), with start dates. */
-  offices: Array<{ title: string; since: string | null }>;
-  /** Every office held in the current Dáil, past and present, typed. */
+  /** Every office held in the current Dáil, past and present, typed (td_offices; the open ones are the offices held now). */
   officeHistory: RosterOffice[];
   /** Committee memberships in the current Dáil, past and present, with their dates. */
   committees: RosterCommittee[];
@@ -334,10 +332,6 @@ export function toRosterMember(member: RawMember): RosterMember | null {
     (o) => !o.office?.dateRange?.end && (PRESIDING_OFFICES as readonly string[]).includes(o.office?.officeName?.showAs ?? ''),
   );
 
-  const offices = (seat.offices ?? [])
-    .filter((o) => o.office?.officeName?.showAs && !o.office.dateRange?.end)
-    .map((o) => ({ title: o.office!.officeName!.showAs!, since: isoDay(o.office!.dateRange?.start) }));
-
   const officeHistory = officeHistoryOf(seat);
 
   // The seat lists committees of earlier terms and of the Seanad too (measured: 12 of 696),
@@ -368,7 +362,6 @@ export function toRosterMember(member: RawMember): RosterMember | null {
     constituency: seat.represents?.[0]?.represent?.showAs ?? null,
     memberSince: seat.dateRange.start,
     isPresiding,
-    offices,
     officeHistory,
     committees,
   };

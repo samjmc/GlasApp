@@ -167,7 +167,6 @@ describe('toRosterMember', () => {
       constituency: 'Wexford',
       memberSince: '2024-11-29',
       isPresiding: true,
-      offices: [{ title: 'Ceann Comhairle', since: '2024-12-18' }],
       officeHistory: [{ title: 'Ceann Comhairle', type: 'ceann_comhairle', start: '2024-12-18', end: null }],
       committees: [
         { uri: 'https://data.oireachtas.ie/ie/oireachtas/committee/dail/34/committee_on_procedure', name: 'Committee on Procedure', committeeType: 'Standing', role: 'Cathaoirleach', start: '2024-12-18', end: null },
@@ -176,14 +175,13 @@ describe('toRosterMember', () => {
     });
   });
 
-  it('lists only current offices, and every office with its dates in the history', () => {
+  it('lists every office with its dates in the history: an open one is held now', () => {
     const minister = member({
       offices: [
         { office: { officeName: { showAs: 'Minister for Health' }, dateRange: { start: '2025-01-23', end: null } } },
         { office: { officeName: { showAs: 'Minister of State' }, dateRange: { start: '2024-12-01', end: '2025-01-22' } } },
       ],
     });
-    expect(toRosterMember(minister)?.offices).toEqual([{ title: 'Minister for Health', since: '2025-01-23' }]);
     expect(toRosterMember(minister)?.isPresiding).toBe(false);
     expect(toRosterMember(minister)?.officeHistory).toEqual([
       { title: 'Minister for Health', type: 'cabinet', start: '2025-01-23', end: null },

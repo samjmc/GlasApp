@@ -6,9 +6,10 @@
  * list, so the pipeline needs no lookup per mention.
  */
 
+import { repository as parliament } from '../parliament';
 import { listActive } from '../scoring/repository';
 
-/** A TD as the pipeline needs them: `offices` is `[{ title, since }]` in the tds table. */
+/** A TD as the pipeline needs them: `offices` are the ones held now (td_offices). */
 export interface ActiveTd {
   id: number;
   name: string;
@@ -39,10 +40,10 @@ async function ensureTDsLoaded(): Promise<void> {
   }
 
   try {
-    const tds = await listActive();
+    const [tds, offices] = await Promise.all([listActive(), parliament.currentOffices(null)]);
 
     if (tds.length > 0) {
-      CURRENT_TDS = tds.map(({ td }) => ({ id: td.id, name: td.name, party: td.party, constituency: td.constituency, offices: td.offices }));
+      CURRENT_TDS = tds.map(({ td }) => ({ id: td.id, name: td.name, party: td.party, constituency: td.constituency, offices: offices.get(td.id) ?? [] }));
       lastLoaded = new Date();
       console.log(`📋 Loaded ${CURRENT_TDS.length} active TDs from database`);
     }

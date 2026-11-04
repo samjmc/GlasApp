@@ -68,11 +68,10 @@ run('TD read queries: new vs old', () => {
     // Some inactive, some with no score row, some with no parliament record, some with the
     // record's nullable columns empty; backgrounds for half, a third of those with no summary.
     await q(
-      `insert into politics.tds (name, party, constituency, is_active, offices, committees, question_count_oral, attendance_pct)
+      `insert into politics.tds (name, party, constituency, is_active, question_count_oral, attendance_pct)
        select 'Deputy ' || i || case when i % 9 = 0 then ' Ó Súilleabháin' else '' end,
               case when i % 5 = 0 then null else 'Party ' || (i % 4) end, 'Constituency ' || (i % 6),
-              i % 7 <> 0, case when i % 3 = 0 then '[{"title":"Minister"}]'::jsonb end,
-              case when i % 2 = 0 then '["Health"]'::jsonb end,
+              i % 7 <> 0,
               case when i % 4 = 0 then null else i * 3 end, case when i % 8 = 0 then null else 50 + i end
          from generate_series(1, $1::int) i`,
       [TDS],

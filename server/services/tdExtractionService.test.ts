@@ -1,7 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const active = vi.hoisted(() => ({ tds: [] as Array<{ id: number; name: string; party: string | null; constituency: string | null; offices: Array<{ title: string; since: string | null }> | null }> }));
-vi.mock('../scoring/repository', () => ({ listActive: async () => active.tds.map((td) => ({ td, score: null, stats: null })) }));
+vi.mock('../scoring/repository', () => ({ listActive: async () => active.tds.map(({ offices: _held, ...td }) => ({ td, score: null, stats: null })) }));
+vi.mock('../parliament', () => ({ repository: { currentOffices: async () => new Map(active.tds.map((td) => [td.id, td.offices ?? []])) } }));
 
 const { extractTDMentions, isSubstantialMention, reloadTDs } = await import('./tdExtractionService');
 

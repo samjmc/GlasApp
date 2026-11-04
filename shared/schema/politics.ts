@@ -53,9 +53,8 @@ export const tds = politics.table(
     memberCode: varchar('member_code', { length: 120 }),
     gender: varchar('gender', { length: 20 }),
     isActive: boolean('is_active').notNull().default(true),
-    /** Ministerial or party offices held, as [{ title, since }]. */
-    offices: jsonb('offices').$type<Array<{ title: string; since?: string }>>(),
-    committees: jsonb('committees').$type<string[]>(),
+    // Offices and committees held now are the open rows of td_offices and committee_memberships
+    // (parliament repository currentOffices / currentCommittees), not columns here.
     /**
      * The scoring input, written by the parliament sync from question_counts: NULL for a TD not
      * expected to ask, and kept at its last value while a month is missing. Profiles read the counts.

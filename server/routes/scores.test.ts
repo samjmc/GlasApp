@@ -56,6 +56,14 @@ vi.mock('../scoring', async () => {
   };
 });
 
+// The offices and committees held now come from the parliament tables (td_offices, committee_memberships).
+vi.mock('../parliament', () => ({
+  repository: {
+    currentOffices: vi.fn(async (ids: number[]) => new Map(ids.map((id) => [id, [{ title: 'Minister for Health', since: '2025-01-23' }]]))),
+    currentCommittees: vi.fn(async (ids: number[]) => new Map(ids.map((id) => [id, ['Health']]))),
+  },
+}));
+
 const { default: scoresRouter, tdCard } = await import('./scores');
 
 const COMPUTED_AT = new Date('2026-09-20T00:00:00Z');
@@ -79,7 +87,6 @@ function td(id: number, name: string, party: string, constituency: string, overa
   return {
     td: {
       id, name, party, constituency, imageUrl: null, gender: 'female', memberCode: `${name.replace(/ /g, '-')}.D.2020-02-08`, bio: null,
-      offices: [{ title: 'Minister for Health' }], committees: ['Health'],
       questionCountOral: 10, questionCountWritten: 90, attendancePct: 88, committeeAttendancePct: 70, isActive: true,
     },
     score: overallScore === null ? null : {
@@ -193,6 +200,8 @@ describe('GET /api/scores/td/:name', () => {
       const { status, body } = await get<TdProfile>(base, '/api/scores/td/simon%20harris');
       expect(status).toBe(200);
       expect(body.data.name).toBe('Simon Harris');
+      expect(body.data.offices).toEqual([{ title: 'Minister for Health', since: '2025-01-23' }]);
+      expect(body.data.committees).toEqual(['Health']);
       expect(body.data.facts).toEqual({
         memberSince: '2024-11-29',
         votes: { cast: 440, divisionsEligible: 500 },
@@ -265,7 +274,7 @@ describe('parties and constituencies', () => {
       expect(wicklow).toMatchObject({ tdCount: 2, leadingParty: 'Fine Gael', leadingPartyCount: 2, averageScore: 65 });
       const detail = await get<{ tds: Array<{ offices: unknown }> }>(base, '/api/scores/constituency/wicklow');
       expect(detail.status).toBe(200);
-      expect(detail.body.data.tds[0].offices).toEqual([{ title: 'Minister for Health' }]);
+      expect(detail.body.data.tds[0].offices).toEqual([{ title: 'Minister for Health', since: '2025-01-23' }]);
       const missing = await get(base, '/api/scores/constituency/Atlantis');
       expect(missing.status).toBe(404);
     });

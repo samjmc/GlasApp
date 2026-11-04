@@ -214,7 +214,10 @@ export interface RebuildArticle {
 export async function rebuildArticles(since: Date, database: Db = db): Promise<RebuildArticle[]> {
   const result = await database.execute<{ id: number; title: string; content: string; tds: RebuildArticle['tds'] }>(sql`
     select a.id, a.title, a.content,
-           json_agg(json_build_object('id', t.id, 'name', t.name, 'party', t.party, 'offices', t.offices) order by t.id) as tds
+           json_agg(json_build_object('id', t.id, 'name', t.name, 'party', t.party, 'offices',
+             -- The offices held now: the open td_offices rows, in currentOffices' order.
+             (select coalesce(json_agg(json_build_object('title', o.title) order by o.office_type, o.start_date, o.title), '[]'::json)
+                from politics.td_offices o where o.member_code = t.member_code and o.end_date is null)) order by t.id) as tds
       from politics.news_articles a
       join politics.article_tds v on v.article_id = a.id
       join politics.tds t on t.id = v.td_id

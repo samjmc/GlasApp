@@ -2,7 +2,7 @@
  * Offices and documented absences: the record of WHY a TD was not expected to vote or ask
  * questions. Both are replaced whole on every sync; td_parliament_stats reads them.
  */
-import { eq, sql } from 'drizzle-orm';
+import { and, asc, eq, inArray, isNull, sql } from 'drizzle-orm';
 import { tdAbsences, tdOffices, tdPartyLeaders } from '@shared/schema/parliament';
 import { tds } from '@shared/schema/politics';
 import type { TdAbsence, TdOfficePeriod } from '@shared/parliamentApi';
@@ -126,6 +126,23 @@ export async function tdOfficeHistory(tdId: number, database: Db = db): Promise<
     ...leaders.map((l) => ({ title: `Leader of ${l.party}`, type: 'party_leader' as const, start: l.start, end: l.end, sourceUrl: l.sourceUrl })),
   ];
   return periods.sort((a, b) => (a.start < b.start ? 1 : -1));
+}
+
+/**
+ * The offices each TD holds now (open td_offices rows), per TD id: cabinet first, then the other
+ * kinds in office_type order, each by start date. `tdIds` null = every TD.
+ */
+export async function currentOffices(tdIds: number[] | null, database: Pick<Db, 'select'> = db): Promise<Map<number, Array<{ title: string; since: string }>>> {
+  const out = new Map<number, Array<{ title: string; since: string }>>();
+  if (tdIds?.length === 0) return out;
+  const rows = await database
+    .select({ tdId: tds.id, title: tdOffices.title, since: tdOffices.startDate })
+    .from(tdOffices)
+    .innerJoin(tds, eq(tds.memberCode, tdOffices.memberCode))
+    .where(and(isNull(tdOffices.endDate), tdIds ? inArray(tds.id, tdIds) : undefined))
+    .orderBy(asc(tds.id), asc(tdOffices.officeType), asc(tdOffices.startDate), asc(tdOffices.title));
+  for (const { tdId, title, since } of rows) out.set(tdId, [...(out.get(tdId) ?? []), { title, since }]);
+  return out;
 }
 
 export interface Silence {
