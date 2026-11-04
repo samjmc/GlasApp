@@ -32,9 +32,8 @@ jobs:
       - run: npm run facts:check
       # Doc links resolve, `npm run` names exist, server env vars are in .env.example.
       - run: npm run docs:check
-      # Warnings only for now (eslint.config.js): the log shows them, the job does not fail on them.
+      # ESLint (eslint.config.js): every rule is an error.
       - run: npm run lint
-        continue-on-error: true
 
   test:
     runs-on: ubuntu-latest

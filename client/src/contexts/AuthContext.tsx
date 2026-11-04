@@ -89,7 +89,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       queryClient.clear();
       clearAllQuizStorage();
       setUser(null);
-      throw new Error('Failed to sign out. Please try again.');
+      throw new Error('Failed to sign out. Please try again.', { cause: error });
     }
   }, [queryClient]);
 

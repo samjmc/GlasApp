@@ -17,11 +17,18 @@ export interface Revision {
 
 export type RevisionLookup = Revision | 'missing' | 'disambiguation';
 
-async function call(params: Record<string, string>, fetcher: Fetcher): Promise<any> {
+/** The parts of the API's answer (formatversion 2) read here; anything may be missing. */
+interface ApiBody {
+  error?: { code?: string; info?: string };
+  query?: { pages?: Array<{ title?: string; missing?: boolean; invalid?: boolean; pageprops?: object; revisions?: Array<{ revid?: unknown }> }> };
+  parse?: { text?: unknown };
+}
+
+async function call(params: Record<string, string>, fetcher: Fetcher): Promise<ApiBody | null> {
   const query = new URLSearchParams({ format: 'json', formatversion: '2', ...params });
   const res = await fetcher(`${API}?${query}`, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(30_000) });
   if (!res.ok) throw new Error(`Wikipedia ${res.status}`);
-  const body = await res.json();
+  const body = (await res.json()) as ApiBody | null;
   if (body?.error) throw new Error(`Wikipedia ${body.error.code}: ${body.error.info}`);
   return body;
 }

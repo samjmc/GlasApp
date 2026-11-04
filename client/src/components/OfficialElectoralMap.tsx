@@ -97,7 +97,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
     let leadingPartyHTML = '';
     if (constituency) {
       // Calculate party counts directly from TDs array (more accurate than parties array)
-      let partyCounts = new Map<string, number>();
+      const partyCounts = new Map<string, number>();
       
       if (constituency.tds && constituency.tds.length > 0) {
         // Calculate from actual TDs list - most accurate
@@ -334,8 +334,12 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
 
   // The Leaflet `style` option is captured once, when the layer is built, and resetStyle()
   // re-applies it, so it must read the current colouring through a ref, not a stale closure.
+  // The effects read both helpers through refs too: they change every render, and the map must
+  // not be rebuilt for that.
   const colorRef = useRef(getConstituencyColor);
   colorRef.current = getConstituencyColor;
+  const tooltipRef = useRef(createTooltipContent);
+  tooltipRef.current = createTooltipContent;
 
   // Use loading placeholder to provide immediate visual feedback
   const [showPlaceholder, setShowPlaceholder] = useState(true);
@@ -417,7 +421,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                 const nameIrish = feature.properties.CONSTITUENCY || '';
                 
                 // Add professional tooltip
-                layer.bindTooltip(createTooltipContent(constituencyName, seats, nameIrish), { 
+                layer.bindTooltip(tooltipRef.current(constituencyName, seats, nameIrish), {
                   permanent: false,
                   sticky: true,
                   direction: 'auto', // Smart positioning
@@ -434,8 +438,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                       fillOpacity: 0.9
                     });
                   }
-                  if ('bringToFront' in layer) {
-                    // @ts-ignore - bringToFront exists on these layers
+                  if (layer instanceof L.Path || layer instanceof L.FeatureGroup) {
                     layer.bringToFront();
                   }
                 });
@@ -467,16 +470,14 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                       });
                     }
                     
-                    if ('bringToFront' in layer) {
-                      // @ts-ignore - bringToFront exists on these layers
+                    if (layer instanceof L.Path || layer instanceof L.FeatureGroup) {
                       layer.bringToFront();
                     }
                     
                     activeConstituencyRef.current = constituencyName;
                     onSelectRef.current(constituencyName);
                     
-                    if (mapRef.current && 'getBounds' in layer && typeof layer.getBounds === 'function') {
-                      // @ts-ignore - getBounds exists on these layers
+                    if (mapRef.current && (layer instanceof L.Polyline || layer instanceof L.FeatureGroup)) {
                       mapRef.current.fitBounds(layer.getBounds(), { 
                         padding: [50, 50],
                         maxZoom: 10
@@ -531,7 +532,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                                   props.name ||
                                   "Unknown";
           
-          const newColor = getConstituencyColor(constituencyName);
+          const newColor = colorRef.current(constituencyName);
           
           if (mapLayer.setStyle) {
             mapLayer.setStyle({
@@ -544,7 +545,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
           const nameIrish = props.CONSTITUENCY || '';
           if (mapLayer.getTooltip && mapLayer.getTooltip()) {
             if (mapLayer.setTooltipContent) {
-              mapLayer.setTooltipContent(createTooltipContent(constituencyName, seats, nameIrish));
+              mapLayer.setTooltipContent(tooltipRef.current(constituencyName, seats, nameIrish));
             }
           }
         }

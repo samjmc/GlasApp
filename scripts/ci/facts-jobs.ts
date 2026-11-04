@@ -28,7 +28,7 @@ const CANDIDATE = /^(?:server\/jobs\/[^/]+\.ts|scripts\/[^/]+\.(?:ts|mjs|cjs|js|
 
 /** First meaningful line of a leading block comment, `//` run or `#` run. */
 export function firstDocLine(source: string): string {
-  let text = source.replace(/^﻿/, '').replace(/\r\n/g, '\n');
+  let text = source.replace(/^\uFEFF/, '').replace(/\r\n/g, '\n');
   if (text.startsWith('#!')) text = text.slice(text.indexOf('\n') + 1);
   text = text.replace(/^\s*\n/, '');
 

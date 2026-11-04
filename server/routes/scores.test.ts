@@ -4,7 +4,7 @@
 import type { Server } from 'node:http';
 import express from 'express';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { TD_CARD_FIELDS } from '@shared/scoresApi';
+import { TD_CARD_FIELDS, type PartyDetail, type PartyScoreRow, type ScoresWidget, type TdListItem, type TdProfile, type TdSummary } from '@shared/scoresApi';
 
 process.env.SUPABASE_URL = 'http://localhost:54321';
 process.env.SUPABASE_ANON_KEY = 'anon-key';
@@ -110,9 +110,10 @@ async function withServer(run: (base: string) => Promise<void>): Promise<void> {
   }
 }
 
-const get = async (base: string, path: string) => {
+/** `T` is the shape the route promises in `data` (shared/scoresApi.ts); the assertions check it. */
+const get = async <T = unknown>(base: string, path: string) => {
   const res = await fetch(base + path, { headers: { connection: 'close' } });
-  return { status: res.status, body: (await res.json()) as { success: boolean; data: any; meta?: any; error?: any } };
+  return { status: res.status, body: (await res.json()) as { success: boolean; data: T; meta?: Record<string, unknown> } };
 };
 
 beforeEach(() => {
@@ -162,7 +163,7 @@ describe('tdCard', () => {
 describe('GET /api/scores/tds', () => {
   it('returns cards in the envelope with research flags and counts', async () => {
     await withServer(async (base) => {
-      const { status, body } = await get(base, '/api/scores/tds');
+      const { status, body } = await get<TdListItem[]>(base, '/api/scores/tds');
       expect(status).toBe(200);
       expect(body.success).toBe(true);
       expect(body.meta).toMatchObject({ count: 3, researchedCount: 1 });
@@ -177,9 +178,9 @@ describe('GET /api/scores/tds', () => {
 describe('GET /api/scores/widget', () => {
   it('excludes unranked TDs from top/bottom and reports totals', async () => {
     await withServer(async (base) => {
-      const { body } = await get(base, '/api/scores/widget');
-      expect(body.data.top.map((t: any) => t.id)).toEqual([1, 2]);
-      expect(body.data.bottom.map((t: any) => t.id)).toEqual([2, 1]);
+      const { body } = await get<ScoresWidget>(base, '/api/scores/widget');
+      expect(body.data.top.map((t) => t.id)).toEqual([1, 2]);
+      expect(body.data.bottom.map((t) => t.id)).toEqual([2, 1]);
       expect(body.data.stats).toEqual({ totalTds: 3, rankedTds: 2, computedAt: COMPUTED_AT.toISOString() });
       expect(Object.keys(body.data).sort()).toEqual(['bottom', 'stats', 'top']);
     });
@@ -189,7 +190,7 @@ describe('GET /api/scores/widget', () => {
 describe('GET /api/scores/td/:name', () => {
   it('is case-insensitive and returns the raw Oireachtas facts behind the components', async () => {
     await withServer(async (base) => {
-      const { status, body } = await get(base, '/api/scores/td/simon%20harris');
+      const { status, body } = await get<TdProfile>(base, '/api/scores/td/simon%20harris');
       expect(status).toBe(200);
       expect(body.data.name).toBe('Simon Harris');
       expect(body.data.facts).toEqual({
@@ -210,7 +211,7 @@ describe('GET /api/scores/td/:name', () => {
     const scoring = await import('../scoring');
     vi.mocked(scoring.repository.baselineFor).mockResolvedValueOnce(BACKGROUND_ROW as never);
     await withServer(async (base) => {
-      const { body } = await get(base, '/api/scores/td/Mary%20Lou%20McDonald');
+      const { body } = await get<TdProfile>(base, '/api/scores/td/Mary%20Lou%20McDonald');
       expect(body.data.baseline).toEqual({
         summary: BACKGROUND_ROW.summary,
         passages: BACKGROUND_ROW.passages,
@@ -231,7 +232,7 @@ describe('GET /api/scores/td/:name', () => {
 describe('GET /api/scores/td/:id/summary', () => {
   it('returns the quick-info shape and rejects a non-integer id', async () => {
     await withServer(async (base) => {
-      const ok = await get(base, '/api/scores/td/1/summary');
+      const ok = await get<TdSummary>(base, '/api/scores/td/1/summary');
       expect(ok.status).toBe(200);
       expect(ok.body.data).toMatchObject({ id: 1, officeCount: 1, committeeCount: 1, topOffice: 'Minister for Health', topCommittee: 'Health' });
       const bad = await get(base, '/api/scores/td/abc/summary');
@@ -243,12 +244,12 @@ describe('GET /api/scores/td/:id/summary', () => {
 describe('parties and constituencies', () => {
   it('ranks parties by the mean of ranked members, computed on read', async () => {
     await withServer(async (base) => {
-      const list = await get(base, '/api/scores/parties');
+      const list = await get<PartyScoreRow[]>(base, '/api/scores/parties');
       expect(list.body.data).toEqual([
         { rank: 1, party: 'Sinn Féin', memberCount: 1, rankedCount: 1, overallScore: 72, label: 'Average' },
         { rank: 2, party: 'Fine Gael', memberCount: 2, rankedCount: 1, overallScore: 65, label: 'Average' },
       ]);
-      const one = await get(base, '/api/scores/party/fine%20gael');
+      const one = await get<PartyDetail>(base, '/api/scores/party/fine%20gael');
       expect(one.body.data).toMatchObject({ party: 'Fine Gael', size: 2, averageScore: 65, constituencyCount: 1 });
       expect(one.body.data.members).toHaveLength(2);
     });
@@ -258,11 +259,11 @@ describe('parties and constituencies', () => {
     await withServer(async (base) => {
       const names = await get(base, '/api/scores/constituencies');
       expect(names.body.data).toEqual([{ name: 'Dublin Central' }, { name: 'Wicklow' }]);
-      const summary = await get(base, '/api/scores/constituencies/summary');
+      const summary = await get<{ constituencies: Array<{ name: string }>; totalConstituencies: number }>(base, '/api/scores/constituencies/summary');
       expect(summary.body.data.totalConstituencies).toBe(2);
-      const wicklow = summary.body.data.constituencies.find((c: any) => c.name === 'Wicklow');
+      const wicklow = summary.body.data.constituencies.find((c) => c.name === 'Wicklow');
       expect(wicklow).toMatchObject({ tdCount: 2, leadingParty: 'Fine Gael', leadingPartyCount: 2, averageScore: 65 });
-      const detail = await get(base, '/api/scores/constituency/wicklow');
+      const detail = await get<{ tds: Array<{ offices: unknown }> }>(base, '/api/scores/constituency/wicklow');
       expect(detail.status).toBe(200);
       expect(detail.body.data.tds[0].offices).toEqual([{ title: 'Minister for Health' }]);
       const missing = await get(base, '/api/scores/constituency/Atlantis');
@@ -282,7 +283,7 @@ describe('POST /api/scores/recalculate', () => {
         headers: { connection: 'close', 'x-admin-secret': 'scores-secret' },
       });
       expect(allowed.status).toBe(200);
-      expect(((await allowed.json()) as any).data).toEqual({ tds: 3, parties: 2 });
+      expect(((await allowed.json()) as { data: unknown }).data).toEqual({ tds: 3, parties: 2 });
       expect(state.recalculated).toBe(1);
     });
   });

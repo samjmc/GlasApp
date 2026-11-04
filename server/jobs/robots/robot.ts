@@ -61,7 +61,14 @@ export function routeLabel(method: string, path: string): string {
 
 interface Reply {
   status: number;
-  body: any;
+  /** The parsed JSON, as far as a journey reads it; null when the body was not JSON. */
+  body: {
+    data?: {
+      id?: number | null;
+      items?: Array<{ sessionItemId: number; questionId: number; hasVoted: boolean }>;
+      question?: { id?: number } | null;
+    } | null;
+  } | null;
 }
 
 async function call(world: World, robot: Robot, method: string, path: string, body?: unknown, signedIn = true): Promise<Reply> {

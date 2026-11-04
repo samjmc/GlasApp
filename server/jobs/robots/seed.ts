@@ -6,12 +6,12 @@
  * Not copied: news_articles. Voting keeps headline and URL on policy_questions and never joins
  * the news tables (shared/schema/voting.ts).
  */
-import pkg from 'pg';
+import pkg, { type Pool } from 'pg';
 import { assertRobotDatabase } from './guards';
 
 /** Parents before children (td_ideology_evidence → tds, options → questions). */
 export const COPIED_TABLES = ['tds', 'td_ideology_evidence', 'policy_questions', 'policy_question_options'] as const;
-type Queryable = { query: (sql: string, params?: unknown[]) => Promise<{ rows: any[] }> };
+type Queryable = Pick<Pool, 'query'>;
 
 export interface SeedSummary {
   rows: Record<(typeof COPIED_TABLES)[number], number>;

@@ -103,7 +103,7 @@ export default function ResearchedTDsPage() {
 
   const { data, isLoading, isError, refetch, isFetching } = useAllTDs();
 
-  const tds = data?.tds ?? [];
+  const tds = useMemo(() => data?.tds ?? [], [data]);
 
   const { partyCounts, constituencies } = useMemo(() => {
     const p = new Map<string, number>();
