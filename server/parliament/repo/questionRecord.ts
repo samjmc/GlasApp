@@ -207,9 +207,13 @@ export async function tdQuestionRecord(tdId: number, database: Db = db): Promise
   const td = (await database.execute(sql`select member_code from politics.tds where id = ${tdId}`)).rows[0] as { member_code: string | null } | undefined;
   if (!td?.member_code) return null;
   const code = td.member_code;
-  const [mineRes, everyoneRes] = await Promise.all([
+  const [mineRes, askersRes] = await Promise.all([
     database.execute(sql`select * from politics.question_participation where member_code = ${code}`),
-    database.execute(sql`select * from politics.question_participation where asked and role = 'backbench'`),
+    // The cohort as totals per backbencher per format, not every row of the table.
+    database.execute(sql`
+      select format, count(*)::int asked, count(*) filter (where secured > 0)::int secured_exchanges
+      from politics.question_participation where asked and role = 'backbench'
+      group by member_code, format`),
   ]);
   const mine = (mineRes.rows as Array<Record<string, unknown>>).map(toRow);
   if (mine.length === 0) return null;
@@ -235,7 +239,10 @@ export async function tdQuestionRecord(tdId: number, database: Db = db): Promise
   return {
     rulesVersion: QUESTION_RULES_VERSION,
     role: answered.length > mine.filter((r) => r.asked).length ? 'office' : 'backbench',
-    formats: formatFigures(mine, (everyoneRes.rows as Array<Record<string, unknown>>).map(toRow)),
+    formats: formatFigures(
+      mine,
+      (askersRes.rows as Array<{ format: QuestionFormat; asked: number; secured_exchanges: number }>).map((r) => ({ format: r.format, asked: Number(r.asked), securedExchanges: Number(r.secured_exchanges) })),
+    ),
     answers: answered.length
       ? {
           answered: answered.length,

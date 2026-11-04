@@ -97,17 +97,25 @@ export interface FormatFigure {
   cohortSize: number;
 }
 
-/** A backbencher's figures per format, each against backbenchers with at least MIN_EXCHANGES of it. */
-export function formatFigures(mine: QuestionParticipationRow[], everyone: QuestionParticipationRow[]): FormatFigure[] {
+/** One backbencher's totals in one format: exchanges they asked, and how many secured an `action`. */
+export interface AskerTotals {
+  format: QuestionFormat;
+  asked: number;
+  securedExchanges: number;
+}
+
+/**
+ * A backbencher's figures per format, each against backbenchers with at least MIN_EXCHANGES of
+ * it. `askers` holds every backbencher's totals per format (summed in SQL, one row per member).
+ */
+export function formatFigures(mine: QuestionParticipationRow[], askers: AskerTotals[]): FormatFigure[] {
   const askedRows = (rows: QuestionParticipationRow[]) => rows.filter((r) => r.asked && !r.inOffice);
   const rate = (rows: QuestionParticipationRow[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
   const formats = Array.from(new Set(askedRows(mine).map((r) => r.format)));
   return formats.map((format) => {
     const rows = askedRows(mine).filter((r) => r.format === format);
     const scored = FIGURE_FORMATS.includes(format);
-    const byMember = new Map<string, QuestionParticipationRow[]>();
-    for (const r of askedRows(everyone).filter((x) => x.format === format)) byMember.set(r.memberCode, [...(byMember.get(r.memberCode) ?? []), r]);
-    const cohort = Array.from(byMember.values()).filter((xs) => xs.length >= MIN_EXCHANGES).map(rate);
+    const cohort = askers.filter((a) => a.format === format && a.asked >= MIN_EXCHANGES).map((a) => (10 * a.securedExchanges) / a.asked);
     return {
       format,
       asked: rows.length,
