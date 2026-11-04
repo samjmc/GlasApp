@@ -4,7 +4,6 @@
  */
 import { Router } from 'express';
 import { DEFAULT_REGION_CODE } from '@shared/region-config';
-import { asyncHandler } from '../middleware/errorHandler';
 import { TODAY_FALLBACK_DAYS, hasMore, parseFeedQuery, startOfLocalDay } from '../news/feed';
 import * as repo from '../news/repository';
 import { formatSuccess } from '../utils/responseFormatters';
@@ -41,7 +40,7 @@ async function withQuestions(rows: repo.FeedRow[]) {
 
 router.get(
   '/',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const query = parseFeedQuery(req.query);
     // Only Irish news is ingested; other regions are preview pages with their own mock data.
     if ((req.regionCode ?? DEFAULT_REGION_CODE) !== 'IE') {
@@ -49,15 +48,15 @@ router.get(
     }
     const { rows, total } = await repo.feedPage(query, { since: startOfLocalDay(new Date()), fallbackDays: TODAY_FALLBACK_DAYS });
     res.json(formatSuccess({ articles: await withQuestions(rows), total, hasMore: hasMore(query, total) }));
-  }),
+  },
 );
 
 router.get(
   '/td/:name',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const rows = await repo.feedForTd(req.params.name, TD_FEED_LIMIT);
     res.json(formatSuccess({ articles: await withQuestions(rows) }));
-  }),
+  },
 );
 
 export default router;

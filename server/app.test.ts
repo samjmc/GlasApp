@@ -18,7 +18,7 @@ beforeAll(async () => {
   process.on('unhandledRejection', onUnhandled);
   const app = express();
   applyMiddleware(app);
-  // No asyncHandler: the bare async function is what Express 5 has to catch.
+  // A bare async function, as every route is written: Express 5 has to catch its rejection.
   app.get('/boom', async () => {
     await Promise.resolve();
     throw new Error('boom');

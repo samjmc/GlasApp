@@ -4,7 +4,6 @@
  */
 import { Router } from 'express';
 import { requireJob } from '../../auth';
-import { asyncHandler } from '../../middleware/errorHandler';
 import { recentJobRuns } from '../../services/jobRuns';
 import { formatSuccess } from '../../utils/responseFormatters';
 
@@ -13,9 +12,9 @@ router.use(requireJob);
 
 router.get(
   '/',
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     res.json(formatSuccess(await recentJobRuns()));
-  }),
+  },
 );
 
 export default router;
