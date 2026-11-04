@@ -15,13 +15,14 @@
  *   DELETE /evidence/:evidenceId                        (admin)
  *
  * Writes need a signed-in human admin, not the job secret: deciding a pledge's status is
- * editorial, and every such write is attributed in the admin log.
+ * editorial, and every such write is attributed in the admin log. The viewer on the GET routes
+ * comes from the app-wide optionalAuth in server/routes.ts.
  */
 import { Router, type Request, type RequestHandler, type Response } from 'express';
 import { z } from 'zod';
 import { requirePoliticalConsent } from '../account/consent';
 import { ConsentRequiredError, sendConsentRequired } from '../account/consentError';
-import { logAdminAction, optionalAuth, requireAdmin, requireAuth } from '../auth';
+import { logAdminAction, requireAdmin, requireAuth } from '../auth';
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES, type PledgeCategory } from '@shared/pledges';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 import * as repo from './repository';
@@ -111,7 +112,6 @@ pledgesRouter.get(
 
 pledgesRouter.get(
   '/parties',
-  optionalAuth,
   handle(async (req) => {
     // Everyone's weights are read only when the viewer has no ranking of their own.
     const [all, weights] = await Promise.all([
@@ -137,7 +137,6 @@ pledgesRouter.get(
 
 pledgesRouter.get(
   '/priorities',
-  optionalAuth,
   handle(async (req) => {
     const [community, mine] = await Promise.all([
       repo.communityPriorities().then(publishableCommunity),
