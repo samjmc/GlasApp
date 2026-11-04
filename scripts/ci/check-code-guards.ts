@@ -88,10 +88,7 @@ export const RULES: Rule[] = [
     scope: inServer,
     pattern:
       /(?:console\.\w+|\blog(?:ger)?\.\w+|requestLogger\([^)]*\)\.\w+)\([^;]{0,160}?\breq\.(?:originalUrl|url|headers|rawHeaders)\b/g,
-    allow: {
-      'server/pledges/routes.ts': 'console.error of a failed pledges request; these routes carry no credential in the query',
-      'server/voting/routes.ts': 'console.error of a failed voting request; these routes carry no credential in the query',
-    },
+    allow: {},
   },
 
   // The auth rebuild (docs/auth.md, 6f4c0cc) deleted session auth, Replit auth and the fabricated

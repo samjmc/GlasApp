@@ -35,6 +35,18 @@ const emptyCounts = (): Record<PledgeStatus, number> =>
   Object.fromEntries(PLEDGE_STATUSES.map((s) => [s, 0])) as Record<PledgeStatus, number>;
 
 /**
+ * Fewer rankers than this and the "community" weights are one person's own ranking, readable by
+ * anyone (and by differencing, a newcomer's). A ranking shows political opinions (Art. 9), so below
+ * this nothing is published; the count of rankers still is.
+ */
+export const MIN_COMMUNITY_RANKERS = 10;
+
+/** The community's priorities as they may be shown: empty weights while too few people have ranked for them to be anonymous. */
+export function publishableCommunity(community: { weights: CategoryWeights; rankers: number }): { weights: CategoryWeights; rankers: number } {
+  return community.rankers >= MIN_COMMUNITY_RANKERS ? community : { weights: {}, rankers: community.rankers };
+}
+
+/**
  * One party's record. The weighted rate counts each resolved pledge by its category's
  * weight; categories nobody ranked weigh nothing, so it is null when no resolved pledge
  * falls in a ranked category.

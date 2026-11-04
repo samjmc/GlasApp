@@ -1,6 +1,7 @@
 import type { Logger } from 'pino';
 import pinoHttp from 'pino-http';
 import type { Request, Response } from 'express';
+import { serializeError } from './logger';
 
 /**
  * One structured log line per request (not for the health probes): method, path, status, duration
@@ -9,7 +10,12 @@ import type { Request, Response } from 'express';
  * The default request serializer logs the whole URL, query string included, and every header. A
  * password-reset link (`/auth/reset-password?token_hash=…`) and an OAuth return (`/auth/callback?code=…`)
  * carry one-time credentials in the query, so anyone reading the logs could redeem them; the headers add
- * the visitor's user agent to their IP. So the request is logged as its path only, with the client address.
+ * the visitor's user agent to their IP. So the request is logged as its path only. The response is
+ * logged as its status only: the default also writes every response header, and the HTTPS redirect in
+ * index.ts copies the request's query string into `Location`.
+ *
+ * `remoteAddress` is the socket peer. Behind Caddy that is the Caddy container, not the visitor: this
+ * log deliberately holds no visitor IP (data minimisation). Rate-limit warnings name the IP they limit.
  */
 export function createHttpLogger(logger: Logger) {
   return pinoHttp<Request, Response>({
@@ -24,6 +30,11 @@ export function createHttpLogger(logger: Logger) {
         url: String(req.url).split('?')[0],
         remoteAddress: req.remoteAddress,
       }),
+      res: (res: { statusCode: number }) => ({ statusCode: res.statusCode }),
+      // pino-http installs the stock error serialiser on its child logger when none is given here, which
+      // overrides the root logger's: an error logged through `req.log` (the error handler does) would carry
+      // body-parser's raw request text in `body`.
+      err: serializeError as never,
     },
     customLogLevel: (_req, res, err) => {
       if (err || res.statusCode >= 500) return 'error';

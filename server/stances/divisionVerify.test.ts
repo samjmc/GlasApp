@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ProposalBlock, MatchReply, MeaningReply } from './divisionPrompt';
-import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, MIN_SUPPORT_WORDS, figuresIn, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
+import { ALLOWED_BLOCKS, MIN_MATCH_CONFIDENCE, MIN_MEANING_CONFIDENCE, MIN_SUPPORT_WORDS, figuresIn, kindConflict, verifyFit, verifyMatch, verifyMeaning } from './divisionVerify';
 
 const MOTION =
   'That Dáil Éireann calls on the Government to build fifty thousand public homes every year on public land, and to end the use of tax reliefs for investment funds.';
@@ -103,6 +103,60 @@ describe('verifyMeaning', () => {
   });
 });
 
+describe('verifyMeaning: what the recorded question and the blocks that were cut say', () => {
+  const motion = reply({ divisionKind: 'motion' });
+  const amendmentPut = [block('Q', 'Amendment put'), block('M1', `I move:\n\n${MOTION}`), block('A1', `I move amendment No. 1:\n\n${COUNTERMOTION}`)];
+
+  it('a question that names an amendment is never read as a motion, a bill stage or other: the Tá voters backed the amendment', () => {
+    // One M block, so the one-text rule alone would let a quote from the original motion through.
+    expect(verifyMeaning(motion, amendmentPut)).toEqual({ status: 'rejected', reason: 'ambiguous' });
+    expect(verifyMeaning(reply({ divisionKind: 'other' }), amendmentPut)).toEqual({ status: 'rejected', reason: 'ambiguous' });
+    const amendment = reply({ divisionKind: 'amendment', quoteBlock: 'A1', quote: 'delete all words after “That Dáil Éireann” and substitute the following' });
+    expect(verifyMeaning(amendment, amendmentPut)).toMatchObject({ status: 'ok', block: 'A1' });
+    // "Question put" names no amendment: the same motion reading is fine.
+    expect(verifyMeaning(motion, PMM)).toMatchObject({ status: 'ok', block: 'M1' });
+  });
+
+  it('only a question that IS an amendment put counts: a bill title with the word in it, or "as amended", does not', () => {
+    const TITLE = 'An Act to provide for the payment of a bonus to carers and for related matters of public policy.';
+    const bill = reply({ divisionKind: 'bill_stage', quoteBlock: 'B1', quote: 'provide for the payment of a bonus to carers and for related matters' });
+    const withQ = (q: string) => [block('Q', q), block('B1', TITLE)];
+    expect(verifyMeaning(bill, withQ('Finance (Local Property Tax) (Amendment) Bill 2025')).status).toBe('ok');
+    expect(verifyMeaning(bill, withQ('Question put: "That the Bill do now pass."')).status).toBe('ok');
+    expect(verifyMeaning(bill, withQ('That the motion, as amended, be agreed to.')).status).toBe('ok');
+    for (const q of ['Amendment put', 'Amendments put', 'That amendment No. 4 be made', 'Question put: "That the amendment be made."', '"Amendment put']) {
+      expect(verifyMeaning(bill, withQ(q)), q).toEqual({ status: 'rejected', reason: 'ambiguous' });
+    }
+    expect(kindConflict('motion', withQ('Amendment put'))).toBe('ambiguous');
+    expect(kindConflict('amendment', [block('Q', 'Amendment put'), block('A1', 'I move amendment No. 1: to insert a cap on every rent in the State.')])).toBeNull();
+  });
+
+  it('a words-stand reading is not for an "Amendment put" either: the Tá voters backed the amendment', () => {
+    expect(verifyMeaning(reply({ divisionKind: 'words_stand' }), amendmentPut)).toEqual({ status: 'rejected', reason: 'ambiguous' });
+  });
+
+  it('counts the blocks that did not fit the prompt: a second motion that was cut is still a second motion', () => {
+    const sent = [block('Q', 'Question put'), block('M1', `I move:\n\n${MOTION}`)];
+    const every = [...sent, block('M2', 'I move:\n\nThat Dáil Éireann notes the report of the committee and calls for a review of the whole scheme.')];
+    expect(verifyMeaning(motion, sent)).toMatchObject({ status: 'ok' });
+    expect(verifyMeaning(motion, sent, every)).toEqual({ status: 'rejected', reason: 'ambiguous' });
+  });
+
+  it('a bill stage or other question cannot be read from one of two bills or two motions, but a bill and the motion to read it are fine', () => {
+    const TITLE = 'An Act to provide for the payment of a bonus to carers and for related matters of public policy.';
+    const bill = reply({ divisionKind: 'bill_stage', quoteBlock: 'B1', quote: 'provide for the payment of a bonus to carers and for related matters' });
+    const one = [block('Q', 'Question put'), block('B1', TITLE), block('M1', `I move:\n\nThat the Bill be now read a Second Time.`)];
+    expect(verifyMeaning(bill, one)).toMatchObject({ status: 'ok', block: 'B1' });
+    expect(verifyMeaning(bill, [...one, block('B2', 'An Act to amend the law on the taxation of fuel for related matters of revenue.')])).toEqual({ status: 'rejected', reason: 'ambiguous' });
+    const other = reply({ divisionKind: 'other', quoteBlock: 'M1' });
+    expect(verifyMeaning(other, PMM)).toMatchObject({ status: 'ok', block: 'M1' });
+    expect(verifyMeaning(other, [...PMM, block('M2', 'I move:\n\nThat Dáil Éireann notes the report of the committee and calls for a review of the whole scheme.')])).toEqual({
+      status: 'rejected',
+      reason: 'ambiguous',
+    });
+  });
+});
+
 describe('verifyFit', () => {
   const PROPOSAL = '[B1] Bill entitled an Act to enact recommendations of the Marie O’Shea report, providing clarity on terminations for medical reasons, removal of the 3 day waiting period, and ending the criminalisation of doctors.';
 
@@ -110,6 +164,20 @@ describe('verifyFit', () => {
     expect(verifyFit([{ claim: 'remove the wait', support: 'removal of the 3 day waiting period' }], PROPOSAL)).toEqual([]);
     expect(verifyFit([{ claim: 'doctors', support: '  Ending  the CRIMINALISATION of doctors ' }], PROPOSAL)).toEqual([]);
     expect(verifyFit([{ claim: 'report', support: 'recommendations of the Marie O\'Shea report' }], PROPOSAL)).toEqual([]);
+  });
+
+  it('support has to sit inside ONE block: words joined across two blocks are not a passage of the proposal', () => {
+    const blocks = ['That Dáil Éireann calls on the Government to build more public homes and', 'to freeze every rent in the State for three whole years'];
+    const stitched = 'calls on the Government to build more public homes and to freeze every rent in the State';
+    // Joined into one string the end of the first block and the start of the second read as one passage.
+    expect(verifyFit([{ claim: 'homes and a freeze', support: stitched }], blocks.join('\n'))).toEqual([]);
+    expect(verifyFit([{ claim: 'homes and a freeze', support: stitched }], blocks)).toEqual(['homes and a freeze']);
+    expect(verifyFit([{ claim: 'a freeze', support: 'to freeze every rent in the State for three whole years' }], blocks)).toEqual([]);
+  });
+
+  it('checks every claim: none past some number is left unchecked', () => {
+    const claims = Array.from({ length: 12 }, (_, i) => ({ claim: `claim ${i}`, support: i === 11 ? 'words that are nowhere in the proposal at all' : 'removal of the 3 day waiting period' }));
+    expect(verifyFit(claims, PROPOSAL)).toEqual(['claim 11']);
   });
 
   it('punctuation around the copied words does not matter, inside them it still has to match', () => {

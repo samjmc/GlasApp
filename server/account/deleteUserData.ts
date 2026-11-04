@@ -1,7 +1,9 @@
 /**
  * Erase one user's GlasApp data (GDPR right to erasure). Every politics table that holds a
- * row per user is listed here; a new user-keyed table must be added in the same change, and
- * deleteUserData.integration.test.ts fails if one is missed.
+ * row per user is listed here; a new user-keyed table must be added in the same change.
+ * deleteUserData.integration.test.ts scans the schema for tables with a `user_id` or `subject_kind`
+ * column, so it catches a new table that follows that naming, not one keyed some other way
+ * (`owner_id`, a child of a user table): those need a person to remember.
  *
  * The political opinions (quiz, votes, rankings, profile position) are erased on their own
  * when someone withdraws consent (consent.ts); the rest of the account stays.

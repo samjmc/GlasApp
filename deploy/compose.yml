@@ -27,8 +27,10 @@ services:
       SCHEDULER: ${SCHEDULER:-off}
     init: true
     restart: unless-stopped
-    # Request logs hold visitors' IP addresses and user agents. Keep about a week at most (5 files
-    # of 10 MB), not forever: the privacy policy promises IP addresses do not outlive 90 days.
+    # The request log holds the path, the status and the user id, and no IP address or user agent
+    # (server/utils/httpLogger.ts). Rate-limit warnings do name the IP they limit, so bound the logs:
+    # 5 files of 10 MB. That is a size, not a time: a quiet site keeps its lines longer than a busy one,
+    # and the privacy policy promises IP addresses do not outlive 90 days (nothing enforces that yet).
     logging:
       driver: json-file
       options:

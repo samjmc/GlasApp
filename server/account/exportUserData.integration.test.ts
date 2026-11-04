@@ -74,16 +74,19 @@ run('exportUserData against Postgres', () => {
 
     const userMetadata = {
       first_name: 'Aoife', last_name: 'Tester', username: 'aoife', county: 'Kerry', constituency: 'Kerry', bio: 'meta bio',
-      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE',
-      // Not profile details the app keeps: left out.
-      role: 'admin', avatar_url: 'https://google.example/p.png', has_seen_onboarding: true,
+      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE', has_seen_onboarding: true, onboarding_completed_at: '2026-10-01T09:00:00.000Z',
+      // What a Google sign-in fills in and the app shows when the person has not edited it.
+      given_name: 'Aoife', family_name: 'Tester', full_name: 'Aoife Tester', name: 'Aoife T', avatar_url: 'https://google.example/p.png', picture: 'https://google.example/q.png',
+      // The sign-in provider's own bookkeeping is held by Supabase, not by us: left out.
+      role: 'admin', sub: 'google-subject-id', provider_id: 'google-provider-id', email_verified: true,
     };
     const out = await mod.exportUserData('user-a', { email: 'a@example.ie', userMetadata }, NOW);
 
     expect(out).toMatchObject({ format: mod.EXPORT_FORMAT_VERSION, exportedAt: '2026-10-10T12:00:00.000Z' });
     expect(out.profileMetadata).toEqual({
       first_name: 'Aoife', last_name: 'Tester', username: 'aoife', county: 'Kerry', constituency: 'Kerry', bio: 'meta bio',
-      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE',
+      glas_avatar_url: 'https://example.ie/a.png', region_code: 'IE', has_seen_onboarding: true, onboarding_completed_at: '2026-10-01T09:00:00.000Z',
+      given_name: 'Aoife', family_name: 'Tester', full_name: 'Aoife Tester', name: 'Aoife T', avatar_url: 'https://google.example/p.png', picture: 'https://google.example/q.png',
     });
     // The profile fields' one home is the row, so every one of them is in account.
     expect(out.account).toMatchObject({

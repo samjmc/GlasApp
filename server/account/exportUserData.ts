@@ -32,20 +32,30 @@ export const EXPORT_FORMAT_VERSION = 1;
 /**
  * The profile details kept with the sign-in, in Supabase `user_metadata`: the name, county, bio and
  * picture address the profile page saved there before politics.users became their home (account
- * holds the current ones; account/profile.ts copies these in once), and what still lives only there:
- * the username, the constituency the daily session reads (server/voting/routes.ts) and the region
- * (server/routes/regionRoutes.ts). Allowlisted, so whatever else a sign-in provider puts there does
- * not leak into the file by accident.
+ * holds the current ones; account/profile.ts copies these in once), what still lives only there (the
+ * username, the constituency the daily session reads (server/voting/routes.ts) and the region
+ * (server/routes/regionRoutes.ts)), and what a Google sign-in fills in and the app shows when the person
+ * has not edited it (given_name, family_name, full_name, name, avatar_url, picture), with the
+ * onboarding flags. Allowlisted, so whatever else a sign-in provider puts there (its own ids, `role`)
+ * does not leak into the file by accident: the sign-in itself is held by Supabase, not by us.
  */
 export const PROFILE_METADATA_KEYS = [
   'first_name',
   'last_name',
+  'given_name',
+  'family_name',
+  'full_name',
+  'name',
   'username',
   'county',
   'constituency',
   'bio',
   'glas_avatar_url',
+  'avatar_url',
+  'picture',
   'region_code',
+  'has_seen_onboarding',
+  'onboarding_completed_at',
 ] as const;
 
 const NOTES = [

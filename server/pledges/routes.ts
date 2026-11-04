@@ -25,7 +25,7 @@ import { logAdminAction, optionalAuth, requireAdmin, requireAuth } from '../auth
 import { EVIDENCE_KINDS, PLEDGE_CATEGORIES, PLEDGE_STATUSES, type PledgeCategory } from '@shared/pledges';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 import * as repo from './repository';
-import { summariseParty, weightsFromRanking } from './score';
+import { publishableCommunity, summariseParty, weightsFromRanking } from './score';
 
 const idParam = z.coerce.number().int().positive();
 const isoDate = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Use YYYY-MM-DD');
@@ -87,7 +87,8 @@ const handle =
       else if (error instanceof z.ZodError)
         res.status(400).json(formatError('VALIDATION_ERROR', error.issues[0]?.message ?? 'Invalid request'));
       else {
-        console.error(`[pledges] ${req.method} ${req.originalUrl} failed:`, error);
+        // The path only: a query string can carry a person's choices.
+        console.error(`[pledges] ${req.method} ${req.baseUrl}${req.path} failed:`, error);
         res.status(500).json(formatError('INTERNAL_ERROR', 'Something went wrong'));
       }
     }
@@ -116,7 +117,7 @@ pledgesRouter.get(
     const [all, weights] = await Promise.all([
       repo.listPledges(),
       (req.user ? repo.userRanking(req.user.id) : Promise.resolve(null)).then(async (mine) =>
-        mine ? weightsFromRanking(mine) : (await repo.communityPriorities()).weights,
+        mine ? weightsFromRanking(mine) : publishableCommunity(await repo.communityPriorities()).weights,
       ),
     ]);
     const hasWeights = Object.keys(weights).length > 0;
@@ -139,7 +140,7 @@ pledgesRouter.get(
   optionalAuth,
   handle(async (req) => {
     const [community, mine] = await Promise.all([
-      repo.communityPriorities(),
+      repo.communityPriorities().then(publishableCommunity),
       req.user ? repo.userRanking(req.user.id) : Promise.resolve(null),
     ]);
     return { community: community.weights, rankers: community.rankers, mine };

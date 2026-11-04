@@ -32,7 +32,7 @@ names only are listed here; the values come from you.
 | Group | Names |
 |---|---|
 | Required. The server stops at start-up without them | `DATABASE_URL`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` when `NODE_ENV=production` (the image sets it) |
-| Build time, baked into the client | `VITE_SUPABASE_ANON_KEY` (required), `VITE_SUPABASE_URL` (optional) |
+| Build time, baked into the client | `VITE_SUPABASE_ANON_KEY` (required), `VITE_SUPABASE_URL` (defaults to GlasCore: set it to your own project's URL if `SUPABASE_URL` is not GlasCore, or every signed-in call is a 401) |
 | Needed for real use | `ADMIN_EMAILS`, one admin secret (`ADMIN_API_SECRET`, or `ADMIN_SECRET`, `CRON_SECRET`, `JOB_SECRET`), `LLM_API_KEY`, `JEV_API_KEY`, `CLOUDFLARE_ACCOUNT_ID` |
 | Optional | `LLM_BASE_URL`, `LLM_MODEL_NAME` (every model call uses it when set; unset, DeepSeek uses `deepseek-flash` and OpenAI `gpt-4o-mini`), `OPENAI_API_KEY` (used only when `LLM_API_KEY` is unset), `LOG_LEVEL`, `PORT` (leave it unset with the compose file: the port mapping and the Caddyfile both assume 5000), `DB_POOL_MAX` (database connections, default 10; the session pooler's Pool Size in Supabase is 15 and shared with GlasIntelligence, so raise that first) |
 | Scheduled jobs | `SCHEDULER` (`off` stops every cron), `DIVISION_STANCES`, `DEBATE_ITEMS`, `QUESTION_ITEMS` |
@@ -104,8 +104,9 @@ the migration how to fix them, since a failed `VALIDATE` rolls the whole `db:mig
 docker compose --env-file deploy/glasapp.env -f deploy/compose.yml up -d --build
 ```
 
-`SCHEDULER` is `off` unless you set it in `deploy/glasapp.env`, so this first boot runs no
-cron. Check it:
+With Compose, `SCHEDULER` is `off` unless you set it in `deploy/glasapp.env` (`SCHEDULER:
+${SCHEDULER:-off}` in the compose file), so this first boot runs no cron. The image itself sets no
+default: a plain `docker run` without `SCHEDULER=off` starts all four crons. Check it:
 
 ```
 docker compose --env-file deploy/glasapp.env -f deploy/compose.yml ps
@@ -115,7 +116,7 @@ docker compose --env-file deploy/glasapp.env -f deploy/compose.yml logs app
 ```
 
 Expect `healthy`, a 200 from `/health`, JSON from the status call, and the log line
-`SCHEDULER=off: no scheduled jobs will run`. Always pass `--env-file` too. Compose reads
+`SCHEDULER is off: no scheduled jobs will run`. Always pass `--env-file` too. Compose reads
 `deploy/glasapp.env` for the build arguments and for `SCHEDULER`, and `env_file` in the
 compose file hands the same variables to the container.
 
@@ -148,9 +149,17 @@ Set `SCHEDULER=on` in `deploy/glasapp.env` and run the same `up -d` command. The
 news ingest every two hours at :30 past odd hours, news to TD links every two hours, the
 parliament sync at 04:45 and the leave watch on Mondays at 06:15 (all Europe/Dublin).
 `DIVISION_STANCES=on`, `DEBATE_ITEMS=on` and `QUESTION_ITEMS=on` each add a model-calling step to
-the 04:45 run. Leave them off until you want that cost. `DIVISION_STANCES` only reads new divisions
-into the database: nothing becomes a public TD stance until someone runs `npm run stances --
---divisions --audit`, checks the matches by hand, and then runs `--divisions --sync`.
+the 04:45 run. Leave them off until you want that cost.
+
+**`DIVISION_STANCES=on` publishes.** The nightly step reads new divisions with the model and then runs
+the sync in the same run, so every division the checks accept becomes a public TD stance overnight with
+nobody looking. The human gates come BEFORE you turn it on, by hand against the database you will run
+it on: `npm run stances -- --divisions --audit` (it must agree with the party baselines at 75% or more),
+then read every matched division yourself (the audit prints each one: the question, the answer a Tá vote
+states, the quote it rests on and the oireachtas.ie link; check the answer says no more than the quote
+does), then `--divisions --sync`. After a change to the matching prompt (`MATCH_PROMPT_VERSION`) or to the
+checks in `server/stances/divisionVerify.ts`, run `--divisions --reclassify` before the next sync: the sync
+keeps whatever is stored.
 
 The start-up log line `Scheduler initialized` says which of the three flags are on. Every run is
 recorded in `politics.job_runs` (started, finished, `ok`, the job's own counts) and logged as JSON

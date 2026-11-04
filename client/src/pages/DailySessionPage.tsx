@@ -99,7 +99,7 @@ export default function DailySessionPage() {
   // Which session state the screen was last matched to. See the sync effect below.
   const syncedTo = useRef<string | null>(null);
 
-  const { granted: consented, known: consentKnown, ensure: ensureConsent } = usePoliticalConsent();
+  const { granted: consented, known: consentKnown, failed: consentFailed, ensure: ensureConsent } = usePoliticalConsent();
   // Opening today's session stores it, so it waits for the user's agreement (server/voting/routes.ts).
   const sessionQuery = useDailySession(isAuthenticated && consented);
   const voteMutation = useDailySessionVote();
@@ -385,6 +385,22 @@ export default function DailySessionPage() {
           <p className="text-muted-foreground">Three quick stances a day keep your profile and TD matches up to date.</p>
           <Button asChild size="lg">
             <Link href="/login">Sign in</Link>
+          </Button>
+        </div>
+      </Shell>
+    );
+  }
+
+  // The profile could not be read, so whether this person agreed is unknown: say so, never "agree" to someone who has.
+  if (consentFailed) {
+    return (
+      <Shell>
+        <TopBar left={<CloseLink />} title="Daily vote" />
+        <div className="flex flex-1 flex-col justify-center gap-4 text-center">
+          <h1 className="font-display text-3xl font-extrabold tracking-tight">We could not check your choice</h1>
+          <p className="text-muted-foreground">Check your connection and sign-in, then reload the page.</p>
+          <Button size="lg" onClick={() => window.location.reload()}>
+            Reload
           </Button>
         </div>
       </Shell>

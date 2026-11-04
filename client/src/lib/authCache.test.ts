@@ -9,7 +9,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { queryKeys } from './queryKeys';
-import { shouldClearCache } from './authCache';
+import { shouldClearCache, shouldClearQuizStorage } from './authCache';
 
 const SRC = path.resolve(__dirname, '..');
 const read = (...parts: string[]) => fs.readFileSync(path.join(SRC, ...parts), 'utf8');
@@ -76,5 +76,35 @@ describe('AuthProvider', () => {
     expect(listener, 'the onAuthStateChange(...) call was not found').not.toBeNull();
     expect(listener![1]).toMatch(/shouldClearCache\(/);
     expect(listener![1]).toMatch(/queryClient\.clear\(\)/);
+  });
+
+  // What the listener does with the quiz result this tab holds is tested by behaviour in
+  // contexts/AuthContext.test.tsx and contexts/ConsentContext.test.tsx.
+});
+
+describe('shouldClearQuizStorage', () => {
+  it('clears when a signed-in person signs out, or a different person signs in', () => {
+    expect(shouldClearQuizStorage('user-a', null, 'SIGNED_OUT')).toBe(true);
+    expect(shouldClearQuizStorage('user-a', 'user-b', 'SIGNED_IN')).toBe(true);
+    // A sign-out whose previous person this tab never saw (a reload, then an expired session) still clears.
+    expect(shouldClearQuizStorage(undefined, null, 'SIGNED_OUT')).toBe(true);
+    expect(shouldClearQuizStorage(null, null, 'SIGNED_OUT')).toBe(true);
+  });
+
+  it('judges by the owner stored with the quiz, so it still works after a reload: a different person, or nobody, on the first read', () => {
+    expect(shouldClearQuizStorage('user-a', 'user-b', 'INITIAL_SESSION')).toBe(true);
+    expect(shouldClearQuizStorage('user-a', null, 'INITIAL_SESSION')).toBe(true);
+    expect(shouldClearQuizStorage('user-a', 'user-a', 'INITIAL_SESSION')).toBe(false);
+  });
+
+  it('keeps an anonymous result when a visitor signs in, so it can be saved to their account', () => {
+    expect(shouldClearQuizStorage(null, 'user-a', 'SIGNED_IN')).toBe(false);
+  });
+
+  it('keeps it for the same person (token refresh, refocus, user update) and for the first read after load', () => {
+    expect(shouldClearQuizStorage('user-a', 'user-a', 'TOKEN_REFRESHED')).toBe(false);
+    expect(shouldClearQuizStorage('user-a', 'user-a', 'SIGNED_IN')).toBe(false);
+    expect(shouldClearQuizStorage(undefined, 'user-a', 'INITIAL_SESSION')).toBe(false);
+    expect(shouldClearQuizStorage(undefined, null, 'INITIAL_SESSION')).toBe(false);
   });
 });
