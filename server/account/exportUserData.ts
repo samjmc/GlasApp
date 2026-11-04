@@ -5,8 +5,8 @@
  * `subject_kind` column, so it catches a new table that follows that naming, not one keyed some
  * other way (`owner_id`, a child of a user table): those need a person to remember.
  *
- * What is left out on purpose: the phone code's hash and its bookkeeping (a secret, not the user's
- * data), the sign-in itself (held by Supabase), and the profile picture file (its address is in).
+ * What is left out on purpose: the sign-in itself (held by Supabase) and the profile picture file
+ * (its address is in).
  */
 import { and, asc, desc, eq, inArray } from 'drizzle-orm';
 import { db, type Db } from '../db';
@@ -30,10 +30,10 @@ export const EXPORTED_USER_TABLES = [
 export const EXPORT_FORMAT_VERSION = 1;
 
 /**
- * The profile details kept with the sign-in, in Supabase `user_metadata`: the name, county, bio and
- * picture address the profile page saved there before politics.users became their home (account
- * holds the current ones; account/profile.ts copies these in once), what still lives only there (the
- * username, the constituency the daily session reads (server/voting/routes.ts) and the region
+ * The profile details kept with the sign-in, in Supabase `user_metadata`: the name, username, county,
+ * constituency, bio and picture address the profile page saved there before politics.users became their
+ * home (account holds the current ones, username and constituency included since they became columns;
+ * account/profile.ts copies these in once), what still lives only there (the region
  * (server/routes/regionRoutes.ts)), and what a Google sign-in fills in and the app shows when the person
  * has not edited it (given_name, family_name, full_name, name, avatar_url, picture), with the
  * onboarding flags. Allowlisted, so whatever else a sign-in provider puts there (its own ids, `role`)
@@ -64,7 +64,7 @@ const NOTES = [
   'Timestamps are in UTC; a daily session\'s sessionDate is the Irish calendar day. The position on each quiz result and in ideologyProfile is one number from -10 to +10 on each of eight dimensions: economic, social, cultural, authority, environmental, welfare, globalism and technocratic.',
 ];
 
-/** The profile as the app already shows it to its owner (publicProfile drops the phone code secrets), plus the email. */
+/** The profile as the app already shows it to its owner (publicProfile), plus the email. */
 type Account = ReturnType<typeof publicProfile> & { email: string | null };
 
 export interface UserDataExport {

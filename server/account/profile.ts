@@ -80,11 +80,7 @@ export async function backfillFromMetadata(row: UserRow, metadata: Record<string
   return updated ?? row;
 }
 
-/**
- * What the client may see: never the code hash or its bookkeeping. Phone verification is gone,
- * but its columns are still on the row (no migration dropped them), so they stay out of the view.
- */
+/** What the client may see: the whole row. It holds no secrets; this is the one place to hide a column if that changes. */
 export function publicProfile(row: UserRow) {
-  const { phoneCodeHash: _h, phoneCodeExpiresAt: _e, phoneCodeAttempts: _a, ...rest } = row;
-  return rest;
+  return row;
 }

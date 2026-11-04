@@ -14,7 +14,6 @@ if (url) {
   process.env.SUPABASE_ANON_KEY ??= 'anon';
 }
 
-const NOW = new Date('2026-09-25T12:00:00Z');
 
 run('profile store against Postgres', () => {
   let dbmod: typeof import('../db');
@@ -43,21 +42,16 @@ run('profile store against Postgres', () => {
     expect((await dbmod.pool.query('select count(*)::int n from politics.users')).rows[0].n).toBe(1);
   });
 
-  it('edits only the fields given, and never exposes the code hash', async () => {
+  it('edits only the fields given', async () => {
     await profiles.updateProfile('user-a', { firstName: 'Máire', county: 'Galway' });
     const row = await profiles.updateProfile('user-a', { bio: 'Hi' });
     expect(row).toMatchObject({ firstName: 'Máire', county: 'Galway', bio: 'Hi' });
-    // Phone verification is gone but the columns remain: a row that still holds a code stays hidden.
-    await dbmod.pool.query(
-      "update politics.users set phone_code_hash = 'h', phone_code_expires_at = $1, phone_code_attempts = 3 where id = 'user-a'",
-      [NOW],
-    );
-    const stored = (await profiles.getProfile('user-a'))!;
-    expect(stored).toMatchObject({ phoneCodeHash: 'h', phoneCodeAttempts: 3 });
-    const view = profiles.publicProfile(stored);
-    expect(view).not.toHaveProperty('phoneCodeHash');
-    expect(view).not.toHaveProperty('phoneCodeExpiresAt');
-    expect(view).not.toHaveProperty('phoneCodeAttempts');
+    const view = profiles.publicProfile((await profiles.getProfile('user-a'))!);
     expect(view).toMatchObject({ firstName: 'Máire', county: 'Galway', bio: 'Hi' });
+  });
+
+  it('has no phone columns any more (migration 0034)', async () => {
+    const cols = await dbmod.pool.query("select column_name from information_schema.columns where table_schema = 'politics' and table_name = 'users' and column_name like 'phone%'");
+    expect(cols.rows).toEqual([]);
   });
 });

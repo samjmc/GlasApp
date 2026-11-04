@@ -55,7 +55,7 @@ export async function deleteUserData(userId: string, database: Db = db): Promise
   if (!userId) throw new Error('deleteUserData needs a user id');
   return database.transaction(async (tx) => {
     const political = await erasePoliticalData(tx, userId);
-    // Name, county, bio and phone number: personal data, keyed by `id` rather than user_id.
+    // Name, username, county, constituency and bio: personal data, keyed by `id` rather than user_id.
     const profile = (await tx.delete(users).where(eq(users.id, userId)).returning({ id: users.id })).length;
     return { ...political, profile };
   });
