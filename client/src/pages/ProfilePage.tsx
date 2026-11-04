@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { useTheme, type ThemeChoice } from '@/contexts/ThemeContext';
 import { useRegion } from '@/hooks/useRegion';
 import { REGION_LIST } from '@shared/region-config';
 import { useQuery } from '@tanstack/react-query';
-import { apiRequest, apiUpload } from '@/lib/queryClient';
+import { apiCall } from '@/lib/api';
 import { downloadJson } from '@/lib/downloadJson';
 import { supabase } from '@/lib/supabase';
 import { fetchMyQuizResults } from '@/lib/ideologyApi';
@@ -46,7 +46,7 @@ const THEME_OPTIONS: { value: ThemeChoice; label: string }[] = [
 ];
 
 const ProfilePage = () => {
-  const { user, isLoading: authLoading, isAuthenticated, updateProfile, logout, deleteAccount } = useAuth();
+  const { user, isAuthenticated, updateProfile, logout, deleteAccount } = useAuth();
   const { theme, setTheme } = useTheme();
   const { regionCode, selectRegion } = useRegion();
   const [, navigate] = useLocation();
@@ -68,7 +68,7 @@ const ProfilePage = () => {
   const handleExport = async () => {
     setIsExporting(true);
     try {
-      const { data } = await apiRequest<{ success: true; data: unknown }>({ method: 'GET', path: '/api/account/export' });
+      const data = await apiCall<unknown>('GET', '/api/account/export');
       downloadJson(`glas-politics-data-${new Date().toISOString().slice(0, 10)}.json`, data);
       toast({ title: 'Your data is ready', description: 'The file was saved to your device.' });
     } catch {
@@ -100,8 +100,9 @@ const ProfilePage = () => {
     enabled: isAuthenticated && !!user,
   });
 
+  // Never while the user is typing: a change that arrives then (another tab) waits until they finish.
   useEffect(() => {
-    if (user) {
+    if (user && !isEditing) {
       setFormData({
         firstName: user.firstName || '',
         lastName: user.lastName || '',
@@ -109,7 +110,7 @@ const ProfilePage = () => {
         bio: user.bio || '',
       });
     }
-  }, [user]);
+  }, [user, isEditing]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -148,21 +149,17 @@ const ProfilePage = () => {
       const formData = new FormData();
       formData.append('profileImage', file);
 
-      const result = await apiUpload('/api/profile/image', formData);
+      const { imageUrl } = await apiCall<{ imageUrl: string }>('POST', '/api/profile/image', formData);
 
-      if (result.success) {
-        // The avatar is read from the sign-in's metadata, so point it at the new file.
-        const { error } = await supabase.auth.updateUser({ data: { glas_avatar_url: result.data.imageUrl } });
-        if (error) throw error;
-        toast({
-          title: "Profile picture updated",
-          description: "Your profile picture has been successfully updated"
-        });
-        // Refresh user data to show new image
-        window.location.reload();
-      } else {
-        throw new Error(result.message || 'Upload failed');
-      }
+      // The avatar is read from the sign-in's metadata, so point it at the new file.
+      const { error } = await supabase.auth.updateUser({ data: { glas_avatar_url: imageUrl } });
+      if (error) throw error;
+      toast({
+        title: "Profile picture updated",
+        description: "Your profile picture has been successfully updated"
+      });
+      // Refresh user data to show new image
+      window.location.reload();
     } catch (error) {
       toast({
         title: "Upload failed",
@@ -173,15 +170,6 @@ const ProfilePage = () => {
   };
 
   const handleSaveProfile = async () => {
-    if (!updateProfile) {
-      toast({
-        title: 'Update Failed',
-        description: 'Profile update function not available',
-        variant: 'destructive',
-      });
-      return;
-    }
-
     setIsSavingProfile(true);
     try {
       await updateProfile(formData);
@@ -202,20 +190,11 @@ const ProfilePage = () => {
   };
 
   const handleLogout = async () => {
-    await logout?.();
+    await logout();
     navigate('/');
   };
 
   const handleAccountDeletion = async () => {
-    if (!deleteAccount) {
-      toast({
-        title: 'Deletion unavailable',
-        description: 'Account deletion is not currently available. Please contact support.',
-        variant: 'destructive',
-      });
-      return;
-    }
-
     setDeleteAccountError(null);
     setIsDeletingAccount(true);
 
@@ -248,35 +227,7 @@ const ProfilePage = () => {
     'Tipperary', 'Tyrone', 'Waterford', 'Westmeath', 'Wexford', 'Wicklow'
   ];
 
-  if (authLoading) {
-    return (
-      <div className="flex min-h-[50vh] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" aria-hidden="true" />
-      </div>
-    );
-  }
-
-  // Show login pane if not authenticated
-  if (!isAuthenticated) {
-    return (
-      <div className="flex items-center justify-center py-12">
-        <Card className="w-full max-w-md">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-center text-2xl font-bold">Login required</CardTitle>
-            <CardDescription className="text-center">
-              Please log in to view your profile
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="flex flex-col items-center gap-4">
-            <Button asChild className="w-full">
-              <Link href="/login">Log in</Link>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
+  // The route is guarded (App.tsx), so the user is signed in here.
   const first = formData.firstName.trim();
   const last = formData.lastName.trim();
   const initials = (first.charAt(0) + last.charAt(0)).toUpperCase();
@@ -309,14 +260,15 @@ const ProfilePage = () => {
                 </Avatar>
                 {isEditing && (
                   <label
-                    aria-label="Change photo"
-                    className="absolute -bottom-1 -right-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-card bg-elevated text-foreground transition-colors hover:bg-accent"
+                    className="absolute -bottom-1 -right-1 flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-card bg-elevated text-foreground transition-colors hover:bg-accent focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background"
                   >
                     <Camera className="h-4 w-4" aria-hidden="true" />
+                    {/* sr-only, not hidden: display:none would take it out of the tab order. */}
                     <input
                       type="file"
                       accept="image/*"
-                      className="hidden"
+                      aria-label="Change photo"
+                      className="sr-only"
                       onChange={handleProfileImageUpload}
                     />
                   </label>
@@ -387,7 +339,7 @@ const ProfilePage = () => {
                       value={formData.county}
                       onValueChange={(value) => handleSelectChange('county', value)}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="county">
                         <SelectValue placeholder="Select your county" />
                       </SelectTrigger>
                       <SelectContent>

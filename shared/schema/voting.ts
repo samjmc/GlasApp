@@ -156,6 +156,8 @@ export const dailySessionItems = politics.table(
   (t) => [
     uniqueIndex('daily_session_items_question_idx').on(t.sessionId, t.questionId),
     uniqueIndex('daily_session_items_position_idx').on(t.sessionId, t.position),
+    // The cascade from a deleted question (the index above leads on session_id).
+    index('daily_session_items_question_id_idx').on(t.questionId),
   ],
 ).enableRLS();
 
@@ -184,6 +186,8 @@ export const policyVotes = politics.table(
     uniqueIndex('policy_votes_user_question_idx').on(t.userId, t.questionId),
     index('policy_votes_question_idx').on(t.questionId),
     index('policy_votes_user_created_idx').on(t.userId, t.createdAt),
+    // Each deleted session item sets this NULL; without the index that scans every vote.
+    index('policy_votes_session_item_idx').on(t.sessionItemId).where(sql`${t.sessionItemId} is not null`),
     foreignKey({
       name: 'policy_votes_option_fk',
       columns: [t.questionId, t.optionKey],

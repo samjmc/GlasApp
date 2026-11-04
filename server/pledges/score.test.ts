@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { communityWeights, MIN_COMMUNITY_RANKERS, publishableCommunityWeights, rankingsByUser, summariseParty, weightsFromRanking } from './score';
+import { summariseParty, weightsFromRanking } from './score';
 
 describe('weightsFromRanking', () => {
   it('gives n points to the first of n categories and 1 to the last, normalised to 1', () => {
@@ -12,46 +12,6 @@ describe('weightsFromRanking', () => {
 
   it('is empty for an empty ranking', () => {
     expect(weightsFromRanking([])).toEqual({});
-  });
-});
-
-describe('rankingsByUser', () => {
-  it('orders each user’s rows by rank regardless of input order', () => {
-    const map = rankingsByUser([
-      { userId: 'a', category: 'health', rank: 2 },
-      { userId: 'b', category: 'climate', rank: 1 },
-      { userId: 'a', category: 'housing', rank: 1 },
-    ]);
-    expect(map.get('a')).toEqual(['housing', 'health']);
-    expect(map.get('b')).toEqual(['climate']);
-  });
-});
-
-describe('communityWeights', () => {
-  it('averages each user’s weights, so a longer ranking does not count for more', () => {
-    const w = communityWeights([['housing'], ['health', 'housing']]);
-    // user 1: housing 1. user 2: health 2/3, housing 1/3. Mean: housing 2/3, health 1/3.
-    expect(w.housing).toBeCloseTo(2 / 3);
-    expect(w.health).toBeCloseTo(1 / 3);
-  });
-
-  it('is empty with no rankings', () => {
-    expect(communityWeights([])).toEqual({});
-  });
-});
-
-describe('publishableCommunityWeights', () => {
-  const ranking = ['housing', 'health'] as const;
-
-  it('publishes nothing below the minimum: the weights would be one person’s ranking', () => {
-    expect(publishableCommunityWeights([ranking])).toEqual({});
-    expect(publishableCommunityWeights(Array.from({ length: MIN_COMMUNITY_RANKERS - 1 }, () => ranking))).toEqual({});
-  });
-
-  it('publishes the same weights as communityWeights from the minimum up', () => {
-    const rankings = Array.from({ length: MIN_COMMUNITY_RANKERS }, () => ranking);
-    expect(Object.keys(publishableCommunityWeights(rankings))).toEqual(['housing', 'health']);
-    expect(publishableCommunityWeights(rankings)).toEqual(communityWeights(rankings));
   });
 });
 

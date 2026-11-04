@@ -105,9 +105,8 @@ by hand first (`docs/deploy.md` section 6).
 ## 5. Known limits at launch
 
 - One instance; a deploy means a short gap. Uploads live on a volume that must be backed up.
-- **The Content-Security-Policy is report-only** (`server/middleware/securityHeaders.ts`): it reports what it
-  would block and blocks nothing, while the sign-in token is in localStorage. Read the reports, allow what
-  shows up, then set `reportOnly` to false.
+- **The Content-Security-Policy is report-only** (`server/middleware/securityHeaders.ts`), so it blocks nothing
+  while the sign-in token is in localStorage. Check what it reports, then set `reportOnly` to false.
 - `/health` only says the process is up, not that the database is reachable. Watch `/api/parliament/status`.
 - Database TLS certificates are not verified (the pooler's chain is not trusted by node-postgres).
 - No error tracking (Sentry or similar) and no uptime monitor. Add one before the first campaign.

@@ -11,7 +11,9 @@
  *   npx vitest run server/ideology/ideology.integration.test.ts
  */
 import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
+import { and, eq, inArray } from 'drizzle-orm';
 import { QUIZ_QUESTIONS } from '@shared/quiz';
+import { tdIdeologyEvidence, type NewTdIdeologyEvidence } from '@shared/schema/quiz';
 import { planQuiz, responsesFor } from '@shared/quizPlan';
 import { consentTo } from '../testing/consent';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../testing/migrations';
@@ -45,7 +47,7 @@ run('quiz and ideology against Postgres', () => {
     await ensureDatabase(quizUrl!);
     dbmod = await import('../db');
     await applyAllMigrations(dbmod.pool);
-    await consentTo(dbmod.pool, 'user-a', 'user-b', 'user-c', 'user-d', 'user-full', 'user-m', 'user-p', 'user-q', 'user-r', 'user-s', 'user-v');
+    await consentTo(dbmod.pool, 'user-a', 'user-b', 'user-c', 'user-d', 'user-full', 'user-m', 'user-p', 'user-q', 'user-r', 'user-s', 'user-v', 'user-race');
     ideology = await import('./index');
     quiz = await import('../quiz');
     repo = await import('./repository');
@@ -171,6 +173,48 @@ run('quiz and ideology against Postgres', () => {
       expect(await ideology.getIdeologyProfile('ghost')).toBeNull();
     });
 
+    it('the recompute reads only the latest quiz: the same row the full history led with', async () => {
+      await quiz.submitQuiz('user-a', [{ questionId: 1, answerIndex: 2 }]);
+      await quiz.submitQuiz('user-a', [{ questionId: 1, answerIndex: 0 }]);
+      await quiz.submitQuiz('user-a', [{ questionId: 20, answerIndex: 0 }]);
+      // Two results in the same instant: the higher id is the newer, in both reads.
+      await dbmod.pool.query("update politics.quiz_results set created_at = case when id = 1 then '2026-09-19T10:00:00Z'::timestamptz else '2026-09-20T10:00:00Z' end where user_id = 'user-a'");
+      // The read before: every row, newest first, then the first one at or before now.
+      const before = (await repo.listQuizResults('user-a')).find((q) => q.createdAt <= new Date());
+      const latest = await repo.latestQuizResult('user-a');
+      expect(latest!.id).toBe(3);
+      expect(latest).toEqual(before);
+      expect(await repo.latestQuizResult('nobody')).toBeNull();
+    });
+
+    it('two recomputes in flight end with the profile from both votes', async () => {
+      const vote = (vector: Partial<typeof zero>, votedAt: string) => ({ questionId: 1, optionKey: 'option_a', vector: { ...zero, ...vector }, weight: 1, confidence: null, votedAt: new Date(votedAt) });
+      const first = vote({ economic: -2 }, '2026-09-20T10:00:00Z');
+      const second = vote({ welfare: 2 }, '2026-09-20T10:00:05Z');
+      votes.byUser.set('user-race', [first, second]);
+      // Recompute A reads the votes as they were before the second one committed, then stalls before writing.
+      let release!: () => void;
+      let reached!: () => void;
+      const gate = new Promise<void>((resolve) => (release = resolve));
+      const inside = new Promise<void>((resolve) => (reached = resolve));
+      const { listUserVoteVectors } = await import('../voting');
+      vi.mocked(listUserVoteVectors).mockImplementationOnce(async () => {
+        reached();
+        await gate;
+        return [first];
+      });
+      const a = ideology.recomputeProfile('user-race');
+      await inside;
+      // Recompute B, for the second vote. Without the lock it reads both votes and writes now, and
+      // A then overwrites it with the stale profile. With the lock it waits for A, then reads both.
+      const b = ideology.recomputeProfile('user-race');
+      const bDoneWhileAStalled = await Promise.race([b.then(() => true), new Promise<boolean>((resolve) => setTimeout(() => resolve(false), 1000))]);
+      release();
+      await Promise.all([a, b]);
+      expect(await ideology.getIdeologyProfile('user-race')).toMatchObject({ economic: -10, welfare: 10 });
+      expect(bDoneWhileAStalled).toBe(false);
+    });
+
     it('builds a daily timeline', async () => {
       await quiz.submitQuiz('user-c', [{ questionId: 1, answerIndex: 2 }]);
       const points = await ideology.userTimeline('user-c');
@@ -237,6 +281,78 @@ run('quiz and ideology against Postgres', () => {
     });
   });
 
+  describe('the stance evidence rebuild', () => {
+    type Row = NewTdIdeologyEvidence;
+    const at = (day: number) => new Date(Date.UTC(2026, 8, day));
+    const stance = (tdId: number, q: number, economic: number | null, day: number, weight = 1): Row => ({
+      tdId, source: 'stance', sourceRef: `question:${q}`, policyTopic: 'housing', economic, welfare: q % 2 ? -2 : null, weight, observedAt: at(day),
+    });
+    const contents = async () =>
+      (
+        await dbmod.pool.query(
+          `select td_id, source, source_ref, policy_topic, economic, social, cultural, authority, environmental, welfare, globalism, technocratic, weight, observed_at
+             from politics.td_ideology_evidence order by td_id, source, source_ref`,
+        )
+      ).rows;
+    const ids = async () =>
+      Object.fromEntries((await dbmod.pool.query('select td_id, source_ref, id from politics.td_ideology_evidence')).rows.map((r) => [`${r.td_id}/${r.source_ref}`, r.id]));
+
+    /** The write before the diff: delete every `stance` row of these TDs, insert the new set (server/stances/repository.ts). */
+    async function replaceBefore(tdIds: number[] | null, rows: Row[]) {
+      await dbmod.db.transaction(async (tx) => {
+        const where = eq(tdIdeologyEvidence.source, 'stance');
+        await tx.delete(tdIdeologyEvidence).where(tdIds === null ? where : and(where, inArray(tdIdeologyEvidence.tdId, tdIds)));
+        await repo.insertStanceEvidenceRows(tx, rows);
+      });
+    }
+
+    async function seed(): Promise<number[]> {
+      await dbmod.pool.query('truncate politics.td_ideology_evidence, politics.tds restart identity cascade');
+      const tdIds = [await addTd('Stance A', 'Fine Gael'), await addTd('Stance B', 'Sinn Féin'), await addTd('Stance C', 'Independent')];
+      const [a, b, c] = tdIds as [number, number, number];
+      await repo.insertStanceEvidenceRows(dbmod.db, [stance(a, 1, 2, 10), stance(a, 2, -1, 10), stance(a, 3, 1, 12), stance(b, 1, 0.5, 11), stance(c, 1, 1, 9)]);
+      await repo.insertTdEvidence({ tdId: a, source: 'debate', sourceRef: 'dail/1', economic: 4, weight: 1, observedAt: at(5) });
+      return tdIds;
+    }
+
+    // Unchanged, changed, changed to an OLDER statement (a newer one was deleted), removed and added rows.
+    const next = ([a, b]: number[]): Row[] => [stance(a!, 1, 2, 10), stance(a!, 2, 1.5, 13), stance(a!, 3, 0.4, 8), stance(a!, 4, -2, 14), stance(b!, 2, 1, 11, 0.5)];
+
+    for (const scope of ['every TD', 'some TDs'] as const) {
+      it(`ends with the same rows as delete + insert, for ${scope}`, async () => {
+        let tdIds = await seed();
+        const only = scope === 'every TD' ? null : tdIds.slice(0, 2);
+        await replaceBefore(only, next(tdIds));
+        const expected = await contents();
+
+        tdIds = await seed();
+        const before = await ids();
+        await dbmod.db.transaction((tx) => repo.replaceStanceEvidenceRows(tx, only, next(tdIds)));
+        expect(await contents()).toEqual(expected);
+        // TD C's row survives only when C is out of scope; the debate row always does.
+        expect(expected.some((r) => r.td_id === tdIds[2])).toBe(scope === 'some TDs');
+        expect(expected.some((r) => r.source === 'debate')).toBe(true);
+        // Rows that stay keep their id; an unchanged one is not even rewritten.
+        const after = await ids();
+        for (const key of [`${tdIds[0]}/question:1`, `${tdIds[0]}/question:2`, `${tdIds[0]}/question:3`]) expect(after[key]).toBe(before[key]);
+      });
+    }
+
+    it('leaves an unchanged row untouched, and an empty scope or set does what delete + insert did', async () => {
+      const [a] = await seed();
+      const xmin = async () => (await dbmod.pool.query("select xmin::text as x from politics.td_ideology_evidence where source_ref = 'question:1' and td_id = $1", [a])).rows[0].x;
+      const before = await xmin();
+      await dbmod.db.transaction((tx) => repo.replaceStanceEvidenceRows(tx, [a!], [stance(a!, 1, 2, 10)]));
+      expect(await xmin()).toBe(before);
+
+      await dbmod.db.transaction((tx) => repo.replaceStanceEvidenceRows(tx, [], []));
+      const kept = await contents();
+      expect(kept.filter((r) => r.source === 'stance')).toHaveLength(3); // a's one row, b's and c's
+      await dbmod.db.transaction((tx) => repo.replaceStanceEvidenceRows(tx, null, []));
+      expect((await contents()).map((r) => r.source)).toEqual(['debate']);
+    });
+  });
+
   describe('rebuild and matching', () => {
     it('recalculateAll rebuilds every profile to the same values', async () => {
       const a = await addTd('Rebuild A', 'Sinn Féin');
@@ -280,6 +396,34 @@ run('quiz and ideology against Postgres', () => {
       expect(parties.map((p) => p.party)).not.toContain('100% RDR');
       expect(parties[0]!.party).toBe('Sinn Féin');
       expect(tds[0]!.alignment).toBeGreaterThan(tds[1]!.alignment);
+    });
+
+    it('matches from the cached inputs exactly as from a fresh read; an evidence write drops them', async () => {
+      const service = await import('./service');
+      // An Independent, so its evidence recomputes no party: the TD recompute alone must drop the inputs.
+      const id = await addTd('Cache Deputy', 'Independent');
+      await addTd('Other Deputy', 'Sinn Féin');
+      await ideology.recordTdEvidence({ td: id, source: 'debate', sourceRef: 'c1', raw: { economic: 0.5, welfare: -0.3, social: 0.2, cultural: -0.1 }, weight: 2, observedAt: new Date() });
+      await ideology.recalculateAll();
+      const position = { ...zero, economic: 5, welfare: -3 };
+      await ideology.matchesFor(position, { welfare: 2 }); // reads the inputs
+      const cached = await ideology.matchesFor(position, { welfare: 2 }); // from the cache
+      const cachedParty = await ideology.partyProfile('Fine Gael');
+      service.forgetMatchInputs();
+      expect(await ideology.matchesFor(position, { welfare: 2 })).toEqual(cached);
+      expect(await ideology.partyProfile('Fine Gael')).toEqual(cachedParty);
+
+      // A write behind the service's back (as another process makes) is not seen while cached...
+      await dbmod.pool.query("update politics.ideology_profiles set economic = -9 where subject_kind = 'td'");
+      expect(await ideology.matchesFor(position, { welfare: 2 })).toEqual(cached);
+      // ...but an evidence write in this process drops the inputs at once.
+      await ideology.recordTdEvidence({ td: id, source: 'debate', sourceRef: 'c2', raw: { authority: 0.4 }, weight: 1, observedAt: new Date() });
+      const after = (await ideology.matchesFor(position, { welfare: 2 })).tds.find((t) => t.tdId === id)!;
+      expect(after.evidenceBySource).toEqual({ debate: 2 });
+      expect(after.measured).toEqual(['economic', 'social', 'cultural', 'authority', 'welfare']);
+      expect((await ideology.matchesFor(position, { welfare: 2 })).tds.find((t) => t.tdId !== id)!.alignment).not.toBe(
+        cached.tds.find((t) => t.tdId !== id)!.alignment,
+      );
     });
 
     it("matches a user only on the dimensions they have evidence on", async () => {

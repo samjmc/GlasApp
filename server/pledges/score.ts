@@ -29,37 +29,10 @@ export function weightsFromRanking(ranking: readonly PledgeCategory[]): Category
   return weights;
 }
 
-/** Group stored rows into each user's ranking, ordered by rank. */
-export function rankingsByUser(
-  rows: ReadonlyArray<{ userId: string; category: PledgeCategory; rank: number }>,
-): Map<string, PledgeCategory[]> {
-  const byUser = new Map<string, Array<{ category: PledgeCategory; rank: number }>>();
-  for (const row of rows) {
-    const list = byUser.get(row.userId) ?? [];
-    list.push(row);
-    byUser.set(row.userId, list);
-  }
-  // Array.from, not spread: the ES2017 target cannot iterate a Map directly.
-  return new Map(
-    Array.from(byUser.entries()).map(([userId, list]): [string, PledgeCategory[]] => [
-      userId,
-      list.sort((a, b) => a.rank - b.rank).map((r) => r.category),
-    ]),
-  );
-}
+// Everyone's rankings combined are aggregated in SQL, with this same Borda count: communityPriorities in repository.ts.
 
-/** Everyone's rankings combined: the mean of each user's weights, so every user counts once. */
-export function communityWeights(rankings: ReadonlyArray<readonly PledgeCategory[]>): CategoryWeights {
-  if (rankings.length === 0) return {};
-  const sum: CategoryWeights = {};
-  for (const ranking of rankings) {
-    for (const [category, weight] of Object.entries(weightsFromRanking(ranking)) as Array<[PledgeCategory, number]>) {
-      sum[category] = (sum[category] ?? 0) + weight;
-    }
-  }
-  for (const category of Object.keys(sum) as PledgeCategory[]) sum[category] = sum[category]! / rankings.length;
-  return sum;
-}
+const emptyCounts = (): Record<PledgeStatus, number> =>
+  Object.fromEntries(PLEDGE_STATUSES.map((s) => [s, 0])) as Record<PledgeStatus, number>;
 
 /**
  * Fewer rankers than this and the "community" weights are one person's own ranking, readable by
@@ -68,13 +41,10 @@ export function communityWeights(rankings: ReadonlyArray<readonly PledgeCategory
  */
 export const MIN_COMMUNITY_RANKERS = 10;
 
-/** communityWeights, or nothing while too few people have ranked for it to be anonymous. */
-export function publishableCommunityWeights(rankings: ReadonlyArray<readonly PledgeCategory[]>): CategoryWeights {
-  return rankings.length >= MIN_COMMUNITY_RANKERS ? communityWeights(rankings) : {};
+/** The community's priorities as they may be shown: empty weights while too few people have ranked for them to be anonymous. */
+export function publishableCommunity(community: { weights: CategoryWeights; rankers: number }): { weights: CategoryWeights; rankers: number } {
+  return community.rankers >= MIN_COMMUNITY_RANKERS ? community : { weights: {}, rankers: community.rankers };
 }
-
-const emptyCounts = (): Record<PledgeStatus, number> =>
-  Object.fromEntries(PLEDGE_STATUSES.map((s) => [s, 0])) as Record<PledgeStatus, number>;
 
 /**
  * One party's record. The weighted rate counts each resolved pledge by its category's

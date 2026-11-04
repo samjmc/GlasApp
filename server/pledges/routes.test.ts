@@ -15,7 +15,7 @@ process.env.ADMIN_API_SECRET = 'job-secret';
 process.env.ADMIN_EMAILS = '';
 process.env.LOG_LEVEL = 'silent';
 
-const state = vi.hoisted(() => ({ calls: [] as Array<{ fn: string; args: unknown[] }>, logged: [] as string[], otherRankers: 0 }));
+const state = vi.hoisted(() => ({ calls: [] as Array<{ fn: string; args: unknown[] }>, logged: [] as string[], rankers: 2, resolved: false }));
 
 // Real guards, scripted identity: a bearer token maps straight to a user.
 vi.mock('../auth/supabase', () => ({
@@ -53,7 +53,7 @@ vi.mock('./repository', () => {
   class UnknownDivisionError extends Error {}
   return {
     UnknownDivisionError,
-    listPledges: record('listPledges', () => [pledge]),
+    listPledges: record('listPledges', () => [pledge, ...(state.resolved ? [{ ...pledge, id: 2, status: 'delivered', category: 'housing' }] : [])]),
     pledgeWithEvidence: record('pledgeWithEvidence', (id) => (id === 1 ? { ...pledge, evidence: [] } : null)),
     createPledge: record('createPledge', (input) => ((input as { title: string }).title === 'duplicate' ? null : pledge)),
     updatePledge: record('updatePledge', (id) => (id === 1 ? pledge : null)),
@@ -64,11 +64,7 @@ vi.mock('./repository', () => {
       return pledgeId === 1 ? { id: 9 } : null;
     }),
     deleteEvidence: record('deleteEvidence', () => true),
-    allPriorityRows: record('allPriorityRows', () => [
-      { userId: 'someone', category: 'housing', rank: 1 },
-      { userId: 'user-1', category: 'health', rank: 1 },
-      ...Array.from({ length: state.otherRankers }, (_, i) => ({ userId: `other-${i}`, category: 'housing', rank: 1 })),
-    ]),
+    communityPriorities: record('communityPriorities', () => ({ weights: { housing: 0.5, health: 0.5 }, rankers: state.rankers })),
     userRanking: record('userRanking', (userId) => (userId === 'user-1' ? ['health'] : null)),
     saveRanking: record('saveRanking', () => undefined),
   };
@@ -82,7 +78,8 @@ let base: string;
 
 beforeEach(async () => {
   state.calls = [];
-  state.otherRankers = 0;
+  state.rankers = 2;
+  state.resolved = false;
   const app = express();
   app.use(express.json());
   app.use('/api/pledges', pledgesRouter);
@@ -180,23 +177,52 @@ describe('pledge validation and errors', () => {
 
 describe('priorities', () => {
   it('reports everyone’s weights once enough people have ranked, and the caller’s own ranking only when signed in', async () => {
-    state.otherRankers = MIN_COMMUNITY_RANKERS - 2;
+    state.rankers = MIN_COMMUNITY_RANKERS;
     const anon = (await (await send('/api/pledges/priorities')).json()).data;
     expect(anon).toMatchObject({ rankers: MIN_COMMUNITY_RANKERS, mine: null });
-    // 'someone' + the 8 others put housing first, user-1 puts health first: housing 9/10, health 1/10.
-    expect(anon.community).toEqual({ housing: 0.9, health: 0.1 });
+    expect(anon.community).toEqual({ housing: 0.5, health: 0.5 });
 
     const mine = (await (await send('/api/pledges/priorities', { token: 'user-token' })).json()).data;
     expect(mine.mine).toEqual(['health']);
   });
 
   it('publishes no community weights below the minimum, because they would be one person’s ranking; the count still shows', async () => {
-    state.otherRankers = 0;
-    const anon = (await (await send('/api/pledges/priorities')).json()).data;
-    expect(anon).toMatchObject({ rankers: 2, community: {}, mine: null });
+    for (const rankers of [1, 2, MIN_COMMUNITY_RANKERS - 1]) {
+      state.rankers = rankers;
+      const anon = (await (await send('/api/pledges/priorities')).json()).data;
+      // toEqual, not toMatchObject: `community: {}` would match any object.
+      expect(anon.community, `rankers ${rankers}`).toEqual({});
+      expect(anon, `rankers ${rankers}`).toMatchObject({ rankers, mine: null });
+    }
+  });
 
-    state.otherRankers = MIN_COMMUNITY_RANKERS - 3;
-    expect((await (await send('/api/pledges/priorities')).json()).data.community).toEqual({});
+  it('the party summaries do not default to those weights below the minimum either: the weighted rate stays null', async () => {
+    state.resolved = true; // one delivered housing pledge, so the weights decide whether there is a weighted rate
+    const rate = async (rankers: number) => {
+      state.rankers = rankers;
+      const parties = (await (await send('/api/pledges/parties')).json()).data as Array<{ deliveryRate: number | null; weightedDeliveryRate: number | null }>;
+      expect(parties).toHaveLength(1);
+      return parties[0]!;
+    };
+    expect(await rate(MIN_COMMUNITY_RANKERS - 1)).toMatchObject({ deliveryRate: 1, weightedDeliveryRate: null });
+    expect(await rate(MIN_COMMUNITY_RANKERS)).toMatchObject({ deliveryRate: 1, weightedDeliveryRate: 1 });
+  });
+
+  it('the minimum is ten', () => {
+    expect(MIN_COMMUNITY_RANKERS).toBe(10);
+  });
+
+  it('weights party records by the viewer’s own ranking, and reads everyone’s only without one', async () => {
+    const own = (await (await send('/api/pledges/parties', { token: 'user-token' })).json()).data;
+    expect(state.calls.map((c) => c.fn)).not.toContain('communityPriorities');
+    expect(own).toHaveLength(1);
+
+    state.calls = [];
+    expect((await send('/api/pledges/parties')).status).toBe(200);
+    expect(state.calls.map((c) => c.fn)).toContain('communityPriorities');
+    state.calls = [];
+    expect((await send('/api/pledges/parties', { token: 'admin-token' })).status).toBe(200);
+    expect(state.calls.map((c) => c.fn)).toEqual(expect.arrayContaining(['userRanking', 'communityPriorities']));
   });
 
   it('saves a ranking for the signed-in user only, and rejects repeats', async () => {

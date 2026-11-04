@@ -18,6 +18,9 @@ import { RetryButton } from '@/components/data/RetryButton';
 import { PartyMixBar } from '@/components/data/PartyMixBar';
 import { partyStyle } from '@/lib/parties';
 import { formatScore } from '@/lib/score';
+import { apiCall, orNullOn404 } from '@/lib/api';
+import { decodeParam } from '@/lib/routeParam';
+import { queryKeys } from '@/lib/queryKeys';
 
 type PartyBreakdownEntry = {
   party: string;
@@ -58,17 +61,11 @@ function BackLink() {
 }
 
 export default function ConstituencyProfilePage() {
-  const { name } = useParams<{ name: string }>();
+  const name = decodeParam(useParams<{ name: string }>().name);
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery<ConstituencyDetail | null>({
-    queryKey: ['constituency-profile', name],
-    queryFn: async () => {
-      const res = await fetch(`/api/scores/constituency/${encodeURIComponent(name || '')}`);
-      if (res.status === 404) return null;
-      if (!res.ok) throw new Error('Failed to fetch constituency data');
-      const json = await res.json();
-      return json.data as ConstituencyDetail;
-    },
+    queryKey: queryKeys.constituency.profile(name),
+    queryFn: () => orNullOn404(apiCall<ConstituencyDetail>('GET', `/api/scores/constituency/${encodeURIComponent(name || '')}`)),
     enabled: !!name,
   });
 

@@ -78,22 +78,8 @@ describe('AuthProvider', () => {
     expect(listener![1]).toMatch(/queryClient\.clear\(\)/);
   });
 
-  it('drops the quiz result this tab holds from the same listener, and when a sign-out call fails', () => {
-    const listener = source.match(/onAuthStateChange\(([\s\S]*?)\n\s*\}\);/);
-    expect(listener![1]).toMatch(/shouldClearQuizStorage\(/);
-    expect(listener![1]).toMatch(/clearAllQuizStorage\(\)/);
-    const logout = source.match(/const logout = async \(\) => \{([\s\S]*?)\n  \};/);
-    expect(logout, 'logout was not found').not.toBeNull();
-    expect(logout![1]).toMatch(/clearAllQuizStorage\(\)/);
-  });
-});
-
-describe('ConsentProvider withdraw', () => {
-  it('drops the quiz result this tab holds, which the server has just erased', () => {
-    const withdraw = read('contexts', 'ConsentContext.tsx').match(/const withdraw = useCallback\(async \(\) => \{([\s\S]*?)\n  \}, \[/);
-    expect(withdraw, 'withdraw was not found').not.toBeNull();
-    expect(withdraw![1]).toMatch(/clearAllQuizStorage\(\)/);
-  });
+  // What the listener does with the quiz result this tab holds is tested by behaviour in
+  // contexts/AuthContext.test.tsx and contexts/ConsentContext.test.tsx.
 });
 
 describe('shouldClearQuizStorage', () => {

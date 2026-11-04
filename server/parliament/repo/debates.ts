@@ -19,7 +19,7 @@ export interface RegroupResult {
 }
 
 export async function regroupDebates(database: Db = db): Promise<RegroupResult> {
-  const [sections, links, sponsors, offices, firsts] = await Promise.all([
+  const [sections, links, sponsors, offices] = await Promise.all([
     database
       .select({ id: debateSections.id, date: debateSections.date, title: debateSections.title, parentId: debateSections.parentId, parentTitle: debateSections.parentTitle })
       .from(debateSections),
@@ -35,18 +35,22 @@ export async function regroupDebates(database: Db = db): Promise<RegroupResult> 
     database
       .select({ title: tdOffices.title, memberCode: tdOffices.memberCode, start: tdOffices.startDate, end: tdOffices.endDate })
       .from(tdOffices),
-    database.execute(sql`
-      select distinct on (section_id) section_id, member_code
-      from politics.debate_speeches
-      where not is_presiding and member_code is not null
-      order by section_id, position`),
   ]);
 
   const primarySponsors = new Map<string, { memberCode: string | null; label: string }>();
   for (const s of sponsors) if (!primarySponsors.has(s.billId)) primarySponsors.set(s.billId, { memberCode: s.memberCode, label: s.label });
-  const firstSpeakers = new Map((firsts.rows as Array<{ section_id: string; member_code: string }>).map((r) => [r.section_id, r.member_code]));
 
   const grouped = groupDebates(sections, links);
+  // moverOf reads the first speaker of a motion's sections only: look up just those, not every
+  // speech in the record (3 s on GlasCore).
+  const motionSections = grouped.filter((d) => d.kind === 'motion').flatMap((d) => d.sectionIds);
+  const firsts = await database.execute<{ section_id: string; member_code: string }>(sql`
+    select distinct on (section_id) section_id, member_code
+    from politics.debate_speeches
+    where section_id in (select jsonb_array_elements_text(${JSON.stringify(motionSections)}::jsonb))
+      and not is_presiding and member_code is not null
+    order by section_id, position`);
+  const firstSpeakers = new Map(firsts.rows.map((r) => [r.section_id, r.member_code]));
   const rows: NewDebate[] = grouped.map((d) => {
     const mover = moverOf(d, { primarySponsors, offices, firstSpeakers });
     return {

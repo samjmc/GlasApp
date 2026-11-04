@@ -63,7 +63,7 @@ export async function replaceCommitteeSitting(
 }
 
 /**
- * SQL for one TD's committee sittings: those of committees they belonged to, held inside
+ * The committee sittings that count for a TD: those of committees they belonged to, held inside
  * that membership, after they joined the current Dáil, with a roll call at all (a
  * transcript without one says nothing about who came), with no unmatched name on it
  * (an unmatched TD could be this one, so the sitting cannot count them absent), and not on
@@ -73,24 +73,32 @@ const notOnLeave = (memberCode: ReturnType<typeof sql>) => sql`not exists (
   select 1 from politics.td_absences a
   where a.member_code = ${memberCode} and s.date >= a.start_date and (a.end_date is null or s.date <= a.end_date))`;
 
-const ELIGIBLE_SITTINGS = sql`
-  select distinct s.uri, s.committee_id
-  from politics.committee_sittings s
-  join politics.committee_memberships m on m.committee_id = s.committee_id
-  where m.td_id = st.td_id
-    and s.date >= m.start_date and (m.end_date is null or s.date <= m.end_date)
-    and s.date >= st.member_since
-    and s.present_count > 0
-    and s.unresolved_count = 0
-    and ${notOnLeave(sql`m.member_code`)}`;
-
-/** Fill the committee columns of `td_parliament_stats` (rows must exist; see recomputeStats). */
+/**
+ * Fill the committee columns of `td_parliament_stats` (rows must exist; see recomputeStats).
+ * One pass over every TD's eligible sittings, not two correlated counts per TD.
+ */
 export async function recomputeCommitteeStats(database: Db = db): Promise<void> {
   await database.execute(sql`
+    with eligible as (
+      select distinct st.td_id, s.uri
+      from politics.td_parliament_stats st
+      join politics.committee_memberships m on m.td_id = st.td_id
+      join politics.committee_sittings s on s.committee_id = m.committee_id
+      where s.date >= m.start_date and (m.end_date is null or s.date <= m.end_date)
+        and s.date >= st.member_since
+        and s.present_count > 0
+        and s.unresolved_count = 0
+        and ${notOnLeave(sql`m.member_code`)}),
+    counts as (
+      select e.td_id, count(*) eligible,
+        count(*) filter (where exists (select 1 from politics.committee_attendance a where a.sitting_uri = e.uri and a.td_id = e.td_id)) attended
+      from eligible e group by e.td_id)
     update politics.td_parliament_stats st set
-      committee_sittings_eligible = (select count(*) from (${ELIGIBLE_SITTINGS}) e),
-      committee_sittings_attended = (select count(*) from (${ELIGIBLE_SITTINGS}) e
-        where exists (select 1 from politics.committee_attendance a where a.sitting_uri = e.uri and a.td_id = st.td_id))`);
+      committee_sittings_eligible = coalesce(c.eligible, 0),
+      committee_sittings_attended = coalesce(c.attended, 0)
+    from politics.td_parliament_stats s2
+    left join counts c on c.td_id = s2.td_id
+    where st.td_id = s2.td_id`);
 }
 
 export async function tdCommittees(tdId: number, database: Db = db): Promise<TdCommittee[]> {

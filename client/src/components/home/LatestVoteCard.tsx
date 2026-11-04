@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "wouter";
 import { Landmark, Loader2 } from "lucide-react";
 import type { DivisionSummary } from "@shared/parliamentApi";
-import { apiClient } from "@/lib/queryClient";
+import { apiEnvelope } from "@/lib/api";
 import { queryKeys } from "@/lib/queryKeys";
 import { formatIsoDate } from "@/lib/isoDate";
 import { DivisionBar } from "@/components/pulse/VoteChip";
@@ -12,13 +12,12 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { HomeCard } from "./HomeCard";
 
-type Envelope = { success: true; data: DivisionSummary[]; meta?: { total: number } };
-
 /** The most recent Dáil division: title, outcome, Tá/Níl split, link to the record. */
 export function LatestVoteCard({ className }: { className?: string }) {
   const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryKey: queryKeys.parliament.divisions(1, 0),
-    queryFn: () => apiClient.get<Envelope>("/api/parliament/divisions?limit=1&offset=0"),
+    // Same key family as the debates page's list, so the cached value is the same { data, meta } shape.
+    queryFn: () => apiEnvelope<DivisionSummary[], { total: number }>("GET", "/api/parliament/divisions?limit=1&offset=0"),
   });
   const vote = data?.data?.[0];
 

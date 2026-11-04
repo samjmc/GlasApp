@@ -140,6 +140,7 @@ export interface ClaimedArticle {
   imageUrl: string | null;
   publishedAt: Date;
   sourceName: string;
+  relevanceScore: number | null;
 }
 
 const claimedColumns = {
@@ -151,14 +152,16 @@ const claimedColumns = {
   imageUrl: newsArticles.imageUrl,
   publishedAt: newsArticles.publishedAt,
   sourceName: newsSources.name,
+  relevanceScore: newsArticles.relevanceScore,
 };
 
 /**
  * Atomically take up to `limit` articles for one pipeline run, newest first.
  *
  * `FOR UPDATE SKIP LOCKED` means two concurrent runs always get disjoint rows, so an article
- * is never processed (and its LLM calls paid for) twice. A claim older than the lease is taken
- * again; after MAX_ATTEMPTS it is marked failed instead, so a poison article cannot loop.
+ * is never processed (and its LLM calls paid for) twice. A `failed` row (a model outage, say) and
+ * a claim older than the lease are taken again until MAX_ATTEMPTS claims; an expired claim at the
+ * cap is marked failed instead, so a poison article cannot loop.
  */
 export async function claimForPipeline(limit: number, database: Db = db): Promise<ClaimedArticle[]> {
   const lease = sql`now() - make_interval(hours => ${CLAIM_LEASE_HOURS})`;
@@ -179,6 +182,7 @@ export async function claimForPipeline(limit: number, database: Db = db): Promis
      where id in (
        select id from ${newsArticles}
         where (status = 'pending' and published_at >= ${maxAge})
+           or (status = 'failed' and published_at >= ${maxAge} and attempts < ${MAX_ATTEMPTS})
            or (status = 'claimed' and claimed_at < ${lease} and attempts < ${MAX_ATTEMPTS})
         order by published_at desc
         limit ${limit}
@@ -209,6 +213,14 @@ export async function findForPipeline(id: number, database: Db = db): Promise<Cl
 /** Record that this article names this TD. Idempotent: a second call keeps the first link. */
 export async function linkArticleTd(articleId: number, tdId: number, database: Db = db): Promise<void> {
   await database.insert(articleTds).values({ articleId, tdId }).onConflictDoNothing({ target: [articleTds.articleId, articleTds.tdId] });
+}
+
+/** Hand a claimed row back as `pending`, its claim not counted: the run stopped before reaching it. */
+export async function releaseClaim(id: number, database: Db = db): Promise<void> {
+  await database
+    .update(newsArticles)
+    .set({ status: 'pending', claimedAt: null, attempts: sql`greatest(${newsArticles.attempts} - 1, 0)`, updatedAt: sql`now()` })
+    .where(and(eq(newsArticles.id, id), eq(newsArticles.status, 'claimed')));
 }
 
 export async function saveContent(id: number, content: string, database: Db = db): Promise<void> {
@@ -339,18 +351,33 @@ const BY_DATE = sql`a.published_at desc, a.id desc`;
  */
 const VISIBLE = sql`coalesce(a.relevance_score, 100) >= ${RELEVANCE_FLOOR} and a.status <> 'duplicate'`;
 
+/**
+ * A feed total counts at most this many rows, or one row past the requested page when that is
+ * further. An exact count walks every visible article on every request. Below the cap the total
+ * is exact; at the cap "has more" (offset + limit < total) is still exact, because the cap is
+ * always past the end of the page.
+ */
+export const FEED_COUNT_CAP = 1000;
+
+async function feedRows(where: SQL, orderBy: SQL, limit: number, offset: number, database: Db): Promise<FeedRow[]> {
+  return (await database.execute<RawFeedRow>(feedSelect(where, orderBy, limit, offset))).rows.map(toFeedRow);
+}
+
 async function page(filter: SQL, orderBy: SQL, limit: number, offset: number, database: Db) {
   const where = sql`${VISIBLE} and ${filter}`;
+  const cap = Math.max(FEED_COUNT_CAP, offset + limit + 1);
   const [rows, count] = await Promise.all([
-    database.execute<RawFeedRow>(feedSelect(where, orderBy, limit, offset)),
-    database.execute<{ n: number }>(sql`select count(*)::int as n from politics.news_articles a where ${where}`),
+    feedRows(where, orderBy, limit, offset, database),
+    database.execute<{ n: number }>(
+      sql`select count(*)::int as n from (select 1 from politics.news_articles a where ${where} limit ${cap}) x`,
+    ),
   ]);
-  return { rows: rows.rows.map(toFeedRow), total: Number(count.rows[0]?.n ?? 0) };
+  return { rows, total: Number(count.rows[0]?.n ?? 0) };
 }
 
 /**
  * One feed page. `today` is the most important articles since local midnight, falling back to
- * the last `fallbackDays` when nothing was published today.
+ * the last `fallbackDays` when nothing was published today. `total` is capped (FEED_COUNT_CAP).
  */
 export async function feedPage(
   query: FeedQuery,
@@ -372,12 +399,16 @@ export async function feedPage(
   );
 }
 
-/** Newest articles that name the TD. */
+/**
+ * Newest articles that name the TD, starting from that TD's article_tds rows. The TD is a join,
+ * not a scalar subquery: with a subquery the planner cannot see the id and walks every article
+ * by date instead. No total is needed, so none is counted.
+ */
 export async function feedForTd(name: string, limit: number, database: Db = db): Promise<FeedRow[]> {
-  const where = sql`exists (
-    select 1 from politics.article_tds v join politics.tds t on t.id = v.td_id
-     where v.article_id = a.id and lower(t.name) = lower(${name.trim()}))`;
-  return (await page(where, BY_DATE, limit, 0, database)).rows;
+  const where = sql`${VISIBLE} and a.id in (
+    select v.article_id from politics.article_tds v join politics.tds t on t.id = v.td_id
+     where lower(t.name) = lower(${name.trim()}))`;
+  return feedRows(where, BY_DATE, limit, 0, database);
 }
 
 /** Visible articles stored in the last `hours` that still have no picture, newest first. */

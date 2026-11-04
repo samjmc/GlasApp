@@ -9,7 +9,8 @@
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../../testing/migrations';
-import { OutOfCreditError } from '../../services/aiService';
+import { AIError, OutOfCreditError } from '../../services/aiService';
+import { EXTRACTOR_VERSION } from './prompt';
 import type { ItemAnswer, ItemCompletion } from './run';
 
 const url = testDatabaseUrl('debateitems');
@@ -210,14 +211,41 @@ run('debate items (real Postgres)', () => {
       calls++;
       throw new OutOfCreditError('402 Insufficient Balance', { operation: 'debate-items', attempts: 1, elapsedMs: 0, status: 402 });
     };
+    const runsBefore = (await q('select debate_id, status, failures, ran_at from politics.debate_extraction_runs order by debate_id')).rows;
     const s = await items.extractDebates({ complete: noCredit, concurrency: 1 });
     expect(calls).toBe(1);
-    expect(s).toMatchObject({ debates: 2, failed: 1, done: 0 });
+    // Not the debate's fault: not failed, and nothing stored for it or the one not started.
+    expect(s).toMatchObject({ debates: 2, failed: 0, done: 0 });
     expect(s.stopped).toContain('no credit');
     expect(s.results).toHaveLength(1);
+    expect((await q('select debate_id, status, failures, ran_at from politics.debate_extraction_runs order by debate_id')).rows).toEqual(runsBefore);
 
     // With credit again, both are read.
     expect(await items.extractDebates({ complete: fake() })).toMatchObject({ done: 2 });
+  });
+
+  it('leaves a debate alone after MAX_FAILED_RUNS unusable replies on the same speeches, until they change or --force', async () => {
+    await q("update politics.debate_speeches set text = text || ' Poison.' where id = $1", [SPEECHES[1].id]);
+    const unusable: ItemCompletion = async () => ({ content: 'not json', model: 'fake-model', promptTokens: 10, completionTokens: 1 });
+    for (let run = 1; run <= items.MAX_FAILED_RUNS; run++) expect(await items.extractDebates({ complete: unusable, debateIds: [SECTION] })).toMatchObject({ failed: 1 });
+    const failures = async () => (await q('select failures from politics.debate_extraction_runs where debate_id = $1', [SECTION])).rows[0].failures;
+    expect(await failures()).toBe(items.MAX_FAILED_RUNS);
+
+    const complete = fake();
+    expect(await items.extractDebates({ complete, debateIds: [SECTION] })).toMatchObject({ capped: 1, failed: 0, done: 0 });
+    expect(complete.calls).toBe(0);
+    // Nor does the nightly pick spend its budget on it.
+    expect(await items.extractDebates({ complete, limit: 30 })).toMatchObject({ debates: 0 });
+
+    // A model outage is not the debate's fault and never counts toward the cap.
+    const down: ItemCompletion = async () => {
+      throw new AIError('503', { operation: 'debate-items', attempts: 3, elapsedMs: 0, status: 503 });
+    };
+    expect(await items.extractDebates({ complete: down, debateIds: [SECTION], force: true })).toMatchObject({ failed: 1 });
+    expect(await failures()).toBe(items.MAX_FAILED_RUNS);
+
+    expect(await items.extractDebates({ complete, debateIds: [SECTION], force: true })).toMatchObject({ done: 1 });
+    expect(await failures()).toBe(0);
   });
 
   it('removes items whose speech left the record', async () => {
@@ -228,5 +256,48 @@ run('debate items (real Postgres)', () => {
     expect(rows[0].n).toBe(0);
     // The other debate's concession points at its own speech, and stays.
     expect((await stored()).filter((r) => r.kind === 'concession')).toHaveLength(1);
+  });
+
+  it('a run that reads nothing new rebuilds no record; one that reads something does', async () => {
+    let rebuilds = 0;
+    const config = { ...items.DEBATE_EXTRACTION, rebuild: async () => (rebuilds++, { rows: 7 }) };
+    await items.extractDebates({ complete: fake() }); // everything read
+    rebuilds = 0;
+    const idle = await items.extractUnits(config, { complete: fake() });
+    expect(idle).toMatchObject({ done: 0, orphansRemoved: 0, recordRows: 0 });
+    expect(rebuilds).toBe(0);
+    expect(await items.extractUnits(config, { complete: fake(), debateIds: [`dail-${DAY}-dbsect_9`], force: true })).toMatchObject({ done: 1, recordRows: 7 });
+    expect(rebuilds).toBe(1);
+  });
+
+  it('the nightly pick reads never-read debates before failed ones', async () => {
+    const third = `dail-${DAY}-dbsect_11`;
+    await q("insert into politics.debates (id, kind, title, first_date, last_date, section_count) values ($1, 'motion', 'Transport: Motion', $2, $2, 1)", [third, DAY]);
+    await q("insert into politics.debate_sections (id, date, title, speech_count, debate_id) values ($1, $2, 'Transport: Motion', 2, $1)", [third, DAY]);
+    for (const [i, s] of SPEECHES.entries()) {
+      await q('insert into politics.debate_speeches (id, section_id, date, position, member_code, text, word_count) values ($1, $2, $3, $4, $5, $6, $7)', [
+        `${third}/spk_${i + 1}`,
+        third,
+        DAY,
+        i,
+        s.member,
+        s.text,
+        s.text.split(' ').length,
+      ]);
+    }
+    await q("update politics.debate_extraction_runs set status = 'failed', failures = 1 where debate_id = $1", [SECTION]);
+    const s = await items.extractDebates({ complete: fake(), limit: 1 });
+    expect(s.results.map((r) => r.id)).toEqual([third]);
+  });
+
+  it('one run per extractor across processes: a second one is refused while the lock is held', async () => {
+    const other = await dbmod.pool.connect();
+    try {
+      await other.query('select pg_advisory_lock(hashtext($1)::bigint)', [`glasapp:job:items:${EXTRACTOR_VERSION}`]);
+      await expect(items.extractDebates({ complete: fake() })).rejects.toMatchObject({ name: 'JobAlreadyRunning' });
+    } finally {
+      await other.query('select pg_advisory_unlock_all()');
+      other.release();
+    }
   });
 });

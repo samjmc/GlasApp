@@ -3,7 +3,7 @@ import { RotateCcw, Save } from "lucide-react";
 import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS, type IdeologyDimension, type IdeologyVector } from "@shared/ideology";
 import { Button } from "@/components/ui/button";
 import { Segmented } from "@/components/pulse/Segmented";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import { defaultWeights, type DimensionWeights } from "@/lib/ideologyApi";
 import { storeWeights } from "@/lib/quizStorage";
 import PartyMatchResults from "./PartyMatchResults";

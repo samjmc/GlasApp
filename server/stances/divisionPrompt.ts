@@ -1,6 +1,6 @@
 /**
  * What a Dáil division meant and which daily-vote option it states, asked of a model in three
- * calls (docs/plans/quiz-improvements/01c §3.2–3.3, and a claims check after a match). Pure: the PROPOSAL blocks, the choice of
+ * calls (docs/architecture/ideology-matching.md, and a claims check after a match). Pure: the PROPOSAL blocks, the choice of
  * debate excerpts, the prompts and the parses. The calls, the checks (divisionVerify.ts) and the
  * storage live elsewhere. The model writes no axis numbers: a vector only ever comes from the
  * option it picks, fixed when the question was made.

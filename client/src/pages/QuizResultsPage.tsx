@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { useToast } from "@/components/ui/use-toast";
+import { useToast } from "@/hooks/use-toast";
 import type { QuizResult } from '@shared/quiz';
 import MultidimensionalIdeologyProfile from '@/components/MultidimensionalIdeologyProfile';
 import MatchesAndWeights from '@/components/MatchesAndWeights';
@@ -96,7 +96,7 @@ const QuizResultsPage: React.FC = () => {
             }
             storeQuiz(saved, stored.answers, stored.seed);
             setStored({ result: saved, answers: stored.answers, seed: stored.seed });
-            await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
+            await queryClient.invalidateQueries({ queryKey: queryKeys.quiz.all() });
             await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
             toast({ title: "Result saved", description: "Your quiz result is saved to your profile." });
           })

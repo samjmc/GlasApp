@@ -1,15 +1,51 @@
 /**
  * Every read and write of `politics.td_stances` and `politics.division_readings`. Nothing else
- * touches them.
+ * touches them. Also the one write of `stance` evidence rows by TD (replaceStanceEvidenceOf),
+ * which must share the stance transaction.
  */
-import { and, desc, eq, inArray, isNotNull, sql } from 'drizzle-orm';
+import { and, desc, eq, inArray, isNotNull, isNull, notInArray, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { tds } from '@shared/schema/politics';
+import { tdIdeologyEvidence, type NewTdIdeologyEvidence } from '@shared/schema/quiz';
 import { divisionReadings, tdStances, type DivisionReadingRow, type NewDivisionReading, type NewTdStance, type TdStanceRow } from '@shared/schema/stances';
 import type { QuoteKind } from '@shared/stancesApi';
 import type { PolicyDomain } from '../constants/policyTopics';
-import { STANCE_SYNC_LOCK } from '../ideology/repository';
+import { insertStanceEvidenceRows, STANCE_SYNC_LOCK } from '../ideology/repository';
 import type { StanceForEvidence } from './evidence';
+
+/** A transaction handle, as `db.transaction` passes it. */
+export type Tx = Parameters<Parameters<Db['transaction']>[0]>[0];
+
+/**
+ * Run `fn` in one transaction holding STANCE_SYNC_LOCK, the lock every whole-set stance write
+ * takes, so a news article's stances and evidence and the nightly rebuild never interleave.
+ */
+export function withStanceLock<T>(fn: (tx: Tx) => Promise<T>, database: Db = db): Promise<T> {
+  return database.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(${STANCE_SYNC_LOCK}::bigint)`);
+    return fn(tx);
+  });
+}
+
+/** Delete one article's news stances of every TD not in `keep`. Returns the TDs whose rows went. */
+export async function deleteArticleStancesExcept(articleId: number, keep: number[], tx: Tx): Promise<number[]> {
+  const rows = await tx
+    .delete(tdStances)
+    .where(and(eq(tdStances.articleId, articleId), isNull(tdStances.divisionId), keep.length > 0 ? notInArray(tdStances.tdId, keep) : undefined))
+    .returning({ tdId: tdStances.tdId });
+  return rows.map((r) => r.tdId);
+}
+
+/**
+ * Replace the `stance` evidence of these TDs (every TD when null) with `rows`. Inside a
+ * withStanceLock transaction; profiles are not recomputed here.
+ */
+export async function replaceStanceEvidenceOf(tx: Tx, tdIds: number[] | null, rows: NewTdIdeologyEvidence[]): Promise<void> {
+  if (tdIds !== null && tdIds.length === 0) return;
+  const stance = eq(tdIdeologyEvidence.source, 'stance');
+  await tx.delete(tdIdeologyEvidence).where(tdIds === null ? stance : and(stance, inArray(tdIdeologyEvidence.tdId, tdIds)));
+  await insertStanceEvidenceRows(tx, rows);
+}
 
 export interface StanceInput {
   tdId: number;
@@ -24,13 +60,14 @@ export interface StanceInput {
 /**
  * Save one article's stances. The url, outlet, headline and date are copied from the article
  * in the same statement, so they are always the canonical's own. A duplicate article saves
- * nothing: stances are kept once per event. A re-run of the same article replaces its rows.
+ * nothing: stances are kept once per event. A re-run of the same article updates its rows in
+ * place; deleteArticleStancesExcept removes the ones it no longer has (server/stances/record.ts).
  * Returns the TD and `stated_at` of each saved row.
  */
 export async function saveStances(
   articleId: number,
   stances: StanceInput[],
-  database: Db = db,
+  database: Pick<Db, 'execute'> = db,
 ): Promise<Array<{ tdId: number; statedAt: Date }>> {
   if (stances.length === 0) return [];
   const values = sql.join(
@@ -88,8 +125,9 @@ export async function mappedStancesOn(questionIds: number[], database: Db = db):
   return rows as MappedStance[];
 }
 
-/** Every stance with an answer, news and Dáil votes, as the evidence rebuild reads them. */
-export async function stanceRowsForEvidence(database: Db = db): Promise<StanceForEvidence[]> {
+/** Every stance with an answer (of these TDs, when given), news and Dáil votes, as the evidence rebuild reads them. */
+export async function stanceRowsForEvidence(database: Pick<Db, 'select'> = db, tdIds: number[] | null = null): Promise<StanceForEvidence[]> {
+  if (tdIds !== null && tdIds.length === 0) return [];
   const rows = await database
     .select({
       id: tdStances.id,
@@ -101,7 +139,7 @@ export async function stanceRowsForEvidence(database: Db = db): Promise<StanceFo
       statedAt: tdStances.statedAt,
     })
     .from(tdStances)
-    .where(isNotNull(tdStances.optionKey));
+    .where(and(isNotNull(tdStances.optionKey), tdIds === null ? undefined : inArray(tdStances.tdId, tdIds)));
   return rows as StanceForEvidence[];
 }
 

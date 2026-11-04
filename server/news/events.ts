@@ -9,7 +9,7 @@
  * `assignCanonicals` then turns the links into one canonical per event. Pure.
  */
 import { z } from 'zod';
-import { callChatCompletion } from '../services/aiService';
+import { callChatCompletion, OutOfCreditError } from '../services/aiService';
 
 /** Candidates are visible canonicals published within this many hours. */
 export const EVENT_WINDOW_HOURS = 72;
@@ -112,27 +112,39 @@ async function callEvents(items: EventItem[], candidates: EventCandidate[]): Pro
 
 /**
  * Link each item to a stored candidate or to another item. `items` must be oldest first.
- * A failed call links nothing (every item stays its own canonical) and is counted.
+ * A failed call links nothing and is counted; its items are listed in `unchecked`, so the
+ * caller can hold them back rather than store an event twice. After an OutOfCreditError no
+ * further call is made and every later item is unchecked too.
  */
 export async function matchEvents(
   items: EventItem[],
   stored: EventCandidate[],
-): Promise<{ links: Array<{ index: number; of: Link }>; failedCalls: number }> {
+): Promise<{ links: Array<{ index: number; of: Link }>; failedCalls: number; unchecked: number[] }> {
   // An earlier call's canonicals join the candidates under labels above every stored id.
   const pool: Array<EventCandidate & { of: Link }> = stored.map((c) => ({ ...c, of: { stored: c.id } }));
   let nextLabel = stored.reduce((max, c) => Math.max(max, c.id), 0) + 1;
   const links: Array<{ index: number; of: Link }> = [];
+  const unchecked: number[] = [];
   let failedCalls = 0;
+  let outOfCredit = false;
 
   for (let start = 0; start < items.length; start += EVENT_MATCH_MAX_ITEMS) {
     const chunk = items.slice(start, start + EVENT_MATCH_MAX_ITEMS);
     let matches: EventMatch[] = [];
+    if (outOfCredit) {
+      unchecked.push(...chunk.map((item) => item.index));
+      continue;
+    }
     if (pool.length > 0 || chunk.length > 1) {
       try {
         matches = await callEvents(chunk, pool);
       } catch (error) {
         failedCalls++;
+        outOfCredit = error instanceof OutOfCreditError;
         console.error('news.events call failed:', error instanceof Error ? error.message : error);
+        // Not added to the pool either: a held-back item is not a canonical for later calls.
+        unchecked.push(...chunk.map((item) => item.index));
+        continue;
       }
     }
     const linked = new Set<number>();
@@ -145,7 +157,7 @@ export async function matchEvents(
       if (!linked.has(j)) pool.push({ id: nextLabel++, title: item.title, summary: item.summary, of: { run: item.index } });
     });
   }
-  return { links, failedCalls };
+  return { links, failedCalls, unchecked };
 }
 
 /**

@@ -1,8 +1,7 @@
 /**
- * Client for /api/pledges (server/pledges/routes.ts). Unwraps the `{ success, data }`
- * envelope; types come from @shared/pledges.
+ * Client for /api/pledges (server/pledges/routes.ts). Types come from @shared/pledges.
  */
-import { apiRequest } from "@/lib/queryClient";
+import { apiCall as call } from "@/lib/api";
 import type {
   EvidenceKind,
   PartyPledgeSummary,
@@ -24,11 +23,6 @@ export type {
   PledgeWithEvidence,
   PrioritiesView,
 } from "@shared/pledges";
-
-type Envelope<T> = { success: boolean; data: T };
-
-const call = async <T>(method: string, path: string, body?: unknown): Promise<T> =>
-  (await apiRequest<Envelope<T>>({ method, path, body })).data;
 
 export interface NewPledgeInput {
   party: string;

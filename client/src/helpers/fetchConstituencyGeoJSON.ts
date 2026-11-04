@@ -5,10 +5,10 @@
 
 // Main Ireland constituencies GeoJSON file (detailed with actual constituency shapes)
 // Using detailed-0.001.geojson which has converted ITM→WGS84 coordinates and detailed shapes (32K points, 3.3 MB)
-const IRELAND_CONSTITUENCIES = '/assets/ireland-constituencies-detailed-0.001.geojson';
+const IRELAND_CONSTITUENCIES = '/geo/ireland-constituencies-detailed-0.001.geojson';
 
 // Backup sources for the boundaries
-const BACKUP_BOUNDARIES = '/assets/ireland-constituencies-full.geojson';
+const BACKUP_BOUNDARIES = '/geo/ireland-constituencies-full.geojson';
 
 const SOURCES = [IRELAND_CONSTITUENCIES, BACKUP_BOUNDARIES];
 

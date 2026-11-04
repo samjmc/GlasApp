@@ -121,16 +121,20 @@ export async function replaceDebateDay(
   });
 }
 
-/** Link rows stored before their TD was in `tds` (or re-link after a roster change). */
+/**
+ * Link rows stored before their TD was in `tds` (or re-link after a roster change).
+ * The two big tables update only the rows whose (member code, td id) pair is wrong. The pairs
+ * come from the (member_code, td_id) index alone; the plain join read every speech each sync
+ * (~2 s on GlasCore) to change nothing.
+ */
 export async function relinkTds(database: Db = db): Promise<void> {
-  await database.execute(sql`
-    update politics.division_votes v set td_id = t.id
-    from politics.tds t
-    where t.member_code = v.member_code and v.td_id is distinct from t.id`);
-  await database.execute(sql`
-    update politics.debate_speeches s set td_id = t.id
-    from politics.tds t
-    where t.member_code = s.member_code and s.td_id is distinct from t.id`);
+  for (const table of ['division_votes', 'debate_speeches']) {
+    await database.execute(sql.raw(`
+      update politics.${table} r set td_id = t.id
+      from (select distinct member_code, td_id from politics.${table} where member_code is not null) p
+      join politics.tds t on t.member_code = p.member_code and p.td_id is distinct from t.id
+      where r.member_code = p.member_code and r.td_id is not distinct from p.td_id`));
+  }
   for (const table of [
     'committee_memberships',
     'committee_attendance',
@@ -164,11 +168,6 @@ export async function updateRosterDetails(
     }
   });
 }
-
-/** SQL: the day `d` falls in a documented absence of member `code`. */
-const onDocumentedLeave = (code: ReturnType<typeof sql>, day: ReturnType<typeof sql>) => sql`exists (
-  select 1 from politics.td_absences a
-  where a.member_code = ${code} and ${day} >= a.start_date and (a.end_date is null or ${day} <= a.end_date))`;
 
 /** Set `tds.gender` from the given map. A member missing from the map keeps what it has. */
 export async function updateGenders(genders: Map<string, string>, database: Db = db): Promise<number> {
@@ -234,21 +233,36 @@ export async function recomputeStats(
         from politics.divisions d
         join politics.debate_speeches p on p.section_id = d.debate_section_id and p.is_presiding
         order by d.id, p.position desc),
+      -- Divisions held inside a date range, joined once: documented leave, and a leadership role
+      -- (government office, or leader of a party, either side of the house). Correlated EXISTS
+      -- here ran once per TD per division per range table: ~10x slower and a million scans.
+      excused as (
+        select distinct m.td_id, d.id division_id
+        from m
+        join politics.td_absences a on a.member_code = m.member_code
+        join politics.divisions d on d.date >= a.start_date and (a.end_date is null or d.date <= a.end_date)),
+      in_role as (
+        select m.td_id, d.id division_id
+        from m
+        join politics.td_offices o on o.member_code = m.member_code and o.office_type in ('cabinet', 'minister_of_state')
+        join politics.divisions d on d.date >= o.start_date and (o.end_date is null or d.date <= o.end_date)
+        union
+        select m.td_id, d.id
+        from m
+        join politics.td_party_leaders l on l.member_code = m.member_code
+        join politics.divisions d on d.date >= l.start_date and (l.end_date is null or d.date <= l.end_date)),
       per_division as (
         select m.td_id,
-          ${onDocumentedLeave(sql`m.member_code`, sql`d.date`)} excused,
+          x.td_id is not null excused,
           (c.member_code is not null and c.member_code = m.member_code) last_chair,
-          exists (select 1 from politics.division_votes v where v.division_id = d.id and v.member_code = m.member_code) voted,
-          -- A leadership role: government office, or leader of a party (either side of the house).
-          (exists (select 1 from politics.td_offices o
-                   where o.member_code = m.member_code and o.office_type in ('cabinet', 'minister_of_state')
-                     and d.date >= o.start_date and (o.end_date is null or d.date <= o.end_date))
-           or exists (select 1 from politics.td_party_leaders l
-                      where l.member_code = m.member_code
-                        and d.date >= l.start_date and (l.end_date is null or d.date <= l.end_date))) in_role
+          v.member_code is not null voted,
+          r.td_id is not null in_role
         from m
         join politics.divisions d on d.date >= m.member_since
-        left join chair c on c.division_id = d.id),
+        left join chair c on c.division_id = d.id
+        left join politics.division_votes v on v.division_id = d.id and v.member_code = m.member_code
+        left join excused x on x.td_id = m.td_id and x.division_id = d.id
+        left join in_role r on r.td_id = m.td_id and r.division_id = d.id),
       totals as (
         select td_id,
           count(*) filter (where not excused and not (last_chair and not voted)) eligible,
@@ -264,22 +278,29 @@ export async function recomputeStats(
     // Set-based: one pass over the speeches, with the leave days joined in. The first version
     // looked each speech up in `days` with a correlated NOT EXISTS, which scans that whole CTE
     // per speech: 58,000 speeches x 29,000 rows took 250 s on GlasCore, past its 2-minute
-    // statement limit, and 4 s on the same data once set-based.
+    // statement limit, and 4 s on the same data once set-based. The leave days are a range join
+    // too, not an EXISTS per TD per sitting day.
     await tx.execute(sql`
       with m as (
         select s.td_id, t.member_code, s.member_since
         from politics.td_parliament_stats s join politics.tds t on t.id = s.td_id),
-      days as materialized (
-        select m.td_id, x.date, ${onDocumentedLeave(sql`m.member_code`, sql`x.date`)} excused
-        from m join (select distinct date from politics.debate_sections) x on x.date >= m.member_since),
+      sitting as (select distinct date from politics.debate_sections),
+      leave_days as (
+        select distinct m.td_id, x.date
+        from m
+        join politics.td_absences a on a.member_code = m.member_code
+        join sitting x on x.date >= m.member_since and x.date >= a.start_date and (a.end_date is null or x.date <= a.end_date)),
       day_totals as (
-        select td_id, count(*) filter (where not excused) days_n, count(*) filter (where excused) excused_n
-        from days group by td_id),
+        select m.td_id, count(*) filter (where l.td_id is null) days_n, count(l.td_id) excused_n
+        from m
+        join sitting x on x.date >= m.member_since
+        left join leave_days l on l.td_id = m.td_id and l.date = x.date
+        group by m.td_id),
       spoken as (
         select p.td_id, count(distinct p.section_id) sections, count(*) speeches
         from politics.debate_speeches p
         join politics.td_parliament_stats s on s.td_id = p.td_id
-        left join days l on l.td_id = p.td_id and l.date = p.date and l.excused
+        left join leave_days l on l.td_id = p.td_id and l.date = p.date
         where not p.is_presiding and p.date >= s.member_since and l.td_id is null
         group by p.td_id)
       update politics.td_parliament_stats s set
