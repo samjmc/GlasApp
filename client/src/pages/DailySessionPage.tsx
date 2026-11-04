@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState, type ComponentProps, type ReactNode } from "react";
 import { Link } from "wouter";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { ArrowRight, Check, ChevronLeft, ExternalLink, Flame, Landmark, Loader2, Share2, SkipForward, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -34,7 +34,8 @@ type VoteSubStep = "preview" | "question";
  */
 const finishedThisLoad = new Set<number>();
 
-const stepVariants = {
+// Typed, so "easeOut" is checked as an easing name rather than widened to a plain string.
+const stepVariants: Variants = {
   hidden: { opacity: 0, x: 32 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.2, ease: "easeOut" } },
   exit: { opacity: 0, x: -32, transition: { duration: 0.15, ease: "easeIn" } },
