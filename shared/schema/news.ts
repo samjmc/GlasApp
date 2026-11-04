@@ -6,8 +6,8 @@
  */
 import { sql } from 'drizzle-orm';
 import { type AnyPgColumn, boolean, check, index, integer, serial, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
-import type { NewsCategory } from '../news';
-import { politics } from './politics';
+import { NEWS_CATEGORIES, type NewsCategory } from '../news';
+import { inList, politics } from './politics';
 
 /**
  * Article lifecycle. `claimed` rows belong to one scoring run until their lease expires.
@@ -90,6 +90,9 @@ export const newsArticles = politics.table(
       .on(sql`(${t.importanceScore} is null)`, sql`${t.importanceScore} desc`, sql`${t.publishedAt} desc`, sql`${t.id} desc`)
       .where(sql`${t.status} <> 'duplicate' and coalesce(${t.relevanceScore}, 100) >= 60`),
     check('news_articles_duplicate_link_chk', sql`(${t.status} = 'duplicate') = (${t.duplicateOf} is not null)`),
+    check('news_articles_status_chk', sql`${t.status} in (${inList(ARTICLE_STATUSES)})`),
+    check('news_articles_category_chk', sql`${t.category} in (${inList(NEWS_CATEGORIES)})`),
+    check('news_articles_score_range_chk', sql`${t.relevanceScore} between 0 and 100 and ${t.importanceScore} between 0 and 100`),
   ],
 ).enableRLS();
 

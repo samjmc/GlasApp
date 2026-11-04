@@ -520,10 +520,11 @@ export async function tdSummary(tdId: number, database: Db = db) {
     divisionsChaired: stats?.divisionsChaired ?? null,
     divisionsExcused: stats?.divisionsExcused ?? null,
     attendanceBenchmark: stats?.attendanceBenchmark ?? null,
-    // The questions the TD asked, from the monthly counts. `tds.question_count_*` is the
-    // scoring input and is NULL for a TD who was not expected to ask.
-    questionsOral: asked ? asked.oral : td.questionCountOral,
-    questionsWritten: asked ? asked.written : td.questionCountWritten,
+    // The questions the TD asked, from the monthly counts only (NULL before any month is stored).
+    // `tds.question_count_*` is not a copy of them: it is the scoring input, NULL for a TD not
+    // expected to ask, and kept at its last complete value while a month is missing.
+    questionsOral: asked?.oral ?? null,
+    questionsWritten: asked?.written ?? null,
     questionsComplete,
     questionsExpected: stats?.questionsExpected ?? null,
     officeHistory,
