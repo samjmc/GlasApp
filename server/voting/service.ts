@@ -4,7 +4,7 @@
  * selection.ts and summary.ts; this file sequences them around the repository.
  */
 import { callChatCompletion, isLLMConfigured } from '../services/aiService';
-import type { IdeologyDimension } from '../constants/ideology';
+import type { IdeologyDimension } from '@shared/ideology';
 import {
   DAILY_ITEM_COUNT,
   type ArticleQuestion,

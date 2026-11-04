@@ -8,7 +8,7 @@
  * option with no position would silently record nothing when chosen.
  */
 import { z } from 'zod';
-import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '../constants/ideology';
+import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '@shared/ideology';
 import {
   HIGH_PRIORITY_TOPICS,
   POLICY_DOMAINS,

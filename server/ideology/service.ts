@@ -1,5 +1,5 @@
 /**
- * Ideology operations: record evidence, recompute and read profiles, match positions.
+ * Ideology operations: recompute and read profiles, match positions.
  */
 import { IDEOLOGY_DIMENSIONS, emptyIdeologyVector, type IdeologyDimension, type IdeologyVector } from '@shared/ideology';
 import {
@@ -34,7 +34,6 @@ import {
   PARTY_PRIOR_WEIGHT,
   QUIZ_WEIGHT,
   TD_HALF_LIFE_DAYS,
-  hasSignal,
   toObservationVector,
   type SourceKind,
 } from './sources';
@@ -181,47 +180,6 @@ function endOfDay(date: string): Date {
 
 // --- TDs and parties -------------------------------------------------------
 
-export interface TdEvidenceInput {
-  /** tds.id, or the TD's name when the caller only has that. */
-  td: number | string;
-  source: Exclude<SourceKind, 'vote'>;
-  sourceRef: string;
-  raw: Partial<Record<IdeologyDimension, number | null | undefined>>;
-  weight: number;
-  observedAt: Date;
-  policyTopic?: string | null;
-}
-
-export type RecordResult = 'recorded' | 'duplicate' | 'no_signal' | 'unknown_td';
-
-let unknownTdNames = 0;
-/** How many evidence items named a TD the tds table does not have, since the process started. */
-export const unknownTdCount = () => unknownTdNames;
-
-export async function recordTdEvidence(input: TdEvidenceInput): Promise<RecordResult> {
-  const tdId = typeof input.td === 'number' ? input.td : await repo.findTdIdByName(input.td);
-  if (tdId === null) {
-    unknownTdNames++;
-    console.warn(`[ideology] no TD named "${input.td}"; evidence ${input.source}:${input.sourceRef} skipped`);
-    return 'unknown_td';
-  }
-  const vector = toObservationVector(input.source, input.raw);
-  if (!hasSignal(vector) || !(input.weight > 0)) return 'no_signal';
-  const inserted = await repo.insertTdEvidence({
-    tdId,
-    source: input.source,
-    sourceRef: input.sourceRef,
-    policyTopic: input.policyTopic ?? null,
-    ...vector,
-    weight: input.weight,
-    observedAt: input.observedAt,
-  });
-  if (!inserted) return 'duplicate';
-  const td = await recomputeTdProfile(tdId);
-  if (td && !isIndependent(td.party)) await recomputePartyProfile(td.party!);
-  return 'recorded';
-}
-
 function tdPrior(party: string | null) {
   const baseline = partyBaseline(party);
   return baseline ? { vector: baseline, weight: PARTY_PRIOR_WEIGHT } : null;
@@ -299,7 +257,7 @@ function loadMatchInputs(): Promise<MatchInputs> {
 
 /**
  * Drop the cached match inputs. Called after every TD or party profile write; every evidence
- * write is followed by one (recordTdEvidence, the stance rebuild, deleteTdEvidence + recalculateAll).
+ * write is followed by one (the stance rebuild, deleteTdEvidence + recalculateAll).
  */
 export function forgetMatchInputs(): void {
   matchInputs = null;

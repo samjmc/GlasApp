@@ -3,7 +3,8 @@
  * TD stated a position, with the quote checked against the article text by server/stances.
  * No model-written summary is stored: the quote and the link are the record.
  *
- * A row can instead be a recorded Dáil vote (docs/plans/quiz-improvements/01c): `division_id`
+ * A row can instead be a recorded Dáil vote (docs/architecture/ideology-matching.md, "Dáil divisions
+ * as stances"): `division_id`
  * set, `quote_kind` 'division', the quote being the text of the proposal voted on. Those rows
  * are derived from `division_readings` and the roll call, and replaced whole by each sync.
  *
