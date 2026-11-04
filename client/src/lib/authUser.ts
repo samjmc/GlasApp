@@ -1,16 +1,16 @@
 import type { User } from '@/lib/supabase';
 
-/** The signed-in person as the app reads them, built from the Supabase user. */
+/**
+ * The signed-in person as the app reads them, built from the Supabase user. The profile fields (name,
+ * county, bio, picture) are not here: their home is politics.users, read with useProfileMe.
+ */
 export interface AuthUser {
   id: string;
   email?: string;
-  firstName?: string;
-  lastName?: string;
-  profileImageUrl?: string;
+  /** The sign-in provider's picture (Google), shown when the user has not uploaded one. */
+  providerImageUrl?: string;
   displayName?: string;
   username?: string;
-  county?: string;
-  bio?: string;
   role?: string;
   /** Set when the onboarding card was closed or finished (user_metadata.has_seen_onboarding). */
   hasSeenOnboarding: boolean;
@@ -24,14 +24,10 @@ export function toAuthUser(supabaseUser: User | null): AuthUser | null {
   return {
     id: supabaseUser.id,
     email: supabaseUser.email,
-    firstName: meta.first_name || meta.given_name,
-    lastName: meta.last_name || meta.family_name,
-    // glas_avatar_url is our upload; Google rewrites avatar_url and picture at every sign-in.
-    profileImageUrl: meta.glas_avatar_url || meta.avatar_url || meta.picture,
+    // Google rewrites avatar_url and picture at every sign-in.
+    providerImageUrl: meta.avatar_url || meta.picture,
     displayName: meta.full_name || meta.name,
     username: meta.username,
-    county: meta.county,
-    bio: meta.bio,
     role: supabaseUser.app_metadata?.role,
     hasSeenOnboarding: meta.has_seen_onboarding === true,
   };

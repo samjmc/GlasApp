@@ -31,21 +31,21 @@ const upload = multer({
 });
 
 const profileUpdateSchema = z.object({
-  firstName: z.string().max(100).optional(),
-  lastName: z.string().max(100).optional(),
-  county: z.string().max(50).optional(),
-  bio: z.string().max(2000).optional(),
+  firstName: z.string().max(profiles.PROFILE_LIMITS.firstName).optional(),
+  lastName: z.string().max(profiles.PROFILE_LIMITS.lastName).optional(),
+  county: z.string().max(profiles.PROFILE_LIMITS.county).optional(),
+  bio: z.string().max(profiles.PROFILE_LIMITS.bio).optional(),
 });
 
 function view(req: Request, row: Parameters<typeof profiles.publicProfile>[0]) {
   return { ...profiles.publicProfile(row), email: req.user!.email ?? null };
 }
 
-/** GET /api/profile/me */
+/** GET /api/profile/me. Every signed-in page asks for it, so it is where older metadata is copied in. */
 router.get('/me', requireAuth, async (req: Request, res: Response) => {
   const log = requestLogger(req);
   try {
-    const row = await profiles.ensureProfile(req.user!.id);
+    const row = await profiles.backfillFromMetadata(await profiles.ensureProfile(req.user!.id), req.user!.userMetadata);
     res.json(formatSuccess({ user: view(req, row), isAdmin: isAdminUser(req.user!) }));
   } catch (error) {
     log.error({ err: error }, 'Failed to load profile');

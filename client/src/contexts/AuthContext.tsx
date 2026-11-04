@@ -9,7 +9,6 @@ interface AuthContextType {
   user: AuthUser | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  updateProfile: (data: Partial<AuthUser>) => Promise<void>;
   logout: () => Promise<void>;
   deleteAccount: () => Promise<void>;
   signInWithGoogle: () => Promise<void>;
@@ -20,7 +19,6 @@ const defaultContext: AuthContextType = {
   user: null,
   isLoading: true,
   isAuthenticated: false,
-  updateProfile: async () => {},
   logout: async () => {},
   deleteAccount: async () => {},
   signInWithGoogle: async () => {},
@@ -68,36 +66,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     return () => subscription.unsubscribe();
   }, [queryClient]);
-
-  const updateProfile = useCallback(async (data: Partial<AuthUser>) => {
-    try {
-      const { error } = await supabase.auth.updateUser({
-        data: {
-          first_name: data.firstName,
-          last_name: data.lastName,
-          username: data.username,
-          county: data.county,
-          bio: data.bio,
-        },
-      });
-
-      if (error) {
-        // Provide user-friendly error messages
-        if (error.message.includes('network')) {
-          throw new Error('Network error. Please check your connection and try again.');
-        }
-        throw new Error(error.message || 'Failed to update profile. Please try again.');
-      }
-
-      // Update local state
-      setUser((prev) => (prev ? { ...prev, ...data } : null));
-    } catch (error) {
-      if (import.meta.env.DEV) {
-        console.error('Error updating profile:', error);
-      }
-      throw error;
-    }
-  }, []);
 
   const logout = useCallback(async () => {
     try {
@@ -192,13 +160,12 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       user,
       isLoading,
       isAuthenticated: !!user,
-      updateProfile,
       logout,
       deleteAccount,
       signInWithGoogle,
       signInWithMagicLink,
     }),
-    [user, isLoading, updateProfile, logout, deleteAccount, signInWithGoogle, signInWithMagicLink]
+    [user, isLoading, logout, deleteAccount, signInWithGoogle, signInWithMagicLink]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
