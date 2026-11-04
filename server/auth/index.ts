@@ -49,8 +49,30 @@ function adminEmails(): string[] {
     .filter(Boolean);
 }
 
+/**
+ * Old names of ADMIN_API_SECRET. Still read for one release, with a warning at startup
+ * (warnOldJobSecretNames), so a deploy can rename the variable first. Delete after that release.
+ */
+function oldJobSecrets(): Record<string, string | undefined> {
+  return { ADMIN_SECRET: process.env.ADMIN_SECRET, CRON_SECRET: process.env.CRON_SECRET, JOB_SECRET: process.env.JOB_SECRET };
+}
+
 function jobSecret(): string | undefined {
-  return process.env.ADMIN_API_SECRET || process.env.ADMIN_SECRET || process.env.CRON_SECRET || process.env.JOB_SECRET;
+  return process.env.ADMIN_API_SECRET || Object.values(oldJobSecrets()).find(Boolean);
+}
+
+/** Startup: name any old job secret variable that is set. Returns the names, for tests. */
+export function warnOldJobSecretNames(): string[] {
+  const names = Object.entries(oldJobSecrets())
+    .filter(([, value]) => value)
+    .map(([name]) => name);
+  if (names.length > 0) {
+    logger.warn(
+      { variables: names },
+      `${names.join(', ')} set: rename it to ADMIN_API_SECRET. The old names stop working in the next release.`,
+    );
+  }
+  return names;
 }
 
 /**

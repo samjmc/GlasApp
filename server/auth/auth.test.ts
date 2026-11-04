@@ -184,6 +184,30 @@ describe('requireJob', () => {
     }
   });
 
+  it('still reads an old secret name for one release, and names it at startup', async () => {
+    delete process.env.ADMIN_API_SECRET;
+    process.env.CRON_SECRET = 'old-name-secret';
+    try {
+      let called = false;
+      await auth.requireJob(mockReq({ 'x-admin-secret': 'old-name-secret' }), mockRes(), () => { called = true; });
+      expect(called).toBe(true);
+      expect(auth.warnOldJobSecretNames()).toEqual(['CRON_SECRET']);
+
+      // With both set, ADMIN_API_SECRET wins and the old name is still reported.
+      process.env.ADMIN_API_SECRET = 'job-secret';
+      const res = mockRes();
+      called = false;
+      await auth.requireJob(mockReq({ 'x-admin-secret': 'old-name-secret' }), res, () => { called = true; });
+      expect(called).toBe(false);
+      expect(res.statusCode).toBe(401);
+      expect(auth.warnOldJobSecretNames()).toEqual(['CRON_SECRET']);
+    } finally {
+      process.env.ADMIN_API_SECRET = 'job-secret';
+      delete process.env.CRON_SECRET;
+    }
+    expect(auth.warnOldJobSecretNames()).toEqual([]);
+  });
+
   it('rejects a wrong secret without falling through to the admin check', async () => {
     state.user = SUPA_ADMIN;
     const res = mockRes();
