@@ -1,7 +1,7 @@
 import cron from "node-cron";
 import { runTdPipeline } from "../news/tdPipeline";
 import { ingest } from "../news/ingest";
-import { extractDebates, extractQuestions, leaveWatch, runSync as runParliamentSync, syncHadFailures } from "../parliament";
+import { extractDebates, extractQuestions, leaveWatch, repository, runSync as runParliamentSync, syncHadFailures } from "../parliament";
 import type { ExtractSummary } from "../parliament/debateItems/run";
 import { runDivisionStances } from "../stances";
 import { logger } from "../utils/logger";
@@ -40,6 +40,15 @@ export function initScheduler() {
       ...Object.fromEntries(MODEL_FLAGS.map((flag) => [flag, flagOn(flag) ? "on" : "off"])),
     },
     "Scheduler initialized (Europe/Dublin)",
+  );
+
+  // A deploy that changes the published rules: rebuild the records now (no model calls), so the
+  // site never shows the new rules' name on points scored under the old ones until 04:45.
+  repository.rebuildStaleRecords().then(
+    (rebuilt) => {
+      if (rebuilt.length > 0) logger.info({ rebuilt }, "Records rebuilt under the current rules");
+    },
+    (err) => logger.error({ err }, "Record rebuild at start failed"),
   );
 
   // ═══════════════════════════════════════════════════════════════════

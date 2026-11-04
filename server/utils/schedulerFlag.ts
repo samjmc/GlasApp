@@ -1,8 +1,8 @@
 /**
- * SCHEDULER=off stops every cron (docs/deploy.md). `false`, `0` and `no` mean the same, in any case:
- * someone who writes SCHEDULER=false has said they do not want the jobs, and reading it as "on" would
- * start four jobs against the real database on the first boot. Unset, empty or anything else runs them.
+ * Only SCHEDULER=on starts the crons (docs/deploy.md). They write to the real database (scoring, the
+ * parliament sync), so they are turned on on purpose: unset, empty, `off`, `true`, `ON` or a typo such
+ * as `offf` all leave them off, and the start-up log says so.
  */
 export function schedulerDisabled(value: string | undefined): boolean {
-  return /^(off|false|0|no)$/i.test((value ?? '').trim());
+  return value !== 'on';
 }

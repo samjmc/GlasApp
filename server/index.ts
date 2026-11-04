@@ -60,24 +60,22 @@ app.use('/geo', express.static('public/assets'));
   try {
     logger.info('Starting server initialization...');
     
-    // Test Supabase database connection (non-blocking)
-    if (process.env.DATABASE_URL) {
-      logger.info('Testing Supabase connection...');
-      checkDatabaseConnection().catch(err => {
-        logger.error({ err }, "Database connection test failed (server will continue)");
-      });
-    } else {
-      logger.warn("No DATABASE_URL configured - database features will not work");
-    }
-    
+    // Test Supabase database connection (non-blocking). server/db.ts already stopped the
+    // process at import if DATABASE_URL is not set.
+    logger.info('Testing Supabase connection...');
+    checkDatabaseConnection().catch(err => {
+      logger.error({ err }, "Database connection test failed (server will continue)");
+    });
+
     const server = await registerRoutes(app);
     logger.info('Routes registered successfully');
 
     // importantly only setup vite in development and after
     // setting up all the other routes so the catch-all route
     // doesn't interfere with the other routes
-    const nodeEnv = process.env.NODE_ENV || 'development';
-    if (nodeEnv === "development") {
+    // Only NODE_ENV=development (set by `npm run dev`) loads vite. An unset NODE_ENV serves
+    // the built client, so `node dist/index.js` never tries to import the dev-only ./vite.
+    if (process.env.NODE_ENV === "development") {
       logger.info("Setting up Vite development server...");
       // The specifier is a variable on purpose. esbuild bundles a literal import('./vite')
       // and hoists that module's external imports (vite, the react plugin, nanoid) to the
@@ -99,8 +97,8 @@ app.use('/geo', express.static('public/assets'));
     app.use(errorHandler);
 
     // Initialize Scheduler (news ingest, news → TD links, parliament sync, leave watch).
-    // SCHEDULER=off for a local run against the shared GlasCore database, so looking at the
-    // site never triggers a scoring run that changes real TD scores.
+    // The crons run only with SCHEDULER=on, so a local run against the shared GlasCore database
+    // never triggers a scoring run that changes real TD scores.
     if (schedulerDisabled(process.env.SCHEDULER)) {
       logger.warn('SCHEDULER is off: no scheduled jobs will run');
     } else {

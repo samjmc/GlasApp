@@ -4,7 +4,8 @@
  *
  *   npm run debates:items -- --pilot 50          a fixed sample of 50 argued debates
  *   npm run debates:items -- --debate <id> …     these debates
- *   npm run debates:items -- --limit 20          the first 20 not read yet
+ *   npm run debates:items -- --limit 20          the first 20 not read yet, or changed
+ *   npm run debates:items -- --all --yes         every argued debate (dollars after a version bump)
  */
 import 'dotenv/config';
 import { repository as repo } from '../parliament';

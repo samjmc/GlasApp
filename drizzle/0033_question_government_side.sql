@@ -1,0 +1,1 @@
+ALTER TABLE "politics"."question_participation" ADD COLUMN "government_side" boolean DEFAULT false NOT NULL;

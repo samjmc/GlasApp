@@ -109,13 +109,22 @@ run('debate record (real Postgres)', () => {
       { member_code: B, role: 'office', claims: 0, claim_points: 0, concessions_received: 1, concession_points: 3, replies: 1, taken_up: 1, taken_up_points: 2, questions: 0, commitments: 1, points: 5 },
       { member_code: C, role: 'backbench', claims: 0, claim_points: 0, concessions_received: 0, concession_points: 0, replies: 0, taken_up: 0, taken_up_points: 0, questions: 0, commitments: 0, points: 0 },
     ]);
-    // Rebuilding again gives the same rows.
+    // Rebuilding again gives the same rows, also when two rebuilds run at once (a sync and a job).
     expect(await repo.rebuildDebateRecord()).toEqual({ debates: 1, rows: 3 });
+    expect(await Promise.all([repo.rebuildDebateRecord(), repo.rebuildDebateRecord(), repo.rebuildDebateRecord()])).toHaveLength(3);
+    expect((await q('select count(*)::int n from politics.debate_participation')).rows[0].n).toBe(3);
+  });
+
+  it('rebuilds a record only when its rows were scored under other rules', async () => {
+    expect(await repo.rebuildStaleRecords()).toEqual([]);
+    await q("update politics.debate_participation set rules_version = 'r0', points = 99 where member_code = $1", [A]);
+    expect(await repo.rebuildStaleRecords()).toEqual(['debate record']);
+    expect((await q('select rules_version, points from politics.debate_participation where member_code = $1', [A])).rows).toEqual([{ rules_version: 'r3', points: 6 }]);
   });
 
   it('shows one debate: most points first, with what each member said, and only replies that name their target', async () => {
     const view = await repo.debateRecord(DEBATE);
-    expect(view).toMatchObject({ debateId: DEBATE, title: 'Health: Motion', kind: 'motion', rulesVersion: 'r2' });
+    expect(view).toMatchObject({ debateId: DEBATE, title: 'Health: Motion', kind: 'motion', rulesVersion: 'r3' });
     expect(view!.participants.map((p) => [p.name, p.points, p.items.map((i) => i.kind)])).toEqual([
       ['Ann Opp', 6, ['specific_claim', 'specific_claim', 'specific_claim', 'specific_claim', 'question', 'response']],
       ['Bob Min', 5, ['concession', 'commitment', 'response']],
@@ -180,5 +189,45 @@ run('debate record (real Postgres)', () => {
     expect((await repo.debateRecord(UNREAD))?.participants.find((p) => p.memberCode === A)?.items.map((i) => i.quote)).toEqual(['Words that were never']);
     // DEBATE still counts only the current version's 4 claims.
     expect((await claimsOf(DEBATE)).find((r) => r.member_code === A)).toEqual({ member_code: A, claims: 4 });
+  });
+
+  it("totals a TD's main role only, and shows a reply on top of a scoring concession as scoring nothing", async () => {
+    // Before Bob's office: he speaks as a backbencher on the government side (Fianna Fáil).
+    const OLD = 'dail-2024-12-18-dbsect_3';
+    const old = (n: number) => `${OLD}/spk_${n}`;
+    await q("insert into politics.debates (id, kind, title, first_date, last_date, section_count) values ($1, 'motion', 'Housing: Motion', '2024-12-18', '2024-12-18', 1)", [OLD]);
+    await q("insert into politics.debate_sections (id, date, title, speech_count, debate_id) values ($1, '2024-12-18', 'Housing: Motion', 3, $1)", [OLD]);
+    for (const [i, [id, member, text]] of ([
+      [old(1), A, 'Rents are too high.'],
+      [old(2), B, 'Deputy Opp is right that rents are too high. One: 1 more.'],
+      [old(3), A, 'Thank you.'],
+    ] as Array<[string, string, string]>).entries()) {
+      await q('insert into politics.debate_speeches (id, section_id, date, position, member_code, text, word_count) values ($1, $2, $3, $4, $5, $6, $7)', [id, OLD, '2024-12-18', i, member, text, text.split(' ').length]);
+    }
+    for (const [kind, quote, target, claimType] of [
+      ['concession', 'Deputy Opp is right that rents are too high', old(1), null],
+      ['response', 'Deputy Opp is right', old(1), null], // the same agreement, read as a reply too
+      ['specific_claim', 'One: 1 more', null, 'figure'],
+    ]) {
+      await q(
+        `insert into politics.debate_items (speech_id, member_code, kind, claim_type, quote, quote_start, quote_end, target_speech_id, extractor_version) values ($1, $2, $3, $4, $5, 0, 1, $6, $7)`,
+        [old(2), B, kind, claimType, quote, target, version],
+      );
+    }
+    await q(
+      `insert into politics.debate_extraction_runs (debate_id, extractor_version, input_hash, status, speeches, words, irish_speeches, calls, prompt_tokens, completion_tokens, accepted)
+       values ($1, $2, 'h', 'done', 3, 16, 0, 1, 1, 1, 3)`,
+      [OLD, version],
+    );
+    await repo.rebuildDebateRecord();
+
+    const view = await repo.debateRecord(OLD);
+    expect(view!.participants.find((p) => p.memberCode === A)).toMatchObject({ concessionPoints: 3, takenUp: 0, points: 3 });
+    expect(view!.participants.find((p) => p.memberCode === B)?.items.find((i) => i.kind === 'response')).toMatchObject({ to: 'Ann Opp', replyNoPoints: 'conceded' });
+
+    // One debate in each role: office wins the tie, and the totals count only that debate.
+    const b = await repo.tdDebateRecord(await tdIdOf(B));
+    expect(b).toMatchObject({ role: 'office', debates: 1, points: 5 });
+    expect(b!.totals).toMatchObject({ claims: 0, claimPoints: 0, replies: 1 });
   });
 });

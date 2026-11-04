@@ -14,9 +14,7 @@ const __dirname = path.dirname(__filename);
  * config, or the react plugin: those are devDependencies and are not installed in the
  * production image.
  */
-export function serveStatic(app: Express) {
-  const distPath = path.resolve(__dirname, "public");
-
+export function serveStatic(app: Express, distPath = path.resolve(__dirname, "public")) {
   if (!fs.existsSync(distPath)) {
     throw new Error(
       `Could not find the build directory: ${distPath}, make sure to build the client first`,
@@ -24,6 +22,12 @@ export function serveStatic(app: Express) {
   }
 
   app.use(express.static(distPath));
+
+  // A missing file under these is a 404, not the page. An open tab from before a deploy asks
+  // for old hashed /assets files; index.html with a 200 gives it a MIME error instead.
+  app.use(["/assets", "/uploads"], (_req, res) => {
+    res.sendStatus(404);
+  });
 
   // fall through to index.html if the file doesn't exist
   app.use("*", (_req, res) => {

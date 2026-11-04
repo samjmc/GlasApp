@@ -12,11 +12,11 @@ describe('server/index.ts', () => {
 });
 
 describe('schedulerDisabled', () => {
-  it('reads off, false, 0 and no as "do not run the crons", in any case and with spaces', () => {
-    for (const value of ['off', 'OFF', 'Off', ' off ', 'false', 'False', '0', 'no', 'NO']) expect(schedulerDisabled(value), value).toBe(true);
+  it('runs the crons only for exactly "on"', () => {
+    expect(schedulerDisabled('on')).toBe(false);
   });
 
-  it('runs the crons when it is unset, empty, on, or anything else', () => {
-    for (const value of [undefined, '', ' ', 'on', 'true', '1', 'yes', 'offf']) expect(schedulerDisabled(value), String(value)).toBe(false);
+  it('leaves them off when it is unset, empty, off, or anything else, typos included', () => {
+    for (const value of [undefined, '', ' ', 'off', 'OFF', 'false', '0', 'no', 'true', '1', 'yes', 'ON', ' on', 'offf']) expect(schedulerDisabled(value), String(value)).toBe(true);
   });
 });

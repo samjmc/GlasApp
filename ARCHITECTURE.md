@@ -47,7 +47,7 @@ Browser (React SPA) --HTTPS--> Caddy (optional, one proxy hop)
 
 Scheduled jobs (Europe/Dublin): news ingest every two hours at :30 past odd hours, news to TD links
 every two hours, the parliament sync at 04:45 and the leave watch on Mondays at 06:15.
-`SCHEDULER=off` stops all of them. Three more model-calling steps are opt-in
+They run only with `SCHEDULER=on`. Three more model-calling steps are opt-in
 (`DIVISION_STANCES`, `DEBATE_ITEMS`, `QUESTION_ITEMS`; see docs/deploy.md section 6).
 
 ## Identity

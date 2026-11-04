@@ -29,4 +29,13 @@ describe('npm run debates:items / questions:items flags', () => {
     expect(itemsOptions(['--limit', '5', '--concurrency', String(MAX_CONCURRENCY)]).concurrency).toBe(MAX_CONCURRENCY);
     expect(() => itemsOptions(['--limit', '5', '--concurrency', String(MAX_CONCURRENCY + 1)])).toThrow(/at most/);
   });
+
+  it('refuses a mistyped flag, a flag with no value and two scopes, rather than run something else', () => {
+    // Each would otherwise read, and write, more than asked: --dryrun is no dry run.
+    for (const argv of [['--dryrun', '--limit', '5'], ['--limit=20'], ['--limit', '5', '--pilot'], ['--limit', '0'], ['--debate'], ['--debate', 'x', '--pilot', '5'], ['--all', '--yes', '--limit', '5']]) {
+      expect(() => itemsOptions(argv), argv.join(' ')).toThrow();
+    }
+    // Every id after --debate, as well as --debate repeated.
+    expect(itemsOptions(['--debate', 'a', 'b', '--dry-run'])).toMatchObject({ debateIds: ['a', 'b'], dryRun: true });
+  });
 });

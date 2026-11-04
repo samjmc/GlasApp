@@ -32,17 +32,24 @@ names only are listed here; the values come from you.
 | Group | Names |
 |---|---|
 | Required. The server stops at start-up without them | `DATABASE_URL`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` when `NODE_ENV=production` (the image sets it) |
-| Build time, baked into the client | `VITE_SUPABASE_ANON_KEY` (required), `VITE_SUPABASE_URL` (defaults to GlasCore: set it to your own project's URL if `SUPABASE_URL` is not GlasCore, or every signed-in call is a 401) |
 | Needed for real use | `ADMIN_EMAILS`, one admin secret (`ADMIN_API_SECRET`, or `ADMIN_SECRET`, `CRON_SECRET`, `JOB_SECRET`), `LLM_API_KEY`, `JEV_API_KEY`, `CLOUDFLARE_ACCOUNT_ID` |
 | Optional | `LLM_BASE_URL`, `LLM_MODEL_NAME` (every model call uses it when set; unset, DeepSeek uses `deepseek-flash` and OpenAI `gpt-4o-mini`), `OPENAI_API_KEY` (used only when `LLM_API_KEY` is unset), `LOG_LEVEL`, `PORT` (leave it unset with the compose file: the port mapping and the Caddyfile both assume 5000), `DB_POOL_MAX` (database connections, default 10; the session pooler's Pool Size in Supabase is 15 and shared with GlasIntelligence, so raise that first) |
-| Scheduled jobs | `SCHEDULER` (`off` stops every cron), `DIVISION_STANCES`, `DEBATE_ITEMS`, `QUESTION_ITEMS` |
+| Scheduled jobs | `SCHEDULER` (must be exactly `on` to run any cron; anything else leaves them off), `DIVISION_STANCES`, `DEBATE_ITEMS`, `QUESTION_ITEMS` |
 | Only with the proxy profile | `SITE_DOMAIN` |
 | Tests and one-off tools, never on the host | `TEST_DATABASE_URL` (a disposable Postgres, for `npm test` and `npm run test:e2e`), `E2E_PORT` (port of the e2e server, default 5055), `ROBOTS_SOURCE_DATABASE_URL` (`npm run robots`, read-only copy source), `DIRECT_URL` (a non-pooled URL for `db:migrate`, wins over `DATABASE_URL`) |
 
 Leave a line commented out (`# NAME=`) when you have no value. An empty value is not the same
 as unset: an empty `SUPABASE_SERVICE_ROLE_KEY` stops the server.
 
-The `VITE_` values are fixed when the image is built. Change one, then rebuild.
+The compose file builds the client with your `SUPABASE_URL` and `SUPABASE_ANON_KEY`, so the
+browser and the server always use the same Supabase project. Those two values are fixed when
+the image is built. Change one, then rebuild. A variable already exported in your shell beats
+the file when Compose reads it for the build, so build from a shell that does not export
+`SUPABASE_URL` or `SUPABASE_ANON_KEY` (a different value there would bring the 401 problem back).
+
+Quotes are not needed in the file, with one exception: Compose expands `$` in an unquoted
+value. Single-quote any value that contains `$`, and check it with
+`docker compose --env-file deploy/glasapp.env -f deploy/compose.yml config`.
 
 ## 2. Set up Supabase
 
@@ -61,6 +68,12 @@ The app sends its own redirect address with every sign-in, sign-up and reset. Su
 accepts it only if it is on the allow-list. If it is missing, the user lands on the Site URL
 instead.
 
+The reset-password email template is also one value for the whole project. The app's reset page
+reads `?token_hash=...&type=recovery`, so the link in the template must be
+`{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=recovery`. Do not use `{{ .SiteURL }}`: it may
+still be GlasIntelligence's domain. Agree any template change with whoever runs GlasIntelligence
+first.
+
 ## 3. Migrations (manual, from `main` only)
 
 The server never changes the schema. A human applies migrations, from a checkout of `main`,
@@ -70,9 +83,14 @@ before the release that needs them goes live:
 git checkout main
 git pull
 npm ci
-# set DATABASE_URL (or DIRECT_URL, which wins) in your shell to the GlasCore session pooler
+# set DIRECT_URL in your shell to the GlasCore session pooler connection string
 npm run db:migrate
 ```
+
+Set `DIRECT_URL`, not `DATABASE_URL`. `drizzle.config.ts` reads `DIRECT_URL` first and also loads
+the checkout's `.env`. A `DIRECT_URL` left in that `.env` would beat a `DATABASE_URL` from your
+shell, and the migration would run against the wrong database. A value set in the shell beats
+`.env`, so a shell `DIRECT_URL` always wins.
 
 Do not use `npm run db:push`, and do not add a migrate step to the image or to start-up.
 `drizzle-kit` is a dev dependency, so it is not inside the production image. Each migration
@@ -162,6 +180,18 @@ does), then `--divisions --sync`. After a change to the matching prompt (`MATCH_
 checks in `server/stances/divisionVerify.ts`, run `--divisions --reclassify` before the next sync: the sync
 keeps whatever is stored.
 
+- `DEBATE_ITEMS=on` reads at most 30 argued debates a night. Every argued debate on GlasCore
+  (454, checked 2026-10-10) already has a finished v3 read, so this reads only new or changed
+  debates. It is not a backfill.
+- `QUESTION_ITEMS=on` reads at most 100 question exchanges a night. All 5,573 exchanges on
+  GlasCore were read on 2026-10-10, so this too reads only new or changed ones. The first sync with
+  the 2026-10-12 splitter makes 5,593 exchanges and resets 81 reads; read those by hand straight
+  after that sync (`docs/plans/question-sessions.md`, "review fixes").
+- These counts are for GlasCore. A different database may still hold unread debates or exchanges,
+  and a flag there would read them, at most 30 or 100 a night.
+
+`SCHEDULER` must be exactly `on`. Any other value, or none, leaves every cron off.
+
 The start-up log line `Scheduler initialized` says which of the three flags are on. Every run is
 recorded in `politics.job_runs` (started, finished, `ok`, the job's own counts) and logged as JSON
 with `job` and `ok` fields. To see the latest runs of each job:
@@ -174,7 +204,7 @@ curl -H "x-admin-secret: $ADMIN_API_SECRET" http://127.0.0.1:5000/api/admin/jobs
 a disclosure file, items held back, a run stopped because the model account is out of credit).
 A run with no `finished_at` is still going, or the process died during it.
 
-To turn the crons off again, set `SCHEDULER=off` and run `up -d` again.
+To turn the crons off again, set `SCHEDULER=off` (or remove the line) and run `up -d` again.
 
 ## Updating
 

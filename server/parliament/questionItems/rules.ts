@@ -2,7 +2,8 @@
  * Q4 of docs/plans/question-sessions.md: the published rules that turn checked question-session
  * items into points. Pure. Code gives every point; the model only found and quoted the items.
  *
- * Rules q1 (2026-10-10):
+ * Rules q2 (2026-10-12; q1 2026-10-10 counted government-side askers in the per-10 figure and its
+ * percentile, and every office holder who spoke as answering):
  *   an `action` commitment made in      +2 for each asker of the exchange, once per exchange, only
  *   reply to your question              when the asker is on the other side of the House: a
  *                                       government backbencher's question answered with an
@@ -10,20 +11,23 @@
  *   a `follow_up` (a reply, a letter,   shown, no points
  *   a meeting) or a `general`
  *   undertaking ("we will continue")
- *   claims and commitments in a         shown for office holders, never scored or ranked
- *   minister's answers
+ *   claims and commitments in the       shown for office holders, never scored or ranked; another
+ *   answers of the office holder who    office holder who spoke in the exchange only interjected
+ *   said most in the exchange
  *
- * A TD's figure is per format and never pooled: exchanges that secured a commitment per 10 asked,
- * for oral PQs and Topical Issues only, against the 75th percentile of backbenchers with at least
- * MIN_EXCHANGES of that format. Leaders' Questions (party leaders only) and rapid sessions are shown.
+ * A TD's figure is per format and never pooled: of the exchanges they asked across the House, those
+ * that secured a commitment per 10, for oral PQs and Topical Issues only, against the 75th percentile
+ * of backbenchers with at least MIN_EXCHANGES of that format asked across the House. Leaders'
+ * Questions (party leaders only) and rapid sessions are shown.
  */
+import type { TdQuestionRecord } from '@shared/parliamentApi';
 import type { CommitmentType, DebateItemKind, QuestionFormat } from '@shared/schema/parliament';
+import { COHORT_PERCENTILE } from '../debateItems/rules';
 import { percentile } from '../metrics';
 
-export const QUESTION_RULES_VERSION = 'q1';
+export const QUESTION_RULES_VERSION = 'q2';
 export const SECURED_POINTS = 2;
 export const MIN_EXCHANGES = 10;
-export const COHORT_PERCENTILE = 0.75;
 /** The formats a term figure is given for. */
 export const FIGURE_FORMATS: readonly QuestionFormat[] = ['oral_pq', 'topical_issue'];
 
@@ -37,8 +41,8 @@ export interface ExchangeMember {
   /** On the government side that day (governmentSide.ts). */
   governmentSide: boolean;
   asked: boolean;
-  /** Spoke in the exchange (an asker of a grouped question may not have). */
-  spoke: boolean;
+  /** Their words in the exchange: 0 for an asker of a grouped question who did not speak. */
+  words: number;
 }
 
 export interface ExchangeItem {
@@ -62,6 +66,11 @@ export function scoreExchanges(members: ExchangeMember[], items: ExchangeItem[])
   for (const i of items) byExchange.set(i.exchangeId, [...(byExchange.get(i.exchangeId) ?? []), i]);
   const office = new Set(members.filter((m) => m.inOffice).map((m) => `${m.exchangeId}\u0000${m.memberCode}`));
   const byOffice = (i: ExchangeItem) => office.has(`${i.exchangeId}\u0000${i.memberCode}`);
+  const answerer = new Map<string, ExchangeMember>();
+  for (const m of members) {
+    const top = answerer.get(m.exchangeId);
+    if (m.inOffice && m.words > 0 && (!top || m.words > top.words)) answerer.set(m.exchangeId, m);
+  }
 
   return members.map((m) => {
     const here = byExchange.get(m.exchangeId) ?? [];
@@ -69,7 +78,7 @@ export function scoreExchanges(members: ExchangeMember[], items: ExchangeItem[])
     const actions = here.filter((i) => i.kind === 'commitment' && i.commitmentType === 'action' && byOffice(i));
     const followUps = here.filter((i) => i.kind === 'commitment' && i.commitmentType === 'follow_up' && byOffice(i));
     const asker = m.asked && !m.inOffice;
-    const answered = m.inOffice && m.spoke;
+    const answered = answerer.get(m.exchangeId)?.memberCode === m.memberCode;
     const mine = here.filter((i) => i.memberCode === m.memberCode);
     const secured = asker ? actions.length : 0;
     return {
@@ -84,20 +93,13 @@ export function scoreExchanges(members: ExchangeMember[], items: ExchangeItem[])
   });
 }
 
-export interface FormatFigure {
-  format: QuestionFormat;
-  asked: number;
-  /** Exchanges that secured at least one `action` commitment. */
-  securedExchanges: number;
-  points: number;
-  followUps: number;
-  /** Secured exchanges per 10 asked; null below MIN_EXCHANGES or outside FIGURE_FORMATS. */
-  perTen: number | null;
-  cohortP75: number | null;
-  cohortSize: number;
-}
+/** A stored row: the words that chose the answerer are not kept, only `answered`. */
+export type StoredParticipation = Omit<QuestionParticipationRow, 'words'>;
 
-/** One backbencher's totals in one format: exchanges they asked, and how many secured an `action`. */
+/**
+ * One backbencher's totals in one format, of the exchanges they asked across the House: how many,
+ * and how many secured an `action`.
+ */
 export interface AskerTotals {
   format: QuestionFormat;
   asked: number;
@@ -106,23 +108,26 @@ export interface AskerTotals {
 
 /**
  * A backbencher's figures per format, each against backbenchers with at least MIN_EXCHANGES of
- * it. `askers` holds every backbencher's totals per format (summed in SQL, one row per member).
+ * it asked across the House. `askers` holds every backbencher's totals per format (summed in SQL,
+ * one row per member).
  */
-export function formatFigures(mine: QuestionParticipationRow[], askers: AskerTotals[]): FormatFigure[] {
-  const askedRows = (rows: QuestionParticipationRow[]) => rows.filter((r) => r.asked && !r.inOffice);
-  const rate = (rows: QuestionParticipationRow[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
+export function formatFigures(mine: StoredParticipation[], askers: AskerTotals[]): TdQuestionRecord['formats'] {
+  const askedRows = (rows: StoredParticipation[]) => rows.filter((r) => r.asked && !r.inOffice);
+  const rate = (rows: StoredParticipation[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
   const formats = Array.from(new Set(askedRows(mine).map((r) => r.format)));
   return formats.map((format) => {
     const rows = askedRows(mine).filter((r) => r.format === format);
+    const across = rows.filter((r) => !r.governmentSide);
     const scored = FIGURE_FORMATS.includes(format);
     const cohort = askers.filter((a) => a.format === format && a.asked >= MIN_EXCHANGES).map((a) => (10 * a.securedExchanges) / a.asked);
     return {
       format,
       asked: rows.length,
-      securedExchanges: rows.filter((r) => r.secured > 0).length,
+      askedAcross: across.length,
+      securedExchanges: across.filter((r) => r.secured > 0).length,
       points: rows.reduce((n, r) => n + r.points, 0),
       followUps: rows.reduce((n, r) => n + r.followUps, 0),
-      perTen: scored && rows.length >= MIN_EXCHANGES ? Math.round(rate(rows) * 10) / 10 : null,
+      perTen: scored && across.length >= MIN_EXCHANGES ? Math.round(rate(across) * 10) / 10 : null,
       cohortP75: scored && cohort.length > 0 ? Math.round(percentile(cohort, COHORT_PERCENTILE) * 10) / 10 : null,
       cohortSize: scored ? cohort.length : 0,
     };

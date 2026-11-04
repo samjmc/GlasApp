@@ -1,15 +1,16 @@
 /**
  * Step 2 of debate analysis: read argued debates for items (docs/plans/debate-analysis.md).
  *
- *   extractDebates   for each debate: windows of whole speeches → one model call each →
- *                    parseItems → verifyItems → its items and run stored together. A debate is
- *                    read once per EXTRACTOR_VERSION, and again only when its speeches change.
- *                    One that fails MAX_FAILED_RUNS times on the same speeches is left until
- *                    they change (or --force): the same reply at temperature 0 every night.
+ *   extractUnits     for each unit (an argued debate, or a question exchange): windows of whole
+ *                    speeches → one model call per window and pass → parseItems → verifyItems →
+ *                    its items and run stored together. A unit is read once per version, and
+ *                    again only when its speeches change. One that fails MAX_FAILED_RUNS times on
+ *                    the same speeches is left until they change (or --force): the same reply at
+ *                    temperature 0 every night.
  *   pilotSample      a fixed, repeatable sample of argued debates across kinds.
  *
  * Every model call goes through an `ItemCompletion`, so tests never reach a model. Nothing here
- * scores anyone: items are shown and scored only after the check set (Step 3).
+ * scores anyone: after a run, the config's `rebuild` turns the stored items into points.
  */
 import { createHash } from 'node:crypto';
 import { debateItemKind, type DebateItemKind } from '@shared/schema/parliament';
@@ -40,12 +41,13 @@ export interface ItemAnswer {
 }
 
 /**
- * One model call. Throws on failure, which records the debate's run as `failed`; an
- * OutOfCreditError instead stops the run. aiService waits out 429s; the answer's own model is stored.
+ * One model call, named `operation` in aiService's logs. Throws on failure, which fails the unit's
+ * read (saveExtraction keeps a finished run); an OutOfCreditError also stops the run. aiService
+ * waits out 429s; the answer's own model is stored.
  */
-export type ItemCompletion = (system: string, user: string) => Promise<ItemAnswer>;
+export type ItemCompletion = (system: string, user: string, operation: string) => Promise<ItemAnswer>;
 
-export const itemCompletion: ItemCompletion = async (system, user) => {
+export const itemCompletion: ItemCompletion = async (system, user, operation) => {
   const response = await callChatCompletion(
     {
       temperature: 0,
@@ -56,7 +58,7 @@ export const itemCompletion: ItemCompletion = async (system, user) => {
         { role: 'user', content: user },
       ],
     },
-    { timeoutMs: 180_000, retries: 1, operation: 'debate-items' },
+    { timeoutMs: 180_000, retries: 1, operation },
   );
   return {
     content: response.choices[0]?.message.content ?? null,
@@ -70,6 +72,19 @@ export const itemCompletion: ItemCompletion = async (system, user) => {
 const hashOf = (parts: string[]) => createHash('sha256').update(parts.join('\n')).digest('hex').slice(0, 16);
 const rank = (id: string) => createHash('sha1').update(id).digest('hex');
 
+/**
+ * A fixed sample of at most n: per group its share of n (the last group takes what is left), the
+ * units whose id hashes lowest. The same input gives the same sample.
+ */
+export function sampleByShare<U extends { id: string }>(units: U[], n: number, shares: ReadonlyArray<readonly [string, number]>, groupOf: (unit: U) => string): U[] {
+  const out: U[] = [];
+  shares.forEach(([group, share], i) => {
+    const take = i === shares.length - 1 ? n - out.length : Math.min(n - out.length, Math.round(n * share));
+    out.push(...units.filter((u) => groupOf(u) === group).sort((a, b) => (rank(a.id) < rank(b.id) ? -1 : 1)).slice(0, take));
+  });
+  return out;
+}
+
 /** Share of a pilot per kind: bill stages and motions are most of the argument, statements the rest. */
 const PILOT_SHARES: Array<[ArguedDebate['kind'], number]> = [
   ['bill_stage', 0.4],
@@ -77,20 +92,7 @@ const PILOT_SHARES: Array<[ArguedDebate['kind'], number]> = [
   ['statements', 0.2],
 ];
 
-/** A fixed sample: per kind, the debates whose id hashes lowest. The same input gives the same sample. */
-export function pilotSample(debates: ArguedDebate[], n: number): ArguedDebate[] {
-  const out: ArguedDebate[] = [];
-  for (const [kind, share] of PILOT_SHARES) {
-    const take = kind === 'statements' ? n - out.length : Math.round(n * share);
-    out.push(
-      ...debates
-        .filter((d) => d.kind === kind)
-        .sort((a, b) => (rank(a.id) < rank(b.id) ? -1 : 1))
-        .slice(0, take),
-    );
-  }
-  return out;
-}
+export const pilotSample = (debates: ArguedDebate[], n: number): ArguedDebate[] => sampleByShare(debates, n, PILOT_SHARES, (d) => d.kind);
 
 /** JSON from a model reply, allowing a code fence around it. */
 function parseJson(content: string | null): unknown {
@@ -145,7 +147,7 @@ export interface ExtractSummary {
    * reading and those not started are not counted as failed, and nothing is stored for them.
    */
   stopped: string | null;
-  /** Rows of debate_participation after the rebuild (0 on a dry run, or when nothing changed). */
+  /** Rows of the record (debate or question participation) after the rebuild; 0 on a dry run, or when nothing changed. */
   recordRows: number;
   results: DebateResult[];
 }
@@ -180,6 +182,8 @@ export interface ExtractUnit {
   id: string;
   kind: string;
   title: string;
+  /** Words in its member speeches, counted as its run counts them. */
+  words: number;
 }
 
 /**
@@ -189,6 +193,8 @@ export interface ExtractUnit {
  */
 export interface ExtractConfig<U extends ExtractUnit> {
   version: string;
+  /** The model calls' name in aiService's logs. */
+  operation: string;
   units(): Promise<U[]>;
   speechesOf(unit: U): Promise<DebateSpeech[]>;
   windowsOf(speeches: LabelledSpeech[]): DebateWindow[];
@@ -203,6 +209,7 @@ export interface ExtractConfig<U extends ExtractUnit> {
 
 export const DEBATE_EXTRACTION: ExtractConfig<ArguedDebate> = {
   version: EXTRACTOR_VERSION,
+  operation: 'debate-items',
   units: () => repo.arguedDebates(),
   speechesOf: (debate) => repo.debateSpeechesOf(debate.id),
   windowsOf: (speeches) => buildWindows(speeches),
@@ -226,12 +233,17 @@ async function extractUnitsLocked<U extends ExtractUnit>(config: ExtractConfig<U
   const { debateIds, pilot = null, limit = null, force = false, dryRun = false, concurrency = 2, complete = itemCompletion, log = () => {} } = options;
   const [all, runs, offices] = await Promise.all([config.units(), repo.extractionRunsFor(config.version), repo.governmentOffices()]);
   let chosen = debateIds ? all.filter((d) => debateIds.includes(d.id)) : pilot ? config.sample(all, pilot) : all;
-  // A limit takes debates this version has not finished, so a daily run reads what is new rather
-  // than re-hashing old debates. (A run without a limit also catches a corrected old debate.)
-  // Never-read units first, then failed ones with tries left, each newest first: failures can
-  // never take a night's whole budget from new debates.
+  // A limit takes units this version has not finished, or finished before their word count
+  // changed (a resumed debate, a merged exchange), so a daily run reads what is new without
+  // hashing every unit's speeches. (A run without a limit also catches a correction that keeps the
+  // word count.) Never-read units first, then the rest with tries left, each newest first:
+  // failures can never take a night's whole budget from new debates.
   if (limit !== null) {
-    const open = chosen.filter((d) => force || (runs.get(d.id)?.status !== 'done' && (runs.get(d.id)?.failures ?? 0) < MAX_FAILED_RUNS));
+    const open = chosen.filter((d) => {
+      const run = runs.get(d.id);
+      if (force || !run) return true;
+      return run.status === 'done' ? run.words !== d.words : run.failures < MAX_FAILED_RUNS;
+    });
     chosen = [...open.filter((d) => !runs.has(d.id)).reverse(), ...open.filter((d) => runs.has(d.id)).reverse()].slice(0, limit);
   }
 
@@ -261,10 +273,13 @@ async function extractUnitsLocked<U extends ExtractUnit>(config: ExtractConfig<U
     const speeches = labelSpeeches(await config.speechesOf(debate));
     // Ids and full text: a corrected word changes the hash, so its quote offsets are never stale.
     const inputHash = hashOf(speeches.map((s) => `${s.id}\u0000${s.text}`));
+    const words = speeches.reduce((n, s) => n + s.wordCount, 0);
     const prior = runs.get(debate.id);
     const sameInput = prior?.inputHash === inputHash;
     if (!force && prior?.status === 'done' && sameInput) {
       summary.skipped++;
+      // Same text, counted differently: store the count, or `--limit` picks this unit every night.
+      if (prior.words !== words && !dryRun) await repo.setExtractionWords(debate.id, config.version, words);
       return;
     }
     if (!force && prior?.status === 'failed' && sameInput && prior.failures >= MAX_FAILED_RUNS) {
@@ -276,7 +291,7 @@ async function extractUnitsLocked<U extends ExtractUnit>(config: ExtractConfig<U
       title: debate.title,
       kind: debate.kind,
       speeches: speeches.length,
-      words: speeches.reduce((n, s) => n + s.wordCount, 0),
+      words,
       irishSpeeches: speeches.filter((s) => isIrish(s.text)).length,
       calls: 0,
       promptTokens: 0,
@@ -299,7 +314,7 @@ async function extractUnitsLocked<U extends ExtractUnit>(config: ExtractConfig<U
       result.calls++;
       let answer: ItemAnswer;
       try {
-        answer = await complete(EXTRACT_SYSTEM, config.prompt(debate.title, window, pass));
+        answer = await complete(EXTRACT_SYSTEM, config.prompt(debate.title, window, pass), config.operation);
       } catch (error) {
         result.error = error instanceof Error ? error.message : String(error);
         transient = isTransientAIError(error);
@@ -369,7 +384,10 @@ async function extractUnitsLocked<U extends ExtractUnit>(config: ExtractConfig<U
         inputHash,
         status: result.error ? 'failed' : 'done',
         speeches: result.speeches,
-        words: result.words,
+        // A failed re-read keeps the finished run (saveExtraction). After a model outage it keeps
+        // the old count, so the next `--limit` run tries again; after a reply that will fail the
+        // same way it takes the unit's own, so `--limit` stops paying for it.
+        words: transient && prior?.status === 'done' ? prior.words : result.words,
         irishSpeeches: result.irishSpeeches,
         calls: result.calls,
         promptTokens: result.promptTokens,
