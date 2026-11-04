@@ -31,22 +31,11 @@ export const isApiError = (error: unknown, status?: number): error is ApiError =
 /** Text fit to show a person: the server's message for an API failure, a generic one otherwise. */
 export const userMessage = (error: unknown): string => (error instanceof ApiError ? error.message : FALLBACK_MESSAGE);
 
-/**
- * The error for a failed response. Reads the standard envelope, and also the older `{ message }`
- * shape the rate limiter sends.
- */
+/** The error for a failed response, read from the `{ success: false, error: { code, message } }` envelope. */
 export function toApiError(status: number, payload: unknown): ApiError {
-  const body = (payload ?? {}) as { error?: unknown; message?: unknown };
-  const error = body.error as { code?: unknown; message?: unknown } | string | undefined;
-  const code = typeof error === "object" && error && typeof error.code === "string" ? error.code : `HTTP_${status}`;
-  const message =
-    typeof error === "object" && error && typeof error.message === "string"
-      ? error.message
-      : typeof error === "string"
-        ? error
-        : typeof body.message === "string"
-          ? body.message
-          : FALLBACK_MESSAGE;
+  const error = (payload as { error?: { code?: unknown; message?: unknown } } | null)?.error;
+  const code = typeof error?.code === "string" ? error.code : `HTTP_${status}`;
+  const message = typeof error?.message === "string" ? error.message : FALLBACK_MESSAGE;
   return new ApiError(status, code, message);
 }
 

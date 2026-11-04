@@ -19,7 +19,7 @@ vi.mock('../auth', () => {
       };
       return next();
     }
-    res.status(401).json({ success: false, message: 'Authentication required' });
+    res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'Authentication required' } });
   };
   return { requireAuth: asUser, optionalAuth: (_req: unknown, _res: unknown, next: () => void) => next() };
 });

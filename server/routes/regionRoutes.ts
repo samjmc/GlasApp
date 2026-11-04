@@ -2,6 +2,7 @@ import { Router } from "express";
 import { updateUserMetadata } from '../auth/supabase';
 import { REGION_COOKIE } from "../middleware/regionMiddleware";
 import { REGION_CONFIGS, isRegionCode } from "@shared/region-config";
+import { formatError, formatSuccess } from "../utils/responseFormatters";
 
 const router = Router();
 
@@ -10,10 +11,7 @@ router.post("/select", async (req, res) => {
   const { regionCode } = req.body || {};
 
   if (!isRegionCode(regionCode)) {
-    return res.status(400).json({
-      success: false,
-      message: "Invalid region code",
-    });
+    return res.status(400).json(formatError("VALIDATION_ERROR", "Invalid region code"));
   }
 
   // Anonymous visitors keep their choice in a cookie.
@@ -35,11 +33,7 @@ router.post("/select", async (req, res) => {
     }
   }
 
-  res.json({
-    success: true,
-    regionCode,
-    region: REGION_CONFIGS[regionCode],
-  });
+  res.json(formatSuccess({ regionCode, region: REGION_CONFIGS[regionCode] }));
 });
 
 export default router;

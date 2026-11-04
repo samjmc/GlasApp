@@ -78,7 +78,7 @@ function appWith(mount: string, router: express.Router): express.Express {
   app.use(mount, router);
   // Swallow handler errors so a guard that PASSED shows up as 4xx/5xx, not a hang.
   app.use((err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-    res.status(500).json({ success: false, message: String((err as Error)?.message ?? err) });
+    res.status(500).json({ success: false, error: { code: 'INTERNAL_ERROR', message: String((err as Error)?.message ?? err) } });
   });
   return app;
 }
@@ -107,9 +107,10 @@ describe('unguarded write surfaces found by the audit now require admin access',
           body: c.body ? JSON.stringify(c.body) : undefined,
         });
         assert.equal(res.status, 401);
-        const body = (await res.json()) as { success: boolean; message: string };
+        const body = (await res.json()) as { success: boolean; error: { code: string; message: string } };
         assert.equal(body.success, false);
-        assert.match(body.message, /Authentication required/);
+        assert.equal(body.error.code, 'UNAUTHORIZED');
+        assert.match(body.error.message, /Authentication required/);
       });
     });
 
@@ -146,10 +147,11 @@ describe('createRateLimit', () => {
         const res = await fetch(`${base}/x`, { method: 'POST', headers: json() });
         statuses.push(res.status);
         if (i === 2) {
-          assert.ok(res.headers.get('retry-after'), 'Retry-After header missing on 429');
-          const body = (await res.json()) as { success: boolean; retryAfterSeconds: number };
-          assert.equal(body.success, false);
-          assert.ok(body.retryAfterSeconds >= 1);
+          assert.ok(Number(res.headers.get('retry-after')) >= 1, 'Retry-After header missing on 429');
+          assert.deepEqual(await res.json(), {
+            success: false,
+            error: { code: 'RATE_LIMITED', message: 'Too many requests. Please try again later.' },
+          });
         }
       }
       assert.deepEqual(statuses, [200, 200, 429]);

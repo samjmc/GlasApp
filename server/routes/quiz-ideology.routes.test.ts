@@ -18,7 +18,7 @@ vi.mock('../auth', () => {
       (req as express.Request & { user: unknown }).user = { id: req.header('x-test-user') };
       return next();
     }
-    res.status(401).json({ success: false, message: 'Authentication required' });
+    res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'Authentication required' } });
   };
   return { requireAuth: asUser };
 });
