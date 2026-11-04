@@ -1,8 +1,10 @@
 /**
  * Populate `politics.tds` from the Oireachtas roster of the current Dáil.
  *
- *   npm run sync-tds
- *   npm run sync-tds -- --force    apply a roster that deactivates many TDs (after an election)
+ *   npm run sync-tds -- --yes
+ *   npm run sync-tds -- --force --yes    apply a roster that deactivates many TDs (after an election)
+ *
+ * --yes: needed for a database not on this machine.
  *
  * Run this before the first scoring pass: the pipeline resolves TDs by name, so an
  * empty table means every article scores nobody. Safe to re-run — it upserts, and it
@@ -13,8 +15,10 @@ import 'dotenv/config';
 import { OireachtasClient, rosterToSeeds } from '../parliament';
 import { repository as repo } from '../scoring';
 import { shutdown } from '../db';
+import { approveWrite } from './liveDbGuard';
 
 async function main(): Promise<void> {
+  approveWrite('sync-tds');
   const members = await new OireachtasClient().roster();
   if (members.length === 0) {
     throw new Error('The Oireachtas API returned no members; refusing to change the roster.');

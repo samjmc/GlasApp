@@ -109,6 +109,9 @@ describe('npm run stances -- --divisions: arguments', () => {
     expect(parseDivisionArgs(['--divisions', '--reclassify', '--limit', '40'])).toEqual({ mode: 'classify', dryRun: false, reclassify: true, limit: 40, windowDays: null });
     expect(parseDivisionArgs(['--divisions', '--audit'])).toEqual({ mode: 'audit' });
     expect(parseDivisionArgs(['--divisions', '--sync'])).toEqual({ mode: 'sync' });
+    // --yes is the live-database approval (liveDbGuard.ts), not a flag of any mode.
+    expect(parseDivisionArgs(['--divisions', '--sync', '--yes'])).toEqual({ mode: 'sync' });
+    expect(parseDivisionArgs(['--divisions', '--yes'])).toMatchObject({ mode: 'classify', dryRun: false });
   });
 
   it('refuses an unknown flag, and the rebuild flags, rather than starting a paid run', () => {

@@ -27,7 +27,7 @@ globalism, environmental, welfare and technocratic while every model prompt used
 A profile is a per-dimension **weighted mean of positions**: a prior plus every observation that
 says something about that dimension. An observation silent on a dimension does not pull it to 0.
 It is order-independent, so every profile can be rebuilt from its evidence at any time:
-`npm run ideology -- --recalculate`.
+`npm run ideology -- --recalculate --yes`.
 
 | Subject | Prior | Evidence | Decay |
 |---|---|---|---|

@@ -31,4 +31,10 @@ describe('npm run td-history', () => {
     expect(() => parseArgs(['--delete'])).toThrow(/--delete needs --td/);
     expect(parseArgs(['--delete', '--td', '7']).remove).toBe(true);
   });
+
+  it('refuses --delete with --dry-run, which would delete anyway, and accepts --yes', () => {
+    expect(() => parseArgs(['--delete', '--td', '7', '--dry-run'])).toThrow(/--delete has no --dry-run/);
+    expect(parseArgs(['--delete', '--td', '7', '--yes']).remove).toBe(true);
+    expect(parseArgs(['--limit', '3', '--yes']).limit).toBe(3);
+  });
 });
