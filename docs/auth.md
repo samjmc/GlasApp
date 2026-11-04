@@ -80,8 +80,8 @@ and avatar. Account deletion (`server/account/deleteUserData.ts`) erases the row
 of the user's data.
 
 Phone verification (SMS through Twilio) was removed: no screen used it, and its routes let any
-signed-in user send a paid text to any number. The `phone_*` columns on `politics.users` are
-still there, unread, until a migration drops them.
+signed-in user send a paid text to any number. Migration 0034 dropped the `phone_*` columns
+(and `users_phone_number_idx`) from `politics.users`.
 
 | Route | |
 |---|---|

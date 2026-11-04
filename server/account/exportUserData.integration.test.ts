@@ -30,9 +30,9 @@ run('exportUserData against Postgres', () => {
   async function seedUser(userId: string, vote: 'option_a' | 'option_b') {
     // First: the political tables reference politics.users (migration 0027).
     await q(
-      `insert into politics.users (id, first_name, last_name, county, bio, profile_image_url, phone_number, phone_verified, phone_code_hash, phone_code_attempts, political_consent_at, political_consent_version)
-       values ($1, $2, 'Tester', 'Cork', 'about me', $4, $3, true, 'secret-hash', 2, '2026-10-01T10:00:00Z', 1)`,
-      [userId, `First ${userId}`, `+35387${userId.length}${userId.charCodeAt(5)}`, `/uploads/${userId}-1.png`],
+      `insert into politics.users (id, first_name, last_name, county, username, constituency, bio, profile_image_url, political_consent_at, political_consent_version)
+       values ($1, $2, 'Tester', 'Cork', $3, 'Cork North-Central', 'about me', $4, '2026-10-01T10:00:00Z', 1)`,
+      [userId, `First ${userId}`, `name-${userId}`, `/uploads/${userId}-1.png`],
     );
     const session = await q("insert into politics.daily_sessions (user_id, session_date, status, county) values ($1, '2026-09-25', 'completed', 'Cork') returning id", [userId]);
     const item = await q('insert into politics.daily_session_items (session_id, question_id, position) values ($1, $2, 0) returning id', [session.rows[0].id, questionId]);
@@ -91,8 +91,9 @@ run('exportUserData against Postgres', () => {
     // The profile fields' one home is the row, so every one of them is in account.
     expect(out.account).toMatchObject({
       id: 'user-a', email: 'a@example.ie', firstName: 'First user-a', lastName: 'Tester', county: 'Cork', bio: 'about me',
-      profileImageUrl: '/uploads/user-a-1.png', phoneVerified: true, politicalConsentVersion: 1,
+      profileImageUrl: '/uploads/user-a-1.png', username: 'name-user-a', constituency: 'Cork North-Central', politicalConsentVersion: 1,
     });
+    expect(out.account).not.toHaveProperty('phoneVerified');
     expect(out.quizResults).toHaveLength(1);
     expect(out.quizResults[0]).toMatchObject({ ideology: 'Centrist', description: 'desc of user-a', economic: 1, technocratic: 8, answers: [{ questionId: 1, answerIndex: 0 }] });
     expect(out.ideologyProfile).toMatchObject({ economic: 1, welfare: 6, evidenceCount: 1 });
@@ -108,14 +109,9 @@ run('exportUserData against Postgres', () => {
     for (const theirs of ['user-b', 'Leave it to the market', 'desc of user-b']) expect(text).not.toContain(theirs);
   });
 
-  it('never carries the phone code hash or its bookkeeping, or the owner id on a row', async () => {
+  it('never carries the owner id on a row', async () => {
     await seedUser('user-a', 'option_a');
     const out = await mod.exportUserData('user-a', { email: null, userMetadata: {} }, NOW);
-    const text = JSON.stringify(out);
-    expect(text).not.toContain('secret-hash');
-    expect(out.account).not.toHaveProperty('phoneCodeHash');
-    expect(out.account).not.toHaveProperty('phoneCodeExpiresAt');
-    expect(out.account).not.toHaveProperty('phoneCodeAttempts');
     expect(out.account!.email).toBeNull();
     expect(out.quizResults[0]).not.toHaveProperty('userId');
     expect(out.dailySessions[0]).not.toHaveProperty('userId');

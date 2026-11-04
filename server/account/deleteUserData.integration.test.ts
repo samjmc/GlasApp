@@ -40,7 +40,7 @@ run('deleteUserData against Postgres', () => {
 
   async function seedUser(userId: string) {
     // First: the political tables reference politics.users (migration 0027).
-    await q("insert into politics.users (id, first_name, phone_number) values ($1, 'Test', $2)", [userId, `+35387${userId.length}${userId.charCodeAt(5)}`]);
+    await q("insert into politics.users (id, first_name) values ($1, 'Test')", [userId]);
     const session = await q(
       "insert into politics.daily_sessions (user_id, session_date) values ($1, '2026-09-25') returning id",
       [userId],

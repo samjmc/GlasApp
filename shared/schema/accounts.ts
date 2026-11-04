@@ -5,7 +5,7 @@
  * GlasCore, so every signed-in profile request failed.
  */
 import { sql } from 'drizzle-orm';
-import { boolean, check, smallint, text, timestamp, uniqueIndex, varchar } from 'drizzle-orm/pg-core';
+import { check, smallint, text, timestamp, varchar } from 'drizzle-orm/pg-core';
 import { politics } from './politics';
 
 export const users = politics.table(
@@ -22,14 +22,6 @@ export const users = politics.table(
     constituency: varchar('constituency', { length: 100 }),
     bio: text('bio'),
     profileImageUrl: text('profile_image_url'),
-    /** E.164. Unique across users once set. */
-    phoneNumber: varchar('phone_number', { length: 20 }),
-    phoneVerified: boolean('phone_verified').notNull().default(false),
-    /** sha256(user id + code). The code itself is never stored. */
-    phoneCodeHash: varchar('phone_code_hash', { length: 64 }),
-    phoneCodeExpiresAt: timestamp('phone_code_expires_at', { withTimezone: true }),
-    /** Wrong guesses against the current code; it is burned at PHONE_CODE_MAX_ATTEMPTS. */
-    phoneCodeAttempts: smallint('phone_code_attempts').notNull().default(0),
     /** When the person agreed to us processing their political opinions (GDPR Art. 9(2)(a)); null = not given or withdrawn. */
     politicalConsentAt: timestamp('political_consent_at', { withTimezone: true }),
     /** The wording they agreed to (shared/consent.ts POLITICAL_CONSENT_VERSION). */
@@ -38,7 +30,6 @@ export const users = politics.table(
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [
-    uniqueIndex('users_phone_number_idx').on(t.phoneNumber).where(sql`${t.phoneNumber} is not null`),
     // Given and withdrawn together (server/account/consent.ts): a time without a wording, or the reverse, is no consent.
     check('users_political_consent_chk', sql`(${t.politicalConsentAt} is null) = (${t.politicalConsentVersion} is null)`),
   ],
