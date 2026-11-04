@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from "express";
-import { securityHeaders } from "./middleware/securityHeaders";
+import { applyMiddleware } from "./app";
 import { registerRoutes } from "./routes";
 import { warnOldJobSecretNames } from "./auth";
 import { serveStatic } from "./static";
@@ -11,7 +11,8 @@ import { schedulerDisabled } from "./utils/schedulerFlag";
 
 // Nothing is catching these, and the process is in an unknown state after them. Put them in the
 // structured log (a bare stack trace is easy to miss in a JSON log), then exit so the container
-// restarts. This is what Node does by default; the difference is the log line.
+// restarts. This is what Node does by default; the difference is the log line. A rejected async
+// route handler is not one of these: Express 5 sends it to the error handler (a 500).
 process.on('unhandledRejection', (reason) => {
   logger.fatal({ err: reason }, 'Unhandled promise rejection');
   process.exit(1);
@@ -34,28 +35,7 @@ app.get('/_health', (req, res) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-app.use(securityHeaders());
-app.use(express.json({ limit: '1mb' }));
-app.use(express.urlencoded({ extended: false, limit: '1mb' }));
-
-app.use((req, res, next) => {
-  // HSTS comes from helmet above.
-  if (process.env.NODE_ENV === 'production') {
-    const forwardedProto = req.get('X-Forwarded-Proto');
-    if (forwardedProto && forwardedProto !== 'https') {
-      const host = req.headers.host;
-      const redirectUrl = `https://${host}${req.originalUrl}`;
-      return res.redirect(301, redirectUrl);
-    }
-  }
-  next();
-});
-
-// Serve uploaded files statically
-app.use('/uploads', express.static('public/uploads'));
-
-// The two constituency map files. Not at /assets: that is where Vite puts the hashed bundles.
-app.use('/geo', express.static('public/assets'));
+applyMiddleware(app);
 
 (async () => {
   try {

@@ -25,7 +25,7 @@ Scope: `server` = read under `server/` or `shared/`; `client` = `VITE_` variable
 | `LLM_BASE_URL` | server | yes | `server/services/aiService.ts` |
 | `LLM_MODEL_NAME` | server | yes | `server/services/aiService.ts` |
 | `LOG_LEVEL` | server | yes | `server/utils/logger.ts` |
-| `NODE_ENV` | server | yes | `server/auth/supabase.ts`, `server/index.ts`, `server/middleware/errorHandler.ts`, `server/middleware/regionMiddleware.ts`, `server/routes/regionRoutes.ts`, `server/utils/logger.ts`, `server/utils/responseFormatters.ts` |
+| `NODE_ENV` | server | yes | `server/app.ts`, `server/auth/supabase.ts`, `server/index.ts`, `server/middleware/errorHandler.ts`, `server/middleware/regionMiddleware.ts`, `server/routes/regionRoutes.ts`, `server/utils/logger.ts`, `server/utils/responseFormatters.ts` |
 | `OPENAI_API_KEY` | server | yes | `server/services/aiService.ts` |
 | `PORT` | server | yes | `server/index.ts` |
 | `ROBOTS_SOURCE_DATABASE_URL` | server | no | `server/jobs/robots.ts` |

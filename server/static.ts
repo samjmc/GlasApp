@@ -29,8 +29,9 @@ export function serveStatic(app: Express, distPath = path.resolve(__dirname, "pu
     res.sendStatus(404);
   });
 
-  // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+  // fall through to index.html if the file doesn't exist. No path: Express 5 rejects a bare "*".
+  // `root`: Express 5 answers 404 for an absolute path that passes through a dot directory.
+  app.use((_req, res) => {
+    res.sendFile("index.html", { root: distPath });
   });
 }
