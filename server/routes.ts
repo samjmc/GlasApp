@@ -1,4 +1,4 @@
-import { optionalAuth, requireAuth, requireJob } from './auth';
+import { optionalAuth, requireJob } from './auth';
 import { apiNotFound } from "./middleware/apiNotFound";
 import type { Express } from "express";
 import { createServer, type Server } from "http";

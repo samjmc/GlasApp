@@ -15,7 +15,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
+import type { Pool } from 'pg';
+import { IDEOLOGY_DIMENSIONS, type IdeologyDimension } from '@shared/ideology';
 import { QUIZ_QUESTIONS } from '@shared/quiz';
 import { itemOffsets, makeRespondents, mulberry32 } from '../quiz/testing/respondents';
 import { assertNotNearMidnight, assertRobotDatabase, prepareEnvironment } from './robots/guards';
@@ -59,8 +60,8 @@ export const robotAddress = (n: number) => `10.${(n >> 16) & 255}.${(n >> 8) & 2
 
 const COUNTIES = ['Dublin', 'Cork', 'Galway', 'Kerry', 'Limerick', 'Mayo', 'Donegal', 'Wexford', 'Louth', 'Kildare'];
 
-async function countsFor(pool: { query: (sql: string, params: unknown[]) => Promise<{ rows: any[] }> }, ids: string[]): Promise<Omit<KindCounts, 'robots'>> {
-  const { rows } = await pool.query(
+async function countsFor(pool: Pick<Pool, 'query'>, ids: string[]): Promise<Omit<KindCounts, 'robots'>> {
+  const { rows } = await pool.query<Omit<KindCounts, 'robots'>>(
     `select
        (select count(*) from politics.quiz_results where user_id = any($1))::int as "quizResults",
        (select count(*) from politics.quiz_results where user_id = any($1) and plan is not null)::int as "quizPlans",
@@ -106,7 +107,7 @@ async function main(): Promise<void> {
 
   const questions = new Map<number, WorldQuestion>();
   for (const q of data.policy_questions as Array<{ id: number; article_id: number }>) questions.set(q.id, { id: q.id, articleId: q.article_id, options: {} });
-  for (const o of data.policy_question_options as Array<Record<string, any>>) {
+  for (const o of data.policy_question_options as Array<{ question_id: number; option_key: string } & Partial<Record<IdeologyDimension, number | null>>>) {
     const q = questions.get(o.question_id);
     if (q) q.options[o.option_key] = Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, Number(o[d] ?? 0)]));
   }

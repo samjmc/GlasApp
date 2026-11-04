@@ -129,7 +129,7 @@ export default function ConstituenciesPage() {
     queryKey: queryKeys.constituency.summary(),
     queryFn: () => apiCall<ConstituencySummaryData>('GET', '/api/scores/constituencies/summary'),
   });
-  const data = summary?.constituencies ?? [];
+  const data = useMemo(() => summary?.constituencies ?? [], [summary]);
 
   const { data: selectedData } = useQuery<ConstituencyDetail>({
     queryKey: queryKeys.constituency.detail(selectedConstituency),

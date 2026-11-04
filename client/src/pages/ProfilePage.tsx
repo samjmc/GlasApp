@@ -177,7 +177,7 @@ const ProfilePage = () => {
         description: 'Your profile has been successfully updated.',
       });
       setIsEditing(false);
-    } catch (error) {
+    } catch {
       toast({
         title: 'Error',
         description: 'Failed to update profile. Please try again.',

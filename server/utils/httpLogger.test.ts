@@ -14,7 +14,7 @@ afterEach(async () => {
 });
 
 async function serve() {
-  const lines: Array<Record<string, any>> = [];
+  const lines: Array<{ msg?: string; route?: string; req?: unknown; res?: { statusCode?: number }; err?: unknown }> = [];
   const stream = new Writable({
     write(chunk, _encoding, done) {
       lines.push(JSON.parse(String(chunk)));
@@ -51,7 +51,7 @@ describe('the request log', () => {
     const line = lines[0]!;
     expect(line.req).toEqual({ id: expect.anything(), method: 'GET', url: '/auth/reset-password', remoteAddress: expect.any(String) });
     expect(line.route).toBe('GET /auth/reset-password');
-    expect(line.res.statusCode).toBe(200);
+    expect(line.res?.statusCode).toBe(200);
     const text = JSON.stringify(lines);
     for (const secret of ['SECRET-RESET-HASH', 'type=recovery', 'a-very-identifying-browser']) expect(text).not.toContain(secret);
   });
