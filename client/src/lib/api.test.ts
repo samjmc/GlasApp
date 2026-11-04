@@ -36,9 +36,11 @@ describe('toApiError', () => {
     expect([error.status, error.code, error.message]).toEqual([409, 'CONFLICT', 'That session has ended']);
   });
 
-  it("reads the rate limiter's { message } shape", () => {
-    const error = toApiError(429, { success: false, message: 'Too many requests. Please try again later.' });
-    expect([error.status, error.code, error.message]).toEqual([429, 'HTTP_429', 'Too many requests. Please try again later.']);
+  it('ignores anything outside the envelope, such as a top-level message or a bare error string', () => {
+    for (const body of [{ success: false, message: 'Too many requests' }, { success: false, error: 'Too many requests' }]) {
+      const error = toApiError(429, body);
+      expect([error.status, error.code, error.message]).toEqual([429, 'HTTP_429', 'Something went wrong. Please try again.']);
+    }
   });
 
   it('never shows raw response text', () => {

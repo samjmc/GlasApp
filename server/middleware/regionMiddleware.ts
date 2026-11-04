@@ -60,7 +60,9 @@ export function regionMiddleware(req: Request, res: Response, next: NextFunction
   if (cookieRegion !== resolvedRegion) {
     res.cookie(REGION_COOKIE, resolvedRegion, {
       maxAge: REGION_COOKIE_MAX_AGE_DAYS * 24 * 60 * 60 * 1000,
-      httpOnly: false, // the client reads it to render the region switcher
+      // No client code reads this cookie: the client keeps the visitor's choice in local storage
+      // (client/src/lib/regionStorage.ts) and sends it in the x-region-code header.
+      httpOnly: false,
       sameSite: "lax",
       secure: process.env.NODE_ENV === "production",
     });

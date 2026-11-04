@@ -47,7 +47,7 @@ class FakeApi {
       this.saves += 1;
       if (this.failures > 0) {
         this.failures -= 1;
-        return route.fulfill({ status: 500, json: { success: false, error: 'Something went wrong' } });
+        return route.fulfill({ status: 500, json: { success: false, error: { code: 'INTERNAL_ERROR', message: 'Something went wrong' } } });
       }
       // As the server: kept (an id) only with consent.
       return route.fulfill(ok({ ...result, id: this.consented ? 99 : null }));

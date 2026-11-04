@@ -17,6 +17,7 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 import { timingSafeEqual } from 'crypto';
 import { logger } from '../utils/logger';
+import { formatError } from '../utils/responseFormatters';
 import { supabase } from './supabase';
 
 export { supabase, supabaseAdmin } from './supabase';
@@ -109,7 +110,7 @@ export function isAdminUser(user: AuthUser): boolean {
 }
 
 function deny(res: Response, status: 401 | 403, message: string): void {
-  res.status(status).json({ success: false, message });
+  res.status(status).json(formatError(status === 401 ? 'UNAUTHORIZED' : 'FORBIDDEN', message));
 }
 
 /**

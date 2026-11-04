@@ -142,12 +142,15 @@ describe('requireAdmin', () => {
     const anon = mockRes();
     await auth.requireAdmin(mockReq(), anon, () => {});
     expect(anon.statusCode).toBe(401);
+    // The same envelope as every other error, so the client reads the code and message.
+    expect(anon.body).toEqual({ success: false, error: { code: 'UNAUTHORIZED', message: 'Authentication required' } });
 
     state.user = SUPA_USER;
     const plain = mockRes();
     let called = false;
     await auth.requireAdmin(mockReq({ authorization: 'Bearer good' }), plain, () => { called = true; });
     expect(plain.statusCode).toBe(403);
+    expect(plain.body).toEqual({ success: false, error: { code: 'FORBIDDEN', message: 'Admin access required' } });
     expect(called).toBe(false);
 
     state.user = SUPA_ADMIN;

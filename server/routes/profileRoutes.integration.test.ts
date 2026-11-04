@@ -22,7 +22,7 @@ if (url) {
 vi.mock('../auth', () => ({
   requireAuth: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     const id = req.header('x-test-user');
-    if (!id) return res.status(401).json({ success: false, message: 'Authentication required' });
+    if (!id) return res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'Authentication required' } });
     (req as express.Request & { user: unknown }).user = {
       id,
       email: `${id}@example.ie`,

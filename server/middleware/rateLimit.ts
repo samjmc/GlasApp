@@ -1,5 +1,6 @@
 import type { NextFunction, Request, RequestHandler, Response } from 'express';
 import { logger } from '../utils/logger';
+import { formatError } from '../utils/responseFormatters';
 
 /**
  * Minimal in-process fixed-window rate limiter.
@@ -77,11 +78,7 @@ export function createRateLimit(options: RateLimitOptions): RequestHandler {
         { limiter: name, route: `${req.method} ${req.path}`, key, count: bucket.count, max },
         'Rate limit exceeded'
       );
-      res.status(429).json({
-        success: false,
-        message: 'Too many requests. Please try again later.',
-        retryAfterSeconds,
-      });
+      res.status(429).json(formatError('RATE_LIMITED', 'Too many requests. Please try again later.'));
       return;
     }
 
