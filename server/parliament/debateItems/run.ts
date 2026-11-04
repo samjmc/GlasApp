@@ -4,6 +4,8 @@
  *   extractDebates   for each debate: windows of whole speeches → one model call each →
  *                    parseItems → verifyItems → its items and run stored together. A debate is
  *                    read once per EXTRACTOR_VERSION, and again only when its speeches change.
+ *                    One that fails MAX_FAILED_RUNS times on the same speeches is left until
+ *                    they change (or --force): the same reply at temperature 0 every night.
  *   pilotSample      a fixed, repeatable sample of argued debates across kinds.
  *
  * Every model call goes through an `ItemCompletion`, so tests never reach a model. Nothing here
@@ -11,7 +13,8 @@
  */
 import { createHash } from 'node:crypto';
 import { debateItemKind, type DebateItemKind } from '@shared/schema/parliament';
-import { callChatCompletion, OutOfCreditError } from '../../services/aiService';
+import { callChatCompletion, isTransientAIError, OutOfCreditError } from '../../services/aiService';
+import { withJobLock } from '../../services/jobLock';
 import * as repo from '../repository';
 import type { ArguedDebate } from '../repo/debateItems';
 import { EXTRACT_SYSTEM, EXTRACTOR_VERSION, PASSES, extractPrompt, parseItems } from './prompt';
@@ -122,6 +125,8 @@ export interface ExtractSummary {
   failed: number;
   /** Already read by this version, with the same speeches. */
   skipped: number;
+  /** Not read: failed MAX_FAILED_RUNS times on these same speeches. */
+  capped: number;
   calls: number;
   promptTokens: number;
   completionTokens: number;
@@ -135,12 +140,18 @@ export interface ExtractSummary {
   costUsd: { offPeak: number; peak: number };
   /** Items removed because their speech left the record (a corrected transcript). */
   orphansRemoved: number;
-  /** Why the run stopped early, if it did: debates not started are not counted as failed. */
+  /**
+   * Why the run stopped early, if it did (the provider is out of credit): the debate it was
+   * reading and those not started are not counted as failed, and nothing is stored for them.
+   */
   stopped: string | null;
-  /** Rows of debate_participation after the rebuild (0 on a dry run). */
+  /** Rows of debate_participation after the rebuild (0 on a dry run, or when nothing changed). */
   recordRows: number;
   results: DebateResult[];
 }
+
+/** Failed runs in a row on the same speeches before a unit is left alone (a model outage does not count). */
+export const MAX_FAILED_RUNS = 3;
 
 export interface ExtractOptions {
   /** These debates only. */
@@ -203,19 +214,33 @@ export const DEBATE_EXTRACTION: ExtractConfig<ArguedDebate> = {
 
 export const extractDebates = (options: ExtractOptions = {}): Promise<ExtractSummary> => extractUnits(DEBATE_EXTRACTION, options);
 
-export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<U>, options: ExtractOptions = {}): Promise<ExtractSummary> {
+/**
+ * Read the chosen units. One run per extractor at a time, across processes (the nightly run and
+ * the CLI would pay twice for the same debates): a second one throws JobAlreadyRunning.
+ */
+export function extractUnits<U extends ExtractUnit>(config: ExtractConfig<U>, options: ExtractOptions = {}): Promise<ExtractSummary> {
+  return withJobLock(`items:${config.version}`, () => extractUnitsLocked(config, options));
+}
+
+async function extractUnitsLocked<U extends ExtractUnit>(config: ExtractConfig<U>, options: ExtractOptions): Promise<ExtractSummary> {
   const { debateIds, pilot = null, limit = null, force = false, dryRun = false, concurrency = 2, complete = itemCompletion, log = () => {} } = options;
   const [all, runs, offices] = await Promise.all([config.units(), repo.extractionRunsFor(config.version), repo.governmentOffices()]);
   let chosen = debateIds ? all.filter((d) => debateIds.includes(d.id)) : pilot ? config.sample(all, pilot) : all;
   // A limit takes debates this version has not finished, so a daily run reads what is new rather
   // than re-hashing old debates. (A run without a limit also catches a corrected old debate.)
-  if (limit !== null) chosen = chosen.filter((d) => force || runs.get(d.id)?.status !== 'done').slice(0, limit);
+  // Never-read units first, then failed ones with tries left, each newest first: failures can
+  // never take a night's whole budget from new debates.
+  if (limit !== null) {
+    const open = chosen.filter((d) => force || (runs.get(d.id)?.status !== 'done' && (runs.get(d.id)?.failures ?? 0) < MAX_FAILED_RUNS));
+    chosen = [...open.filter((d) => !runs.has(d.id)).reverse(), ...open.filter((d) => runs.has(d.id)).reverse()].slice(0, limit);
+  }
 
   const summary: ExtractSummary = {
     debates: chosen.length,
     done: 0,
     failed: 0,
     skipped: 0,
+    capped: 0,
     calls: 0,
     promptTokens: 0,
     completionTokens: 0,
@@ -237,8 +262,13 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
     // Ids and full text: a corrected word changes the hash, so its quote offsets are never stale.
     const inputHash = hashOf(speeches.map((s) => `${s.id}\u0000${s.text}`));
     const prior = runs.get(debate.id);
-    if (!force && prior?.status === 'done' && prior.inputHash === inputHash) {
+    const sameInput = prior?.inputHash === inputHash;
+    if (!force && prior?.status === 'done' && sameInput) {
       summary.skipped++;
+      return;
+    }
+    if (!force && prior?.status === 'failed' && sameInput && prior.failures >= MAX_FAILED_RUNS) {
+      summary.capped++;
       return;
     }
     const result: DebateResult = {
@@ -258,6 +288,9 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
     const items: VerifiedItem[] = [];
     const rejected = emptyRejections();
     let model: string | null = null;
+    /** The model was down or busy: not this unit's fault, so not counted toward MAX_FAILED_RUNS. */
+    let transient = false;
+    let outOfCredit = false;
     // Every window is read once per pass (config.passes); a cut-off reply splits only its own pass.
     const passNames = Object.keys(config.passes);
     const queue = config.windowsOf(speeches).flatMap((window) => passNames.map((pass) => ({ window, pass })));
@@ -269,7 +302,11 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
         answer = await complete(EXTRACT_SYSTEM, config.prompt(debate.title, window, pass));
       } catch (error) {
         result.error = error instanceof Error ? error.message : String(error);
-        if (error instanceof OutOfCreditError) summary.stopped = `the model provider has no credit left (${result.error})`;
+        transient = isTransientAIError(error);
+        if (error instanceof OutOfCreditError) {
+          outOfCredit = true;
+          summary.stopped = `the model provider has no credit left (${result.error})`;
+        }
         break;
       }
       model = answer.model.slice(0, 60);
@@ -303,6 +340,12 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
     summary.calls += result.calls;
     summary.promptTokens += result.promptTokens;
     summary.completionTokens += result.completionTokens;
+    if (outOfCredit) {
+      // Nothing stored: the unit keeps its previous run, and is read again once there is credit.
+      summary.results.push(result);
+      log(`STOPPED ${debate.kind} "${debate.title.slice(0, 60)}": ${result.error}`);
+      return;
+    }
     summary.words += result.words;
     summary.speeches += result.speeches;
     summary.irishSpeeches += result.irishSpeeches;
@@ -335,6 +378,7 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
         rejected: Object.fromEntries(REJECT_REASONS.filter((r) => rejected[r].en + rejected[r].ga > 0).map((r) => [r, rejected[r]])),
         model,
         error: result.error,
+        failures: result.error ? (sameInput ? prior!.failures : 0) + (transient ? 0 : 1) : 0,
       },
       speeches.map((s) => s.id),
       result.error ? null : items.map((i) => ({ ...i, extractorVersion: config.version })),
@@ -351,8 +395,9 @@ export async function extractUnits<U extends ExtractUnit>(config: ExtractConfig<
   summary.costUsd = costOf(summary.promptTokens, summary.completionTokens);
   if (!dryRun) {
     summary.orphansRemoved = await repo.deleteOrphanItems();
-    // Points come from the stored items by the published rules: rebuilt whenever items change.
-    summary.recordRows = (await config.rebuild()).rows;
+    // Points come from the stored items by the published rules: rebuilt whenever items change,
+    // and only then (a whole-table rewrite, inside GlasCore's 2-minute statement limit).
+    if (summary.done > 0 || summary.orphansRemoved > 0) summary.recordRows = (await config.rebuild()).rows;
   }
   return summary;
 }

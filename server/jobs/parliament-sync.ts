@@ -3,9 +3,13 @@
  *
  *   npm run parliament:sync -- --yes                       resume from the last run
  *   npm run parliament:sync -- --since 2024-11-29 --yes    re-ingest from a date
+ *   npm run parliament:sync -- --force-roster --yes        apply a roster that deactivates many TDs (after an election)
  *
- * Safe to re-run: every write replaces what it covers. The scheduler runs it daily (without the
- * --yes, which only this command line asks for, for a database not on this machine).
+ * --yes: needed for a database not on this machine. The scheduler calls runSync directly, so it
+ * never needs it.
+ *
+ * Safe to re-run: every write replaces what it covers. The scheduler runs it daily. One sync at
+ * a time across processes: a second one, here or in the server, refuses to start.
  */
 import 'dotenv/config';
 import { runSync, syncHadFailures } from '../parliament';
@@ -22,7 +26,7 @@ function argSince(argv: string[]): string | undefined {
 
 const since = argSince(process.argv.slice(2));
 approveWrite('parliament:sync');
-runSync({ since })
+runSync({ since, forceRoster: process.argv.includes('--force-roster') })
   .then(async (summary) => {
     console.log(JSON.stringify(summary, null, 2));
     await shutdown();

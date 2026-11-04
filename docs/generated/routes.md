@@ -10,9 +10,9 @@ Access: `public` = no blocking guard; `auth` = `requireAuth`; `admin` = `require
 
 ## Summary
 
-- Routes: 83
-- By access: public 48, auth 16, admin 8, job 11
-- Routes that change state (not GET): 27, of which public: 3
+- Routes: 80
+- By access: public 47, auth 16, admin 8, job 9
+- Routes that change state (not GET): 25, of which public: 3
 
 ## Mounts
 
@@ -20,9 +20,9 @@ Access: `public` = no blocking guard; `auth` = `requireAuth`; `admin` = `require
 |---|---|---|---|
 | `/api` | `server/middleware/apiNotFound.ts` | — | 0 |
 | `/api/account` | `server/routes/accountRoutes.ts` | — | 4 |
+| `/api/admin/jobs` | `server/routes/admin/jobs.ts` | `requireJob` | 1 |
 | `/api/admin/news` | `server/routes/admin/news.ts` | `requireJob` | 3 |
 | `/api/admin/td-scoring` | `server/routes/admin/tdScoringRoutes.ts` | `requireJob` | 3 |
-| `/api/cache` | `server/routes/cacheRoutes.ts` | `requireJob` | 3 |
 | `/api/daily-session` | `server/voting/routes.ts` | — | 3 |
 | `/api/ideology` | `server/routes/ideology.ts` | — | 8 |
 | `/api/news-feed` | `server/routes/news.ts` | — | 2 |
@@ -44,16 +44,13 @@ Access: `public` = no blocking guard; `auth` = `requireAuth`; `admin` = `require
 | DELETE | `/api/account/consent/political` | auth | `requireAuth` | `server/routes/accountRoutes.ts` |
 | PUT | `/api/account/consent/political` | auth | `requireAuth` | `server/routes/accountRoutes.ts` |
 | GET | `/api/account/export` | auth | `requireAuth` | `server/routes/accountRoutes.ts` |
+| GET | `/api/admin/jobs` | job | `requireJob` | `server/routes/admin/jobs.ts` |
 | POST | `/api/admin/news/articles` | job | `requireJob` | `server/routes/admin/news.ts` |
 | POST | `/api/admin/news/ingest` | job | `requireJob` | `server/routes/admin/news.ts` |
 | GET | `/api/admin/news/status` | job | `requireJob` | `server/routes/admin/news.ts` |
 | POST | `/api/admin/td-scoring/full-pipeline` | job | `requireJob` | `server/routes/admin/tdScoringRoutes.ts` |
 | POST | `/api/admin/td-scoring/run` | job | `requireJob` | `server/routes/admin/tdScoringRoutes.ts` |
 | GET | `/api/admin/td-scoring/status` | job | `requireJob` | `server/routes/admin/tdScoringRoutes.ts` |
-| GET | `/api/auth/health` | public | — | `server/routes/auth.ts` |
-| DELETE | `/api/cache/:key` | job | `requireJob` | `server/routes/cacheRoutes.ts` |
-| POST | `/api/cache/clear` | job | `requireJob` | `server/routes/cacheRoutes.ts` |
-| GET | `/api/cache/stats` | job | `requireJob` | `server/routes/cacheRoutes.ts` |
 | GET | `/api/daily-session` | auth | `requireAuth` | `server/voting/routes.ts` |
 | POST | `/api/daily-session/complete` | auth | `requireAuth` | `server/voting/routes.ts` |
 | POST | `/api/daily-session/items/:itemId/vote` | auth | `requireAuth` | `server/voting/routes.ts` |
@@ -119,6 +116,6 @@ Access: `public` = no blocking guard; `auth` = `requireAuth`; `admin` = `require
 | GET | `/api/scores/tds` | public | — | `server/routes/scores.ts` |
 | GET | `/api/scores/widget` | public | — | `server/routes/scores.ts` |
 | GET | `/api/stances/td/:id` | public | — | `server/stances/routes.ts` |
-| GET | `/api/votes/articles/:articleId` | public | `optionalAuth` | `server/voting/routes.ts` |
+| GET | `/api/votes/articles/:articleId` | public | — | `server/voting/routes.ts` |
 | POST | `/api/votes/questions/:questionId` | auth | `requireAuth` | `server/voting/routes.ts` |
 | GET | `/health` | public | — | `server/index.ts` |

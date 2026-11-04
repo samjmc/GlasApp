@@ -6,8 +6,9 @@ port 5000. The files for this are `Dockerfile`, `deploy/compose.yml`, `deploy/Ca
 
 Rules that do not bend:
 
-- **One instance only.** Rate limits, the cache (unless `REDIS_URL` is set) and the
-  parliament-sync lock live in process memory. A second copy would not share them.
+- **One instance only.** Rate limits live in process
+  memory. A second copy would not share them. (The job locks do not: each job takes a Postgres
+  advisory lock, so a job started from the command line never runs alongside the server's cron.)
 - **Migrations are manual** and never run at boot (see "Migrations").
 - **One proxy only** in front of the app (see "HTTPS").
 
@@ -33,9 +34,10 @@ names only are listed here; the values come from you.
 | Required. The server stops at start-up without them | `DATABASE_URL`, `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` when `NODE_ENV=production` (the image sets it) |
 | Build time, baked into the client | `VITE_SUPABASE_ANON_KEY` (required), `VITE_SUPABASE_URL` (optional) |
 | Needed for real use | `ADMIN_EMAILS`, one admin secret (`ADMIN_API_SECRET`, or `ADMIN_SECRET`, `CRON_SECRET`, `JOB_SECRET`), `LLM_API_KEY`, `JEV_API_KEY`, `CLOUDFLARE_ACCOUNT_ID` |
-| Optional | `LLM_BASE_URL`, `LLM_MODEL_NAME` (every model call uses it when set; unset, DeepSeek uses `deepseek-flash` and OpenAI `gpt-4o-mini`), `OPENAI_API_KEY` (used only when `LLM_API_KEY` is unset), `REDIS_URL`, `LOG_LEVEL`, `PORT` (leave it unset with the compose file: the port mapping and the Caddyfile both assume 5000), `DB_POOL_MAX` (database connections, default 10; the session pooler's Pool Size in Supabase is 15 and shared with GlasIntelligence, so raise that first) |
+| Optional | `LLM_BASE_URL`, `LLM_MODEL_NAME` (every model call uses it when set; unset, DeepSeek uses `deepseek-flash` and OpenAI `gpt-4o-mini`), `OPENAI_API_KEY` (used only when `LLM_API_KEY` is unset), `LOG_LEVEL`, `PORT` (leave it unset with the compose file: the port mapping and the Caddyfile both assume 5000), `DB_POOL_MAX` (database connections, default 10; the session pooler's Pool Size in Supabase is 15 and shared with GlasIntelligence, so raise that first) |
 | Scheduled jobs | `SCHEDULER` (`off` stops every cron), `DIVISION_STANCES`, `DEBATE_ITEMS`, `QUESTION_ITEMS` |
 | Only with the proxy profile | `SITE_DOMAIN` |
+| Tests and one-off tools, never on the host | `TEST_DATABASE_URL` (a disposable Postgres, for `npm test` and `npm run test:e2e`), `E2E_PORT` (port of the e2e server, default 5055), `ROBOTS_SOURCE_DATABASE_URL` (`npm run robots`, read-only copy source), `DIRECT_URL` (a non-pooled URL for `db:migrate`, wins over `DATABASE_URL`) |
 
 Leave a line commented out (`# NAME=`) when you have no value. An empty value is not the same
 as unset: an empty `SUPABASE_SERVICE_ROLE_KEY` stops the server.
@@ -75,6 +77,26 @@ npm run db:migrate
 Do not use `npm run db:push`, and do not add a migrate step to the image or to start-up.
 `drizzle-kit` is a dev dependency, so it is not inside the production image. Each migration
 must finish inside the 2-minute statement limit.
+
+### Indexes and constraints on a big table
+
+`db:migrate` runs every pending migration in one transaction, so a migration cannot use
+`CREATE INDEX CONCURRENTLY`, and a plain `CREATE INDEX` blocks writes to its table until it is
+built. Every table so far is small enough for that (0030 builds its biggest index, on ~70k
+speeches, in well under a second). When a table is too big for that (for example `policy_votes`
+or `news_articles` once they hold millions of rows):
+
+1. Before the release, build the index by hand on GlasCore, outside any transaction:
+   `CREATE INDEX CONCURRENTLY IF NOT EXISTS <name> ON politics.<table> (...);`
+   If it fails it leaves an INVALID index: `DROP INDEX CONCURRENTLY <name>;` and run it again.
+2. Ship the migration with the same statement as `CREATE INDEX IF NOT EXISTS <name> ...`
+   (hand-edit what `db:generate` writes). On GlasCore it is then a no-op; on a fresh database
+   it builds the index.
+
+A new constraint on a big table: add it `NOT VALID` (only new rows are checked, no long lock),
+then `VALIDATE CONSTRAINT` in the same or a later migration (it reads the rows but does not
+block writes). 0027 is an example. If old rows may break the rule, find them first and say in
+the migration how to fix them, since a failed `VALIDATE` rolls the whole `db:migrate` back.
 
 ## 4. Build and first boot
 
@@ -129,6 +151,18 @@ parliament sync at 04:45 and the leave watch on Mondays at 06:15 (all Europe/Dub
 the 04:45 run. Leave them off until you want that cost. `DIVISION_STANCES` only reads new divisions
 into the database: nothing becomes a public TD stance until someone runs `npm run stances --
 --divisions --audit`, checks the matches by hand, and then runs `--divisions --sync`.
+
+The start-up log line `Scheduler initialized` says which of the three flags are on. Every run is
+recorded in `politics.job_runs` (started, finished, `ok`, the job's own counts) and logged as JSON
+with `job` and `ok` fields. To see the latest runs of each job:
+
+```
+curl -H "x-admin-secret: $ADMIN_API_SECRET" http://127.0.0.1:5000/api/admin/jobs
+```
+
+`ok: false` means the job threw, or finished with part of its work failed (a sync day, a feed,
+a disclosure file, items held back, a run stopped because the model account is out of credit).
+A run with no `finished_at` is still going, or the process died during it.
 
 To turn the crons off again, set `SCHEDULER=off` and run `up -d` again.
 

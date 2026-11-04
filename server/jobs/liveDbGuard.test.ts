@@ -11,7 +11,6 @@ const EXEMPT: Record<string, string> = {
   'parliament-silences.ts': 'only reads the database',
   'quiz-analyse.ts': 'only reads the database; writes a local report file',
   'robots.ts': 'writes only to a local _robots database: robots/guards.ts refuses any other, which is stricter than this guard',
-  'td-scoring.ts': 'an alias: it imports scores-recalculate.ts or news-tds.ts, which call the guard',
 };
 const JOBS = path.resolve(__dirname);
 
@@ -82,10 +81,11 @@ describe('every job entry asks for approval', () => {
   const callsGuard = (f: string) => /\bapproveWrite\(/.test(fs.readFileSync(path.join(JOBS, f), 'utf8'));
 
   it('finds the entries, and every npm script that runs a job is one of them', () => {
-    expect(entries.length).toBeGreaterThanOrEqual(15);
+    // Floors, not exact counts: they fail a scan that found nothing, not a deleted job.
+    expect(entries.length).toBeGreaterThanOrEqual(10);
     const scripts = Object.values(JSON.parse(fs.readFileSync(path.join(JOBS, '../../package.json'), 'utf8')).scripts as Record<string, string>);
     const run = scripts.flatMap((s) => [...s.matchAll(/server\/jobs\/([\w-]+\.ts)/g)].map((m) => m[1]));
-    expect(run.length).toBeGreaterThanOrEqual(15);
+    expect(run.length).toBeGreaterThanOrEqual(10);
     for (const file of run) expect(entries, file).toContain(file);
   });
 

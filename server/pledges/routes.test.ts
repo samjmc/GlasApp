@@ -64,10 +64,7 @@ vi.mock('./repository', () => {
       return pledgeId === 1 ? { id: 9 } : null;
     }),
     deleteEvidence: record('deleteEvidence', () => true),
-    allPriorityRows: record('allPriorityRows', () => [
-      { userId: 'someone', category: 'housing', rank: 1 },
-      { userId: 'user-1', category: 'health', rank: 1 },
-    ]),
+    communityPriorities: record('communityPriorities', () => ({ weights: { housing: 0.5, health: 0.5 }, rankers: 2 })),
     userRanking: record('userRanking', (userId) => (userId === 'user-1' ? ['health'] : null)),
     saveRanking: record('saveRanking', () => undefined),
   };
@@ -183,6 +180,19 @@ describe('priorities', () => {
 
     const mine = (await (await send('/api/pledges/priorities', { token: 'user-token' })).json()).data;
     expect(mine.mine).toEqual(['health']);
+  });
+
+  it('weights party records by the viewer’s own ranking, and reads everyone’s only without one', async () => {
+    const own = (await (await send('/api/pledges/parties', { token: 'user-token' })).json()).data;
+    expect(state.calls.map((c) => c.fn)).not.toContain('communityPriorities');
+    expect(own).toHaveLength(1);
+
+    state.calls = [];
+    expect((await send('/api/pledges/parties')).status).toBe(200);
+    expect(state.calls.map((c) => c.fn)).toContain('communityPriorities');
+    state.calls = [];
+    expect((await send('/api/pledges/parties', { token: 'admin-token' })).status).toBe(200);
+    expect(state.calls.map((c) => c.fn)).toEqual(expect.arrayContaining(['userRanking', 'communityPriorities']));
   });
 
   it('saves a ranking for the signed-in user only, and rejects repeats', async () => {

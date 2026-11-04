@@ -11,7 +11,7 @@
  *
  *   npm run stances -- --rebuild [--days 180] [--dry-run]
  *
- * Dáil divisions as stances (docs/plans/quiz-improvements/01c). Only the modes marked "model"
+ * Dáil divisions as stances (docs/architecture/ideology-matching.md). Only the modes marked "model"
  * call an LLM, and they refuse to run without one:
  *
  *   npm run stances -- --divisions --dry-run [--limit 20] [--window D]   model: read, print, write nothing
@@ -34,7 +34,7 @@ import { AUDIT_UNSCORED_DIMENSIONS } from '@shared/divisionMeaning';
 import { IDEOLOGY_DIMENSIONS } from '@shared/ideology';
 import { shutdown } from '../db';
 import { deleteTdEvidence, recalculateAll } from '../ideology';
-import { isLLMConfigured } from '../services/aiService';
+import { completeJson, isLLMConfigured, OutOfCreditError } from '../services/aiService';
 import {
   classifyDivisions,
   emptyStanceStats,
@@ -47,7 +47,7 @@ import {
   toCandidate,
   type DivisionReading,
 } from '../stances';
-import { completeJson, questionForArticle } from '../voting';
+import { questionForArticle } from '../voting';
 import { oireachtasVoteUrl } from '../parliament';
 import { approveWrite } from './liveDbGuard';
 
@@ -67,7 +67,7 @@ export function parseArgs(argv: string[]): { days: number; dryRun: boolean } {
 // --divisions
 // ---------------------------------------------------------------------------
 
-/** A dry run reads this many divisions unless told otherwise (≈ $0.03; see 01c §10). */
+/** A dry run reads this many divisions unless told otherwise (≈ $0.03). */
 export const DRY_RUN_LIMIT = 20;
 const DIVISION_FLAGS = ['--divisions', '--dry-run', '--reclassify', '--limit', '--window', '--audit', '--sync', '--yes'];
 const VALUE_FLAGS = ['--limit', '--window'];
@@ -185,6 +185,7 @@ async function main(): Promise<void> {
   const purged = await deleteTdEvidence('article', dryRun);
   const stats = emptyStanceStats();
   let failed = 0;
+  let stopped: string | null = null;
   for (const article of articles) {
     try {
       await recordStances({ id: article.id, title: article.title, content: article.content }, article.tds.map(toCandidate), stats, {
@@ -194,10 +195,15 @@ async function main(): Promise<void> {
         dryRun,
       });
     } catch (error) {
+      if (error instanceof OutOfCreditError) {
+        stopped = `the model provider has no credit left (${error.message}); ${articles.length - articles.indexOf(article)} article(s) not read`;
+        break;
+      }
       failed++;
       console.warn(`[stances] article ${article.id} failed:`, error instanceof Error ? error.message : error);
     }
   }
+  if (stopped) console.warn(`Stopped early: ${stopped}.`);
 
   const prefix = dryRun ? '[dry run, nothing written] ' : '';
   console.log(`${prefix}${dryRun ? 'Would delete' : 'Deleted'} ${purged} article evidence row(s).`);

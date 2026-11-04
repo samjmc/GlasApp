@@ -63,6 +63,8 @@ export const tdStances = politics.table(
     uniqueIndex('td_stances_td_division_idx').on(t.tdId, t.divisionId),
     index('td_stances_td_stated_idx').on(t.tdId, t.statedAt),
     index('td_stances_question_idx').on(t.questionId),
+    // The division delete's cascade, and the Dáil-vote rewrite, look rows up by division.
+    index('td_stances_division_idx').on(t.divisionId).where(sql`${t.divisionId} is not null`),
     // An answer that is not one of the question's options cannot be stored. Deleting the option
     // (or its question) clears both columns rather than the stance. One composite key, not a
     // second key on question_id alone: that one fired first and left an orphan option_key.
@@ -133,6 +135,8 @@ export const divisionReadings = politics.table(
     matchCheckedAt: timestamp('match_checked_at', { withTimezone: true }),
   },
   (t) => [
+    // Both option keys cascade from a deleted question or option: their lookup by question.
+    index('division_readings_question_idx').on(t.questionId).where(sql`${t.questionId} is not null`),
     check('division_readings_status_chk', sql`${t.status} in (${inList(DIVISION_READING_STATUSES)})`),
     check(
       'division_readings_reject_reason_chk',

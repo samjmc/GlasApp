@@ -3,14 +3,13 @@ import { useQuery } from '@tanstack/react-query';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceLine } from 'recharts';
 import { Button } from '@/components/ui/button';
 import { Download, Loader2, SlidersHorizontal, TrendingUp } from 'lucide-react';
-import { useToast } from '@/components/ui/use-toast';
+import { useToast } from '@/hooks/use-toast';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { cn } from '@/lib/utils';
-import html2canvas from 'html2canvas';
 import { fetchMyTimeline } from '@/lib/ideologyApi';
 import { partySource } from '@/lib/partyIdeology';
 import { queryKeys } from '@/lib/queryKeys';
@@ -149,6 +148,8 @@ export default function IdeologyTimeSeriesChartEnhanced({
     if (!chartRef.current || isExportingPng) return;
     setIsExportingPng(true);
     try {
+      // Loaded on demand: only a PNG export needs it.
+      const html2canvas = (await import('html2canvas')).default;
       const canvas = await html2canvas(chartRef.current, {
         backgroundColor: getComputedStyle(document.body).backgroundColor,
         scale: 2,

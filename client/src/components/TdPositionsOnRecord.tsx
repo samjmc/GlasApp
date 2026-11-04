@@ -17,14 +17,10 @@ import { IssueBreakdown, QuoteKindBadge, StanceSource, humaniseDomain, votedLabe
 import { useAuth } from '@/contexts/AuthContext';
 import { fetchMyMatches } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
+import { apiCall } from '@/lib/api';
 import type { TdStances } from '@shared/stancesApi';
 
-async function getStances(tdId: number): Promise<TdStances> {
-  const res = await fetch(`/api/stances/td/${tdId}`);
-  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`);
-  const json: { success: true; data: TdStances } = await res.json();
-  return json.data;
-}
+const getStances = (tdId: number) => apiCall<TdStances>('GET', `/api/stances/td/${tdId}`);
 
 export function TdPositionsOnRecord({ tdId }: { tdId: number | undefined }) {
   const { user, isAuthenticated } = useAuth();

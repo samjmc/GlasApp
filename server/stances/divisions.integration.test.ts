@@ -1,5 +1,5 @@
 /**
- * Dáil divisions as fixed-option stances against a real Postgres (01c): the schema, the reading
+ * Dáil divisions as fixed-option stances against a real Postgres: the schema, the reading
  * cache with its candidate window and re-checks, the sync into td_stances, the rebuild of all
  * `stance` evidence, the lock, the nightly run and its guard, and what s's
  * matches show. Every model call is a stub; nothing here reaches a model.
@@ -508,7 +508,8 @@ run('division stances against Postgres', { timeout: 60_000 }, () => {
         const sync = divisions.syncDivisionStances(NOW).then(() => {
           done = true;
         });
-        const rebuild = ideologyRepo.replaceStanceEvidence([]).then(() => {
+        const { rebuildStanceEvidence } = await import('./record');
+        const rebuild = stancesRepo.withStanceLock((tx) => rebuildStanceEvidence(tx, null)).then(() => {
           evidenceDone = true;
         });
         await new Promise((resolve) => setTimeout(resolve, 500));

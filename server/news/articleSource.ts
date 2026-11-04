@@ -12,11 +12,14 @@ export interface Article {
   url: string | null;
   imageUrl: string | null;
   publishedDate: Date | null;
+  /** 0–100 from the ingest relevance pass; NULL when it was not ranked. */
+  relevanceScore: number | null;
 }
 
 export interface ArticleOutcome {
+  /** Stored as `importance_score`, which orders the feed's "top" sort. */
   importanceScore: number;
-  importanceReasoning: string;
+  importanceReasoning?: string;
   skippedReason?: string;
   errorMessage?: string;
 }
@@ -28,6 +31,8 @@ export interface ArticleSource {
   /** Persist a fuller body fetched from the publisher. */
   saveContent(id: number, content: string): Promise<void>;
   markProcessed(id: number, outcome: ArticleOutcome): Promise<void>;
+  /** Hand a claimed article back untouched, its claim not counted (the run stopped before it). */
+  release(id: number): Promise<void>;
 }
 
 function toArticle(row: news.ClaimedArticle): Article {
@@ -40,6 +45,7 @@ function toArticle(row: news.ClaimedArticle): Article {
     url: row.url,
     imageUrl: row.imageUrl,
     publishedDate: row.publishedAt,
+    relevanceScore: row.relevanceScore,
   };
 }
 
@@ -52,7 +58,7 @@ export function toOutcome(outcome: ArticleOutcome): news.Outcome {
   return {
     status,
     importanceScore: outcome.importanceScore,
-    importanceReasoning: outcome.importanceReasoning,
+    importanceReasoning: outcome.importanceReasoning ?? null,
     skipReason: outcome.skippedReason ?? null,
     errorMessage: outcome.errorMessage ?? null,
   };
@@ -68,4 +74,5 @@ export const articleSource: ArticleSource = {
   },
   saveContent: (id, content) => news.saveContent(id, content),
   markProcessed: (id, outcome) => news.markOutcome(id, toOutcome(outcome)),
+  release: (id) => news.releaseClaim(id),
 };

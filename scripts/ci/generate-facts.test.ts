@@ -155,9 +155,9 @@ describe('route inventory', () => {
     // A scan that matched nothing would pass; these pin it to the routes the app mounts.
     expect(facts.routes.length).toBeGreaterThan(70);
     expect(byKey.get('GET /health')?.access).toBe('public');
-    expect(byKey.get('GET /api/auth/health')?.access).toBe('public');
+    expect(byKey.get('GET /_health')?.access).toBe('public');
     expect(byKey.get('POST /api/pledges')?.access).toBe('admin');
-    expect(byKey.get('POST /api/cache/clear')?.access).toBe('job');
+    expect(byKey.get('POST /api/parliament/sync')?.access).toBe('job');
     expect(byKey.get('POST /api/daily-session/complete')?.access).toBe('auth');
     // The two voting routers share one file and must not leak into each other's prefix.
     expect(byKey.has('POST /api/votes/complete')).toBe(false);

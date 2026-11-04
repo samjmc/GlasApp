@@ -54,6 +54,19 @@ describe('OireachtasClient', () => {
     await expect(client.questions('2026-01-01', '2026-01-31')).rejects.toThrow(/Read 2 of 3/);
   });
 
+  it('the roster and the former members come from one /members request; a failed one is asked again', async () => {
+    const { urls, client } = fakeFetch([{ status: 200, body: { results: [] } }]);
+    await client.roster();
+    await client.formerMembers();
+    expect(urls).toHaveLength(1);
+    expect(params(urls[0]).get('house_no')).toBe('34');
+
+    const { urls: retried, client: flaky } = fakeFetch([{ status: 404 }, { status: 200, body: { results: [] } }]);
+    await expect(flaky.roster()).rejects.toThrow(/404/);
+    await expect(flaky.formerMembers()).resolves.toEqual([]);
+    expect(retried).toHaveLength(2);
+  });
+
   it('keeps only Dáil and joint committee sittings, with their transcript', async () => {
     const { urls, client } = fakeFetch([
       {
@@ -228,6 +241,9 @@ describe('toRosterMember', () => {
     left.memberships![0]!.membership.offices = [{ office: { officeName: { showAs: 'Minister for Health' }, dateRange: { start: '2020-06-27', end: '2024-11-08' } } }];
     expect(toFormerMember(left)).toEqual({
       memberCode: 'Verona-Murphy.D.2020-02-08',
+      // Name and constituency too: the allowance and interests files are matched against them.
+      fullName: toRosterMember(member())!.fullName,
+      constituency: toRosterMember(member())!.constituency,
       officeHistory: [{ title: 'Minister for Finance', type: 'cabinet', start: '2025-01-23', end: '2025-11-18' }],
     });
     // A sitting member is on the roster, not a former member.

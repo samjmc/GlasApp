@@ -64,7 +64,6 @@ export const RULES: Rule[] = [
     scope: inServer,
     pattern: /\bMath\.random\s*\(/g,
     allow: {
-      'server/services/adaptiveScoringEngine.ts': 'simulateScoreDistribution draws simulated votes for a what-if; nothing secret',
       'server/services/aiService.ts': 'retry backoff jitter',
     },
   },

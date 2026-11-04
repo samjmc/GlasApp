@@ -15,7 +15,7 @@
  *    keep to it: 13 in one speech in the pilot).
  */
 import type { CommitmentType, DebateClaimType, DebateItemKind } from '@shared/schema/parliament';
-import { normalise } from '../../stances/verify';
+import { normalise, normaliseQuote } from '../../stances/verify';
 import { MAX_CLAIMS_PER_SPEECH, QUOTE_MAX_WORDS, QUOTE_MIN_WORDS, type RawItem } from './prompt';
 import { sentenceAround } from './replies';
 import { isIrish, type DebateWindow, type LabelledSpeech } from './windows';
@@ -70,7 +70,7 @@ export function emptyRejections(): Rejections {
 /** Where `quote` sits in `text`, in the original string's offsets; null when it is not there. */
 export function findQuote(text: string, quote: string): { start: number; end: number } | null {
   const n = normalise(text);
-  const q = normalise(quote).text.replace(/^['" ]+|['" ]+$/g, '');
+  const q = normaliseQuote(quote);
   if (!q) return null;
   const pos = n.text.indexOf(q);
   if (pos === -1) return null;

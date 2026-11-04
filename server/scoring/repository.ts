@@ -1,7 +1,7 @@
 /**
  * Every read and write of the scoring tables. Nothing else touches them.
  */
-import { and, asc, eq, inArray, isNotNull, sql } from 'drizzle-orm';
+import { and, asc, eq, inArray, isNotNull, ne, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import {
   tdHistoricalBaselines,
@@ -11,7 +11,7 @@ import {
   type TdHistoricalBaselineRow,
   type TdScoreRow,
 } from '@shared/schema/politics';
-import type { TdParliamentStatsRow } from '@shared/schema/parliament';
+import { tdParliamentStats, type TdParliamentStatsRow } from '@shared/schema/parliament';
 import { allStats } from '../parliament/repository';
 import { questionsAsked, type RollupInput, type RollupResult } from './rollup';
 import { planTdSync, type ExistingTd, type TdSeed, type TdSyncPlan } from './tdSync';
@@ -36,6 +36,14 @@ async function withStats(rows: Array<Omit<TdWithScore, 'stats'>>, database: Db):
   return rows.map((r) => ({ ...r, stats: stats.get(r.td.id) ?? null }));
 }
 
+/** One TD: its parliament record joined in SQL, instead of reading the whole table through allStats. */
+const oneWithStats = (database: Db) =>
+  database
+    .select({ td: tds, score: tdScores, stats: tdParliamentStats })
+    .from(tds)
+    .leftJoin(tdScores, eq(tdScores.tdId, tds.id))
+    .leftJoin(tdParliamentStats, eq(tdParliamentStats.tdId, tds.id));
+
 /** Active TDs with their score row, best first, ties by name. TDs with no score sort last. */
 export async function listActive(database: Db = db): Promise<TdWithScore[]> {
   const rows = await withScore(database)
@@ -46,15 +54,15 @@ export async function listActive(database: Db = db): Promise<TdWithScore[]> {
 
 /** Case-insensitive exact name match. */
 export async function findByName(name: string, database: Db = db): Promise<TdWithScore | null> {
-  const rows = await withScore(database)
+  const [row] = await oneWithStats(database)
     .where(sql`lower(${tds.name}) = lower(${name.trim()})`)
     .limit(1);
-  return (await withStats(rows, database))[0] ?? null;
+  return row ?? null;
 }
 
 export async function findById(id: number, database: Db = db): Promise<TdWithScore | null> {
-  const rows = await withScore(database).where(eq(tds.id, id)).limit(1);
-  return (await withStats(rows, database))[0] ?? null;
+  const [row] = await oneWithStats(database).where(eq(tds.id, id)).limit(1);
+  return row ?? null;
 }
 
 export async function listByParty(party: string, database: Db = db): Promise<TdWithScore[]> {
@@ -104,9 +112,10 @@ export interface SyncTdsResult {
 
 /**
  * Bring `tds` in line with a roster of current Dáil members. One transaction, so a
- * half-applied roster is never visible. Nothing is deleted: see tdSync.ts.
+ * half-applied roster is never visible. Nothing is deleted: see tdSync.ts, which also refuses
+ * a roster that would deactivate many TDs unless `force`.
  */
-export async function syncTds(seeds: TdSeed[], database: Db = db): Promise<SyncTdsResult> {
+export async function syncTds(seeds: TdSeed[], database: Db = db, options: { force?: boolean } = {}): Promise<SyncTdsResult> {
   const current = await database
     .select({
       id: tds.id,
@@ -119,7 +128,7 @@ export async function syncTds(seeds: TdSeed[], database: Db = db): Promise<SyncT
     })
     .from(tds);
 
-  const plan: TdSyncPlan = planTdSync(current as ExistingTd[], seeds);
+  const plan: TdSyncPlan = planTdSync(current as ExistingTd[], seeds, options);
   const now = new Date();
 
   await database.transaction(async (tx) => {
@@ -212,8 +221,13 @@ export async function writeRollup(results: RollupResult[], database: Db = db): P
   });
 }
 
-export async function listBaselines(database: Db = db): Promise<TdHistoricalBaselineRow[]> {
-  return database.select().from(tdHistoricalBaselines);
+/** TDs whose stored background has a summary to show. Only the ids: the text stays in the database. */
+export async function researchedTdIds(database: Db = db): Promise<number[]> {
+  const rows = await database
+    .select({ tdId: tdHistoricalBaselines.tdId })
+    .from(tdHistoricalBaselines)
+    .where(ne(tdHistoricalBaselines.summary, ''));
+  return rows.map((r) => r.tdId);
 }
 
 export async function baselineFor(tdId: number, database: Db = db): Promise<TdHistoricalBaselineRow | null> {

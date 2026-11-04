@@ -1,5 +1,49 @@
-import { describe, expect, it } from 'vitest';
-import { SUMMARY_MAX_WORDS, buildPrompt, parseRelevance } from './relevance';
+import { describe, expect, it, vi } from 'vitest';
+
+const llm = vi.hoisted(() => ({ call: vi.fn() }));
+vi.mock('../services/aiService', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../services/aiService')>()),
+  isLLMConfigured: () => true,
+  callChatCompletion: llm.call,
+}));
+
+const { RELEVANCE_BATCH_SIZE, SUMMARY_MAX_WORDS, buildPrompt, parseRelevance, scoreRelevance } = await import('./relevance');
+const { MAX_CONCURRENT_CALLS, OutOfCreditError } = await import('../services/aiService');
+
+const items = (n: number) => Array.from({ length: n }, (_, i) => ({ title: `t${i}`, summary: null, source: 's' }));
+const reply = (count: number) => ({
+  choices: [{ message: { content: JSON.stringify({ items: Array.from({ length: count }, (_, i) => ({ i, relevance: 70, category: 'eu', summary: 's' })) }) } }],
+});
+
+describe('scoreRelevance', () => {
+  it(`sends at most ${MAX_CONCURRENT_CALLS} batches at once, however many there are`, async () => {
+    let now = 0;
+    let most = 0;
+    llm.call.mockReset().mockImplementation(async () => {
+      most = Math.max(most, ++now);
+      await new Promise((r) => setTimeout(r, 5));
+      now--;
+      return reply(RELEVANCE_BATCH_SIZE);
+    });
+    const { results, failedBatches } = await scoreRelevance(items(RELEVANCE_BATCH_SIZE * 10));
+    expect(llm.call).toHaveBeenCalledTimes(10);
+    expect(most).toBe(MAX_CONCURRENT_CALLS);
+    expect(failedBatches).toBe(0);
+    expect(results.every((r) => r?.score === 70)).toBe(true);
+  });
+
+  it('after out-of-credit sends no further batch, and leaves every unsent item unscored', async () => {
+    llm.call.mockReset().mockRejectedValue(new OutOfCreditError('402', { operation: 'news.relevance', attempts: 1, elapsedMs: 0, status: 402 }));
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    const { results, failedBatches, outOfCredit } = await scoreRelevance(items(RELEVANCE_BATCH_SIZE * 10));
+    // The first few batches were already in flight; none started after the 402.
+    expect(llm.call.mock.calls.length).toBeLessThanOrEqual(MAX_CONCURRENT_CALLS);
+    expect(outOfCredit).toBe(true);
+    expect(failedBatches).toBe(10);
+    expect(results).toHaveLength(RELEVANCE_BATCH_SIZE * 10);
+    expect(results.every((r) => r === null)).toBe(true);
+  });
+});
 
 describe('parseRelevance', () => {
   it('maps each index to a clamped score, a known category and a summary', () => {

@@ -9,6 +9,8 @@ import { useLocation } from "wouter";
 import { Building2, Loader2, MapPin, Search, X } from "lucide-react";
 import { useRegion } from "@/hooks/useRegion";
 import { queryKeys } from "@/lib/queryKeys";
+import { apiCall } from "@/lib/api";
+import { useAllTDs } from "@/components/home/useAllTDs";
 import { formatScore, scoreTone, TONE_TEXT } from "@/lib/score";
 import { PartyDot, TDAvatar } from "@/components/pulse/Party";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -51,14 +53,8 @@ const GROUPS: { type: ResultType; label: string; base: string }[] = [
 
 /** Fetch one scores endpoint and return its unwrapped `data`, or `[]` if it fails. */
 async function fetchScoresList<T>(path: string): Promise<T[]> {
-  try {
-    const res = await fetch(path);
-    if (!res.ok) return [];
-    const json = await res.json();
-    return Array.isArray(json?.data) ? (json.data as T[]) : [];
-  } catch {
-    return [];
-  }
+  const data = await apiCall<T[]>("GET", path).catch(() => null);
+  return Array.isArray(data) ? data : [];
 }
 
 const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -82,40 +78,52 @@ export function GlobalSearch() {
   const listId = useId();
   const isIreland = regionCode === "IE";
 
-  const { data: searchData, isLoading, isError, isFetching, refetch } = useQuery({
+  // Loaded when the search is first used, not on every page that shows the box.
+  const [wanted, setWanted] = useState(false);
+  const enabled = isIreland && wanted;
+  // The TD list is the one the home cards and the rankings already load.
+  const tdsQuery = useAllTDs(enabled);
+  const listsQuery = useQuery({
     queryKey: queryKeys.globalSearch.data(regionCode ?? ""), // disabled unless IE, so "" is never fetched
     queryFn: async () => {
-      // Each list degrades to [] on its own, so one failing fetch does not
-      // take the whole search down.
-      const [tds, parties, constituencyNames] = await Promise.all([
-        fetchScoresList<TdSearchResult>("/api/scores/tds"),
+      // Each list degrades to [] on its own, so one failing fetch does not take the whole search down.
+      const [parties, constituencyNames] = await Promise.all([
         fetchScoresList<PartyScoreRow>("/api/scores/parties"),
         fetchScoresList<{ name: string }>("/api/scores/constituencies"),
       ]);
-
-      if (tds.length === 0 && parties.length === 0 && constituencyNames.length === 0) {
-        throw new Error("Failed to load global search data");
-      }
-
-      const tdCountByConstituency = new Map<string, number>();
-      for (const td of tds) {
-        if (td.constituency) {
-          tdCountByConstituency.set(td.constituency, (tdCountByConstituency.get(td.constituency) ?? 0) + 1);
-        }
-      }
-
-      return {
-        tds,
-        parties: parties.map((p): PartySearchResult => ({ name: p.party, size: p.memberCount })),
-        constituencies: constituencyNames.map((c): ConstituencySearchResult => ({
-          name: c.name,
-          tdCount: tdCountByConstituency.get(c.name),
-        })),
-      };
+      return { parties, constituencyNames };
     },
     staleTime: 5 * 60 * 1000,
-    enabled: isIreland,
+    enabled,
   });
+
+  const searchData = useMemo(() => {
+    if (!tdsQuery.data && !listsQuery.data) return undefined;
+    const tds: TdSearchResult[] = tdsQuery.data?.tds ?? [];
+    const tdCountByConstituency = new Map<string, number>();
+    for (const td of tds) {
+      if (td.constituency) {
+        tdCountByConstituency.set(td.constituency, (tdCountByConstituency.get(td.constituency) ?? 0) + 1);
+      }
+    }
+    return {
+      tds,
+      parties: (listsQuery.data?.parties ?? []).map((p): PartySearchResult => ({ name: p.party, size: p.memberCount })),
+      constituencies: (listsQuery.data?.constituencyNames ?? []).map((c): ConstituencySearchResult => ({
+        name: c.name,
+        tdCount: tdCountByConstituency.get(c.name),
+      })),
+    };
+  }, [tdsQuery.data, listsQuery.data]);
+  const isLoading = tdsQuery.isLoading || listsQuery.isLoading;
+  const isFetching = tdsQuery.isFetching || listsQuery.isFetching;
+  // An error only when nothing at all loaded.
+  const isError =
+    tdsQuery.isError && !!listsQuery.data && listsQuery.data.parties.length + listsQuery.data.constituencyNames.length === 0;
+  const refetch = () => {
+    void tdsQuery.refetch();
+    void listsQuery.refetch();
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => setDebouncedQuery(searchQuery.trim()), 200);
@@ -289,8 +297,12 @@ export function GlobalSearch() {
           onChange={(e) => {
             setSearchQuery(e.target.value);
             setIsOpen(true);
+            setWanted(true);
           }}
-          onFocus={() => setIsOpen(true)}
+          onFocus={() => {
+            setIsOpen(true);
+            setWanted(true);
+          }}
           onKeyDown={handleKeyDown}
           disabled={!isIreland}
           className="min-w-0 flex-1 bg-transparent text-[15px] text-foreground outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed [&::-webkit-search-cancel-button]:hidden"

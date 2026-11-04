@@ -33,7 +33,7 @@ describe('fetchConstituencyBoundaries', () => {
 
     await expect(fetchConstituencyBoundaries()).rejects.toThrow('could not be downloaded');
     expect(fetchMock).toHaveBeenCalledTimes(2);
-    for (const [url] of fetchMock.mock.calls) expect(url).toMatch(/^\/assets\//);
+    for (const [url] of fetchMock.mock.calls) expect(url).toMatch(/^\/geo\//);
   });
 
   it('rejects on HTTP errors too, not only on network errors', async () => {

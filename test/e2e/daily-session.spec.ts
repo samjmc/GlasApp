@@ -190,17 +190,20 @@ async function answerCurrent(page: Page, label: string | RegExp = 'State answer'
  * The cached session is stale by then, so React Query refetches it on reconnect. Waits for
  * that refetch, so a test that follows is checking the page AFTER the new data arrived.
  * (The app turns refetch-on-focus off, so reconnect is the realistic trigger.)
- * Needs `page.clock.install()` first.
+ * Needs `page.clock.install()` first. Returns `refetched`, which settles when the browser has the
+ * refetch's response (a test that wants to look while the request is in flight just does not await it).
  */
 async function reconnectLater(page: Page, api: FakeDaily) {
   const before = api.gets;
   const now = await page.evaluate(() => Date.now());
   await page.clock.setSystemTime(now + 120_000);
+  const refetched = page.waitForResponse((r) => r.request().method() === 'GET' && new URL(r.url()).pathname === '/api/daily-session');
   await page.evaluate(() => {
     window.dispatchEvent(new Event('offline'));
     window.dispatchEvent(new Event('online'));
   });
   await expect.poll(() => api.gets, 'the session should refetch when the network returns').toBeGreaterThan(before);
+  return { refetched };
 }
 
 async function open(page: Page, api: FakeDaily, url = '/daily-session') {
@@ -329,9 +332,11 @@ test('the network coming back does not move the user back a screen', async ({ pa
   await page.getByRole('button', { name: 'See my streak' }).click();
   await expect(page.getByRole('heading', { name: 'Streak boosted' })).toBeVisible();
 
-  await reconnectLater(page, api);
+  const { refetched } = await reconnectLater(page, api);
 
-  await page.waitForTimeout(500);
+  // The new data is in the browser; let the page's own timers (React Query's notify) run on it.
+  await refetched;
+  await page.clock.runFor(500);
   await expect(page.getByRole('heading', { name: 'Streak boosted' })).toBeVisible();
 });
 
@@ -345,14 +350,16 @@ test('the network coming back does not replace a question with a loading screen'
 
   // The refetch is slow, so the page can be looked at while it is still waiting for the answer.
   api.delayGetMs = 1500;
-  await reconnectLater(page, api);
+  const { refetched } = await reconnectLater(page, api);
 
   // Still on the question, with the chosen answer still chosen, and no loading screen. These are
   // one-shot counts, not retrying assertions: the request is still in flight right now.
   expect(await page.locator('[aria-busy="true"]').count(), 'a loading screen replaced the question').toBe(0);
   expect(await page.getByRole('heading', { name: 'Question 1?' }).count(), 'the question left the screen').toBe(1);
   await expect(page.getByRole('radio', { name: 'Mixed answer' })).toHaveAttribute('aria-checked', 'true');
-  await page.waitForTimeout(1800);
+  // Now the slow answer arrives. Wait for it (not a fixed pause), then let the page's timers run on it.
+  await refetched;
+  await page.clock.runFor(500);
   await expect(page.getByRole('radio', { name: 'Mixed answer' })).toHaveAttribute('aria-checked', 'true');
 });
 
@@ -384,10 +391,13 @@ test('the close button leaves the session, and the app lets the user stay out fo
 
   // It stays closed: not bounced back, not after a reload either.
   await expect(page).toHaveURL(/\/$/);
-  await page.waitForTimeout(1500);
+  await page.waitForLoadState('networkidle');
   expect(new URL(page.url()).pathname).toBe('/');
+  // The reload fetches the session again; only once it has arrived could the app bounce back.
+  const reloaded = page.waitForResponse((r) => r.request().method() === 'GET' && new URL(r.url()).pathname === '/api/daily-session');
   await page.reload();
-  await page.waitForTimeout(1500);
+  await reloaded;
+  await page.waitForLoadState('networkidle');
   expect(new URL(page.url()).pathname).toBe('/');
 
   // And the session is still there when the user asks for it.

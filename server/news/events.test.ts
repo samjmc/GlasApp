@@ -1,7 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const llm = vi.hoisted(() => ({ replies: [] as Array<string | Error>, prompts: [] as string[], operations: [] as string[] }));
-vi.mock('../services/aiService', () => ({
+vi.mock('../services/aiService', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('../services/aiService')>()),
   callChatCompletion: vi.fn(async (params: { messages: Array<{ content: string }> }, options: { operation: string }) => {
     llm.prompts.push(params.messages[1].content);
     llm.operations.push(options.operation);
@@ -12,6 +13,7 @@ vi.mock('../services/aiService', () => ({
 }));
 
 const { EVENT_MATCH_MAX_ITEMS, assignCanonicals, buildEventPrompt, matchEvents, parseEvents } = await import('./events');
+const { OutOfCreditError } = await import('../services/aiService');
 
 const at = (iso: string) => new Date(iso);
 
@@ -86,7 +88,7 @@ describe('matchEvents', () => {
     expect(links).toEqual([{ index: 9, of: { run: 4 } }]);
   });
 
-  it('fails open: a thrown call links nothing and is counted', async () => {
+  it('a thrown call links nothing, is counted, and lists its items as unchecked so they can be held back', async () => {
     llm.replies.push(new Error('timeout'));
     const result = await matchEvents(
       [
@@ -95,11 +97,25 @@ describe('matchEvents', () => {
       ],
       [],
     );
-    expect(result).toEqual({ links: [], failedCalls: 1 });
+    expect(result).toEqual({ links: [], failedCalls: 1, unchecked: [0, 1] });
+  });
+
+  it('a failed call is not a canonical for the next; after out-of-credit no further call is made', async () => {
+    const items = Array.from({ length: EVENT_MATCH_MAX_ITEMS * 2 + 1 }, (_, i) => ({ index: i, title: `item ${i}`, summary: null }));
+    llm.replies.push(new Error('timeout'), '{"items":[]}');
+    const first = await matchEvents(items.slice(0, EVENT_MATCH_MAX_ITEMS + 1), [{ id: 3, title: 'stored', summary: null }]);
+    expect(llm.prompts[1]).not.toContain('"item 0"'); // the failed chunk's items never became candidates
+    expect(first.unchecked).toEqual(items.slice(0, EVENT_MATCH_MAX_ITEMS).map((i) => i.index));
+
+    llm.prompts = [];
+    llm.replies.push(new OutOfCreditError('402', { operation: 'news.events', attempts: 1, elapsedMs: 0, status: 402 }));
+    const second = await matchEvents(items, [{ id: 3, title: 'stored', summary: null }]);
+    expect(llm.prompts).toHaveLength(1);
+    expect(second.unchecked).toEqual(items.map((i) => i.index));
   });
 
   it('makes no call for one item with nothing to compare it to', async () => {
-    expect(await matchEvents([{ index: 0, title: 'a', summary: null }], [])).toEqual({ links: [], failedCalls: 0 });
+    expect(await matchEvents([{ index: 0, title: 'a', summary: null }], [])).toEqual({ links: [], failedCalls: 0, unchecked: [] });
     expect(llm.prompts).toEqual([]);
   });
 

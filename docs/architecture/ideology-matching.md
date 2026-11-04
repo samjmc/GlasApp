@@ -66,7 +66,7 @@ no answer (no `JEV_API_KEY`/`CLOUDFLARE_ACCOUNT_ID`, an error, no credit) the qu
 
 ### Dáil divisions as stances (`server/stances/divisions.ts`, behind `DIVISION_STANCES`)
 
-Plan: `docs/plans/quiz-improvements/01c-division-stances.md`. A matched division becomes rows in
+Plan: the "Division stances" section of `docs/plans/td-stances.md`. A matched division becomes rows in
 `td_stances` with quote kind `division` — no evidence source of its own. Two model calls per
 division, both checked by code: call 1 says what a Tá vote supported, with a quote copied from ONE
 labelled PROPOSAL block (the motion or amendment moved, a bill's long title, the question); call 2
@@ -111,11 +111,12 @@ question, they chose the same answer". Removing it from either would lose one of
 ## Seams
 
 - `server/voting` calls `recomputeProfile(userId)` after each vote and `getIdeologyProfile(userId)`.
-- `server/stances/record.ts` (news pipeline and `npm run stances -- --rebuild`) calls
-  `recordTdEvidence({ source: 'stance', sourceRef: 'question:<id>', … })`.
+- `server/stances/record.ts` (news pipeline and `npm run stances -- --rebuild`) rebuilds the
+  `stance` evidence of the TDs it touched from td_stances, under the stance lock
+  (`rebuildStanceEvidence`).
 - Nothing records `article` evidence any more. `npm run stances -- --rebuild` deletes those rows
   (`deleteTdEvidence('article')`) and backfills stances from articles that already have a question.
 - A debate pipeline calls `recordTdEvidence({ source: 'debate', sourceRef: <speech id>, … })`.
 - `npm run stances -- --divisions --sync` and the nightly `runDivisionStances` (only with
-  `DIVISION_STANCES=on`) write Dáil-vote stances, then `replaceStanceEvidence` and
+  `DIVISION_STANCES=on`) write Dáil-vote stances, then `rebuildStanceEvidence` for every TD and
   `recomputeTdsAndParties`.

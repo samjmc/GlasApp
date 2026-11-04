@@ -1,5 +1,5 @@
 /**
- * Deterministic checks on the three model replies about a Dáil division (01c §3.2–3.3). Pure.
+ * Deterministic checks on the three model replies about a Dáil division (docs/architecture/ideology-matching.md). Pure.
  *
  * A quote proves the text is real, not that the reading is right: whether "Tá means X" is right
  * and whether the option is a fair reading of X are for the human gates. What code can check is
@@ -11,7 +11,7 @@ import type { DivisionKind, DivisionRejectReason } from '@shared/divisionMeaning
 import { POLICY_DOMAINS, type PolicyDomain } from '../constants/policyTopics';
 import type { BlockKind, FitClaim, MatchReply, MeaningReply, ProposalBlock } from './divisionPrompt';
 import { QUOTE_MAX_WORDS, QUOTE_MIN_WORDS } from './extract';
-import { normalise } from './verify';
+import { normalise, normaliseQuote } from './verify';
 
 /** Below this, the model is too unsure what Tá meant. */
 export const MIN_MEANING_CONFIDENCE = 0.6;
@@ -53,7 +53,7 @@ export function verifyMeaning(reply: MeaningReply, blocks: ProposalBlock[]): Mea
   const kept = Array.from(new Set(domains)).slice(0, MAX_DOMAINS);
   if (kept.length === 0) return rejected('invalid');
 
-  const quote = normalise(reply.quote).text.replace(/^['" ]+|['" ]+$/g, '');
+  const quote = normaliseQuote(reply.quote);
   const words = quote ? quote.split(' ').length : 0;
   if (ELLIPSIS.test(reply.quote) || words < QUOTE_MIN_WORDS || words > QUOTE_MAX_WORDS) return rejected('invalid');
 

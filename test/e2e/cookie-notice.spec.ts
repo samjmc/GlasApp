@@ -5,6 +5,8 @@
 import { expect, test } from '@playwright/test';
 
 test('the cookie notice has one OK button, writes no optional cookies, and shows once', async ({ page }) => {
+  // The notice is shown by a 1 s timer in the page, so the clock is the thing to wait on.
+  await page.clock.install();
   await page.addInitScript(() => {
     localStorage.setItem('glas.region', 'IE');
   });
@@ -22,9 +24,9 @@ test('the cookie notice has one OK button, writes no optional cookies, and shows
   expect(await page.evaluate(() => localStorage.getItem('cookie_consent'))).not.toBeNull();
   expect(await page.evaluate(() => document.cookie)).not.toMatch(/cookie_analytics|cookie_functional/);
 
-  // Once is enough: the notice is not shown on the next visit (it appears 1 s after load, so wait past that).
+  // Once is enough: the notice is not shown on the next visit (it appears 1 s after load, so run the page's clock past that).
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Privacy Policy' }).first()).toBeVisible();
-  await page.waitForTimeout(1500);
+  await page.clock.runFor(1500);
   await expect(notice).toHaveCount(0);
 });

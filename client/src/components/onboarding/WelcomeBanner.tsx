@@ -2,13 +2,12 @@
  * Welcome banner: after onboarding, nudges signed-in users who have not taken the quiz.
  */
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'wouter';
 import { ArrowRight, Compass, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
-import { supabase } from '@/lib/supabase';
 import { fetchMyQuizResults } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 
@@ -25,7 +24,7 @@ function isDismissed(): boolean {
 /** Dismissible welcome banner shown to authenticated users. */
 export function WelcomeBanner() {
   const { user, isAuthenticated } = useAuth();
-  const [isVisible, setIsVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(isDismissed);
 
   const { data: quizResults, isSuccess: quizResultsLoaded } = useQuery({
     queryKey: queryKeys.quiz.mine(user?.id),
@@ -34,28 +33,17 @@ export function WelcomeBanner() {
   });
   const hasCompletedQuiz = (quizResults?.length ?? 0) > 0;
 
-  useEffect(() => {
-    if (!isAuthenticated || !user || !quizResultsLoaded) return;
-    let cancelled = false;
-    supabase.auth.getUser().then(({ data: { user: supabaseUser } }) => {
-      const hasSeenOnboarding = supabaseUser?.user_metadata?.has_seen_onboarding;
-      if (!cancelled && hasSeenOnboarding && !isDismissed() && !hasCompletedQuiz) setIsVisible(true);
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, [isAuthenticated, user, quizResultsLoaded, hasCompletedQuiz]);
-
   const handleDismiss = () => {
     try {
       window.localStorage.setItem(DISMISS_KEY, 'true');
     } catch {
       // Storage blocked: hide for this visit only.
     }
-    setIsVisible(false);
+    setDismissed(true);
   };
 
-  if (!isVisible || hasCompletedQuiz) return null;
+  // The onboarding flag is in the session already; no need to ask Supabase again.
+  if (!user?.hasSeenOnboarding || !quizResultsLoaded || hasCompletedQuiz || dismissed) return null;
 
   return (
     <aside className="relative flex flex-col gap-4 rounded-2xl bg-primary p-5 text-primary-foreground sm:flex-row sm:items-center md:p-6">

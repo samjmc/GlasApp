@@ -4,10 +4,12 @@
  *     year the current Dáil began onwards;
  *   - Parliamentary Standard Allowance payments to Deputies (monthly), from the first full
  *     month of the current Dáil.
- * A published file does not change, so each is read once; later runs read only new files.
- * Names are matched to the roster (the PDFs carry no member code); a name that does not
- * match, or matches only loosely where another name in the file already claims that TD, is
- * reported and never stored against a guessed member.
+ * A published file does not change, so each is read once; later runs read only new files, and
+ * a stored file again only when a name it could not match now matches someone. Names are
+ * matched to this Dáil's members, current and former (the PDFs carry no member code); a name
+ * that does not match, or matches only loosely where another name in the file already claims
+ * that TD, is reported and never stored against a guessed member. A file that fails is
+ * reported in `failedFiles` and tried again next run; it never stops the others.
  */
 import { interestsYearFromUrl, isDailInterestsRegister, parseInterestsRegister } from './sources/interests';
 import { browserFetch, publicationLinks } from './sources/listing';
@@ -50,9 +52,29 @@ export interface DisclosureContext {
 export interface DisclosureResult {
   files: number;
   rows: number;
-  /** Names read from a file that matched no current TD, "Surname, Forenames". */
+  /** Names read from a file that matched no TD of this Dáil, "Surname, Forenames". */
   unmatched: string[];
+  /** Files that could not be fetched or parsed: tried again next run, and they never block the others. */
+  failedFiles: Array<{ url: string; error: string }>;
 }
+
+export const emptyDisclosureResult = (): DisclosureResult => ({ files: 0, rows: 0, unmatched: [], failedFiles: [] });
+
+/**
+ * Whether a stored file needs no further read. A file read before a TD's name could be matched
+ * (they had left, or the matcher improved) is read again once one of its unmatched names now
+ * matches someone; it then stores those rows and stops. "(ambiguous)" and "(twice)" entries
+ * matched already, so they never trigger a re-read.
+ */
+function settled(unmatched: string[] | undefined, match: (n: PrintedName) => NameMatch | null): boolean {
+  if (unmatched === undefined) return false;
+  return !unmatched.some((name) => {
+    const comma = name.indexOf(', ');
+    return !name.endsWith(')') && comma > 0 && match({ surname: name.slice(0, comma), forenames: name.slice(comma + 2) }) !== null;
+  });
+}
+
+const message = (error: unknown) => (error instanceof Error ? error.message : String(error));
 
 type PrintedName = { surname: string; forenames: string; constituency?: string | null };
 
@@ -93,21 +115,26 @@ export async function syncInterests(ctx: DisclosureContext): Promise<DisclosureR
   }
   const registers = Array.from(newestByYear.values());
   const match = makeNameMatcher(ctx.roster);
-  const result: DisclosureResult = { files: 0, rows: 0, unmatched: [] };
+  const result = emptyDisclosureResult();
   for (const url of registers) {
-    if (stored.has(url)) continue;
-    const entries = parseInterestsRegister(await source.pages(url));
-    const { matched, unmatched } = matchFile(entries, (e) => e, match);
-    // One TD has one entry in a register: two entries for one TD cannot both be theirs.
-    const perMember = new Map<string, number>();
-    for (const m of matched) perMember.set(m.memberCode, (perMember.get(m.memberCode) ?? 0) + 1);
-    const kept = matched.filter((m) => perMember.get(m.memberCode) === 1);
-    for (const m of matched) if (perMember.get(m.memberCode)! > 1) unmatched.push(`${m.item.surname}, ${m.item.forenames} (twice)`);
-    await repo.replaceInterestsYear(interestsYearFromUrl(url)!, url, kept.map((m) => ({ memberCode: m.memberCode, entry: m.item })), unmatched, ctx.tdIds);
-    result.files++;
-    result.rows += kept.length;
-    result.unmatched.push(...unmatched);
-    ctx.log(`Interests ${interestsYearFromUrl(url)}: ${kept.length} of ${entries.length} entries matched.`);
+    if (settled(stored.get(url), match)) continue;
+    try {
+      const entries = parseInterestsRegister(await source.pages(url));
+      const { matched, unmatched } = matchFile(entries, (e) => e, match);
+      // One TD has one entry in a register: two entries for one TD cannot both be theirs.
+      const perMember = new Map<string, number>();
+      for (const m of matched) perMember.set(m.memberCode, (perMember.get(m.memberCode) ?? 0) + 1);
+      const kept = matched.filter((m) => perMember.get(m.memberCode) === 1);
+      for (const m of matched) if (perMember.get(m.memberCode)! > 1) unmatched.push(`${m.item.surname}, ${m.item.forenames} (twice)`);
+      await repo.replaceInterestsYear(interestsYearFromUrl(url)!, url, kept.map((m) => ({ memberCode: m.memberCode, entry: m.item })), unmatched, ctx.tdIds);
+      result.files++;
+      result.rows += kept.length;
+      result.unmatched.push(...unmatched);
+      ctx.log(`Interests ${interestsYearFromUrl(url)}: ${kept.length} of ${entries.length} entries matched.`);
+    } catch (error) {
+      result.failedFiles.push({ url, error: message(error) });
+      ctx.log(`Interests: ${url} failed (${message(error)}); the other files carry on, and it is tried again next run.`);
+    }
   }
   return result;
 }
@@ -139,17 +166,23 @@ export async function syncAllowances(ctx: DisclosureContext): Promise<Disclosure
   }
   const files = Array.from(newest, ([month, url]) => ({ url, month }));
   const match = makeNameMatcher(ctx.roster);
-  const result: DisclosureResult = { files: 0, rows: 0, unmatched: [] };
+  const result = emptyDisclosureResult();
   for (const { url, month } of files) {
-    if (stored.has(url)) continue;
-    const payments = parsePsaPayments(await source.pages(url));
-    // A member can have several rows in a month (arrears), all under one printed name.
-    const { matched, unmatched } = matchFile(payments, (p) => p, match);
-    await repo.replaceAllowanceFile(url, month, matched.map((m) => ({ memberCode: m.memberCode, payment: m.item, position: m.index })), unmatched, ctx.tdIds);
-    result.files++;
-    result.rows += matched.length;
-    for (const u of unmatched) if (!result.unmatched.includes(u)) result.unmatched.push(u);
+    if (settled(stored.get(url), match)) continue;
+    try {
+      const payments = parsePsaPayments(await source.pages(url));
+      // A member can have several rows in a month (arrears), all under one printed name.
+      const { matched, unmatched } = matchFile(payments, (p) => p, match);
+      await repo.replaceAllowanceFile(url, month, matched.map((m) => ({ memberCode: m.memberCode, payment: m.item, position: m.index })), unmatched, ctx.tdIds);
+      result.files++;
+      result.rows += matched.length;
+      for (const u of unmatched) if (!result.unmatched.includes(u)) result.unmatched.push(u);
+    } catch (error) {
+      // Newest first: one bad file must not stop every newer one from loading, run after run.
+      result.failedFiles.push({ url, error: message(error) });
+      ctx.log(`Allowances: ${url} failed (${message(error)}); the other files carry on, and it is tried again next run.`);
+    }
   }
-  if (result.files) ctx.log(`Allowances: ${result.rows} payments from ${result.files} new files.`);
+  if (result.files) ctx.log(`Allowances: ${result.rows} payments from ${result.files} files.`);
   return result;
 }

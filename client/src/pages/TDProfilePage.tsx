@@ -39,6 +39,8 @@ import { TdQuestionRecordCard } from '@/components/QuestionRecord';
 import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
+import { decodeParam } from '@/lib/routeParam';
+import { apiCall, apiEnvelope, orNullOn404, userMessage } from '@/lib/api';
 import { formatIsoDate } from '@/lib/isoDate';
 import { partyStyle } from '@/lib/parties';
 import { formatScore } from '@/lib/score';
@@ -59,13 +61,7 @@ import type {
 import type { TdProfile } from '@shared/scoresApi';
 import type { FeedArticle } from '@/lib/news';
 
-type ApiEnvelope<T> = { success: true; data: T; meta?: { total: number } };
-
-async function getParliament<T>(path: string): Promise<ApiEnvelope<T>> {
-  const res = await fetch(path);
-  if (!res.ok) throw new Error(`${res.status}: ${res.statusText}`);
-  return res.json();
-}
+const getParliament = <T,>(path: string) => apiEnvelope<T, { total: number }>('GET', path);
 
 /** Seats in the 34th Dáil. */
 const DAIL_SEATS = 174;
@@ -155,27 +151,15 @@ function fairnessNotes(s: TdParliamentSummary): string[] {
 }
 
 export default function TDProfilePageEnhanced() {
-  const { name } = useParams<{ name: string }>();
+  const name = decodeParam(useParams<{ name: string }>().name);
   const { toast } = useToast();
 
-  const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TdProfile>({
-    queryKey: ['td-profile-v4', name],  // v4: the score is built from Oireachtas facts only
-    queryFn: async () => {
-      const res = await fetch(`/api/scores/td/${encodeURIComponent(name || '')}`);
-      if (!res.ok) {
-        if (res.status === 404) throw new Error('TD_NOT_FOUND');
-        if (res.status >= 500) throw new Error('Server error - please try again later');
-        throw new Error('Failed to load TD profile');
-      }
-      const json = await res.json();
-      return json.data as TdProfile;
-    },
+  // null = no such TD (404).
+  const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TdProfile | null>({
+    queryKey: queryKeys.td.profile(name),
+    queryFn: () => orNullOn404(apiCall<TdProfile>('GET', `/api/scores/td/${encodeURIComponent(name || '')}`)),
     enabled: !!name,
-    retry: (failureCount, error) => {
-      // Don't retry if TD not found
-      if (error instanceof Error && error.message === 'TD_NOT_FOUND') return false;
-      return failureCount < 2;
-    },
+    retry: 2,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
     staleTime: 300000  // 5 minutes
   });
@@ -183,6 +167,8 @@ export default function TDProfilePageEnhanced() {
   const tdId = scoreData?.id;
 
   const [votesAgainstPartyOnly, setVotesAgainstPartyOnly] = useState(false);
+  // A tab's queries start when it is first opened, then stay cached. The side column is always on screen.
+  const [tab, setTab] = useState('votes');
 
   const {
     data: parliamentSummaryResp,
@@ -210,7 +196,7 @@ export default function TDProfilePageEnhanced() {
       getParliament<TdVote[]>(
         `/api/parliament/tds/${tdId}/votes?limit=20${votesAgainstPartyOnly ? '&againstParty=true' : ''}`
       ),
-    enabled: !!tdId,
+    enabled: !!tdId && tab === 'votes',
     staleTime: 5 * 60 * 1000
   });
   const tdVotes = tdVotesResp?.data ?? [];
@@ -224,7 +210,7 @@ export default function TDProfilePageEnhanced() {
   } = useQuery({
     queryKey: queryKeys.parliament.tdDebates(tdId ?? 0, 10),
     queryFn: () => getParliament<TdDebateContribution[]>(`/api/parliament/tds/${tdId}/debates?limit=10`),
-    enabled: !!tdId,
+    enabled: !!tdId && tab === 'debates',
     staleTime: 5 * 60 * 1000
   });
   const tdDebateContributions = tdDebatesResp?.data ?? [];
@@ -303,13 +289,11 @@ export default function TDProfilePageEnhanced() {
   // Recent news articles for this TD
   const { data: newsArticles = [], isLoading: newsLoading } = useQuery({
     queryKey: queryKeys.td.news(name || ''),
-    queryFn: async () => {
-      const res = await fetch(`/api/news-feed/td/${encodeURIComponent(name || '')}`);
-      if (!res.ok) return [] as FeedArticle[];
-      const json = await res.json();
-      return (json.data?.articles ?? []) as FeedArticle[];
-    },
-    enabled: !!name,
+    queryFn: () =>
+      apiCall<{ articles: FeedArticle[] }>('GET', `/api/news-feed/td/${encodeURIComponent(name || '')}`)
+        .then((data) => data.articles)
+        .catch(() => [] as FeedArticle[]),
+    enabled: !!name && tab === 'news',
     staleTime: 300000  // 5 minutes
   });
 
@@ -331,7 +315,7 @@ export default function TDProfilePageEnhanced() {
   }
 
   if (error || !scoreData) {
-    const isNotFound = !error || (error instanceof Error && error.message === 'TD_NOT_FOUND');
+    const isNotFound = !error;
     return (
       <EmptyState
         icon={SearchX}
@@ -349,9 +333,7 @@ export default function TDProfilePageEnhanced() {
       >
         {isNotFound
           ? 'No TD in the current Dáil has that name. Pick one from the rankings.'
-          : error instanceof Error
-            ? error.message
-            : 'Unable to fetch TD data.'}
+          : userMessage(error)}
       </EmptyState>
     );
   }
@@ -705,7 +687,7 @@ export default function TDProfilePageEnhanced() {
 
       <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         {/* Tabs */}
-        <Tabs defaultValue="votes" className="flex min-w-0 flex-col gap-4">
+        <Tabs value={tab} onValueChange={setTab} className="flex min-w-0 flex-col gap-4">
           <TabsList aria-label="Profile sections" className="grid h-auto w-full grid-cols-4 sm:max-w-[520px]">
             {['Votes', 'Debates', 'News', 'Background'].map((label) => (
               <TabsTrigger

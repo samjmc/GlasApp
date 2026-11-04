@@ -23,7 +23,12 @@ export function PledgePriorities() {
   const { ensure: ensureConsent } = usePoliticalConsent();
   const { toast } = useToast();
   const queryClient = useQueryClient();
-  const priorities = useQuery({ queryKey: queryKeys.pledges.priorities(user?.id), queryFn: pledgesApi.priorities });
+  // No inline error state: without the toast a failed load would silently show the default order.
+  const priorities = useQuery({
+    queryKey: queryKeys.pledges.priorities(user?.id),
+    queryFn: pledgesApi.priorities,
+    meta: { toastOnError: true },
+  });
   const [order, setOrder] = useState<PledgeCategory[]>([...RANKABLE]);
 
   // Start from the caller's saved ranking, then the community's, then the default order.

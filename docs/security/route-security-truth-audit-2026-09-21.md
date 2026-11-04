@@ -1,5 +1,10 @@
 # Route security truth audit — 2026-09-21
 
+> **Historical.** This is the audit as it stood on 2026-09-21. The auth rewrite of 2026-09-22
+> deleted `server/middleware/sessionMiddleware.ts`, `server/replitAuth.ts` and the session
+> login: see `docs/auth.md` for what replaced them. File paths below that no longer exist are
+> deleted code, not typos.
+
 **Scope:** every Express route in `server/`, the four auth guards, the RLS migrations, and the
 claims made by the Phase 4A (route security) and Phase 4B (RLS) agent reports.
 **Method:** static inventory (`scripts/audit/route-inventory.mjs`, since replaced by the generated
@@ -53,7 +58,7 @@ Severity is for the code as written. Whether any of it is *exploitable today* de
 
 | # | Sev | Finding | Evidence |
 |---|---|---|---|
-| F9 | HIGH | **RLS protects nothing on the server path.** The Drizzle pool is hard-coded to `null` in `server/db.ts`; every query goes through `supabaseDb`, the service-role client, which bypasses RLS. All authorization is therefore code-level, per handler. The Phase 4B migration only matters for the 14 direct browser queries (§2.1). | `server/db.ts:24`, `git grep supabaseDb -- server` |
+| F9 | HIGH | **RLS protects nothing on the server path.** The Drizzle pool is hard-coded to `null` in `server/db.ts`; every query goes through `supabaseDb`, the service-role client, which bypasses RLS. All authorization is therefore code-level, per handler. The Phase 4B migration only matters for the 14 direct browser queries (§2.1). **2026-10-12:** `supabaseDb` is deleted (it had no caller left); the server reaches Postgres only through Drizzle, which is not subject to RLS either, so authorization is still code-level per handler. | `server/db.ts:24`, `git grep supabaseDb -- server` |
 | F10 | HIGH | **Three different `isAuthenticated` functions with three identity shapes.** `auth/supabaseAuth.ts` (bearer → `req.user` = Supabase user, UUID id), `middleware/sessionMiddleware.ts` (session or bearer → `req.user = {id: number}`), `replitAuth.ts` (dev bypass / bearer / Replit OIDC → `req.user.claims.sub`). 104 routes use the first, 19 the second, 28 the third. Handlers then read `req.user.id`, `req.user.claims.sub` or `req.session.userId` inconsistently. | inventory "guard flavours" section |
 | F11 | HIGH | **The frontend never uses session login.** Zero client calls to `/api/auth/login`; all auth is Supabase bearer via `queryClient.ts`. So `req.session.userId` is never set for a real user. Every handler that authorizes on it is either dead (always 401) or, when guarded by `sessionMiddleware.isAuthenticated`'s bearer fallback, runs with `userId = undefined`. Affected: quiz save (`quiz/index.ts:64`), category rankings (`user/rankings/category.ts:20`), profile PATCH and image upload (`authRoutes.ts:690, 884`), political evolution (`politicalEvolutionRoutes.ts:77,112`), user location (`geographic/index.ts:145`), ideas/problems votes (which read `req.session.user.id`, a key nothing ever sets). These are **broken features**, not leaks, but they are also where the next IDOR will come from when someone "fixes" them by reading the id from the body. | `git grep -n "/api/auth/login" -- client/src` returns nothing |
 | F12 | MEDIUM | `replitAuth.isAuthenticated` grants `dev-user-123` to **every caller** when `NODE_ENV=development` and `REPLIT_DOMAINS` is unset. The Replit workspace runs `npm run dev` (development) and its `.replit.dev` URL is reachable while it is open. The deployment target runs `npm run start` (production), so production is safe; the workspace is not. Five route files use this guard. | `server/replitAuth.ts:220`, `.replit` |

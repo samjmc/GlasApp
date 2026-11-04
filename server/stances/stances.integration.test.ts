@@ -1,6 +1,6 @@
 /**
  * TD stances against a real Postgres: the pipeline end to end with only the model calls mocked
- * (at `callChatCompletion`, the one seam every model call goes through), the td_stances table
+ * (at aiService's `callChatCompletion` and `completeJson`, the seams every model call goes through), the td_stances table
  * and its constraints, the rebuild's selection SQL, and the `issues` a signed-in user sees.
  *
  * Skipped unless TEST_DATABASE_URL is set. Uses its OWN database, `<db>_stances`.
@@ -23,34 +23,34 @@ if (url) {
 
 const ai = vi.hoisted(() => ({ replies: {} as Record<string, unknown>, operations: [] as string[] }));
 
-vi.mock('../services/aiService', () => ({
-  isLLMConfigured: () => true,
-  callChatCompletion: vi.fn(async (_params: unknown, options: { operation: string }) => {
-    ai.operations.push(options.operation);
-    const reply = ai.replies[options.operation];
-    if (reply === undefined) throw new Error(`unexpected LLM operation ${options.operation}`);
-    return { choices: [{ message: { content: JSON.stringify(reply) } }] };
-  }),
-}));
+vi.mock('../services/aiService', async (importOriginal) => {
+  const answer = (operation: string) => {
+    ai.operations.push(operation);
+    const reply = ai.replies[operation];
+    if (reply === undefined) throw new Error(`unexpected LLM operation ${operation}`);
+    return reply;
+  };
+  return {
+    ...(await importOriginal<typeof import('../services/aiService')>()),
+    isLLMConfigured: () => true,
+    callChatCompletion: vi.fn(async (_params: unknown, options: { operation: string }) => ({
+      choices: [{ message: { content: JSON.stringify(answer(options.operation)) } }],
+    })),
+    completeJson: vi.fn(async (_system: string, _user: string, _temperature: number, operation: string) => answer(operation)),
+  };
+});
 // The Jev position check is the other outside call; every stance here is a position.
 vi.mock('./position', async (importOriginal) => ({
   ...(await importOriginal<typeof import('./position')>()),
   isJevConfigured: () => true,
   positionProbability: vi.fn(async () => 0.9),
 }));
-vi.mock('../services/articleImportanceService', () => ({
-  ArticleImportanceService: {
-    batchScoreAndRank: vi.fn(async (articles: Array<{ id: number }>) => ({
-      topArticles: articles.map((article) => ({ article, importance: { score: 80, reasoning: 'r', topicCategory: 'policy' } })),
-      skippedArticles: [],
-      stats: { scored: articles.length },
-    })),
-  },
-}));
 vi.mock('../services/tdExtractionService', () => ({
   TDExtractionService: {
-    extractTDMentions: vi.fn(async () => [{ name: 'Mary Lou McDonald' }]),
-    filterHighConfidenceMentions: (mentions: unknown[]) => mentions,
+    // Mary Lou McDonald, with the row the test inserts: extraction carries each TD's row.
+    extractTDMentions: vi.fn(async () => [
+      { name: 'Mary Lou McDonald', td: { id: tdId, name: 'Mary Lou McDonald', party: 'Sinn Féin', constituency: null, offices: [{ title: 'Leader of the Opposition' }] }, context: '' },
+    ]),
     isSubstantialMention: () => true,
   },
 }));
@@ -290,6 +290,54 @@ run('TD stances against Postgres', () => {
     expect(differs.alignment).toBe(blend(0, axisDiffers.alignment));
     expect(agrees.alignment).toBeGreaterThan(axisAgrees.alignment);
     expect(differs.alignment).toBeLessThan(axisDiffers.alignment);
+  });
+
+  it('a re-run under stricter rules deletes the stance it no longer accepts, with its evidence (sweep P10)', async () => {
+    const articleId = await addArticle({ title: 'Housing plan unveiled', content: STATED });
+    modelStates();
+    await pipeline.runTdPipeline();
+    expect(await count('td_stances')).toBe(1);
+    expect(await count('td_ideology_evidence')).toBe(1);
+
+    const { emptyStanceStats, recordStances } = await import('./record');
+    const td = { id: tdId, name: 'Mary Lou McDonald', party: 'Sinn Féin', offices: [] };
+    // The same quote, now judged not a policy position: as `npm run stances -- --rebuild` would see it.
+    const stats = emptyStanceStats();
+    await recordStances({ id: articleId, title: 'Housing plan unveiled', content: STATED }, [td], stats, {
+      complete: async (_s, _u, _t, operation) => ai.replies[operation],
+      position: async () => 0.2,
+      question: async () => null,
+    });
+    expect(stats).toMatchObject({ accepted: 0, rejected: { not_position: 1 } });
+    expect(await count('td_stances')).toBe(0);
+    expect(await count('td_ideology_evidence')).toBe(0);
+    expect((await ideology.tdProfile(tdId))?.profile?.evidenceCount ?? 0).toBe(0);
+  });
+
+  it('a news stance write waits for the stance lock the nightly rebuild holds, so neither loses the other (sweep P11, P33)', async () => {
+    const articleId = await addArticle({ title: 'Housing plan unveiled', content: STATED });
+    modelStates();
+    const { STANCE_SYNC_LOCK } = await import('../ideology/repository');
+    const { emptyStanceStats, recordStances } = await import('./record');
+    const td = { id: tdId, name: 'Mary Lou McDonald', party: 'Sinn Féin', offices: [] };
+    const other = await dbmod.pool.connect();
+    try {
+      await other.query('select pg_advisory_lock($1::bigint)', [STANCE_SYNC_LOCK]);
+      let done = false;
+      const write = recordStances({ id: articleId, title: 'Housing plan unveiled', content: STATED }, [td], emptyStanceStats(), {
+        complete: async (_s, _u, _t, operation) => ai.replies[operation],
+        position: async () => 0.9,
+        question: async () => null,
+      }).then(() => (done = true));
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      expect(done).toBe(false);
+      expect(await count('td_stances')).toBe(0);
+      await other.query('select pg_advisory_unlock($1::bigint)', [STANCE_SYNC_LOCK]);
+      await write;
+      expect(await count('td_stances')).toBe(1);
+    } finally {
+      other.release();
+    }
   });
 
   it('the rebuild reads canonical articles in the window that already have a question and a linked TD', async () => {

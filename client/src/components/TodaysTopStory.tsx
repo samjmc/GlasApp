@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { queryKeys } from "@/lib/queryKeys";
+import { apiCall } from "@/lib/api";
 import { useRegion } from "@/hooks/useRegion";
 import { ArticleImage } from "@/components/news/ArticleImage";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -29,12 +30,7 @@ export function TodaysTopStory({ variant = "full" }: TodaysTopStoryProps) {
   const { regionCode } = useRegion();
   const { data, isLoading, isError, isFetching, refetch } = useQuery({
     queryKey: queryKeys.news.topStoryToday(regionCode),
-    queryFn: async () => {
-      const res = await fetch("/api/news-feed?sort=today&limit=1");
-      if (!res.ok) throw new Error("Failed to fetch");
-      const json = await res.json();
-      return json.data as { articles: FeedArticle[]; total: number; hasMore: boolean };
-    },
+    queryFn: () => apiCall<{ articles: FeedArticle[]; total: number; hasMore: boolean }>("GET", "/api/news-feed?sort=today&limit=1"),
     staleTime: 1000,
   });
 

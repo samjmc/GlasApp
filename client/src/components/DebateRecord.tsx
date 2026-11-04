@@ -16,14 +16,13 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from '@/components/pulse/EmptyState';
 import { PartyLabel } from '@/components/pulse/Party';
 import { RetryButton } from '@/components/data/RetryButton';
-import { apiClient } from '@/lib/queryClient';
+import { apiCall } from '@/lib/api';
 import { formatIsoDate } from '@/lib/isoDate';
 import { queryKeys } from '@/lib/queryKeys';
 import { cn } from '@/lib/utils';
 import type { DebateItemView, DebateRecordParticipant, DebateRecordView, TdDebateRecord } from '@shared/parliamentApi';
 
-type Envelope<T> = { success: true; data: T };
-const get = <T,>(path: string) => apiClient.get<Envelope<T>>(path).then((r) => r.data);
+const get = <T,>(path: string) => apiCall<T>('GET', path);
 
 const CLAIM_LABELS: Record<NonNullable<DebateItemView['claimType']>, string> = {
   figure: 'figure',

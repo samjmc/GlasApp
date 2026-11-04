@@ -23,22 +23,15 @@ const DOC_FILE = /^(?:README\.md|ARCHITECTURE\.md|CLAUDE\.md|\.claude\/.+\.md|do
 
 /**
  * Variables the server reads that .env.example does not list. They are optional or
- * deliberate: job-secret aliases (ADMIN_API_SECRET is the documented one), scheduler
- * switches, a Redis cache, a log level, a pool size, and test and robot database URLs.
+ * deliberate: job-secret aliases (ADMIN_API_SECRET is the documented one) and the robots
+ * harness's source database URL.
  * Add a name to .env.example and delete it here; a new undocumented one fails the check.
  */
 export const ENV_MISSING_FROM_EXAMPLE: readonly string[] = [
   'ADMIN_SECRET',
   'CRON_SECRET',
-  'DB_POOL_MAX',
-  'DEBATE_ITEMS',
-  'DIVISION_STANCES',
   'JOB_SECRET',
-  'LOG_LEVEL',
-  'QUESTION_ITEMS',
-  'REDIS_URL',
   'ROBOTS_SOURCE_DATABASE_URL',
-  'TEST_DATABASE_URL',
 ];
 
 /**
@@ -47,8 +40,9 @@ export const ENV_MISSING_FROM_EXAMPLE: readonly string[] = [
  * come off the list, so the list only shrinks.
  */
 export const KNOWN_DOC_DRIFT: ReadonlyArray<{ file: string; why: string }> = [
-  { file: 'README.md', why: 'Links MIGRATION_SUMMARY.md, which is gone, and LICENSE, which was never committed; the migration checklist around the first link is stale too.' },
   { file: 'docs/plans/news-ingestion-rebuild.md', why: 'Lists `npm run update-news` in the table of code this rebuild deleted, so the name is meant to be gone.' },
+  { file: 'docs/plans/facts-only-scoring.md', why: 'Dated plan: records the `td-scoring` alias as it was then; #189 deleted it later.' },
+  { file: 'docs/plans/td-scoring-rebuild.md', why: 'Dated plan: `npm run td-scoring` was the command this rebuild added; #189 deleted it later.' },
 ];
 
 export interface DocCheck {

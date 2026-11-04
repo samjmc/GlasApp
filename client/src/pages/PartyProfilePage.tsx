@@ -21,6 +21,8 @@ import { fetchPartyAnswers, fetchPartyIdeology } from '@/lib/ideologyApi';
 import { partyIdeologyView } from '@/lib/partyIdeology';
 import { partyStyle } from '@/lib/parties';
 import { queryKeys } from '@/lib/queryKeys';
+import { decodeParam } from '@/lib/routeParam';
+import { apiCall, orNullOn404, userMessage } from '@/lib/api';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { cn } from '@/lib/utils';
 import type { PartyDetail, PartyScoreRow, TdCard } from '@shared/scoresApi';
@@ -68,46 +70,25 @@ function MemberRow({ td, party, value, pos }: { td: TdCard; party: string; value
   );
 }
 
-/**
- * wouter runs decodeURI on the path, which leaves reserved escapes (%26, %2F, %23) encoded.
- * Finish the job, but keep the raw value when it holds a bare "%" (e.g. "100% RDR").
- */
-function decodeParam(value: string | undefined): string | undefined {
-  if (!value) return value;
-  try {
-    return decodeURIComponent(value);
-  } catch {
-    return value;
-  }
-}
-
 export default function PartyProfilePage() {
   const name = decodeParam(useParams<{ name: string }>().name);
   const [tab, setTab] = useState('overview');
   const [memberSort, setMemberSort] = useState<MemberSort>('overall');
 
-  const { data: party, isLoading, error, refetch, isFetching } = useQuery<PartyProfile>({
-    queryKey: ['party-profile-v2', name],
+  // null = no such party (404).
+  const { data: party, isLoading, error, refetch, isFetching } = useQuery<PartyProfile | null>({
+    queryKey: queryKeys.party.profile(name),
     queryFn: async () => {
-      const [detailRes, rankingsRes] = await Promise.all([
-        fetch(`/api/scores/party/${encodeURIComponent(name || '')}`),
-        fetch('/api/scores/parties'),
+      const [detail, rankings] = await Promise.all([
+        orNullOn404(apiCall<PartyDetail>('GET', `/api/scores/party/${encodeURIComponent(name || '')}`)),
+        apiCall<PartyScoreRow[]>('GET', '/api/scores/parties').catch(() => [] as PartyScoreRow[]),
       ]);
-      if (detailRes.status === 404) throw new Error('PARTY_NOT_FOUND');
-      if (!detailRes.ok) {
-        if (detailRes.status >= 500) throw new Error('Server error - please try again later');
-        throw new Error('Failed to load party data');
-      }
-      const detail = (await detailRes.json()).data as PartyDetail;
-      const rankings: PartyScoreRow[] = rankingsRes.ok ? ((await rankingsRes.json()).data ?? []) : [];
+      if (!detail) return null;
       const ranking = rankings.find((p) => p.party.toLowerCase() === detail.party.toLowerCase()) ?? null;
       return { ...detail, ranking };
     },
     enabled: !!name,
-    retry: (failureCount, error) => {
-      if (error instanceof Error && error.message === 'PARTY_NOT_FOUND') return false;
-      return failureCount < 2;
-    },
+    retry: 2,
     retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
   });
 
@@ -143,7 +124,7 @@ export default function PartyProfilePage() {
   }
 
   if (error || !party) {
-    const isNotFound = !error || (error instanceof Error && error.message === 'PARTY_NOT_FOUND');
+    const isNotFound = !error;
     return (
       <EmptyState
         icon={SearchX}
@@ -161,9 +142,7 @@ export default function PartyProfilePage() {
       >
         {isNotFound
           ? 'No party in the current Dáil has that name. Pick one from the rankings.'
-          : error instanceof Error
-            ? error.message
-            : 'Unable to fetch party data.'}
+          : userMessage(error)}
       </EmptyState>
     );
   }

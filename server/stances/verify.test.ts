@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { extractionText, type CandidateTd, type RawStance } from './extract';
-import { NEAR_CHARS, SENTENCE_MAX_WORDS, insideTeaser, namesFor, normalise, quotationAround, sentenceSpan, verifyStances } from './verify';
+import { NEAR_CHARS, SENTENCE_MAX_WORDS, insideTeaser, namesFor, normalise, normaliseQuote, quotationAround, sentenceSpan, verifyStances } from './verify';
 
 const OBRIEN: CandidateTd = { id: 1, name: "Darragh O'Brien", party: 'Fianna Fáil', offices: ['Minister for Housing'] };
 const MURCHU: CandidateTd = { id: 2, name: 'Ruairí Ó Murchú', party: 'Sinn Féin', offices: [] };
@@ -39,6 +39,13 @@ describe('normalise', () => {
     expect(n.offsets).toHaveLength(n.text.length);
     expect(original[n.offsets[n.text.indexOf('b')]!]).toBe('B');
     expect(original[n.offsets[n.text.indexOf('"')]!]).toBe('“');
+  });
+});
+
+describe('normaliseQuote', () => {
+  it('normalises, then trims the quote marks and spaces a model wraps around a quote, and nothing inside', () => {
+    expect(normaliseQuote(' “We’ll build homes,” she said ')).toBe(`we'll build homes," she said`);
+    expect(normaliseQuote(`'Ó Murchú's plan'`)).toBe(`o murchu's plan`);
   });
 });
 

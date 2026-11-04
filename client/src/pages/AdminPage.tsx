@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { queryKeys } from "@/lib/queryKeys";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -57,64 +57,63 @@ const emptyPledge = (party: string): NewPledgeInput => ({
 
 export default function AdminPage() {
   const [party, setParty] = useState(PARTY_NAMES[0] ?? "");
-  const pledges = useQuery({ queryKey: ["/api/pledges", "party", party], queryFn: () => pledgesApi.list(party), enabled: !!party });
+  const pledges = useQuery({ queryKey: queryKeys.pledges.list(party), queryFn: () => pledgesApi.list(party), enabled: !!party });
 
+  // Admin-only: the route is guarded in App.tsx.
   return (
-    <ProtectedRoute requireAdmin={true}>
-      <div className="mx-auto max-w-6xl space-y-4 p-4">
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <h1 className="font-display text-2xl font-bold tracking-tight">Pledge tracking</h1>
-            <p className="text-sm text-muted-foreground">
-              Record promises with their source, add evidence, and set each status from that evidence.
-            </p>
-          </div>
-          <Badge variant="outline">
-            <Shield className="mr-1 h-4 w-4" /> Admin
-          </Badge>
+    <div className="mx-auto max-w-6xl space-y-4 p-4">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h1 className="font-display text-2xl font-bold tracking-tight">Pledge tracking</h1>
+          <p className="text-sm text-muted-foreground">
+            Record promises with their source, add evidence, and set each status from that evidence.
+          </p>
         </div>
-
-        <div className="max-w-xs">
-          <Label>Party</Label>
-          <Select value={party} onValueChange={setParty}>
-            <SelectTrigger>
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              {PARTY_NAMES.map((name) => (
-                <SelectItem key={name} value={name}>
-                  {name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <NewPledgeForm party={party} />
-
-        <Card>
-          <CardHeader className="py-4">
-            <CardTitle className="text-lg">{party} pledges</CardTitle>
-            <CardDescription>{pledges.data ? `${pledges.data.length} recorded` : "Loading…"}</CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            {pledges.isError && <p className="text-sm text-destructive">Could not load pledges.</p>}
-            {pledges.data?.length === 0 && <p className="text-sm text-muted-foreground">No pledges recorded for this party.</p>}
-            {pledges.data?.map((pledge) => (
-              <PledgeEditor key={pledge.id} pledge={pledge} />
-            ))}
-          </CardContent>
-        </Card>
+        <Badge variant="outline">
+          <Shield className="mr-1 h-4 w-4" /> Admin
+        </Badge>
       </div>
-    </ProtectedRoute>
+
+      <div className="max-w-xs">
+        <Label htmlFor="pledge-party">Party</Label>
+        <Select value={party} onValueChange={setParty}>
+          <SelectTrigger id="pledge-party">
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            {PARTY_NAMES.map((name) => (
+              <SelectItem key={name} value={name}>
+                {name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      <NewPledgeForm party={party} />
+
+      <Card>
+        <CardHeader className="py-4">
+          <CardTitle className="text-lg">{party} pledges</CardTitle>
+          <CardDescription>{pledges.data ? `${pledges.data.length} recorded` : "Loading…"}</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          {pledges.isError && <p className="text-sm text-destructive">Could not load pledges.</p>}
+          {pledges.data?.length === 0 && <p className="text-sm text-muted-foreground">No pledges recorded for this party.</p>}
+          {pledges.data?.map((pledge) => (
+            <PledgeEditor key={pledge.id} pledge={pledge} />
+          ))}
+        </CardContent>
+      </Card>
+    </div>
   );
 }
 
 function useInvalidatePledges() {
   const queryClient = useQueryClient();
   return () => {
-    queryClient.invalidateQueries({ queryKey: ["/api/pledges"] });
-    queryClient.invalidateQueries({ queryKey: ["/api/pledges/parties"] });
+    queryClient.invalidateQueries({ queryKey: queryKeys.pledges.all() });
+    queryClient.invalidateQueries({ queryKey: queryKeys.pledges.partiesAll() });
   };
 }
 
@@ -161,9 +160,9 @@ function NewPledgeForm({ party }: { party: string }) {
             <Textarea id="pledge-description" rows={3} value={form.description} onChange={(e) => set("description", e.target.value)} />
           </div>
           <div>
-            <Label>Category</Label>
+            <Label htmlFor="pledge-category">Category</Label>
             <Select value={form.category} onValueChange={(v) => set("category", v as PledgeCategory)}>
-              <SelectTrigger>
+              <SelectTrigger id="pledge-category">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -261,9 +260,9 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
 
       <div className="mt-2 grid gap-2 md:grid-cols-[200px_1fr_auto] md:items-end">
         <div>
-          <Label>Status</Label>
+          <Label htmlFor={`status-${pledge.id}`}>Status</Label>
           <Select value={status} onValueChange={(v) => setStatus(v as PledgeStatus)}>
-            <SelectTrigger>
+            <SelectTrigger id={`status-${pledge.id}`}>
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -276,8 +275,8 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
           </Select>
         </div>
         <div>
-          <Label>Why (shown to readers)</Label>
-          <Input value={note} onChange={(e) => setNote(e.target.value)} placeholder="One sentence, based on the evidence" />
+          <Label htmlFor={`status-note-${pledge.id}`}>Why (shown to readers)</Label>
+          <Input id={`status-note-${pledge.id}`} value={note} onChange={(e) => setNote(e.target.value)} placeholder="One sentence, based on the evidence" />
         </div>
         <Button onClick={() => save.mutate()} disabled={!changed || save.isPending}>
           {save.isPending ? "Saving…" : "Save status"}
@@ -296,7 +295,7 @@ function PledgeEditor({ pledge }: { pledge: Pledge }) {
 function EvidenceEditor({ pledgeId }: { pledgeId: number }) {
   const { toast } = useToast();
   const invalidate = useInvalidatePledges();
-  const detail = useQuery({ queryKey: ["/api/pledges", pledgeId], queryFn: () => pledgesApi.get(pledgeId) });
+  const detail = useQuery({ queryKey: queryKeys.pledges.detail(pledgeId), queryFn: () => pledgesApi.get(pledgeId), meta: { toastOnError: true } });
   const [kind, setKind] = useState<EvidenceKind>("policy_implemented");
   const [summary, setSummary] = useState("");
   const [occurredOn, setOccurredOn] = useState(today());
@@ -370,8 +369,9 @@ function EvidenceEditor({ pledgeId }: { pledgeId: number }) {
       ))}
 
       <div className="grid gap-2 md:grid-cols-2">
+        {/* One editor per open pledge, so the fields are named with aria-label rather than shared ids. */}
         <Select value={kind} onValueChange={(v) => setKind(v as EvidenceKind)}>
-          <SelectTrigger>
+          <SelectTrigger aria-label="Evidence kind">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -382,10 +382,10 @@ function EvidenceEditor({ pledgeId }: { pledgeId: number }) {
             ))}
           </SelectContent>
         </Select>
-        <Input type="date" value={occurredOn} onChange={(e) => setOccurredOn(e.target.value)} />
-        <Textarea className="md:col-span-2" rows={2} placeholder="What happened" value={summary} onChange={(e) => setSummary(e.target.value)} />
-        <Input type="url" placeholder="Source link (https://…)" value={sourceUrl} onChange={(e) => setSourceUrl(e.target.value)} />
-        <Input placeholder="Dáil division id (optional)" value={divisionId} onChange={(e) => setDivisionId(e.target.value)} />
+        <Input type="date" aria-label="Date it happened" value={occurredOn} onChange={(e) => setOccurredOn(e.target.value)} />
+        <Textarea className="md:col-span-2" rows={2} aria-label="What happened" placeholder="What happened" value={summary} onChange={(e) => setSummary(e.target.value)} />
+        <Input type="url" aria-label="Source link" placeholder="Source link (https://…)" value={sourceUrl} onChange={(e) => setSourceUrl(e.target.value)} />
+        <Input aria-label="Dáil division id (optional)" placeholder="Dáil division id (optional)" value={divisionId} onChange={(e) => setDivisionId(e.target.value)} />
       </div>
       <Button size="sm" onClick={() => add.mutate()} disabled={!ready || add.isPending}>
         {add.isPending ? "Adding…" : "Add evidence"}

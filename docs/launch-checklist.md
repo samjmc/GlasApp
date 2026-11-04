@@ -88,14 +88,14 @@ or sign-in is silently disabled), set an admin secret, keep `SCHEDULER=off`.
 ## 4. Turning the crons on
 
 Only when step 3 passes, the migrations are applied, and no other copy (a laptop, an old host) runs crons
-against the same database. Then follow `docs/deploy.md` section 6. `DIVISION_STANCES` and `DEBATE_ITEMS`
-stay off until you want the model cost.
+against the same database. Then follow `docs/deploy.md` section 6. `DIVISION_STANCES`, `DEBATE_ITEMS` and
+`QUESTION_ITEMS` stay off until you want the model cost.
 
 ## 5. Known limits at launch
 
 - One instance; a deploy means a short gap. Uploads live on a volume that must be backed up.
-- **No Content-Security-Policy** (`helmet` has it off) while the sign-in token is in localStorage. Turn it on in
-  report-only mode first.
+- **The Content-Security-Policy is report-only** (`server/middleware/securityHeaders.ts`), so it blocks nothing
+  while the sign-in token is in localStorage. Check what it reports, then set `reportOnly` to false.
 - `/health` only says the process is up, not that the database is reachable. Watch `/api/parliament/status`.
 - Database TLS certificates are not verified (the pooler's chain is not trusted by node-postgres).
 - No error tracking (Sentry or similar) and no uptime monitor. Add one before the first campaign.
