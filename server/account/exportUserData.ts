@@ -10,8 +10,7 @@
  */
 import { and, asc, desc, eq, inArray } from 'drizzle-orm';
 import { db, type Db } from '../db';
-import { publicProfile } from './profile';
-import { users } from '@shared/schema/accounts';
+import { users, type UserRow } from '@shared/schema/accounts';
 import { pledgeCategoryPriorities } from '@shared/schema/pledges';
 import { ideologyProfiles, quizResults } from '@shared/schema/quiz';
 import { dailySessionItems, dailySessions, policyQuestionOptions, policyQuestions, policyVotes } from '@shared/schema/voting';
@@ -64,8 +63,8 @@ const NOTES = [
   'Timestamps are in UTC; a daily session\'s sessionDate is the Irish calendar day. The position on each quiz result and in ideologyProfile is one number from -10 to +10 on each of eight dimensions: economic, social, cultural, authority, environmental, welfare, globalism and technocratic.',
 ];
 
-/** The profile as the app already shows it to its owner (publicProfile), plus the email. */
-type Account = ReturnType<typeof publicProfile> & { email: string | null };
+/** The profile row as the app already shows it to its owner (GET /api/profile/me), plus the email. */
+type Account = UserRow & { email: string | null };
 
 export interface UserDataExport {
   format: number;
@@ -136,7 +135,7 @@ export async function exportUserData(
   return {
     format: EXPORT_FORMAT_VERSION,
     exportedAt: now.toISOString(),
-    account: profile ? { ...publicProfile(profile), email: identity.email } : null,
+    account: profile ? { ...profile, email: identity.email } : null,
     profileMetadata: Object.fromEntries(
       PROFILE_METADATA_KEYS.filter((key) => identity.userMetadata[key] != null).map((key) => [key, identity.userMetadata[key]]),
     ),

@@ -43,7 +43,7 @@ let matchInputs: { at: number; loaded: Promise<MatchInputs> } | null = null;
 /**
  * What every match reads: the active TDs, every TD and party profile and the evidence summary
  * (a grouped count over all of td_ideology_evidence). Same for every caller, and changed only
- * by the evidence and profile writes (service.ts, rebuild.ts), so read once and shared. Callers
+ * by the evidence and profile writes (recompute.ts, rebuild.ts), so read once and shared. Callers
  * must not mutate it.
  */
 function loadMatchInputs(): Promise<MatchInputs> {

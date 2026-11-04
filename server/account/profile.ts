@@ -79,8 +79,3 @@ export async function backfillFromMetadata(row: UserRow, metadata: Record<string
   const [updated] = await database.update(users).set(copy).where(eq(users.id, row.id)).returning();
   return updated ?? row;
 }
-
-/** What the client may see: the whole row. It holds no secrets; this is the one place to hide a column if that changes. */
-export function publicProfile(row: UserRow) {
-  return row;
-}

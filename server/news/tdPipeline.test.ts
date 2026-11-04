@@ -54,7 +54,7 @@ vi.mock('../stances/repository', () => {
     rebuildArticles: vi.fn(),
   };
 });
-vi.mock('../ideology/service', () => ({ recomputeTdProfile: m.recomputeTdProfile, recomputePartyProfile: vi.fn() }));
+vi.mock('../ideology/recompute', () => ({ recomputeTdProfile: m.recomputeTdProfile, recomputePartyProfile: vi.fn() }));
 vi.mock('../stances/position', async (importOriginal) => ({
   ...(await importOriginal<typeof import('../stances/position')>()),
   isJevConfigured: () => true,

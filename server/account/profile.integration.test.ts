@@ -46,8 +46,7 @@ run('profile store against Postgres', () => {
     await profiles.updateProfile('user-a', { firstName: 'Máire', county: 'Galway' });
     const row = await profiles.updateProfile('user-a', { bio: 'Hi' });
     expect(row).toMatchObject({ firstName: 'Máire', county: 'Galway', bio: 'Hi' });
-    const view = profiles.publicProfile((await profiles.getProfile('user-a'))!);
-    expect(view).toMatchObject({ firstName: 'Máire', county: 'Galway', bio: 'Hi' });
+    expect(await profiles.getProfile('user-a')).toMatchObject({ firstName: 'Máire', county: 'Galway', bio: 'Hi' });
   });
 
   it('has no phone columns any more (migration 0034)', async () => {
