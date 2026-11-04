@@ -12,7 +12,7 @@ import { serializeError } from './logger';
  * carry one-time credentials in the query, so anyone reading the logs could redeem them; the headers add
  * the visitor's user agent to their IP. So the request is logged as its path only. The response is
  * logged as its status only: the default also writes every response header, and the HTTPS redirect in
- * index.ts copies the request's query string into `Location`.
+ * app.ts copies the request's query string into `Location`.
  *
  * `remoteAddress` is the socket peer. Behind Caddy that is the Caddy container, not the visitor: this
  * log deliberately holds no visitor IP (data minimisation). Rate-limit warnings name the IP they limit.

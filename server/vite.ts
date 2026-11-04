@@ -70,7 +70,8 @@ export async function setupVite(app: Express, server: Server) {
   process.on('exit', shutdownVite);
 
   app.use(vite.middlewares);
-  app.use("*", async (req, res, next) => {
+  // No path: app.use then runs for every request. Express 5 rejects a bare "*" path.
+  app.use(async (req, res, next) => {
     const url = req.originalUrl;
 
     try {

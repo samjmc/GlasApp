@@ -50,7 +50,7 @@ describe('securityHeaders', () => {
   });
 
   it('is mounted by the server, and helmet is configured nowhere else', () => {
-    const src = readFileSync(path.join(__dirname, '..', 'index.ts'), 'utf8');
+    const src = readFileSync(path.join(__dirname, '..', 'app.ts'), 'utf8');
     expect(src.match(/app\.use\(securityHeaders\(\)\)/g)).toHaveLength(1);
     expect(src).not.toMatch(/helmet\s*\(/);
   });

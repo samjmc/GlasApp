@@ -15,7 +15,7 @@ beforeAll(async () => {
   app.get('/api/real', (_req, res) => res.json({ ok: true }));
   app.use('/api', apiNotFound);
   // Stands in for the Vite / static index.html fallback.
-  app.use('*', (_req, res) => res.type('html').send('<!DOCTYPE html>'));
+  app.use((_req, res) => res.type('html').send('<!DOCTYPE html>'));
   server = app.listen(0);
   await new Promise((r) => server.once('listening', r));
   base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;

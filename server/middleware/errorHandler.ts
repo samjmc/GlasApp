@@ -9,9 +9,15 @@ import { AppError } from '../utils/errors';
 import { formatError, ErrorCodes } from '../utils/responseFormatters';
 import { requestLogger } from '../utils/logger';
 
+/**
+ * Route params as plain strings. Express 5 types a param as `string | string[]` because a
+ * `*splat` wildcard captures an array; no route wrapped here uses one, so each is a string.
+ */
+type StringParamsRequest = Request<Record<string, string>>;
+
 // Type for async route handler functions
 export type AsyncRouteHandler = (
-  req: Request,
+  req: StringParamsRequest,
   res: Response,
   next: NextFunction
 ) => Promise<void> | Promise<any>;
@@ -115,7 +121,7 @@ export const errorHandler = (
 /** Wrap an async route handler to forward errors. */
 export const asyncHandler = (fn: AsyncRouteHandler) => {
   return (req: Request, res: Response, next: NextFunction) => {
-    Promise.resolve(fn(req, res, next)).catch(next);
+    Promise.resolve(fn(req as StringParamsRequest, res, next)).catch(next);
   };
 };
 
