@@ -37,8 +37,12 @@ COPY public ./public
 # means a fresh named volume starts out writable by the non-root user.
 RUN mkdir -p public/uploads && chown node:node public/uploads
 
+# SCHEDULER=off: a container started with no SCHEDULER (a plain `docker run`) runs no cron. The crons
+# write to the real database (scoring, the parliament sync), so they are something to turn ON on purpose:
+# set SCHEDULER=on (docs/deploy.md section 6). Compose sets the same default.
 ENV NODE_ENV=production \
-    PORT=5000
+    PORT=5000 \
+    SCHEDULER=off
 USER node
 EXPOSE 5000
 
