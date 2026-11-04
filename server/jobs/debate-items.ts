@@ -10,7 +10,9 @@ import 'dotenv/config';
 import { repository as repo } from '../parliament';
 import { extractDebates } from '../parliament/debateItems/run';
 import { runItemsJob } from './itemsJob';
+import { approveWrite } from './liveDbGuard';
 
+approveWrite('debates:items', process.argv.includes('--dry-run'));
 runItemsJob({
   units: 'argued debates',
   extract: extractDebates,

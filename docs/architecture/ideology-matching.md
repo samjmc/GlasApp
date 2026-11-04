@@ -27,13 +27,18 @@ globalism, environmental, welfare and technocratic while every model prompt used
 A profile is a per-dimension **weighted mean of positions**: a prior plus every observation that
 says something about that dimension. An observation silent on a dimension does not pull it to 0.
 It is order-independent, so every profile can be rebuilt from its evidence at any time:
-`npm run ideology -- --recalculate`.
+`npm run ideology -- --recalculate --yes`.
 
 | Subject | Prior | Evidence | Decay |
 |---|---|---|---|
 | user | none | latest quiz (weight 10 × its coverage, only the dimensions it asked) + every policy vote (`listUserVoteVectors`) | none |
 | TD | party baseline (`partyBaselines.ts`), weight 3; independents none | `politics.td_ideology_evidence`: verified news stances and the TD's own Dáil votes (both `stance`, `server/stances`), debate stances (not wired yet) | 180-day half-life |
 | party | — | mean of its TDs' profiles, each weighted 3 + its evidence weight; baseline when it has none. This stored row is `tdMean`; see "Party manifestos" for what a party is matched on | — |
+
+`POST /api/quiz` takes only a whole quiz (at least 3 answers on every dimension), so a user's latest
+quiz always speaks to every dimension; a coverage below 1 comes only from older stored results. A
+user's timeline (`/api/ideology/me/timeline`) has one point per Irish calendar day, the days the
+daily sessions use.
 
 ### Party manifestos (`server/partyQuiz`, read time only)
 

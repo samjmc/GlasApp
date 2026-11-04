@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MIN_EXCHANGES, SECURED_POINTS, formatFigures, scoreExchanges, type ExchangeItem, type ExchangeMember } from './rules';
+import { MIN_EXCHANGES, SECURED_POINTS, formatFigures, scoreExchanges, type AskerTotals, type ExchangeItem, type ExchangeMember } from './rules';
 
 const M = (over: Partial<ExchangeMember>): ExchangeMember => ({
   exchangeId: 'x1',
@@ -53,11 +53,22 @@ describe('formatFigures', () => {
       Array.from({ length: n }, (_, k) => [M({ exchangeId: `${member}-${format}-${k}`, format, memberCode: member, asked: true }), M({ exchangeId: `${member}-${format}-${k}`, format, memberCode: 'MIN', inOffice: true, governmentSide: true })]).flat(),
       Array.from({ length: n }, (_, k) => k).filter((k) => k % securedEvery === 0).map((k) => I({ exchangeId: `${member}-${format}-${k}` })),
     ).filter((r) => r.memberCode === member);
+  /** Each member's totals per format, as tdQuestionRecord sums them in SQL. */
+  const totals = (rows: ReturnType<typeof asked>) => {
+    const by = new Map<string, AskerTotals>();
+    for (const r of rows.filter((x) => x.asked && !x.inOffice)) {
+      const t = by.get(`${r.memberCode}\u0000${r.format}`) ?? { format: r.format, asked: 0, securedExchanges: 0 };
+      t.asked++;
+      if (r.secured > 0) t.securedExchanges++;
+      by.set(`${r.memberCode}\u0000${r.format}`, t);
+    }
+    return Array.from(by.values());
+  };
 
   it('gives a rate per 10 for oral PQs and Topical Issues, against backbenchers with enough exchanges, never pooled', () => {
     expect(MIN_EXCHANGES).toBe(10);
     const a = [...asked('A', 'oral_pq', 10, 2), ...asked('A', 'leaders_questions', 4, 1)];
-    const everyone = [...a, ...asked('B', 'oral_pq', 20, 4), ...asked('C', 'oral_pq', 9, 1)];
+    const everyone = totals([...a, ...asked('B', 'oral_pq', 20, 4), ...asked('C', 'oral_pq', 9, 1)]);
     const figures = Object.fromEntries(formatFigures(a, everyone).map((f) => [f.format, f]));
     // A: 5 of 10 secured; B: 5 of 20; C has too few to be in the cohort.
     expect(figures.oral_pq).toMatchObject({ asked: 10, securedExchanges: 5, points: 10, perTen: 5, cohortSize: 2 });
@@ -68,6 +79,6 @@ describe('formatFigures', () => {
 
   it('gives no rate below the minimum', () => {
     const c = asked('C', 'topical_issue', 9, 1);
-    expect(formatFigures(c, c)[0]).toMatchObject({ asked: 9, perTen: null, cohortSize: 0 });
+    expect(formatFigures(c, totals(c))[0]).toMatchObject({ asked: 9, perTen: null, cohortSize: 0 });
   });
 });

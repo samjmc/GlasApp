@@ -87,7 +87,8 @@ const handle =
       else if (error instanceof z.ZodError)
         res.status(400).json(formatError('VALIDATION_ERROR', error.issues[0]?.message ?? 'Invalid request'));
       else {
-        console.error(`[pledges] ${req.method} ${req.originalUrl} failed:`, error);
+        // The path only: a query string can carry a person's choices.
+        console.error(`[pledges] ${req.method} ${req.baseUrl}${req.path} failed:`, error);
         res.status(500).json(formatError('INTERNAL_ERROR', 'Something went wrong'));
       }
     }

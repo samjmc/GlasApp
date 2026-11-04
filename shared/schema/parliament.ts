@@ -169,9 +169,9 @@ export const debateItems = politics.table(
   {
     id: serial('id').primaryKey(),
     /**
-     * debate_speeches.id; deliberately not a foreign key. Re-reading a sitting day deletes and
-     * re-inserts its speeches under the same ids, and a cascade would silently drop items whose
-     * run still says `done`. A changed speech changes its run's input hash and is read again; an
+     * debate_speeches.id; deliberately not a foreign key. Re-reading a sitting day deletes the
+     * speeches a corrected transcript dropped, and a cascade would silently drop items whose run
+     * still says `done`. A changed speech changes its run's input hash and is read again; an
      * item whose speech is gone for good is removed by the extractor (deleteOrphanItems).
      */
     speechId: varchar('speech_id', { length: 120 }).notNull(),

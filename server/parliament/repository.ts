@@ -3,7 +3,7 @@
  * Divisions, debates and the per-TD record live here; committees, bills and question
  * counts live in ./repo/ and are re-exported, so callers see one `repository`.
  */
-import { and, asc, count, desc, eq, inArray, isNotNull, sql } from 'drizzle-orm';
+import { and, asc, count, desc, eq, inArray, isNotNull, notInArray, sql, type SQL } from 'drizzle-orm';
 import {
   debateSections,
   debateSpeeches,
@@ -11,6 +11,7 @@ import {
   divisionVotes,
   parliamentSyncState,
   tdParliamentStats,
+  type DivisionVote,
   type NewDebateSection,
   type NewDebateSpeech,
   type TdParliamentStatsRow,
@@ -39,14 +40,11 @@ import {
   questionsExpected,
   MIN_COMMITTEE_SITTINGS,
   MIN_SITTING_DAYS,
-  majorityFor,
   partyLinePct,
-  partyMajorities,
-  type PartyVoteRow,
 } from './metrics';
 import type { ParsedDivision, ParsedSpeech } from './parse';
 
-import { chunks } from './repo/util';
+import { chunks, upsertChanged } from './repo/util';
 
 export * from './repo/committees';
 export * from './repo/bills';
@@ -104,7 +102,31 @@ export async function upsertDivisions(parsed: ParsedDivision[], tdIds: Map<strin
   });
 }
 
-/** Replace one sitting day's sections and speeches. */
+const SECTION_UPSERT = upsertChanged('debate_sections', {
+  date: 'date',
+  title: 'title',
+  parentId: 'parent_id',
+  parentTitle: 'parent_title',
+  speechCount: 'speech_count',
+});
+const SPEECH_UPSERT = upsertChanged('debate_speeches', {
+  sectionId: 'section_id',
+  date: 'date',
+  position: 'position',
+  memberCode: 'member_code',
+  tdId: 'td_id',
+  role: 'role',
+  isPresiding: 'is_presiding',
+  text: 'text',
+  wordCount: 'word_count',
+});
+
+/**
+ * Make one sitting day's sections and speeches match its transcript. A diff, not delete-and-
+ * reinsert: what a corrected transcript dropped is deleted (a dropped section takes its speeches),
+ * the rest is upserted on its id and rewritten only when it changed. Re-reading an unchanged day
+ * writes nothing, and a section keeps the debate_id the grouping step gave it.
+ */
 export async function replaceDebateDay(
   date: string,
   sections: NewDebateSection[],
@@ -112,12 +134,21 @@ export async function replaceDebateDay(
   tdIds: Map<string, number>,
   database: Db = db,
 ): Promise<void> {
+  const sectionIds = sections.map((s) => s.id);
+  const rows: NewDebateSpeech[] = speeches.map((s) => ({ ...s, tdId: s.memberCode ? (tdIds.get(s.memberCode) ?? null) : null }));
   await database.transaction(async (tx) => {
-    // Cascades to the day's speeches; a section dropped from a corrected transcript goes too.
-    await tx.delete(debateSections).where(eq(debateSections.date, date));
-    for (const batch of chunks(sections)) await tx.insert(debateSections).values(batch);
-    const rows: NewDebateSpeech[] = speeches.map((s) => ({ ...s, tdId: s.memberCode ? (tdIds.get(s.memberCode) ?? null) : null }));
-    for (const batch of chunks(rows, 200)) await tx.insert(debateSpeeches).values(batch);
+    await tx.delete(debateSections).where(and(eq(debateSections.date, date), sectionIds.length ? notInArray(debateSections.id, sectionIds) : undefined));
+    if (sectionIds.length) {
+      await tx
+        .delete(debateSpeeches)
+        .where(and(inArray(debateSpeeches.sectionId, sectionIds), rows.length ? notInArray(debateSpeeches.id, rows.map((r) => r.id)) : undefined));
+    }
+    for (const batch of chunks(sections)) {
+      await tx.insert(debateSections).values(batch).onConflictDoUpdate({ target: debateSections.id, set: SECTION_UPSERT.set, setWhere: SECTION_UPSERT.changed });
+    }
+    for (const batch of chunks(rows, 200)) {
+      await tx.insert(debateSpeeches).values(batch).onConflictDoUpdate({ target: debateSpeeches.id, set: SPEECH_UPSERT.set, setWhere: SPEECH_UPSERT.changed });
+    }
   });
 }
 
@@ -395,19 +426,32 @@ export async function storedQuestionCounts(database: Db = db): Promise<Map<strin
 // Reads
 // ---------------------------------------------------------------------------
 
-async function partyVoteRows(party: string | null, database: Db): Promise<PartyVoteRow[]> {
-  const rows = await database
-    .select({ divisionId: divisionVotes.divisionId, party: tds.party, vote: divisionVotes.vote, n: count() })
-    .from(divisionVotes)
-    .innerJoin(tds, eq(tds.id, divisionVotes.tdId))
-    .where(party === null ? isNotNull(tds.party) : eq(tds.party, party))
-    .groupBy(divisionVotes.divisionId, tds.party, divisionVotes.vote);
-  return rows.map((r) => ({ divisionId: r.divisionId, party: r.party as string, vote: r.vote, n: Number(r.n) }));
+/**
+ * Each party's lobbies in each division, `where` narrowing the votes: how many of its members
+ * voted Tá, Níl and Staon, and `majority`, the vote more of them cast than either other. NULL
+ * on a tie at the top: the rule partyMajorities applies in JS. Independents are not a party.
+ */
+const lobbies = (where: SQL) => sql`
+  select *, case when ta > nil and ta > staon then 'ta' when nil > ta and nil > staon then 'nil' when staon > ta and staon > nil then 'staon' end majority
+  from (
+    select v.division_id, t.party,
+      count(*) filter (where v.vote = 'ta')::int ta, count(*) filter (where v.vote = 'nil')::int nil, count(*) filter (where v.vote = 'staon')::int staon
+    from politics.division_votes v join politics.tds t on t.id = v.td_id
+    where t.party is not null and t.party <> ${INDEPENDENT} and ${where}
+    group by v.division_id, t.party) c`;
+
+/** A party's majority in the given divisions; a division with a tie is left out. */
+async function partyLines(party: string, divisionIds: SQL, database: Db): Promise<Map<string, DivisionVote>> {
+  const res = await database.execute(sql`
+    select division_id, majority from (${lobbies(sql`t.party = ${party} and v.division_id in (${divisionIds})`)}) l where majority is not null`);
+  return new Map((res.rows as Array<{ division_id: string; majority: DivisionVote }>).map((r) => [r.division_id, r.majority]));
 }
 
 /**
  * How a TD voted, newest first, each against their party's majority.
  * `divisionId` narrows it to one division ("did TD X vote for Y"); the pledges area uses this.
+ * The majorities are worked out in SQL for the divisions returned (all the TD's, when the
+ * against-party filter has to see them all), never over every vote in the Dáil.
  */
 export async function votesOf(
   tdId: number,
@@ -416,7 +460,7 @@ export async function votesOf(
 ): Promise<TdVote[]> {
   const [td] = await database.select({ party: tds.party }).from(tds).where(eq(tds.id, tdId));
   if (!td) return [];
-  const rows = await database
+  const query = database
     .select({
       divisionId: divisions.id,
       date: divisions.date,
@@ -429,10 +473,14 @@ export async function votesOf(
     .innerJoin(divisions, eq(divisions.id, divisionVotes.divisionId))
     .where(and(eq(divisionVotes.tdId, tdId), opts.divisionId ? eq(divisions.id, opts.divisionId) : undefined))
     .orderBy(desc(divisions.date), desc(divisions.heldAt), desc(divisions.id));
+  const rows = await (opts.limit && !opts.againstParty ? query.limit(opts.limit) : query);
 
-  const majorities = td.party && td.party !== INDEPENDENT ? partyMajorities(await partyVoteRows(td.party, database)) : new Map();
+  const majorities =
+    td.party && td.party !== INDEPENDENT && rows.length
+      ? await partyLines(td.party, sql.join(rows.map((r) => sql`${r.divisionId}`), sql`, `), database)
+      : new Map<string, DivisionVote>();
   let out: TdVote[] = rows.map((r) => {
-    const partyMajority = majorityFor(majorities, r.divisionId, td.party);
+    const partyMajority = majorities.get(r.divisionId) ?? null;
     return { ...r, partyMajority, withParty: partyMajority === null ? null : r.vote === partyMajority };
   });
   if (opts.againstParty) out = out.filter((v) => v.withParty === false);
@@ -494,23 +542,33 @@ export async function tdSummary(tdId: number, database: Db = db) {
   };
 }
 
+/**
+ * The sections a TD spoke in, newest first, with the start of their first speech in each.
+ * The excerpt is read only for the `limit` sections listed, and cut to 300 characters in SQL:
+ * aggregating the text read every speech the TD ever made in full.
+ */
 export async function tdDebates(tdId: number, limit: number, database: Db = db): Promise<TdDebateContribution[]> {
-  const rows = await database
-    .select({
-      sectionId: debateSections.id,
-      date: debateSections.date,
-      title: debateSections.title,
-      speeches: count(),
-      words: sql<number>`sum(${debateSpeeches.wordCount})::int`,
-      excerpt: sql<string>`left((array_agg(${debateSpeeches.text} order by ${debateSpeeches.position}))[1], 300)`,
-    })
-    .from(debateSpeeches)
-    .innerJoin(debateSections, eq(debateSections.id, debateSpeeches.sectionId))
-    .where(and(eq(debateSpeeches.tdId, tdId), eq(debateSpeeches.isPresiding, false)))
-    .groupBy(debateSections.id, debateSections.date, debateSections.title)
-    .orderBy(desc(debateSections.date), desc(debateSections.id))
-    .limit(limit);
-  return rows.map((r) => ({ ...r, speeches: Number(r.speeches), words: Number(r.words) }));
+  const res = await database.execute(sql`
+    select g.section_id, g.date, g.title, g.speeches, g.words,
+      (select left(p.text, 300) from politics.debate_speeches p
+       where p.section_id = g.section_id and p.td_id = ${tdId} and not p.is_presiding
+       order by p.position limit 1) excerpt
+    from (
+      select s.id section_id, s.date::text date, s.title, count(*)::int speeches, sum(p.word_count)::int words
+      from politics.debate_speeches p join politics.debate_sections s on s.id = p.section_id
+      where p.td_id = ${tdId} and not p.is_presiding
+      group by s.id, s.date, s.title
+      order by s.date desc, s.id desc
+      limit ${limit}) g
+    order by g.date desc, g.section_id desc`);
+  return (res.rows as Array<{ section_id: string; date: string; title: string; speeches: number; words: number; excerpt: string }>).map((r) => ({
+    sectionId: r.section_id,
+    date: r.date,
+    title: r.title,
+    speeches: Number(r.speeches),
+    words: Number(r.words),
+    excerpt: r.excerpt,
+  }));
 }
 
 const divisionSummaryCols = {
@@ -649,19 +707,14 @@ export async function parties(database: Db = db): Promise<PartyParliamentSummary
     .from(tds)
     .leftJoin(tdParliamentStats, eq(tdParliamentStats.tdId, tds.id))
     .where(eq(tds.isActive, true));
-  const pv = await partyVoteRows(null, database);
-  const majorities = partyMajorities(pv);
 
-  // Cohesion: of every vote a party's members cast, the share that matched its majority.
-  const cohesion = new Map<string, { with: number; total: number }>();
-  for (const r of pv) {
-    const m = majorityFor(majorities, r.divisionId, r.party);
-    if (m === null) continue;
-    const c = cohesion.get(r.party) ?? { with: 0, total: 0 };
-    c.total += r.n;
-    if (r.vote === m) c.with += r.n;
-    cohesion.set(r.party, c);
-  }
+  // Cohesion: of every vote a party's members cast where it had a majority, the share that
+  // matched it. Summed in SQL: one row per party, not one per party per division per vote.
+  const res = await database.execute(sql`
+    select party, sum(case majority when 'ta' then ta when 'nil' then nil else staon end)::int with_party, sum(ta + nil + staon)::int total
+    from (${lobbies(sql`true`)}) l where majority is not null
+    group by party`);
+  const cohesion = new Map((res.rows as Array<{ party: string; with_party: number; total: number }>).map((r) => [r.party, { with: Number(r.with_party), total: Number(r.total) }]));
 
   const groups = new Map<string, typeof members>();
   for (const m of members) {

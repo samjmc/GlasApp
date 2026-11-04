@@ -8,6 +8,7 @@ import { QUIZ_QUESTIONS } from '@shared/quiz';
 import type { QuizResultRow } from '@shared/schema/quiz';
 import { scoreQuiz } from '../quiz/score';
 import type { UserVoteVector } from '../voting';
+import { sessionDateFor } from '../voting/summary';
 
 vi.mock('../voting', () => ({ listUserVoteVectors: vi.fn(async () => []), questionsWithPositions: vi.fn(async () => []) }));
 vi.mock('../stances/repository', () => ({ mappedStancesOn: vi.fn(async () => []) }));
@@ -18,11 +19,21 @@ vi.mock('./repository', async () => {
 
 const { timelineOf, userProfileOf } = await import('./service');
 
-/** The implementation before the one-pass rewrite: a full recompute at the end of each day. */
+/**
+ * The last instant of an Irish calendar day, found by stepping an hour at a time (Irish midnight
+ * always falls on a whole UTC hour): slow but obviously right.
+ */
+function lastInstantOf(date: string): Date {
+  let t = Date.parse(`${date}T00:00:00Z`) - 2 * 3_600_000;
+  while (sessionDateFor(new Date(t)) <= date) t += 3_600_000;
+  return new Date(t - 1);
+}
+
+/** The implementation before the one-pass rewrite: a full recompute at the end of each (Irish) day. */
 function timelineBefore(quizzes: QuizResultRow[], votes: UserVoteVector[]) {
-  const day = (d: Date) => d.toISOString().slice(0, 10);
+  const day = (d: Date) => sessionDateFor(d);
   const days = Array.from(new Set<string>([...quizzes.map((q) => day(q.createdAt)), ...votes.map((v) => day(v.votedAt))])).sort();
-  return days.map((date) => ({ date, vector: userProfileOf(quizzes, votes, new Date(`${date}T23:59:59.999Z`))!.vector }));
+  return days.map((date) => ({ date, vector: userProfileOf(quizzes, votes, lastInstantOf(date))!.vector }));
 }
 
 /** Deterministic pseudo-random numbers (mulberry32), so a failure reproduces. */
@@ -69,5 +80,22 @@ describe('timelineOf', () => {
 
   it('is empty with no quiz and no vote', () => {
     expect(timelineOf([], [])).toEqual([]);
+  });
+
+  it('puts a vote on the Irish day it was cast, as the daily session does (A17)', () => {
+    const vote = (iso: string, economic: number): UserVoteVector => ({
+      questionId: 1,
+      optionKey: 'option_a',
+      vector: { ...Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, 0])), economic } as UserVoteVector['vector'],
+      weight: 1,
+      confidence: null,
+      votedAt: new Date(iso),
+    });
+    // 00:30 on 2 July in Dublin (summer time) is 23:30 UTC on 1 July; 00:30 on 2 December is 00:30 UTC.
+    const summer = timelineOf([], [vote('2026-07-01T20:00:00Z', 2), vote('2026-07-01T23:30:00Z', -2)]);
+    expect(summer.map((p) => p.date)).toEqual(['2026-07-01', '2026-07-02']);
+    expect(summer[0]!.vector.economic).toBeGreaterThan(0);
+    expect(summer[1]!.vector.economic).toBeCloseTo(0);
+    expect(timelineOf([], [vote('2026-12-01T23:30:00Z', 2)]).map((p) => p.date)).toEqual(['2026-12-01']);
   });
 });

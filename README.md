@@ -17,7 +17,8 @@ npm ci
 cp .env.example .env     # PowerShell: Copy-Item .env.example .env
 # Edit .env: DATABASE_URL and the Supabase keys. SCHEDULER=off is already set; keep it.
 npm run db:migrate       # creates the `politics` schema
-npm run sync-tds         # loads the TDs from the Oireachtas roster (scoring needs them)
+npm run sync-tds -- --yes  # loads the TDs from the Oireachtas roster (scoring needs them)
+# A job that writes to a database not on this machine prints its target and stops without --yes.
 npm run dev
 ```
 

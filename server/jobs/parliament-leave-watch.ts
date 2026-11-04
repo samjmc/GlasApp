@@ -3,12 +3,14 @@
  * at /admin/leave-watch. See server/parliament/leaveWatch.ts. Scheduled by the app (Mondays);
  * this runs it by hand.
  *
- *   npm run parliament:leave-watch
+ *   npm run parliament:leave-watch -- --yes     (--yes: needed for a database not on this machine)
  */
 import 'dotenv/config';
 import { shutdown } from '../db';
 import { leaveWatch } from '../parliament';
+import { approveWrite } from './liveDbGuard';
 
+approveWrite('parliament:leave-watch');
 leaveWatch
   .runLeaveWatch()
   .then(async (s) => {

@@ -6,11 +6,12 @@
 import { and, desc, eq, inArray, isNotNull, isNull, notInArray, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
 import { tds } from '@shared/schema/politics';
-import { tdIdeologyEvidence, type NewTdIdeologyEvidence } from '@shared/schema/quiz';
+import type { NewTdIdeologyEvidence } from '@shared/schema/quiz';
 import { divisionReadings, tdStances, type DivisionReadingRow, type NewDivisionReading, type NewTdStance, type TdStanceRow } from '@shared/schema/stances';
 import type { QuoteKind } from '@shared/stancesApi';
 import type { PolicyDomain } from '../constants/policyTopics';
-import { insertStanceEvidenceRows, STANCE_SYNC_LOCK } from '../ideology/repository';
+import { replaceStanceEvidenceRows, STANCE_SYNC_LOCK } from '../ideology/repository';
+import { upsertChanged } from '../parliament/repo/util';
 import type { StanceForEvidence } from './evidence';
 
 /** A transaction handle, as `db.transaction` passes it. */
@@ -41,10 +42,7 @@ export async function deleteArticleStancesExcept(articleId: number, keep: number
  * withStanceLock transaction; profiles are not recomputed here.
  */
 export async function replaceStanceEvidenceOf(tx: Tx, tdIds: number[] | null, rows: NewTdIdeologyEvidence[]): Promise<void> {
-  if (tdIds !== null && tdIds.length === 0) return;
-  const stance = eq(tdIdeologyEvidence.source, 'stance');
-  await tx.delete(tdIdeologyEvidence).where(tdIds === null ? stance : and(stance, inArray(tdIdeologyEvidence.tdId, tdIds)));
-  await insertStanceEvidenceRows(tx, rows);
+  await replaceStanceEvidenceRows(tx, tdIds, rows);
 }
 
 export interface StanceInput {
@@ -145,15 +143,48 @@ export async function stanceRowsForEvidence(database: Pick<Db, 'select'> = db, t
 
 const STANCE_INSERT_CHUNK = 500;
 
+/** The columns a Dáil-vote stance can change between syncs; (td_id, division_id) is its key. */
+const DIVISION_STANCE_UPSERT = upsertChanged('td_stances', {
+  divisionVote: 'division_vote',
+  discipline: 'discipline',
+  questionId: 'question_id',
+  optionKey: 'option_key',
+  optionText: 'option_text',
+  quote: 'quote',
+  quoteKind: 'quote_kind',
+  policyDomain: 'policy_domain',
+  statedAt: 'stated_at',
+  articleUrl: 'article_url',
+  sourceName: 'source_name',
+  headline: 'headline',
+});
+
 /**
- * Replace every Dáil-vote stance (`division_id` set) with `rows`, in one transaction under the
- * stance sync lock. News rows are never touched. Ids change on each sync; nothing keeps them.
+ * Make the Dáil-vote stances (`division_id` set) exactly `rows`, in one transaction under the
+ * stance sync lock. News rows are never touched. A diff, not delete-all-and-insert: rows gone
+ * from the set are deleted, the rest are upserted on (td_id, division_id) and rewritten only
+ * when a column changed, so an unchanged stance keeps its row and id from sync to sync.
  */
 export async function replaceDivisionStances(rows: NewTdStance[], database: Db = db): Promise<void> {
+  const keys = rows.map((r) => ({ td_id: r.tdId, division_id: r.divisionId }));
   await database.transaction(async (tx) => {
     await tx.execute(sql`select pg_advisory_xact_lock(${STANCE_SYNC_LOCK}::bigint)`);
-    await tx.delete(tdStances).where(isNotNull(tdStances.divisionId));
-    for (let i = 0; i < rows.length; i += STANCE_INSERT_CHUNK) await tx.insert(tdStances).values(rows.slice(i, i + STANCE_INSERT_CHUNK));
+    // One JSON parameter: Drizzle expands a JS array into a list of parameters, not an array.
+    await tx.execute(sql`
+      delete from politics.td_stances s
+      where s.division_id is not null
+        and not exists (select 1 from jsonb_to_recordset(${JSON.stringify(keys)}::jsonb) as k(td_id int, division_id text)
+                        where k.td_id = s.td_id and k.division_id = s.division_id)`);
+    for (let i = 0; i < rows.length; i += STANCE_INSERT_CHUNK) {
+      await tx
+        .insert(tdStances)
+        .values(rows.slice(i, i + STANCE_INSERT_CHUNK))
+        .onConflictDoUpdate({
+          target: [tdStances.tdId, tdStances.divisionId],
+          set: DIVISION_STANCE_UPSERT.set,
+          setWhere: DIVISION_STANCE_UPSERT.changed,
+        });
+    }
   });
 }
 

@@ -5,10 +5,10 @@ import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { useTheme, type ThemeChoice } from '@/contexts/ThemeContext';
 import { useRegion } from '@/hooks/useRegion';
 import { REGION_LIST } from '@shared/region-config';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiCall } from '@/lib/api';
 import { downloadJson } from '@/lib/downloadJson';
-import { supabase } from '@/lib/supabase';
+import { profileMeKey, useProfileMe, useUpdateProfile } from '@/hooks/useProfileMe';
 import { fetchMyQuizResults } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
 import { DIMENSION_POLES, IDEOLOGY_DIMENSIONS } from '@shared/ideology';
@@ -46,7 +46,10 @@ const THEME_OPTIONS: { value: ThemeChoice; label: string }[] = [
 ];
 
 const ProfilePage = () => {
-  const { user, isAuthenticated, updateProfile, logout, deleteAccount } = useAuth();
+  const { user, isAuthenticated, logout, deleteAccount } = useAuth();
+  const queryClient = useQueryClient();
+  const saved = useProfileMe().data?.user;
+  const updateProfile = useUpdateProfile();
   const { theme, setTheme } = useTheme();
   const { regionCode, selectRegion } = useRegion();
   const [, navigate] = useLocation();
@@ -102,15 +105,15 @@ const ProfilePage = () => {
 
   // Never while the user is typing: a change that arrives then (another tab) waits until they finish.
   useEffect(() => {
-    if (user && !isEditing) {
+    if (saved && !isEditing) {
       setFormData({
-        firstName: user.firstName || '',
-        lastName: user.lastName || '',
-        county: user.county || '',
-        bio: user.bio || '',
+        firstName: saved.firstName || '',
+        lastName: saved.lastName || '',
+        county: saved.county || '',
+        bio: saved.bio || '',
       });
     }
-  }, [user, isEditing]);
+  }, [saved, isEditing]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -149,17 +152,13 @@ const ProfilePage = () => {
       const formData = new FormData();
       formData.append('profileImage', file);
 
-      const { imageUrl } = await apiCall<{ imageUrl: string }>('POST', '/api/profile/image', formData);
-
-      // The avatar is read from the sign-in's metadata, so point it at the new file.
-      const { error } = await supabase.auth.updateUser({ data: { glas_avatar_url: imageUrl } });
-      if (error) throw error;
+      // The server saves the new address on the profile row; re-read it to show the picture.
+      await apiCall<{ imageUrl: string }>('POST', '/api/profile/image', formData);
+      await queryClient.invalidateQueries({ queryKey: profileMeKey(user?.id) });
       toast({
         title: "Profile picture updated",
         description: "Your profile picture has been successfully updated"
       });
-      // Refresh user data to show new image
-      window.location.reload();
     } catch (error) {
       toast({
         title: "Upload failed",
@@ -253,7 +252,7 @@ const ProfilePage = () => {
               </div>
               <div className="relative shrink-0">
                 <Avatar className="h-16 w-16">
-                  <AvatarImage src={user?.profileImageUrl || ''} alt={user?.username} />
+                  <AvatarImage src={saved?.profileImageUrl || user?.providerImageUrl || ''} alt={user?.username} />
                   <AvatarFallback className="bg-elevated font-display font-bold">
                     {initials || user?.username?.charAt(0)?.toUpperCase()}
                   </AvatarFallback>
@@ -282,7 +281,8 @@ const ProfilePage = () => {
                   variant="outline"
                   className="gap-2"
                   onClick={() => isEditing ? handleSaveProfile() : setIsEditing(true)}
-                  disabled={isSavingProfile}
+                  // Not before the saved profile has loaded: the form would save blanks over it.
+                  disabled={isSavingProfile || !saved}
                 >
                   {isSavingProfile && <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />}
                   {isSavingProfile ? 'Saving…' : isEditing ? 'Save' : 'Edit profile'}

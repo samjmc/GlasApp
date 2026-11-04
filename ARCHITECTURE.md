@@ -71,13 +71,14 @@ a vote or quiz result needs recorded consent (`server/account/consent.ts`, `shar
 One model for users, TDs and parties. Full design: `docs/architecture/ideology-matching.md`.
 
 1. The client shows the one question bank (`shared/quiz.ts`) and sends answer choices only:
-   `POST /api/quiz`. Anyone can take it.
+   `POST /api/quiz`. Anyone can take it. Only a whole quiz is accepted (at least 3 answers on each
+   dimension, as every plan asks), so the latest quiz never drops what an earlier one measured.
 2. The server scores it (`server/quiz`). A signed-in result is saved to `politics.quiz_results`
    and the user's profile is recomputed; an anonymous result is returned and not saved.
 3. A user's profile = their latest quiz plus every policy vote (`server/voting`).
    A TD's profile = party baseline plus stance evidence from articles (and later debates) in
    `politics.td_ideology_evidence`. A party = the mean of its TDs. All live in
-   `politics.ideology_profiles` and rebuild with `npm run ideology -- --recalculate`.
+   `politics.ideology_profiles` and rebuild with `npm run ideology -- --recalculate --yes`.
 4. Matches (`/api/ideology/me/matches`, public `POST /api/ideology/matches`) use one alignment formula.
 
 ## Client (`client/src/`)

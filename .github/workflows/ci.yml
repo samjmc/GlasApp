@@ -26,6 +26,12 @@ jobs:
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
       - run: npm run check
+      # "Never do X" rules as one regex each (scripts/ci/check-code-guards.ts).
+      - run: npm run guard:code
+      # docs/generated/ is built from the code; red means run `npm run facts` and commit.
+      - run: npm run facts:check
+      # Doc links resolve, `npm run` names exist, server env vars are in .env.example.
+      - run: npm run docs:check
       # Warnings only for now (eslint.config.js): the log shows them, the job does not fail on them.
       - run: npm run lint
         continue-on-error: true
@@ -49,6 +55,8 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with: { node-version-file: .nvmrc, cache: npm }
       - run: npm ci --no-audit --no-fund
+      # Every test file in git is run by exactly one runner (vitest or playwright).
+      - run: npm run guard:tests
       - run: npm test -- --reporter=default --reporter=json --outputFile=vitest-report.json
       # Without a database the integration suites skip and vitest still exits 0.
       - name: Integration suites actually ran
