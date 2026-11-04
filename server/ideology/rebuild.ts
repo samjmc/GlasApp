@@ -7,7 +7,7 @@ import { scoreQuiz } from '../quiz/score';
 import { forgetMatchInputs } from './matches';
 import { isIndependent, partyKey } from './partyBaselines';
 import * as repo from './repository';
-import { recomputePartyProfile, recomputeTdProfile } from './service';
+import { recomputePartyProfile, recomputeTdProfile } from './recompute';
 import type { SourceKind } from './sources';
 import { recomputeProfile } from './userProfile';
 

@@ -8,7 +8,7 @@
  * stance mapped to an option of the question becomes evidence, under source `stance`.
  */
 import { isIndependent, partyKey } from '../ideology/partyBaselines';
-import { recomputePartyProfile, recomputeTdProfile } from '../ideology/service';
+import { recomputePartyProfile, recomputeTdProfile } from '../ideology/recompute';
 import { questionsWithPositions, type CompleteJson, type QuestionPositions } from '../voting';
 import { stanceEvidenceRows } from './evidence';
 import { extractStances, extractionText, type CandidateTd, type StanceArticle } from './extract';
