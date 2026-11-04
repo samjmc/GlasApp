@@ -1,0 +1,12 @@
+{
+  // The tests, e2e specs and root configs, which tsconfig.json leaves out. `npm run check` runs both.
+  "extends": "./tsconfig.json",
+  "include": ["client/src/**/*", "shared/**/*", "server/**/*", "scripts/**/*.ts", "test/**/*.ts", "*.config.ts"],
+  "exclude": ["node_modules", "build", "dist"],
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/typescript/tsbuildinfo.test",
+    // Tests import their mocked modules with top-level await (vitest runs them as ES2022 modules).
+    "target": "es2022",
+    "types": ["node", "vite/client", "vitest/globals"]
+  }
+}

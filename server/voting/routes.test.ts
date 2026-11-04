@@ -12,9 +12,10 @@ const calls = vi.hoisted(() => ({ list: [] as Array<{ fn: string; args: unknown[
 
 vi.mock('../auth', () => {
   const asUser: express.RequestHandler = (req, res, next) => {
-    if (req.header('x-test-user')) {
-      (req as express.Request & { user: unknown }).user = {
-        id: req.header('x-test-user'),
+    const id = req.header('x-test-user');
+    if (id) {
+      req.user = {
+        id,
         email: null,
         role: null,
         userMetadata: { county: req.header('x-test-county') ?? ' Cork ', constituency: req.header('x-test-constituency') ?? 42 },

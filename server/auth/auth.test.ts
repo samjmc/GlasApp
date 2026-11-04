@@ -61,7 +61,8 @@ afterEach(() => vi.clearAllMocks());
 
 describe('requireAuth', () => {
   it('401s with no header, a non-bearer header, or a rejected token', async () => {
-    for (const headers of [{}, { authorization: 'Basic abc' }, { authorization: 'Bearer bad' }]) {
+    const cases: Record<string, string>[] = [{}, { authorization: 'Basic abc' }, { authorization: 'Bearer bad' }];
+    for (const headers of cases) {
       const res = mockRes();
       let called = false;
       state.error = headers.authorization === 'Bearer bad' ? new Error('invalid') : null;

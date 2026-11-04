@@ -100,7 +100,8 @@ describe('GET /api/news-feed', () => {
   });
 
   it('answers another region with an empty feed and reads nothing: only Irish news is ingested', async () => {
-    for (const headers of [{ 'x-region-code': 'UK' }, { cookie: 'glas_region=US' }]) {
+    const cases: Record<string, string>[] = [{ 'x-region-code': 'UK' }, { cookie: 'glas_region=US' }];
+    for (const headers of cases) {
       const { status, body } = await get('/', headers);
       expect(status).toBe(200);
       expect(body).toEqual({ success: true, data: { articles: [], total: 0, hasMore: false } });

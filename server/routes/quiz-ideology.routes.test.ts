@@ -14,8 +14,9 @@ const calls = vi.hoisted(() => ({ list: [] as Array<{ fn: string; args: unknown[
 
 vi.mock('../auth', () => {
   const asUser: express.RequestHandler = (req, res, next) => {
-    if (req.header('x-test-user')) {
-      (req as express.Request & { user: unknown }).user = { id: req.header('x-test-user') };
+    const id = req.header('x-test-user');
+    if (id) {
+      req.user = { id, email: null, role: null, userMetadata: {} };
       return next();
     }
     res.status(401).json({ success: false, error: { code: 'UNAUTHORIZED', message: 'Authentication required' } });
@@ -93,7 +94,8 @@ beforeEach(async () => {
   app.use(express.json());
   // Stands in for the global optionalAuth: sets req.user when the header is present.
   app.use((req, _res, next) => {
-    if (req.header('x-test-user')) (req as express.Request & { user: unknown }).user = { id: req.header('x-test-user') };
+    const id = req.header('x-test-user');
+    if (id) req.user = { id, email: null, role: null, userMetadata: {} };
     next();
   });
   app.use('/api/quiz', quizRoutes);

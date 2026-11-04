@@ -234,8 +234,8 @@ describe('figuresIn', () => {
 
 describe('verifyMatch', () => {
   const candidates = [
-    { id: 7, options: [{ key: 'option_a' }, { key: 'option_b' }, { key: 'option_c' }] },
-    { id: 9, options: [{ key: 'option_a' }, { key: 'option_b' }] },
+    { id: 7, options: [{ key: 'option_a', label: 'Raise it' }, { key: 'option_b', label: 'Keep it' }, { key: 'option_c', label: 'Cut it' }] },
+    { id: 9, options: [{ key: 'option_a', label: 'Yes' }, { key: 'option_b', label: 'No' }] },
   ];
   const match = (over: Partial<MatchReply> = {}): MatchReply => ({ questionId: 7, taOption: 'option_a', confidence: 0.8, reason: 'r', ...over });
   const PROPOSAL = 'Financial Resolution No. 1 raises the maximum relief from €30,000 to €35,000. A Tá vote supported raising the relief.';
