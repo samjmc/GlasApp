@@ -1,5 +1,44 @@
 # Codebase sweep plan (2026-10-10)
 
+## Status (2026-11-04)
+
+Done, all merged to `main`:
+
+- Phase 0: #148–#164. Every item except D15.
+- Phase 1, jobs: #169, #174, #181, #184, #187–#189 (review passes #159, #172, #177).
+- Phase 2, database: #197–#210, #216, #221–#223, #229, #237, #238, #247.
+- Phase 3, client: #166–#170, #175, #178, #180, #182, #185, #186, #190, #206, #217.
+- Phase 4, clean house: #165, #171, #173, #176, #179, #183, #196, #199, #201, #230, #232, #235, #236, #239–#246.
+- Dependencies: #211–#234 (React, `@vitejs/plugin-react` and `tailwind-merge` majors ignored on purpose).
+
+Migrations 0025–0035 came from this sweep. The lead applies them to GlasCore from `main`, after
+the read-only pre-checks in the bodies of #164, #202, #229, #238 and #247.
+
+Not done:
+
+- **Owner only.** D15 (a DML-only `glasapp_app` role needs a Supabase Owner); decision 1, the
+  storage plan upgrade, is on hold; decision 2, the git history rewrite, is not done (R1 stopped
+  the growth; shrinking history needs a force-push to `main`).
+- **Kept on purpose.** The debate "Moved by" fields (`debates.mover_member_code`, `mover_source`):
+  unread today, but `docs/plans/debate-analysis.md` shows them in the planned feature. The
+  `x-cron-secret` header alias.
+- **After the next release.** Delete the old job-secret names (`ADMIN_SECRET`, `CRON_SECRET`,
+  `JOB_SECRET`): `oldJobSecrets()` and `warnOldJobSecretNames()` in `server/auth/index.ts` and
+  their entries in `scripts/ci/check-doc-facts.ts`.
+- **Known gap.** `safeFetch` checks a host's addresses, then `fetch()` resolves the name again,
+  so a DNS answer that changes in between (rebinding) is not caught. Fix: connect to the checked
+  address.
+- **Small, left as is.** The TD page is not split into tab components (C19, no behaviour gain).
+  A quiz result with no stored answers still says "Saving". The feed says "1000 stories" once
+  the capped total is reached ("1000+" would be right). `CLAUDE.md` is a generic template and
+  `.claude/projects/README.md` names a personal path (R27).
+- **Not re-measured.** `pg_stat_statements` on GlasCore after Phase 2, and `npm run robots`
+  after each phase: both need GlasCore, which the helpers never touch.
+- **Flaky.** `server/parliament/sync.integration.test.ts` can hit its 60 s timeout on a busy CI
+  runner; one rerun clears it.
+
+## The plan
+
 A full read of `main` at 8e311a7 by five parallel reviewers (API, pipelines and jobs, client,
 database code, repo and CI), plus a read-only check of the live GlasCore database
 (`pg_stat_statements`, table sizes, index use, grants). Nothing was changed while sweeping.
