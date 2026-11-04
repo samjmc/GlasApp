@@ -17,6 +17,7 @@ import type {
 } from '@shared/scoresApi';
 import { computePartyScores, questionsAsked, recalculateAll, repository as repo, scoreLabel, scoredComponents } from '../scoring';
 import type { TdWithScore } from '../scoring/repository';
+import { repository as parliament } from '../parliament';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
 const router = Router();
@@ -120,14 +121,18 @@ router.get(
   async (req, res) => {
     const row = await repo.findByName(req.params.name);
     if (!row) return res.status(404).json(formatError('ENTITY_NOT_FOUND', `TD "${req.params.name}" not found`));
-    const baseline = await repo.baselineFor(row.td.id);
+    const [baseline, offices, committees] = await Promise.all([
+      repo.baselineFor(row.td.id),
+      parliament.currentOffices([row.td.id]),
+      parliament.currentCommittees([row.td.id]),
+    ]);
     const { td, stats } = row;
     const data: TdProfile = {
       ...tdCard(row),
       memberCode: td.memberCode,
       bio: td.bio,
-      offices: td.offices ?? [],
-      committees: td.committees ?? [],
+      offices: offices.get(td.id) ?? [],
+      committees: committees.get(td.id) ?? [],
       facts: {
         memberSince: stats?.memberSince ?? null,
         votes: { cast: stats?.votesCast ?? null, divisionsEligible: stats?.divisionsEligible ?? null },
@@ -164,13 +169,15 @@ router.get(
     if (!id.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'id must be a positive integer'));
     const row = await repo.findById(id.data);
     if (!row) return res.status(404).json(formatError('ENTITY_NOT_FOUND', 'TD not found'));
-    const { td } = row;
+    const [offices, committees] = await Promise.all([parliament.currentOffices([id.data]), parliament.currentCommittees([id.data])]);
+    const held = offices.get(id.data) ?? [];
+    const sits = committees.get(id.data) ?? [];
     const data: TdSummary = {
       ...tdCard(row),
-      officeCount: td.offices?.length ?? 0,
-      committeeCount: td.committees?.length ?? 0,
-      topOffice: td.offices?.[0]?.title ?? null,
-      topCommittee: td.committees?.[0] ?? null,
+      officeCount: held.length,
+      committeeCount: sits.length,
+      topOffice: held[0]?.title ?? null,
+      topCommittee: sits[0] ?? null,
     };
     res.json(formatSuccess(data));
   },
@@ -263,6 +270,8 @@ router.get(
       return res.status(404).json(formatError('ENTITY_NOT_FOUND', `Constituency "${req.params.name}" not found`));
     }
     const cards = members.map(tdCard);
+    const ids = members.map((m) => m.td.id);
+    const [offices, committees] = await Promise.all([parliament.currentOffices(ids), parliament.currentCommittees(ids)]);
     res.json(
       formatSuccess({
         name: members[0].td.constituency,
@@ -270,7 +279,7 @@ router.get(
         averageScore: average(cards.map((c) => c.overallScore)),
         parties: partyBreakdown(members),
         genderBreakdown: genderBreakdown(members),
-        tds: members.map((m) => ({ ...tdCard(m), offices: m.td.offices ?? [], committees: m.td.committees ?? [] })),
+        tds: members.map((m) => ({ ...tdCard(m), offices: offices.get(m.td.id) ?? [], committees: committees.get(m.td.id) ?? [] })),
       }),
     );
   },

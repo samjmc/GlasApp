@@ -2,7 +2,7 @@
  * Committees: memberships from the roster, sittings and roll calls from committee
  * transcripts. Joined to TDs by member code, re-linked like votes and speeches.
  */
-import { asc, eq, sql } from 'drizzle-orm';
+import { and, asc, eq, inArray, isNotNull, isNull, sql } from 'drizzle-orm';
 import { committeeAttendance, committeeMemberships, committees, committeeSittings } from '@shared/schema/parliament';
 import type { TdCommittee } from '@shared/parliamentApi';
 import { db, type Db } from '../../db';
@@ -140,7 +140,20 @@ export async function tdCommittees(tdId: number, database: Db = db): Promise<TdC
   return rows.map((r) => ({ ...r, sittingsEligible: Number(r.sittingsEligible), sittingsAttended: Number(r.sittingsAttended) }));
 }
 
-/** Names of the committees a TD sits on now, for the `tds.committees` profile column. */
-export function currentCommitteeNames(member: RosterMember): string[] {
-  return member.committees.filter((c) => !c.end).map((c) => c.name);
+/** Names of the committees each TD sits on now (open memberships), per TD id: chairs first, then by name. `tdIds` null = every TD. */
+export async function currentCommittees(tdIds: number[] | null, database: Pick<Db, 'select'> = db): Promise<Map<number, string[]>> {
+  const out = new Map<number, string[]>();
+  if (tdIds?.length === 0) return out;
+  const rows = await database
+    .select({ tdId: committeeMemberships.tdId, name: committees.name })
+    .from(committeeMemberships)
+    .innerJoin(committees, eq(committees.id, committeeMemberships.committeeId))
+    .where(and(isNull(committeeMemberships.endDate), tdIds ? inArray(committeeMemberships.tdId, tdIds) : isNotNull(committeeMemberships.tdId)))
+    .orderBy(asc(committeeMemberships.tdId), sql`${committeeMemberships.role} is null`, asc(committees.name));
+  for (const { tdId, name } of rows) {
+    const names = out.get(tdId!) ?? [];
+    // Two open memberships of one committee (a data repeat) are one committee.
+    if (!names.includes(name)) out.set(tdId!, [...names, name]);
+  }
+  return out;
 }

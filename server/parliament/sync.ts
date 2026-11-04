@@ -222,9 +222,6 @@ async function syncOnce(options: SyncOptions): Promise<SyncSummary> {
   if (roster.length === 0) throw new Error('The Oireachtas roster came back empty; refusing to sync.');
   const rosterResult = await scoring.syncTds(rosterToSeeds(roster), undefined, { force: options.forceRoster });
   const tdIds = await repo.tdIdsByMemberCode();
-  await repo.updateRosterDetails(
-    roster.map((m) => ({ memberCode: m.memberCode, offices: m.offices, committees: repo.currentCommitteeNames(m) })),
-  );
   const committeeMemberships = await repo.replaceCommitteeMemberships(roster, tdIds);
   // Offices and documented leave: why a TD was not expected to vote or ask questions. Members
   // who left keep their offices, which say which side of the House they spoke from.

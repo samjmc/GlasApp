@@ -139,9 +139,16 @@ run('TD stances against Postgres', () => {
     sourceId = (await dbmod.pool.query<{ id: number }>("insert into politics.news_sources (slug, name, homepage_url) values ('rte', 'RTÉ News', 'https://www.rte.ie') returning id")).rows[0]!.id;
     tdId = (
       await dbmod.pool.query<{ id: number }>(
-        `insert into politics.tds (name, party, offices) values ('Mary Lou McDonald', 'Sinn Féin', '[{"title": "Leader of the Opposition"}]') returning id`,
+        `insert into politics.tds (name, party, member_code) values ('Mary Lou McDonald', 'Sinn Féin', 'Mary-Lou-McDonald.D.2011-03-09') returning id`,
       )
     ).rows[0]!.id;
+    // One office held now, one that has ended (not held, so never a candidate's office).
+    await dbmod.pool.query(
+      `insert into politics.td_offices (member_code, td_id, title, office_type, start_date, end_date)
+       values ('Mary-Lou-McDonald.D.2011-03-09', $1, 'Leader of the Opposition', 'other', '2025-01-23', null),
+              ('Mary-Lou-McDonald.D.2011-03-09', $1, 'Chair of the Party', 'other', '2020-01-01', '2024-01-01')`,
+      [tdId],
+    );
   });
 
   afterAll(async () => {

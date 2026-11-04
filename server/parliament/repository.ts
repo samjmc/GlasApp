@@ -30,7 +30,7 @@ import type {
 } from '@shared/parliamentApi';
 import { db, type Db } from '../db';
 import { countBillsSponsored } from './repo/bills';
-import { fairnessPeriods, tdAbsencesOf, tdOfficeHistory } from './repo/fairness';
+import { currentOffices, fairnessPeriods, tdAbsencesOf, tdOfficeHistory } from './repo/fairness';
 import { questionsAskedBy } from './repo/questions';
 import {
   attendanceBenchmark,
@@ -208,21 +208,6 @@ export async function relinkTds(database: Db = db): Promise<void> {
       from politics.tds t
       where t.member_code = r.member_code and r.td_id is distinct from t.id`));
   }
-}
-
-/** The roster's profile details that live on `tds`: current offices and committee names. */
-export async function updateRosterDetails(
-  rows: Array<{ memberCode: string; offices: Array<{ title: string; since: string | null }>; committees: string[] }>,
-  database: Db = db,
-): Promise<void> {
-  await database.transaction(async (tx) => {
-    for (const r of rows) {
-      await tx
-        .update(tds)
-        .set({ offices: r.offices.map((o) => (o.since ? { title: o.title, since: o.since } : { title: o.title })), committees: r.committees })
-        .where(eq(tds.memberCode, r.memberCode));
-    }
-  });
 }
 
 /** Set `tds.gender` from the given map. A member missing from the map keeps what it has. */
@@ -519,7 +504,7 @@ export async function tdSummary(tdId: number, database: Db = db) {
     .leftJoin(tdParliamentStats, eq(tdParliamentStats.tdId, tds.id))
     .where(eq(tds.id, tdId));
   if (!row) return null;
-  const [votes, billsFeed, questionsFeed, billCount, asked, officeHistory, absences] = await Promise.all([
+  const [votes, billsFeed, questionsFeed, billCount, asked, officeHistory, absences, offices] = await Promise.all([
     votesOf(tdId, {}, database),
     getSyncState('bills', database),
     getSyncState('questions', database),
@@ -527,6 +512,7 @@ export async function tdSummary(tdId: number, database: Db = db) {
     questionsAskedBy(tdId, database),
     tdOfficeHistory(tdId, database),
     tdAbsencesOf(tdId, database),
+    currentOffices([tdId], database),
   ]);
   // The monthly counts are complete once the feed has a resume point and no failed month.
   const questionsComplete = questionsFeed.throughDate !== null && Object.keys(questionsFeed.failures).length === 0;
@@ -560,7 +546,7 @@ export async function tdSummary(tdId: number, database: Db = db) {
     speeches: stats?.speeches ?? null,
     partyLinePct: partyLinePct(votes),
     votesAgainstParty: votes.some((v) => v.partyMajority !== null) ? votes.filter((v) => v.withParty === false).length : null,
-    offices: (td.offices ?? []).map((o) => ({ title: o.title, since: o.since ?? null })),
+    offices: offices.get(tdId) ?? [],
     committeeSittingsEligible: eligible,
     committeeSittingsAttended: attended,
     committeeAttendancePct: eligible === null || attended === null ? null : committeeAttendancePct(attended, eligible),

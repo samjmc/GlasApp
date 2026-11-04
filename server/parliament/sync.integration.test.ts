@@ -64,7 +64,6 @@ function member(memberCode: string, party: string | null, extra: Partial<RosterM
     constituency: 'Wexford',
     memberSince: '2024-11-29',
     isPresiding: false,
-    offices: [],
     officeHistory: [],
     committees: [],
     ...extra,
@@ -210,14 +209,12 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     // B becomes a Minister of State on 1 March: questions are expected only before that.
     member(B, 'Party A', {
       committees: pac(null, '2024-12-01'),
-      offices: [{ title: MOS_TITLE, since: '2025-03-01' }],
       officeHistory: [{ title: MOS_TITLE, type: 'minister_of_state', start: '2025-03-01', end: null }],
     }),
     member(Y, 'Party A'),
     member(C, 'Party A', { committees: pac(null, '2025-06-16') }),
     member(CHAIR, 'Independent', {
       isPresiding: true,
-      offices: [{ title: 'Ceann Comhairle', since: '2024-12-18' }],
       officeHistory: [{ title: 'Ceann Comhairle', type: 'ceann_comhairle', start: '2024-12-18', end: null }],
     }),
   ];
@@ -335,11 +332,23 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(await gender(C)).toBeNull();
   });
 
-  it('stores offices on the TD and serves them', async () => {
+  it('serves the offices and committees held now from td_offices and committee_memberships', async () => {
     expect((await parliament.repository.tdSummary(await tdId(CHAIR)))?.offices).toEqual([{ title: 'Ceann Comhairle', since: '2024-12-18' }]);
     expect((await parliament.repository.tdSummary(await tdId(A)))?.offices).toEqual([]);
-    const { rows } = await dbmod.pool.query('select committees from politics.tds where member_code = $1', [A]);
-    expect(rows[0].committees).toEqual(['Committee of Public Accounts']);
+    const ids = [await tdId(A), await tdId(B), await tdId(Y)];
+    const offices = await parliament.repository.currentOffices(ids);
+    expect([...offices.entries()]).toEqual([[ids[1], [{ title: MOS_TITLE, since: '2025-03-01' }]]]);
+    const committees = await parliament.repository.currentCommittees(ids);
+    expect(committees.get(ids[0]!)).toEqual(['Committee of Public Accounts']);
+    expect(committees.get(ids[1]!)).toEqual(['Committee of Public Accounts']);
+    expect(committees.has(ids[2]!)).toBe(false);
+    // An office that has ended is not held now.
+    await dbmod.pool.query(`update politics.td_offices set end_date = '2025-05-01' where member_code = $1`, [B]);
+    try {
+      expect((await parliament.repository.currentOffices(ids)).size).toBe(0);
+    } finally {
+      await dbmod.pool.query(`update politics.td_offices set end_date = null where member_code = $1`, [B]);
+    }
   });
 
   it('joins a bill to the Dáil divisions held in its debates', async () => {
@@ -997,11 +1006,9 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       client: fakeClient([
         ...roster,
         member(donohoe, 'Party A', {
-          offices: [{ title: 'Minister for Finance', since: '2025-01-23' }],
           officeHistory: [{ title: 'Minister for Finance', type: 'cabinet', start: '2025-01-23', end: null }],
         }),
         member('Test-Minister.D.2024-11-29', 'Independent', {
-          offices: [{ title: MOS_TITLE, since: '2025-01-29' }],
           officeHistory: [{ title: MOS_TITLE, type: 'minister_of_state', start: '2025-01-29', end: null }],
         }),
       ]),
