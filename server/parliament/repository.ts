@@ -3,7 +3,7 @@
  * Divisions, debates and the per-TD record live here; committees, bills and question
  * counts live in ./repo/ and are re-exported, so callers see one `repository`.
  */
-import { and, asc, count, desc, eq, inArray, isNotNull, sql } from 'drizzle-orm';
+import { and, asc, count, desc, eq, inArray, isNotNull, notInArray, sql } from 'drizzle-orm';
 import {
   debateSections,
   debateSpeeches,
@@ -46,7 +46,7 @@ import {
 } from './metrics';
 import type { ParsedDivision, ParsedSpeech } from './parse';
 
-import { chunks } from './repo/util';
+import { chunks, upsertChanged } from './repo/util';
 
 export * from './repo/committees';
 export * from './repo/bills';
@@ -104,7 +104,31 @@ export async function upsertDivisions(parsed: ParsedDivision[], tdIds: Map<strin
   });
 }
 
-/** Replace one sitting day's sections and speeches. */
+const SECTION_UPSERT = upsertChanged('debate_sections', {
+  date: 'date',
+  title: 'title',
+  parentId: 'parent_id',
+  parentTitle: 'parent_title',
+  speechCount: 'speech_count',
+});
+const SPEECH_UPSERT = upsertChanged('debate_speeches', {
+  sectionId: 'section_id',
+  date: 'date',
+  position: 'position',
+  memberCode: 'member_code',
+  tdId: 'td_id',
+  role: 'role',
+  isPresiding: 'is_presiding',
+  text: 'text',
+  wordCount: 'word_count',
+});
+
+/**
+ * Make one sitting day's sections and speeches match its transcript. A diff, not delete-and-
+ * reinsert: what a corrected transcript dropped is deleted (a dropped section takes its speeches),
+ * the rest is upserted on its id and rewritten only when it changed. Re-reading an unchanged day
+ * writes nothing, and a section keeps the debate_id the grouping step gave it.
+ */
 export async function replaceDebateDay(
   date: string,
   sections: NewDebateSection[],
@@ -112,12 +136,21 @@ export async function replaceDebateDay(
   tdIds: Map<string, number>,
   database: Db = db,
 ): Promise<void> {
+  const sectionIds = sections.map((s) => s.id);
+  const rows: NewDebateSpeech[] = speeches.map((s) => ({ ...s, tdId: s.memberCode ? (tdIds.get(s.memberCode) ?? null) : null }));
   await database.transaction(async (tx) => {
-    // Cascades to the day's speeches; a section dropped from a corrected transcript goes too.
-    await tx.delete(debateSections).where(eq(debateSections.date, date));
-    for (const batch of chunks(sections)) await tx.insert(debateSections).values(batch);
-    const rows: NewDebateSpeech[] = speeches.map((s) => ({ ...s, tdId: s.memberCode ? (tdIds.get(s.memberCode) ?? null) : null }));
-    for (const batch of chunks(rows, 200)) await tx.insert(debateSpeeches).values(batch);
+    await tx.delete(debateSections).where(and(eq(debateSections.date, date), sectionIds.length ? notInArray(debateSections.id, sectionIds) : undefined));
+    if (sectionIds.length) {
+      await tx
+        .delete(debateSpeeches)
+        .where(and(inArray(debateSpeeches.sectionId, sectionIds), rows.length ? notInArray(debateSpeeches.id, rows.map((r) => r.id)) : undefined));
+    }
+    for (const batch of chunks(sections)) {
+      await tx.insert(debateSections).values(batch).onConflictDoUpdate({ target: debateSections.id, set: SECTION_UPSERT.set, setWhere: SECTION_UPSERT.changed });
+    }
+    for (const batch of chunks(rows, 200)) {
+      await tx.insert(debateSpeeches).values(batch).onConflictDoUpdate({ target: debateSpeeches.id, set: SPEECH_UPSERT.set, setWhere: SPEECH_UPSERT.changed });
+    }
   });
 }
 
