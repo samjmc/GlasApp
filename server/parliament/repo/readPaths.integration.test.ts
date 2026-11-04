@@ -18,7 +18,8 @@ import { tds } from '@shared/schema/politics';
 import type { TdVote } from '@shared/parliamentApi';
 import { applyAllMigrations, ensureDatabase, testDatabaseUrl } from '../../testing/migrations';
 import { committeeAttendancePct, INDEPENDENT, majorityFor, partyLinePct, partyMajorities, percentile, type PartyVoteRow } from '../metrics';
-import { COHORT_PERCENTILE, FIGURE_FORMATS, MIN_EXCHANGES, type QuestionParticipationRow } from '../questionItems/rules';
+import { COHORT_PERCENTILE } from '../debateItems/rules';
+import { FIGURE_FORMATS, MIN_EXCHANGES, type StoredParticipation } from '../questionItems/rules';
 
 const url = testDatabaseUrl('readpaths');
 const run = describe.skipIf(!url);
@@ -133,38 +134,42 @@ run('TD and party reads: new vs old', () => {
       .limit(limit);
     return rows.map((r) => ({ ...r, speeches: Number(r.speeches), words: Number(r.words) }));
   }
-  /** The old formatFigures, which grouped every backbench asker row of the table in Node. */
-  function oldFormatFigures(mine: QuestionParticipationRow[], everyone: QuestionParticipationRow[]) {
-    const askedRows = (rows: QuestionParticipationRow[]) => rows.filter((r) => r.asked && !r.inOffice);
-    const rate = (rows: QuestionParticipationRow[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
+  /**
+   * The old formatFigures (rules q2), which grouped every backbench asker row of the table in Node:
+   * the rate, the secured count and the cohort count only questions asked across the House.
+   */
+  function oldFormatFigures(mine: StoredParticipation[], everyone: StoredParticipation[]) {
+    const askedRows = (rows: StoredParticipation[]) => rows.filter((r) => r.asked && !r.inOffice);
+    const rate = (rows: StoredParticipation[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
     const formats = Array.from(new Set(askedRows(mine).map((r) => r.format)));
     return formats.map((format) => {
       const rows = askedRows(mine).filter((r) => r.format === format);
+      const across = rows.filter((r) => !r.governmentSide);
       const scored = FIGURE_FORMATS.includes(format);
-      const byMember = new Map<string, QuestionParticipationRow[]>();
-      for (const r of askedRows(everyone).filter((x) => x.format === format)) byMember.set(r.memberCode, [...(byMember.get(r.memberCode) ?? []), r]);
+      const byMember = new Map<string, StoredParticipation[]>();
+      for (const r of askedRows(everyone).filter((x) => x.format === format && !x.governmentSide)) byMember.set(r.memberCode, [...(byMember.get(r.memberCode) ?? []), r]);
       const cohort = Array.from(byMember.values()).filter((xs) => xs.length >= MIN_EXCHANGES).map(rate);
       return {
         format,
         asked: rows.length,
-        securedExchanges: rows.filter((r) => r.secured > 0).length,
+        askedAcross: across.length,
+        securedExchanges: across.filter((r) => r.secured > 0).length,
         points: rows.reduce((n, r) => n + r.points, 0),
         followUps: rows.reduce((n, r) => n + r.followUps, 0),
-        perTen: scored && rows.length >= MIN_EXCHANGES ? Math.round(rate(rows) * 10) / 10 : null,
+        perTen: scored && across.length >= MIN_EXCHANGES ? Math.round(rate(across) * 10) / 10 : null,
         cohortP75: scored && cohort.length > 0 ? Math.round(percentile(cohort, COHORT_PERCENTILE) * 10) / 10 : null,
         cohortSize: scored ? cohort.length : 0,
       };
     });
   }
-  const toRow = (r: Record<string, unknown>): QuestionParticipationRow => ({
+  const toRow = (r: Record<string, unknown>): StoredParticipation => ({
     exchangeId: r.exchange_id as string,
-    format: r.format as QuestionParticipationRow['format'],
+    format: r.format as StoredParticipation['format'],
     memberCode: r.member_code as string,
     tdId: (r.td_id as number | null) ?? null,
     inOffice: r.role === 'office',
-    governmentSide: false,
+    governmentSide: r.government_side as boolean,
     asked: r.asked as boolean,
-    spoke: true,
     secured: Number(r.secured),
     followUps: Number(r.follow_ups),
     answered: r.answered as boolean,
@@ -245,12 +250,14 @@ run('TD and party reads: new vs old', () => {
     // Question participation: every backbench asker pattern, office holders, all four formats.
     await q(
       `insert into politics.question_participation
-         (exchange_id, member_code, td_id, format, role, asked, secured, follow_ups, answered, answer_claims, answer_commitments, points, rules_version)
+         (exchange_id, member_code, td_id, format, role, government_side, asked, secured, follow_ups, answered, answer_claims, answer_commitments, points, rules_version)
        select 'x' || e || '#' || t.id, t.member_code, t.id,
               (array['oral_pq','topical_issue','leaders_questions','rapid'])[1 + (e + t.id) % 4]::politics.question_format,
               case when t.id % 6 = 0 then 'office' else 'backbench' end::politics.debate_role,
+              -- Some backbenchers sit on the government side for part of the term.
+              t.id % 6 = 0 or (t.id % 4 = 0 and e > 60),
               abs(hashtext('a' || e || t.id)) % 10 < 7, abs(hashtext('s' || e || t.id)) % 3, e % 2, t.id % 6 = 0, 0, 0,
-              case when abs(hashtext('s' || e || t.id)) % 3 > 0 then 2 else 0 end, 'q1'
+              case when abs(hashtext('s' || e || t.id)) % 3 > 0 then 2 else 0 end, 'q2'
          from politics.tds t, generate_series(1, 120) e
         where abs(hashtext('p' || e || t.id)) % 10 < (t.id % 10)`,
     );

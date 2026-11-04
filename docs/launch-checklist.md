@@ -23,8 +23,9 @@ query), and no health probe is logged; the service worker no longer caches signe
 profile pictures (and deletes the old cache); two public endpoints that sent each quiz result's eight scores
 to an AI provider are removed (and a third, a free-text assistant, earlier).
 
-Not checked: Docker Compose with the Caddy profile, a real Supabase project sign-in, email delivery, and
-anything on a real host.
+Not checked: Docker Compose with the Caddy profile, the read-only root file system in `deploy/compose.yml`
+(only the app's writes were checked in the code: profile pictures go to the `uploads` volume), a real
+Supabase project sign-in, email delivery, and anything on a real host.
 
 ## 1. Decide (the owner)
 
@@ -43,18 +44,23 @@ In the Supabase dashboard (Authentication):
 2. **Site URL:** one value for the whole project. Check with whoever runs the other product first.
 3. **Confirm email: ON.** The admin allow-list trusts `email_confirmed_at`.
 4. **Google provider:** enabled, with the redirect URI Supabase shows.
-5. **Reset-password email template:** use `{{ .SiteURL }}/auth/reset-password?token_hash={{ .TokenHash }}&type=recovery`
-   so the link works in any browser.
+5. **Reset-password email template:** use `{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=recovery`
+   so the link works in any browser. The app sends `/auth/reset-password` as the redirect address.
+   Do not use `{{ .SiteURL }}`: the Site URL may still be GlasIntelligence's domain. The template
+   is project-wide, so agree any change with whoever runs GlasIntelligence first.
 6. **SMTP:** set a real sender. Supabase's built-in sender is rate limited and meant for testing.
 7. **Database, API settings:** confirm the `politics` schema is **not** exposed through the public API.
    Migration 0026 is the second line: `anon` and `authenticated` have no grant on the schema, and every
    table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
    (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown), 0026
-   (row level security on the politics tables) and 0027 (foreign keys from the user-keyed political tables to
-   `politics.users`) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
+   (row level security on the politics tables), 0027 (foreign keys from the user-keyed political tables to
+   `politics.users`), 0028 (extraction failure counts), 0029 (job runs), 0030 (indexes), 0031 (username and
+   constituency on `politics.users`), 0032 (CHECKs, drop `tds.member_uri`) and 0033 (the question record's
+   government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
    table before you migrate. **0027 fails if any vote, quiz result, daily session or pledge ranking belongs to
-   a user with no `politics.users` row** (nothing is deleted for you): run the count in step 9 first.
+   a user with no `politics.users` row** (nothing is deleted for you): run the count in step 9 first. 0032
+   fails, and rolls everything back, if a row breaks one of its CHECKs: find such rows first.
 9. **Political data saved before consent existed.** Votes, rankings, pledge priorities and quiz results
    from people with no recorded consent (or consent to an older text) have no lawful basis under Article 9.
    Count them, then delete them or ask the people to consent again. Read-only count. It starts from the data
@@ -79,8 +85,8 @@ In the Supabase dashboard (Authentication):
    Change `1` to `POLITICAL_CONSENT_VERSION` in `shared/consent.ts` if it has moved. Until this is done, the
    regional and party summaries also count those people.
 
-On the host: fill `deploy/glasapp.env` (a secret per line; `VITE_SUPABASE_ANON_KEY` is needed at **build** time
-or sign-in is silently disabled), set an admin secret, keep `SCHEDULER=off`.
+On the host: fill `deploy/glasapp.env` (a secret per line; `SUPABASE_URL` and `SUPABASE_ANON_KEY` are also baked
+into the client at **build** time, so rebuild after changing either), set an admin secret, keep `SCHEDULER=off`.
 
 ## 3. First boot, then prove it
 
@@ -100,7 +106,8 @@ Only when step 3 passes, the migrations are applied, and no other copy (a laptop
 against the same database. Then follow `docs/deploy.md` section 6. `DIVISION_STANCES`, `DEBATE_ITEMS` and
 `QUESTION_ITEMS` stay off until you want the model cost. **`DIVISION_STANCES=on` also PUBLISHES** the matched
 divisions as TD stances every night (the sync runs straight after the read): run the audit and read each match
-by hand first (`docs/deploy.md` section 6).
+by hand first (`docs/deploy.md` section 6). (The debate and question backlogs on GlasCore are already read, so
+`DEBATE_ITEMS` and `QUESTION_ITEMS` read only new or changed items.)
 
 ## 5. Known limits at launch
 

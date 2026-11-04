@@ -5,7 +5,7 @@
  *
  *   --pilot N         a fixed sample of N units
  *   --debate <id> …   these units (debate or exchange ids)
- *   --limit N         the first N not read yet
+ *   --limit N         the first N not read yet (never-read first), or changed since their read
  *   --all --yes       every unit (after an EXTRACTOR_VERSION bump, the whole term: dollars, not cents)
  *   --dry-run         make the calls, write nothing
  *   --yes             write to a database not on this machine (liveDbGuard.ts)
@@ -13,22 +13,23 @@
  *   --concurrency N   units read at once, 1 to MAX_CONCURRENCY (default 2: DeepSeek caps
  *                     concurrent calls per account, by balance, and other apps share the key)
  *
- * One of --pilot, --debate, --limit or --all is required, so a bare command never reads everything.
+ * Exactly one of --pilot, --debate, --limit or --all is required, so a bare command never reads
+ * everything, and an unknown flag stops the job. It exits 1 when a unit failed or the run stopped
+ * early, so a chained command stops too.
  */
 import { shutdown } from '../db';
 import { costOf, type ExtractOptions, type ExtractSummary } from '../parliament/debateItems/run';
 import { REJECT_REASONS } from '../parliament/debateItems/verify';
 import { isLLMConfigured } from '../services/aiService';
 
-function argValue(argv: string[], flag: string): string | null {
-  const i = argv.indexOf(flag);
-  return i === -1 ? null : (argv[i + 1] ?? null);
-}
+const FLAGS = ['--pilot', '--debate', '--limit', '--all', '--yes', '--dry-run', '--force', '--concurrency'];
+const VALUE_FLAGS = ['--pilot', '--limit', '--concurrency'];
 
+/** A flag's whole-number value; a flag given with no value is an error, not "not given". */
 function argNumber(argv: string[], flag: string): number | null {
-  const v = argValue(argv, flag);
-  if (v === null) return null;
-  const n = Number(v);
+  const i = argv.indexOf(flag);
+  if (i === -1) return null;
+  const n = Number(argv[i + 1]);
   if (!Number.isInteger(n) || n < 1) throw new Error(`${flag} needs a whole number`);
   return n;
 }
@@ -37,13 +38,30 @@ const usd = (n: number) => `$${n.toFixed(n < 1 ? 4 : 2)}`;
 
 export const MAX_CONCURRENCY = 4;
 
-/** The run the flags ask for. Throws on a run that would read everything without saying so. */
+/**
+ * The run the flags ask for. Throws on a run that would read everything without saying so, and on
+ * any flag it does not know: a mistyped one must not fall through to a paid run.
+ */
 export function itemsOptions(argv: string[]): Omit<ExtractOptions, 'log'> {
-  const ids = argv.flatMap((a, i) => (argv[i - 1] === '--debate' ? [a] : []));
+  const ids: string[] = [];
+  for (let i = 0; i < argv.length; i++) {
+    const arg = argv[i]!;
+    if (!FLAGS.includes(arg)) throw new Error(`Unknown argument ${arg}. Flags: ${FLAGS.join(', ')}.`);
+    if (VALUE_FLAGS.includes(arg)) i++;
+    else if (arg === '--debate') {
+      const before = ids.length;
+      while (i + 1 < argv.length && !argv[i + 1]!.startsWith('--')) ids.push(argv[++i]!);
+      if (ids.length === before) throw new Error('--debate needs at least one id');
+    }
+  }
   const pilot = argNumber(argv, '--pilot');
   const limit = argNumber(argv, '--limit');
-  if (ids.length === 0 && pilot === null && limit === null && !(argv.includes('--all') && argv.includes('--yes'))) {
+  const all = argv.includes('--all');
+  if (ids.length === 0 && pilot === null && limit === null && !(all && argv.includes('--yes'))) {
     throw new Error('Say how much to read: --limit N, --pilot N, --debate <id>, or --all --yes for every unit (that can cost dollars).');
+  }
+  if ([ids.length > 0, pilot !== null, limit !== null, all].filter(Boolean).length > 1) {
+    throw new Error('Choose one of --limit, --pilot, --debate or --all.');
   }
   const concurrency = argNumber(argv, '--concurrency') ?? 2;
   if (concurrency > MAX_CONCURRENCY) throw new Error(`--concurrency is at most ${MAX_CONCURRENCY}: the provider caps calls in flight per account.`);
@@ -65,7 +83,7 @@ export interface ItemsJob {
   total(): Promise<{ count: number; words: number }>;
 }
 
-async function main(job: ItemsJob) {
+async function main(job: ItemsJob): Promise<ExtractSummary> {
   const argv = process.argv.slice(2);
   const options = itemsOptions(argv);
   if (!isLLMConfigured()) throw new Error('No LLM configured: set LLM_API_KEY.');
@@ -85,7 +103,7 @@ async function main(job: ItemsJob) {
 
   console.log('');
   console.log(
-    `Debates: ${summary.debates} chosen, ${summary.done} done, ${summary.failed} failed, ${summary.skipped} already read` +
+    `Chosen: ${summary.debates} ${job.units}; ${summary.done} done, ${summary.failed} failed, ${summary.skipped} already read` +
       `${summary.capped ? `, ${summary.capped} left alone after failing every time (--force to retry)` : ''}.`,
   );
   console.log(`Read: ${summary.speeches} speeches (${summary.irishSpeeches} in Irish), ${summary.words} words, ${summary.calls} calls.`);
@@ -99,12 +117,17 @@ async function main(job: ItemsJob) {
   );
   if (summary.stopped) console.log(`Stopped early: ${summary.stopped}.`);
   if (summary.orphansRemoved > 0) console.log(`Removed ${summary.orphansRemoved} item(s) whose speech left the record.`);
-  if (argv.includes('--dry-run')) console.log('Dry run: nothing was written.');
+  if (options.dryRun) console.log('Dry run: nothing was written.');
+  else if (summary.recordRows > 0) console.log(`Record rebuilt: ${summary.recordRows} rows.`);
+  return summary;
 }
 
 export function runItemsJob(job: ItemsJob): void {
   main(job)
-    .then(() => shutdown())
+    .then(async (summary) => {
+      await shutdown();
+      if (summary.failed > 0 || summary.stopped) process.exitCode = 1;
+    })
     .catch(async (error) => {
       console.error(error instanceof Error ? error.message : error);
       await shutdown();

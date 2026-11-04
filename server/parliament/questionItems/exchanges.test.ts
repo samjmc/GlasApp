@@ -52,6 +52,29 @@ describe('splitExchanges: Leaders’ Questions', () => {
     expect(spans(xs)).toEqual([['McDonald', 0, 6], ['Bacik', 7, 8]]);
   });
 
+  it('counts a new member’s short turns together, so a question asked in two parts still starts its exchange', () => {
+    const xs = splitExchanges({
+      sectionId: 's', format: 'rapid', date: 'd', pqAskers: [],
+      turns: turns([[0, 'A', 400], [1, GOV, 300], [2, 'B', 30], [3, GOV, 3], [4, 'B', 30], [5, GOV, 300]]),
+    });
+    expect(spans(xs)).toEqual([['A', 0, 1], ['B', 2, 5]]);
+  });
+
+  it('carries every new member’s short turns, not only the top one, and picks who is answered by words since the last answer', () => {
+    // X's 15 words are kept although Y said more in that turn; X's 30 more make 45, a question.
+    const kept = splitExchanges({
+      sectionId: 's', format: 'rapid', date: 'd', pqAskers: [],
+      turns: turns([[0, 'A', 400], [1, GOV, 300], [2, 'X', 15], [3, 'Y', 20], [4, GOV, 5], [5, 'X', 30], [6, GOV, 200]]),
+    });
+    expect(spans(kept)).toEqual([['A', 0, 1], ['X', 2, 6]]);
+    // A, the current asker, says most since the last answer: X's carried words do not make X the one answered.
+    const current = splitExchanges({
+      sectionId: 's', format: 'rapid', date: 'd', pqAskers: [],
+      turns: turns([[0, 'A', 400], [1, GOV, 300], [2, 'X', 39], [3, GOV, 5], [4, 'A', 50], [5, 'X', 20], [6, GOV, 200]]),
+    });
+    expect(spans(current)).toEqual([['A', 0, 6]]);
+  });
+
   it('keeps a last question nobody answered, and finds nothing in a section with no members', () => {
     const xs = splitExchanges({ sectionId: 's', format: 'rapid', date: 'd', pqAskers: [], turns: turns([[0, 'A', 80], [1, GOV, 60], [2, 'B', 70]]) });
     expect(spans(xs)).toEqual([['A', 0, 1], ['B', 2, 2]]);

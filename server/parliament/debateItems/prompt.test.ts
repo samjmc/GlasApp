@@ -37,6 +37,20 @@ describe('parseItems', () => {
     expect(out?.items.map((i) => i.commitmentType)).toEqual(['action', 'follow_up', 'general', null, null]);
   });
 
+  it('keeps an item with a blank or unknown claim type: none on a claim, ignored on any other kind', () => {
+    const out = parseItems({
+      items: [
+        { speech: 's3', kind: 'question', claim_type: '', quote: 'Will the Minister act?', addressee: 'the Minister' },
+        { speech: 's2', kind: 'specific_claim', claim_type: 'statistic', quote: 'we hired 2,000 nurses' },
+      ],
+    });
+    expect(out?.malformed).toBe(0);
+    expect(out?.items.map((i) => [i.kind, i.claimType])).toEqual([
+      ['question', null],
+      ['specific_claim', null],
+    ]);
+  });
+
   it('counts entries of the wrong shape, and rejects a reply that is not { items: [...] }', () => {
     expect(parseItems({ items: [{ speech: 's1', kind: 'verdict', quote: 'x y z' }, { speech: 's1', kind: 'question' }, 'nonsense'] })).toEqual({ items: [], malformed: 3 });
     expect(parseItems({ items: [] })).toEqual({ items: [], malformed: 0 });
