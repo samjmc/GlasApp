@@ -4,6 +4,7 @@
  * selection.ts and summary.ts; this file sequences them around the repository.
  */
 import { callChatCompletion, isLLMConfigured } from '../services/aiService';
+import { AppError } from '../utils/errors';
 import type { IdeologyDimension } from '@shared/ideology';
 import {
   DAILY_ITEM_COUNT,
@@ -47,16 +48,6 @@ const ANSWER_HISTORY_DAYS = 30;
 const QUESTION_BALANCE_DAYS = 30;
 /** The model `completeJson` asks for; a configured provider (DeepSeek) overrides it. */
 export const QUESTION_MODEL = 'gpt-4o-mini';
-
-/** A failure the caller caused. The router maps `status` straight to the response. */
-export class VotingError extends Error {
-  constructor(
-    readonly status: 400 | 404 | 409,
-    message: string,
-  ) {
-    super(message);
-  }
-}
 
 const daysAgo = (days: number, now: Date) => new Date(now.getTime() - days * 86_400_000);
 
@@ -144,9 +135,9 @@ export async function castVote(input: {
   sessionItemId?: number | null;
 }): Promise<void> {
   const found = await repo.questionById(input.questionId);
-  if (!found) throw new VotingError(404, 'Question not found');
+  if (!found) throw new AppError(404, 'NOT_FOUND', 'Question not found');
   if (!found.options.some((option) => option.optionKey === input.optionKey)) {
-    throw new VotingError(400, 'That is not one of the options for this question');
+    throw new AppError(400, 'VALIDATION_ERROR', 'That is not one of the options for this question');
   }
 
   await repo.upsertVote({ ...input, sessionItemId: input.sessionItemId ?? null });
@@ -250,9 +241,9 @@ export async function recordSessionVote(
   now: Date = new Date(),
 ): Promise<DailySessionState> {
   const item = await repo.itemForUser(sessionItemId, userId);
-  if (!item) throw new VotingError(404, 'Session item not found');
-  if (item.session.status === 'completed') throw new VotingError(409, 'Today’s session is already complete');
-  if (item.session.sessionDate !== sessionDateFor(now)) throw new VotingError(409, 'That session has ended');
+  if (!item) throw new AppError(404, 'NOT_FOUND', 'Session item not found');
+  if (item.session.status === 'completed') throw new AppError(409, 'CONFLICT', 'Today’s session is already complete');
+  if (item.session.sessionDate !== sessionDateFor(now)) throw new AppError(409, 'CONFLICT', 'That session has ended');
 
   await castVote({ userId, questionId: item.questionId, optionKey, source: 'daily_session', sessionItemId });
   return stateOf(item.session, userId);
@@ -261,12 +252,12 @@ export async function recordSessionVote(
 export async function completeSession(userId: string, now: Date = new Date()): Promise<DailySessionCompletion> {
   const sessionDate = sessionDateFor(now);
   const session = await repo.findSession(userId, sessionDate);
-  if (!session) throw new VotingError(404, 'No session today');
+  if (!session) throw new AppError(404, 'NOT_FOUND', 'No session today');
   if (session.status === 'completed' && session.completion) return session.completion;
 
   const items = await repo.sessionItems(session.id, userId);
   const voteCount = items.filter((item) => item.selectedOption !== null).length;
-  if (voteCount < items.length) throw new VotingError(400, 'Answer every question before finishing');
+  if (voteCount < items.length) throw new AppError(400, 'VALIDATION_ERROR', 'Answer every question before finishing');
 
   const [profileAfter, votes, earlierDates] = await Promise.all([
     ideology.getIdeologyProfile(userId),

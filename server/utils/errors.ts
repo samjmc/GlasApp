@@ -1,17 +1,16 @@
 /**
- * Standardized Error Classes
- * Provides consistent error handling across the application
+ * The one error a handler or service throws on purpose. The central error handler
+ * (server/middleware/errorHandler.ts) answers it with `status` and `{ success:false, error:{ code, message } }`,
+ * so `message` must be fit to show a person. Pass `{ cause }` to keep the underlying error in the log.
  */
-
 export class AppError extends Error {
   constructor(
-    public statusCode: number,
-    public message: string,
-    public code: string,
-    public isOperational: boolean = true
+    readonly status: number,
+    readonly code: string,
+    message: string,
+    options?: ErrorOptions,
   ) {
-    super(message);
-    Error.captureStackTrace(this, this.constructor);
-    this.name = this.constructor.name;
+    super(message, options);
+    this.name = 'AppError';
   }
 }

@@ -15,6 +15,7 @@ import { tdAbsences, tdLeaveAlerts, type LeaveHint } from '@shared/schema/parlia
 import { tds } from '@shared/schema/politics';
 import type { ConfirmLeaveInput, LeaveAlertState, LeaveAlertView } from '@shared/parliamentApi';
 import { db, type Db } from '../db';
+import { AppError } from '../utils/errors';
 import { validateAbsences } from './absences';
 import { undocumentedSilences } from './repo/fairness';
 
@@ -37,15 +38,6 @@ export interface LeaveWatchSummary {
   closed: number;
   /** Open alerts after this run. */
   open: number;
-}
-
-export class LeaveAlertError extends Error {
-  constructor(
-    readonly status: 400 | 404 | 409,
-    message: string,
-  ) {
-    super(message);
-  }
 }
 
 const keyOf = (memberCode: string, startDate: string) => `${memberCode}\u0000${startDate}`;
@@ -158,23 +150,23 @@ export async function listLeaveAlerts(scope: 'open' | 'all' = 'open', database: 
 export async function confirmLeave(id: number, input: ConfirmLeaveInput, actor: string, database: Db = db): Promise<void> {
   await database.transaction(async (tx) => {
     const [alert] = await tx.select().from(tdLeaveAlerts).where(eq(tdLeaveAlerts.id, id)).for('update');
-    if (!alert) throw new LeaveAlertError(404, `Alert ${id} not found`);
-    if (alert.status !== 'open') throw new LeaveAlertError(409, `Alert ${id} is already ${alert.status}`);
+    if (!alert) throw new AppError(404, 'ENTITY_NOT_FOUND', `Alert ${id} not found`);
+    if (alert.status !== 'open') throw new AppError(409, 'CONFLICT', `Alert ${id} is already ${alert.status}`);
 
     const entry = { memberCode: alert.memberCode, from: input.from, to: input.to, reason: input.reason, source: input.sourceUrl, note: input.note };
     try {
       validateAbsences([entry]);
     } catch (error) {
-      throw new LeaveAlertError(400, error instanceof Error ? error.message : 'Invalid leave');
+      throw new AppError(400, 'VALIDATION_ERROR', error instanceof Error ? error.message : 'Invalid leave');
     }
     if (entry.from > alert.endDate || (entry.to !== null && entry.to < alert.startDate)) {
-      throw new LeaveAlertError(400, `The leave must cover some of the silent days (${alert.startDate} to ${alert.endDate})`);
+      throw new AppError(400, 'VALIDATION_ERROR', `The leave must cover some of the silent days (${alert.startDate} to ${alert.endDate})`);
     }
     const [clash] = await tx
       .select({ from: tdAbsences.startDate })
       .from(tdAbsences)
       .where(and(eq(tdAbsences.memberCode, alert.memberCode), eq(tdAbsences.startDate, entry.from)));
-    if (clash) throw new LeaveAlertError(409, `A leave starting ${entry.from} is already recorded for this TD`);
+    if (clash) throw new AppError(409, 'CONFLICT', `A leave starting ${entry.from} is already recorded for this TD`);
 
     await tx.insert(tdAbsences).values({
       memberCode: alert.memberCode,
@@ -202,6 +194,6 @@ export async function dismissLeave(id: number, note: string | null, actor: strin
     .returning({ id: tdLeaveAlerts.id });
   if (updated.length > 0) return;
   const [exists] = await database.select({ status: tdLeaveAlerts.status }).from(tdLeaveAlerts).where(eq(tdLeaveAlerts.id, id));
-  if (!exists) throw new LeaveAlertError(404, `Alert ${id} not found`);
-  throw new LeaveAlertError(409, `Alert ${id} is already ${exists.status}`);
+  if (!exists) throw new AppError(404, 'ENTITY_NOT_FOUND', `Alert ${id} not found`);
+  throw new AppError(409, 'CONFLICT', `Alert ${id} is already ${exists.status}`);
 }

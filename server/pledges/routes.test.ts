@@ -73,6 +73,7 @@ vi.mock('./repository', () => {
 const { pledgesRouter } = await import('./routes');
 const { MIN_COMMUNITY_RANKERS } = await import('./score');
 const { optionalAuth } = await import('../auth');
+const { errorHandler } = await import('../middleware/errorHandler');
 
 let server: Server;
 let base: string;
@@ -86,7 +87,8 @@ beforeEach(async () => {
   // App-wide, as server/routes.ts mounts it.
   app.use(optionalAuth);
   app.use('/api/pledges', pledgesRouter);
-  server = await new Promise<Server>((resolve) => {
+  app.use(errorHandler);
+  server =await new Promise<Server>((resolve) => {
     const s = app.listen(0, '127.0.0.1', () => resolve(s));
   });
   const address = server.address();
@@ -156,7 +158,10 @@ describe('pledge validation and errors', () => {
   it('answers 409 for a duplicate pledge and 404 for a missing one', async () => {
     const dup = await send('/api/pledges', { method: 'POST', token: 'admin-token', body: { ...validPledge, title: 'duplicate' } });
     expect(dup.status).toBe(409);
-    expect((await send('/api/pledges/2')).status).toBe(404);
+    expect(await dup.json()).toMatchObject({ success: false, error: { code: 'CONFLICT' } });
+    const missing = await send('/api/pledges/2');
+    expect(missing.status).toBe(404);
+    expect(await missing.json()).toEqual({ success: false, error: { code: 'NOT_FOUND', message: 'Pledge not found' } });
     expect((await send('/api/pledges/2', { method: 'PATCH', token: 'admin-token', body: { status: 'broken' } })).status).toBe(404);
     expect((await send('/api/pledges/2/evidence', { method: 'POST', token: 'admin-token', body: { kind: 'other', summary: 'xyz', occurredOn: '2025-01-01', sourceUrl: 'https://x.ie' } })).status).toBe(404);
   });
@@ -165,7 +170,7 @@ describe('pledge validation and errors', () => {
     const evidence = { kind: 'other', summary: 'xyz', occurredOn: '2025-01-01', sourceUrl: 'https://x.ie' };
     const res = await send('/api/pledges/1/evidence', { method: 'POST', token: 'admin-token', body: { ...evidence, divisionId: 'no-such-vote' } });
     expect(res.status).toBe(400);
-    expect(await res.json()).toMatchObject({ success: false });
+    expect(await res.json()).toMatchObject({ success: false, error: { code: 'VALIDATION_ERROR', message: 'No recorded Dáil vote has id no-such-vote' } });
     // An empty string means "no vote", not an unknown vote id.
     expect((await send('/api/pledges/1/evidence', { method: 'POST', token: 'admin-token', body: { ...evidence, divisionId: '' } })).status).toBe(201);
     expect(state.calls.at(-1)).toMatchObject({ fn: 'addEvidence', args: [expect.objectContaining({ divisionId: null })] });

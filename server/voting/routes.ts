@@ -13,64 +13,35 @@
  * So do opening and finishing the daily session: the session row stores the user's profile and
  * area, and account erasure treats it as political data (server/account/deleteUserData.ts).
  */
-import { Router, type NextFunction, type Request, type RequestHandler, type Response } from 'express';
+import { Router } from 'express';
 import { z } from 'zod';
 import { requirePoliticalConsent } from '../account/consent';
-import { ConsentRequiredError, sendConsentRequired } from '../account/consentError';
 import { getProfile, userText } from '../account/profile';
 import { requireAuth } from '../auth';
 import { networkWriteRateLimit, publicWriteRateLimit } from '../middleware/rateLimit';
 import { OPTION_KEYS } from '@shared/voting';
-import { formatError, formatSuccess } from '../utils/responseFormatters';
+import { formatSuccess } from '../utils/responseFormatters';
 import * as service from './service';
 
+// A parse failure (ZodError) and the service's AppErrors are answered by the central error handler.
 const idParam = z.coerce.number().int().positive();
 const voteBody = z.object({ optionKey: z.enum(OPTION_KEYS) });
 
-const ERROR_CODES = { 400: 'VALIDATION_ERROR', 404: 'NOT_FOUND', 409: 'CONFLICT' } as const;
-
-/** Run a handler, turning a VotingError into its status and anything else into a 500. */
-const handle =
-  (fn: (req: Request, res: Response) => Promise<unknown>): RequestHandler =>
-  async (req: Request, res: Response, _next: NextFunction) => {
-    try {
-      const data = await fn(req, res);
-      if (!res.headersSent) res.json(formatSuccess(data));
-    } catch (error) {
-      if (error instanceof service.VotingError) {
-        res.status(error.status).json(formatError(ERROR_CODES[error.status], error.message));
-      } else if (error instanceof ConsentRequiredError) {
-        // Consent was withdrawn after requirePoliticalConsent let the request through.
-        sendConsentRequired(res);
-      } else if (error instanceof z.ZodError) {
-        res.status(400).json(formatError('VALIDATION_ERROR', error.issues[0]?.message ?? 'Invalid request'));
-      } else {
-        // The path only: a query string can carry a person's choices.
-        console.error(`[voting] ${req.method} ${req.baseUrl}${req.path} failed:`, error);
-        res.status(500).json(formatError('INTERNAL_ERROR', 'Something went wrong'));
-      }
-    }
-  };
-
 export const dailySessionRouter = Router();
 
-dailySessionRouter.get(
-  '/',
-  requireAuth,
-  requirePoliticalConsent,
-  handle(async (req) => {
-    const user = req.user!;
-    const profile = await getProfile(user.id);
-    // County and constituency are profile fields (politics.users). Metadata is where they were saved
-    // before; each is read only while the row has never held one. userText also drops a value longer
-    // than the session's column.
-    return service.getOrCreateSession({
-      id: user.id,
-      county: userText(profile?.county ?? user.userMetadata.county, 60),
-      constituency: userText(profile?.constituency ?? user.userMetadata.constituency, 100),
-    });
-  }),
-);
+dailySessionRouter.get('/', requireAuth, requirePoliticalConsent, async (req, res) => {
+  const user = req.user!;
+  const profile = await getProfile(user.id);
+  // County and constituency are profile fields (politics.users). Metadata is where they were saved
+  // before; each is read only while the row has never held one. userText also drops a value longer
+  // than the session's column.
+  const session = await service.getOrCreateSession({
+    id: user.id,
+    county: userText(profile?.county ?? user.userMetadata.county, 60),
+    constituency: userText(profile?.constituency ?? user.userMetadata.constituency, 100),
+  });
+  res.json(formatSuccess(session));
+});
 
 dailySessionRouter.post(
   '/items/:itemId/vote',
@@ -78,26 +49,22 @@ dailySessionRouter.post(
   requirePoliticalConsent,
   publicWriteRateLimit,
   networkWriteRateLimit,
-  handle(async (req) => {
+  async (req, res) => {
     const { optionKey } = voteBody.parse(req.body);
-    return service.recordSessionVote(req.user!.id, idParam.parse(req.params.itemId), optionKey);
-  }),
+    res.json(formatSuccess(await service.recordSessionVote(req.user!.id, idParam.parse(req.params.itemId), optionKey)));
+  },
 );
 
-dailySessionRouter.post(
-  '/complete',
-  requireAuth,
-  requirePoliticalConsent,
-  handle(async (req) => service.completeSession(req.user!.id)),
-);
+dailySessionRouter.post('/complete', requireAuth, requirePoliticalConsent, async (req, res) => {
+  res.json(formatSuccess(await service.completeSession(req.user!.id)));
+});
 
 export const votesRouter = Router();
 
 // Public; `req.user` is set for a signed-in caller by the app-wide optionalAuth (server/routes.ts).
-votesRouter.get(
-  '/articles/:articleId',
-  handle(async (req) => service.articleVoteView(idParam.parse(req.params.articleId), req.user?.id ?? null)),
-);
+votesRouter.get('/articles/:articleId', async (req, res) => {
+  res.json(formatSuccess(await service.articleVoteView(idParam.parse(req.params.articleId), req.user?.id ?? null)));
+});
 
 votesRouter.post(
   '/questions/:questionId',
@@ -105,8 +72,8 @@ votesRouter.post(
   requirePoliticalConsent,
   publicWriteRateLimit,
   networkWriteRateLimit,
-  handle(async (req) => {
+  async (req, res) => {
     const { optionKey } = voteBody.parse(req.body);
-    return service.castArticleVote(req.user!.id, idParam.parse(req.params.questionId), optionKey);
-  }),
+    res.json(formatSuccess(await service.castArticleVote(req.user!.id, idParam.parse(req.params.questionId), optionKey)));
+  },
 );

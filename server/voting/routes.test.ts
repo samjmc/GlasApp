@@ -6,6 +6,8 @@ import type { Server } from 'node:http';
 import express from 'express';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
+process.env.LOG_LEVEL = 'silent';
+
 const calls = vi.hoisted(() => ({ list: [] as Array<{ fn: string; args: unknown[] }> }));
 
 vi.mock('../auth', () => {
@@ -48,14 +50,7 @@ vi.mock('../account/profile', async (importOriginal) => ({
 }));
 
 vi.mock('./service', async () => {
-  class VotingError extends Error {
-    constructor(
-      readonly status: 400 | 404 | 409,
-      message: string,
-    ) {
-      super(message);
-    }
-  }
+  const { AppError } = await import('../utils/errors');
   const record =
     (fn: string, result: (...args: unknown[]) => unknown) =>
     async (...args: unknown[]) => {
@@ -63,10 +58,9 @@ vi.mock('./service', async () => {
       return result(...args);
     };
   return {
-    VotingError,
     getOrCreateSession: record('getOrCreateSession', () => ({ sessionId: 1, items: [] })),
     recordSessionVote: record('recordSessionVote', (_u, itemId) => {
-      if (itemId === 404) throw new VotingError(404, 'Session item not found');
+      if (itemId === 404) throw new AppError(404, 'NOT_FOUND', 'Session item not found');
       if (itemId === 500) throw new Error('database exploded: password=hunter2');
       return { sessionId: 1 };
     }),
@@ -77,6 +71,7 @@ vi.mock('./service', async () => {
 });
 
 const { dailySessionRouter, votesRouter } = await import('./routes');
+const { errorHandler } = await import('../middleware/errorHandler');
 
 let server: Server;
 let base: string;
@@ -89,7 +84,8 @@ beforeEach(async () => {
   app.use(express.json());
   app.use('/api/daily-session', dailySessionRouter);
   app.use('/api/votes', votesRouter);
-  server = await new Promise<Server>((resolve) => {
+  app.use(errorHandler);
+  server =await new Promise<Server>((resolve) => {
     const s = app.listen(0, '127.0.0.1', () => resolve(s));
   });
   const address = server.address();
@@ -192,12 +188,11 @@ describe('voting routes', () => {
     expect(calls.list).toEqual([]);
   });
 
-  it('maps a VotingError to its status and hides unexpected errors behind a 500', async () => {
+  it('answers an AppError with its status and hides unexpected errors behind a 500', async () => {
     const missing = await send('/api/daily-session/items/404/vote', { method: 'POST', user: 'u1', body: { optionKey: 'option_a' } });
     expect(missing.status).toBe(404);
     expect(await missing.json()).toMatchObject({ success: false, error: { code: 'NOT_FOUND', message: 'Session item not found' } });
 
-    vi.spyOn(console, 'error').mockImplementation(() => {});
     const crashed = await send('/api/daily-session/items/500/vote', { method: 'POST', user: 'u1', body: { optionKey: 'option_a' } });
     expect(crashed.status).toBe(500);
     expect(JSON.stringify(await crashed.json())).not.toContain('hunter2');
