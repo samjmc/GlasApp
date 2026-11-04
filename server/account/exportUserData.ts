@@ -54,6 +54,7 @@ export const PROFILE_METADATA_KEYS = [
   'picture',
   'region_code',
   'has_seen_onboarding',
+  'onboarding_completed_at',
 ] as const;
 
 const NOTES = [

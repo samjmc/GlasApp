@@ -15,6 +15,7 @@ const RESULT_KEY = "glas.quiz.result";
 const ANSWERS_KEY = "glas.quiz.answers";
 const RESULT_SEED_KEY = "glas.quiz.resultSeed";
 const DRAFT_KEY = "glas.quiz.draft";
+const OWNER_KEY = "glas.quiz.owner";
 const DEVICE_SEED_KEY = "glas.quiz.seed";
 const WEIGHTS_KEY = "dimensionWeights";
 
@@ -53,7 +54,18 @@ export function loadStoredQuiz(): StoredQuiz | null {
   return { result, answers: read<QuizResponse[]>(session, ANSWERS_KEY) ?? [], ...(isQuizSeed(seed) ? { seed } : {}) };
 }
 
-export function storeQuiz(result: QuizResult, answers: QuizResponse[], seed?: number): void {
+/**
+ * Counts how often the tab's quiz has been cleared (a sign-out, a different person, a withdrawal). A save
+ * that started before a clear and finishes after it carries the epoch it started in, and storeQuiz then
+ * drops it: its result belongs to someone who has gone (or was erased), and writing it back would show it
+ * to the next person as saved.
+ */
+let epoch = 0;
+export const quizStorageEpoch = () => epoch;
+
+/** `startedAt`: the epoch when the save began; the result is not stored if the tab's quiz was cleared since. */
+export function storeQuiz(result: QuizResult, answers: QuizResponse[], seed?: number, startedAt?: number): void {
+  if (startedAt !== undefined && startedAt !== epoch) return;
   write(session, RESULT_KEY, result);
   write(session, ANSWERS_KEY, answers);
   write(session, RESULT_SEED_KEY, seed ?? null);
@@ -72,8 +84,20 @@ export function clearStoredQuiz(): void {
  * not opinions about a person.
  */
 export function clearAllQuizStorage(): void {
+  epoch++;
   clearStoredQuiz();
   write(session, DRAFT_KEY, null);
+  write(session, OWNER_KEY, null);
+}
+
+/** The signed-in person this tab's quiz was last kept for, or null (an anonymous visitor's, or none). */
+export function loadQuizOwner(): string | null {
+  const owner = read<unknown>(session, OWNER_KEY);
+  return typeof owner === "string" && owner ? owner : null;
+}
+
+export function storeQuizOwner(userId: string): void {
+  write(session, OWNER_KEY, userId);
 }
 
 /** An in-progress quiz: its seed and the answers so far (question id → answer index). */

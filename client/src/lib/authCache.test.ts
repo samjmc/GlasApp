@@ -91,6 +91,12 @@ describe('shouldClearQuizStorage', () => {
     expect(shouldClearQuizStorage(null, null, 'SIGNED_OUT')).toBe(true);
   });
 
+  it('judges by the owner stored with the quiz, so it still works after a reload: a different person, or nobody, on the first read', () => {
+    expect(shouldClearQuizStorage('user-a', 'user-b', 'INITIAL_SESSION')).toBe(true);
+    expect(shouldClearQuizStorage('user-a', null, 'INITIAL_SESSION')).toBe(true);
+    expect(shouldClearQuizStorage('user-a', 'user-a', 'INITIAL_SESSION')).toBe(false);
+  });
+
   it('keeps an anonymous result when a visitor signs in, so it can be saved to their account', () => {
     expect(shouldClearQuizStorage(null, 'user-a', 'SIGNED_IN')).toBe(false);
   });

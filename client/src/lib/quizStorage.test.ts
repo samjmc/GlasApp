@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { clearAllQuizStorage, loadDeviceSeed, loadDraft, loadStoredQuiz, parseDraft, storeDeviceSeed, storeDraft, storeQuiz } from './quizStorage';
+import { clearAllQuizStorage, loadDeviceSeed, loadDraft, loadStoredQuiz, parseDraft, quizStorageEpoch, storeDeviceSeed, storeDraft, storeQuiz } from './quizStorage';
 
 // quizStorage imports ideologyApi only for defaultWeights; keep the Supabase client out of a node test.
 // vi.mock is hoisted above the imports.
@@ -37,6 +37,29 @@ describe('clearAllQuizStorage', () => {
     expect(loadStoredQuiz()).toBeNull();
     expect(loadDraft()).toBeNull();
     expect(loadDeviceSeed()).toBe(99);
+  });
+});
+
+describe('storeQuiz and the epoch', () => {
+  afterEach(() => vi.unstubAllGlobals());
+  const result = { id: 7, vector: { economic: 1 }, ideology: 'x', description: 'y' } as never;
+  const answers = [{ questionId: 1, answerIndex: 0 }] as never;
+
+  it('does not store a result whose save began before the quiz was cleared: it belongs to someone who has gone', () => {
+    vi.stubGlobal('window', { sessionStorage: fakeStorage(), localStorage: fakeStorage() });
+    const since = quizStorageEpoch();
+    clearAllQuizStorage(); // a sign-out, a different person, or a withdrawal while the save was in flight
+    storeQuiz(result, answers, 42, since);
+    expect(loadStoredQuiz()).toBeNull();
+  });
+
+  it('stores it when nothing was cleared since, and always when no epoch is given', () => {
+    vi.stubGlobal('window', { sessionStorage: fakeStorage(), localStorage: fakeStorage() });
+    storeQuiz(result, answers, 42, quizStorageEpoch());
+    expect(loadStoredQuiz()).not.toBeNull();
+    clearAllQuizStorage();
+    storeQuiz(result, answers, 42);
+    expect(loadStoredQuiz()).not.toBeNull();
   });
 });
 

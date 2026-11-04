@@ -28,10 +28,13 @@ const { loadDeviceSeed, loadDraft, loadStoredQuiz, storeDeviceSeed, storeDraft, 
 const CONSENTED = { politicalConsentAt: '2026-10-01T00:00:00Z', politicalConsentVersion: POLITICAL_CONSENT_VERSION };
 
 function Saver() {
-  const { ensure, withdraw } = usePoliticalConsent();
+  const { ensure, withdraw, granted, failed } = usePoliticalConsent();
   const [answer, setAnswer] = useState('');
   return (
     <div>
+      <p>
+        state: granted {String(granted)}, failed {String(failed)}
+      </p>
       <button onClick={async () => setAnswer(String(await ensure()))}>Save</button>
       <button onClick={async () => setAnswer(String(await ensure({ respectDecline: true })))}>Save quietly</button>
       <button onClick={() => withdraw().catch(() => {})}>Withdraw</button>
@@ -71,6 +74,45 @@ beforeEach(() => {
       return {};
     }
     throw new Error(`unexpected ${method} ${path}`);
+  });
+});
+
+describe('ConsentProvider.failed', () => {
+  const profileAnswers = (answer: () => Promise<unknown>) =>
+    apiCall.mockImplementation(async (method: string, path: string) => {
+      if (method === 'GET' && path === '/api/profile/me') return answer();
+      throw new Error(`unexpected ${method} ${path}`);
+    });
+
+  it('is true when the profile call fails or says "not signed in" (a 401 reads as null): nothing is known, so nobody is told they have not agreed', async () => {
+    profileAnswers(async () => {
+      throw new Error('500: db down');
+    });
+    renderProvider();
+    expect(await screen.findByText('state: granted false, failed true')).toBeInTheDocument();
+  });
+
+  it('is true for a null profile (a 401)', async () => {
+    profileAnswers(async () => null);
+    renderProvider();
+    expect(await screen.findByText('state: granted false, failed true')).toBeInTheDocument();
+  });
+
+  it('is false for someone who has not agreed, and for someone who has: those are answers', async () => {
+    profileAnswers(async () => ({ user: {} }));
+    const first = render(
+      <QueryClientProvider client={new QueryClient({ defaultOptions: { queries: { retry: false } } })}>
+        <ConsentProvider>
+          <Saver />
+        </ConsentProvider>
+      </QueryClientProvider>,
+    );
+    expect(await screen.findByText('state: granted false, failed false')).toBeInTheDocument();
+    first.unmount();
+
+    profileAnswers(async () => ({ user: CONSENTED }));
+    renderProvider();
+    expect(await screen.findByText('state: granted true, failed false')).toBeInTheDocument();
   });
 });
 

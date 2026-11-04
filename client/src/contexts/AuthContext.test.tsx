@@ -34,10 +34,13 @@ vi.mock('@/lib/supabase', () => ({
 // quizStorage imports ideologyApi only for defaultWeights; keep the Supabase client out of this test.
 vi.mock('@/lib/ideologyApi', () => ({ defaultWeights: () => ({}) }));
 
-const { AuthProvider, useAuth } = await import('./AuthContext');
-const { loadDeviceSeed, loadDraft, loadStoredQuiz, storeDeviceSeed, storeDraft, storeQuiz } = await import('@/lib/quizStorage');
+const apiCall = vi.hoisted(() => vi.fn(async () => ({})));
+vi.mock('@/lib/api', async (importOriginal) => ({ ...(await importOriginal<typeof import('@/lib/api')>()), apiCall }));
 
-const SESSION = { user: { id: 'u1', email: 'aine@example.ie', user_metadata: {}, app_metadata: {} } };
+const { AuthProvider, useAuth } = await import('./AuthContext');
+const { loadDeviceSeed, loadDraft, loadQuizOwner, loadStoredQuiz, storeDeviceSeed, storeDraft, storeQuiz, storeQuizOwner } = await import('@/lib/quizStorage');
+
+const SESSION = { access_token: 'token-u1', user: { id: 'u1', email: 'aine@example.ie', user_metadata: {}, app_metadata: {} } };
 const OTHER = { user: { id: 'u2', email: 'brian@example.ie', user_metadata: {}, app_metadata: {} } };
 
 /** One person's quiz as a tab holds it: the result, its answers, the draft, and the device seed. */
@@ -48,11 +51,12 @@ function seedQuiz() {
 }
 
 function Account() {
-  const { user, logout } = useAuth();
+  const { user, logout, deleteAccount } = useAuth();
   return (
     <div>
       <p>{user ? `signed in as ${user.id}` : 'signed out'}</p>
       <button onClick={() => logout().catch(() => {})}>Sign out</button>
+      <button onClick={() => deleteAccount().catch(() => {})}>Delete account</button>
     </div>
   );
 }
@@ -71,6 +75,7 @@ function renderSignedIn() {
 }
 
 beforeEach(() => {
+  apiCall.mockClear();
   window.sessionStorage.clear();
   window.localStorage.clear();
   supa.session = SESSION;
@@ -140,6 +145,21 @@ describe('AuthProvider and the quiz this tab holds', () => {
     expect(loadDraft()).toBeNull();
   });
 
+  it('drops them, and the query cache, when the account is deleted, even if Supabase then fails to sign out', async () => {
+    supa.signOutError = new Error('network');
+    seedQuiz();
+    const queryClient = renderSignedIn();
+    await screen.findByText('signed in as u1');
+
+    await userEvent.click(screen.getByRole('button', { name: 'Delete account' }));
+
+    await waitFor(() => expect(apiCall).toHaveBeenCalledWith('DELETE', '/api/account'));
+    await waitFor(() => expect(loadStoredQuiz()).toBeNull());
+    expect(loadDraft()).toBeNull();
+    expect(queryClient.getQueryCache().getAll()).toHaveLength(0);
+    expect(await screen.findByText('signed out')).toBeInTheDocument();
+  });
+
   it('drops them when a different person signs in on the same tab', async () => {
     seedQuiz();
     renderSignedIn();
@@ -164,6 +184,34 @@ describe('AuthProvider and the quiz this tab holds', () => {
     expect(await screen.findByText('signed in as u1')).toBeInTheDocument();
     expect(loadStoredQuiz()).not.toBeNull();
     expect(loadDraft()).not.toBeNull();
+  });
+
+  it('drops them when the page loads for a different person than the quiz was stored for (a Google sign-in is a full-page redirect)', async () => {
+    // Person u1 used this tab; it reloads with person u2 signed in: no in-memory state survives that, the owner key does.
+    storeQuizOwner('u1');
+    seedQuiz();
+    supa.session = OTHER;
+    renderSignedIn();
+    expect(await screen.findByText('signed in as u2')).toBeInTheDocument();
+    expect(loadStoredQuiz()).toBeNull();
+    expect(loadDraft()).toBeNull();
+    expect(loadQuizOwner()).toBe('u2');
+  });
+
+  it('drops them when the page loads signed out and the quiz was stored for a person', async () => {
+    storeQuizOwner('u1');
+    seedQuiz();
+    supa.session = null;
+    renderSignedIn();
+    await screen.findByText('signed out');
+    expect(loadStoredQuiz()).toBeNull();
+    expect(loadQuizOwner()).toBeNull();
+  });
+
+  it('records who the tab is for, so the next page load can tell the next person apart', async () => {
+    renderSignedIn();
+    await screen.findByText('signed in as u1');
+    expect(loadQuizOwner()).toBe('u1');
   });
 
   it('keeps them for the same person: a token refresh, a repeated sign-in event', async () => {

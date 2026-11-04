@@ -15,7 +15,7 @@ import { arrowKeyTarget, isTabStop } from '@/lib/radioGroupKeys';
 import { usePoliticalConsent } from '@/contexts/ConsentContext';
 import { submitQuiz } from '@/lib/ideologyApi';
 import { queryKeys } from '@/lib/queryKeys';
-import { loadDeviceSeed, loadDraft, loadStoredQuiz, storeDeviceSeed, storeDraft, storeQuiz } from '@/lib/quizStorage';
+import { loadDeviceSeed, loadDraft, loadStoredQuiz, quizStorageEpoch, storeDeviceSeed, storeDraft, storeQuiz } from '@/lib/quizStorage';
 
 const QUIZ_STEPS = [
   { title: 'Answer', body: 'Pick the option closest to your view. Skip nothing; you can go back.' },
@@ -266,9 +266,10 @@ const QuizPage: React.FC = () => {
     try {
       // A saved quiz shows political opinions: ask before it is saved. Saying no still scores the
       // quiz; the server just does not keep it (result.id stays null).
+      const since = quizStorageEpoch();
       await ensureConsent();
       const result = await submitQuiz(responses, seed);
-      storeQuiz(result, responses, seed);
+      storeQuiz(result, responses, seed, since);
       storeDraft(null);
       if (result.id !== null) {
         // Saved: the user's history and profile both moved.

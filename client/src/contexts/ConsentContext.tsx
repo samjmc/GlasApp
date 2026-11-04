@@ -53,7 +53,9 @@ export function ConsentProvider({ children }: { children: ReactNode }) {
 
   const granted = isAuthenticated && hasPoliticalConsent(profile.data?.user);
   const known = !isAuthenticated || profile.isSuccess || profile.isError;
-  const failed = isAuthenticated && profile.isError && !profile.isSuccess;
+  // The profile call failed, or answered "not signed in" (a 401 reads as null): either way `granted` is false only
+  // because nothing is known, not because the person has not agreed.
+  const failed = isAuthenticated && (profile.isError || (profile.isSuccess && !profile.data?.user));
   const userId = user?.id;
 
   // A different person signing in on this device starts with a clean slate.
