@@ -8,12 +8,14 @@
  * rebuild deleted.
  */
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const SERVER = path.resolve(__dirname, '..');
 const ROUTES_DIR = path.join(SERVER, 'routes');
-const GUARDS = ['requireAuth', 'requireAdmin', 'requireJob', 'optionalAuth'];
+/** Middleware that refuses a caller. Not optionalAuth: it attaches a user when there is one and never blocks. */
+const GUARDS = ['requireAuth', 'requireAdmin', 'requireJob'];
 
 /**
  * Routes that change state but are deliberately open. Each needs a reason, and the
@@ -145,6 +147,21 @@ describe('route guard coverage', () => {
     const real = new Set(allRoutes.map((r) => `${r.file} ${r.path}`));
     const stale = PUBLIC_WRITES.filter((p) => !real.has(`${p.file} ${p.path}`)).map((p) => `${p.file} ${p.path}`);
     expect(stale, `Allowlisted routes that no longer exist:\n${stale.join('\n')}`).toEqual([]);
+  });
+
+  it('does not count optionalAuth as a guard, on a route or on a whole router', () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'route-coverage-'));
+    try {
+      const onRoute = path.join(dir, 'onRoute.ts');
+      fs.writeFileSync(onRoute, "router.post('/x', optionalAuth, async (req, res) => {});\nrouter.post('/y', requireAuth, async (req, res) => {});\n");
+      expect(routesIn(onRoute).map((r) => [r.path, r.guarded])).toEqual([['/x', false], ['/y', true]]);
+
+      const onRouter = path.join(dir, 'onRouter.ts');
+      fs.writeFileSync(onRouter, "router.use(optionalAuth);\nrouter.post('/x', async (req, res) => {});\n");
+      expect(routesIn(onRouter).map((r) => r.guarded)).toEqual([false]);
+    } finally {
+      fs.rmSync(dir, { recursive: true, force: true });
+    }
   });
 
   it('every allowlist entry explains itself', () => {

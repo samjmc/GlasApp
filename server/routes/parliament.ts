@@ -8,7 +8,6 @@ import { z } from 'zod';
 import { LEADERBOARD_METRICS } from '@shared/parliamentApi';
 import { absenceReason } from '@shared/schema/parliament';
 import { logAdminAction, requireAdmin, requireJob } from '../auth';
-import { asyncHandler } from '../middleware/errorHandler';
 import { isSyncRunning, leaveWatch, repository as repo, runSync } from '../parliament';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
 
@@ -30,199 +29,199 @@ function badRequest(res: import('express').Response, message: string) {
 
 router.get(
   '/status',
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     res.json(formatSuccess({ feeds: await repo.syncStatus() }));
-  }),
+  },
 );
 
 router.get(
   '/tds/:id',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'TD id must be a positive integer');
     const summary = await repo.tdSummary(id.data);
     if (!summary) return res.status(404).json(formatError('ENTITY_NOT_FOUND', `TD ${id.data} not found`));
     res.json(formatSuccess(summary));
-  }),
+  },
 );
 
 router.get(
   '/tds/:id/votes',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     const q = z
       .object({ limit: z.coerce.number().int().min(1).max(500).default(20), againstParty: z.enum(['true', 'false']).optional() })
       .safeParse(req.query);
     if (!id.success || !q.success) return badRequest(res, 'Invalid TD id or query');
     res.json(formatSuccess(await repo.votesOf(id.data, { limit: q.data.limit, againstParty: q.data.againstParty === 'true' })));
-  }),
+  },
 );
 
 router.get(
   '/tds/:id/debates',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     const q = z.object({ limit: z.coerce.number().int().min(1).max(100).default(10) }).safeParse(req.query);
     if (!id.success || !q.success) return badRequest(res, 'Invalid TD id or query');
     res.json(formatSuccess(await repo.tdDebates(id.data, q.data.limit)));
-  }),
+  },
 );
 
 router.get(
   '/tds/:id/committees',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'TD id must be a positive integer');
     res.json(formatSuccess(await repo.tdCommittees(id.data)));
-  }),
+  },
 );
 
 router.get(
   '/tds/:id/bills',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     const q = z.object({ limit: z.coerce.number().int().min(1).max(200).default(20) }).safeParse(req.query);
     if (!id.success || !q.success) return badRequest(res, 'Invalid TD id or query');
     res.json(formatSuccess(await repo.tdBills(id.data, q.data.limit)));
-  }),
+  },
 );
 
 router.get(
   '/tds/:id/question-topics',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'TD id must be a positive integer');
     res.json(formatSuccess(await repo.tdQuestionTopics(id.data)));
-  }),
+  },
 );
 
 // NULL data (not 404) when nothing is stored yet: the TD exists, the register or file does not.
 router.get(
   '/tds/:id/interests',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'TD id must be a positive integer');
     res.json(formatSuccess(await repo.tdInterestsOf(id.data)));
-  }),
+  },
 );
 
 router.get(
   '/tds/:id/allowances',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'TD id must be a positive integer');
     res.json(formatSuccess(await repo.tdAllowancesOf(id.data)));
-  }),
+  },
 );
 
 // The debate record: points by the published rules (server/parliament/debateItems/rules.ts).
 // NULL data (not 404) when nothing has been read yet for that TD or debate.
 router.get(
   '/tds/:id/debate-record',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'TD id must be a positive integer');
     res.json(formatSuccess(await repo.tdDebateRecord(id.data)));
-  }),
+  },
 );
 
 router.get(
   '/debate-records/:id',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = recordId.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'Invalid debate id');
     res.json(formatSuccess(await repo.debateRecord(id.data)));
-  }),
+  },
 );
 
 // The question record: what ministers committed to in reply (server/parliament/questionItems/rules.ts).
 // NULL data (not 404) when the TD neither asked nor answered, or the section has no exchange, read yet.
 router.get(
   '/tds/:id/question-record',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'TD id must be a positive integer');
     res.json(formatSuccess(await repo.tdQuestionRecord(id.data)));
-  }),
+  },
 );
 
 router.get(
   '/question-records/:id',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = recordId.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'Invalid section id');
     res.json(formatSuccess(await repo.questionRecord(id.data)));
-  }),
+  },
 );
 
 router.get(
   '/bills',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const q = page
       .extend({ status: z.string().trim().min(1).max(40).optional(), source: z.string().trim().min(1).max(40).optional() })
       .safeParse(req.query);
     if (!q.success) return badRequest(res, 'Invalid paging or filter');
     const { rows, total } = await repo.listBills({ status: q.data.status, source: q.data.source }, q.data.limit, q.data.offset);
     res.json(formatSuccess(rows, { total }));
-  }),
+  },
 );
 
 router.get(
   '/bills/:id',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = billId.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'Invalid bill id');
     const detail = await repo.billDetail(id.data);
     if (!detail) return res.status(404).json(formatError('ENTITY_NOT_FOUND', 'Bill not found'));
     res.json(formatSuccess(detail));
-  }),
+  },
 );
 
 router.get(
   '/divisions',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const q = page.safeParse(req.query);
     if (!q.success) return badRequest(res, 'Invalid paging');
     const { rows, total } = await repo.listDivisions(q.data.limit, q.data.offset);
     res.json(formatSuccess(rows, { total }));
-  }),
+  },
 );
 
 router.get(
   '/divisions/:id',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = recordId.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'Invalid division id');
     const detail = await repo.divisionDetail(id.data);
     if (!detail) return res.status(404).json(formatError('ENTITY_NOT_FOUND', 'Division not found'));
     res.json(formatSuccess(detail));
-  }),
+  },
 );
 
 router.get(
   '/debates',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const q = page.safeParse(req.query);
     if (!q.success) return badRequest(res, 'Invalid paging');
     const { rows, total } = await repo.listDebates(q.data.limit, q.data.offset);
     res.json(formatSuccess(rows, { total }));
-  }),
+  },
 );
 
 router.get(
   '/debates/:id',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = recordId.safeParse(req.params.id);
     if (!id.success) return badRequest(res, 'Invalid debate id');
     const detail = await repo.debateDetail(id.data);
     if (!detail) return res.status(404).json(formatError('ENTITY_NOT_FOUND', 'Debate not found'));
     res.json(formatSuccess(detail));
-  }),
+  },
 );
 
 router.get(
   '/leaderboard',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const q = z
       .object({
         metric: z.enum(LEADERBOARD_METRICS).default('attendance'),
@@ -232,14 +231,14 @@ router.get(
       .safeParse(req.query);
     if (!q.success) return badRequest(res, `metric must be one of ${LEADERBOARD_METRICS.join(', ')}`);
     res.json(formatSuccess(await repo.leaderboard(q.data.metric, q.data.order, q.data.limit)));
-  }),
+  },
 );
 
 router.get(
   '/parties',
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     res.json(formatSuccess(await repo.parties()));
-  }),
+  },
 );
 
 // ---------------------------------------------------------------------------
@@ -266,17 +265,17 @@ const dismissBody = z.object({ note: z.string().trim().max(1000).nullable().defa
 router.get(
   '/admin/leave-alerts',
   requireAdmin,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const q = z.object({ status: z.enum(['open', 'all']).default('open') }).safeParse(req.query);
     if (!q.success) return badRequest(res, 'status must be open or all');
     res.json(formatSuccess(await leaveWatch.listLeaveAlerts(q.data.status)));
-  }),
+  },
 );
 
 router.post(
   '/admin/leave-alerts/:id/confirm',
   requireAdmin,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     const body = confirmBody.safeParse(req.body);
     if (!id.success || !body.success) return badRequest(res, body.success ? 'Alert id must be a positive integer' : (body.error.issues[0]?.message ?? 'Invalid leave'));
@@ -284,20 +283,20 @@ router.post(
     await leaveWatch.confirmLeave(id.data, body.data, req.user?.email ?? 'admin');
     logAdminAction(req, 'leave-watch.confirm', { alertId: id.data, reason: body.data.reason, from: body.data.from, to: body.data.to, sourceUrl: body.data.sourceUrl });
     res.json(formatSuccess({ confirmed: true }));
-  }),
+  },
 );
 
 router.post(
   '/admin/leave-alerts/:id/dismiss',
   requireAdmin,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     const body = dismissBody.safeParse(req.body ?? {});
     if (!id.success || !body.success) return badRequest(res, 'Invalid alert id or note');
     await leaveWatch.dismissLeave(id.data, body.data.note, req.user?.email ?? 'admin');
     logAdminAction(req, 'leave-watch.dismiss', { alertId: id.data });
     res.json(formatSuccess({ dismissed: true }));
-  }),
+  },
 );
 
 /** POST /api/parliament/sync — start a sync in the background; 409 while one is running. */

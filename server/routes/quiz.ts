@@ -6,7 +6,6 @@ import { hasPoliticalConsent } from '../account/consent';
 import { requireAuth } from '../auth';
 import { Router } from 'express';
 import { z } from 'zod';
-import { asyncHandler } from '../middleware/errorHandler';
 import { createRateLimit } from '../middleware/rateLimit';
 import { QuizInputError, quizHistory, submitQuiz } from '../quiz';
 import { FULL_COVERAGE_ANSWERS, answeredCountsOf } from '../quiz/score';
@@ -48,7 +47,7 @@ function isWholeQuiz(answers: QuizResponse[]): boolean {
 router.post(
   '/',
   quizSubmitRateLimit,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const body = submitSchema.safeParse(req.body);
     if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid quiz answers', body.error.flatten()));
     if (!isWholeQuiz(body.data.answers)) return res.status(400).json(formatError('VALIDATION_ERROR', INCOMPLETE_QUIZ));
@@ -59,16 +58,16 @@ router.post(
       if (error instanceof QuizInputError) return res.status(400).json(formatError('VALIDATION_ERROR', error.message));
       throw error;
     }
-  }),
+  },
 );
 
 /** GET /api/quiz/me — the signed-in user's quiz results, newest first. */
 router.get(
   '/me',
   requireAuth,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     res.json(formatSuccess(await quizHistory(req.user!.id)));
-  }),
+  },
 );
 
 export default router;

@@ -11,25 +11,12 @@
  * Every answer is `{ success: false, error: { code, message } }` (formatError).
  */
 
-import type { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
+import type { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
 import { ConsentRequiredError, sendConsentRequired } from '../account/consentError';
 import { AppError } from '../utils/errors';
 import { formatError, ErrorCodes, type ErrorResponse } from '../utils/responseFormatters';
 import { requestLogger } from '../utils/logger';
-
-/**
- * Route params as plain strings. Express 5 types a param as `string | string[]` because a
- * `*splat` wildcard captures an array; no route wrapped here uses one, so each is a string.
- */
-type StringParamsRequest = Request<Record<string, string>>;
-
-// Type for async route handler functions
-export type AsyncRouteHandler = (
-  req: StringParamsRequest,
-  res: Response,
-  next: NextFunction
-) => Promise<void> | Promise<any>;
 
 /** body-parser's own errors (http-errors): a 4xx `status` with `expose` set, meaning the message is safe to show. */
 function isClientHttpError(err: unknown): err is Error & { status: number } {
@@ -74,24 +61,4 @@ export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   else requestLogger(req).warn(fields, 'Request refused');
 
   res.status(status).json(body);
-};
-
-/**
- * Async error wrapper
- * Wraps async route handlers to catch promise rejections and pass them to errorHandler
- *
- * Usage:
- *   router.get('/path', asyncHandler(async (req, res) => {
- *     const data = await someAsyncOperation();
- *     res.json(formatSuccess(data));
- *   }));
- *
- * @param fn - Async route handler function
- * @returns Wrapped function that catches errors
- */
-/** Wrap an async route handler to forward errors. */
-export const asyncHandler = (fn: AsyncRouteHandler) => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    Promise.resolve(fn(req as StringParamsRequest, res, next)).catch(next);
-  };
 };

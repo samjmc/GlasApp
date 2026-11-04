@@ -15,7 +15,6 @@ import type {
   TdProfile,
   TdSummary,
 } from '@shared/scoresApi';
-import { asyncHandler } from '../middleware/errorHandler';
 import { computePartyScores, questionsAsked, recalculateAll, repository as repo, scoreLabel, scoredComponents } from '../scoring';
 import type { TdWithScore } from '../scoring/repository';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
@@ -88,18 +87,18 @@ function genderBreakdown(rows: TdWithScore[]) {
 /** GET /api/scores/tds — every active TD, best first. */
 router.get(
   '/tds',
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     const [rows, researchedIds] = await Promise.all([repo.listActive(), repo.researchedTdIds()]);
     const researched = new Set(researchedIds);
     const data: TdListItem[] = rows.map((r) => ({ ...tdCard(r), hasResearch: researched.has(r.td.id) }));
     res.json(formatSuccess(data, { count: data.length, researchedCount: researched.size }));
-  }),
+  },
 );
 
 /** GET /api/scores/widget — homepage: top, bottom, totals. */
 router.get(
   '/widget',
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     const rows = await repo.listActive();
     const ranked = rows.filter((r) => r.score?.overallScore != null).map(tdCard);
     const computedAt = rows.reduce<string | null>((latest, r) => {
@@ -112,13 +111,13 @@ router.get(
       stats: { totalTds: rows.length, rankedTds: ranked.length, computedAt },
     };
     res.json(formatSuccess(data));
-  }),
+  },
 );
 
 /** GET /api/scores/td/:name — full profile, score breakdown and the facts behind it. */
 router.get(
   '/td/:name',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const row = await repo.findByName(req.params.name);
     if (!row) return res.status(404).json(formatError('ENTITY_NOT_FOUND', `TD "${req.params.name}" not found`));
     const baseline = await repo.baselineFor(row.td.id);
@@ -154,13 +153,13 @@ router.get(
         : null,
     };
     res.json(formatSuccess(data));
-  }),
+  },
 );
 
 /** GET /api/scores/td/:id/summary — quick-info modal. */
 router.get(
   '/td/:id/summary',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = idParam.safeParse(req.params.id);
     if (!id.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'id must be a positive integer'));
     const row = await repo.findById(id.data);
@@ -174,7 +173,7 @@ router.get(
       topCommittee: td.committees?.[0] ?? null,
     };
     res.json(formatSuccess(data));
-  }),
+  },
 );
 
 // ---------------------------------------------------------------------------
@@ -184,19 +183,19 @@ router.get(
 /** GET /api/scores/parties — every party, ranked by the mean of its ranked members' scores. */
 router.get(
   '/parties',
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     const rows = await repo.listActive();
     const data: PartyScoreRow[] = computePartyScores(
       rows.map((r) => ({ party: r.td.party, overallScore: r.score?.overallScore ?? null })),
     ).map((p) => ({ ...p, label: p.overallScore === null ? null : scoreLabel(p.overallScore) }));
     res.json(formatSuccess(data, { count: data.length }));
-  }),
+  },
 );
 
 /** GET /api/scores/party/:name — members and aggregate for one party. */
 router.get(
   '/party/:name',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const members = await repo.listByParty(req.params.name);
     if (members.length === 0) return res.status(404).json(formatError('ENTITY_NOT_FOUND', 'Party not found'));
     const cards = members.map(tdCard);
@@ -209,7 +208,7 @@ router.get(
       members: cards,
     };
     res.json(formatSuccess(data));
-  }),
+  },
 );
 
 // ---------------------------------------------------------------------------
@@ -219,16 +218,16 @@ router.get(
 /** GET /api/scores/constituencies — names only. */
 router.get(
   '/constituencies',
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     const names = await repo.listConstituencies();
     res.json(formatSuccess(names.map((name) => ({ name })), { count: names.length }));
-  }),
+  },
 );
 
 /** GET /api/scores/constituencies/summary — one entry per constituency, for the map. */
 router.get(
   '/constituencies/summary',
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     const rows = (await repo.listActive()).filter((r) => r.td.constituency);
     const groups = new Map<string, TdWithScore[]>();
     for (const r of rows) {
@@ -252,13 +251,13 @@ router.get(
       })
       .sort((a, b) => a.name.localeCompare(b.name));
     res.json(formatSuccess({ constituencies, totalConstituencies: constituencies.length, totalTds: rows.length }));
-  }),
+  },
 );
 
 /** GET /api/scores/constituency/:name — one constituency in detail. */
 router.get(
   '/constituency/:name',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const members = await repo.listByConstituency(req.params.name);
     if (members.length === 0) {
       return res.status(404).json(formatError('ENTITY_NOT_FOUND', `Constituency "${req.params.name}" not found`));
@@ -274,7 +273,7 @@ router.get(
         tds: members.map((m) => ({ ...tdCard(m), offices: m.td.offices ?? [], committees: m.td.committees ?? [] })),
       }),
     );
-  }),
+  },
 );
 
 // ---------------------------------------------------------------------------
@@ -285,10 +284,10 @@ router.get(
 router.post(
   '/recalculate',
   requireJob,
-  asyncHandler(async (_req, res) => {
+  async (_req, res) => {
     const summary = await recalculateAll();
     res.json(formatSuccess(summary));
-  }),
+  },
 );
 
 export default router;

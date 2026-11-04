@@ -6,7 +6,6 @@ import { requireAuth } from '../auth';
 import { Router } from 'express';
 import { z } from 'zod';
 import { IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT } from '@shared/ideology';
-import { asyncHandler } from '../middleware/errorHandler';
 import { createRateLimit } from '../middleware/rateLimit';
 import { MAX_DIMENSION_WEIGHT } from '../ideology/alignment';
 import { matchesFor, partyProfile, tdProfile, userIdeologyDetail, userMatches, userTimeline } from '../ideology';
@@ -37,19 +36,19 @@ function parseWeights(raw: unknown) {
 router.get(
   '/me',
   requireAuth,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     res.json(formatSuccess((await userIdeologyDetail(req.user!.id)) ?? { vector: null, confidence: null }));
-  }),
+  },
 );
 
 /** GET /api/ideology/me/timeline?party=Sinn%20Féin — daily positions, with an optional party to compare. */
 router.get(
   '/me/timeline',
   requireAuth,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const party = typeof req.query.party === 'string' && req.query.party ? await partyProfile(req.query.party) : null;
     res.json(formatSuccess({ points: await userTimeline(req.user!.id), party }));
-  }),
+  },
 );
 
 /**
@@ -60,13 +59,13 @@ router.get(
 router.get(
   '/me/matches',
   requireAuth,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const td = z.coerce.number().int().positive().safeParse(req.query.td);
     const result = await userMatches(req.user!.id, parseWeights(req.query.weights), td.success ? { tdId: td.data } : {});
     if (!result) return res.json(formatSuccess({ tds: [], parties: [] }, { hasProfile: false, measured: [] }));
     const { measured, ...matches } = result;
     res.json(formatSuccess(matches, { hasProfile: true, measured }));
-  }),
+  },
 );
 
 const matchesSchema = z.object({ vector: vectorSchema, weights: weightsSchema });
@@ -78,45 +77,45 @@ const matchesRateLimit = createRateLimit({ windowMs: 15 * 60 * 1000, max: 300, n
 router.post(
   '/matches',
   matchesRateLimit,
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const body = matchesSchema.safeParse(req.body);
     if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid position', body.error.flatten()));
     res.json(formatSuccess(await matchesFor(body.data.vector, body.data.weights)));
-  }),
+  },
 );
 
 /** GET /api/ideology/td/:id */
 router.get(
   '/td/:id',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const id = z.coerce.number().int().positive().safeParse(req.params.id);
     if (!id.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid TD id'));
     const data = await tdProfile(id.data);
     if (!data) return res.status(404).json(formatError('NOT_FOUND', 'TD not found'));
     res.json(formatSuccess(data));
-  }),
+  },
 );
 
 /** GET /api/ideology/party/:name — the party's position: its TD mean blended with its manifesto. */
 router.get(
   '/party/:name',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const data = await partyProfile(req.params.name!);
     if (!data) return res.status(404).json(formatError('NOT_FOUND', 'Party not found'));
     res.json(formatSuccess(data));
-  }),
+  },
 );
 
 /** GET /api/ideology/party/:name/answers — the party's reviewed manifesto answers, each quote linked. */
 router.get(
   '/party/:name/answers',
-  asyncHandler(async (req, res) => {
+  async (req, res) => {
     const answers = partyAnswers(req.params.name!);
     if (answers) return res.json(formatSuccess(answers));
     const profile = await partyProfile(req.params.name!);
     if (!profile) return res.status(404).json(formatError('NOT_FOUND', 'Party not found'));
     res.json(formatSuccess(noPartyAnswers(profile.party)));
-  }),
+  },
 );
 
 const questionIdsSchema = z.array(z.coerce.number().int().positive()).min(1).max(MAX_ANSWER_QUESTIONS);
