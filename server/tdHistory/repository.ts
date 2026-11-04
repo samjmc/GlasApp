@@ -1,6 +1,6 @@
 /**
  * Every write of politics.td_historical_baselines. Reads for the TD page stay in
- * server/scoring/repository.ts (baselineFor, listBaselines).
+ * server/scoring/repository.ts (baselineFor, researchedTdIds).
  */
 import { and, asc, eq, isNotNull, or, sql } from 'drizzle-orm';
 import { db, type Db } from '../db';
