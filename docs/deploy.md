@@ -104,9 +104,10 @@ the migration how to fix them, since a failed `VALIDATE` rolls the whole `db:mig
 docker compose --env-file deploy/glasapp.env -f deploy/compose.yml up -d --build
 ```
 
-With Compose, `SCHEDULER` is `off` unless you set it in `deploy/glasapp.env` (`SCHEDULER:
-${SCHEDULER:-off}` in the compose file), so this first boot runs no cron. The image itself sets no
-default: a plain `docker run` without `SCHEDULER=off` starts all four crons. Check it:
+`SCHEDULER` is `off` unless you set it in `deploy/glasapp.env`, so this first boot runs no cron. The
+image defaults to `off` too (`ENV SCHEDULER=off` in the Dockerfile), so a plain `docker run` without
+the variable starts no cron either; the compose file repeats the default (`SCHEDULER: ${SCHEDULER:-off}`).
+CI starts the image with no `SCHEDULER` and checks it. Check it:
 
 ```
 docker compose --env-file deploy/glasapp.env -f deploy/compose.yml ps
