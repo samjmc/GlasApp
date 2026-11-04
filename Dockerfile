@@ -7,7 +7,7 @@
 # Run:    needs DATABASE_URL, SUPABASE_URL, SUPABASE_ANON_KEY and SUPABASE_SERVICE_ROLE_KEY at runtime. See docs/deploy.md.
 
 # ---- build: full dependencies, client bundle (dist/public) and server bundle (dist/index.js)
-FROM node:22-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392 AS build
+FROM node:22-slim@sha256:4b150b48b4116e2a22f2c39cc27025fbf4f153e2078fd3b14d159fdb5c7279da AS build
 WORKDIR /app
 
 COPY package.json package-lock.json ./
@@ -23,7 +23,7 @@ COPY . .
 RUN npm run build
 
 # ---- runtime: production dependencies only
-FROM node:22-slim@sha256:c3de60bf2f9dd0ac6370e6117950ff62d6e339527e7472301c9c78a017978392 AS runtime
+FROM node:22-slim@sha256:4b150b48b4116e2a22f2c39cc27025fbf4f153e2078fd3b14d159fdb5c7279da AS runtime
 WORKDIR /app
 
 COPY package.json package-lock.json ./
