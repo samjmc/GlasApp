@@ -52,6 +52,13 @@ run('question record (real Postgres)', () => {
        values ($1, $2, $3, $4, $5, 0, 1, $6, 'q1')`,
       [speech, member, kind, kind === 'specific_claim' ? 'figure' : null, quote, type],
     );
+  // pg 8 warns (once per process) when a query is sent while another runs on the same client; pg 9
+  // refuses it. Listening from the start catches it from any rebuild in this file.
+  const queuedQueries: string[] = [];
+  const onWarning = (w: Error) => {
+    if (w.message.includes('already executing a query')) queuedQueries.push(w.message);
+  };
+  process.on('warning', onWarning);
   const markRead = (exchangeId: string) =>
     q(
       `insert into politics.debate_extraction_runs (debate_id, extractor_version, input_hash, status, speeches, words, irish_speeches, calls, prompt_tokens, completion_tokens, accepted)
@@ -91,6 +98,7 @@ run('question record (real Postgres)', () => {
   }, 60_000);
 
   afterAll(async () => {
+    process.off('warning', onWarning);
     if (dbmod) await dbmod.shutdown();
   });
 
@@ -203,5 +211,11 @@ run('question record (real Postgres)', () => {
     await q('delete from politics.question_participation where member_code = $1', [K]);
     await row('office-ask#1', K, { role: 'office', governmentSide: true });
     expect(await repo.tdQuestionRecord(await tdIdOf(K))).toBeNull();
+  });
+
+  it('rebuilds with one query at a time on its transaction', async () => {
+    expect((await repo.rebuildQuestionRecord()).rows).toBeGreaterThan(0);
+    await new Promise((resolve) => setImmediate(resolve));
+    expect(queuedQueries).toEqual([]);
   });
 });
