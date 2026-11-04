@@ -72,7 +72,7 @@ const WEIGHTS = { welfare: 2, technocratic: 0 };
 async function load(sheets: PartyQuizSheet[]) {
   fake.sheets.splice(0, fake.sheets.length, ...sheets);
   vi.resetModules();
-  return import('./service');
+  return import('./matches');
 }
 
 /** What the API sends. */

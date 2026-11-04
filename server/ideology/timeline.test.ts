@@ -17,7 +17,8 @@ vi.mock('./repository', async () => {
   return { vectorOf: (row: Record<string, number>) => Object.fromEntries(IDEOLOGY_DIMENSIONS.map((d) => [d, row[d]])) };
 });
 
-const { timelineOf, userProfileOf } = await import('./service');
+const { timelineOf } = await import('./timeline');
+const { userProfileOf } = await import('./userProfile');
 
 /**
  * The last instant of an Irish calendar day, found by stepping an hour at a time (Irish midnight

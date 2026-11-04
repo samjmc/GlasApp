@@ -40,7 +40,7 @@ run('quiz and ideology against Postgres', () => {
   let quiz: typeof import('../quiz');
   let repo: typeof import('./repository');
   let partyBaseline: typeof import('./partyBaselines').partyBaseline;
-  let service: typeof import('./service');
+  let service: typeof import('./service') & typeof import('./matches');
 
   async function addTd(name: string, party: string | null): Promise<number> {
     const { rows } = await dbmod.pool.query<{ id: number }>('insert into politics.tds (name, party) values ($1, $2) returning id', [name, party]);
@@ -63,7 +63,7 @@ run('quiz and ideology against Postgres', () => {
     quiz = await import('../quiz');
     repo = await import('./repository');
     partyBaseline = (await import('./partyBaselines')).partyBaseline;
-    service = await import('./service');
+    service = { ...(await import('./matches')), ...(await import('./service')) };
   }, 60_000);
 
   beforeEach(async () => {

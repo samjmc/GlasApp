@@ -8,20 +8,9 @@
  *   recalculateAll                          rebuild every profile, no model calls
  *   recomputeTdsAndParties                  after the nightly stance rebuild (server/stances/divisions.ts)
  */
-export {
-  deleteTdEvidence,
-  getIdeologyProfile,
-  matchesFor,
-  partyProfile,
-  recalculateAll,
-  recomputeProfile,
-  recomputeTdsAndParties,
-  tdProfile,
-  userIdeologyDetail,
-  userMatches,
-  userTimeline,
-  type RecalculateSummary,
-  type TimelinePoint,
-} from './service';
+export { getIdeologyProfile, recomputeProfile, userIdeologyDetail } from './userProfile';
+export { userTimeline, type TimelinePoint } from './timeline';
+export { matchesFor, partyProfile, tdProfile, userMatches } from './matches';
+export { deleteTdEvidence, recalculateAll, recomputeTdsAndParties, type RecalculateSummary } from './rebuild';
 export type { Matches, PartyMatch, TdIdeology, TdMatch, UserIdeologyDetail } from '@shared/ideologyMatch';
 export { alignment, type DimensionWeights } from './alignment';
