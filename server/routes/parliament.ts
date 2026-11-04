@@ -263,15 +263,6 @@ const confirmBody = z.object({
 });
 const dismissBody = z.object({ note: z.string().trim().max(1000).nullable().default(null) });
 
-/** Answer a leave watch domain error with its status; anything else goes to the error handler. */
-function leaveError(res: import('express').Response, error: unknown) {
-  if (error instanceof leaveWatch.LeaveAlertError) {
-    const code = error.status === 404 ? 'ENTITY_NOT_FOUND' : error.status === 409 ? 'CONFLICT' : 'VALIDATION_ERROR';
-    return res.status(error.status).json(formatError(code, error.message));
-  }
-  throw error;
-}
-
 router.get(
   '/admin/leave-alerts',
   requireAdmin,
@@ -289,11 +280,8 @@ router.post(
     const id = idParam.safeParse(req.params.id);
     const body = confirmBody.safeParse(req.body);
     if (!id.success || !body.success) return badRequest(res, body.success ? 'Alert id must be a positive integer' : (body.error.issues[0]?.message ?? 'Invalid leave'));
-    try {
-      await leaveWatch.confirmLeave(id.data, body.data, req.user?.email ?? 'admin');
-    } catch (error) {
-      return leaveError(res, error);
-    }
+    // A missing, already-decided or invalid alert is an AppError: the error handler answers it.
+    await leaveWatch.confirmLeave(id.data, body.data, req.user?.email ?? 'admin');
     logAdminAction(req, 'leave-watch.confirm', { alertId: id.data, reason: body.data.reason, from: body.data.from, to: body.data.to, sourceUrl: body.data.sourceUrl });
     res.json(formatSuccess({ confirmed: true }));
   }),
@@ -306,11 +294,7 @@ router.post(
     const id = idParam.safeParse(req.params.id);
     const body = dismissBody.safeParse(req.body ?? {});
     if (!id.success || !body.success) return badRequest(res, 'Invalid alert id or note');
-    try {
-      await leaveWatch.dismissLeave(id.data, body.data.note, req.user?.email ?? 'admin');
-    } catch (error) {
-      return leaveError(res, error);
-    }
+    await leaveWatch.dismissLeave(id.data, body.data.note, req.user?.email ?? 'admin');
     logAdminAction(req, 'leave-watch.dismiss', { alertId: id.data });
     res.json(formatSuccess({ dismissed: true }));
   }),

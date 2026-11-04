@@ -12,17 +12,8 @@ process.env.SUPABASE_SERVICE_ROLE_KEY = 'service-role-key';
 process.env.ADMIN_API_SECRET = 'parliament-secret';
 process.env.LOG_LEVEL = 'silent';
 
-const { state, LeaveAlertError } = vi.hoisted(() => ({
-  state: { running: false, syncs: 0 },
-  LeaveAlertError: class extends Error {
-    constructor(
-      readonly status: number,
-      message: string,
-    ) {
-      super(message);
-    }
-  },
-}));
+const { state } = vi.hoisted(() => ({ state: { running: false, syncs: 0 } }));
+const { AppError } = await import('../utils/errors');
 
 vi.mock('../db', () => ({ db: {}, pool: {}, shutdown: vi.fn(), checkDatabaseConnection: vi.fn() }));
 
@@ -66,21 +57,21 @@ vi.mock('../parliament', () => ({
     questionRecord: vi.fn(async (id: string) => (id === 'dail-2026-09-30-dbsect_9' ? { sectionId: id, exchanges: [] } : null)),
   },
   leaveWatch: {
-    LeaveAlertError,
     listLeaveAlerts: vi.fn(async (scope: string) => [{ id: 1, scope }]),
     confirmLeave: vi.fn(async (id: number) => {
-      if (id === 404) throw new LeaveAlertError(404, 'Alert 404 not found');
-      if (id === 409) throw new LeaveAlertError(409, 'Alert 409 is already confirmed');
-      if (id === 400) throw new LeaveAlertError(400, 'source must be an https URL');
+      if (id === 404) throw new AppError(404, 'ENTITY_NOT_FOUND', 'Alert 404 not found');
+      if (id === 409) throw new AppError(409, 'CONFLICT', 'Alert 409 is already confirmed');
+      if (id === 400) throw new AppError(400, 'VALIDATION_ERROR', 'source must be an https URL');
     }),
     dismissLeave: vi.fn(async (id: number) => {
-      if (id === 409) throw new LeaveAlertError(409, 'Alert 409 is already dismissed');
+      if (id === 409) throw new AppError(409, 'CONFLICT', 'Alert 409 is already dismissed');
     }),
   },
 }));
 
 const router = (await import('./parliament')).default;
 const { leaveWatch } = await import('../parliament');
+const { errorHandler } = await import('../middleware/errorHandler');
 
 let server: Server;
 let base: string;
@@ -89,7 +80,8 @@ beforeAll(async () => {
   const app = express();
   app.use(express.json());
   app.use('/api/parliament', router);
-  server = await new Promise<Server>((resolve) => {
+  app.use(errorHandler);
+  server =await new Promise<Server>((resolve) => {
     const s = app.listen(0, '127.0.0.1', () => resolve(s));
   });
   const address = server.address();
@@ -236,7 +228,8 @@ describe('/api/parliament/admin/leave-alerts', () => {
   });
 
   it('answers the domain errors with their status, and bad input with 400', async () => {
-    expect((await send('POST', '/admin/leave-alerts/404/confirm', leave)).status).toBe(404);
+    const missing = await send('POST', '/admin/leave-alerts/404/confirm', leave);
+    expect([missing.status, missing.body]).toEqual([404, { success: false, error: { code: 'ENTITY_NOT_FOUND', message: 'Alert 404 not found' } }]);
     expect((await send('POST', '/admin/leave-alerts/409/confirm', leave)).status).toBe(409);
     expect((await send('POST', '/admin/leave-alerts/400/confirm', leave)).status).toBe(400);
     expect((await send('POST', '/admin/leave-alerts/x/confirm', leave)).status).toBe(400);
