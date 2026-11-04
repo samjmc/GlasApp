@@ -18,7 +18,7 @@ vi.mock('../auth', () => ({
   requireAuth: (req: express.Request, res: express.Response, next: express.NextFunction) => {
     if (req.headers.authorization !== 'Bearer ok') return res.status(401).json({ success: false });
     (req as unknown as { user: { id: string; email: string; userMetadata: Record<string, unknown> } }).user = {
-      id: req.headers['x-test-user'] ?? 'user-1',
+      id: req.header('x-test-user') ?? 'user-1',
       email: 'u@example.ie',
       userMetadata: { county: 'Cork' },
     };

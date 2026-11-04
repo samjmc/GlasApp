@@ -36,6 +36,7 @@ const item = (over: Partial<RawItem>): RawItem => ({
   targetQuote: null,
   addressee: null,
   due: null,
+  commitmentType: null,
   ...over,
 });
 

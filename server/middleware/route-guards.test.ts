@@ -176,7 +176,7 @@ describe('createRateLimit', () => {
     // Stands in for requireAuth: the header names the signed-in user.
     app.use((req, _res, next) => {
       const id = req.header('x-user');
-      if (id) (req as express.Request & { user: unknown }).user = { id };
+      if (id) req.user = { id, email: null, role: null, userMetadata: {} };
       next();
     });
     app.post('/vote', publicWriteRateLimit, networkWriteRateLimit, (_req, res) => res.json({ ok: true }));

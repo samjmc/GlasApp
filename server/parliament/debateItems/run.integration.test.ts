@@ -43,11 +43,13 @@ const REPLY = {
 };
 
 function fake(reply: unknown = REPLY): ItemCompletion & { calls: number } {
-  const f = (async () => {
-    f.calls++;
-    return { content: JSON.stringify(reply), model: 'fake-model', promptTokens: 1000, completionTokens: 200 } satisfies ItemAnswer;
-  }) as ItemCompletion & { calls: number };
-  f.calls = 0;
+  const f: ItemCompletion & { calls: number } = Object.assign(
+    async () => {
+      f.calls++;
+      return { content: JSON.stringify(reply), model: 'fake-model', promptTokens: 1000, completionTokens: 200 } satisfies ItemAnswer;
+    },
+    { calls: 0 },
+  );
   return f;
 }
 

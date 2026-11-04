@@ -36,7 +36,7 @@ is the list. `.env.example` is the local-development subset.
 | Command | What it does |
 |---|---|
 | `npm run dev` | Server with reload (`tsx watch`) and Vite for the client |
-| `npm run check` | TypeScript type check (`tsc`) |
+| `npm run check` | TypeScript type check: the app (`tsconfig.json`), then tests, e2e specs and configs (`tsconfig.test.json`) |
 | `npm run lint` | ESLint (`eslint.config.js`). Every rule is a warning for now, and CI does not fail on them |
 | `npm test` | Vitest unit and integration tests |
 | `npm run test:e2e` | Playwright browser tests (needs `TEST_DATABASE_URL`, see below) |

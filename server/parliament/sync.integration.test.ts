@@ -1029,7 +1029,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     await sync([]);
     expect(await officesOf()).toEqual([]);
 
-    await sync([{ memberCode: donohoe, officeHistory: [{ title: 'Minister for Finance', type: 'cabinet', start: '2025-01-23', end: '2025-11-18' }] }]);
+    await sync([{ memberCode: donohoe, fullName: '', constituency: null, officeHistory: [{ title: 'Minister for Finance', type: 'cabinet', start: '2025-01-23', end: '2025-11-18' }] }]);
     expect(await officesOf()).toEqual([{ title: 'Minister for Finance', start: '2025-01-23', end: '2025-11-18' }]);
     expect(lines.some((l) => l.includes('1 former members'))).toBe(true);
     // So the debate record and the extractor see him in government on a day he spoke as minister.
