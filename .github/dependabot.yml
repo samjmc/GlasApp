@@ -14,6 +14,19 @@ updates:
       # @types/node follows the Node version in .nvmrc and the Dockerfile, not the latest major.
       - dependency-name: '@types/node'
         update-types: [version-update:semver-major]
+      # tailwind-merge 3 supports only Tailwind CSS 4; this repo is on Tailwind 3.
+      - dependency-name: tailwind-merge
+        update-types: [version-update:semver-major]
+      # React 19 is a deliberate move: react, react-dom and both @types packages together,
+      # with the client code and tests adapted. Dependabot bumping react-dom alone breaks the build.
+      - dependency-name: react
+        update-types: [version-update:semver-major]
+      - dependency-name: react-dom
+        update-types: [version-update:semver-major]
+      - dependency-name: '@types/react'
+        update-types: [version-update:semver-major]
+      - dependency-name: '@types/react-dom'
+        update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions
     directory: /
