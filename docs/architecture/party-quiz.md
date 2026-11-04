@@ -3,7 +3,6 @@
 Each party with TDs "takes" the quiz from its GE2024 manifesto. A model picks one answer per
 question, backed by a verbatim quote and page, or abstains. Every quote is checked against the
 stored text. A person reviews every answer in a git PR before anything is served.
-Plan: `docs/plans/quiz-improvements/02-party-manifesto-quiz.md` on the `plan/quiz-improvements` branch.
 
 This file covers the ingest and answer CLI (`server/jobs/party-quiz.ts`, PR 02b). Serving the
 answers (the API and the party page) is a later PR; until then sheets change nothing on the site.

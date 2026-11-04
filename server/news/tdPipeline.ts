@@ -17,7 +17,6 @@
  */
 import { AIError, completeJson, OutOfCreditError } from '../services/aiService';
 import { TDExtractionService } from '../services/tdExtractionService';
-import { repository as tdRepo } from '../scoring';
 import { emptyStanceStats, isJevConfigured, positionProbability, recordStances, toCandidate, type StanceStats } from '../stances';
 import type { CandidateTd } from '../stances/extract';
 import { generateQuestionForArticle, questionForArticle, type QuestionPositions } from '../voting';
@@ -48,7 +47,6 @@ export interface PipelineOptions {
   source?: ArticleSource;
 }
 
-const MIN_MENTION_CONFIDENCE = 0.7;
 const MIN_CONTENT_CHARS = 500;
 
 function emptyStats(): PipelineStats {
@@ -179,25 +177,16 @@ async function ensureQuestion(article: Article): Promise<QuestionPositions | nul
 
 async function processArticle(article: Article, source: ArticleSource, stats: PipelineStats): Promise<void> {
   const text = `${article.title} ${article.content}`;
-  const mentions = TDExtractionService.filterHighConfidenceMentions(
-    await TDExtractionService.extractTDMentions(text),
-    MIN_MENTION_CONFIDENCE,
-  );
+  const mentions = await TDExtractionService.extractTDMentions(text);
   const substantial = mentions.filter((m) => TDExtractionService.isSubstantialMention(text, m.name));
 
-  let linked = 0;
+  // One mention per TD, each with its row: no lookup per mention.
   const candidates: CandidateTd[] = [];
-  for (const mention of substantial) {
-    const found = await tdRepo.findByName(mention.name);
-    if (!found) {
-      console.warn(`Extraction named "${mention.name}" but no such TD exists`);
-      continue;
-    }
-    await linkArticleTd(article.id, found.td.id);
-    linked++;
-    if (!candidates.some((c) => c.id === found.td.id)) candidates.push(toCandidate(found.td));
+  for (const { td } of substantial) {
+    await linkArticleTd(article.id, td.id);
+    candidates.push(toCandidate(td));
   }
-  stats.tdsLinked += linked;
+  stats.tdsLinked += candidates.length;
 
   await recordStances({ id: article.id, title: article.title, content: article.content }, candidates, stats.stances, {
     complete: completeJson,

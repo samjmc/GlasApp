@@ -89,8 +89,8 @@ function genderBreakdown(rows: TdWithScore[]) {
 router.get(
   '/tds',
   asyncHandler(async (_req, res) => {
-    const [rows, baselines] = await Promise.all([repo.listActive(), repo.listBaselines()]);
-    const researched = new Set(baselines.filter((b) => b.summary).map((b) => b.tdId));
+    const [rows, researchedIds] = await Promise.all([repo.listActive(), repo.researchedTdIds()]);
+    const researched = new Set(researchedIds);
     const data: TdListItem[] = rows.map((r) => ({ ...tdCard(r), hasResearch: researched.has(r.td.id) }));
     res.json(formatSuccess(data, { count: data.length, researchedCount: researched.size }));
   }),

@@ -272,7 +272,7 @@ const QuizPage: React.FC = () => {
       storeDraft(null);
       if (result.id !== null) {
         // Saved: the user's history and profile both moved.
-        await queryClient.invalidateQueries({ queryKey: ["/api/quiz/me"] });
+        await queryClient.invalidateQueries({ queryKey: queryKeys.quiz.all() });
         await queryClient.invalidateQueries({ queryKey: queryKeys.ideology.all() });
       }
       setLocation('/quiz/results');

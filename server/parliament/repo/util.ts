@@ -1,3 +1,4 @@
+import { sql } from 'drizzle-orm';
 import type { Db } from '../../db';
 
 /** Postgres caps a statement at 65,535 parameters; rows × columns stays well under it. */
@@ -21,6 +22,20 @@ export type Reader = Pick<Db, 'execute' | 'select'>;
 
 /** A member who left the Dáil has no tds row: "Paschal-Donohoe.D.2011-03-09" → "Paschal Donohoe". */
 export const nameFromCode = (code: string) => code.split('.')[0]!.replace(/-/g, ' ');
+
+/**
+ * For an upsert that rewrites a row only when it changed: `set` takes each column from
+ * `excluded`, and `changed` (the `setWhere`) compares the stored row with the incoming one.
+ * `columns` maps each Drizzle key to its column name in `politics.<table>`.
+ */
+export function upsertChanged(table: string, columns: Record<string, string>) {
+  const pairs = Object.entries(columns);
+  const list = (prefix: string) => pairs.map(([, c]) => `${prefix}.${c}`).join(', ');
+  return {
+    set: Object.fromEntries(pairs.map(([key, c]) => [key, sql.raw(`excluded.${c}`)])),
+    changed: sql.raw(`(${list(`politics.${table}`)}) is distinct from (${list('excluded')})`),
+  };
+}
 
 /** Postgres SQLSTATE for "deadlock detected". */
 const DEADLOCK = '40P01';

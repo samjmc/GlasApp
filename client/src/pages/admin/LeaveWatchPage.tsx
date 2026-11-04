@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { queryKeys } from "@/lib/queryKeys";
 import { ExternalLink, Shield } from "lucide-react";
 import type { AbsenceKind } from "@shared/parliamentApi";
 import { LEAVE_REASON_LABELS, leaveWatchApi, type LeaveAlertView } from "@/services/leaveWatchApi";
@@ -24,7 +25,7 @@ const day = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString("en
 
 export default function LeaveWatchPage() {
   const [scope, setScope] = useState<"open" | "all">("open");
-  const alerts = useQuery({ queryKey: ["/api/parliament/admin/leave-alerts", scope], queryFn: () => leaveWatchApi.list(scope) });
+  const alerts = useQuery({ queryKey: queryKeys.leaveWatch.list(scope), queryFn: () => leaveWatchApi.list(scope) });
 
   return (
     <div className="mx-auto max-w-5xl space-y-4 p-4">
@@ -138,7 +139,7 @@ function Review({ alert }: { alert: LeaveAlertView }) {
   const [note, setNote] = useState("");
   const [dismissNote, setDismissNote] = useState("");
 
-  const done = () => queryClient.invalidateQueries({ queryKey: ["/api/parliament/admin/leave-alerts"] });
+  const done = () => queryClient.invalidateQueries({ queryKey: queryKeys.leaveWatch.all() });
   const confirm = useMutation({
     mutationFn: () => leaveWatchApi.confirm(alert.id, { reason, from, to: to || null, sourceUrl: sourceUrl.trim(), note: note.trim() || null }),
     onSuccess: () => {

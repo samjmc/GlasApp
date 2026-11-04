@@ -8,6 +8,7 @@
  *   --limit N         the first N not read yet (never-read first), or changed since their read
  *   --all --yes       every unit (after an EXTRACTOR_VERSION bump, the whole term: dollars, not cents)
  *   --dry-run         make the calls, write nothing
+ *   --yes             write to a database not on this machine (liveDbGuard.ts)
  *   --force           read again even when this version already read the same speeches
  *   --concurrency N   units read at once, 1 to MAX_CONCURRENCY (default 2: DeepSeek caps
  *                     concurrent calls per account, by balance, and other apps share the key)

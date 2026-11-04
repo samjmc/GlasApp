@@ -21,6 +21,7 @@ import { fetchPartyAnswers, fetchPartyIdeology } from '@/lib/ideologyApi';
 import { partyIdeologyView } from '@/lib/partyIdeology';
 import { partyStyle } from '@/lib/parties';
 import { queryKeys } from '@/lib/queryKeys';
+import { decodeParam } from '@/lib/routeParam';
 import { apiCall, orNullOn404, userMessage } from '@/lib/api';
 import { formatScore, scoreTone, TONE_TEXT } from '@/lib/score';
 import { cn } from '@/lib/utils';
@@ -69,19 +70,6 @@ function MemberRow({ td, party, value, pos }: { td: TdCard; party: string; value
   );
 }
 
-/**
- * wouter runs decodeURI on the path, which leaves reserved escapes (%26, %2F, %23) encoded.
- * Finish the job, but keep the raw value when it holds a bare "%" (e.g. "100% RDR").
- */
-function decodeParam(value: string | undefined): string | undefined {
-  if (!value) return value;
-  try {
-    return decodeURIComponent(value);
-  } catch {
-    return value;
-  }
-}
-
 export default function PartyProfilePage() {
   const name = decodeParam(useParams<{ name: string }>().name);
   const [tab, setTab] = useState('overview');
@@ -89,7 +77,7 @@ export default function PartyProfilePage() {
 
   // null = no such party (404).
   const { data: party, isLoading, error, refetch, isFetching } = useQuery<PartyProfile | null>({
-    queryKey: ['party-profile-v2', name],
+    queryKey: queryKeys.party.profile(name),
     queryFn: async () => {
       const [detail, rankings] = await Promise.all([
         orNullOn404(apiCall<PartyDetail>('GET', `/api/scores/party/${encodeURIComponent(name || '')}`)),

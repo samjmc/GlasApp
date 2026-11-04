@@ -11,7 +11,7 @@ import type { DebateSpeech } from '../debateItems/windows';
 import { holdsGovernmentOffice, isGovernmentSide } from '../governmentSide';
 import { splitExchanges, type SectionTurn } from '../questionItems/exchanges';
 import { QUESTION_EXTRACTOR_VERSION } from '../questionItems/prompt';
-import { QUESTION_RULES_VERSION, formatFigures, scoreExchanges, type CohortMember, type ExchangeItem, type ExchangeMember, type StoredParticipation } from '../questionItems/rules';
+import { QUESTION_RULES_VERSION, formatFigures, scoreExchanges, type ExchangeItem, type ExchangeMember, type StoredParticipation } from '../questionItems/rules';
 import { governmentOffices, toSpeech, type SpeechRow } from './debateItems';
 import { RECORD_REBUILD_LOCK, chunks, nameFromCode, type Reader } from './util';
 
@@ -227,13 +227,13 @@ export async function tdQuestionRecord(tdId: number, database: Db = db): Promise
   const td = (await database.execute(sql`select member_code from politics.tds where id = ${tdId}`)).rows[0] as { member_code: string | null } | undefined;
   if (!td?.member_code) return null;
   const code = td.member_code;
-  const [mineRes, everyoneRes] = await Promise.all([
+  const [mineRes, askersRes] = await Promise.all([
     database.execute(sql`select * from politics.question_participation where member_code = ${code}`),
-    // The cohort as counts per member and format (thousands of rows otherwise, on every view).
+    // The cohort as totals per backbencher per format, of questions asked across the House, not
+    // every row of the table.
     database.execute(sql`
-      select format, count(*)::int asked, (count(*) filter (where secured > 0))::int secured
-      from politics.question_participation
-      where asked and role = 'backbench' and not government_side
+      select format, count(*)::int asked, (count(*) filter (where secured > 0))::int secured_exchanges
+      from politics.question_participation where asked and role = 'backbench' and not government_side
       group by member_code, format`),
   ]);
   const mine = (mineRes.rows as Array<Record<string, unknown>>).map(toRow);
@@ -263,7 +263,10 @@ export async function tdQuestionRecord(tdId: number, database: Db = db): Promise
     commitmentViews(recent.items, exchangeId, new Set(recent.members.filter((m) => m.exchangeId === exchangeId && m.inOffice).map((m) => m.memberCode)), names);
   return {
     rulesVersion: QUESTION_RULES_VERSION,
-    formats: formatFigures(mine, everyoneRes.rows as unknown as CohortMember[]),
+    formats: formatFigures(
+      mine,
+      (askersRes.rows as Array<{ format: QuestionFormat; asked: number; secured_exchanges: number }>).map((r) => ({ format: r.format, asked: Number(r.asked), securedExchanges: Number(r.secured_exchanges) })),
+    ),
     answers: answered.length
       ? {
           answered: answered.length,

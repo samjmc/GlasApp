@@ -52,8 +52,8 @@ app.use((req, res, next) => {
 // Serve uploaded files statically
 app.use('/uploads', express.static('public/uploads'));
 
-// Serve static assets (GeoJSON files, etc.)
-app.use('/assets', express.static('public/assets'));
+// The two constituency map files. Not at /assets: that is where Vite puts the hashed bundles.
+app.use('/geo', express.static('public/assets'));
 
 (async () => {
   try {

@@ -1,15 +1,11 @@
 /**
  * Database access.
  *
- * `db` (Drizzle over node-postgres) is THE data layer for everything the rebuild has
- * reached; it talks to the GlasCore Postgres directly and is not subject to RLS.
- *
- * `supabaseDb` (service-role PostgREST client) remains only for modules the rebuild has
- * not reached yet. New code must not use it. It goes when the last caller does.
+ * `db` (Drizzle over node-postgres) is THE data layer: it talks to the GlasCore Postgres
+ * directly and is not subject to RLS.
  */
 import { drizzle } from 'drizzle-orm/node-postgres';
 import pkg from 'pg';
-import { createClient } from '@supabase/supabase-js';
 import * as politics from '@shared/schema/politics';
 
 const { Pool } = pkg;
@@ -63,18 +59,6 @@ pool.on('connect', (client) => {
 
 export const db = drizzle(pool, { schema: politics });
 export type Db = typeof db;
-
-/**
- * Legacy service-role client. Bypasses RLS. Only for not-yet-rebuilt modules.
- * @deprecated use `db`
- */
-export const supabaseDb =
-  process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY
-    ? createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_ROLE_KEY, {
-        auth: { autoRefreshToken: false, persistSession: false },
-        db: { schema: 'public' },
-      })
-    : null;
 
 let shuttingDown = false;
 

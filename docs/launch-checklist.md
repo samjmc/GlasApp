@@ -53,8 +53,8 @@ In the Supabase dashboard (Authentication):
    table has row level security with no policy (server/db.integration.test.ts checks both).
 8. **Migrations:** from a checkout of `main`, `npm run db:migrate` against the session pooler
    (`docs/deploy.md` section 3). GlasCore had 0000 to 0024 on 2026-10-10; 0025 (TD history takedown), 0026
-   (row level security on the politics tables), 0027 (user id foreign keys), 0028 (extraction failure counts)
-   and 0029 (the question record's government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
+   (row level security on the politics tables), 0027 (user id foreign keys), 0028 (extraction failure counts),
+   0029 (job runs), 0030 (indexes) and 0031 (the question record's government side) came after. Compare `drizzle/meta/_journal.json` with the `drizzle.__drizzle_migrations`
    table before you migrate.
 9. **Political data saved before consent existed.** Votes, rankings, pledge priorities and quiz results
    from people with no recorded consent (or consent to an older text) have no lawful basis under Article 9.
@@ -99,8 +99,8 @@ already read, so the last two read only new or changed items.)
 ## 5. Known limits at launch
 
 - One instance; a deploy means a short gap. Uploads live on a volume that must be backed up.
-- **No Content-Security-Policy** (`helmet` has it off) while the sign-in token is in localStorage. Turn it on in
-  report-only mode first.
+- **The Content-Security-Policy is report-only** (`server/middleware/securityHeaders.ts`), so it blocks nothing
+  while the sign-in token is in localStorage. Check what it reports, then set `reportOnly` to false.
 - `/health` only says the process is up, not that the database is reachable. Watch `/api/parliament/status`.
 - Database TLS certificates are not verified (the pooler's chain is not trusted by node-postgres).
 - No error tracking (Sentry or similar) and no uptime monitor. Add one before the first campaign.

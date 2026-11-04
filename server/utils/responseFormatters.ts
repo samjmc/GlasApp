@@ -14,16 +14,6 @@ export interface SuccessResponse<T> {
   meta?: SuccessResponseMeta;
 }
 
-/**
- * Success response where the `data` payload is optional (e.g. operations with
- * no meaningful payload such as logout).
- */
-export interface ApiSuccessResponse<T = unknown> {
-  success: true;
-  data?: T;
-  meta?: SuccessResponseMeta;
-}
-
 export type ErrorDetails = string | Record<string, unknown>;
 
 export interface ErrorResponse {
@@ -34,8 +24,6 @@ export interface ErrorResponse {
     details?: ErrorDetails;
   };
 }
-
-export type ApiResponse<T> = SuccessResponse<T> | ErrorResponse;
 
 /**
  * Format a success response with optional metadata
@@ -68,45 +56,6 @@ export function formatSuccess<T>(data: T, meta?: SuccessResponseMeta): SuccessRe
     success: true,
     data,
   };
-
-  if (meta && Object.keys(meta).length > 0) {
-    response.meta = meta;
-  }
-
-  return response;
-}
-
-/**
- * Format a success response where `data` is optional
- * Enforces the canonical { success, data?, meta? } shape for operations that
- * have no meaningful payload.
- *
- * @param data - Optional response data payload
- * @param meta - Optional metadata (pagination, timestamps, etc.)
- * @returns Formatted success response
- *
- * @example
- * // Success without a payload
- * return formatResponse();
- * // Returns: { success: true }
- *
- * @example
- * // Success with a payload
- * return formatResponse({ message: 'Logged out successfully' });
- * // Returns: { success: true, data: { message: 'Logged out successfully' } }
- */
-/** Format a success response with an optional data payload. */
-export function formatResponse<T = unknown>(
-  data?: T,
-  meta?: SuccessResponseMeta
-): ApiSuccessResponse<T> {
-  const response: ApiSuccessResponse<T> = {
-    success: true,
-  };
-
-  if (data !== undefined) {
-    response.data = data;
-  }
 
   if (meta && Object.keys(meta).length > 0) {
     response.meta = meta;
@@ -209,58 +158,3 @@ export const ErrorCodes = {
   EXTERNAL_SERVICE_ERROR: 'External service error',
   OPERATION_FAILED: 'Operation failed',
 } as const;
-
-/**
- * Format a paginated success response
- * Convenience function combining formatSuccess with pagination metadata
- *
- * @param data - Array of items
- * @param pagination - Pagination metadata
- * @returns Formatted success response with pagination
- *
- * @example
- * const articles = [{ id: 1, title: 'Article 1' }, ...];
- * return formatPaginatedSuccess(articles, {
- *   limit: 20,
- *   offset: 0,
- *   total: 150,
- *   hasMore: true
- * });
- */
-/** Format a paginated success response. */
-export function formatPaginatedSuccess<T>(
-  data: T[],
-  pagination: Record<string, unknown>
-): SuccessResponse<T[]> {
-  return formatSuccess(data, { pagination });
-}
-
-/**
- * Map HTTP status codes to error codes
- * Useful for consistent error formatting in error handler
- */
-/** Map HTTP status codes to error codes. */
-export const StatusCodeToErrorCode: Record<number, string> = {
-  400: 'VALIDATION_ERROR',
-  401: 'UNAUTHORIZED',
-  403: 'FORBIDDEN',
-  404: 'NOT_FOUND',
-  409: 'CONFLICT',
-  429: 'RATE_LIMITED',
-  500: 'INTERNAL_ERROR',
-  503: 'EXTERNAL_SERVICE_ERROR',
-};
-
-/**
- * Get default error message for a given status code
- * @param statusCode - HTTP status code
- * @returns Default error message
- */
-/** Get the default error message for an HTTP status code. */
-export function getDefaultErrorMessage(statusCode: number): string {
-  const codeKey = StatusCodeToErrorCode[statusCode];
-  if (codeKey && ErrorCodes[codeKey as keyof typeof ErrorCodes]) {
-    return ErrorCodes[codeKey as keyof typeof ErrorCodes];
-  }
-  return 'An error occurred';
-}

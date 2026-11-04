@@ -7,6 +7,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { IDEOLOGY_DIMENSIONS, IDEOLOGY_LIMIT } from '@shared/ideology';
 import { asyncHandler } from '../middleware/errorHandler';
+import { createRateLimit } from '../middleware/rateLimit';
 import { MAX_DIMENSION_WEIGHT } from '../ideology/alignment';
 import { matchesFor, partyProfile, tdProfile, userIdeologyDetail, userMatches, userTimeline } from '../ideology';
 // Not through '../ideology': the party answers are compiled-in data, not the ideology model.
@@ -70,9 +71,13 @@ router.get(
 
 const matchesSchema = z.object({ vector: vectorSchema, weights: weightsSchema });
 
+/** 300 per IP per 15 minutes: the results page refetches on every settled weight change. */
+const matchesRateLimit = createRateLimit({ windowMs: 15 * 60 * 1000, max: 300, name: 'ideology-matches' });
+
 /** POST /api/ideology/matches — matches for any position. Public: anonymous quiz takers use it. Stateless. */
 router.post(
   '/matches',
+  matchesRateLimit,
   asyncHandler(async (req, res) => {
     const body = matchesSchema.safeParse(req.body);
     if (!body.success) return res.status(400).json(formatError('VALIDATION_ERROR', 'Invalid position', body.error.flatten()));

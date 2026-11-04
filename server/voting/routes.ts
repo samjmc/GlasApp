@@ -17,7 +17,8 @@ import { Router, type NextFunction, type Request, type RequestHandler, type Resp
 import { z } from 'zod';
 import { requirePoliticalConsent } from '../account/consent';
 import { ConsentRequiredError, sendConsentRequired } from '../account/consentError';
-import { optionalAuth, requireAuth } from '../auth';
+import { getProfile, userText } from '../account/profile';
+import { requireAuth } from '../auth';
 import { networkWriteRateLimit, publicWriteRateLimit } from '../middleware/rateLimit';
 import { OPTION_KEYS } from '@shared/voting';
 import { formatError, formatSuccess } from '../utils/responseFormatters';
@@ -50,10 +51,6 @@ const handle =
     }
   };
 
-/** A self-edited metadata value, or null when it is blank or longer than its column (`max`). */
-const metadataString = (value: unknown, max: number) =>
-  typeof value === 'string' && value.trim() && value.trim().length <= max ? value.trim() : null;
-
 export const dailySessionRouter = Router();
 
 dailySessionRouter.get(
@@ -62,11 +59,14 @@ dailySessionRouter.get(
   requirePoliticalConsent,
   handle(async (req) => {
     const user = req.user!;
-    // Location is a self-edited preference, so it lives in user_metadata.
+    const profile = await getProfile(user.id);
+    // The county is a profile field (politics.users). Metadata is where it was saved before; it is read
+    // only while the row has never held one. The constituency has no column yet, so it stays in metadata.
+    // userText also drops a value longer than the session's column.
     return service.getOrCreateSession({
       id: user.id,
-      county: metadataString(user.userMetadata.county, 60),
-      constituency: metadataString(user.userMetadata.constituency, 100),
+      county: userText(profile?.county ?? user.userMetadata.county, 60),
+      constituency: userText(user.userMetadata.constituency, 100),
     });
   }),
 );
@@ -92,9 +92,9 @@ dailySessionRouter.post(
 
 export const votesRouter = Router();
 
+// Public; `req.user` is set for a signed-in caller by the app-wide optionalAuth (server/routes.ts).
 votesRouter.get(
   '/articles/:articleId',
-  optionalAuth,
   handle(async (req) => service.articleVoteView(idParam.parse(req.params.articleId), req.user?.id ?? null)),
 );
 

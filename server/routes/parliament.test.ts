@@ -24,7 +24,7 @@ const { state, LeaveAlertError } = vi.hoisted(() => ({
   },
 }));
 
-vi.mock('../db', () => ({ db: {}, pool: {}, supabaseDb: null, shutdown: vi.fn(), checkDatabaseConnection: vi.fn() }));
+vi.mock('../db', () => ({ db: {}, pool: {}, shutdown: vi.fn(), checkDatabaseConnection: vi.fn() }));
 
 // requireAdmin verifies a Supabase token, which auth.test.ts covers. Here it is a header check,
 // so these tests prove each leave-watch route sits behind a guard and what it does behind it.

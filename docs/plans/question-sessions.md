@@ -254,7 +254,7 @@ record still labelled q1 at once.
 - **Only exchanges asked across the House count.** A government backbencher's friendly question
   answered with an announcement is not a commitment secured from the government, but it counted in
   the per-10 rate and lifted the 75th percentile others are measured against. Migration
-  `0029_question_government_side` stores `government_side` on `question_participation`; the per-10
+  `0031_question_government_side` stores `government_side` on `question_participation`; the per-10
   rate, the secured count and the cohort use only exchanges asked from the other side of the House
   (`askedAcross` in the API), and `asked` stays the total.
 - **One answerer per exchange**: the office holder who said most. A minister who interjected in a

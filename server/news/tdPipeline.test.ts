@@ -3,12 +3,13 @@ import type { Article, ArticleOutcome, ArticleSource } from './articleSource';
 
 const m = vi.hoisted(() => ({
   extractTDMentions: vi.fn(),
-  findByName: vi.fn(),
   generateQuestionForArticle: vi.fn(),
   questionForArticle: vi.fn(),
   linkArticleTd: vi.fn(),
   saveStances: vi.fn(),
-  recordTdEvidence: vi.fn(),
+  /** The `stance` evidence each stance transaction wrote. */
+  replaceEvidence: vi.fn(),
+  recomputeTdProfile: vi.fn(),
   positionProbability: vi.fn(),
   /** Answers each model call by its operation name; an Error makes that call throw. */
   replies: {} as Record<string, unknown>,
@@ -27,19 +28,33 @@ vi.mock('../services/aiService', async (importOriginal) => ({
 vi.mock('../services/tdExtractionService', () => ({
   TDExtractionService: {
     extractTDMentions: m.extractTDMentions,
-    filterHighConfidenceMentions: (mentions: unknown[]) => mentions,
     isSubstantialMention: (_text: string, name: string) => !name.startsWith('Passing'),
   },
 }));
-vi.mock('../scoring', () => ({ repository: { findByName: m.findByName } }));
 vi.mock('../voting', () => ({
   generateQuestionForArticle: m.generateQuestionForArticle,
   questionForArticle: m.questionForArticle,
+  questionsWithPositions: async () => [QUESTION],
 }));
 vi.mock('./repository', () => ({ linkArticleTd: m.linkArticleTd }));
-// extract → verify → map run for real; only the writes are stubbed.
-vi.mock('../stances/repository', () => ({ saveStances: m.saveStances, rebuildArticles: vi.fn() }));
-vi.mock('../ideology', () => ({ recordTdEvidence: m.recordTdEvidence }));
+// extract → verify → map → evidence run for real; only the database is stubbed. A saved stance
+// is read back as td_stances would give it to the evidence rebuild.
+vi.mock('../stances/repository', () => {
+  let saved: Array<{ tdId: number; questionId: number | null; optionKey: string | null; quoteKind: string }> = [];
+  return {
+    withStanceLock: async (fn: (tx: unknown) => Promise<unknown>) => fn({}),
+    deleteArticleStancesExcept: async () => [],
+    saveStances: async (id: number, rows: typeof saved) => {
+      saved = rows;
+      return m.saveStances(id, rows);
+    },
+    stanceRowsForEvidence: async () =>
+      saved.filter((r) => r.optionKey).map((r, i) => ({ id: i + 1, tdId: r.tdId, questionId: r.questionId, optionKey: r.optionKey, quoteKind: r.quoteKind, discipline: null, statedAt: STATED_AT })),
+    replaceStanceEvidenceOf: m.replaceEvidence,
+    rebuildArticles: vi.fn(),
+  };
+});
+vi.mock('../ideology/service', () => ({ recomputeTdProfile: m.recomputeTdProfile, recomputePartyProfile: vi.fn() }));
 vi.mock('../stances/position', async (importOriginal) => ({
   ...(await importOriginal<typeof import('../stances/position')>()),
   isJevConfigured: () => true,
@@ -49,6 +64,7 @@ vi.mock('../stances/position', async (importOriginal) => ({
 const { rankByRelevance, runTdPipeline } = await import('./tdPipeline');
 const { AIError, OutOfCreditError } = await import('../services/aiService');
 
+const STATED_AT = new Date('2026-09-25T10:00:00Z');
 const QUOTE = 'We will build fifty thousand public homes every year until the housing crisis is over.';
 const STATED = 'Mary Lou McDonald told the Dáil: "' + QUOTE + '" She was speaking on Tuesday. ';
 /** What is stored: the quote widened to its whole sentence (server/stances/verify.ts). */
@@ -94,6 +110,10 @@ const QUESTION = {
 };
 
 const stance = (quote: string, kind = 'direct') => ({ stances: [{ td_id: 7, policy_domain: 'housing', quote, quote_kind: kind }] });
+const evidenceWritten = () => m.replaceEvidence.mock.calls.flatMap((call) => call[2]);
+/** A mention as extraction returns it: with the TD's row, so the pipeline looks nothing up. */
+const mention = (id: number, name: string) => ({ name, td: { id, name, party: 'Sinn Féin', constituency: 'Dublin Central', offices: [{ title: 'Leader of the Opposition', since: '2025-01-01' }] }, context: '' });
+const MARY = mention(7, 'Mary Lou McDonald');
 const outage = () => new AIError('503 Service Unavailable', { operation: 'tdStances', attempts: 3, elapsedMs: 1, status: 503 });
 const noCredit = () => new OutOfCreditError('402 Insufficient Balance', { operation: 'tdStances', attempts: 1, elapsedMs: 1, status: 402 });
 
@@ -111,17 +131,12 @@ describe('runTdPipeline', () => {
     vi.clearAllMocks();
     m.replies = {};
     m.operations = [];
-    m.findByName.mockImplementation(async (name: string) =>
-      name === 'Mary Lou McDonald'
-        ? { td: { id: 7, name, party: 'Sinn Féin', offices: [{ title: 'Leader of the Opposition', since: '2025-01-01' }] } }
-        : null,
-    );
     m.questionForArticle.mockResolvedValue(QUESTION);
     m.positionProbability.mockResolvedValue(0.9);
     m.saveStances.mockImplementation(async (_id: number, rows: Array<{ tdId: number }>) =>
       rows.map((row) => ({ tdId: row.tdId, statedAt: new Date('2026-09-25T10:00:00Z') })),
     );
-    m.extractTDMentions.mockResolvedValue([{ name: 'Mary Lou McDonald' }]);
+    m.extractTDMentions.mockResolvedValue([MARY]);
   });
 
   it('a verified stance gets the question, is saved with its answer, and becomes stance evidence', async () => {
@@ -138,15 +153,15 @@ describe('runTdPipeline', () => {
     expect(m.saveStances).toHaveBeenCalledWith(1, [
       { tdId: 7, questionId: 55, optionKey: 'option_a', optionText: 'Build public homes', quote: SENTENCE, quoteKind: 'direct', policyDomain: 'housing' },
     ]);
-    expect(m.recordTdEvidence).toHaveBeenCalledWith({
-      td: 7,
-      source: 'stance',
-      sourceRef: 'question:55',
-      raw: QUESTION.options[0]!.vector,
-      weight: 1.5 * 0.8 * 1, // option weight × option confidence × direct
-      observedAt: new Date('2026-09-25T10:00:00Z'),
-      policyTopic: 'public_housing_targets',
-    });
+    // In the same transaction: TD 7's stance evidence, rebuilt from its stances.
+    expect(m.replaceEvidence).toHaveBeenCalledTimes(1);
+    const [, tdIds, evidence] = m.replaceEvidence.mock.calls[0]!;
+    expect(tdIds).toEqual([7]);
+    expect(evidence).toEqual([
+      expect.objectContaining({ tdId: 7, source: 'stance', sourceRef: 'question:55', economic: -10, welfare: -5, observedAt: STATED_AT, policyTopic: 'public_housing_targets' }),
+    ]);
+    expect(evidence[0].weight).toBeCloseTo(1.5 * 0.8 * 1, 9); // option weight × option confidence × direct
+    expect(m.recomputeTdProfile).toHaveBeenCalledWith(7);
     expect(stats.stances).toEqual({
       extracted: 1,
       accepted: 1,
@@ -165,8 +180,8 @@ describe('runTdPipeline', () => {
 
     expect(m.generateQuestionForArticle).not.toHaveBeenCalled();
     expect(m.operations).toEqual(['tdStances']); // no mapping call either
-    expect(m.saveStances).not.toHaveBeenCalled();
-    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(m.saveStances).toHaveBeenCalledWith(1, []); // the article keeps no stance (an earlier one is deleted)
+    expect(evidenceWritten()).toEqual([]);
     expect(stats.stances).toMatchObject({ extracted: 1, accepted: 0, mapped: 0, rejected: { not_position: 1 } });
     expect(outcomes.get(1)?.errorMessage).toBeUndefined();
   });
@@ -200,8 +215,8 @@ describe('runTdPipeline', () => {
 
     expect(m.linkArticleTd).toHaveBeenCalledWith(1, 7); // the mention is still a fact
     expect(m.generateQuestionForArticle).not.toHaveBeenCalled();
-    expect(m.saveStances).not.toHaveBeenCalled();
-    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(m.saveStances).toHaveBeenCalledWith(1, []);
+    expect(evidenceWritten()).toEqual([]);
     expect(m.operations).toEqual(['tdStances']); // no mapping call either
     expect(stats.stances).toMatchObject({ extracted: 1, accepted: 0, mapped: 0, rejected: { quote_not_found: 1 } });
   });
@@ -216,7 +231,7 @@ describe('runTdPipeline', () => {
     expect(m.saveStances.mock.calls[0][1]).toEqual([
       expect.objectContaining({ questionId: null, optionKey: null, optionText: null, quoteKind: 'paraphrase' }),
     ]);
-    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(evidenceWritten()).toEqual([]);
     expect(stats.stances).toMatchObject({ accepted: 1, mapped: 0 });
   });
 
@@ -229,15 +244,14 @@ describe('runTdPipeline', () => {
 
     expect(m.operations).toEqual(['tdStances']);
     expect(m.saveStances.mock.calls[0][1]).toEqual([expect.objectContaining({ questionId: null, optionKey: null })]);
-    expect(m.recordTdEvidence).not.toHaveBeenCalled();
+    expect(evidenceWritten()).toEqual([]);
   });
 
-  it('makes no model call and no question for an article that names no TD in the TD table', async () => {
-    const { source, outcomes } = fakeSource([article(1), article(2), article(3)]);
+  it('makes no model call and no question for an article that names no TD, or one only in passing', async () => {
+    const { source, outcomes } = fakeSource([article(1), article(2)]);
     m.extractTDMentions
       .mockResolvedValueOnce([]) // nobody
-      .mockResolvedValueOnce([{ name: 'Passing Mention' }]) // only in passing
-      .mockResolvedValueOnce([{ name: 'Not A Deputy' }]); // not in the TD table
+      .mockResolvedValueOnce([mention(9, 'Passing Mention')]); // only in passing
 
     const stats = await runTdPipeline({ source, topPercentile: 100 });
 
@@ -247,19 +261,21 @@ describe('runTdPipeline', () => {
     expect(stats.tdsLinked).toBe(0);
     expect(outcomes.get(1)?.skippedReason).toBe('No TD mentioned');
     expect(outcomes.get(2)?.skippedReason).toBe('TDs mentioned only in passing');
-    expect(outcomes.get(3)?.skippedReason).toBeUndefined();
   });
 
-  it('a TD named twice is one candidate', async () => {
+  it('links each TD by the id extraction found, with no lookup by name', async () => {
     const { source } = fakeSource([article(1)]);
-    m.extractTDMentions.mockResolvedValue([{ name: 'Mary Lou McDonald' }, { name: 'Mary Lou McDonald' }]);
+    m.extractTDMentions.mockResolvedValue([MARY, mention(12, 'Holly Cairns')]);
     m.replies.tdStances = { stances: [] };
 
-    await runTdPipeline({ source });
+    const stats = await runTdPipeline({ source });
 
+    expect(m.linkArticleTd.mock.calls).toEqual([
+      [1, 7],
+      [1, 12],
+    ]);
+    expect(stats.tdsLinked).toBe(2);
     expect(m.operations).toEqual(['tdStances']);
-    expect(m.linkArticleTd).toHaveBeenCalledTimes(2); // idempotent in the repository
-    expect(m.generateQuestionForArticle).not.toHaveBeenCalled();
   });
 
   it('an article below the relevance cut is skipped before extraction, with its relevance stored', async () => {

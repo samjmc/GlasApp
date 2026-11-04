@@ -57,45 +57,62 @@ export function decayFactor(observedAt: Date, { now, halfLifeDays }: ModelOption
 }
 
 export function computeProfile(prior: Prior | null, observations: Observation[], options: ModelOptions): Profile {
-  const sums = emptyIdeologyVector();
-  const weights = emptyIdeologyVector();
+  const sums = startSums(prior);
+  for (const obs of observations) addObservation(sums, obs, options);
+  return profileOf(sums);
+}
+
+/** The running sums behind a profile, so a series of profiles can be built one observation at a time. */
+export interface ProfileSums {
+  sums: IdeologyVector;
+  weights: IdeologyVector;
+  support: IdeologyVector;
+  totalWeight: number;
+  evidenceCount: number;
+}
+
+export function startSums(prior: Prior | null): ProfileSums {
+  const s: ProfileSums = { sums: emptyIdeologyVector(), weights: emptyIdeologyVector(), support: emptyIdeologyVector(), totalWeight: 0, evidenceCount: 0 };
   if (prior) {
     for (const d of IDEOLOGY_DIMENSIONS) {
-      sums[d] += prior.weight * prior.vector[d];
-      weights[d] += prior.weight;
+      s.sums[d] += prior.weight * prior.vector[d];
+      s.weights[d] += prior.weight;
     }
   }
+  return s;
+}
 
-  const support = emptyIdeologyVector();
-  let totalWeight = 0;
-  let evidenceCount = 0;
-  for (const obs of observations) {
-    if (!(obs.weight > 0)) continue;
-    const w = obs.weight * decayFactor(obs.observedAt, options);
-    let used = false;
-    for (const d of IDEOLOGY_DIMENSIONS) {
-      const value = obs.vector[d];
-      if (value === undefined || !Number.isFinite(value)) continue;
-      const share = obs.dimensionWeight?.[d] ?? 1;
-      if (!(share > 0)) continue;
-      const wd = w * Math.min(1, share);
-      sums[d] += wd * clampIdeologyValue(value);
-      weights[d] += wd;
-      support[d] += wd;
-      used = true;
-    }
-    if (used) {
-      totalWeight += w;
-      evidenceCount++;
-    }
-  }
+export const copySums = (s: ProfileSums): ProfileSums => ({ ...s, sums: { ...s.sums }, weights: { ...s.weights }, support: { ...s.support } });
 
-  const vector = emptyIdeologyVector();
+export function addObservation(s: ProfileSums, obs: Observation, options: ModelOptions): void {
+  if (!(obs.weight > 0)) return;
+  const w = obs.weight * decayFactor(obs.observedAt, options);
+  let used = false;
   for (const d of IDEOLOGY_DIMENSIONS) {
-    vector[d] = weights[d] > 0 ? round(clampIdeologyValue(sums[d] / weights[d])) : 0;
-    support[d] = round(support[d]);
+    const value = obs.vector[d];
+    if (value === undefined || !Number.isFinite(value)) continue;
+    const share = obs.dimensionWeight?.[d] ?? 1;
+    if (!(share > 0)) continue;
+    const wd = w * Math.min(1, share);
+    s.sums[d] += wd * clampIdeologyValue(value);
+    s.weights[d] += wd;
+    s.support[d] += wd;
+    used = true;
   }
-  return { vector, support, totalWeight: round(totalWeight), evidenceCount };
+  if (used) {
+    s.totalWeight += w;
+    s.evidenceCount++;
+  }
+}
+
+export function profileOf(s: ProfileSums): Profile {
+  const vector = emptyIdeologyVector();
+  const support = emptyIdeologyVector();
+  for (const d of IDEOLOGY_DIMENSIONS) {
+    vector[d] = s.weights[d] > 0 ? round(clampIdeologyValue(s.sums[d] / s.weights[d])) : 0;
+    support[d] = round(s.support[d]);
+  }
+  return { vector, support, totalWeight: round(s.totalWeight), evidenceCount: s.evidenceCount };
 }
 
 /** Weighted mean of several full positions, e.g. a party from its TDs. */

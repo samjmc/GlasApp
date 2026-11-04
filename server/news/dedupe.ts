@@ -49,9 +49,19 @@ function jaccard(a: Set<string>, b: Set<string>): number {
   return shared / (a.size + b.size - shared);
 }
 
+/** A title's word and 4-gram sets, built once per title rather than once per comparison. */
+interface TitleFeatures {
+  words: Set<string>;
+  ngrams: Set<string>;
+}
+
+const features = (title: string): TitleFeatures => ({ words: words(title), ngrams: ngrams(title) });
+
+const similarity = (a: TitleFeatures, b: TitleFeatures) => jaccard(a.words, b.words) * 0.7 + jaccard(a.ngrams, b.ngrams) * 0.3;
+
 /** 0–1. Word overlap dominates; character 4-grams catch small rewordings. */
 export function titleSimilarity(a: string, b: string): number {
-  return jaccard(words(a), words(b)) * 0.7 + jaccard(ngrams(a), ngrams(b)) * 0.3;
+  return similarity(features(a), features(b));
 }
 
 export interface Existing {
@@ -76,7 +86,7 @@ export interface DedupeResult {
  */
 export function dedupe(candidates: NewArticle[], existing: Existing[], storedUrls: Set<string>): DedupeResult {
   const seenUrls = new Set(Array.from(storedUrls).concat(existing.map((e) => e.url)));
-  const targets: Array<{ title: string; of: Link }> = existing.map((e) => ({ title: e.title, of: { stored: e.id } }));
+  const targets: Array<{ title: TitleFeatures; of: Link }> = existing.map((e) => ({ title: features(e.title), of: { stored: e.id } }));
   const fresh: NewArticle[] = [];
   const links: DedupeResult['links'] = [];
   let knownUrls = 0;
@@ -91,9 +101,10 @@ export function dedupe(candidates: NewArticle[], existing: Existing[], storedUrl
     }
     seenUrls.add(article.url);
     const index = fresh.length;
-    const match = targets.find((t) => titleSimilarity(t.title, article.title) >= TITLE_SIMILARITY_THRESHOLD);
+    const title = features(article.title);
+    const match = targets.find((t) => similarity(t.title, title) >= TITLE_SIMILARITY_THRESHOLD);
     if (match) links.push({ index, of: match.of });
-    targets.push({ title: article.title, of: { run: index } });
+    targets.push({ title, of: { run: index } });
     fresh.push(article);
   }
   return { fresh, links, knownUrls };

@@ -39,6 +39,7 @@ import { TdQuestionRecordCard } from '@/components/QuestionRecord';
 import { RetryButton } from '@/components/data/RetryButton';
 import { useToast } from '@/hooks/use-toast';
 import { queryKeys } from '@/lib/queryKeys';
+import { decodeParam } from '@/lib/routeParam';
 import { apiCall, apiEnvelope, orNullOn404, userMessage } from '@/lib/api';
 import { formatIsoDate } from '@/lib/isoDate';
 import { partyStyle } from '@/lib/parties';
@@ -150,12 +151,12 @@ function fairnessNotes(s: TdParliamentSummary): string[] {
 }
 
 export default function TDProfilePageEnhanced() {
-  const { name } = useParams<{ name: string }>();
+  const name = decodeParam(useParams<{ name: string }>().name);
   const { toast } = useToast();
 
   // null = no such TD (404).
   const { data: scoreData, isLoading, error, refetch, isFetching } = useQuery<TdProfile | null>({
-    queryKey: ['td-profile-v4', name],  // v4: the score is built from Oireachtas facts only
+    queryKey: queryKeys.td.profile(name),
     queryFn: () => orNullOn404(apiCall<TdProfile>('GET', `/api/scores/td/${encodeURIComponent(name || '')}`)),
     enabled: !!name,
     retry: 2,
@@ -166,6 +167,8 @@ export default function TDProfilePageEnhanced() {
   const tdId = scoreData?.id;
 
   const [votesAgainstPartyOnly, setVotesAgainstPartyOnly] = useState(false);
+  // A tab's queries start when it is first opened, then stay cached. The side column is always on screen.
+  const [tab, setTab] = useState('votes');
 
   const {
     data: parliamentSummaryResp,
@@ -193,7 +196,7 @@ export default function TDProfilePageEnhanced() {
       getParliament<TdVote[]>(
         `/api/parliament/tds/${tdId}/votes?limit=20${votesAgainstPartyOnly ? '&againstParty=true' : ''}`
       ),
-    enabled: !!tdId,
+    enabled: !!tdId && tab === 'votes',
     staleTime: 5 * 60 * 1000
   });
   const tdVotes = tdVotesResp?.data ?? [];
@@ -207,7 +210,7 @@ export default function TDProfilePageEnhanced() {
   } = useQuery({
     queryKey: queryKeys.parliament.tdDebates(tdId ?? 0, 10),
     queryFn: () => getParliament<TdDebateContribution[]>(`/api/parliament/tds/${tdId}/debates?limit=10`),
-    enabled: !!tdId,
+    enabled: !!tdId && tab === 'debates',
     staleTime: 5 * 60 * 1000
   });
   const tdDebateContributions = tdDebatesResp?.data ?? [];
@@ -290,7 +293,7 @@ export default function TDProfilePageEnhanced() {
       apiCall<{ articles: FeedArticle[] }>('GET', `/api/news-feed/td/${encodeURIComponent(name || '')}`)
         .then((data) => data.articles)
         .catch(() => [] as FeedArticle[]),
-    enabled: !!name,
+    enabled: !!name && tab === 'news',
     staleTime: 300000  // 5 minutes
   });
 
@@ -684,7 +687,7 @@ export default function TDProfilePageEnhanced() {
 
       <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
         {/* Tabs */}
-        <Tabs defaultValue="votes" className="flex min-w-0 flex-col gap-4">
+        <Tabs value={tab} onValueChange={setTab} className="flex min-w-0 flex-col gap-4">
           <TabsList aria-label="Profile sections" className="grid h-auto w-full grid-cols-4 sm:max-w-[520px]">
             {['Votes', 'Debates', 'News', 'Background'].map((label) => (
               <TabsTrigger

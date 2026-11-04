@@ -96,15 +96,22 @@ export function scoreExchanges(members: ExchangeMember[], items: ExchangeItem[])
 /** A stored row: the words that chose the answerer are not kept, only `answered`. */
 export type StoredParticipation = Omit<QuestionParticipationRow, 'words'>;
 
-/** One backbencher's exchanges of one format asked across the House, and how many secured an action. */
-export interface CohortMember {
+/**
+ * One backbencher's totals in one format, of the exchanges they asked across the House: how many,
+ * and how many secured an `action`.
+ */
+export interface AskerTotals {
   format: QuestionFormat;
   asked: number;
-  secured: number;
+  securedExchanges: number;
 }
 
-/** A backbencher's figures per format, each against the `cohort` members with at least MIN_EXCHANGES of it. */
-export function formatFigures(mine: StoredParticipation[], everyone: CohortMember[]): TdQuestionRecord['formats'] {
+/**
+ * A backbencher's figures per format, each against backbenchers with at least MIN_EXCHANGES of
+ * it asked across the House. `askers` holds every backbencher's totals per format (summed in SQL,
+ * one row per member).
+ */
+export function formatFigures(mine: StoredParticipation[], askers: AskerTotals[]): TdQuestionRecord['formats'] {
   const askedRows = (rows: StoredParticipation[]) => rows.filter((r) => r.asked && !r.inOffice);
   const rate = (rows: StoredParticipation[]) => (10 * rows.filter((r) => r.secured > 0).length) / rows.length;
   const formats = Array.from(new Set(askedRows(mine).map((r) => r.format)));
@@ -112,7 +119,7 @@ export function formatFigures(mine: StoredParticipation[], everyone: CohortMembe
     const rows = askedRows(mine).filter((r) => r.format === format);
     const across = rows.filter((r) => !r.governmentSide);
     const scored = FIGURE_FORMATS.includes(format);
-    const cohort = everyone.filter((c) => c.format === format && c.asked >= MIN_EXCHANGES).map((c) => (10 * c.secured) / c.asked);
+    const cohort = askers.filter((a) => a.format === format && a.asked >= MIN_EXCHANGES).map((a) => (10 * a.securedExchanges) / a.asked);
     return {
       format,
       asked: rows.length,

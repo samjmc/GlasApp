@@ -1,13 +1,16 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
+  castArticleVote,
   completeDailySession,
   DailySessionCompletion,
   DailySessionState,
+  fetchArticleVote,
   submitDailyVote,
   fetchDailySession,
+  type ArticleVoteView,
 } from "@/services/dailySessionService";
 import { useAuth } from "@/contexts/AuthContext";
-import { queryKeys } from "@/lib/queryKeys";
+import { keysStaleAfterVote, queryKeys } from "@/lib/queryKeys";
 import { useRegion } from "./useRegion";
 
 /** React hook fetching the current daily session state for the active region. */
@@ -36,6 +39,7 @@ export function useDailySessionVote() {
         queryKeys.dailySession(regionCode, user?.id),
         session
       );
+      for (const queryKey of keysStaleAfterVote("daily")) void queryClient.invalidateQueries({ queryKey });
     },
   });
 }
@@ -62,6 +66,31 @@ export function useCompleteDailySession() {
       } else {
         queryClient.invalidateQueries({ queryKey: key });
       }
+      for (const queryKey of keysStaleAfterVote("daily")) void queryClient.invalidateQueries({ queryKey });
+    },
+  });
+}
+
+/** The tally and the caller's answer for one article's question, cached per article and user. */
+export function useArticleVote(articleId: number) {
+  const { user } = useAuth();
+  return useQuery({
+    queryKey: queryKeys.votes.article(articleId, user?.id),
+    queryFn: () => fetchArticleVote(articleId),
+  });
+}
+
+/** Saves an answer to an article's question and updates its cached tally. */
+export function useCastArticleVote(articleId: number, questionId: number) {
+  const queryClient = useQueryClient();
+  const { user } = useAuth();
+  return useMutation({
+    mutationFn: (optionKey: string) => castArticleVote(questionId, optionKey),
+    onSuccess: ({ tally, myVote }) => {
+      queryClient.setQueryData<ArticleVoteView>(queryKeys.votes.article(articleId, user?.id), (view) =>
+        view ? { ...view, tally, myVote } : view
+      );
+      for (const queryKey of keysStaleAfterVote("article")) void queryClient.invalidateQueries({ queryKey });
     },
   });
 }

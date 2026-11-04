@@ -19,10 +19,15 @@ export async function storedDisclosureSources(database: Db = db): Promise<Map<st
   return new Map(rows.map((r) => [r.url, r.unmatched]));
 }
 
-/** Within a transaction: this file is now the one read for its period. */
-async function recordFile(tx: Pick<Db, 'delete' | 'insert'>, kind: Kind, period: string, sourceUrl: string, unmatched: string[]): Promise<void> {
-  await tx.delete(disclosureFiles).where(and(eq(disclosureFiles.kind, kind), eq(disclosureFiles.period, period)));
-  await tx.insert(disclosureFiles).values({ sourceUrl, kind, period, unmatched });
+/**
+ * Within a transaction: this file is now the one read for its period. An upsert on the unique
+ * (kind, period), so two syncs at once cannot both leave a file for the same period.
+ */
+async function recordFile(tx: Pick<Db, 'insert'>, kind: Kind, period: string, sourceUrl: string, unmatched: string[]): Promise<void> {
+  await tx
+    .insert(disclosureFiles)
+    .values({ sourceUrl, kind, period, unmatched })
+    .onConflictDoUpdate({ target: [disclosureFiles.kind, disclosureFiles.period], set: { sourceUrl, unmatched, readAt: sql`now()` } });
 }
 
 /** Replace one year's register with `entries` (already matched to member codes). */

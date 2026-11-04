@@ -95,6 +95,14 @@ export function normalise(original: string): Normalised {
   return { text, offsets };
 }
 
+/**
+ * A model's quote, normalised and with its surrounding quote marks and spaces trimmed: the one
+ * form every verifier searches the source for (news stances, divisions, debate items, TD history).
+ */
+export function normaliseQuote(quote: string): string {
+  return normalise(quote).text.replace(/^['" ]+|['" ]+$/g, '');
+}
+
 const isWordChar = (ch: string | undefined) => ch !== undefined && WORD_CHAR.test(ch);
 
 /** The normalised names a TD can be referred to by near their quote. */
@@ -290,7 +298,7 @@ export function verifyStances(text: string, candidates: CandidateTd[], stances: 
 
   for (const stance of stances) {
     const td = candidates.find((c) => c.id === stance.tdId);
-    const quote = normalise(stance.quote).text.replace(/^['" ]+|['" ]+$/g, '');
+    const quote = normaliseQuote(stance.quote);
     const words = quote ? quote.split(' ').length : 0;
     if (
       !td ||
