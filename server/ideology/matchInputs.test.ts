@@ -32,7 +32,7 @@ vi.mock('./repository', async () => {
   };
 });
 
-const service = await import('./service');
+const service = { ...(await import('./matches')), ...(await import('./service')) };
 const position = { economic: 1, social: 1, cultural: 1, authority: 1, environmental: 1, welfare: 1, globalism: 1, technocratic: 1 };
 
 beforeEach(() => {
