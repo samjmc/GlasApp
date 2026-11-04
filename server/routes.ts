@@ -24,7 +24,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // server-side session. optionalAuth runs first so regionMiddleware can read the
   // user's saved region, and so handlers can offer a signed-in view without a guard.
   app.use(optionalAuth);
-  app.use(regionMiddleware);
   app.use("/api/region", regionRoutes);
 
   // Register API routes
@@ -41,8 +40,10 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Dáil divisions, debates and each TD's parliament record
   app.use("/api/parliament", parliamentRoutes);
   
-  // Register news feed routes for homepage articles
-  app.use("/api/news-feed", newsRoutes);
+  // Register news feed routes for homepage articles. The feed is the one reader of
+  // req.regionCode, so the region is resolved (and its cookie set) only here, not on
+  // every page, asset and API response.
+  app.use("/api/news-feed", regionMiddleware, newsRoutes);
   
 
   // Voting: the daily session and the policy question on each article
