@@ -153,7 +153,7 @@ export const ErrorCodes = {
   RATE_LIMITED: 'Too many requests - please try again later',
 
   // Server errors (500)
-  INTERNAL_ERROR: 'An unexpected error occurred',
+  INTERNAL_ERROR: 'Something went wrong. Please try again.',
   DATABASE_ERROR: 'Database error',
   EXTERNAL_SERVICE_ERROR: 'External service error',
   OPERATION_FAILED: 'Operation failed',

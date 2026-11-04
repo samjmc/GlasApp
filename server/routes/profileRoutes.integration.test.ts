@@ -44,9 +44,11 @@ run('/api/profile/me against Postgres', () => {
     dbmod = await import('../db');
     await applyAllMigrations(dbmod.pool);
     const { default: profileRoutes } = await import('./profileRoutes');
+    const { errorHandler } = await import('../middleware/errorHandler');
     const app = express();
     app.use(express.json());
     app.use('/api/profile', profileRoutes);
+    app.use(errorHandler);
     server = await new Promise<Server>((resolve) => {
       const s = app.listen(0, '127.0.0.1', () => resolve(s));
     });
