@@ -4,7 +4,7 @@
 
 Done, all merged to `main`:
 
-- Phase 0: #148–#164. Every item except D15.
+- Phase 0: #148–#164, and D15 (#259: the app's own row-only login, `glasapp_app`).
 - Phase 1, jobs: #169, #174, #181, #184, #187–#189 (review passes #159, #172, #177).
 - Phase 2, database: #197–#210, #216, #221–#223, #229, #237, #238, #247.
 - Phase 3, client: #166–#170, #175, #178, #180, #182, #185, #186, #190, #206, #217.
@@ -16,19 +16,22 @@ Done, all merged to `main`:
   "1000+" at the capped total and a quiz result with no stored answers no longer says "Saving"
   (#261); `CLAUDE.md` is a guide to this repo and the personal-path template is gone (R27, #262).
 
-Migrations 0025–0035 came from this sweep. The lead applies them to GlasCore from `main`, after
-the read-only pre-checks in the bodies of #164, #202, #229, #238 and #247.
+Migrations 0025–0036 came from this sweep. All are applied to GlasCore from `main` (ledger 37 on
+2026-11-09), each after the read-only pre-checks in the bodies of #164, #202, #229, #238 and #247.
+For 0036 the `glasapp_app` role was created by hand first, as `docs/deploy.md` section 3 says.
 
 Not done:
 
-- **Owner only.** D15 (a DML-only `glasapp_app` role needs a Supabase Owner); decision 1, the
-  storage plan upgrade, is on hold; decision 2, the git history rewrite, is not done (R1 stopped
-  the growth; shrinking history needs a force-push to `main`).
+- **Owner only.** Decision 1, the storage plan upgrade, is on hold (GlasCore used 248 MB of the
+  free plan's 500 MB on 2026-11-09; a daily keep-alive stops the free plan pausing); decision 2,
+  the git history rewrite, is not done (R1 stopped the growth; shrinking history needs a
+  force-push to `main`).
 - **Kept on purpose.** The debate "Moved by" fields (`debates.mover_member_code`, `mover_source`):
   unread today, but `docs/plans/debate-analysis.md` shows them in the planned feature.
 - **Small, left as is.** The TD page is not split into tab components (C19, no behaviour gain).
-- **Not re-measured.** `pg_stat_statements` on GlasCore after Phase 2, and `npm run robots`
-  after each phase: both need GlasCore, which the helpers never touch.
+- **Re-measured.** `pg_stat_statements` on GlasCore from 2026-11-04 to 2026-11-09: the slowest
+  statement was one 5.2 s debate-items read; nothing near the old 250 s attendance query.
+  `npm run robots` was not re-run after the phases.
 - **Flaky.** `server/parliament/sync.integration.test.ts` can hit its 60 s timeout on a busy CI
   runner; one rerun clears it.
 
