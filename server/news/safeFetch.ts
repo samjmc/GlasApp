@@ -4,14 +4,16 @@
  *
  *   - Only http(s), and only hosts whose addresses are ALL public. Checked after DNS resolution,
  *     so a name that resolves to 10.x or 169.254.169.254 is refused too.
+ *   - The connection is made through a dispatcher whose DNS lookup runs the same check and hands
+ *     the socket only the addresses it checked. A name that answers public to the first check and
+ *     private when the socket connects (DNS rebinding) is refused at connect time. TLS still uses
+ *     the host name (SNI and certificate), because only the lookup changes, not the URL.
  *   - Redirects are followed by hand, at most MAX_REDIRECTS, and every hop is checked the same way.
  *   - A body is read as a stream and cut off at a byte cap.
- *
- * Limit: fetch() resolves the name again when it connects, so a DNS answer that changes between
- * the check and the connection is not caught.
  */
-import { promises as dns } from 'node:dns';
+import { promises as dns, type LookupAddress } from 'node:dns';
 import net from 'node:net';
+import { Agent, fetch as undiciFetch, type RequestInit as UndiciRequestInit } from 'undici';
 
 export const MAX_REDIRECTS = 5;
 export const MAX_PAGE_BYTES = 3 * 1024 * 1024;
@@ -58,16 +60,61 @@ export type Lookup = (hostname: string) => Promise<string[]>;
 
 const resolveAll: Lookup = async (hostname) => (await dns.lookup(hostname, { all: true, verbatim: true })).map((a) => a.address);
 
-async function assertPublicUrl(url: URL, lookup: Lookup): Promise<void> {
-  if (url.protocol !== 'http:' && url.protocol !== 'https:') throw new UnsafeUrlError(`Refused ${url.protocol} URL`);
-  const host = url.hostname.replace(/^\[|\]$/g, '');
+/** The host's addresses, all public, or UnsafeUrlError. */
+async function publicAddresses(host: string, lookup: Lookup): Promise<string[]> {
   const addresses = net.isIP(host) ? [host] : await lookup(host);
   if (addresses.length === 0 || !addresses.every(isPublicAddress)) throw new UnsafeUrlError(`Refused ${host}: not a public address`);
+  return addresses;
+}
+
+async function assertPublicUrl(url: URL, lookup: Lookup): Promise<void> {
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') throw new UnsafeUrlError(`Refused ${url.protocol} URL`);
+  await publicAddresses(url.hostname.replace(/^\[|\]$/g, ''), lookup);
+}
+
+type LookupCallback = (err: Error | null, address: string | LookupAddress[], family?: number) => void;
+
+/**
+ * A `lookup` for net/tls.connect that resolves, refuses unless every address is public, and gives
+ * the socket only those checked addresses. Answers both call forms: `all: true` (Node's default,
+ * for happy eyeballs) and a single address.
+ */
+export function checkedLookup(lookup: Lookup) {
+  return (hostname: string, options: { family?: number | string; all?: boolean }, callback: LookupCallback): void => {
+    publicAddresses(hostname, lookup).then(
+      (addresses) => {
+        const family = options.family === 'IPv4' ? 4 : options.family === 'IPv6' ? 6 : Number(options.family) || 0;
+        const entries = addresses.map((address) => ({ address, family: net.isIP(address) })).filter((a) => !family || a.family === family);
+        if (entries.length === 0) return callback(new UnsafeUrlError(`Refused ${hostname}: no IPv${family} address`), '');
+        if (options.all) return callback(null, entries);
+        callback(null, entries[0]!.address, entries[0]!.family);
+      },
+      (err: Error) => callback(err, ''),
+    );
+  };
+}
+
+const pinned = (lookup: Lookup) => new Agent({ connect: { lookup: checkedLookup(lookup) } });
+const defaultDispatcher = pinned(resolveAll);
+
+/** fetch() that connects only to addresses `lookup` gave and the check passed. */
+function pinnedFetch(lookup: Lookup): typeof fetch {
+  const dispatcher = lookup === resolveAll ? defaultDispatcher : pinned(lookup);
+  return async (input, init) => {
+    try {
+      return (await undiciFetch(input as URL, { ...(init as UndiciRequestInit), dispatcher })) as unknown as Response;
+    } catch (err) {
+      // fetch() wraps a connect error as TypeError('fetch failed', { cause }); surface the refusal itself.
+      if (err instanceof Error && err.cause instanceof UnsafeUrlError) throw err.cause;
+      throw err;
+    }
+  };
 }
 
 export interface SafeFetchOptions {
   maxRedirects?: number;
   lookup?: Lookup;
+  /** Tests only: replaces the pinned connection, so it skips the connect-time check. */
   fetchImpl?: typeof fetch;
 }
 
@@ -76,7 +123,8 @@ export interface SafeFetchOptions {
  * scheme or too many redirects. The caller owns the response body.
  */
 export async function safeFetch(rawUrl: string, init: RequestInit = {}, options: SafeFetchOptions = {}): Promise<Response> {
-  const { maxRedirects = MAX_REDIRECTS, lookup = resolveAll, fetchImpl = fetch } = options;
+  const { maxRedirects = MAX_REDIRECTS, lookup = resolveAll } = options;
+  const fetchImpl = options.fetchImpl ?? pinnedFetch(lookup);
   let url = new URL(rawUrl);
   for (let hop = 0; ; hop++) {
     await assertPublicUrl(url, lookup);
