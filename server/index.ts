@@ -2,7 +2,6 @@ import 'dotenv/config';
 import express from "express";
 import { applyMiddleware } from "./app";
 import { registerRoutes } from "./routes";
-import { warnOldJobSecretNames } from "./auth";
 import { serveStatic } from "./static";
 import { checkDatabaseConnection, shutdown as closeDatabase } from "./db";
 import { logger } from "./utils/logger";
@@ -40,7 +39,6 @@ applyMiddleware(app);
 (async () => {
   try {
     logger.info('Starting server initialization...');
-    warnOldJobSecretNames();
 
     // Test Supabase database connection (non-blocking). server/db.ts already stopped the
     // process at import if DATABASE_URL is not set.

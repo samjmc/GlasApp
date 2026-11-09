@@ -23,14 +23,10 @@ const DOC_FILE = /^(?:README\.md|ARCHITECTURE\.md|CLAUDE\.md|\.claude\/.+\.md|do
 
 /**
  * Variables the server reads that .env.example does not list. They are optional or
- * deliberate: job-secret aliases (ADMIN_API_SECRET is the documented one) and the robots
- * harness's source database URL.
+ * deliberate: the robots harness's source database URL.
  * Add a name to .env.example and delete it here; a new undocumented one fails the check.
  */
 export const ENV_MISSING_FROM_EXAMPLE: readonly string[] = [
-  'ADMIN_SECRET',
-  'CRON_SECRET',
-  'JOB_SECRET',
   'ROBOTS_SOURCE_DATABASE_URL',
 ];
 

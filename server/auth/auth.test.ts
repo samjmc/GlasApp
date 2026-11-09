@@ -180,36 +180,35 @@ describe('requireAdmin', () => {
 });
 
 describe('requireJob', () => {
-  it('accepts the secret in x-admin-secret and x-cron-secret', async () => {
-    for (const header of ['x-admin-secret', 'x-cron-secret']) {
-      let called = false;
-      await auth.requireJob(mockReq({ [header]: 'job-secret' }), mockRes(), () => { called = true; });
-      expect(called).toBe(true);
-    }
+  it('accepts the secret in x-admin-secret', async () => {
+    let called = false;
+    await auth.requireJob(mockReq({ 'x-admin-secret': 'job-secret' }), mockRes(), () => { called = true; });
+    expect(called).toBe(true);
   });
 
-  it('still reads an old secret name for one release, and names it at startup', async () => {
-    delete process.env.ADMIN_API_SECRET;
-    process.env.CRON_SECRET = 'old-name-secret';
-    try {
-      let called = false;
-      await auth.requireJob(mockReq({ 'x-admin-secret': 'old-name-secret' }), mockRes(), () => { called = true; });
-      expect(called).toBe(true);
-      expect(auth.warnOldJobSecretNames()).toEqual(['CRON_SECRET']);
+  it('no longer accepts the old x-cron-secret header', async () => {
+    const res = mockRes();
+    let called = false;
+    await auth.requireJob(mockReq({ 'x-cron-secret': 'job-secret' }), res, () => { called = true; });
+    expect(called).toBe(false);
+    expect(res.statusCode).toBe(401);
+  });
 
-      // With both set, ADMIN_API_SECRET wins and the old name is still reported.
-      process.env.ADMIN_API_SECRET = 'job-secret';
-      const res = mockRes();
-      called = false;
-      await auth.requireJob(mockReq({ 'x-admin-secret': 'old-name-secret' }), res, () => { called = true; });
-      expect(called).toBe(false);
-      expect(res.statusCode).toBe(401);
-      expect(auth.warnOldJobSecretNames()).toEqual(['CRON_SECRET']);
+  it('no longer reads the old secret names (ADMIN_SECRET, CRON_SECRET, JOB_SECRET)', async () => {
+    delete process.env.ADMIN_API_SECRET;
+    try {
+      for (const name of ['ADMIN_SECRET', 'CRON_SECRET', 'JOB_SECRET']) {
+        process.env[name] = 'old-name-secret';
+        const res = mockRes();
+        let called = false;
+        await auth.requireJob(mockReq({ 'x-admin-secret': 'old-name-secret' }), res, () => { called = true; });
+        delete process.env[name];
+        expect(called).toBe(false);
+        expect(res.statusCode).toBe(401);
+      }
     } finally {
       process.env.ADMIN_API_SECRET = 'job-secret';
-      delete process.env.CRON_SECRET;
     }
-    expect(auth.warnOldJobSecretNames()).toEqual([]);
   });
 
   it('rejects a wrong secret without falling through to the admin check', async () => {
