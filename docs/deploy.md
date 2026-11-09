@@ -18,6 +18,8 @@ Rules that do not bend:
 - The GlasCore database. Use the **IPv4 session pooler** connection string from the Supabase
   dashboard (Project Settings, Database). The direct host is IPv6 only. GlasCore cancels any
   statement that runs longer than **2 minutes**.
+- Two logins to it. The app's `DATABASE_URL` uses `glasapp_app`, which can only read and write
+  rows. Migrations use the owner, `postgres`, from your shell only (section 3).
 - A domain whose DNS record points straight at the host, if you want HTTPS.
 
 ## 1. Create the variables file
@@ -94,7 +96,52 @@ shell, and the migration would run against the wrong database. A value set in th
 
 Do not use `npm run db:push`, and do not add a migrate step to the image or to start-up.
 `drizzle-kit` is a dev dependency, so it is not inside the production image. Each migration
-must finish inside the 2-minute statement limit.
+must finish inside the 2-minute statement limit. (`db:push` would also drop the `glasapp_app_all`
+policies below: `shared/schema/` does not declare them.)
+
+### The app's login: `glasapp_app`
+
+Why: a bug or an injected query in the app can then only change rows, never drop a table, change
+the schema, read the migration journal or touch GlasIntelligence's `public` tables. The owner
+(`postgres`, with BYPASSRLS) stays for migrations only, and its password never goes on the host.
+
+Once, before the first `db:migrate` that includes `0036_glasapp_app_role`, as `postgres` in psql:
+
+```
+CREATE ROLE glasapp_app LOGIN;          -- nothing else: no superuser, no BYPASSRLS, no CREATEDB
+ALTER ROLE glasapp_app SET statement_timeout = '2min';
+\password glasapp_app
+```
+
+`\password` keeps the password out of the query history. Then run `db:migrate` as above. 0036
+grants the role row rights (SELECT, INSERT, UPDATE, DELETE, and the sequences) in `politics` only,
+the same for tables made later, and a `glasapp_app_all` policy on every table: RLS (0026) hides
+every row from a role without one. If 0036 was applied before the role existed, it did nothing;
+run the `DO` block in `drizzle/0036_glasapp_app_role.sql` once by hand (it is safe to repeat).
+Check, as `postgres`; the first two numbers must be equal and the last value `true`:
+
+```
+SELECT count(*) FROM pg_tables WHERE schemaname = 'politics';
+SELECT count(*) FROM pg_policies WHERE schemaname = 'politics' AND policyname = 'glasapp_app_all';
+SELECT has_function_privilege('glasapp_app', 'pg_try_advisory_lock(bigint)', 'execute');
+```
+
+Then set `DATABASE_URL` in `deploy/glasapp.env` to the session pooler string with the user
+`glasapp_app.<project-ref>` and its password, run `up -d` (section 4) and check `/health` and
+`/api/parliament/status`. To go back, put the old URL back and run `up -d` again. Jobs run by hand
+(`npm run <job>`) need no more than this login: none of them changes the schema.
+
+### A new table
+
+The default privileges from 0036 grant `glasapp_app` its rights on a new table, but not the
+policy, so the app would read the table as empty, with no error. Every migration that creates a
+table in `politics` ends with this, once per table (`server/dbRole.integration.test.ts` fails
+without it):
+
+```
+--> statement-breakpoint
+DO $$ BEGIN IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'glasapp_app') THEN CREATE POLICY glasapp_app_all ON politics.<table> FOR ALL TO glasapp_app USING (true) WITH CHECK (true); END IF; END $$;
+```
 
 ### Indexes and constraints on a big table
 

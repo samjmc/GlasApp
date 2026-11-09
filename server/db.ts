@@ -2,7 +2,9 @@
  * Database access.
  *
  * `db` (Drizzle over node-postgres) is THE data layer: it talks to the GlasCore Postgres
- * directly and is not subject to RLS.
+ * directly, as the `glasapp_app` login in production (docs/deploy.md section 3). RLS applies to
+ * that login, and the `glasapp_app_all` policy on every politics table (migration 0036) lets it
+ * see and write every row.
  */
 import { drizzle } from 'drizzle-orm/node-postgres';
 import pkg from 'pg';
