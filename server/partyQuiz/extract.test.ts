@@ -46,6 +46,6 @@ describe('extractDocument', () => {
     const doc = await extractDocument('html', new TextEncoder().encode(html));
     expect(doc.extractor).toBe('cheerio');
     expect(doc.pages.map((p) => p.text)).toEqual(['Part A\nSection A words.', 'Part B\nSection B words.', 'Part C\nSection C words.', 'Part D\nSection D words.']);
-    expect((await extractDocument('pdf', read('two-pages.pdf'))).extractor).toBe('unpdf@1.7.0');
+    expect((await extractDocument('pdf', read('two-pages.pdf'))).extractor).toBe('unpdf@1.9.1');
   });
 });

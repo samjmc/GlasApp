@@ -19,7 +19,7 @@ export interface StoredPage {
   text: string;
 }
 
-export const EXTRACTORS: Record<ManifestoDocument['format'], string> = { pdf: 'unpdf@1.7.0', html: 'cheerio' };
+export const EXTRACTORS: Record<ManifestoDocument['format'], string> = { pdf: 'unpdf@1.9.1', html: 'cheerio' };
 /** A page with fewer characters than this is flagged as a likely image. */
 export const MIN_PAGE_CHARS = 50;
 
@@ -31,7 +31,7 @@ export async function extractPdf(bytes: Uint8Array): Promise<StoredPage[]> {
     const { text } = await extractText(pdf, { mergePages: false });
     return text.map((t, i) => ({ ordinal: i + 1, label: labels?.[i] ?? null, heading: null, text: t }));
   } finally {
-    await pdf.destroy();
+    await pdf.loadingTask.destroy();
   }
 }
 
