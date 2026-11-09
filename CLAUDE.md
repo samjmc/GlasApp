@@ -1,45 +1,85 @@
-# Project Context
+# CLAUDE.md
 
-## Overview
+Notes for an AI coding agent working in this repo. Humans: start with [README.md](README.md).
 
-This project uses Claude Code with a structured workflow:
-- **Plan first**: specs, decisions, architecture trade-offs before coding
-- **Implement**: surgical changes, verify as you go
-- **Review & iterate**: catch bugs, slop, and loose ends before shipping
+## What this is
 
-## Workflow
+Glas Politics: an Irish political analysis site (political quiz and party matching, TD scores from
+the Oireachtas record, pledges, news linked to TDs, daily policy votes, a constituency map). One
+Node process serves the JSON API and the built React client. The shape of the system is in
+[ARCHITECTURE.md](ARCHITECTURE.md).
 
-1. **Session start** — freshen checkout, validate memory
-2. **Plan** — write the spec/architecture before coding
-3. **Implement** — follow the discipline rules
-4. **Verify** — run tests, check the UI/output, don't claim success without proof
-5. **Review** — catch bugs, simplify, fix findings before merge
-6. **Closeout** — confirm work is safe to ship, update memory
+## Stack and layout
 
-## Core Skills
+- `server/`: Express 5 + TypeScript, one folder per area. Postgres through Drizzle (`server/db.ts`).
+  Auth is a Supabase access token in `Authorization: Bearer` ([docs/auth.md](docs/auth.md)).
+- `client/src/`: React 18, Vite, Wouter, TanStack Query, Radix UI, Tailwind.
+- `shared/`: code used by both; the Drizzle schema is in `shared/schema/` (schema `politics`).
+- `drizzle/`: SQL migrations. `test/e2e/`: Playwright specs. `scripts/ci/`: CI guards and the
+  generated-docs tools. `deploy/`: Compose file, Caddyfile and env template.
 
-Invoke these when relevant:
+Imports: `@/` is `client/src/`, `@shared/` is `shared/`.
 
-| Skill | When |
-|-------|------|
-| `session-start` | Before non-trivial work |
-| `vet` | Before writing code on a spec/plan |
-| `code-review` | Before merging (catch bugs, slop) |
-| `review-loop` | For autonomous multi-pass review |
-| `precompact` | Before context compression |
-| `session-closeout` | Before closing the chat |
+## Run it locally
 
-## Rules
+Node 22 (`.nvmrc`). Copy `.env.example` to `.env` and fill in `DATABASE_URL` and the Supabase keys.
+Keep `SCHEDULER=off`: with it on, a local run starts the crons against whatever database
+`DATABASE_URL` names.
 
-Read these:
-- `.claude/rules/planning-discipline.md` — why you plan first
-- `.claude/rules/coding-discipline.md` — how to write minimal, correct code
-- `.claude/rules/git-discipline.md` — commits, branches, safety
+```bash
+npm ci
+npm run db:migrate   # apply drizzle/ to the database in DATABASE_URL
+npm run dev          # http://localhost:5000
+```
 
-## Memory
+A job (`npm run sync-tds`, `stances`, `parliament:sync`, ...) that writes to a database not on this
+machine prints its target and stops unless you pass `-- --yes`.
 
-Personal knowledge lives in `.claude/projects/<name>/memory/` — learnings, preferences, proven patterns for this project and similar ones.
+## Before you open a pull request
 
-## No Magic
+CI (`.github/workflows/ci.yml`) runs these, and every one must pass:
 
-This is just structure. The work is still yours to direct — Claude is here to accelerate, not replace your judgment.
+```bash
+npm run check        # tsc for the app, then for tests and configs
+npm run lint         # every ESLint rule is an error
+npm test             # vitest; integration suites need TEST_DATABASE_URL
+npm run facts:check  # docs/generated/ is up to date (fix: npm run facts, commit the result)
+npm run docs:check   # doc links resolve, `npm run` names exist, server env vars are in .env.example
+npm run build
+```
+
+- Integration tests run only with `TEST_DATABASE_URL` set to a throwaway Postgres; locally they
+  skip, in CI a skipped test fails the job. Never point it at a shared or production database.
+- `npm run test:e2e` (Playwright) needs the same variable.
+- The client has little component test setup: page wiring is often tested by reading the source as
+  text next to a pure-function test (see `client/src/lib/quizSaveStatus.test.ts`).
+
+## Database changes
+
+Change `shared/schema/`, then `npm run db:generate` and review the SQL it writes in `drizzle/`.
+Never edit a merged migration (CI's `migration-guard` rejects it) and never use `db:push`.
+The app connects as `glasapp_app`, which sees a table's rows only through its `glasapp_app_all`
+policy: a migration that creates a table adds it ([docs/deploy.md](docs/deploy.md), "A new table").
+Migrations are applied by hand from `main` ([docs/deploy.md](docs/deploy.md), section 3); nothing
+runs them at boot.
+
+## Rules worth knowing
+
+- One instance only: rate limits and locks live in process memory, and `trust proxy` is one hop.
+- Political opinions are special-category data: saving a quiz result or vote needs recorded consent
+  (`server/account/consent.ts`, `shared/consent.ts`).
+- Fetching a URL a third party chose (news pages, images) goes through `server/news/safeFetch.ts`.
+- Environment variables: the table in [docs/deploy.md](docs/deploy.md) is the list;
+  [docs/generated/env.md](docs/generated/env.md) shows every reader.
+- Coding, planning and git habits: [.claude/rules/](.claude/rules/).
+
+## Docs
+
+| Document | What is in it |
+|---|---|
+| [ARCHITECTURE.md](ARCHITECTURE.md) | The system in one page |
+| [docs/deploy.md](docs/deploy.md) | Docker host runbook: variables, migrations, first boot, HTTPS, crons |
+| [docs/auth.md](docs/auth.md) | Authentication and the four guards |
+| [docs/scoring.md](docs/scoring.md) | How a TD's score is built |
+| [docs/generated/](docs/generated/) | Routes, jobs and env vars, generated from the code |
+| [docs/plans/](docs/plans/) | Design plans, one per area |
