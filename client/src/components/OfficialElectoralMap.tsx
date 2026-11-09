@@ -438,9 +438,7 @@ const OfficialElectoralMap: React.FC<OfficialElectoralMapProps> = ({
                       fillOpacity: 0.9
                     });
                   }
-                  if (layer instanceof L.Path || layer instanceof L.FeatureGroup) {
-                    layer.bringToFront();
-                  }
+                  // Do not move the path to the front on hover: that re-appends it, so a tap's mousedown lands on the parent <g> and the first click is lost.
                 });
                 
                 // Reset style on mouseout

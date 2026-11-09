@@ -19,3 +19,20 @@ describe('OfficialElectoralMap colouring', () => {
     expect(source).not.toContain('fillColor: getConstituencyColor(');
   });
 });
+
+/** The text of the handler passed to `layer.on('<event>', ...)`, up to the next `layer.on(`. */
+function handlerBlock(event: string): string {
+  const start = source.indexOf(`layer.on('${event}'`);
+  expect(start).toBeGreaterThan(-1);
+  const next = source.indexOf('layer.on(', start + 1);
+  return source.slice(start, next === -1 ? undefined : next);
+}
+
+describe('OfficialElectoralMap hover and click', () => {
+  // bringToFront re-appends the path, so a tap (mouseover then mousedown back to back) lost its first click.
+  it('does not move the path on hover, but still brings the clicked seat to the front', () => {
+    expect(handlerBlock('mouseover')).toContain('setStyle(');
+    expect(handlerBlock('mouseover')).not.toContain('bringToFront');
+    expect(handlerBlock('click')).toContain('bringToFront()');
+  });
+});
