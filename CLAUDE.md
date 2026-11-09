@@ -58,6 +58,8 @@ npm run build
 
 Change `shared/schema/`, then `npm run db:generate` and review the SQL it writes in `drizzle/`.
 Never edit a merged migration (CI's `migration-guard` rejects it) and never use `db:push`.
+The app connects as `glasapp_app`, which sees a table's rows only through its `glasapp_app_all`
+policy: a migration that creates a table adds it ([docs/deploy.md](docs/deploy.md), "A new table").
 Migrations are applied by hand from `main` ([docs/deploy.md](docs/deploy.md), section 3); nothing
 runs them at boot.
 
