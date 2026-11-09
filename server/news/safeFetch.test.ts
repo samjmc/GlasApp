@@ -1,5 +1,7 @@
+import http from 'node:http';
+import type { AddressInfo } from 'node:net';
 import { describe, expect, it, vi } from 'vitest';
-import { MAX_REDIRECTS, UnsafeUrlError, isPublicAddress, readTextCapped, safeFetch, type Lookup } from './safeFetch';
+import { MAX_REDIRECTS, UnsafeUrlError, checkedLookup, isPublicAddress, readTextCapped, safeFetch, type Lookup } from './safeFetch';
 
 const PUBLIC = '93.184.216.34';
 
@@ -123,6 +125,52 @@ describe('safeFetch', () => {
     expect((await safeFetch('https://example.ie/a', {}, { lookup: dnsFor({}), fetchImpl: noLocation })).status).toBe(302);
     const notModified = vi.fn(async () => new Response(null, { status: 304, headers: { location: '/x' } }));
     expect((await safeFetch('https://example.ie/a', {}, { lookup: dnsFor({}), fetchImpl: notModified })).status).toBe(304);
+  });
+
+  it('refuses a name that answers public to the check and private when the socket connects (DNS rebinding)', async () => {
+    let hits = 0;
+    const server = http.createServer((_req, res) => {
+      hits++;
+      res.end('internal');
+    });
+    await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
+    const { port } = server.address() as AddressInfo;
+    // First answer public, every later answer the loopback address the server listens on.
+    const answers = [[PUBLIC]];
+    const lookup = vi.fn<Lookup>(async () => answers.shift() ?? ['127.0.0.1']);
+    try {
+      await expect(safeFetch(`http://localhost:${port}/`, {}, { lookup })).rejects.toThrow(UnsafeUrlError);
+      expect(hits).toBe(0);
+      expect(lookup).toHaveBeenCalledTimes(2);
+    } finally {
+      server.close();
+    }
+  });
+});
+
+describe('checkedLookup', () => {
+  const call = (lookup: Lookup, options: { family?: number | string; all?: boolean }) =>
+    new Promise<{ err: Error | null; address: unknown; family?: number }>((resolve) =>
+      checkedLookup(lookup)('host.example', options, (err, address, family) => resolve({ err, address, family })),
+    );
+
+  it('hands the socket exactly the checked addresses, in both call forms', async () => {
+    const lookup: Lookup = async () => [PUBLIC, '2606:4700:4700::1111'];
+    expect(await call(lookup, { all: true })).toEqual({
+      err: null,
+      address: [{ address: PUBLIC, family: 4 }, { address: '2606:4700:4700::1111', family: 6 }],
+      family: undefined,
+    });
+    expect(await call(lookup, {})).toEqual({ err: null, address: PUBLIC, family: 4 });
+    expect(await call(lookup, { family: 6 })).toEqual({ err: null, address: '2606:4700:4700::1111', family: 6 });
+  });
+
+  it('refuses when any address is not public, or none is left for the family asked', async () => {
+    for (const addresses of [['10.0.0.5'], [PUBLIC, '127.0.0.1'], ['::ffff:169.254.169.254'], []]) {
+      const { err } = await call(async () => addresses, { all: true });
+      expect(err, addresses.join(',')).toBeInstanceOf(UnsafeUrlError);
+    }
+    expect((await call(async () => [PUBLIC], { family: 6 })).err).toBeInstanceOf(UnsafeUrlError);
   });
 });
 
