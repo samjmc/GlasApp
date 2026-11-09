@@ -9,6 +9,7 @@ import { AlertCircle, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 import { queryKeys } from '@/lib/queryKeys';
 import { apiCall } from '@/lib/api';
 import type { FeedArticle } from '@/lib/news';
+import { feedTotalLabel } from '@shared/news';
 import { NewsArticleCard } from '@/components/NewsArticleCard';
 import { TodaysTopStory } from '@/components/TodaysTopStory';
 import { EmptyNewsFeedState } from '@/components/onboarding/EmptyStates';
@@ -118,7 +119,7 @@ export function HomePageTabs() {
             <nav aria-label="News pages" className="flex flex-col items-center gap-3 border-t pt-5">
               <span className="text-sm text-muted-foreground">
                 {(page - 1) * ARTICLES_PER_PAGE + 1}–{Math.min(page * ARTICLES_PER_PAGE, articles.total)} of{' '}
-                {articles.total} stories
+                {feedTotalLabel(articles.total, (page - 1) * ARTICLES_PER_PAGE, ARTICLES_PER_PAGE)} stories
               </span>
               <div className="flex items-center gap-1">
                 <Button

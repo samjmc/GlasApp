@@ -9,7 +9,7 @@ import type { EventCandidate } from './events';
 import type { SourceConfig } from './sources';
 import type { FeedQuery } from './feed';
 import { RELEVANCE_FLOOR } from './relevance';
-import { isNewsCategory, type NewsCategory } from '@shared/news';
+import { FEED_COUNT_CAP, feedCountCap, isNewsCategory, type NewsCategory } from '@shared/news';
 
 /** A claim older than this is presumed dead (crash, deploy) and may be taken again. */
 export const CLAIM_LEASE_HOURS = 6;
@@ -351,13 +351,8 @@ const BY_DATE = sql`a.published_at desc, a.id desc`;
  */
 const VISIBLE = sql`coalesce(a.relevance_score, 100) >= ${RELEVANCE_FLOOR} and a.status <> 'duplicate'`;
 
-/**
- * A feed total counts at most this many rows, or one row past the requested page when that is
- * further. An exact count walks every visible article on every request. Below the cap the total
- * is exact; at the cap "has more" (offset + limit < total) is still exact, because the cap is
- * always past the end of the page.
- */
-export const FEED_COUNT_CAP = 1000;
+/** The feed total's cap lives in shared/news.ts, so the client can tell a capped total ("1000+"). */
+export { FEED_COUNT_CAP };
 
 async function feedRows(where: SQL, orderBy: SQL, limit: number, offset: number, database: Db): Promise<FeedRow[]> {
   return (await database.execute<RawFeedRow>(feedSelect(where, orderBy, limit, offset))).rows.map(toFeedRow);
@@ -365,7 +360,7 @@ async function feedRows(where: SQL, orderBy: SQL, limit: number, offset: number,
 
 async function page(filter: SQL, orderBy: SQL, limit: number, offset: number, database: Db) {
   const where = sql`${VISIBLE} and ${filter}`;
-  const cap = Math.max(FEED_COUNT_CAP, offset + limit + 1);
+  const cap = feedCountCap(offset, limit);
   const [rows, count] = await Promise.all([
     feedRows(where, orderBy, limit, offset, database),
     database.execute<{ n: number }>(

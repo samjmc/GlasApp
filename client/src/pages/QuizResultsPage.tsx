@@ -37,6 +37,7 @@ const SAVE_STATUS_TEXT: Record<QuizSaveStatus, string> = {
   declined: "Not saved. We keep a result only if you agree to us keeping your opinions.",
   failed: "We couldn't save this result to your profile.",
   signedOut: "Sign in to save this result and track how your views change over time.",
+  noAnswers: "This result can't be saved: this tab no longer has the answers behind it. Retake the quiz to save a result.",
 };
 
 const heroButton =
@@ -227,7 +228,7 @@ const QuizResultsPage: React.FC = () => {
     );
   }
 
-  const saveStatus = quizSaveStatus(isAuthenticated, result.id, saveAttempt);
+  const saveStatus = quizSaveStatus(isAuthenticated, result.id, saveAttempt, (stored?.answers.length ?? 0) > 0);
   const actions = [
     { id: "share", label: "Share", icon: Share2, onClick: handleShare, pending: false },
     { id: "download", label: isDownloading ? "Saving…" : "Download", icon: Download, onClick: handleDownloadImage, pending: isDownloading },

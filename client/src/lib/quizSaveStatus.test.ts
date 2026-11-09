@@ -1,9 +1,10 @@
 /**
  * The results page said "Saving this result to your profile…" for ever when the save never
- * happened (the user said no to consent, or the save failed): "saving" was worked out as
- * "signed in and no id". It must come from how the save attempt ended. The client has no
- * component test setup, so the decision is tested as a pure function and the wiring is read as
- * text; test/e2e/quiz-save-retry.spec.ts covers the page in a browser.
+ * happened (the user said no to consent, the save failed, or the tab no longer held the answers
+ * to save): "saving" was worked out as "signed in and no id". It must come from how the save
+ * attempt ended. The client has no component test setup, so the decision is tested as a pure
+ * function and the wiring is read as text; test/e2e/quiz-save-retry.spec.ts covers the page in a
+ * browser.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -14,28 +15,32 @@ const pageSource = fs.readFileSync(path.resolve(__dirname, '..', 'pages', 'QuizR
 
 describe('quizSaveStatus', () => {
   it('a result with an id is saved, whatever the attempt says', () => {
-    expect(quizSaveStatus(true, 7, 'failed')).toBe('saved');
-    expect(quizSaveStatus(false, 7, 'idle')).toBe('saved');
+    expect(quizSaveStatus(true, 7, 'failed', true)).toBe('saved');
+    expect(quizSaveStatus(false, 7, 'idle', false)).toBe('saved');
   });
 
   it('a signed-out user is asked to sign in', () => {
-    expect(quizSaveStatus(false, null, 'idle')).toBe('signedOut');
+    expect(quizSaveStatus(false, null, 'idle', true)).toBe('signedOut');
   });
 
   it('a signed-in user is saving only until the attempt ends', () => {
-    expect(quizSaveStatus(true, null, 'idle')).toBe('saving');
-    expect(quizSaveStatus(true, null, 'saving')).toBe('saving');
+    expect(quizSaveStatus(true, null, 'idle', true)).toBe('saving');
+    expect(quizSaveStatus(true, null, 'saving', true)).toBe('saving');
   });
 
   it('a decline or a failure is shown as such, not as saving', () => {
-    expect(quizSaveStatus(true, null, 'declined')).toBe('declined');
-    expect(quizSaveStatus(true, null, 'failed')).toBe('failed');
+    expect(quizSaveStatus(true, null, 'declined', true)).toBe('declined');
+    expect(quizSaveStatus(true, null, 'failed', true)).toBe('failed');
+  });
+
+  it('a result with no stored answers, which no save is ever started for, is not shown as saving', () => {
+    expect(quizSaveStatus(true, null, 'idle', false)).toBe('noAnswers');
   });
 });
 
 describe('QuizResultsPage wiring', () => {
-  it('derives the status from the save attempt, not from the missing id', () => {
-    expect(pageSource).toMatch(/quizSaveStatus\(isAuthenticated, result\.id, saveAttempt\)/);
+  it('derives the status from the save attempt and the stored answers, not from the missing id', () => {
+    expect(pageSource).toMatch(/quizSaveStatus\(isAuthenticated, result\.id, saveAttempt, \(stored\?\.answers\.length \?\? 0\) > 0\)/);
     expect(pageSource).not.toMatch(/isAuthenticated && result\.id === null/);
   });
 
