@@ -3,8 +3,9 @@
  * every table has row level security, so a new table without `.enableRLS()` fails here, and
  * Supabase's public API roles (anon, authenticated) end with no access to the schema.
  *
- * Skipped unless TEST_DATABASE_URL is set; uses its own database `<db>_rls`. The app and these tests
- * connect as the tables' owner, which RLS without FORCE does not restrict.
+ * Skipped unless TEST_DATABASE_URL is set; uses its own database `<db>_rls`. These tests connect as
+ * the tables' owner, which RLS without FORCE does not restrict. The app's own login, glasapp_app, is
+ * tested in dbRole.integration.test.ts.
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { applyAllMigrations, applyMigration, ensureDatabase, testDatabaseUrl } from './testing/migrations';
