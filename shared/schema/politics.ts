@@ -10,9 +10,11 @@
  * declares a second pgSchema('politics'). `npm run db:generate` reads every file in
  * shared/schema/ (see drizzle.config.ts) and turns them into one migration.
  *
- * Every table ends in `.enableRLS()`: row level security with no policy, so no role can read it
- * except the owner the app connects as and roles that bypass RLS (migration 0026). server/db.integration.test.ts fails for a table
- * without it.
+ * Every table ends in `.enableRLS()`: row level security (migration 0026), so no role can read it
+ * without a policy, except the owner and roles that bypass RLS. server/db.integration.test.ts fails
+ * for a table without it. The app connects as `glasapp_app` (migration 0036): row rights only, and
+ * it sees rows only through the `glasapp_app_all` policy each table has. A migration that creates a
+ * table must add that policy itself: docs/deploy.md, "A new table".
  */
 import { sql } from 'drizzle-orm';
 import {
