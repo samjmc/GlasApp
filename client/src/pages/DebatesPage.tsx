@@ -951,6 +951,11 @@ const DebatesPage = () => {
     return { tab: TABS.some((t) => t.key === tab) ? (tab as Tab) : null, billId: params.get("bill") };
   });
   const [activeTab, setActiveTab] = useState<Tab>(deepLink.tab ?? "divisions");
+  // Leaving the deep-linked tab drops ?tab=…&bill=…, so a reload or a copied link shows the tab in view.
+  const changeTab = (value: string) => {
+    setActiveTab(value as Tab);
+    if (window.location.search) window.history.replaceState(window.history.state, "", window.location.pathname);
+  };
 
   const { data: statusResp } = useQuery({
     queryKey: queryKeys.parliament.status(),
@@ -998,7 +1003,7 @@ const DebatesPage = () => {
         right={status}
       />
 
-      <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as Tab)} className="flex min-w-0 flex-col gap-5">
+      <Tabs value={activeTab} onValueChange={changeTab} className="flex min-w-0 flex-col gap-5">
         <TabsList aria-label="Dáil record sections" className="h-auto w-full justify-start self-start sm:w-auto">
           {TABS.map((tab) => (
             <TabsTrigger key={tab.key} value={tab.key} className="h-11 flex-1 px-3 sm:h-10 sm:flex-none sm:px-4">
