@@ -76,7 +76,6 @@ export default function PrivacyPolicyPage() {
         <ul className="mb-4">
           <li>Constituency information (if provided)</li>
           <li>Electoral district (for personalized TD recommendations)</li>
-          <li>IP-based location (country/region only, for analytics)</li>
         </ul>
 
         <h3 className="mb-3">4. User-Generated Content</h3>
@@ -86,14 +85,26 @@ export default function PrivacyPolicyPage() {
           <li>Support messages</li>
         </ul>
 
-        <h3 className="mb-3">5. Technical &amp; Usage Data</h3>
-        <ul className="mb-4">
-          <li>Device information (browser type, operating system)</li>
-          <li>IP address (anonymized after 90 days)</li>
-          <li>Pages visited and features used</li>
-          <li>Session duration and interaction times</li>
-          <li>Referral sources</li>
+        <h3 className="mb-3">5. Server Log</h3>
+        <p className="mb-2">
+          Our server writes one line to its log for each request your browser makes to it. We use this log only to keep the
+          service secure and to find and fix faults. Each line holds:
+        </p>
+        <ul className="mb-2">
+          <li>The time, the request method and the address requested, without anything after a &quot;?&quot;</li>
+          <li>The response status, how long the server took to answer and, if something went wrong, the error</li>
+          <li>A request number, and your account ID if you are signed in</li>
         </ul>
+        <p className="mb-2">
+          The log does not hold your IP address, your browser or device, or the page you came from. One exception: if too
+          many requests come from one IP address in a short time (for example, many votes at once), the server writes
+          that IP address in a warning line, so we can see and stop abuse.
+        </p>
+        <p className="mb-4">
+          The log keeps only its newest 50 MB (five files of 10 MB). Older lines are deleted automatically as new ones are
+          written. This is a size limit, not a number of days: lines last longer when the site is quiet. Supabase, which
+          runs sign-in for us, keeps its own security records of sign-ins.
+        </p>
 
         <h3 className="mb-3">6. Cookies &amp; Tracking Technologies</h3>
         <ul className="mb-4">
@@ -129,8 +140,8 @@ export default function PrivacyPolicyPage() {
                   <td>Contract Performance (Art. 6(1)(b))</td>
                 </tr>
                 <tr>
-                  <td>Analytics and platform improvement</td>
-                  <td>Consent (Art. 6(1)(a))</td>
+                  <td>Keep a server log to keep the service secure and find faults</td>
+                  <td>Legitimate Interest (Art. 6(1)(f))</td>
                 </tr>
                 <tr>
                   <td>Prevent fraud and ensure security</td>
@@ -172,7 +183,6 @@ export default function PrivacyPolicyPage() {
           <ul>
             <li><strong className="text-foreground">Supabase:</strong> Database hosting and authentication (EU region: eu-west-1)</li>
             <li><strong className="text-foreground">Google/Microsoft:</strong> Social authentication (OAuth only)</li>
-            <li><strong className="text-foreground">Analytics Provider:</strong> Anonymized usage analytics (if you consent)</li>
             <li><strong className="text-foreground">Email Service:</strong> Transactional emails (account verification, notifications)</li>
           </ul>
 
@@ -216,12 +226,8 @@ export default function PrivacyPolicyPage() {
               <td>Until account deletion + 30 days</td>
             </tr>
             <tr>
-              <td>Analytics data (anonymized)</td>
-              <td>26 months (Google Analytics standard)</td>
-            </tr>
-            <tr>
-              <td>IP addresses</td>
-              <td>90 days (then anonymized)</td>
+              <td>Server log (including any IP address in a rate-limit warning)</td>
+              <td>Only the newest 50 MB of log is kept; older lines are deleted automatically</td>
             </tr>
             <tr>
               <td>Backup copies</td>
