@@ -56,7 +56,7 @@ The client signs in with Supabase and sends the access token as `Authorization: 
 verifies it on each request and puts the caller on `req.user`. There is no server-side session and no
 cookie identity. Admin comes from `app_metadata.role` or the `ADMIN_EMAILS` allow-list (confirmed
 emails only), never from anything the user can edit. Machine callers send the job secret in
-`x-admin-secret` or `x-cron-secret`. Full detail: [docs/auth.md](docs/auth.md).
+`x-admin-secret`. Full detail: [docs/auth.md](docs/auth.md).
 
 ## Data
 

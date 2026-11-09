@@ -15,7 +15,7 @@ in the schema is a `varchar`, so that one value fits everywhere.
 | `requireAuth` | the token verifies; else 401 |
 | `optionalAuth` | always; attaches `req.user` when a token is present |
 | `requireAdmin` | the caller's role is admin; else 401/403 |
-| `requireJob` | the job secret is in `x-admin-secret`/`x-cron-secret`, or the caller is an admin |
+| `requireJob` | the job secret (`ADMIN_API_SECRET`) is in `x-admin-secret`, or the caller is an admin |
 
 Helper: `logAdminAction(req, action, detail)`. No route takes a user id in its path; identity is
 always the caller's own `req.user.id`.
@@ -30,10 +30,11 @@ would grant admin). `user_metadata` is editable by the user and is never consult
 authorisation; admin UI comes from `/api/profile/me`'s `isAdmin`, and the server guards every
 admin route regardless.
 
-**Machine callers do not use `Authorization`.** The job secret goes in `x-admin-secret` or
-`x-cron-secret`. It used to be accepted in the bearer header too, which meant every admin
-request compared a user's JWT against the shared secret. Cron jobs must send the dedicated
-header.
+**Machine callers do not use `Authorization`.** The job secret goes in `x-admin-secret`. It
+used to be accepted in the bearer header too, which meant every admin request compared a user's
+JWT against the shared secret. Cron jobs must send the dedicated header. The old
+`x-cron-secret` header and the old variable names `ADMIN_SECRET`, `CRON_SECRET` and
+`JOB_SECRET` are no longer read.
 
 ## What this replaced (2026-09-22)
 

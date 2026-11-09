@@ -50,32 +50,6 @@ function adminEmails(): string[] {
 }
 
 /**
- * Old names of ADMIN_API_SECRET. Still read for one release, with a warning at startup
- * (warnOldJobSecretNames), so a deploy can rename the variable first. Delete after that release.
- */
-function oldJobSecrets(): Record<string, string | undefined> {
-  return { ADMIN_SECRET: process.env.ADMIN_SECRET, CRON_SECRET: process.env.CRON_SECRET, JOB_SECRET: process.env.JOB_SECRET };
-}
-
-function jobSecret(): string | undefined {
-  return process.env.ADMIN_API_SECRET || Object.values(oldJobSecrets()).find(Boolean);
-}
-
-/** Startup: name any old job secret variable that is set. Returns the names, for tests. */
-export function warnOldJobSecretNames(): string[] {
-  const names = Object.entries(oldJobSecrets())
-    .filter(([, value]) => value)
-    .map(([name]) => name);
-  if (names.length > 0) {
-    logger.warn(
-      { variables: names },
-      `${names.join(', ')} set: rename it to ADMIN_API_SECRET. The old names stop working in the next release.`,
-    );
-  }
-  return names;
-}
-
-/**
  * Verify a bearer token with Supabase and reduce it to the fields we trust.
  * Returns null for anything that is not a valid, unexpired token.
  */
@@ -164,14 +138,14 @@ export function secretsMatch(actual: string, expected: string): boolean {
 }
 
 /**
- * Machine callers (cron, scheduled jobs) present the shared secret in `x-admin-secret`
- * or `x-cron-secret`. Deliberately NOT `Authorization: Bearer` — that header carries user
+ * Machine callers (cron, scheduled jobs) present the shared secret (ADMIN_API_SECRET) in
+ * `x-admin-secret`. Deliberately NOT `Authorization: Bearer` — that header carries user
  * tokens, and accepting both there meant a user's JWT was compared against the admin
  * secret on every admin request. A human admin's bearer token is accepted instead.
  */
 export const requireJob: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
-  const secret = jobSecret();
-  const presented = req.header('x-admin-secret') || req.header('x-cron-secret');
+  const secret = process.env.ADMIN_API_SECRET;
+  const presented = req.header('x-admin-secret');
 
   if (secret && presented) {
     if (secretsMatch(presented, secret)) {
