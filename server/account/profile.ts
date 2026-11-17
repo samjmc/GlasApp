@@ -56,14 +56,31 @@ function ownUpload(userId: string, value: unknown): string | null {
 }
 
 /**
+ * Google sign-in gives one name (`full_name`, `name`), not a first and a last. Split it at the first
+ * space: the first word is the first name, the rest the last name. The user can correct it.
+ */
+export function splitFullName(metadata: Record<string, unknown>): { first: string | null; last: string | null } {
+  const full = [metadata.full_name, metadata.name].find((v): v is string => typeof v === 'string' && v.trim() !== '');
+  if (!full) return { first: null, last: null };
+  const [first, ...rest] = full.trim().split(/\s+/);
+  return {
+    first: userText(first, PROFILE_LIMITS.firstName),
+    last: rest.length ? userText(rest.join(' '), PROFILE_LIMITS.lastName) : null,
+  };
+}
+
+/**
  * The profile fields used to be saved to Supabase `user_metadata`. Copy into the row each one it has
  * never held (NULL) from the caller's verified token. Once, in effect: a field the user later clears
  * is saved as '' and is not copied back, and `coalesce` keeps a concurrent save from being overwritten.
  */
 export async function backfillFromMetadata(row: UserRow, metadata: Record<string, unknown>, database: Db = db): Promise<UserRow> {
+  const fromFullName = splitFullName(metadata);
   const found = {
-    firstName: userText(metadata.first_name, PROFILE_LIMITS.firstName) ?? userText(metadata.given_name, PROFILE_LIMITS.firstName),
-    lastName: userText(metadata.last_name, PROFILE_LIMITS.lastName) ?? userText(metadata.family_name, PROFILE_LIMITS.lastName),
+    firstName:
+      userText(metadata.first_name, PROFILE_LIMITS.firstName) ?? userText(metadata.given_name, PROFILE_LIMITS.firstName) ?? fromFullName.first,
+    lastName:
+      userText(metadata.last_name, PROFILE_LIMITS.lastName) ?? userText(metadata.family_name, PROFILE_LIMITS.lastName) ?? fromFullName.last,
     username: userText(metadata.username, PROFILE_LIMITS.username),
     county: userText(metadata.county, PROFILE_LIMITS.county),
     constituency: userText(metadata.constituency, PROFILE_LIMITS.constituency),

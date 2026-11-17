@@ -123,6 +123,12 @@ run('/api/profile/me against Postgres', () => {
     expect(await stored()).toMatchObject({ first_name: 'Brid', county: '', bio: 'old bio' });
   });
 
+  it('splits a Google full name when the token has no first or last name', async () => {
+    const res = await call('GET', { full_name: 'Sam McDonnell', name: 'Sam McDonnell', picture: 'https://google.example/p.png' });
+    expect(res.body.data.user).toMatchObject({ firstName: 'Sam', lastName: 'McDonnell' });
+    expect(await stored()).toMatchObject({ first_name: 'Sam', last_name: 'McDonnell' });
+  });
+
   it('takes the Google name when there is no saved one, and ignores values that do not fit or are not ours', async () => {
     const res = await call('GET', {
       given_name: 'Siobhán',
