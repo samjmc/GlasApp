@@ -10,8 +10,8 @@ Access: `public` = no blocking guard; `auth` = `requireAuth`; `admin` = `require
 
 ## Summary
 
-- Routes: 80
-- By access: public 47, auth 16, admin 8, job 9
+- Routes: 81
+- By access: public 48, auth 16, admin 8, job 9
 - Routes that change state (not GET): 25, of which public: 3
 
 ## Mounts
@@ -33,6 +33,7 @@ Access: `public` = no blocking guard; `auth` = `requireAuth`; `admin` = `require
 | `/api/region` | `server/routes/regionRoutes.ts` | — | 1 |
 | `/api/scores` | `server/routes/scores.ts` | — | 10 |
 | `/api/stances` | `server/stances/routes.ts` | — | 1 |
+| `/api/status` | `server/routes/status.ts` | — | 1 |
 | `/api/votes` | `server/voting/routes.ts` | — | 2 |
 
 ## Routes
@@ -116,6 +117,7 @@ Access: `public` = no blocking guard; `auth` = `requireAuth`; `admin` = `require
 | GET | `/api/scores/tds` | public | — | `server/routes/scores.ts` |
 | GET | `/api/scores/widget` | public | — | `server/routes/scores.ts` |
 | GET | `/api/stances/td/:id` | public | — | `server/stances/routes.ts` |
+| GET | `/api/status` | public | — | `server/routes/status.ts` |
 | GET | `/api/votes/articles/:articleId` | public | — | `server/voting/routes.ts` |
 | POST | `/api/votes/questions/:questionId` | auth | `requireAuth` | `server/voting/routes.ts` |
 | GET | `/health` | public | — | `server/index.ts` |

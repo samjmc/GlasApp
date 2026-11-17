@@ -1,0 +1,63 @@
+# Watches the live site from outside. A failed run is the alert: GitHub emails the repository owner.
+#   every 30 minutes  /health answers 200
+#   daily 08:15 UTC   /api/status: database under 85% of the free plan's 500 MB, and every scheduled
+#                     job finished recently and reported ok (docs/deploy.md, "Watching the live site")
+# Scheduled workflows run from main only, and GitHub turns them off after 60 days with no commit.
+name: uptime
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+    - cron: '15 8 * * *'
+  workflow_dispatch:
+    inputs:
+      deep:
+        description: Also run the daily checks
+        type: boolean
+        default: true
+
+permissions: {}
+
+env:
+  SITE: https://politics.glasinsight.com
+  # 85% of the Supabase free plan's 500 MB.
+  DB_LIMIT_BYTES: '445644800'
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: /health answers 200
+        run: |
+          code=$(curl -s -o /dev/null -w '%{http_code}' --retry 3 --retry-delay 20 --retry-all-errors --max-time 20 "$SITE/health")
+          echo "/health: $code"
+          test "$code" = 200
+
+  daily:
+    if: github.event.schedule == '15 8 * * *' || (github.event_name == 'workflow_dispatch' && inputs.deep)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Database size and job runs
+        run: |
+          curl -sf --retry 3 --retry-delay 20 --retry-all-errors --max-time 30 "$SITE/api/status" > status.json
+          now=$(date -u +%s)
+          fail=0
+
+          bytes=$(jq -r '.data.databaseBytes' status.json)
+          echo "database: $((bytes / 1048576)) MB (alert above $((DB_LIMIT_BYTES / 1048576)) MB)"
+          if [ "$bytes" -gt "$DB_LIMIT_BYTES" ]; then echo "::error::Database is $((bytes / 1048576)) MB, near the 500 MB free-plan limit"; fail=1; fi
+
+          # job name and the most hours since its last finished run
+          for pair in parliament-sync:30 news-ingest:6 news-tds:6; do
+            job=${pair%%:*}; max=${pair##*:}
+            finished=$(jq -r --arg j "$job" '.data.jobs[$j].finishedAt // empty' status.json)
+            ok=$(jq -r --arg j "$job" '.data.jobs[$j].ok // empty' status.json)
+            if [ -z "$finished" ]; then echo "::error::$job has no finished run"; fail=1; continue; fi
+            age=$(( (now - $(date -u -d "$finished" +%s)) / 3600 ))
+            echo "$job: finished ${age}h ago, ok=$ok"
+            if [ "$age" -gt "$max" ]; then echo "::error::$job last finished ${age}h ago (limit ${max}h)"; fail=1; fi
+            if [ "$ok" != "true" ]; then echo "::error::$job last run was not ok (see /api/admin/jobs on the host)"; fail=1; fi
+          done
+          exit $fail
