@@ -1,12 +1,13 @@
+import { CONTACT_EMAIL, SUPPORT_EMAIL, PRIVACY_EMAIL } from "@shared/contact";
 export const CONTACT_TOPICS = [
-  { value: "general", label: "General inquiry", to: "contact@glaspolitics.ie" },
-  { value: "bug", label: "Bug report", to: "support@glaspolitics.ie" },
-  { value: "feature", label: "Feature request", to: "contact@glaspolitics.ie" },
-  { value: "data", label: "Data correction (TD/party info)", to: "contact@glaspolitics.ie" },
-  { value: "privacy", label: "Privacy/GDPR request", to: "privacy@glaspolitics.ie" },
-  { value: "abuse", label: "Report abuse/content issue", to: "support@glaspolitics.ie" },
-  { value: "partnership", label: "Partnership/media inquiry", to: "contact@glaspolitics.ie" },
-  { value: "other", label: "Other", to: "contact@glaspolitics.ie" },
+  { value: "general", label: "General inquiry", to: CONTACT_EMAIL },
+  { value: "bug", label: "Bug report", to: SUPPORT_EMAIL },
+  { value: "feature", label: "Feature request", to: CONTACT_EMAIL },
+  { value: "data", label: "Data correction (TD/party info)", to: CONTACT_EMAIL },
+  { value: "privacy", label: "Privacy/GDPR request", to: PRIVACY_EMAIL },
+  { value: "abuse", label: "Report abuse/content issue", to: SUPPORT_EMAIL },
+  { value: "partnership", label: "Partnership/media inquiry", to: CONTACT_EMAIL },
+  { value: "other", label: "Other", to: CONTACT_EMAIL },
 ];
 
 /**

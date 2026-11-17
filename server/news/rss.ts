@@ -2,6 +2,7 @@
  * Read one feed. RSS 2.0 and Atom both arrive through rss-parser; the HTTP fetch is ours so
  * it has a timeout, a retry and a real status code in the error.
  */
+import { SITE_URL } from '@shared/contact';
 import Parser from 'rss-parser';
 import { cleanImageUrl, type ImageCandidate } from './images';
 import type { RawItem } from './normalize';
@@ -26,7 +27,7 @@ export interface FeedEntry {
 
 export const FEED_TIMEOUT_MS = 15_000;
 const RETRY_DELAY_MS = 1_500;
-const USER_AGENT = 'GlasPoliticsBot/1.0 (+https://glaspolitics.ie)';
+const USER_AGENT = `GlasPoliticsBot/1.0 (+${SITE_URL})`;
 
 const parser: Parser<Record<string, unknown>, FeedEntry> = new Parser({
   customFields: {

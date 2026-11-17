@@ -1,4 +1,5 @@
 import { requireAuth } from '../auth';
+import { PRIVACY_EMAIL } from '@shared/contact';
 import { deleteAuthUser } from '../auth/supabase';
 import { Router } from 'express';
 import { z } from 'zod';
@@ -33,7 +34,7 @@ router.delete('/', requireAuth, async (req, res) => {
     throw new AppError(
       500,
       'INTERNAL_ERROR',
-      'Your data was deleted, but your sign-in could not be removed. Please try again or contact privacy@glaspolitics.ie.',
+      `Your data was deleted, but your sign-in could not be removed. Please try again or contact ${PRIVACY_EMAIL}.`,
       { cause: error },
     );
   }

@@ -1,3 +1,4 @@
+import { SITE_URL } from '@shared/contact';
 /**
  * Every news source, in one place. Ingest upserts this list into `politics.news_sources`
  * before each run, so the table always matches the code.
@@ -35,7 +36,7 @@ export const NEWS_SOURCES: readonly SourceConfig[] = [
   { slug: 'gript', name: 'Gript Media', homepageUrl: 'https://gript.ie', feedUrl: 'https://gript.ie/feed/', logoUrl: 'https://gript.ie/apple-touch-icon.png' },
   { slug: 'the-ditch', name: 'The Ditch', homepageUrl: 'https://www.ontheditch.com', feedUrl: 'https://www.ontheditch.com/rss/', logoUrl: 'https://storage.ghost.io/c/60/13/601376ae-90a0-4dd3-bd07-658ba046cb76/content/images/size/w256h256/format/jpeg/2022/06/Facebook-Profile-Alt.jpg' },
   { slug: 'village', name: 'Village Magazine', homepageUrl: 'https://villagemagazine.ie', feedUrl: 'https://villagemagazine.ie/feed/', logoUrl: 'https://villagemagazine.ie/wp-content/uploads/2015/12/cropped-profile-2-180x180.jpg' },
-  { slug: MANUAL_SOURCE_SLUG, name: 'Added manually', homepageUrl: 'https://glaspolitics.ie', feedUrl: null, logoUrl: null },
+  { slug: MANUAL_SOURCE_SLUG, name: 'Added manually', homepageUrl: SITE_URL, feedUrl: null, logoUrl: null },
 ];
 
 /**

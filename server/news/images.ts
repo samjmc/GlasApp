@@ -9,6 +9,7 @@
  *   3. Check candidates in order and keep the first that really loads as an image, so the
  *      feed never stores a dead link.
  */
+import { SITE_URL } from '@shared/contact';
 import { safeFetch } from './safeFetch';
 
 export interface ImageCandidate {
@@ -21,7 +22,7 @@ export interface ImageCandidate {
 export const MIN_GOOD_WIDTH = 800;
 const PAGE_IMAGE_ASSUMED_WIDTH = 1200;
 const IMAGE_TIMEOUT_MS = 10_000;
-const USER_AGENT = 'Mozilla/5.0 (compatible; GlasPoliticsBot/1.0; +https://glaspolitics.ie)';
+const USER_AGENT = `Mozilla/5.0 (compatible; GlasPoliticsBot/1.0; +${SITE_URL})`;
 
 /** Absolute http(s) URL with HTML entities decoded, or null. */
 export function cleanImageUrl(raw: string | undefined | null, base?: string): string | null {

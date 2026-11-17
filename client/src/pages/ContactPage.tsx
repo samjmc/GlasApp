@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CONTACT_EMAIL, SUPPORT_EMAIL, PRIVACY_EMAIL } from "@shared/contact";
 import { Link } from "wouter";
 import { Mail, Shield, Bug, HelpCircle, Send, ArrowUpRight } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
@@ -10,9 +11,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { CONTACT_TOPICS, buildMailto } from "@/lib/contact";
 
 const QUICK_CONTACTS = [
-  { icon: Mail, label: "General", email: "contact@glaspolitics.ie" },
-  { icon: Shield, label: "Privacy & data", email: "privacy@glaspolitics.ie" },
-  { icon: Bug, label: "Technical support", email: "support@glaspolitics.ie" },
+  { icon: Mail, label: "General", email: CONTACT_EMAIL },
+  { icon: Shield, label: "Privacy & data", email: PRIVACY_EMAIL },
+  { icon: Bug, label: "Technical support", email: SUPPORT_EMAIL },
 ];
 
 const FAQS = [
@@ -28,7 +29,7 @@ const FAQS = [
     q: "I found incorrect information about a TD. How do I report it?",
     a: (
       <>
-        Use the contact form above with subject "Data Correction" or email us at <a href="mailto:contact@glaspolitics.ie" className="font-semibold text-primary underline underline-offset-2">contact@glaspolitics.ie</a> with details. We review all correction requests within 48 hours.
+        Use the contact form above with subject "Data Correction" or email us at <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-primary underline underline-offset-2">{CONTACT_EMAIL}</a> with details. We review all correction requests within 48 hours.
       </>
     ),
   },
@@ -44,7 +45,7 @@ const FAQS = [
     q: "Can I use Glas Politics data for research or journalism?",
     a: (
       <>
-        Please contact us at <a href="mailto:contact@glaspolitics.ie" className="font-semibold text-primary underline underline-offset-2">contact@glaspolitics.ie</a> for media inquiries, research partnerships, or data access requests. We're open to collaboration!
+        Please contact us at <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-primary underline underline-offset-2">{CONTACT_EMAIL}</a> for media inquiries, research partnerships, or data access requests. We're open to collaboration!
       </>
     ),
   },

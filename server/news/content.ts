@@ -1,12 +1,13 @@
 /**
  * Fetch a publisher page. Used for full article bodies (scoring) and for manual adds.
  */
+import { SITE_URL } from '@shared/contact';
 import * as cheerio from 'cheerio';
 import { cleanImageUrl } from './images';
 import { readTextCapped, safeFetch } from './safeFetch';
 
 const TIMEOUT_MS = 15_000;
-const USER_AGENT = 'Mozilla/5.0 (compatible; GlasPoliticsBot/1.0; +https://glaspolitics.ie)';
+const USER_AGENT = `Mozilla/5.0 (compatible; GlasPoliticsBot/1.0; +${SITE_URL})`;
 const BODY_SELECTORS = ['[itemprop="articleBody"]', 'article', '.article-content', '.article-body', '.story-content', '.entry-content', '.gh-content', 'main'];
 
 export interface PageMeta {
