@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { PRIVACY_EMAIL, SITE_HOST } from "@shared/contact";
 import { Shield, Lock, Eye, Database, UserCheck, Mail } from "lucide-react";
 import { LegalLayout, type LegalTocEntry } from "@/components/account/LegalLayout";
 
@@ -44,8 +45,8 @@ export default function PrivacyPolicyPage() {
           <p>
             <strong className="text-foreground">Glas Politics</strong><br />
             Ireland<br />
-            Email: privacy@glaspolitics.ie<br />
-            Contact Form: <Link href="/contact">glaspolitics.ie/contact</Link>
+            Email: {PRIVACY_EMAIL}<br />
+            Contact Form: <Link href="/contact">{SITE_HOST}/contact</Link>
           </p>
         </div>
       </section>
@@ -279,7 +280,7 @@ export default function PrivacyPolicyPage() {
           </p>
           <ul>
             <li>Visit your <Link href="/profile">Profile Settings</Link> for self-service options</li>
-            <li>Email us at <a href="mailto:privacy@glaspolitics.ie">privacy@glaspolitics.ie</a></li>
+            <li>Email us at <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a></li>
             <li>Use our <Link href="/contact">Contact Form</Link></li>
           </ul>
 
@@ -308,7 +309,7 @@ export default function PrivacyPolicyPage() {
       <section id="children" className="scroll-mt-24">
         <h2 className="mb-4">Children's Privacy</h2>
         <p>
-          Glas Politics is not intended for users under 18 years of age. We do not knowingly collect personal data from children. If we discover we have collected data from a child, we will delete it immediately. Parents/guardians who believe we may have data from a child should contact us at <a href="mailto:privacy@glaspolitics.ie">privacy@glaspolitics.ie</a>.
+          Glas Politics is not intended for users under 18 years of age. We do not knowingly collect personal data from children. If we discover we have collected data from a child, we will delete it immediately. Parents/guardians who believe we may have data from a child should contact us at <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a>.
         </p>
       </section>
 
@@ -381,7 +382,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </div>
         <p className="mt-4 text-sm">
-          We encourage you to contact us first at <a href="mailto:privacy@glaspolitics.ie">privacy@glaspolitics.ie</a> so we can resolve your concerns directly.
+          We encourage you to contact us first at <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a> so we can resolve your concerns directly.
         </p>
       </section>
 
@@ -391,8 +392,8 @@ export default function PrivacyPolicyPage() {
           For any privacy-related questions or to exercise your GDPR rights:
         </p>
         <ul>
-          <li>Email: <a href="mailto:privacy@glaspolitics.ie">privacy@glaspolitics.ie</a></li>
-          <li>Contact Form: <Link href="/contact">glaspolitics.ie/contact</Link></li>
+          <li>Email: <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a></li>
+          <li>Contact Form: <Link href="/contact">{SITE_HOST}/contact</Link></li>
           <li>Profile Settings: <Link href="/profile">Self-service data export/deletion</Link></li>
         </ul>
       </section>

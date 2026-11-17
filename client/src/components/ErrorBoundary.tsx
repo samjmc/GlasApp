@@ -1,4 +1,5 @@
 import React, { Component, ReactNode } from 'react';
+import { SUPPORT_EMAIL } from '@shared/contact';
 import { useLocation } from 'wouter';
 import { AlertTriangle, RefreshCw, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -164,8 +165,8 @@ class ErrorBoundaryCore extends Component<ErrorBoundaryCoreProps, ErrorBoundaryC
 
               <p className="mt-6 text-sm text-muted-foreground">
                 If this problem persists, please contact support at{' '}
-                <a href="mailto:support@glaspolitics.ie" className="font-semibold text-primary underline underline-offset-2">
-                  support@glaspolitics.ie
+                <a href={`mailto:${SUPPORT_EMAIL}`} className="font-semibold text-primary underline underline-offset-2">
+                  {SUPPORT_EMAIL}
                 </a>
               </p>
             </div>

@@ -1,4 +1,5 @@
 import { Link } from "wouter";
+import { CONTACT_EMAIL, SITE_HOST } from "@shared/contact";
 import { Scale, AlertTriangle, CheckCircle, XCircle, Shield, FileText } from "lucide-react";
 import { LegalLayout, type LegalTocEntry } from "@/components/account/LegalLayout";
 
@@ -188,7 +189,7 @@ export default function TermsOfServicePage() {
           <div>
             <h3 className="text-foreground">Third-Party Content</h3>
             <p>
-              News articles, TD photos, and other third-party content remain the property of their original creators. We display this content under fair use for news reporting and political commentary. If you believe we are infringing your copyright, contact us at <a href="mailto:legal@glaspolitics.ie">legal@glaspolitics.ie</a>.
+              News articles, TD photos, and other third-party content remain the property of their original creators. We display this content under fair use for news reporting and political commentary. If you believe we are infringing your copyright, contact us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
             </p>
           </div>
         </div>
@@ -316,7 +317,7 @@ export default function TermsOfServicePage() {
           <div>
             <h3 className="text-foreground">Informal Resolution</h3>
             <p>
-              Before filing a lawsuit, please contact us at <a href="mailto:legal@glaspolitics.ie">legal@glaspolitics.ie</a> to resolve the issue informally. Most disputes can be settled through good-faith negotiation.
+              Before filing a lawsuit, please contact us at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> to resolve the issue informally. Most disputes can be settled through good-faith negotiation.
             </p>
           </div>
           <div>
@@ -364,8 +365,8 @@ export default function TermsOfServicePage() {
           If you have questions or concerns about these Terms of Service:
         </p>
         <ul>
-          <li>Email: <a href="mailto:legal@glaspolitics.ie">legal@glaspolitics.ie</a></li>
-          <li>Contact Form: <Link href="/contact">glaspolitics.ie/contact</Link></li>
+          <li>Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></li>
+          <li>Contact Form: <Link href="/contact">{SITE_HOST}/contact</Link></li>
         </ul>
       </section>
 

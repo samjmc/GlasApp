@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { PRIVACY_EMAIL } from "@shared/contact";
 import { useLocation } from 'wouter';
 import { useAuth } from '@/contexts/AuthContext';
 import { usePoliticalConsent } from '@/contexts/ConsentContext';
@@ -466,8 +467,8 @@ const ProfilePage = () => {
             <CardFooter className="flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
               <div className="text-sm text-muted-foreground">
                 Need a copy of your data first? Use “Download my data” above, or contact{' '}
-                <a href="mailto:privacy@glaspolitics.ie" className="text-primary underline">
-                  privacy@glaspolitics.ie
+                <a href={`mailto:${PRIVACY_EMAIL}`} className="text-primary underline">
+                  {PRIVACY_EMAIL}
                 </a>
               </div>
               <AlertDialog>
