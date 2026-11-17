@@ -212,7 +212,7 @@ run('ingest against Postgres', () => {
     const [a, b] = await Promise.all([ingest.ingest(), ingest.ingest()]);
     expect(a).toBe(b);
     const { NEWS_SOURCES } = await import('./sources');
-    expect(state.feedCalls).toBe(NEWS_SOURCES.filter((s) => s.feedUrl).length);
+    expect(state.feedCalls).toBe(NEWS_SOURCES.filter((s) => s.feedUrl && !s.notFetched).length);
   });
 
   it('a manual add of an event already shown is a 409 naming it; with force it is stored as a canonical', async () => {
