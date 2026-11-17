@@ -277,6 +277,28 @@ A run with no `finished_at` is still going, or the process died during it.
 
 To turn the crons off again, set `SCHEDULER=off` (or remove the line) and run `up -d` again.
 
+## Watching the live site
+
+`.github/workflows/uptime.yml` checks the site from outside. A failed run is the alert: GitHub emails
+the repository owner.
+
+- Every 30 minutes, `/health` must answer 200.
+- Every day at 08:15 UTC, `GET /api/status` must show the database under 85% of the Supabase free
+  plan's 500 MB, the parliament sync finished in the last 30 hours, news ingest and news-to-TD
+  links in the last 6, and each last run `ok`. When one fails, read `/api/admin/jobs` on the host.
+
+`/api/status` is public and carries only the database size and, per job, when it last started and
+finished and whether it worked. Counts and errors stay on the admin route. The site address is the
+`SITE` value at the top of the workflow; change it there if the domain changes. GitHub turns
+scheduled workflows off after 60 days with no commit to the repository.
+
+### Backups
+
+GlasCore is Supabase's to back up (the free plan keeps daily backups for a short time; no
+point-in-time recovery). On the Hetzner host the profile pictures live in the `uploads` volume, inside
+the server's own Hetzner backups (on since the server was made). Nothing else on the host holds data:
+the image is rebuilt from git, and the variables file can be written again from its sources.
+
 ## Updating
 
 ```

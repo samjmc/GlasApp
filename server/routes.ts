@@ -16,6 +16,7 @@ import { pledgesRouter } from "./pledges/routes";
 import { stancesRouter } from "./stances/routes";
 import parliamentRoutes from "./routes/parliament";
 import regionRoutes from "./routes/regionRoutes";
+import statusRoutes from "./routes/status";
 
 import tdScoringAdminRoutes from "./routes/admin/tdScoringRoutes";
 
@@ -64,6 +65,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.use("/api/quiz", quizRoutes);
   app.use("/api/ideology", ideologyRoutes);
   app.use("/api/stances", stancesRouter); // What TDs said in the news (server/stances)
+  app.use("/api/status", statusRoutes); // database size and last job runs, for the uptime check
 
   // Last: an unknown /api path is a JSON 404, never the SPA's index.html.
   app.use("/api", apiNotFound);
