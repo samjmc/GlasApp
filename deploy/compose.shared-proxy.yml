@@ -1,0 +1,22 @@
+# Add-on for a host where another app's Caddy already owns ports 80 and 443 (the GlasIntelligence
+# host). GlasApp then runs WITHOUT its own proxy profile, joins that Caddy's Docker network, and Caddy
+# reaches it as `glasapp:5000`. The site block comes from deploy/caddy-site.example. See
+# docs/deploy.md, "Behind a Caddy that is already on the host".
+#
+#   docker compose --env-file deploy/glasapp.env -f deploy/compose.yml -f deploy/compose.shared-proxy.yml up -d --build
+#
+# Still one proxy hop: the app trusts exactly one X-Forwarded-For hop, and that Caddy is it.
+
+services:
+  app:
+    networks:
+      default: {}
+      shared_proxy:
+        aliases:
+          - glasapp
+
+networks:
+  shared_proxy:
+    # The network of the Caddy already on the host (GlasIntelligence's compose project is `glas`).
+    name: glas_default
+    external: true

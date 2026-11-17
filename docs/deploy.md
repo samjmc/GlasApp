@@ -202,6 +202,30 @@ The app trusts **exactly one proxy hop** (`trust proxy` is `1`). Caddy is that h
 a second proxy in front of it, such as an orange-cloud CDN. If you do, rate limits see the
 proxy's address instead of the visitor's. If you use a CDN, set the DNS record to DNS-only.
 
+### Behind a Caddy that is already on the host
+
+On a host where another app's Caddy already owns ports 80 and 443 (the GlasIntelligence host),
+skip the proxy profile. The app joins that Caddy's Docker network instead, and the Caddy serves one
+extra site block:
+
+```
+sh deploy/up.sh
+```
+
+`deploy/up.sh` runs `docker compose` with the variables file and both compose files, then shows the
+container state (`sh deploy/up.sh check` only validates and shows it).
+
+1. The other Caddy must import site files from a folder (GlasIntelligence: `deploy/sites/` on the
+   host, `docs/hosting.md`) and must filter its error log as `deploy/Caddyfile` does, or a 502 logs
+   the visitor's IP and the full URL.
+2. Copy `deploy/caddy-site.example` into that folder as `glasapp.caddy`, set the domain, and put in
+   a password hash made with `docker exec -i <caddy container> caddy hash-password` (password on
+   stdin). Every page then asks for that password; `/api` and `/health` do not (the app's sign-in
+   uses the same `Authorization` header).
+3. Recreate only that Caddy (`docker compose ... up -d caddy` in its own project).
+
+`deploy/compose.shared-proxy.yml` names the network `glas_default`. Change it there for another host.
+
 ## 6. Turning the crons on
 
 Turn them on only when all of these are true:
