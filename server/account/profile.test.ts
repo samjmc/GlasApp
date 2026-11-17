@@ -2,7 +2,11 @@
  * Google sign-in puts one name in `user_metadata` (`full_name`, `name`) and no first or last name, so
  * the profile copy found nothing and a Google user saw a blank name on their profile.
  */
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
+
+// profile.ts imports the database client; this test never queries it.
+vi.mock('../db', () => ({ db: {} }));
+
 import { PROFILE_LIMITS, splitFullName } from './profile';
 
 describe('splitFullName', () => {
