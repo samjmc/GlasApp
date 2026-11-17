@@ -14,18 +14,28 @@ export interface SourceConfig {
   /** NULL only for `manual`. */
   feedUrl: string | null;
   logoUrl: string | null;
+  /**
+   * Why ingest no longer fetches this feed. The source stays listed, so its old articles and any
+   * article added by hand from its site keep their label.
+   */
+  notFetched?: string;
 }
 
 export const MANUAL_SOURCE_SLUG = 'manual';
 
+// Measured 2026-11-17: from the Hetzner host both RTÉ feeds answer 403 with a Cloudflare challenge
+// page, for a bot and a browser user agent alike; from a home connection they answer 200. RTÉ blocks
+// data-centre addresses. We do not work around a site's bot check, so ingest skips them.
+const RTE_BLOCKS_SERVERS = 'RTÉ answers server (data-centre) addresses with a Cloudflare challenge (403)';
+
 export const NEWS_SOURCES: readonly SourceConfig[] = [
   // Politics desks first: every item is on topic, so fewer are spent on the relevance floor.
-  { slug: 'rte-politics', name: 'RTÉ News', homepageUrl: 'https://www.rte.ie', feedUrl: 'https://www.rte.ie/feeds/rss/?index=/news/politics/', logoUrl: 'https://www.rte.ie/apple-touch-icon.png' },
+  { slug: 'rte-politics', name: 'RTÉ News', homepageUrl: 'https://www.rte.ie', feedUrl: 'https://www.rte.ie/feeds/rss/?index=/news/politics/', logoUrl: 'https://www.rte.ie/apple-touch-icon.png', notFetched: RTE_BLOCKS_SERVERS },
   { slug: 'irish-times-politics', name: 'The Irish Times', homepageUrl: 'https://www.irishtimes.com', feedUrl: 'https://www.irishtimes.com/arc/outboundfeeds/feed-politics/?outputType=xml', logoUrl: 'https://www.irishtimes.com/apple-touch-icon.png' },
   { slug: 'independent-politics', name: 'Irish Independent', homepageUrl: 'https://www.independent.ie', feedUrl: 'https://www.independent.ie/irish-news/politics/rss/', logoUrl: null },
   { slug: 'belfast-telegraph-politics', name: 'Belfast Telegraph', homepageUrl: 'https://www.belfasttelegraph.co.uk', feedUrl: 'https://www.belfasttelegraph.co.uk/news/politics/rss/', logoUrl: null },
   // General news desks: policy stories often run here first.
-  { slug: 'rte', name: 'RTÉ News', homepageUrl: 'https://www.rte.ie', feedUrl: 'https://www.rte.ie/rss/news.xml', logoUrl: 'https://www.rte.ie/apple-touch-icon.png' },
+  { slug: 'rte', name: 'RTÉ News', homepageUrl: 'https://www.rte.ie', feedUrl: 'https://www.rte.ie/rss/news.xml', logoUrl: 'https://www.rte.ie/apple-touch-icon.png', notFetched: RTE_BLOCKS_SERVERS },
   { slug: 'irish-times', name: 'The Irish Times', homepageUrl: 'https://www.irishtimes.com', feedUrl: 'https://www.irishtimes.com/cmlink/news-1.1319192', logoUrl: 'https://www.irishtimes.com/apple-touch-icon.png' },
   { slug: 'independent', name: 'Irish Independent', homepageUrl: 'https://www.independent.ie', feedUrl: 'https://www.independent.ie/irish-news/rss/', logoUrl: null },
   { slug: 'the-journal', name: 'The Journal', homepageUrl: 'https://www.thejournal.ie', feedUrl: 'https://www.thejournal.ie/feed/', logoUrl: 'https://b0.thejournal.ie/redesign/i/thejournal/apple-touch-icon.png' },

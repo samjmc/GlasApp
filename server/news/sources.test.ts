@@ -6,6 +6,11 @@ describe('NEWS_SOURCES', () => {
     expect(new Set(NEWS_SOURCES.map((s) => s.slug)).size).toBe(NEWS_SOURCES.length);
     expect(NEWS_SOURCES.filter((s) => s.feedUrl === null).map((s) => s.slug)).toEqual([MANUAL_SOURCE_SLUG]);
   });
+
+  it('skips only the feeds that block the server, and still fetches the rest', () => {
+    expect(NEWS_SOURCES.filter((s) => s.notFetched).map((s) => s.slug)).toEqual(['rte-politics', 'rte']);
+    expect(NEWS_SOURCES.filter((s) => s.feedUrl && !s.notFetched).length).toBeGreaterThanOrEqual(10);
+  });
 });
 
 describe('sourceForUrl', () => {

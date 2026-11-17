@@ -95,7 +95,7 @@ function toRow(a: NewArticle, sourceIds: Map<string, number>, relevance: Relevan
 }
 
 async function fetchAll(sources: readonly SourceConfig[], now: Date, stats: IngestStats): Promise<NewArticle[]> {
-  const withFeeds = sources.filter((s) => s.feedUrl);
+  const withFeeds = sources.filter((s) => s.feedUrl && !s.notFetched);
   // All at once: a run takes as long as the slowest feed, not the sum of them. One dead feed
   // is reported and skipped; it never stops the others.
   const results = await Promise.allSettled(withFeeds.map((s) => fetchFeed(s.slug, s.feedUrl!)));
