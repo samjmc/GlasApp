@@ -1,0 +1,25 @@
+# One site block for a Caddy that already runs on the host (deploy/compose.shared-proxy.yml).
+# Copy it into that Caddy's sites folder as glasapp.caddy, replace the domain, the user and the
+# hash, then recreate only that Caddy. The file holds a password hash: keep it off git.
+#
+# Private use: every page asks for a password (HTTP basic auth). /api and /health do not, because the
+# app's own sign-in sends `Authorization: Bearer`, which would replace the basic-auth header on every
+# API call. What /api serves without a Supabase sign-in is public Oireachtas data.
+#
+# Make the hash on the host, with the password on stdin so it stays out of the shell history:
+#   docker exec -i <caddy container> caddy hash-password
+#
+# No `log` directive: no access log, on purpose (the app logs the path only). The host Caddy's global
+# options must filter its error log the same way as deploy/Caddyfile does, or a 502 logs the visitor's
+# IP and the full URL.
+
+politics.example.com {
+	encode zstd gzip
+
+	@pages not path /api/* /health
+	basic_auth @pages {
+		glas <bcrypt hash from caddy hash-password>
+	}
+
+	reverse_proxy glasapp:5000
+}
