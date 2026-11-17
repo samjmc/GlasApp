@@ -22,4 +22,11 @@ politics.example.com {
 	}
 
 	reverse_proxy glasapp:5000
+
+	# Without this a browser that shows no password box (an embedded browser pane) shows a blank page.
+	# The WWW-Authenticate header survives, so normal browsers still ask for the password.
+	handle_errors 401 {
+		header Content-Type "text/plain; charset=utf-8"
+		respond "This site is private. Your browser should ask for a user name and password. If no box appears, open this address in Chrome, Edge or Firefox." 401
+	}
 }
