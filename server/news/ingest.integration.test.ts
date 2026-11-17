@@ -135,8 +135,8 @@ run('ingest against Postgres', () => {
   it('a report from another outlet 47h after the first is stored as its duplicate, never shown or claimed', async () => {
     const now = new Date();
     const earlier = new Date(now.getTime() - 47 * HOUR);
-    const rte = item('rte', 'https://www.rte.ie/news/budget-vote', 'Dáil passes Budget 2027 after late-night vote', new Date(earlier.getTime() - HOUR / 3));
-    state.feeds.set('rte', [rte]);
+    const times = item('irish-times', 'https://www.irishtimes.com/news/budget-vote', 'Dáil passes Budget 2027 after late-night vote', new Date(earlier.getTime() - HOUR / 3));
+    state.feeds.set('irish-times', [times]);
     const first = await ingest.ingest(earlier);
     expect(first).toMatchObject({ inserted: 1, duplicates: 0, eventMatchFailed: 0 });
     // One item and nothing stored to compare it with: no call.
@@ -150,7 +150,7 @@ run('ingest against Postgres', () => {
     expect(state.eventPrompts[0]).toContain('"Dáil passes Budget 2027 after late-night vote" — Summary of Dáil passes Budget 2027 after late-night vote.');
 
     const [canonical, copy] = await rows();
-    expect(canonical).toMatchObject({ url: 'https://www.rte.ie/news/budget-vote', status: 'pending', duplicate_of: null });
+    expect(canonical).toMatchObject({ url: 'https://www.irishtimes.com/news/budget-vote', status: 'pending', duplicate_of: null });
     expect(copy).toMatchObject({ url: 'https://www.thejournal.ie/budget-division', status: 'duplicate', duplicate_of: canonical.id });
 
     const feed = await repo.feedPage({ sort: 'recent', limit: 10, offset: 0 }, { since: new Date(0), fallbackDays: 30 });
@@ -169,8 +169,8 @@ run('ingest against Postgres', () => {
 
   it('two outlets in one run: the earlier published is the canonical, even when its feed comes second', async () => {
     const now = new Date();
-    // `rte` is fetched before `the-journal`, so the later report is first in the run.
-    state.feeds.set('rte', [item('rte', 'https://www.rte.ie/news/later', 'Minister confirms hospital funding', new Date(now.getTime() - HOUR))]);
+    // `irish-times` is fetched before `the-journal`, so the later report is first in the run.
+    state.feeds.set('irish-times',[item('irish-times', 'https://www.irishtimes.com/news/later', 'Minister confirms hospital funding', new Date(now.getTime() - HOUR))]);
     state.feeds.set('the-journal', [item('the-journal', 'https://www.thejournal.ie/earlier', 'Cabinet signs off new hospital money', new Date(now.getTime() - 2 * HOUR))]);
     state.events = () => ({ items: [{ i: 0, event: null, same_as: null }, { i: 1, event: null, same_as: 0 }] });
     expect(await ingest.ingest(now)).toMatchObject({ inserted: 2, duplicates: 1 });
@@ -179,12 +179,12 @@ run('ingest against Postgres', () => {
     const all = await rows();
     const earlier = all.find((r) => r.url === 'https://www.thejournal.ie/earlier')!;
     expect(earlier).toMatchObject({ status: 'pending', duplicate_of: null });
-    expect(all.find((r) => r.url === 'https://www.rte.ie/news/later')).toMatchObject({ status: 'duplicate', duplicate_of: earlier.id });
+    expect(all.find((r) => r.url === 'https://www.irishtimes.com/news/later')).toMatchObject({ status: 'duplicate', duplicate_of: earlier.id });
   });
 
   it('fails closed: when the event call throws, neither item is stored, and the next run stores them linked', async () => {
     const now = new Date();
-    state.feeds.set('rte', [item('rte', 'https://www.rte.ie/news/a', 'Minister confirms hospital funding', new Date(now.getTime() - HOUR))]);
+    state.feeds.set('irish-times',[item('irish-times', 'https://www.irishtimes.com/news/a', 'Minister confirms hospital funding', new Date(now.getTime() - HOUR))]);
     state.feeds.set('the-journal', [item('the-journal', 'https://www.thejournal.ie/b', 'Cabinet signs off new hospital money', new Date(now.getTime() - 2 * HOUR))]);
     state.events = new Error('provider down');
     expect(await ingest.ingest(now)).toMatchObject({ inserted: 0, heldBack: 2, eventMatchFailed: 1 });
@@ -197,7 +197,7 @@ run('ingest against Postgres', () => {
 
   it('fails closed: an item the model could not rank is not stored, never shown unranked, and is ranked next run', async () => {
     const now = new Date();
-    state.feeds.set('rte', [item('rte', 'https://www.rte.ie/news/c', 'Minister confirms hospital funding', new Date(now.getTime() - HOUR))]);
+    state.feeds.set('irish-times',[item('irish-times', 'https://www.irishtimes.com/news/c', 'Minister confirms hospital funding', new Date(now.getTime() - HOUR))]);
     state.relevance = new Error('provider down');
     expect(await ingest.ingest(now)).toMatchObject({ unranked: 1, heldBack: 1, inserted: 0 });
     expect(await rows()).toEqual([]);
