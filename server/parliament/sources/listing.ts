@@ -1,28 +1,47 @@
 /**
- * oireachtas.ie publication listings → links to the PDFs on data.oireachtas.ie. The listing
- * pages are HTML for browsers, so requests send a browser User-Agent. Newest first, 50 to a
- * page.
+ * oireachtas.ie pages → links to the disclosure PDFs on data.oireachtas.ie.
+ *
+ * Since November 2026 the publications search (`/en/publications/?topic[]=…`) answers every
+ * script with HTTP 405 and a "Human Verification" page (an AWS WAF challenge), and robots.txt
+ * disallows it (`Disallow: /*?`). We do not work around that. Two plain pages, listed in the
+ * site's sitemap, allowed by robots.txt and served to scripts, carry the same links instead:
+ *   - the Register of Members' Interests page lists every register and supplement;
+ *   - the Salaries and Allowances page lists the five newest PSA payment files ("Recently
+ *     published returns", Deputies and Senators), about two months of Deputies' files.
+ * The API (api.oireachtas.ie) has no publications; data.oireachtas.ie has no listing.
+ * Requests say who we are. They never pose as a browser.
  */
 import { load } from 'cheerio';
 import type { Fetcher } from '../client';
+import { USER_AGENT } from './wikidata';
 
-const LISTING_URL = 'https://www.oireachtas.ie/en/publications/';
 const TIMEOUT_MS = 60_000;
-/** A plain browser User-Agent. Nothing that identifies a person. */
-export const BROWSER_USER_AGENT =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36';
 
-export const browserFetch: Fetcher = (url) =>
-  fetch(url, { headers: { 'User-Agent': BROWSER_USER_AGENT }, signal: AbortSignal.timeout(TIMEOUT_MS) });
+export type DisclosureKind = 'interests' | 'allowances';
 
-/** Pure: every data.oireachtas.ie PDF linked from a listing page, in page order, once each. */
-export function parsePublicationLinks(html: string): string[] {
+/** The page whose links each feed reads. */
+export const DISCLOSURE_PAGES: Record<DisclosureKind, string> = {
+  interests: 'https://www.oireachtas.ie/en/members/register-of-members-interests/',
+  allowances: 'https://www.oireachtas.ie/en/members/salaries-and-allowances/',
+};
+
+/** Every request to oireachtas.ie and data.oireachtas.ie: our own name, nothing personal. */
+export const oireachtasFetch: Fetcher = (url) =>
+  fetch(url, { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(TIMEOUT_MS) });
+
+/** Pure: the site's bot challenge, not the page asked for. */
+export function isHumanVerification(status: number, html: string): boolean {
+  return status === 405 || /<title>\s*Human Verification\s*<\/title>/i.test(html);
+}
+
+/** Pure: every data.oireachtas.ie PDF linked from a page, in page order, once each. */
+export function parsePublicationLinks(html: string, pageUrl: string): string[] {
   const $ = load(html);
   const links: string[] = [];
   $('a[href]').each((_, el) => {
     let url: URL;
     try {
-      url = new URL($(el).attr('href')!, LISTING_URL);
+      url = new URL($(el).attr('href')!, pageUrl);
     } catch {
       return;
     }
@@ -33,10 +52,14 @@ export function parsePublicationLinks(html: string): string[] {
   return links;
 }
 
-/** The PDFs on one page of a topic's listing, e.g. "register-of-members-interests". */
-export async function publicationLinks(topic: string, fetcher: Fetcher = browserFetch, page = 1): Promise<string[]> {
-  const qs = new URLSearchParams({ 'topic[]': topic, resultsPerPage: '50', page: String(page) });
-  const res = await fetcher(`${LISTING_URL}?${qs}`);
-  if (!res.ok) throw new Error(`Oireachtas listing ${res.status} for ${topic}`);
-  return parsePublicationLinks(await res.text());
+/** The PDFs linked from one feed's page. Throws on an HTTP error or the bot challenge. */
+export async function disclosureLinks(kind: DisclosureKind, fetcher: Fetcher = oireachtasFetch): Promise<string[]> {
+  const pageUrl = DISCLOSURE_PAGES[kind];
+  const res = await fetcher(pageUrl);
+  const html = await res.text();
+  if (isHumanVerification(res.status, html)) {
+    throw new Error(`oireachtas.ie answered ${pageUrl} with its Human Verification challenge (HTTP ${res.status}); see docs/deploy.md, "Disclosure files"`);
+  }
+  if (!res.ok) throw new Error(`Oireachtas ${res.status} for ${pageUrl}`);
+  return parsePublicationLinks(html, pageUrl);
 }

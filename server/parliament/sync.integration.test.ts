@@ -727,7 +727,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     const psaUrl = 'https://data.oireachtas.ie/ie/oireachtas/members/parliamentaryAllowances/psa/2026/2026-09-03_parliamentary-standard-allowance-payments-to-deputies-for-july-2026_en.pdf';
     let pdfReads = 0;
     const source = {
-      links: async (topic: string, page: number) => (page > 1 ? [] : topic === 'register-of-members-interests' ? [registerUrl] : [psaUrl]),
+      links: async (kind: string) => (kind === 'interests' ? [registerUrl] : [psaUrl]),
       pages: async (url: string) => {
         pdfReads++;
         return fixture(url === registerUrl ? 'interests-2025-trimmed.json' : 'psa-2026-07-pages-1-2.json');
@@ -804,7 +804,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       ],
       tdIds: new Map<string, number>(),
       dailStart: '2024-11-29',
-      source: { links: async (_t: string, p: number) => (p > 1 ? [] : [url]), pages: async () => [page] },
+      source: { links: async () => [url], pages: async () => [page] },
       log: () => {},
     };
     const result = await syncAllowances(ctx);
@@ -831,9 +831,10 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       'Deputy Leaver, Alan\t5\tPSA\t30/06/2026\t€3,000.00',
     ];
     let reads: string[] = [];
+    let listed = [august, july, june];
     const source = {
       // Newest first, as the Oireachtas lists them: the broken file is the OLDEST, yet it must not stop the newer two.
-      links: async (_t: string, p: number) => (p > 1 ? [] : [august, july, june]),
+      links: async () => listed,
       pages: async (u: string) => {
         reads.push(u);
         if (u === june) throw new Error('Oireachtas 404');
@@ -852,8 +853,10 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
     expect(await syncAllowances(ctx)).toMatchObject({ files: 0 });
     expect(reads).toEqual([june]);
 
-    // A TD who has left is now in the roster: both stored files are read again and keep his rows.
+    // A TD who has left is now in the roster: both stored files are read again and keep his rows,
+    // July's too though it has dropped off the page (the page shows only recent files).
     reads = [];
+    listed = [august, june];
     const leaver = { memberCode: 'Alan-Leaver.D.2024-11-29', fullName: 'Alan Leaver', constituency: 'Cork East' };
     const again = await syncAllowances({ ...ctx, roster: [paul, leaver] });
     expect(again).toMatchObject({ files: 2, rows: 4, unmatched: [] });
@@ -889,7 +892,7 @@ run('parliament sync against Postgres', { timeout: 60_000 }, () => {
       tdIds: await parliament.repository.tdIdsByMemberCode(),
       dailStart: '2024-11-29',
       // Newest first, as the listing is: the re-published March comes before May's file.
-      source: { links: async (_t: string, p: number) => (p > 1 ? [] : [marchAgain, june, may, march]), pages: async (url: string) => [pages.get(url)!] },
+      source: { links: async () => [marchAgain, june, may, march], pages: async (url: string) => [pages.get(url)!] },
       log: () => {},
     };
     expect(await syncAllowances(ctx)).toMatchObject({ files: 3, rows: 2, unmatched: ['Nobody, Here'] });

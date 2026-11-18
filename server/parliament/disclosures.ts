@@ -10,32 +10,38 @@
  * that does not match, or matches only loosely where another name in the file already claims
  * that TD, is reported and never stored against a guessed member. A file that fails is
  * reported in `failedFiles` and tried again next run; it never stops the others.
+ *
+ * Files are found on two oireachtas.ie pages (`sources/listing.ts`), which show only recent
+ * allowance files; the files already stored are added to what a page shows, so a stored file
+ * that has dropped off its page can still be read again.
  */
 import { interestsYearFromUrl, isDailInterestsRegister, parseInterestsRegister } from './sources/interests';
-import { browserFetch, publicationLinks } from './sources/listing';
+import { disclosureLinks, oireachtasFetch, type DisclosureKind } from './sources/listing';
 import { makeNameMatcher, type NameMatch, type RosterName } from './sources/names';
 import { pdfLines } from './sources/pdf';
 import { isDailPsa, parsePsaPayments, psaMonthFromUrl } from './sources/psa';
 import * as repo from './repository';
 
 export interface DisclosureSource {
-  /** One listing page of a publications topic, newest first. */
-  links(topic: string, page: number): Promise<string[]>;
+  /** The PDFs a feed's oireachtas.ie page links to. */
+  links(kind: DisclosureKind): Promise<string[]>;
   /** A PDF's text, as page lines. */
   pages(url: string): Promise<string[][]>;
 }
 
 export const liveDisclosureSource: DisclosureSource = {
-  links: (topic, page) => publicationLinks(topic, browserFetch, page),
+  links: (kind) => disclosureLinks(kind, oireachtasFetch),
   async pages(url) {
-    const res = await browserFetch(url);
+    const res = await oireachtasFetch(url);
     if (!res.ok) throw new Error(`Oireachtas ${res.status} for ${url}`);
     return pdfLines(new Uint8Array(await res.arrayBuffer()));
   },
 };
 
-/** Listing pages read at most, per topic (50 files a page). */
-const MAX_LISTING_PAGES = 6;
+/** What the page links to, then every stored file, once each. */
+async function candidates(source: DisclosureSource, kind: DisclosureKind, stored: Map<string, string[]>): Promise<string[]> {
+  return Array.from(new Set([...(await source.links(kind)), ...stored.keys()]));
+}
 
 /** The publication date that opens an Oireachtas file name ("…/2026-02-03_…pdf"). */
 const publishedOn = (url: string) => url.match(/\/(\d{4}-\d{2}-\d{2})_[^/]*$/)?.[1] ?? '';
@@ -104,10 +110,10 @@ export async function syncInterests(ctx: DisclosureContext): Promise<DisclosureR
   const source = ctx.source ?? liveDisclosureSource;
   const fromYear = Number(ctx.dailStart.slice(0, 4));
   const stored = await repo.storedDisclosureSources();
-  // Registers are few; page 1 holds the newest years. A year re-issued keeps only its newest
-  // file, chosen BEFORE the stored check, or the two files would replace each other forever.
+  // A year re-issued keeps only its newest file, chosen BEFORE the stored check, or the two
+  // files would replace each other forever.
   const newestByYear = new Map<number, string>();
-  for (const url of (await source.links('register-of-members-interests', 1)).filter(isDailInterestsRegister)) {
+  for (const url of (await candidates(source, 'interests', stored)).filter(isDailInterestsRegister)) {
     const year = interestsYearFromUrl(url);
     if (year === null || year < fromYear) continue;
     const seen = newestByYear.get(year);
@@ -153,16 +159,11 @@ export async function syncAllowances(ctx: DisclosureContext): Promise<Disclosure
   // A month can be published twice (March 2025 was re-published in February 2026): keep only
   // the newest file for each month.
   const newest = new Map<string, string>();
-  for (let page = 1; page <= MAX_LISTING_PAGES; page++) {
-    const links = await source.links('parliamentary-allowances', page);
-    const dail = links.filter(isDailPsa).map((url) => ({ url, month: psaMonthFromUrl(url) }));
-    for (const f of dail) {
-      if (!f.month || f.month < firstMonth) continue;
-      const seen = newest.get(f.month);
-      if (!seen || publishedOn(f.url) > publishedOn(seen)) newest.set(f.month, f.url);
-    }
-    // Newest first: stop once a page reaches back past the Dáil's first month.
-    if (links.length === 0 || dail.some((f) => f.month !== null && f.month < firstMonth)) break;
+  for (const url of (await candidates(source, 'allowances', stored)).filter(isDailPsa)) {
+    const month = psaMonthFromUrl(url);
+    if (!month || month < firstMonth) continue;
+    const seen = newest.get(month);
+    if (!seen || publishedOn(url) > publishedOn(seen)) newest.set(month, url);
   }
   const files = Array.from(newest, ([month, url]) => ({ url, month }));
   const match = makeNameMatcher(ctx.roster);

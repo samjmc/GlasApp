@@ -140,7 +140,9 @@ Rules and effects are in `docs/scoring.md` ("Fair by construction"). Facts measu
   foreign travel is published as data by one department only (Housing, 3 ministers).
 - Wikidata P4690 is the Oireachtas member code verbatim: 174 of 174 TDs, all with P21.
 - oireachtas.ie publication listings are readable with a browser User-Agent; the PDFs are on
-  data.oireachtas.ie. The Dáil PSA file for October 2025 was never published; March 2025 was
+  data.oireachtas.ie. (Superseded 2026-11-18: the listings now send every script a "Human
+  Verification" challenge, and the sync reads two plain pages with its own User-Agent instead;
+  see docs/deploy.md, "Disclosure files".) The Dáil PSA file for October 2025 was never published; March 2025 was
   re-published in February 2026; November 2025 sits under `/caighdeanOifigiul/`.
 - Name matching the PDFs: every non-exact match was a short or alternative first name, or a
   typo in the source ("Deouty", "Deputy, Crowe", "Newsome Drennen"). Only the two TDs who
