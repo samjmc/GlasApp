@@ -277,6 +277,28 @@ A run with no `finished_at` is still going, or the process died during it.
 
 To turn the crons off again, set `SCHEDULER=off` (or remove the line) and run `up -d` again.
 
+### Disclosure files
+
+The `interests` and `allowances` feeds of the parliament sync read PDFs on data.oireachtas.ie. The
+API does not list them, so the sync finds them on two oireachtas.ie pages
+(`server/parliament/sources/listing.ts`):
+
+- `/en/members/register-of-members-interests/` links every register.
+- `/en/members/salaries-and-allowances/` links the five newest allowance (PSA) files, Deputies'
+  and Senators'. That is about two months of Deputies' files.
+
+Since 2026-11-18 the publications search (`/en/publications/?topic[]=…`, which the sync used before)
+answers every script with HTTP 405 and a "Human Verification" page. We do not work around that
+check, and robots.txt disallows that search anyway. If a page above starts to send the same
+challenge, the feed fails with a message that says so. The data already stored stays, and it stops
+at the last file read.
+
+A Deputies' file that is not read before it drops off the page (the sync off for more than about
+eight weeks) is not found again by the sync. Find it in a browser at
+`https://www.oireachtas.ie/en/publications/?topic[]=parliamentary-allowances`. The sync has no
+option yet to load a file from a URL. Files already stored are read again when needed, whether or
+not they are still on the page.
+
 ## Watching the live site
 
 `.github/workflows/uptime.yml` checks the site from outside. A failed run is the alert: GitHub emails
